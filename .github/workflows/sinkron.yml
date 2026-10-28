@@ -12,6 +12,8 @@ jobs:
       matrix:
         repo:
           - alquran-01
+          - alquran-huda
+          - alquran4all
     steps:
       - uses: actions/checkout@v4
         with:
