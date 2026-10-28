@@ -967,14 +967,7 @@ function closeNU(){var b=$('nubd');if(b)b.remove();$('kqr').focus()}
 $('kqr').onclick=openNU;   /* seluruh kotak "Al-Quran Al-Karim" -> logo NU */
 $('kqr').onkeydown=function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();openNU()}};
 /* kotak "Do'a dan Bacaan" -> pesan sementara */
-function openMsg(){
-  if($('msgbd'))return;
-  var bd=document.createElement('div');bd.id='msgbd';bd.setAttribute('role','dialog');bd.setAttribute('aria-modal','true');bd.setAttribute('aria-label',"Do'a & Bacaan");
-  bd.innerHTML='<div class="box"><b>Do\'a &amp; Bacaan</b><p>Kami sedang mengerjakannya</p><button type="button" id="msgx">Tutup</button></div>';
-  document.body.appendChild(bd);
-  bd.addEventListener('click',function(e){if(e.target===bd)closeMsg()});
-  $('msgx').onclick=closeMsg;$('msgx').focus();
-}
+function openMsg(){window.location.href='doa/index.html';}
 function closeMsg(){var b=$('msgbd');if(b){b.remove();$('kdoa').focus()}}
 document.addEventListener('keydown',function(e){if(e.key==='Escape')closeMsg()});
 $('kdoa').onclick=openMsg;
