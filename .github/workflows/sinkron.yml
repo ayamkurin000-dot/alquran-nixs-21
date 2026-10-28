@@ -1,0 +1,40 @@
+name: Sinkron ke repo user
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  sinkron:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        repo:
+          - alquran-01
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: utama
+      - uses: actions/checkout@v4
+        with:
+          repository: ayamkurin000-dot/${{ matrix.repo }}
+          token: ${{ secrets.SYNC_TOKEN }}
+          path: target
+      - name: Salin semua kecuali foto
+        run: |
+          rsync -a --delete \
+            --exclude='.git/' --exclude='.github/' \
+            --exclude='README.md' \
+            --exclude='logo/foto-keluarga-kecil.jpg' \
+            --exclude='logo/foto-keluarga.png' \
+            --exclude='logo/pratinjau.jpg' \
+            utama/ target/
+          sed -i "s#alquran-nixs-21#${{ matrix.repo }}#g" target/index.html
+      - name: Commit dan push
+        working-directory: target
+        run: |
+          git config user.name "sinkron-bot"
+          git config user.email "sinkron-bot@users.noreply.github.com"
+          git add -A
+          git diff --cached --quiet || (git commit -m "Sinkron dari repo utama" && git push)
