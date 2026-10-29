@@ -1037,7 +1037,7 @@ function dAr(a){   /* pisahkan teks Arab dari catatan Latin yang kadang menempel
 function dMeta(l,v){return v?'<p class="dmeta"><b>'+l+':</b> '+dEsc(v)+'</p>':''}
 function doaItem(it,ix){
   var bg=it.b?'<span class="dbg '+(it.b==='Shahih'?'s':it.b==='Hadits Dhaif'?'u':'t')+'">'+dEsc(it.b)+'</span>':'';
-  var h='<details class="ditem"><summary><span class="dn">'+dEsc(it.n)+(it.nb?'<small>'+dEsc(it.nb)+'</small>':'')+'</span>'+bg+'</summary><div class="dbody">';
+  var h='<details class="ditem tx"><summary><span class="dn">'+dEsc(it.n)+(it.nb?'<small>'+dEsc(it.nb)+'</small>':'')+'</span>'+bg+'</summary><div class="dbody">';
   if(it.m){ if(/[\u0600-\u06FF]/.test(it.m)) h+='<p class="dlb">Lafaz muadzin</p>'+dAr(it.m)+'<p class="dlb">Jawaban</p>'; else h+=dMeta('Waktu',it.m) }
   h+=dAr(it.a);
   if(it.l)h+='<p class="dla">'+dEsc(it.l)+'</p>';
@@ -1047,7 +1047,7 @@ function doaItem(it,ix){
 }
 function doaShowCats(){
   var D=doaLoad(),h='';
-  D.c.forEach(function(c){h+='<button type="button" class="dcat" data-c="'+c.id+'"><span><b>'+dEsc(c.t)+'</b><small>'+dEsc(c.d)+'</small></span><span class="dcn">'+((D.i[c.id]||[]).length)+' doa</span></button>'});
+  D.c.forEach(function(c){h+='<button type="button" class="dcat tx" data-c="'+c.id+'"><span><b>'+dEsc(c.t)+'</b><small>'+dEsc(c.d)+'</small></span><span class="dcn">'+((D.i[c.id]||[]).length)+' doa</span></button>'});
   $('doa-body').innerHTML='<div class="dgrid">'+h+'</div><p class="dleg"><b>Keterangan label:</b> <i>Shahih</i> = bersumber dari Bukhari/Muslim atau tertulis shahih pada sumbernya; <i>Tradisi Ulama</i> = amaliyah ulama; <i>Hadits Dhaif</i> = haditsnya lemah; tetap dicantumkan dan dibaca sebagai doa umum.</p>';
   $('doa-ttl').textContent="Do'a & Bacaan";$('doa-sub').textContent='Pilih kategori';
   $('doa-scroll').scrollTop=0;doaCur=[]
