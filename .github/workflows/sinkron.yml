@@ -14,6 +14,16 @@ jobs:
           - alquran-01
           - alquran-huda
           - alquran4all
+          - alquran-valel
+          - alquran-lia
+          - alquran-nina
+          - alquran-rido
+          - alquran-msol
+          - alquran-wahydudi
+          - alquran-yudi
+          - alquran-nanik
+          - alquran-hanik
+          - alquran-yayun
     steps:
       - uses: actions/checkout@v4
         with:
