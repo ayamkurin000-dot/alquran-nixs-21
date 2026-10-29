@@ -30,6 +30,8 @@ jobs:
           - alquran-amin
           - alquran-lukman
           - alquran-sihe
+          - alquran-zub
+          - alquran-tata
     steps:
       - uses: actions/checkout@v4
         with:
