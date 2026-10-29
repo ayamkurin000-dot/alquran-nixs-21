@@ -24,6 +24,12 @@ jobs:
           - alquran-nanik
           - alquran-hanik
           - alquran-yayun
+          - alquran-kusnul
+          - alquran-maryamjamilah
+          - alquran-yuliastutik
+          - alquran-amin
+          - alquran-lukman
+          - alquran-sihe
     steps:
       - uses: actions/checkout@v4
         with:
