@@ -349,7 +349,7 @@ input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;bac
   box-shadow:inset 0 3px 10px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.18),0 4px 0 var(--ced),0 9px 16px rgba(0,0,0,.30)}
 .ditem summary{position:relative;padding:13px 14px 13px 48px;text-shadow:0 1px 0 rgba(255,255,255,.3);border-radius:14px}
 .ditem[open] summary{border-bottom:0}
-.ditem summary::before{content:counter(dn);position:absolute;left:11px;top:50%;transform:translateY(-50%);
+.ditem summary::before{content:attr(data-n);position:absolute;left:11px;top:50%;transform:translateY(-50%);
   width:22px;height:22px;box-sizing:border-box;border-radius:50%;display:flex;align-items:center;justify-content:center;
   font-size:11.5px;font-weight:800;line-height:1;letter-spacing:-.02em;text-shadow:none;
   color:#fff7dc;background:radial-gradient(circle at 35% 30%,#5f8a3a,#1e3a12 80%);
@@ -1113,9 +1113,9 @@ function dAr(a){   /* pisahkan teks Arab dari catatan Latin yang kadang menempel
 var DBL=['Jan','Feb','Mar','Apr','Mei','Jun','Jul','Agu','Sep','Okt','Nov','Des'];
 function dChk(v){if(!v||!v.status)return'';var t='';if(v.tgl){var a=v.tgl.split('-');if(a.length===3)t=' '+parseInt(a[2],10)+' '+DBL[parseInt(a[1],10)-1]+' '+a[0]}var full=v.status==='dicek-penuh';return '<p><span class="dchk'+(full?'':' p')+'" title="'+dEsc(v.cat||'')+'">'+(full?'✓ Sudah dicek':'◐ Dicek sebagian')+t+'</span></p>'}
 function dMeta(l,v){return v?'<p class="dmeta"><b>'+l+':</b> '+dEsc(v)+'</p>':''}
-function doaItem(it,ix){
+function doaItem(it,ix,no){
   var bg=it.b?'<span class="dbg '+(it.b==='Shahih'||it.b==='Hasan'?'s':it.b==='Hadits Dhaif'?'u':'t')+'">'+dEsc(it.b)+'</span>':'';
-  var h='<details class="ditem tx"><summary><span class="dn">'+dEsc(it.n)+(it.nb?'<small>'+dEsc(it.nb)+'</small>':'')+'</span>'+bg+'</summary><div class="dbody">';
+  var h='<details class="ditem tx"><summary data-n="'+no+'"><span class="dn">'+dEsc(it.n)+(it.nb?'<small>'+dEsc(it.nb)+'</small>':'')+'</span>'+bg+'</summary><div class="dbody">';
   if(it.m){ if(/[\u0600-\u06FF]/.test(it.m)) h+='<p class="dlb">Lafaz muadzin</p>'+dAr(it.m)+'<p class="dlb">Jawaban</p>'; else h+=dMeta('Waktu',it.m) }
   h+=dAr(it.a);
   if(it.l)h+='<p class="dla">'+dEsc(it.l)+'</p>';
@@ -1147,12 +1147,12 @@ function doaShowCat(id){
   for(i=0;i<D.c.length;i++)if(D.c[i].id===id)cat=D.c[i];
   if(!cat){doaShowCats();return}
   doaCat=id;doaCur=D.i[id]||[];
-  var h='',g=null;
+  var h='',g=null,no=0;
   doaCur.forEach(function(it,ix){
     var sg=it.g||'';
-    if(sg!==g){g=sg;if(sg)h+='<div class="sec">'+dEsc(sg)+'</div>';
+    if(sg!==g){g=sg;no=0;if(sg)h+='<div class="sec">'+dEsc(sg)+'</div>';
       if(sg==='Doa Per Gerakan Wudhu')h+='<p class="dnote">Doa-doa per gerakan wudhu berikut tetap dicantumkan karena populer di kitab fiqih Syafi\'i dan pesantren, tetapi tidak ada hadits shahih tentang doa khusus tiap anggota wudhu; ulama menilai riwayatnya sangat lemah, bahkan sebagian menolaknya sama sekali (An-Nawawi, Ibnu Hajar, Ibnul Qayyim, Lajnah Daimah), sedangkan sebagian fuqaha Syafi\'iyah mencantumkannya. Dibaca sebagai doa umum, bukan sunnah khusus wudhu. Yang shahih: basmalah di awal (diperselisihkan derajatnya, ada yang menshahihkan) dan doa setelah wudhu (Muslim 234).</p>'}
-    h+=doaItem(it,ix)
+    h+=doaItem(it,ix,++no)
   });
   $('doa-body').innerHTML=h;
   $('doa-ttl').textContent=cat.t;$('doa-sub').textContent=doaCur.length+' doa';
