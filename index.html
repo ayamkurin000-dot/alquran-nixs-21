@@ -393,6 +393,11 @@ input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;bac
 .dcat b{color:var(--ink);text-shadow:0 1px 0 rgba(255,255,255,.28)}
 .dcat small{color:var(--ink);opacity:.82}
 .dcat .dcn{background:radial-gradient(circle at 35% 30%,#5f8a3a,#1e3a12 85%);color:#fff7dc;border:1.5px solid #f3e3b0;box-shadow:0 1px 3px rgba(0,0,0,.4)}
+
+/* ===== Sub-butir di dalam satu kartu ===== */
+.dsh{margin-top:16px}
+.dsub{margin-top:12px;padding-top:10px;border-top:1.5px dashed rgba(92,58,18,.5)}
+.dsn{display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px;font-weight:800;font-size:16px;line-height:1.3;color:var(--accent2);margin-bottom:2px}
 /* ===== Catatan pengantar doa: bingkai bersinar berputar ===== */
 @property --ang{syntax:'<angle>';inherits:false;initial-value:0deg}
 @keyframes dspin{to{--ang:360deg}}
@@ -1136,6 +1141,15 @@ function dAr(a){   /* pisahkan teks Arab dari catatan Latin yang kadang menempel
 var DBL=['Jan','Feb','Mar','Apr','Mei','Jun','Jul','Agu','Sep','Okt','Nov','Des'];
 function dChk(v){if(!v||!v.status)return'';var t='';if(v.tgl){var a=v.tgl.split('-');if(a.length===3)t=' '+parseInt(a[2],10)+' '+DBL[parseInt(a[1],10)-1]+' '+a[0]}var full=v.status==='dicek-penuh';return '<p><span class="dchk'+(full?'':' p')+'" title="'+dEsc(v.cat||'')+'">'+(full?'✓ Sudah dicek':'◐ Dicek sebagian')+t+'</span></p>'}
 function dMeta(l,v){return v?'<p class="dmeta"><b>'+l+':</b> '+dEsc(v)+'</p>':''}
+function doaSubs(it){
+  if(!it.sub||!it.sub.length)return'';
+  var h=it.sh?'<p class="dlb dsh">'+dEsc(it.sh)+'</p>':'';
+  it.sub.forEach(function(s){
+    var bg=s.b?'<span class="dbg '+(s.b==='Shahih'||s.b==='Hasan'?'s':s.b==='Hadits Dhaif'?'u':'t')+'">'+dEsc(s.b)+'</span>':'';
+    h+='<div class="dsub"><div class="dsn"><span>'+dEsc(s.n)+'</span>'+bg+'</div>'+dAr(s.a)+(s.l?'<p class="dla">'+dEsc(s.l)+'</p>':'')+(s.t?'<p class="dtr">'+dEsc(s.t)+'</p>':'')+dMeta('Dasar tuntunan',s.dt)+dMeta('Waktu membaca',s.k)+dMeta('Adab',s.d)+dMeta('Sumber',s.s)+dChk(s.v)+'</div>'
+  });
+  return h
+}
 function doaItem(it,ix,no){
   var bg=it.b?'<span class="dbg '+(it.b==='Shahih'||it.b==='Hasan'?'s':it.b==='Hadits Dhaif'?'u':'t')+'">'+dEsc(it.b)+'</span>':'';
   var h='<details class="ditem tx"><summary data-n="'+no+'"><span class="dn">'+dEsc(it.n)+(it.nb?'<small>'+dEsc(it.nb)+'</small>':'')+'</span>'+bg+'</summary><div class="dbody">';
@@ -1143,7 +1157,7 @@ function doaItem(it,ix,no){
   h+=dAr(it.a);
   if(it.l)h+='<p class="dla">'+dEsc(it.l)+'</p>';
   if(it.t)h+='<p class="dtr">'+dEsc(it.t)+'</p>';
-  h+=dMeta('Dasar tuntunan',it.dt)+dMeta('Keutamaan',it.f)+dMeta('Tata cara',it.tc)+dMeta('Waktu membaca',it.k)+dMeta('Waktu mustajab',it.wm)+dMeta('Tempat mustajab',it.tm)+dMeta('Adab',it.d)+dMeta('Sumber',it.s)+dChk(it.v);
+  h+=dMeta('Dasar tuntunan',it.dt)+dMeta('Keutamaan',it.f)+dMeta('Tata cara',it.tc)+dMeta('Waktu membaca',it.k)+dMeta('Waktu mustajab',it.wm)+dMeta('Tempat mustajab',it.tm)+dMeta('Adab',it.d)+dMeta('Sumber',it.s)+dChk(it.v)+doaSubs(it);
   return h+'<button type="button" class="dcp" data-i="'+ix+'">Salin</button></div></details>'
 }
 function doaShowCats(){
@@ -1201,8 +1215,8 @@ function doaIdx(){
   if(D._ix)return D._ix;
   var ix=[];
   D.c.forEach(function(c){(D.i[c.id]||[]).forEach(function(it){
-    var nm=dNorm([it.n,it.nb,it.g].join(' '));
-    var rest=dNorm([c.t,it.l,it.t,it.a,/[\u0600-\u06FF]/.test(it.m||'')?it.m:it.m].join(' '));
+    var nm=dNorm([it.n,it.nb,it.g].concat((it.sub||[]).map(function(s){return s.n})).join(' '));
+    var rest=dNorm([c.t,it.l,it.t,it.a,it.m].concat((it.sub||[]).map(function(s){return [s.l,s.t,s.a].join(' ')})).join(' '));
     ix.push({c:c,it:it,nm:nm,h:nm+' '+rest})
   })});
   D._ix=ix;return ix
@@ -1249,6 +1263,7 @@ window.addEventListener('popstate',function(e){
 function doaCopy(ix){
   var it=doaCur[ix];if(!it)return;
   var t=[it.n,(it.m&&/[\u0600-\u06FF]/.test(it.m)?it.m+'\n':'')+(it.a||''),it.l,it.t].filter(Boolean).join('\n\n');
+  if(it.sub)it.sub.forEach(function(s){t+='\n\n'+[s.n,s.a,s.l,s.t].filter(Boolean).join('\n')});
   function ok(){toast('Tersalin')}
   function fb(){try{var ta=document.createElement('textarea');ta.value=t;ta.style.cssText='position:fixed;opacity:0';document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove();ok()}catch(e){toast('Tidak bisa menyalin')}}
   if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(t).then(ok,fb);else fb()
