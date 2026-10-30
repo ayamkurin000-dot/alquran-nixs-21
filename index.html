@@ -1461,14 +1461,28 @@ function closeFoto(){var b=$('fotobd');if(b){b.remove();$('foto').focus()}}
 document.addEventListener('keydown',function(e){if(e.key==='Escape')closeFoto()});
 $('foto').onclick=function(){openFoto()};
 $('foto').onkeydown=function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();openFoto()}};
+/* perkecil otomatis: sisi terpanjang maks 1080px, JPEG 85% (hemat localStorage, tetap tajam) */
+function shrinkFoto(src,done){
+  var im=new Image();
+  im.onload=function(){
+    try{
+      var M=1080,w=im.naturalWidth,h=im.naturalHeight,k=Math.min(1,M/Math.max(w,h));
+      var c=document.createElement('canvas');c.width=Math.round(w*k);c.height=Math.round(h*k);
+      var g=c.getContext('2d');g.fillStyle='#fff';g.fillRect(0,0,c.width,c.height);g.drawImage(im,0,0,c.width,c.height);
+      done(c.toDataURL('image/jpeg',.85));
+    }catch(e){done(src)}
+  };
+  im.onerror=function(){alert('Format foto tidak didukung. Pilih foto JPG, PNG, atau WebP.')};
+  im.src=src;
+}
 (function(){
   var inp=$('fotoInput');
   if(!inp) return;
   inp.addEventListener('change', function(e){
     var f = e.target.files && e.target.files[0]; if(!f) return;
-    if(f.size > 2*1024*1024){ alert('Foto terlalu besar, maksimal 2MB. Silakan kompres dulu.'); return; }
+    if(f.size > 25*1024*1024){ alert('Foto terlalu besar (maksimal 25MB). Pilih foto lain.'); return; }
     var reader = new FileReader();
-    reader.onload = function(ev){
+    reader.onload = function(ev0){ shrinkFoto(ev0.target.result,function(data){ var ev={target:{result:data}};
       try{
         localStorage.setItem(CUSTOM_KEY, ev.target.result);
         FOTO_KECIL = ev.target.result; FOTO_ASLI = ev.target.result;
@@ -1477,7 +1491,7 @@ $('foto').onkeydown=function(e){if(e.key==='Enter'||e.key===' '){e.preventDefaul
         if(bd){ var img=bd.querySelector('img'); if(img){ img.src=ev.target.result; img.classList.remove('ld'); } }
         alert('Foto berhasil diganti! Foto ini hanya tersimpan di HP ini.');
       }catch(err){ alert('Gagal simpan foto, memori HP penuh. Coba foto yang lebih kecil.'); }
-    };
+    }); };
     reader.readAsDataURL(f);
     inp.value='';
   });
