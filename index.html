@@ -603,6 +603,58 @@ html[data-fx^="glass"] .ditem:not([open]),html[data-fx^="glass"] .tab:not([aria-
 .fxp[data-fx="none"] i::before,.fxp[data-fx="none"] i::after,.fxp[data-fx="matte"] i::before,.fxp[data-fx="matte"] i::after{background:var(--kt)}
 .fxp[data-fx^="glass"] i{background-color:var(--k2);background-image:var(--gimg),var(--kpat),linear-gradient(180deg,var(--k1),var(--k2));background-size:var(--gsz),var(--kpsz),100% 100%;background-position:var(--gpos),0 0,0 0,0 0;background-repeat:var(--grep),repeat,repeat,repeat;border:1.5px solid var(--ke);box-shadow:var(--gx),inset 0 1px 0 var(--khl),0 2px 0 var(--ke),0 4px 7px var(--ksh)}
 .fxp[data-fx^="glass"] i::before,.fxp[data-fx^="glass"] i::after{background:var(--kt)}
+
+/* =====================================================================
+   LATAR PASIR + KARTU MENGAMBANG + FOTO 3D  (semua warna ikut tema: var(--bg), --k1, --k2, --ke, --ksh ...)
+   ===================================================================== */
+:root{
+  --sand1:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' seed='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='1.7 0 0 0 -.35 1.7 0 0 0 -.35 1.7 0 0 0 -.35 0 0 0 0 .55'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.42'/%3E%3C/svg%3E");
+  --sand2:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='360' height='360'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.32' numOctaves='3' seed='9' stitchTiles='stitch'/%3E%3CfeColorMatrix values='1.5 0 0 0 -.25 1.5 0 0 0 -.25 1.5 0 0 0 -.25 0 0 0 0 .5'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.28'/%3E%3C/svg%3E");
+  --glow:radial-gradient(130% 55% at 50% -8%,color-mix(in srgb,var(--bg) 68%,#fff) 0,transparent 72%),radial-gradient(110% 45% at 50% 108%,color-mix(in srgb,var(--bg) 78%,#000) 0,transparent 75%);
+}
+body,#doa{
+  background-image:var(--glow),var(--sand1),var(--sand2),var(--bgimg);
+  background-size:100% 100%,200px 200px,360px 360px,var(--bgsz);
+  background-attachment:fixed,scroll,scroll,scroll;
+}
+#hbar{background:color-mix(in srgb,var(--bg) 35%,transparent)}
+
+/* ---- kartu mengambang: tebal tepi + bayangan dekat + bayangan jauh yang lembut ---- */
+.hbx,.row,.rcard,.dcat,.ditem,.tab{
+  box-shadow:var(--gx),inset 0 2px 0 var(--khl),inset 0 -10px 16px rgba(0,0,0,.14),
+    0 4px 0 var(--ke),0 9px 12px -2px var(--ksh),0 20px 26px -8px var(--ksh),0 32px 38px -16px rgba(0,0,0,.3);
+}
+.hbx{box-shadow:var(--gx),inset 0 2px 0 var(--khl),inset 0 -12px 18px rgba(0,0,0,.16),
+    0 6px 0 var(--ke),0 12px 16px -2px var(--ksh),0 26px 34px -8px var(--ksh),0 40px 48px -18px rgba(0,0,0,.34)}
+.row,.rcard{margin-bottom:18px}
+.tab{box-shadow:var(--gx),inset 0 1.5px 0 var(--khl),0 4px 0 var(--ke),0 10px 14px -4px var(--ksh),0 18px 22px -10px rgba(0,0,0,.28)}
+#hero{padding-bottom:16px}
+.tabs{padding-bottom:8px}
+
+/* ---- foto 3D: bingkai timbul + permukaan cembung berkilau + bayangan dalam ---- */
+.hbx.photo{
+  overflow:hidden;
+  background-image:linear-gradient(145deg,rgba(255,255,255,.55),rgba(255,255,255,0) 32%,rgba(0,0,0,.3) 100%),linear-gradient(180deg,var(--k1),var(--k2));
+  background-size:100% 100%;
+  transform:perspective(800px) rotateY(5deg) rotateX(2deg);transform-origin:50% 50%;
+  box-shadow:var(--gx),inset 0 2px 0 rgba(255,255,255,.55),inset 0 -3px 0 rgba(0,0,0,.3),
+    0 7px 0 var(--ke),-10px 16px 20px -4px var(--ksh),-18px 30px 38px -10px var(--ksh),-26px 46px 52px -20px rgba(0,0,0,.4);
+}
+.hbx.photo img{
+  inset:7px;width:calc(100% - 14px);height:calc(100% - 14px);border-radius:9px;
+  transform:scale(1.06);transform-origin:50% 28%;
+  filter:contrast(1.08) saturate(1.12) brightness(1.03);
+  box-shadow:0 0 0 1px rgba(0,0,0,.5);
+}
+.hbx.photo::before{
+  content:'';position:absolute;inset:7px;z-index:2;pointer-events:none;border-radius:9px;
+  background:
+    linear-gradient(128deg,rgba(255,255,255,.42) 0%,rgba(255,255,255,.12) 20%,rgba(255,255,255,0) 42%),
+    radial-gradient(115% 88% at 46% 38%,transparent 52%,rgba(0,0,0,.34) 100%),
+    linear-gradient(180deg,transparent 68%,rgba(0,0,0,.22) 100%);
+  box-shadow:inset 0 2px 3px rgba(255,255,255,.55),inset 2px 0 3px rgba(255,255,255,.22),inset 0 -4px 7px rgba(0,0,0,.45),inset -3px 0 6px rgba(0,0,0,.3);
+}
+@media (prefers-reduced-motion:reduce){.hbx.photo{transform:none}}
 </style>
 </head>
 <body>
