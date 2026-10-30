@@ -438,7 +438,7 @@ input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;bac
   --kb1:#5f8a3a;--kb2:#1e3a12;--kbm:#3a5f22;--kbb:#f3e3b0;--kbi:#fff7dc;
   --khl:rgba(255,255,255,.38);--ksh:rgba(0,0,0,.30);--kts:0 1px 0 rgba(255,255,255,.3);
   --kgl:linear-gradient(180deg,rgba(255,255,255,.16) 0%,rgba(255,255,255,0) 45%);
-  --kpat:none;--kpsz:auto;--khp:.2;
+  --kpat:none;--kpsz:auto;--khp:.2;--gx:0 0 0 0 transparent;
   --kp1:#efdcac;--kp2:#e2cb92;--kp3:#d6bb7e;--kpi:#2e2110;--kpi2:#5a4325;--kpa:#5b3a12;--kpg:#8a5a1c;--kpr:139,90,30;--kps:rgba(90,60,20,.22);
   --bgimg:none;--bgsz:auto;
 }
@@ -447,9 +447,9 @@ body{background-color:var(--bg);background-image:var(--bgimg);background-size:va
 #hero{padding-bottom:12px}.hb{gap:13px}
 /* kartu depan */
 .hbx{background-color:var(--k2);background-image:var(--kgl),var(--kpat),linear-gradient(180deg,var(--k1),var(--k2));background-size:100% 100%,var(--kpsz),100% 100%;border:2px solid var(--ke);color:var(--ka);
-  box-shadow:inset 0 1.5px 0 var(--khl),inset 0 -12px 18px rgba(0,0,0,.16),0 5px 0 var(--ke),0 12px 20px var(--ksh)}
-.hbx[role=button]:hover,a.hbx:hover{box-shadow:inset 0 1.5px 0 var(--khl),inset 0 -12px 18px rgba(0,0,0,.16),0 5px 0 var(--ke),0 16px 26px var(--ksh)}
-.hbx[role=button]:active,a.hbx:active{transform:translateY(4px);filter:brightness(.95);box-shadow:inset 0 3px 10px rgba(0,0,0,.32),0 1px 0 var(--ke),0 3px 6px var(--ksh)}
+  box-shadow:var(--gx),inset 0 1.5px 0 var(--khl),inset 0 -12px 18px rgba(0,0,0,.16),0 5px 0 var(--ke),0 12px 20px var(--ksh)}
+.hbx[role=button]:hover,a.hbx:hover{box-shadow:var(--gx),inset 0 1.5px 0 var(--khl),inset 0 -12px 18px rgba(0,0,0,.16),0 5px 0 var(--ke),0 16px 26px var(--ksh)}
+.hbx[role=button]:active,a.hbx:active{transform:translateY(4px);filter:brightness(.95);box-shadow:var(--gx),inset 0 3px 10px rgba(0,0,0,.32),0 1px 0 var(--ke),0 3px 6px var(--ksh)}
 .hbx::after{border-color:var(--kg)}
 .hc,.so{color:var(--kg)}
 .hpat{background:var(--kg);opacity:var(--khp)}
@@ -460,16 +460,16 @@ body{background-color:var(--bg);background-image:var(--bgimg);background-size:va
 .tabs{gap:9px;padding-bottom:4px}
 .tab{background-color:var(--k2);background-image:var(--kgl),var(--kpat),linear-gradient(180deg,var(--k1),var(--k2));background-size:100% 100%,var(--kpsz),100% 100%;
   border:2px solid var(--ke);color:var(--kt);text-shadow:var(--kts);border-radius:12px;
-  box-shadow:inset 0 1.5px 0 var(--khl),0 4px 0 var(--ke),0 8px 12px var(--ksh);transition:transform .1s,box-shadow .1s}
-.tab:active{transform:translateY(3px);box-shadow:inset 0 1.5px 0 var(--khl),0 1px 0 var(--ke)}
+  box-shadow:var(--gx),inset 0 1.5px 0 var(--khl),0 4px 0 var(--ke),0 8px 12px var(--ksh);transition:transform .1s,box-shadow .1s}
+.tab:active{transform:translateY(3px);box-shadow:var(--gx),inset 0 1.5px 0 var(--khl),0 1px 0 var(--ke)}
 .tab[aria-selected=true]{background-color:var(--kb2);background-image:linear-gradient(180deg,var(--kb1),var(--kb2));background-size:100% 100%;border-color:var(--ke);color:var(--kbi);
   text-shadow:0 1px 1px rgba(0,0,0,.45);transform:translateY(3px);box-shadow:inset 0 3px 9px rgba(0,0,0,.4),0 1px 0 var(--ke)}
 /* daftar surat/juz/penanda + lanjutkan membaca */
 #resume{margin:6px 14px 14px}
 .row,.rcard{background-color:var(--k2);background-image:var(--kgl),var(--kpat),linear-gradient(180deg,var(--k1),var(--k2));background-size:100% 100%,var(--kpsz),100% 100%;
   border:1px solid var(--ke);color:var(--kt);margin-bottom:13px;
-  box-shadow:inset 0 1.5px 0 var(--khl),inset 0 -10px 16px rgba(0,0,0,.14),0 4px 0 var(--ke),0 8px 14px var(--ksh);transition:transform .12s,box-shadow .12s}
-.row:active,.rcard:active{transform:translateY(3px);box-shadow:inset 0 1.5px 0 var(--khl),0 1px 0 var(--ke),0 3px 6px var(--ksh)}
+  box-shadow:var(--gx),inset 0 1.5px 0 var(--khl),inset 0 -10px 16px rgba(0,0,0,.14),0 4px 0 var(--ke),0 8px 14px var(--ksh);transition:transform .12s,box-shadow .12s}
+.row:active,.rcard:active{transform:translateY(3px);box-shadow:var(--gx),inset 0 1.5px 0 var(--khl),0 1px 0 var(--ke),0 3px 6px var(--ksh)}
 .row .row{border:0;margin-bottom:0}
 .row .mid b,.rcard b{text-shadow:var(--kts)}
 .row .mid small,.rcard small,.hit .tt{color:var(--kt2)}
@@ -482,10 +482,10 @@ body{background-color:var(--bg);background-image:var(--bgimg);background-size:va
 /* Do'a & Bacaan */
 .dcat,.ditem{background-color:var(--k2);background-image:var(--kgl),var(--kpat),linear-gradient(180deg,var(--k1),var(--k2));background-size:100% 100%,var(--kpsz),100% 100%;
   border:1px solid var(--ke);color:var(--kt);
-  box-shadow:inset 0 1.5px 0 var(--khl),inset 0 -10px 16px rgba(0,0,0,.16),0 4px 0 var(--ke),0 9px 16px var(--ksh)}
+  box-shadow:var(--gx),inset 0 1.5px 0 var(--khl),inset 0 -10px 16px rgba(0,0,0,.16),0 4px 0 var(--ke),0 9px 16px var(--ksh)}
 .ditem[open]{background-image:var(--kpat),linear-gradient(180deg,var(--k2),color-mix(in srgb,var(--k2) 78%,#000));background-size:var(--kpsz),100% 100%;
   box-shadow:inset 0 3px 10px rgba(0,0,0,.35),inset 0 1px 0 var(--khl),0 4px 0 var(--ke),0 9px 16px var(--ksh)}
-.dcat:active,.ditem:not([open]):active{box-shadow:inset 0 1.5px 0 var(--khl),0 1px 0 var(--ke),0 3px 7px var(--ksh)}
+.dcat:active,.ditem:not([open]):active{box-shadow:var(--gx),inset 0 1.5px 0 var(--khl),0 1px 0 var(--ke),0 3px 7px var(--ksh)}
 .dcat b,.ditem summary{color:var(--kt);text-shadow:var(--kts)}
 .dcat small,.ditem summary .dn small{color:var(--kt2);opacity:.95}
 .ditem summary::after{color:var(--kt)}
@@ -512,7 +512,7 @@ body{background-color:var(--bg);background-image:var(--bgimg);background-size:va
 #credit{font-size:clamp(11px,3.2vw,16px)}
 
 /* =====================================================================================
-   EFEK PERMUKAAN: Standar / Matte / Kaca 1-6  (dipilih di Pengaturan > Tema)
+   EFEK PERMUKAAN: Standar / Matte / Kaca 1-6  (dipilih di Pengaturan > Tema). Kaca = kilap saja, tekstur 3D tetap
    <html data-fx="..."> diisi oleh applyTheme(). 'none' = tampilan 3D mengkilap bawaan (tidak diubah).
    ===================================================================================== */
 
@@ -523,113 +523,74 @@ html[data-fx="matte"] .hbx,html[data-fx="matte"] .tab,html[data-fx="matte"] .row
   --ksh:color-mix(in srgb,var(--ke) 34%,transparent)!important}
 html[data-fx="matte"] .hdoa,html[data-fx="matte"] .hmri,html[data-fx="matte"] #hero-logo,html[data-fx="matte"] #credit{color:var(--kt);text-shadow:none;opacity:1}
 
-/* ---------- KACA: variabel umum (latar ambient supaya kaca punya sesuatu untuk dibiaskan) ---------- */
-html[data-fx^="glass"]{
-  --fxamb:radial-gradient(circle at 10% 6%,color-mix(in srgb,var(--accent2) 42%,transparent) 0,transparent 36%),
-          radial-gradient(circle at 94% 26%,color-mix(in srgb,var(--accent) 40%,transparent) 0,transparent 34%),
-          radial-gradient(circle at 14% 58%,color-mix(in srgb,var(--accent2) 30%,transparent) 0,transparent 38%),
-          radial-gradient(circle at 90% 84%,color-mix(in srgb,var(--accent) 34%,transparent) 0,transparent 40%),
-          radial-gradient(circle at 46% 108%,color-mix(in srgb,var(--paper) 70%,transparent) 0,transparent 42%);
-  /* teks di atas kaca mengikuti warna teks halaman (selalu kontras dengan latar), bukan warna kartu */
-  --kt:var(--ink)!important;--kt2:var(--ink2)!important;--ka:var(--accent2)!important;--kg:var(--accent)!important}
+/* =====================================================================================
+   KACA 1-6: HANYA MENAMBAH KILAP di atas tampilan tema 3D.
+   Warna dasar, TEKSTUR (--kpat: kayu / marmer / keramik / logam), tepi, tebal 3D dan warna teks tema 3D
+   dipakai apa adanya. Efek kaca hanya menggantikan lapisan kilap bawaan (--kgl) dengan lapisan kilap kaca
+   (paling atas, tembus pandang) dan menambah garis cahaya tipis di tepi (--gx, masuk ke box-shadow 3D).
+   Kartu yang sedang "tertekan" (tab terpilih, Do'a yang dibuka) tetap tanpa kilap, sama seperti 3D bawaan.
+   Tiap efek mengisi 4 daftar yang SEJAJAR (jumlah elemennya HARUS sama):
+     --gimg = lapisan gambar | --gsz = ukuran | --gpos = posisi | --grep = pengulangan
+   --gk = pengali terang kilap: di kartu gelap (teks terang) kilap dikurangi supaya teks tetap terbaca.
+   ===================================================================================== */
+html[data-fx^="glass"],.fxp[data-fx^="glass"]{--gk:calc(1 - .5*var(--gdk,0))}
 
-/* ---------- KACA 1 - Tipis: kaca jendela bening, blur halus, tepi putih tipis ---------- */
+/* ---------- KACA 1 - Tipis: lapisan kaca bening, kilau halus ---------- */
 html[data-fx="glass1"],.fxp[data-fx="glass1"]{
-  --gbf:blur(7px) saturate(1.2);
-  --gbd:rgba(255,255,255,.5);
-  --gbg:linear-gradient(180deg,rgba(255,255,255,.26) 0%,rgba(255,255,255,.07) 100%),color-mix(in srgb,var(--paper) 16%,transparent);
-  --gsh:inset 0 1px 0 rgba(255,255,255,.65),0 0 0 1px color-mix(in srgb,var(--ink) 9%,transparent),0 5px 14px rgba(0,0,0,.10)}
+  --gimg:linear-gradient(180deg,rgba(255,255,255,calc(.30*var(--gk))) 0%,rgba(255,255,255,calc(.05*var(--gk))) 100%);
+  --gsz:100% 100%;--gpos:0 0;--grep:no-repeat;
+  --gx:inset 0 0 0 1px rgba(255,255,255,.28),inset 0 1px 0 rgba(255,255,255,.55)}
 
-/* ---------- KACA 2 - Berair: kaca dilapisi air, butir-butir embun + kilau miring ---------- */
+/* ---------- KACA 2 - Berair: butir-butir embun + kilau miring ---------- */
 html[data-fx="glass2"],.fxp[data-fx="glass2"]{
-  --gbf:blur(3px) saturate(1.35) brightness(1.04);
-  --gbd:rgba(255,255,255,.62);
-  --gbg:
-    radial-gradient(circle at 34% 30%,rgba(255,255,255,.95) 0 7%,rgba(255,255,255,.32) 24%,rgba(255,255,255,.06) 58%,rgba(20,60,110,.16) 80%,transparent 83%) 9% 24%/13px 13px no-repeat,
-    radial-gradient(circle at 34% 30%,rgba(255,255,255,.95) 0 7%,rgba(255,255,255,.32) 24%,rgba(255,255,255,.06) 58%,rgba(20,60,110,.16) 80%,transparent 83%) 27% 82%/8px 8px no-repeat,
-    radial-gradient(circle at 34% 30%,rgba(255,255,255,.95) 0 7%,rgba(255,255,255,.32) 24%,rgba(255,255,255,.06) 58%,rgba(20,60,110,.16) 80%,transparent 83%) 47% 14%/6px 6px no-repeat,
-    radial-gradient(circle at 34% 30%,rgba(255,255,255,.95) 0 7%,rgba(255,255,255,.32) 24%,rgba(255,255,255,.06) 58%,rgba(20,60,110,.16) 80%,transparent 83%) 63% 74%/15px 15px no-repeat,
-    radial-gradient(circle at 34% 30%,rgba(255,255,255,.95) 0 7%,rgba(255,255,255,.32) 24%,rgba(255,255,255,.06) 58%,rgba(20,60,110,.16) 80%,transparent 83%) 81% 26%/9px 9px no-repeat,
-    radial-gradient(circle at 34% 30%,rgba(255,255,255,.95) 0 7%,rgba(255,255,255,.32) 24%,rgba(255,255,255,.06) 58%,rgba(20,60,110,.16) 80%,transparent 83%) 93% 78%/7px 7px no-repeat,
-    radial-gradient(circle at 34% 30%,rgba(255,255,255,.95) 0 7%,rgba(255,255,255,.32) 24%,rgba(255,255,255,.06) 58%,rgba(20,60,110,.16) 80%,transparent 83%) 72% 8%/5px 5px no-repeat,
-    radial-gradient(circle at 34% 30%,rgba(255,255,255,.95) 0 7%,rgba(255,255,255,.32) 24%,rgba(255,255,255,.06) 58%,rgba(20,60,110,.16) 80%,transparent 83%) 38% 56%/10px 10px no-repeat,
-    linear-gradient(168deg,rgba(255,255,255,.62) 0%,rgba(255,255,255,.16) 22%,rgba(255,255,255,0) 38%,rgba(150,205,255,.16) 100%),
-    rgba(200,228,255,.12);
-  --gsh:inset 0 2px 2px rgba(255,255,255,.8),inset 0 -3px 7px rgba(110,170,230,.28),0 0 0 1px rgba(255,255,255,.18),0 7px 16px rgba(30,70,120,.20)}
+  --gdrop:radial-gradient(circle at 34% 30%,rgba(255,255,255,.95) 0 7%,rgba(255,255,255,.32) 24%,rgba(255,255,255,.06) 58%,rgba(20,60,110,.16) 80%,transparent 83%);
+  --gimg:var(--gdrop),var(--gdrop),var(--gdrop),var(--gdrop),var(--gdrop),var(--gdrop),var(--gdrop),var(--gdrop),
+         linear-gradient(168deg,rgba(255,255,255,calc(.50*var(--gk))) 0%,rgba(255,255,255,calc(.14*var(--gk))) 22%,rgba(255,255,255,0) 38%,rgba(150,205,255,.14) 100%);
+  --gsz:13px 13px,8px 8px,6px 6px,15px 15px,9px 9px,7px 7px,5px 5px,10px 10px,100% 100%;
+  --gpos:9% 24%,27% 82%,47% 14%,63% 74%,81% 26%,93% 78%,72% 8%,38% 56%,0 0;
+  --grep:no-repeat,no-repeat,no-repeat,no-repeat,no-repeat,no-repeat,no-repeat,no-repeat,no-repeat;
+  --gx:inset 0 2px 2px rgba(255,255,255,.8),inset 0 -3px 7px rgba(110,170,230,.28)}
 
-/* ---------- KACA 3 - Buram: kaca susu (frosted), blur tebal, cahaya lembut di tepi ---------- */
+/* ---------- KACA 3 - Buram: kabut susu (frosted) tipis, cahaya lembut di tepi ---------- */
 html[data-fx="glass3"],.fxp[data-fx="glass3"]{
-  --gbf:blur(18px) saturate(1.1);
-  --gbd:rgba(255,255,255,.38);
-  --gbg:linear-gradient(180deg,rgba(255,255,255,.22),rgba(255,255,255,.04) 60%),color-mix(in srgb,var(--paper) 52%,transparent);
-  --gsh:inset 0 0 24px rgba(255,255,255,.28),inset 0 1px 0 rgba(255,255,255,.5),0 10px 28px rgba(0,0,0,.14)}
+  --gimg:linear-gradient(180deg,rgba(255,255,255,calc(.26*var(--gk))) 0%,rgba(255,255,255,calc(.06*var(--gk))) 60%),
+         linear-gradient(rgba(255,255,255,calc(.10*var(--gk))),rgba(255,255,255,calc(.10*var(--gk))));
+  --gsz:100% 100%,100% 100%;--gpos:0 0,0 0;--grep:no-repeat,no-repeat;
+  --gx:inset 0 0 22px rgba(255,255,255,.26),inset 0 1px 0 rgba(255,255,255,.5)}
 
-/* ---------- KACA 4 - Kristal Tebal: kaca tebal berbingkai (bevel) + garis pantulan diagonal ---------- */
+/* ---------- KACA 4 - Kristal Tebal: bingkai bevel + garis pantulan diagonal ---------- */
 html[data-fx="glass4"],.fxp[data-fx="glass4"]{
-  --gbf:blur(5px) saturate(1.25) contrast(1.02);
-  --gbd:rgba(210,245,238,.75);
-  --gbg:linear-gradient(112deg,rgba(255,255,255,0) 0 16%,rgba(255,255,255,.38) 16% 21%,rgba(255,255,255,0) 21% 27%,rgba(255,255,255,.20) 27% 30%,rgba(255,255,255,0) 30% 100%),
-        linear-gradient(135deg,rgba(255,255,255,.30) 0%,rgba(255,255,255,.06) 52%,rgba(255,255,255,.20) 100%),
-        rgba(190,235,225,.10);
-  --gsh:inset 2px 2px 0 rgba(255,255,255,.75),inset -2px -2px 0 rgba(0,0,0,.20),inset 0 0 0 5px rgba(255,255,255,.10),inset 0 0 20px rgba(255,255,255,.22),0 9px 20px rgba(0,0,0,.24)}
+  --gimg:linear-gradient(112deg,rgba(255,255,255,0) 0 16%,rgba(255,255,255,calc(.38*var(--gk))) 16% 21%,rgba(255,255,255,0) 21% 27%,rgba(255,255,255,calc(.20*var(--gk))) 27% 30%,rgba(255,255,255,0) 30% 100%),
+         linear-gradient(135deg,rgba(255,255,255,calc(.26*var(--gk))) 0%,rgba(255,255,255,calc(.05*var(--gk))) 52%,rgba(255,255,255,calc(.18*var(--gk))) 100%);
+  --gsz:100% 100%,100% 100%;--gpos:0 0,0 0;--grep:no-repeat,no-repeat;
+  --gx:inset 2px 2px 0 rgba(255,255,255,.7),inset -2px -2px 0 rgba(0,0,0,.20),inset 0 0 0 5px rgba(255,255,255,.08),inset 0 0 20px rgba(255,255,255,.20)}
 
-/* ---------- KACA 5 - Cair (liquid glass): bias warna pelangi tipis, tepi menyala, saturasi tinggi ---------- */
+/* ---------- KACA 5 - Cair (liquid glass): bias warna pelangi tipis, tepi menyala ---------- */
 html[data-fx="glass5"],.fxp[data-fx="glass5"]{
-  --gbf:blur(14px) saturate(1.9) brightness(1.07);
-  --gbd:rgba(255,255,255,.55);
-  --gbg:radial-gradient(130% 160% at 0% 0%,rgba(255,255,255,.55),rgba(255,255,255,0) 46%),
-        radial-gradient(130% 160% at 100% 100%,color-mix(in srgb,var(--accent2) 28%,transparent),transparent 58%),
-        linear-gradient(120deg,rgba(110,200,255,.14),rgba(255,140,220,.11) 50%,rgba(255,225,130,.13)),
-        rgba(255,255,255,.06);
-  --gsh:inset 1.5px 1.5px 1px rgba(255,255,255,.85),inset -1px -1px 1px rgba(255,255,255,.35),inset 0 0 16px rgba(255,255,255,.16),0 12px 26px rgba(0,0,0,.20)}
+  --gimg:radial-gradient(130% 160% at 0% 0%,rgba(255,255,255,calc(.50*var(--gk))),rgba(255,255,255,0) 46%),
+         radial-gradient(130% 160% at 100% 100%,color-mix(in srgb,var(--accent2) 24%,transparent),transparent 58%),
+         linear-gradient(120deg,rgba(110,200,255,.12),rgba(255,140,220,.10) 50%,rgba(255,225,130,.11));
+  --gsz:100% 100%,100% 100%,100% 100%;--gpos:0 0,0 0,0 0;--grep:no-repeat,no-repeat,no-repeat;
+  --gx:inset 1.5px 1.5px 1px rgba(255,255,255,.8),inset -1px -1px 1px rgba(255,255,255,.3),inset 0 0 16px rgba(255,255,255,.14)}
 
-/* ---------- KACA 6 - Mengkilap: tombol jeli/gel berkilap. Cangkang perak tipis, kubah pantulan putih di separuh atas,
-              pendaran terang di dasar, badan berwarna aksen tema (cerah & jenuh).
-              --gdk=1 di tema gelap: warna dasar jadi gelap & kilap dikurangi supaya teks terang tetap terbaca ---------- */
+/* ---------- KACA 6 - Mengkilap: kilap jeli/gel. Kubah pantulan putih di separuh atas, pendaran terang di dasar,
+              cangkang perak tipis di tepi. Tekstur & warna kartu 3D tetap terlihat di bawahnya.
+              --gdk=1 di kartu gelap: kilap dikurangi supaya teks terang tetap terbaca ---------- */
 html[data-fx="glass6"],.fxp[data-fx="glass6"]{
   --gl-hi:calc(.80 - .52*var(--gdk,0));
-  --gbase:color-mix(in srgb,#fff calc(100% * (1 - var(--gdk,0))),var(--paper));
-  --gbf:blur(2px) saturate(1.5);
-  --gbd:color-mix(in srgb,var(--ink) 48%,transparent);
-  --ggl:radial-gradient(ellipse 66% 100% at 50% 0%,rgba(255,255,255,var(--gl-hi)) 0%,rgba(255,255,255,calc(var(--gl-hi)*.42)) 94%,rgba(255,255,255,0) 100%) 50% 3px/calc(100% - 10px) min(52%,34px) no-repeat;
-  --gbg:var(--ggl),
-    radial-gradient(ellipse 92% 62% at 50% 116%,color-mix(in srgb,var(--accent) 52%,rgba(255,255,255,.8)) 0%,rgba(255,255,255,0) 74%),
-    linear-gradient(180deg,
-      color-mix(in oklch,var(--accent2) calc(62% - 24%*var(--gdk,0)),var(--gbase)) 0%,
-      color-mix(in oklch,var(--accent2) calc(88% - 42%*var(--gdk,0)),var(--gbase)) 52%,
-      color-mix(in oklch,var(--accent2) calc(74% - 34%*var(--gdk,0)),var(--gbase)) 100%);
-  --gsh:inset 0 0 0 2px rgba(255,255,255,.92),inset 0 0 0 3px rgba(105,115,130,.55),0 1px 0 rgba(255,255,255,.55),0 7px 13px -2px rgba(0,0,0,.34)}
-/* teks kecil & nama Arab di atas badan berwarna: sedikit lebih gelap/tegas dari bawaan kaca */
-html[data-fx="glass6"]{--kts:0 1px 0 color-mix(in srgb,#fff calc(45% * (1 - var(--gdk,0))),transparent)!important;--kt2:color-mix(in srgb,var(--ink) 84%,var(--paper))!important;--ka:color-mix(in srgb,var(--accent2) 45%,var(--ink))!important}
+  --gimg:radial-gradient(ellipse 66% 100% at 50% 0%,rgba(255,255,255,var(--gl-hi)) 0%,rgba(255,255,255,calc(var(--gl-hi)*.42)) 94%,rgba(255,255,255,0) 100%),
+         radial-gradient(ellipse 92% 62% at 50% 116%,color-mix(in srgb,var(--accent) 45%,rgba(255,255,255,.6)) 0%,rgba(255,255,255,0) 74%);
+  --gsz:calc(100% - 10px) min(52%,34px),100% 100%;
+  --gpos:50% 3px,0 0;--grep:no-repeat,no-repeat;
+  --gx:inset 0 0 0 2px rgba(255,255,255,calc(.92 - .40*var(--gdk,0))),inset 0 0 0 3px rgba(105,115,130,.55)}
 
-/* ---------- KACA: latar ambient hanya di Beranda & Do'a (pembaca Al-Qur'an tidak tersentuh) ---------- */
-html[data-fx^="glass"] #home{background-image:var(--fxamb);background-size:100% 100%}
-html[data-fx^="glass"] #doa{background-image:var(--fxamb),var(--bgimg);background-size:100% 100%,var(--bgsz)}
-html[data-fx^="glass"] #hbar,html[data-fx^="glass"] #doa-q{background:transparent;-webkit-backdrop-filter:none;backdrop-filter:none}
-
-/* ---------- KACA: permukaan kartu ---------- */
-html[data-fx^="glass"] .hbx,html[data-fx^="glass"] .row,html[data-fx^="glass"] .rcard,html[data-fx^="glass"] .dcat,html[data-fx^="glass"] .ditem,html[data-fx^="glass"] .tab:not([aria-selected=true]),html[data-fx^="glass"] #q,html[data-fx^="glass"] #doa-q .qbox{
-  background:var(--gbg);border:1px solid var(--gbd);box-shadow:var(--gsh);
-  -webkit-backdrop-filter:var(--gbf);backdrop-filter:var(--gbf)}
-html[data-fx^="glass"] .hbx.tx::before{display:none}
-html[data-fx^="glass"] .hbx .hpat{opacity:.07}
-html[data-fx^="glass"] .hdoa,html[data-fx^="glass"] .hmri,html[data-fx^="glass"] #hero-logo,html[data-fx^="glass"] #credit{color:var(--ink);text-shadow:0 1px 2px color-mix(in srgb,var(--paper) 55%,transparent);opacity:1}
-/* tab terpilih: kaca bertinta warna aksen */
-html[data-fx^="glass"] .tab[aria-selected=true]{background:linear-gradient(180deg,color-mix(in srgb,var(--accent2) 38%,transparent),color-mix(in srgb,var(--accent2) 18%,transparent)),var(--gbg);border:1px solid color-mix(in srgb,var(--accent2) 70%,transparent);color:var(--ink);text-shadow:none;box-shadow:inset 0 2px 8px rgba(0,0,0,.18),var(--gsh);-webkit-backdrop-filter:var(--gbf);backdrop-filter:var(--gbf);transform:translateY(2px)}
-/* Kaca 6: placeholder kolom cari lebih tegas di atas badan berwarna */
-html[data-fx="glass6"] #q::placeholder,html[data-fx="glass6"] #doa-q input::placeholder{color:color-mix(in srgb,var(--ink) 66%,transparent);opacity:1}
-/* Kaca 6: tab terpilih = jeli lebih pekat, kubah pantulan tetap di atas tinta aksen */
-html[data-fx="glass6"] .tab[aria-selected=true]{background:var(--ggl),linear-gradient(180deg,color-mix(in srgb,var(--accent2) 62%,transparent),color-mix(in srgb,var(--accent2) 40%,transparent)),var(--gbg)}
-/* kartu Do'a yang dibuka: lebih pekat agar teks panjang tetap terbaca */
-html[data-fx^="glass"] .ditem[open]{box-shadow:var(--gsh),inset 0 0 0 999px color-mix(in srgb,var(--paper) 24%,transparent)}
-/* status hover / ditekan (aturan bawaan 3D lebih spesifik, jadi diulang di sini) */
-html[data-fx^="glass"] .hbx[role=button]:hover,html[data-fx^="glass"] a.hbx:hover{box-shadow:var(--gsh),0 14px 28px rgba(0,0,0,.14)}
-html[data-fx^="glass"] .hbx[role=button]:active,html[data-fx^="glass"] a.hbx:active{transform:translateY(2px) scale(.985);filter:none;box-shadow:var(--gsh)}
-html[data-fx^="glass"] .dcat:active,html[data-fx^="glass"] .ditem:not([open]):active,html[data-fx^="glass"] .row:active,html[data-fx^="glass"] .rcard:active{box-shadow:var(--gsh)}
-/* peramban tanpa backdrop-filter: kaca dibuat lebih pekat supaya teks tetap terbaca */
-@supports not ((backdrop-filter:blur(2px)) or (-webkit-backdrop-filter:blur(2px))){
-  html[data-fx^="glass"] .hbx,html[data-fx^="glass"] .row,html[data-fx^="glass"] .rcard,html[data-fx^="glass"] .dcat,html[data-fx^="glass"] .ditem,html[data-fx^="glass"] .tab:not([aria-selected=true]),html[data-fx^="glass"] #q{background:color-mix(in srgb,var(--paper) 80%,transparent)}
-}
+/* ---------- KACA: permukaan kartu = tekstur & warna 3D tetap, kilap kaca di paling atas ---------- */
+html[data-fx^="glass"] .hbx,html[data-fx^="glass"] .row,html[data-fx^="glass"] .rcard,html[data-fx^="glass"] .dcat,
+html[data-fx^="glass"] .ditem:not([open]),html[data-fx^="glass"] .tab:not([aria-selected=true]){
+  background-image:var(--gimg),var(--kpat),linear-gradient(180deg,var(--k1),var(--k2));
+  background-size:var(--gsz),var(--kpsz),100% 100%;
+  background-position:var(--gpos),0 0,0 0,0 0;
+  background-repeat:var(--grep),repeat,repeat,repeat}
 
 /* ---------- PRATINJAU di menu Tema ---------- */
 .sw .p.fxp{height:46px;border-radius:9px;
@@ -640,7 +601,8 @@ html[data-fx^="glass"] .dcat:active,html[data-fx^="glass"] .ditem:not([open]):ac
 .fxp i::after{top:16px;width:34%;opacity:.5}
 .fxp[data-fx="none"] i,.fxp[data-fx="matte"] i{background-color:var(--k2);background-image:var(--kgl),var(--kpat),linear-gradient(180deg,var(--k1),var(--k2));background-size:100% 100%,var(--kpsz),100% 100%;border:1.5px solid var(--ke);box-shadow:inset 0 1px 0 var(--khl),0 2px 0 var(--ke),0 4px 7px var(--ksh)}
 .fxp[data-fx="none"] i::before,.fxp[data-fx="none"] i::after,.fxp[data-fx="matte"] i::before,.fxp[data-fx="matte"] i::after{background:var(--kt)}
-.fxp[data-fx^="glass"] i{background:var(--gbg);border:1px solid var(--gbd);box-shadow:var(--gsh);-webkit-backdrop-filter:var(--gbf);backdrop-filter:var(--gbf)}
+.fxp[data-fx^="glass"] i{background-color:var(--k2);background-image:var(--gimg),var(--kpat),linear-gradient(180deg,var(--k1),var(--k2));background-size:var(--gsz),var(--kpsz),100% 100%;background-position:var(--gpos),0 0,0 0,0 0;background-repeat:var(--grep),repeat,repeat,repeat;border:1.5px solid var(--ke);box-shadow:var(--gx),inset 0 1px 0 var(--khl),0 2px 0 var(--ke),0 4px 7px var(--ksh)}
+.fxp[data-fx^="glass"] i::before,.fxp[data-fx^="glass"] i::after{background:var(--kt)}
 </style>
 </head>
 <body>
@@ -822,7 +784,7 @@ function patMarmer(c){var f=fl(c),svg="<svg xmlns='http://www.w3.org/2000/svg' w
 function mk3(n,o){
   var acc=o.acc,gold=o.g,paper=o.paper,ink=o.ink,pa=o.pa||acc,pp=o.pp||paper,pat=o.pat||{i:'none',s:'auto'},lt=!!o.lt;
   var kt=o.kt||ink,kb=o.bd||acc,kb1=mixHex(kb,'#ffffff',.22),kb2=mixHex(kb,'#000000',.5);
-  var T={n:n,dark:o.dark?1:0,tex:o.tex||'halus',bg:o.bg,paper:paper,ink:ink,ink2:o.ink2||mixHex(ink,paper,.42),accent:gold,accent2:acc,
+  var T={n:n,dark:o.dark?1:0,lt:lt?1:0,tex:o.tex||'halus',bg:o.bg,paper:paper,ink:ink,ink2:o.ink2||mixHex(ink,paper,.42),accent:gold,accent2:acc,
     nfill:mixHex(paper,acc,.14),nink:o.dark?'#f0dc9a':mixHex(acc,'#000000',.3)};
   T.k3={k1:o.c1,k2:o.c2,ke:o.ed,kt:kt,kt2:o.kt2||mixHex(kt,o.c2,.3),ka:o.ka||acc,kg:o.og||gold,
     kb1:kb1,kb2:kb2,kbm:mixHex(kb1,kb2,.5),kbb:o.bb||mixHex(gold,'#ffffff',.5),kbi:'#fff8e0',
@@ -918,7 +880,7 @@ var FRAMES={
 };
 var FRAME_ORDER=Object.keys(FRAMES);
 
-/* EFEK PERMUKAAN: dipilih di Pengaturan > Tema. none = 3D mengkilap bawaan; matte = 3D tanpa kilap; glass1..6 = kaca (glass6 = mengkilap) (CSS ada di blok "EFEK PERMUKAAN") */
+/* EFEK PERMUKAAN: dipilih di Pengaturan > Tema. none = 3D mengkilap bawaan; matte = 3D tanpa kilap; glass1..6 = kilap kaca DI ATAS tekstur 3D (tekstur tema tidak hilang; glass6 = mengkilap) (CSS ada di blok "EFEK PERMUKAAN") */
 var FX={none:{n:'Standar'},matte:{n:'Matte'},glass1:{n:'Kaca 1 \u00b7 Tipis'},glass2:{n:'Kaca 2 \u00b7 Berair'},glass3:{n:'Kaca 3 \u00b7 Buram'},glass4:{n:'Kaca 4 \u00b7 Kristal'},glass5:{n:'Kaca 5 \u00b7 Cair'},glass6:{n:'Kaca 6 \u00b7 Kilap'}};
 var FX_ORDER=Object.keys(FX);
 
@@ -1058,7 +1020,7 @@ function applyTheme(){
   ['bg','paper','ink','ink2','accent','accent2','nfill','nink'].forEach(function(k){r.setProperty('--'+k,T[k])});
   r.colorScheme=T.dark?'dark':'light';r.setProperty('--h1',T.dark?'13%':'26%');r.setProperty('--h2',T.dark?'6%':'13%');r.setProperty('--h3',T.dark?'4%':'9%');r.setProperty('--h4',T.dark?'11%':'24%');
   $('metatheme').setAttribute('content',T.bg);
-  document.documentElement.setAttribute('data-fx',S.fx||'none');r.setProperty('--gdk',T.dark?'1':'0');
+  document.documentElement.setAttribute('data-fx',S.fx||'none');r.setProperty('--gdk',(T.dark||T.lt)?'1':'0');
   var tx=TEXTURES[S.tex];
   r.setProperty('--tex',texURI(S.tex,!!T.dark));
   /* top bar: versi gelap dari warna tema (gradasi) + teks terang */
