@@ -494,6 +494,16 @@ body{background-color:var(--bg);background-image:var(--bgimg);background-size:va
 #doa-body .sec{color:var(--ka);border-left-color:var(--ka)}
 /* pratinjau tema 3D di pengaturan */
 .sw .p.k3{height:40px;border-radius:9px;margin-bottom:8px;border:1.5px solid var(--ke)}
+
+/* ===== kartu depan: tanpa bingkai dalam, teks seperti terukir ===== */
+.hbx::after{display:none}
+.hbx .hc,.hbx .so{display:none}
+#credit{border:0;background:none;box-shadow:none;padding:2px 4px}
+#credit:hover,#credit:focus-visible{background:none}
+.hdoa,.hmri,#hero-logo,#credit{color:color-mix(in srgb,var(--k2) 42%,#000);
+  text-shadow:0 1.5px 0 var(--khl),0 -1px 1px rgba(0,0,0,.55),0 0 1px rgba(0,0,0,.25);
+  -webkit-font-smoothing:antialiased}
+.hdoa,.hmri,#hero-logo,#credit{opacity:.95}
 </style>
 </head>
 <body>
