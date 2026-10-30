@@ -350,7 +350,8 @@ input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;bac
 .dpeng summary::after{content:'\25BE';margin-left:auto;font-size:16px;color:var(--accent);transition:transform .2s;flex:none}
 .dpeng[open] summary::after{transform:rotate(180deg)}
 .dpeng .dbd{flex:none;font-size:10.5px;letter-spacing:.04em;text-transform:uppercase;padding:2px 8px;border-radius:99px;color:#fff;background:linear-gradient(135deg,var(--accent),var(--accent2));animation:dpulse 1.8s ease-in-out infinite}
-.dpeng p{margin:10px 0 0;font-size:14px;line-height:1.65;text-align:left}
+.dpeng p,.dpeng .dq{text-align:justify;text-justify:inter-word;hyphens:auto;-webkit-hyphens:auto}
+.dpeng p{margin:10px 0 0;font-size:14px;line-height:1.65}
 .dpeng b{font-weight:800;color:var(--accent2)}
 .dpeng i{color:var(--ink2);font-style:italic}
 .dpeng u{text-decoration:underline wavy var(--accent);text-decoration-thickness:1.5px;text-underline-offset:4px}
