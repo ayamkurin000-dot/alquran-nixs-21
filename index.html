@@ -512,7 +512,7 @@ body{background-color:var(--bg);background-image:var(--bgimg);background-size:va
 #credit{font-size:clamp(11px,3.2vw,16px)}
 
 /* =====================================================================================
-   EFEK PERMUKAAN: Standar / Matte / Kaca 1-5  (dipilih di Pengaturan > Tema)
+   EFEK PERMUKAAN: Standar / Matte / Kaca 1-6  (dipilih di Pengaturan > Tema)
    <html data-fx="..."> diisi oleh applyTheme(). 'none' = tampilan 3D mengkilap bawaan (tidak diubah).
    ===================================================================================== */
 
@@ -583,6 +583,25 @@ html[data-fx="glass5"],.fxp[data-fx="glass5"]{
         rgba(255,255,255,.06);
   --gsh:inset 1.5px 1.5px 1px rgba(255,255,255,.85),inset -1px -1px 1px rgba(255,255,255,.35),inset 0 0 16px rgba(255,255,255,.16),0 12px 26px rgba(0,0,0,.20)}
 
+/* ---------- KACA 6 - Mengkilap: tombol jeli/gel berkilap. Cangkang perak tipis, kubah pantulan putih di separuh atas,
+              pendaran terang di dasar, badan berwarna aksen tema (cerah & jenuh).
+              --gdk=1 di tema gelap: warna dasar jadi gelap & kilap dikurangi supaya teks terang tetap terbaca ---------- */
+html[data-fx="glass6"],.fxp[data-fx="glass6"]{
+  --gl-hi:calc(.80 - .52*var(--gdk,0));
+  --gbase:color-mix(in srgb,#fff calc(100% * (1 - var(--gdk,0))),var(--paper));
+  --gbf:blur(2px) saturate(1.5);
+  --gbd:color-mix(in srgb,var(--ink) 48%,transparent);
+  --ggl:radial-gradient(ellipse 66% 100% at 50% 0%,rgba(255,255,255,var(--gl-hi)) 0%,rgba(255,255,255,calc(var(--gl-hi)*.42)) 94%,rgba(255,255,255,0) 100%) 50% 3px/calc(100% - 10px) min(52%,34px) no-repeat;
+  --gbg:var(--ggl),
+    radial-gradient(ellipse 92% 62% at 50% 116%,color-mix(in srgb,var(--accent) 52%,rgba(255,255,255,.8)) 0%,rgba(255,255,255,0) 74%),
+    linear-gradient(180deg,
+      color-mix(in oklch,var(--accent2) calc(62% - 24%*var(--gdk,0)),var(--gbase)) 0%,
+      color-mix(in oklch,var(--accent2) calc(88% - 42%*var(--gdk,0)),var(--gbase)) 52%,
+      color-mix(in oklch,var(--accent2) calc(74% - 34%*var(--gdk,0)),var(--gbase)) 100%);
+  --gsh:inset 0 0 0 2px rgba(255,255,255,.92),inset 0 0 0 3px rgba(105,115,130,.55),0 1px 0 rgba(255,255,255,.55),0 7px 13px -2px rgba(0,0,0,.34)}
+/* teks kecil & nama Arab di atas badan berwarna: sedikit lebih gelap/tegas dari bawaan kaca */
+html[data-fx="glass6"]{--kts:0 1px 0 color-mix(in srgb,#fff calc(45% * (1 - var(--gdk,0))),transparent)!important;--kt2:color-mix(in srgb,var(--ink) 84%,var(--paper))!important;--ka:color-mix(in srgb,var(--accent2) 45%,var(--ink))!important}
+
 /* ---------- KACA: latar ambient hanya di Beranda & Do'a (pembaca Al-Qur'an tidak tersentuh) ---------- */
 html[data-fx^="glass"] #home{background-image:var(--fxamb);background-size:100% 100%}
 html[data-fx^="glass"] #doa{background-image:var(--fxamb),var(--bgimg);background-size:100% 100%,var(--bgsz)}
@@ -597,6 +616,10 @@ html[data-fx^="glass"] .hbx .hpat{opacity:.07}
 html[data-fx^="glass"] .hdoa,html[data-fx^="glass"] .hmri,html[data-fx^="glass"] #hero-logo,html[data-fx^="glass"] #credit{color:var(--ink);text-shadow:0 1px 2px color-mix(in srgb,var(--paper) 55%,transparent);opacity:1}
 /* tab terpilih: kaca bertinta warna aksen */
 html[data-fx^="glass"] .tab[aria-selected=true]{background:linear-gradient(180deg,color-mix(in srgb,var(--accent2) 38%,transparent),color-mix(in srgb,var(--accent2) 18%,transparent)),var(--gbg);border:1px solid color-mix(in srgb,var(--accent2) 70%,transparent);color:var(--ink);text-shadow:none;box-shadow:inset 0 2px 8px rgba(0,0,0,.18),var(--gsh);-webkit-backdrop-filter:var(--gbf);backdrop-filter:var(--gbf);transform:translateY(2px)}
+/* Kaca 6: placeholder kolom cari lebih tegas di atas badan berwarna */
+html[data-fx="glass6"] #q::placeholder,html[data-fx="glass6"] #doa-q input::placeholder{color:color-mix(in srgb,var(--ink) 66%,transparent);opacity:1}
+/* Kaca 6: tab terpilih = jeli lebih pekat, kubah pantulan tetap di atas tinta aksen */
+html[data-fx="glass6"] .tab[aria-selected=true]{background:var(--ggl),linear-gradient(180deg,color-mix(in srgb,var(--accent2) 62%,transparent),color-mix(in srgb,var(--accent2) 40%,transparent)),var(--gbg)}
 /* kartu Do'a yang dibuka: lebih pekat agar teks panjang tetap terbaca */
 html[data-fx^="glass"] .ditem[open]{box-shadow:var(--gsh),inset 0 0 0 999px color-mix(in srgb,var(--paper) 24%,transparent)}
 /* status hover / ditekan (aturan bawaan 3D lebih spesifik, jadi diulang di sini) */
@@ -895,8 +918,8 @@ var FRAMES={
 };
 var FRAME_ORDER=Object.keys(FRAMES);
 
-/* EFEK PERMUKAAN: dipilih di Pengaturan > Tema. none = 3D mengkilap bawaan; matte = 3D tanpa kilap; glass1..5 = kaca (CSS ada di blok "EFEK PERMUKAAN") */
-var FX={none:{n:'Standar'},matte:{n:'Matte'},glass1:{n:'Kaca 1 \u00b7 Tipis'},glass2:{n:'Kaca 2 \u00b7 Berair'},glass3:{n:'Kaca 3 \u00b7 Buram'},glass4:{n:'Kaca 4 \u00b7 Kristal'},glass5:{n:'Kaca 5 \u00b7 Cair'}};
+/* EFEK PERMUKAAN: dipilih di Pengaturan > Tema. none = 3D mengkilap bawaan; matte = 3D tanpa kilap; glass1..6 = kaca (glass6 = mengkilap) (CSS ada di blok "EFEK PERMUKAAN") */
+var FX={none:{n:'Standar'},matte:{n:'Matte'},glass1:{n:'Kaca 1 \u00b7 Tipis'},glass2:{n:'Kaca 2 \u00b7 Berair'},glass3:{n:'Kaca 3 \u00b7 Buram'},glass4:{n:'Kaca 4 \u00b7 Kristal'},glass5:{n:'Kaca 5 \u00b7 Cair'},glass6:{n:'Kaca 6 \u00b7 Kilap'}};
 var FX_ORDER=Object.keys(FX);
 
 var DEF={font:'lpmq',theme:'k3hijau',tex:'p-bercak',frame:'none',fx:'none',ar:22,trs:1,showTr:false};
@@ -1035,7 +1058,7 @@ function applyTheme(){
   ['bg','paper','ink','ink2','accent','accent2','nfill','nink'].forEach(function(k){r.setProperty('--'+k,T[k])});
   r.colorScheme=T.dark?'dark':'light';r.setProperty('--h1',T.dark?'13%':'26%');r.setProperty('--h2',T.dark?'6%':'13%');r.setProperty('--h3',T.dark?'4%':'9%');r.setProperty('--h4',T.dark?'11%':'24%');
   $('metatheme').setAttribute('content',T.bg);
-  document.documentElement.setAttribute('data-fx',S.fx||'none');
+  document.documentElement.setAttribute('data-fx',S.fx||'none');r.setProperty('--gdk',T.dark?'1':'0');
   var tx=TEXTURES[S.tex];
   r.setProperty('--tex',texURI(S.tex,!!T.dark));
   /* top bar: versi gelap dari warna tema (gradasi) + teks terang */
