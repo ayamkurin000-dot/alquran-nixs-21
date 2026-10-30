@@ -311,6 +311,7 @@ input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;bac
 .dcat b{display:block;font-size:15.5px;line-height:1.25;color:var(--accent2)}
 .dcat small{display:block;margin-top:3px;font-size:12px;line-height:1.3;color:var(--ink2)}
 .dcat .dcn{align-self:flex-start;font-size:11.5px;font-weight:700;padding:1px 8px;border-radius:99px;background:color-mix(in srgb,var(--accent) 16%,transparent);color:var(--accent2)}
+.dpeng{margin:0 0 12px;padding:10px 12px}.dpeng summary{cursor:pointer;font-weight:600;color:var(--ink)}.dpeng p{margin:8px 0 0;text-align:left}
 .dleg{margin:16px 2px 0;font-size:12px;line-height:1.5;color:var(--ink2)}
 .ditem{margin:0 0 8px;border-radius:12px;background:var(--paper);box-shadow:0 0 0 1px var(--soft);overflow:hidden}
 .ditem summary{display:flex;align-items:center;gap:8px;padding:11px 12px;cursor:pointer;list-style:none;font-weight:600;font-size:15px;line-height:1.3}
@@ -1057,7 +1058,9 @@ function doaItem(it,ix){
 function doaShowCats(){
   var D=doaLoad(),h='';
   D.c.forEach(function(c){h+='<button type="button" class="dcat tx" data-c="'+c.id+'"><span><b>'+dEsc(c.t)+'</b><small>'+dEsc(c.d)+'</small></span><span class="dcn">'+((D.i[c.id]||[]).length)+' doa</span></button>'});
-  $('doa-body').innerHTML='<div class="dgrid">'+h+'</div><p class="dleg"><b>Keterangan label:</b> <i>Shahih</i> = bersumber dari Bukhari/Muslim atau tertulis shahih pada sumbernya; <i>Hasan</i> = hadits hasan; <i>Tradisi NU</i> / <i>Tradisi Ulama</i> = amaliyah NU/ulama (bukan dalil langsung dari Nabi ﷺ, tertulis jujur sebagai tradisi); <i>Hadits Dhaif</i> = haditsnya lemah; tetap dicantumkan dan dibaca sebagai doa umum.</p>';
+  var pn='';
+  if(D.p&&D.p.h){pn='<details class="dnote dpeng"><summary>'+dEsc(D.p.t)+'</summary>';D.p.h.forEach(function(x){pn+='<p>'+dEsc(x)+'</p>'});pn+='</details>'}
+  $('doa-body').innerHTML=pn+'<div class="dgrid">'+h+'</div><p class="dleg"><b>Keterangan label:</b> <i>Shahih</i> = bersumber dari Bukhari/Muslim atau tertulis shahih pada sumbernya; <i>Hasan</i> = hadits hasan; <i>Tradisi NU</i> / <i>Tradisi Ulama</i> = amaliyah NU/ulama (bukan dalil langsung dari Nabi ﷺ, tertulis jujur sebagai tradisi); <i>Hadits Dhaif</i> = haditsnya lemah; tetap dicantumkan dan dibaca sebagai doa umum.</p>';
   $('doa-ttl').textContent="Do'a & Bacaan";$('doa-sub').textContent='Pilih kategori';
   $('doa-scroll').scrollTop=0;doaCur=[]
 }
