@@ -344,12 +344,14 @@ input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;bac
   background:linear-gradient(var(--paper),var(--paper)) padding-box,
   conic-gradient(from var(--ang),var(--accent) 0%,transparent 16%,transparent 48%,var(--accent2) 66%,#fff3b0 78%,var(--accent) 100%) border-box;
   animation:dspin 4.5s linear infinite,dglow 3s ease-in-out infinite}
-.dpeng summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:8px;font-weight:700;font-size:14px;line-height:1.35;color:var(--accent2)}
+.dpeng summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:6px;font-weight:700;font-size:14px;line-height:1.35;color:var(--accent2)}
+@keyframes dnafas{0%,100%{transform:scale(1);text-shadow:0 0 0 rgba(198,40,40,0)}50%{transform:scale(1.07);text-shadow:0 0 12px rgba(198,40,40,.45)}}
+.dpeng .dtt{flex:1;min-width:0;font-size:21px;font-weight:800;line-height:1.2;color:#c62828;transform-origin:left center;animation:dnafas 3.2s ease-in-out infinite}
 .dpeng summary::-webkit-details-marker{display:none}
 .dpeng summary::before{content:'\2726';color:var(--accent);font-size:18px;flex:none}
 .dpeng summary::after{content:'\25BE';margin-left:auto;font-size:16px;color:var(--accent);transition:transform .2s;flex:none}
 .dpeng[open] summary::after{transform:rotate(180deg)}
-.dpeng .dbd{flex:none;font-size:10.5px;letter-spacing:.04em;text-transform:uppercase;padding:2px 8px;border-radius:99px;color:#fff;background:linear-gradient(135deg,var(--accent),var(--accent2));animation:dpulse 1.8s ease-in-out infinite}
+.dpeng .dbd{flex:none;font-size:9.5px;letter-spacing:.03em;text-transform:uppercase;padding:2px 7px;border-radius:99px;color:#fff;background:linear-gradient(135deg,var(--accent),var(--accent2));animation:dpulse 1.8s ease-in-out infinite}
 .dpeng p,.dpeng .dq{text-align:justify;text-justify:inter-word;hyphens:auto;-webkit-hyphens:auto}
 .dpeng p{margin:10px 0 0;font-size:14px;line-height:1.65}
 .dpeng b{font-weight:800;color:var(--accent2)}
@@ -363,7 +365,7 @@ input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;bac
 .dpeng .ds{margin:14px 2px 0;text-align:right;font-family:var(--titlefont);font-size:20px;color:var(--accent)}
 .dpeng .ds b{color:var(--accent);font-weight:700}
 .dpeng .ds::before{content:'\2726  ';font-size:14px}.dpeng .ds::after{content:'  \2726';font-size:14px}
-@media (prefers-reduced-motion:reduce){.dpeng,.dpeng .dbd{animation:none}}
+@media (prefers-reduced-motion:reduce){.dpeng,.dpeng .dbd,.dpeng .dtt{animation:none}}
 </style>
 </head>
 <body>
@@ -1089,7 +1091,7 @@ function doaShowCats(){
   D.c.forEach(function(c){h+='<button type="button" class="dcat tx" data-c="'+c.id+'"><span><b>'+dEsc(c.t)+'</b><small>'+dEsc(c.d)+'</small></span><span class="dcn">'+((D.i[c.id]||[]).length)+' doa</span></button>'});
   var pn='';
   if(D.p&&D.p.h){
-    pn='<details class="dpeng"><summary><span>'+dEsc(D.p.t)+'</span><span class="dbd">Baca dulu</span></summary>';
+    pn='<details class="dpeng"><summary><span class="dtt">'+dEsc(D.p.t)+'</span><span class="dbd">Baca dulu</span></summary>';
     D.p.h.forEach(function(x){
       var k=x.charAt(0),m=(k==='>'||k==='!'||k==='~')?x.slice(1):x;
       if(k==='>')pn+='<div class="dq">'+m.split('|').map(function(l){return '<div>'+dFmt(l)+'</div>'}).join('')+'</div>';
