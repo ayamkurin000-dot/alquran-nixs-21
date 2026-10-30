@@ -355,6 +355,7 @@ input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;bac
 .dpeng p,.dpeng .dq{text-align:justify;text-justify:inter-word;hyphens:auto;-webkit-hyphens:auto}
 .dpeng p{margin:10px 0 0;font-size:14px;line-height:1.65}
 .dpeng b{font-weight:800;color:var(--accent2)}
+.dpeng .mr{color:#c62828;font-weight:800}
 .dpeng i{color:var(--ink2);font-style:italic}
 .dpeng u{text-decoration:underline wavy var(--accent);text-decoration-thickness:1.5px;text-underline-offset:4px}
 .dpeng mark{color:inherit;font-weight:700;padding:0 2px;border-radius:3px;background:linear-gradient(transparent 52%,color-mix(in srgb,var(--accent) 48%,transparent) 52%)}
@@ -1059,7 +1060,7 @@ $('kqr').onclick=openNU;   /* seluruh kotak "Al-Quran Al-Karim" -> logo NU */
 $('kqr').onkeydown=function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();openNU()}};
 /* ===== Do'a & Bacaan: kategori dulu; data di-parse & dirender hanya saat dibutuhkan ===== */
 var DOA=null,doaLv=0,doaCat=null,doaCur=[],doaHist=true;
-function dFmt(x){return dEsc(x).replace(/\*\*(.+?)\*\*/g,'<b>$1</b>').replace(/__(.+?)__/g,'<u>$1</u>').replace(/==(.+?)==/g,'<mark>$1</mark>').replace(/\*(.+?)\*/g,'<i>$1</i>')}
+function dFmt(x){return dEsc(x).replace(/\*\*(.+?)\*\*/g,'<b>$1</b>').replace(/__(.+?)__/g,'<u>$1</u>').replace(/==(.+?)==/g,'<mark>$1</mark>').replace(/\*(.+?)\*/g,'<i>$1</i>').replace(/\{\{(.+?)\}\}/g,'<span class="mr">$1</span>')}
 function dEsc(x){return String(x==null?'':x).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
 function doaLoad(){return DOA||{c:[],i:{}}}
 function doaFetch(ok,fail){
