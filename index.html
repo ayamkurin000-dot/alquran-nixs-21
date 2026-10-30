@@ -11,14 +11,14 @@
 <meta property="og:site_name" content="Al-Qur'an Digital">
 <meta property="og:title" content="Al-Qur'an Digital — Mushaf Standar Indonesia (Kemenag RI)">
 <meta property="og:description" content="Baca Al-Qur'an, Do'a &amp; Bacaan, dan Mata Rantai Islam. Mannixs-21">
-<meta property="og:url" content="https://ayamkurin000-dot.github.io/alquran-nixs-21/">
-<meta property="og:image" content="https://ayamkurin000-dot.github.io/alquran-nixs-21/logo/pratinjau.jpg">
+<meta property="og:url" content="https://ayamkurin000-dot.github.io/alquran4all/">
+<meta property="og:image" content="https://ayamkurin000-dot.github.io/alquran4all/logo/pratinjau.jpg">
 <meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Foto keluarga">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://ayamkurin000-dot.github.io/alquran-nixs-21/logo/pratinjau.jpg">
+<meta name="twitter:image" content="https://ayamkurin000-dot.github.io/alquran4all/logo/pratinjau.jpg">
 <!-- Font opsional dari Google Fonts (offline: otomatis jatuh ke font sistem). LPMQ tertanam base64 di bawah. -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -510,20 +510,6 @@ body{background-color:var(--bg);background-image:var(--bgimg);background-size:va
 .hdoa{font-size:clamp(11px,3.2vw,15px);letter-spacing:.05em;white-space:nowrap}
 .hmri{font-size:clamp(11px,3.3vw,15px)}
 #credit{font-size:clamp(11px,3.2vw,16px)}
-
-/* ===== efek kaca: kartu tampak berada di balik kaca ===== */
-.hbx,.row,.rcard,.tab,.dcat,.ditem{position:relative}
-.hbx::after,.row::after,.rcard::after,.tab::after,.dcat::after,.ditem::after{
-  content:'';display:block;position:absolute;inset:0;border:0;border-radius:inherit;pointer-events:none;z-index:4;
-  background:
-    linear-gradient(115deg,rgba(255,255,255,.26) 0%,rgba(255,255,255,.09) 33%,rgba(255,255,255,0) 33.4%),
-    linear-gradient(115deg,rgba(255,255,255,0) 38%,rgba(255,255,255,.15) 38.4%,rgba(255,255,255,.15) 41%,rgba(255,255,255,0) 41.4%),
-    linear-gradient(180deg,rgba(255,255,255,.32) 0,rgba(255,255,255,0) 16%),
-    linear-gradient(0deg,rgba(255,255,255,.2) 0,rgba(255,255,255,0) 13%);
-  box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.55),inset 0 0 0 3px rgba(255,255,255,.1),inset 0 0 14px rgba(255,255,255,.22),inset 0 -2px 3px rgba(0,0,0,.16)}
-.ditem[open]::after{bottom:auto;height:60px;border-radius:12px 12px 0 0;box-shadow:inset 0 1.5px 0 rgba(255,255,255,.55),inset 1.5px 0 0 rgba(255,255,255,.4),inset -1.5px 0 0 rgba(255,255,255,.4)}
-.tab[aria-selected=true]::after{opacity:.55}
-.row .row::after{display:none}
 </style>
 </head>
 <body>
@@ -1263,7 +1249,7 @@ document.addEventListener('keydown',function(e){
 /* =====================================================================
    KREDIT "Mannixs-21" + LOGO NU (pop-up, tanpa pindah halaman)
    ===================================================================== */
-var NU_FALLBACK='https://ayamkurin000-dot.github.io/alquran-nixs-21/logo/logo-nu.jpg';
+var NU_FALLBACK='https://ayamkurin000-dot.github.io/alquran4all/logo/logo-nu.jpg';
 function openNU(){
   if($('nubd'))return;
   var bd=document.createElement('div');bd.id='nubd';bd.setAttribute('role','dialog');bd.setAttribute('aria-modal','true');bd.setAttribute('aria-label','Mannixs-21 · NU & NKRI');
