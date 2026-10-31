@@ -1585,6 +1585,18 @@ function doaSearch(){
   if(total===1){var d=$('doa-body').querySelector('details.ditem');if(d)d.open=true}
 }
 $('doa-qi').addEventListener('input',doaSearch);
+/* kartu do'a: hanya satu yang terbuka (yang lain otomatis menutup), lalu kartu yang dibuka digeser ke atas supaya area baca luas */
+document.addEventListener('toggle',function(e){
+  var d=e.target,sc=$('doa-scroll');
+  if(!d||!d.classList||!d.classList.contains('ditem')||!d.open||!sc||!sc.contains(d))return;
+  var o=sc.querySelectorAll('details.ditem[open]'),i;
+  for(i=0;i<o.length;i++)if(o[i]!==d)o[i].open=false;
+  (window.requestAnimationFrame||setTimeout)(function(){
+    var y=d.getBoundingClientRect().top-sc.getBoundingClientRect().top+sc.scrollTop-8;
+    var rm=window.matchMedia&&matchMedia('(prefers-reduced-motion:reduce)').matches;
+    try{sc.scrollTo({top:Math.max(0,y),behavior:rm?'auto':'smooth'})}catch(x){sc.scrollTop=Math.max(0,y)}
+  });
+},true);
 $('doa-qx').addEventListener('click',function(){doaQClear();doaSearch();$('doa-qi').focus()});
 function doaBack(){
   if($('doa-qi').value){doaQClear();if(doaLv===2)doaShowCat(doaCat);else doaShowCats();return}
