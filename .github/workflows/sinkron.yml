@@ -32,6 +32,11 @@ jobs:
           - alquran-sihe
           - alquran-zub
           - alquran-tata
+          - alquran-asrori
+          - alquran-pari
+          - alquran-medi-yuwono
+          - alquran-johan
+          - alquran-nanang
     steps:
       - uses: actions/checkout@v4
         with:
