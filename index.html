@@ -3,7 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#cfe0b0" id="metatheme">
+<meta name="theme-color" content="#eadfb8" id="metatheme">
+<!-- sembunyikan halaman sampai tema (3D Gold) selesai dipasang, supaya tidak berkedip hijau dulu -->
+<style>html.pre{visibility:hidden}</style>
+<script>document.documentElement.className="pre";setTimeout(function(){document.documentElement.classList.remove("pre")},2500);</script>
 <title>Al-Qur'an Digital — Mushaf Standar Indonesia (Kemenag RI)</title>
 <!-- Pratinjau saat link dibagikan (WhatsApp, Telegram, Facebook, dll.). Gambar selalu diambil dari repo utama alquran-nixs-21, jadi file ini bisa disalin ke repo anak (4all, nanang, dll.) tanpa diubah. og:url sengaja tidak dipasang: dipakai alamat link yang dibagikan. -->
 <meta name="description" content="Al-Qur'an Digital — Mushaf Standar Indonesia (Kemenag RI)">
@@ -1691,6 +1694,7 @@ setCustomFotoUI();
 document.addEventListener('touchstart',function(){},{passive:true});   /* agar efek tekan (:active) jalan di iOS */
 applyAll();
 route();
+(window.requestAnimationFrame||setTimeout)(function(){document.documentElement.classList.remove('pre')});
 if(document.fonts&&document.fonts.ready){
   ensureFonts().then(function(){return document.fonts.ready}).then(function(){
     calibrate();
