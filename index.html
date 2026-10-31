@@ -631,6 +631,15 @@ body,#doa{
 #hero{padding-bottom:16px}
 .tabs{padding-bottom:8px}
 
+
+/* ---- daftar surat: versi RINGAN (114 kartu sekaligus) supaya scroll lancar ---- */
+.row,html[data-fx^="glass"] .row,html[data-fx] .row{
+  content-visibility:auto;contain-intrinsic-size:auto 84px;
+  background-image:linear-gradient(168deg,rgba(255,255,255,.4) 0%,rgba(255,255,255,.1) 30%,rgba(255,255,255,0) 46%),var(--kpat),linear-gradient(180deg,var(--k1),var(--k2));
+  background-size:100% 100%,var(--kpsz),100% 100%;background-position:0 0,0 0,0 0;background-repeat:no-repeat,repeat,repeat;
+  box-shadow:inset 0 2px 0 var(--khl),inset 0 -8px 12px rgba(0,0,0,.12),0 4px 0 var(--ke),0 9px 12px -5px var(--ksh);
+}
+.row:active,html[data-fx] .row:active{box-shadow:inset 0 2px 8px rgba(0,0,0,.3),0 1px 0 var(--ke)}
 /* ---- foto 3D: bingkai timbul + permukaan cembung berkilau + bayangan dalam ---- */
 .hbx.photo{
   overflow:hidden;
