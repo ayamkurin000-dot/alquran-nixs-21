@@ -667,6 +667,14 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;ba
 /* ---- hilangkan ornamen poligon di 3 kartu atas (Al-Qur'an, Do'a & Bacaan, Mata Rantai Islam) ---- */
 .hbx.tx::before{display:none}
 
+/* ---- judul kartu do'a tetap menempel di atas saat isi doa digulir ---- */
+.ditem[open]>summary{
+  position:sticky;top:0;z-index:6;
+  background:linear-gradient(180deg,var(--k2,var(--cd2)),color-mix(in srgb,var(--k2,var(--cd2)) 88%,#000));
+  border-radius:14px 14px 10px 10px;
+  box-shadow:0 1px 0 var(--khl,rgba(255,255,255,.25)) inset,0 7px 9px -5px rgba(0,0,0,.45),0 0 0 1px var(--ke,rgba(0,0,0,.3));
+}
+
 /* ---- foto 3D: bingkai timbul + permukaan cembung berkilau + bayangan dalam ---- */
 .hbx.photo{
   overflow:hidden;
