@@ -681,6 +681,14 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;ba
 .dcat{position:relative}
 .dcat .dno{position:absolute;top:12px;right:12px;min-width:26px;text-align:center;box-sizing:border-box}
 .dcat>span:first-child{padding-right:32px}
+.dlegc{grid-column:1 / span 2;display:block;min-height:0;cursor:default;-webkit-tap-highlight-color:transparent}
+.dlegc:active{transform:none}
+.dlegc .dlh{display:block;font-size:14px;margin:0 0 6px}
+.dlegc .dlt{margin:0;font-size:12.5px;line-height:1.55;color:var(--ink,#2b2410);text-shadow:0 1px 0 rgba(255,255,255,.28)}
+.dlegc .lr,.dlegc .lb{font-weight:800;font-style:italic;text-shadow:0 1px 0 rgba(255,255,255,.35)}
+.dlegc span.lr{font-style:normal}
+.dlegc .lr{color:#b00d0d}
+.dlegc .lb{color:#0a3a9e}
 
 /* ---- foto 3D: bingkai timbul + permukaan cembung berkilau + bayangan dalam ---- */
 .hbx.photo{
@@ -1575,7 +1583,7 @@ function doaShowCats(){
     });
     pn+='</details>'
   }
-  $('doa-body').innerHTML=pn+'<div class="dgrid">'+h+'</div><p class="dleg"><b>Keterangan label:</b> <i>Shahih</i> = bersumber dari Bukhari/Muslim atau tertulis shahih pada sumbernya; <i>Hasan</i> = hadits hasan; <i>Tradisi NU</i> / <i>Tradisi Ulama</i> = amaliyah NU/ulama (bukan dalil langsung dari Nabi ﷺ, tertulis jujur sebagai tradisi); <i>Diperselisihkan</i> = derajat haditsnya diperselisihkan ulama; <i>Lafaz Populer di Indonesia</i> = lafaz yang umum dibaca di Indonesia, bukan lafaz yang dasarnya paling kuat; dasar hadits yang lebih kuat ditulis di bagian bawah kartu.</p>';
+  $('doa-body').innerHTML=pn+'<div class="dgrid">'+h+'<div class="dcat dlegc"><b class="dlh">Keterangan label</b><p class="dlt"><i class="lb">Shahih</i> = bersumber dari Bukhari/Muslim atau tertulis shahih pada sumbernya; <i class="lb">Hasan</i> = hadits hasan; <i class="lr">Tradisi NU</i> / <i class="lr">Tradisi Ulama</i> = amaliyah NU/ulama (<span class="lr">bukan dalil langsung dari Nabi ﷺ</span>, tertulis jujur sebagai tradisi); <i class="lr">Diperselisihkan</i> = derajat haditsnya diperselisihkan ulama; <i class="lb">Lafaz Populer di Indonesia</i> = lafaz yang umum dibaca di Indonesia, bukan lafaz yang dasarnya paling kuat; dasar hadits yang lebih kuat ditulis di bagian bawah kartu.</p></div></div>';
   $('doa-ttl').textContent="Do'a & Bacaan";$('doa-sub').textContent='Pilih kategori';
   $('doa-scroll').scrollTop=0;doaCur=[]
 }
@@ -1705,7 +1713,7 @@ function doaCopy(ix){
   if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(t).then(ok,fb);else fb()
 }
 $('doa-body').addEventListener('click',function(e){
-  var c=e.target.closest('.dcat'),p=e.target.closest('.dcp');
+  var c=e.target.closest('.dcat:not(.dlegc)'),p=e.target.closest('.dcp');
   if(p){doaCopy(+p.getAttribute('data-i'));return}
   if(c){doaCat=c.getAttribute('data-c');doaLv=2;doaPush(2);doaShowCat(doaCat)}
 });
