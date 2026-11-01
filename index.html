@@ -675,6 +675,11 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;ba
   box-shadow:0 1px 0 var(--khl,rgba(255,255,255,.25)) inset,0 7px 9px -5px rgba(0,0,0,.45),0 0 0 1px var(--ke,rgba(0,0,0,.3));
 }
 
+/* ---- nomor urut kartu kategori do'a: gaya sama dengan "xx doa", di pojok kanan bawah ---- */
+.dcat .drow{display:flex;align-items:center;justify-content:space-between;gap:8px;width:100%}
+.dcat .drow .dcn{align-self:auto}
+.dcat .dno{min-width:26px;text-align:center;box-sizing:border-box}
+
 /* ---- foto 3D: bingkai timbul + permukaan cembung berkilau + bayangan dalam ---- */
 .hbx.photo{
   overflow:hidden;
@@ -1519,7 +1524,7 @@ function doaItem(it,ix,no){
 }
 function doaShowCats(){
   doaQClear();var D=doaLoad(),h='';
-  D.c.forEach(function(c){h+='<button type="button" class="dcat tx" data-c="'+c.id+'"><span><b>'+dEsc(c.t)+'</b><small>'+dEsc(c.d)+'</small></span><span class="dcn">'+((D.i[c.id]||[]).length)+' doa</span></button>'});
+  D.c.forEach(function(c,ci){h+='<button type="button" class="dcat tx" data-c="'+c.id+'"><span><b>'+dEsc(c.t)+'</b><small>'+dEsc(c.d)+'</small></span><span class="drow"><span class="dcn">'+((D.i[c.id]||[]).length)+' doa</span><span class="dcn dno" aria-hidden="true">'+(ci+1)+'</span></span></button>'});
   var pn='';
   if(D.p&&D.p.h){
     pn='<details class="dpeng"><summary><span class="dtt">'+dEsc(D.p.t)+'</span><span class="dbd">Baca dulu</span></summary>';
