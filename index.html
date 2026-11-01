@@ -340,6 +340,7 @@ input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;bac
 .ditem[open] summary{border-bottom:1px solid var(--soft)}
 .dbg{flex:none;font-size:10.5px;font-weight:700;padding:2px 7px;border-radius:99px;border:1px solid var(--accent2);color:var(--accent2);white-space:nowrap}
 .dbg.s{background:var(--accent2);color:var(--paper)}
+.dbg.q{letter-spacing:.02em}
 .dbg.u{border-style:dashed;border-color:var(--ink2);color:var(--ink2)}
 .dbody{padding:2px 12px 12px}
 .dar{font-family:var(--arfont);direction:rtl;text-align:right;font-size:clamp(22px,calc(var(--ar) * .85),46px);line-height:2.1;margin:10px 0 4px;color:var(--ink)}
@@ -1553,13 +1554,14 @@ function doaSubs(it){
   if(!it.sub||!it.sub.length)return'';
   var h=it.sh?'<p class="dlb dsh">'+dEsc(it.sh)+'</p>':'';
   it.sub.forEach(function(s){
-    var bg=s.b?'<span class="dbg '+(s.b==='Shahih'||s.b==='Hasan'?'s':/Dhaif/.test(s.b)?'u':'t')+'">'+dEsc(s.b)+'</span>':'';
+    var bg=dBadge(s);
     h+='<div class="dsub"><div class="dsn"><span>'+dEsc(s.n)+'</span>'+bg+'</div>'+dAr(s.a)+(s.l?'<p class="dla">'+dEsc(s.l)+'</p>':'')+(s.t?'<p class="dtr">'+dEsc(s.t)+'</p>':'')+dMeta('Dasar tuntunan',s.dt)+dMeta('Waktu membaca',s.k)+dMeta('Adab',s.d)+dMeta('Sumber',s.s)+dChk(s.v)+'</div>'
   });
   return h
 }
+function dBadge(o){var b=o.b;if(!b)return'';return '<span class="dbg '+(/Qur/.test(b)?'s q':(b==='Shahih'||b==='Hasan')?'s':/Dhaif/.test(b)?'u':'t')+'">'+dEsc(b)+'</span>'}
 function doaItem(it,ix,no){
-  var bg=it.b?'<span class="dbg '+(it.b==='Shahih'||it.b==='Hasan'?'s':/Dhaif/.test(it.b)?'u':'t')+'">'+dEsc(it.b)+'</span>':'';
+  var bg=dBadge(it);
   var h='<details class="ditem tx"><summary data-n="'+no+'"><span class="dn">'+dEsc(it.n)+(it.nb?'<small>'+dEsc(it.nb)+'</small>':'')+'</span>'+bg+'</summary><div class="dbody">';
   if(it.m){ if(/[\u0600-\u06FF]/.test(it.m)) h+='<p class="dlb">Lafaz muadzin</p>'+dAr(it.m)+'<p class="dlb">Jawaban</p>'; else h+=dMeta('Waktu',it.m) }
   h+=dAr(it.a);
@@ -1583,7 +1585,7 @@ function doaShowCats(){
     });
     pn+='</details>'
   }
-  $('doa-body').innerHTML=pn+'<div class="dgrid">'+h+'<div class="dcat dlegc"><b class="dlh">Keterangan label</b><p class="dlt"><i class="lb">Shahih</i> = bersumber dari Bukhari/Muslim atau tertulis shahih pada sumbernya; <i class="lb">Hasan</i> = hadits hasan; <i class="lr">Tradisi NU</i> / <i class="lr">Tradisi Ulama</i> = amaliyah NU/ulama (<span class="lr">bukan dalil langsung dari Nabi ﷺ</span>, tertulis jujur sebagai tradisi); <i class="lr">Diperselisihkan</i> = derajat haditsnya diperselisihkan ulama; <i class="lb">Lafaz Populer di Indonesia</i> = lafaz yang umum dibaca di Indonesia, bukan lafaz yang dasarnya paling kuat; dasar hadits yang lebih kuat ditulis di bagian bawah kartu.</p></div></div>';
+  $('doa-body').innerHTML=pn+'<div class="dgrid">'+h+'<div class="dcat dlegc"><b class="dlh">Keterangan label</b><p class="dlt"><i class="lb">Qur’an</i> = lafaznya langsung berupa ayat Al-Qur’an (misalnya doa para nabi); <i class="lb">Shahih</i> = bersumber dari Bukhari/Muslim atau tertulis shahih pada sumbernya; <i class="lb">Hasan</i> = hadits hasan; <i class="lr">Tradisi NU</i> / <i class="lr">Tradisi Ulama</i> = amaliyah NU/ulama (<span class="lr">bukan dalil langsung dari Nabi ﷺ</span>, tertulis jujur sebagai tradisi); <i class="lr">Diperselisihkan</i> = derajat haditsnya diperselisihkan ulama; <i class="lb">Lafaz Populer di Indonesia</i> = lafaz yang umum dibaca di Indonesia, bukan lafaz yang dasarnya paling kuat; dasar hadits yang lebih kuat ditulis di bagian bawah kartu.</p></div></div>';
   $('doa-ttl').textContent="Do'a & Bacaan";$('doa-sub').textContent='Pilih kategori';
   $('doa-scroll').scrollTop=0;doaCur=[]
 }
