@@ -675,10 +675,12 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;ba
   box-shadow:0 1px 0 var(--khl,rgba(255,255,255,.25)) inset,0 7px 9px -5px rgba(0,0,0,.45),0 0 0 1px var(--ke,rgba(0,0,0,.3));
 }
 
-/* ---- nomor urut kartu kategori do'a: gaya sama dengan "xx doa", di pojok kanan bawah ---- */
+/* ---- nomor urut kartu kategori do'a: gaya sama dengan "xx doa", di pojok kanan atas ---- */
 .dcat .drow{display:flex;align-items:center;justify-content:space-between;gap:8px;width:100%}
 .dcat .drow .dcn{align-self:auto}
-.dcat .dno{min-width:26px;text-align:center;box-sizing:border-box}
+.dcat{position:relative}
+.dcat .dno{position:absolute;top:12px;right:12px;min-width:26px;text-align:center;box-sizing:border-box}
+.dcat>span:first-child{padding-right:32px}
 
 /* ---- foto 3D: bingkai timbul + permukaan cembung berkilau + bayangan dalam ---- */
 .hbx.photo{
