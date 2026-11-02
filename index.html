@@ -953,6 +953,15 @@ html[data-neon^="n"]:not(#_) #doa{background-color:#03050b;background-image:var(
 .tabs .tab,.tabs .tab[aria-selected=true]{text-align:center!important;white-space:nowrap;letter-spacing:0!important;font-size:clamp(10.5px,3.3vw,14px)!important;padding-left:39px!important;padding-right:3px!important}
 html[data-gulung^="g"] .tabs .tab,html[data-gulung^="g"] .tabs .tab[aria-selected=true]{padding-left:46px!important;padding-right:3px!important}
 html[data-tombol^="t"] .tabs .tab,html[data-tombol^="t"] .tabs .tab[aria-selected=true],html[data-neon^="n"] .tabs .tab,html[data-neon^="n"] .tabs .tab[aria-selected=true]{padding-left:40px!important;padding-right:3px!important}
+
+/* ---- kolom pencarian: tampak MASUK ke dalam (cekung), teks ketikan seolah di dasar lubang ---- */
+#q,#doa-q .qbox{
+  background-image:linear-gradient(180deg,rgba(0,0,0,.20) 0%,rgba(0,0,0,.07) 38%,rgba(0,0,0,0) 70%)!important;
+  box-shadow:inset 0 5px 9px -1px rgba(0,0,0,.50),inset 0 2px 3px rgba(0,0,0,.42),inset 4px 0 7px -3px rgba(0,0,0,.28),inset -4px 0 7px -3px rgba(0,0,0,.22),0 1.5px 0 rgba(255,255,255,.55),0 3px 4px -2px rgba(0,0,0,.18)!important}
+#q:focus,#doa-q .qbox:focus-within{
+  box-shadow:inset 0 6px 11px -1px rgba(0,0,0,.58),inset 0 2px 4px rgba(0,0,0,.5),inset 4px 0 7px -3px rgba(0,0,0,.3),inset -4px 0 7px -3px rgba(0,0,0,.25),0 1.5px 0 rgba(255,255,255,.55),0 0 0 3px color-mix(in srgb,var(--accent) 30%,transparent)!important}
+#q,#doa-qi{text-shadow:0 1px 0 rgba(255,255,255,.18)}
+html[data-neon^="n"] #q,html[data-neon^="n"] #doa-q .qbox{background-image:linear-gradient(180deg,rgba(0,0,0,.55) 0%,rgba(0,0,0,.2) 55%,rgba(0,0,0,0) 100%)!important;box-shadow:inset 0 6px 10px -1px rgba(0,0,0,.85),inset 0 0 9px color-mix(in srgb,var(--nc) 45%,transparent),0 0 2px var(--nl)!important}
 </style>
 </head>
 <body>
@@ -1367,16 +1376,7 @@ var TILES={
 };
 function tileURI(T,dark){
   var col='rgb('+(dark?'226,238,255':'84,126,178')+')',t=TILES[T.tile]();
-  var svg="<svg xmlns='http://www.w3.org/2000/svg' width='"+t.w+"' height='"+t.h+"' viewBox='0 0 "+t.w+" "+t.h+"'><style>.c{fill:"+col+"}.o{fill:none;stroke:"+col+";stroke-width:1.8;stroke-linecap:round}
-/* ---- kolom pencarian: tampak MASUK ke dalam (cekung), teks ketikan seolah di dasar lubang ---- */
-#q,#doa-q .qbox{
-  background-image:linear-gradient(180deg,rgba(0,0,0,.20) 0%,rgba(0,0,0,.07) 38%,rgba(0,0,0,0) 70%)!important;
-  box-shadow:inset 0 5px 9px -1px rgba(0,0,0,.50),inset 0 2px 3px rgba(0,0,0,.42),inset 4px 0 7px -3px rgba(0,0,0,.28),inset -4px 0 7px -3px rgba(0,0,0,.22),0 1.5px 0 rgba(255,255,255,.55),0 3px 4px -2px rgba(0,0,0,.18)!important}
-#q:focus,#doa-q .qbox:focus-within{
-  box-shadow:inset 0 6px 11px -1px rgba(0,0,0,.58),inset 0 2px 4px rgba(0,0,0,.5),inset 4px 0 7px -3px rgba(0,0,0,.3),inset -4px 0 7px -3px rgba(0,0,0,.25),0 1.5px 0 rgba(255,255,255,.55),0 0 0 3px color-mix(in srgb,var(--accent) 30%,transparent)!important}
-#q,#doa-qi{text-shadow:0 1px 0 rgba(255,255,255,.18)}
-html[data-neon^="n"] #q,html[data-neon^="n"] #doa-q .qbox{background-image:linear-gradient(180deg,rgba(0,0,0,.55) 0%,rgba(0,0,0,.2) 55%,rgba(0,0,0,0) 100%)!important;box-shadow:inset 0 6px 10px -1px rgba(0,0,0,.85),inset 0 0 9px color-mix(in srgb,var(--nc) 45%,transparent),0 0 2px var(--nl)!important}
-</style>"+t.d+"</svg>";
+  var svg="<svg xmlns='http://www.w3.org/2000/svg' width='"+t.w+"' height='"+t.h+"' viewBox='0 0 "+t.w+" "+t.h+"'><style>.c{fill:"+col+"}.o{fill:none;stroke:"+col+";stroke-width:1.8;stroke-linecap:round}</style>"+t.d+"</svg>";
   return 'url("data:image/svg+xml,'+encodeURIComponent(svg)+'")';
 }
 function plank(T,c){
