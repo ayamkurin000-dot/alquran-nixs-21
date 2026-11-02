@@ -913,6 +913,41 @@ html[data-tombol^="t"]:not(#_) .row .mid small,html[data-tombol^="t"]:not(#_) .r
 /* pratinjau di menu Tema 3D */
 .sw .p.k3[data-tombol]{position:relative;height:42px;border:0;border-radius:999px;background:var(--tbez);box-shadow:inset 0 0 0 1px rgba(0,0,0,.14),0 3px 4px -1px rgba(0,0,0,.4)}
 .sw .p.k3[data-tombol]::after{content:'';position:absolute;inset:5px;border-radius:999px;background:var(--tin);box-shadow:0 0 0 1px rgba(0,0,0,.3),inset 0 1.5px 2px rgba(0,0,0,.35)}
+
+/* =====================================================================================
+   TEMA 3D NEON 1-6: pil bergaris neon menyala di atas dinding batu bata hitam
+   ===================================================================================== */
+html[data-neon="n1"],.sw .p[data-neon="n1"]{--nc:#5b6cff;--nl:#c4ccff}
+html[data-neon="n2"],.sw .p[data-neon="n2"]{--nc:#ffc21a;--nl:#fff0a8}
+html[data-neon="n3"],.sw .p[data-neon="n3"]{--nc:#ff4a2b;--nl:#ffc0a8}
+html[data-neon="n4"],.sw .p[data-neon="n4"]{--nc:#18e04a;--nl:#b8ffc8}
+html[data-neon="n5"],.sw .p[data-neon="n5"]{--nc:#12e0b4;--nl:#b0fff0}
+html[data-neon="n6"],.sw .p[data-neon="n6"]{--nc:#d533ff;--nl:#f3b8ff}
+
+html[data-neon^="n"],.sw .p[data-neon]{
+  --nglow:0 0 3px var(--nl),0 0 8px var(--nc),0 0 18px color-mix(in srgb,var(--nc) 75%,transparent),0 0 34px color-mix(in srgb,var(--nc) 38%,transparent),inset 0 0 7px var(--nc),inset 0 0 16px color-mix(in srgb,var(--nc) 38%,transparent)}
+html[data-neon^="n"]:not(#_) .row,html[data-neon^="n"]:not(#_) .rcard,html[data-neon^="n"]:not(#_) .tabs .tab,html[data-neon^="n"]:not(#_) .tabs .tab[aria-selected=true],html[data-neon^="n"]:not(#_) .hbx.tx{
+  position:relative;overflow:visible;content-visibility:visible;transform:none;
+  background:rgba(4,8,18,.66);border:2.5px solid var(--nl);border-radius:999px;box-shadow:var(--nglow);
+  color:#fff;text-shadow:0 0 6px color-mix(in srgb,var(--nc) 85%,transparent)}
+html[data-neon^="n"]:not(#_) .row{padding:12px 28px 12px 24px;margin-top:6px}
+html[data-neon^="n"]:not(#_) .rcard{border-radius:34px;padding-left:26px;margin-top:6px}
+html[data-neon^="n"]:not(#_) .hbx.tx{border-radius:30px}
+html[data-neon^="n"]:not(#_) .hbx.tx .hpat{display:none}
+html[data-neon^="n"]:not(#_) .tabs .tab,html[data-neon^="n"]:not(#_) .tabs .tab[aria-selected=true]{padding:12px 4px 12px 46px;letter-spacing:.05em;font-size:clamp(10px,3vw,14px);color:#fff}
+html[data-neon^="n"]:not(#_) .tabs .tab::before{left:13px;width:24px;height:24px;margin-top:-12px}
+html[data-neon^="n"]:not(#_) .row:active,html[data-neon^="n"]:not(#_) .rcard:active,html[data-neon^="n"]:not(#_) .tabs .tab:active{transform:scale(.985)}
+html[data-neon^="n"]:not(#_) .row::after,html[data-neon^="n"]:not(#_) .rcard::after,html[data-neon^="n"]:not(#_) .tabs .tab::after,html[data-neon^="n"]:not(#_) .hbx.tx::after{display:none}
+html[data-neon^="n"]:not(#_) .row .row{background:none;border:0;box-shadow:none;border-radius:0;padding:0;margin:0}
+html[data-neon^="n"]:not(#_) .row .mid b,html[data-neon^="n"]:not(#_) .rcard b,html[data-neon^="n"]:not(#_) .row .nm,html[data-neon^="n"]:not(#_) .rcard .go,html[data-neon^="n"]:not(#_) .hdoa,html[data-neon^="n"]:not(#_) .hmri,html[data-neon^="n"]:not(#_) #hero-logo,html[data-neon^="n"]:not(#_) #credit{color:#fff;text-shadow:0 0 6px color-mix(in srgb,var(--nc) 85%,transparent);opacity:1}
+html[data-neon^="n"]:not(#_) .row .mid small,html[data-neon^="n"]:not(#_) .rcard small{color:var(--nl);opacity:.9;text-shadow:none}
+html[data-neon^="n"]:not(#_) .hdoa,html[data-neon^="n"]:not(#_) .hmri{font-size:clamp(10px,2.9vw,14px);letter-spacing:.03em}
+/* dinding bata hitam bersih: tanpa bintik pasir & cahaya bawaan */
+html[data-neon^="n"]:not(#_) body{background-color:#03050b;background-image:var(--bgimg);background-size:var(--bgsz)}
+html[data-neon^="n"]:not(#_) body::before{background:none}
+html[data-neon^="n"]:not(#_) #doa{background-color:#03050b;background-image:var(--bgimg);background-size:var(--bgsz);background-repeat:repeat}
+/* pratinjau di menu Tema 3D */
+.sw .p.k3[data-neon]{height:42px;border-radius:999px;border:2.5px solid var(--nl);background:#070b14;box-shadow:0 0 3px var(--nl),0 0 9px var(--nc),inset 0 0 6px var(--nc)}
 </style>
 </head>
 <body>
@@ -1111,6 +1146,10 @@ function mk3(n,o){
     bgimg:o.bg3?o.bg3.i:'none',bgsz:o.bg3?o.bg3.s:'auto'};
   T.k3.bar=o.bar||[mixHex(acc,'#000000',.5),mixHex(acc,'#000000',.2),'#fff4d8'];
   return T}
+function patBata(){var r=[[1,1,.0],[49,1,.06],[-23,25,.05],[25,25,.0],[73,25,.08]],s="<svg xmlns='http://www.w3.org/2000/svg' width='96' height='48' viewBox='0 0 96 48'><defs><linearGradient id='b' x1='0' y1='0' x2='0' y2='1'><stop offset='0' stop-color='#142146'/><stop offset='1' stop-color='#0a1228'/></linearGradient></defs><rect width='96' height='48' fill='#03050b'/>";
+  r.forEach(function(b){s+="<rect x='"+b[0]+"' y='"+b[1]+"' width='46' height='22' rx='1.5' fill='url(#b)'/><rect x='"+b[0]+"' y='"+b[1]+"' width='46' height='1.6' fill='#fff' opacity='"+(.07+b[2])+"'/><rect x='"+b[0]+"' y='"+(b[1]+20.6)+"' width='46' height='1.4' fill='#000' opacity='.35'/>"});
+  return {i:svgU(s+"</svg>"),s:'120px 60px'}}
+function mkn(n,o,v){var T=mk3(n,o);T.neon=v;return T}
 function mkp(n,o,v){var T=mk3(n,o);T.pita=v;return T}
 function mkg(n,o,v){var T=mk3(n,o);T.gul=v;return T}
 function mkt(n,o,v){var T=mk3(n,o);T.tmb=v;return T}
@@ -1145,7 +1184,13 @@ var THEMES3={
   k3gul5:mkg('3D Gulungan Ungu',{lt:1,c1:'#8b6bb0',c2:'#6f4f9a',ed:'#47306c',acc:'#533a7c',g:'#b0862c',ka:'#fff2e4',kt:'#ffffff',bg:'#dcd3e8',paper:'#f0ecf6',ink:'#1e1830'},'g5'),
   k3tmb1:mkt('3D Tombol Perak Biru',{lt:1,c1:'#6fa0bd',c2:'#0b5a85',ed:'#08405e',acc:'#134f7a',g:'#b08d2e',ka:'#fff2e4',kt:'#ffffff',bg:'#cfdde8',paper:'#ecf2f7',ink:'#0e2233'},'t1'),
   k3tmb2:mkt('3D Tombol Perak Cokelat',{lt:1,c1:'#d3a08c',c2:'#b5582f',ed:'#7a3a1c',acc:'#a24f2c',g:'#b08d2e',ka:'#fff2e4',kt:'#ffffff',bg:'#ecd9cd',paper:'#f8eee6',ink:'#2e160a'},'t2'),
-  k3tmb3:mkt('3D Tombol Perak Hijau',{c1:'#a6c820',c2:'#6ea92e',ed:'#3f6e1a',acc:'#4f7d1c',g:'#a8892f',kt:'#12300a',bg:'#dfe9c4',paper:'#f1f6e2',ink:'#16280f'},'t3')
+  k3tmb3:mkt('3D Tombol Perak Hijau',{c1:'#a6c820',c2:'#6ea92e',ed:'#3f6e1a',acc:'#4f7d1c',g:'#a8892f',kt:'#12300a',bg:'#dfe9c4',paper:'#f1f6e2',ink:'#16280f'},'t3'),
+  k3neon1:mkn('3D Neon Biru',{dark:1,tex:'p-hitam',lt:1,c1:'#18213d',c2:'#0b1222',ed:'#5b6cff',acc:'#5b6cff',g:'#c4ccff',ka:'#c4ccff',kt:'#f4f7ff',kt2:'#b9c6e6',ink2:'#9fb0d4',pa:'#2b3590',pp:'#e8eefc',bg:'#070b14',paper:'#0e1424',ink:'#eaf0ff',bg3:patBata(),bar:['#04060c','#101830','#eaf0ff']},'n1'),
+  k3neon2:mkn('3D Neon Kuning',{dark:1,tex:'p-hitam',lt:1,c1:'#18213d',c2:'#0b1222',ed:'#ffc21a',acc:'#ffc21a',g:'#fff0a8',ka:'#fff0a8',kt:'#f4f7ff',kt2:'#b9c6e6',ink2:'#9fb0d4',pa:'#7a5a0a',pp:'#e8eefc',bg:'#070b14',paper:'#0e1424',ink:'#eaf0ff',bg3:patBata(),bar:['#04060c','#101830','#eaf0ff']},'n2'),
+  k3neon3:mkn('3D Neon Merah',{dark:1,tex:'p-hitam',lt:1,c1:'#18213d',c2:'#0b1222',ed:'#ff4a2b',acc:'#ff4a2b',g:'#ffc0a8',ka:'#ffc0a8',kt:'#f4f7ff',kt2:'#b9c6e6',ink2:'#9fb0d4',pa:'#8a2410',pp:'#e8eefc',bg:'#070b14',paper:'#0e1424',ink:'#eaf0ff',bg3:patBata(),bar:['#04060c','#101830','#eaf0ff']},'n3'),
+  k3neon4:mkn('3D Neon Hijau',{dark:1,tex:'p-hitam',lt:1,c1:'#18213d',c2:'#0b1222',ed:'#18e04a',acc:'#18e04a',g:'#b8ffc8',ka:'#b8ffc8',kt:'#f4f7ff',kt2:'#b9c6e6',ink2:'#9fb0d4',pa:'#0c7a28',pp:'#e8eefc',bg:'#070b14',paper:'#0e1424',ink:'#eaf0ff',bg3:patBata(),bar:['#04060c','#101830','#eaf0ff']},'n4'),
+  k3neon5:mkn('3D Neon Tosca',{dark:1,tex:'p-hitam',lt:1,c1:'#18213d',c2:'#0b1222',ed:'#12e0b4',acc:'#12e0b4',g:'#b0fff0',ka:'#b0fff0',kt:'#f4f7ff',kt2:'#b9c6e6',ink2:'#9fb0d4',pa:'#0a7a62',pp:'#e8eefc',bg:'#070b14',paper:'#0e1424',ink:'#eaf0ff',bg3:patBata(),bar:['#04060c','#101830','#eaf0ff']},'n5'),
+  k3neon6:mkn('3D Neon Ungu',{dark:1,tex:'p-hitam',lt:1,c1:'#18213d',c2:'#0b1222',ed:'#d533ff',acc:'#d533ff',g:'#f3b8ff',ka:'#f3b8ff',kt:'#f4f7ff',kt2:'#b9c6e6',ink2:'#9fb0d4',pa:'#7a1a99',pp:'#e8eefc',bg:'#070b14',paper:'#0e1424',ink:'#eaf0ff',bg3:patBata(),bar:['#04060c','#101830','#eaf0ff']},'n6')
 };
 var THEME3_ORDER=Object.keys(THEMES3);
 Object.keys(THEMES3).forEach(function(k){THEMES[k]=THEMES3[k]});
@@ -1347,7 +1392,7 @@ function applyTheme(){
   ['bg','paper','ink','ink2','accent','accent2','nfill','nink'].forEach(function(k){r.setProperty('--'+k,T[k])});
   r.colorScheme=T.dark?'dark':'light';r.setProperty('--h1',T.dark?'13%':'26%');r.setProperty('--h2',T.dark?'6%':'13%');r.setProperty('--h3',T.dark?'4%':'9%');r.setProperty('--h4',T.dark?'11%':'24%');
   $('metatheme').setAttribute('content',T.bg);
-  document.documentElement.setAttribute('data-fx',S.fx||'none');document.documentElement.setAttribute('data-pita',T.pita||'');document.documentElement.setAttribute('data-gulung',T.gul||'');document.documentElement.setAttribute('data-tombol',T.tmb||'');r.setProperty('--gdk',(T.dark||T.lt)?'1':'0');
+  document.documentElement.setAttribute('data-fx',S.fx||'none');document.documentElement.setAttribute('data-pita',T.pita||'');document.documentElement.setAttribute('data-gulung',T.gul||'');document.documentElement.setAttribute('data-tombol',T.tmb||'');document.documentElement.setAttribute('data-neon',T.neon||'');r.setProperty('--gdk',(T.dark||T.lt)?'1':'0');
   var tx=TEXTURES[S.tex];
   r.setProperty('--tex',texURI(S.tex,!!T.dark));
   /* top bar: versi gelap dari warna tema (gradasi) + teks terang */
@@ -1615,8 +1660,8 @@ window.addEventListener('hashchange',route);
    ===================================================================== */
 var sheetOpener=null;
 function swatchTheme(id){var T=THEMES[id];return '<button class="sw" role="radio" aria-checked="'+(S.theme===id)+'" data-k="theme" data-v="'+id+'"><div class="p th">'+[T.bg,T.paper,T.accent,T.accent2].map(function(c){return '<i style="background:'+c+'"></i>'}).join('')+'</div>'+T.n+'</button>'}
-function swatchTheme3(id){var T=THEMES[id];return '<button class="sw" role="radio" aria-checked="'+(S.theme===id)+'" data-k="theme" data-v="'+id+'"><div class="p k3" data-k3="'+id+'"'+(T.pita?' data-pita="'+T.pita+'"':'')+(T.gul?' data-gulung="'+T.gul+'"':'')+(T.tmb?' data-tombol="'+T.tmb+'"':'')+'></div>'+T.n+'</button>'}
-function paint3D(){[].forEach.call(document.querySelectorAll('#sheet [data-k3]'),function(e){if(THEMES[e.dataset.k3].pita||THEMES[e.dataset.k3].gul||THEMES[e.dataset.k3].tmb)return;var K=THEMES[e.dataset.k3].k3,st=e.style;
+function swatchTheme3(id){var T=THEMES[id];return '<button class="sw" role="radio" aria-checked="'+(S.theme===id)+'" data-k="theme" data-v="'+id+'"><div class="p k3" data-k3="'+id+'"'+(T.pita?' data-pita="'+T.pita+'"':'')+(T.gul?' data-gulung="'+T.gul+'"':'')+(T.tmb?' data-tombol="'+T.tmb+'"':'')+(T.neon?' data-neon="'+T.neon+'"':'')+'></div>'+T.n+'</button>'}
+function paint3D(){[].forEach.call(document.querySelectorAll('#sheet [data-k3]'),function(e){if(THEMES[e.dataset.k3].pita||THEMES[e.dataset.k3].gul||THEMES[e.dataset.k3].tmb||THEMES[e.dataset.k3].neon)return;var K=THEMES[e.dataset.k3].k3,st=e.style;
   st.backgroundColor=K.k2;st.backgroundImage=[K.kgl,K.kpat,'linear-gradient(180deg,'+K.k1+','+K.k2+')'].join(',');st.backgroundSize=['100% 100%',K.kpsz,'100% 100%'].join(',');
   st.borderColor=K.ke;st.boxShadow='inset 0 1px 0 '+K.khl+',0 3px 0 '+K.ke})}
 function swatchTex(id){var T=TEXTURES[id],dk=!!THEMES[S.theme].dark;return '<button class="sw" role="radio" aria-checked="'+(S.tex===id)+'" data-k="tex" data-v="'+id+'"><div class="p tx" data-tx="'+id+'"></div>'+T.n+'</button>'}
