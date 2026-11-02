@@ -830,6 +830,49 @@ html[data-pita^="pita"]:not(#_) .row .row::after{display:none}
   background-color:var(--pb);background-image:var(--pri),linear-gradient(180deg,rgba(255,255,255,.26),rgba(255,255,255,0) 46%),linear-gradient(180deg,var(--pa),var(--pb));
   background-size:56% 14px,100% 100%,100% 100%;background-position:50% 0,0 0,0 0;background-repeat:no-repeat;
   box-shadow:inset 0 0 0 1px var(--pl),0 3px 0 var(--pe)}
+
+/* =====================================================================================
+   TEMA 3D GULUNGAN 1-5: pita horizontal dengan ujung kiri tergulung, sudut kanan-bawah terlipat,
+   dan batang perak di sisi kiri yang menyambung antar kartu di daftar. Tanpa teks contoh.
+   ===================================================================================== */
+html[data-gulung="g1"],.sw .p[data-gulung="g1"]{--ga:#e8607a;--gb:#d8456b;--gr:#b02a4e;--ge:#a02548;--gt:#fff;--gt2:rgba(255,255,255,.92);--gts:0 1px 1px rgba(90,0,30,.6)}
+html[data-gulung="g2"],.sw .p[data-gulung="g2"]{--ga:#fbbd45;--gb:#f6b33c;--gr:#e29a1c;--ge:#b07a14;--gt:#4a2d06;--gt2:#6b4510;--gts:0 1px 0 rgba(255,240,180,.65)}
+html[data-gulung="g3"],.sw .p[data-gulung="g3"]{--ga:#2dbba9;--gb:#1fa99b;--gr:#128a7e;--ge:#127068;--gt:#fff;--gt2:rgba(255,255,255,.92);--gts:0 1px 1px rgba(0,60,55,.6)}
+html[data-gulung="g4"],.sw .p[data-gulung="g4"]{--ga:#2c93c9;--gb:#1d7fb8;--gr:#146aa0;--ge:#0f5686;--gt:#fff;--gt2:rgba(255,255,255,.92);--gts:0 1px 1px rgba(0,40,80,.6)}
+html[data-gulung="g5"],.sw .p[data-gulung="g5"]{--ga:#8b6bb0;--gb:#6f4f9a;--gr:#573b82;--ge:#47306c;--gt:#fff;--gt2:rgba(255,255,255,.92);--gts:0 1px 1px rgba(30,10,60,.6)}
+
+html[data-gulung^="g"],.sw .p[data-gulung]{
+  --groll:linear-gradient(90deg,rgba(0,0,0,.34) 0,rgba(255,255,255,.34) 24%,rgba(255,255,255,0) 44%,rgba(0,0,0,.20) 82%,rgba(0,0,0,.44) 100%);
+  --gbg:linear-gradient(135deg,transparent 46%,rgba(0,0,0,.30) 50%,transparent 60%),linear-gradient(135deg,transparent 50%,#ffffff 50%,#c6ccd0 100%),var(--groll),linear-gradient(180deg,rgba(255,255,255,.14),rgba(0,0,0,.07)),linear-gradient(90deg,var(--ga),var(--gb))}
+html[data-gulung^="g"]:not(#_) .row,html[data-gulung^="g"]:not(#_) .rcard,html[data-gulung^="g"]:not(#_) .tabs .tab,html[data-gulung^="g"]:not(#_) .tabs .tab[aria-selected=true],html[data-gulung^="g"]:not(#_) .hbx.tx{
+  --gc:26px;--gw:26px;
+  position:relative;overflow:visible;content-visibility:visible;
+  border:0;border-radius:6px;transform:none;
+  background-color:var(--gb);background-image:var(--gbg);
+  background-size:var(--gc) var(--gc),var(--gc) var(--gc),var(--gw) 100%,100% 100%,100% 100%;
+  background-position:100% 100%,100% 100%,0 0,0 0,0 0;background-repeat:no-repeat;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 4px 0 var(--ge),0 10px 14px -5px rgba(0,0,0,.38);
+  color:var(--gt);text-shadow:var(--gts)}
+html[data-gulung^="g"]:not(#_) .row{padding:12px 18px 12px 46px}
+html[data-gulung^="g"]:not(#_) .rcard{padding-left:46px}
+html[data-gulung^="g"]:not(#_) .tabs .tab,html[data-gulung^="g"]:not(#_) .tabs .tab[aria-selected=true]{--gc:14px;--gw:16px;padding:11px 4px 11px 48px;letter-spacing:.05em;font-size:clamp(10px,3vw,14px);text-shadow:var(--gts);color:var(--gt)}
+html[data-gulung^="g"]:not(#_) .tabs .tab::before{left:20px;width:23px;height:23px;margin-top:-11.5px}
+html[data-gulung^="g"]:not(#_) .hbx.tx{--gc:22px;--gw:20px}
+html[data-gulung^="g"]:not(#_) .row:active,html[data-gulung^="g"]:not(#_) .rcard:active,html[data-gulung^="g"]:not(#_) .tabs .tab:active{transform:translateY(3px);box-shadow:inset 0 1px 0 rgba(255,255,255,.3),0 1px 0 var(--ge)}
+/* gulungan menonjol + batang perak (khusus kartu daftar) */
+html[data-gulung^="g"]:not(#_) .row::before,html[data-gulung^="g"]:not(#_) .rcard::before{content:'';position:absolute;left:0;top:-4px;bottom:-4px;width:28px;border-radius:7px;z-index:2;pointer-events:none;
+  background:var(--groll),linear-gradient(180deg,var(--ga),var(--gr));box-shadow:0 3px 4px rgba(0,0,0,.3)}
+html[data-gulung^="g"]:not(#_) .row::after,html[data-gulung^="g"]:not(#_) .rcard::after{content:'';position:absolute;inset:auto;left:8px;top:-22px;bottom:-22px;width:12px;border-radius:6px;z-index:1;pointer-events:none;margin:0;border:0;
+  background:linear-gradient(90deg,#767c82,#f7f8f9 38%,#c3c8cc 62%,#737980);box-shadow:0 0 2px rgba(0,0,0,.45)}
+html[data-gulung^="g"]:not(#_) .row .row::before,html[data-gulung^="g"]:not(#_) .row .row::after{display:none}
+html[data-gulung^="g"]:not(#_) .row .row{background:none;border:0;box-shadow:none;border-radius:0;padding:0;margin:0}
+/* teks */
+html[data-gulung^="g"]:not(#_) .row .mid b,html[data-gulung^="g"]:not(#_) .rcard b,html[data-gulung^="g"]:not(#_) .row .nm,html[data-gulung^="g"]:not(#_) .rcard .go,html[data-gulung^="g"]:not(#_) .hdoa,html[data-gulung^="g"]:not(#_) .hmri,html[data-gulung^="g"]:not(#_) #hero-logo,html[data-gulung^="g"]:not(#_) #credit{color:var(--gt);text-shadow:var(--gts);opacity:1}
+html[data-gulung^="g"]:not(#_) .row .mid small,html[data-gulung^="g"]:not(#_) .rcard small{color:var(--gt2)}
+/* pratinjau di menu Tema 3D */
+.sw .p.k3[data-gulung]{--gc:13px;--gw:14px;height:42px;border:0;border-radius:5px;
+  background-color:var(--gb);background-image:var(--gbg);background-size:var(--gc) var(--gc),var(--gc) var(--gc),var(--gw) 100%,100% 100%,100% 100%;
+  background-position:100% 100%,100% 100%,0 0,0 0,0 0;background-repeat:no-repeat;box-shadow:0 3px 0 var(--ge)}
 </style>
 </head>
 <body>
@@ -1028,6 +1071,7 @@ function mk3(n,o){
   T.k3.bar=o.bar||[mixHex(acc,'#000000',.5),mixHex(acc,'#000000',.2),'#fff4d8'];
   return T}
 function mkp(n,o,v){var T=mk3(n,o);T.pita=v;return T}
+function mkg(n,o,v){var T=mk3(n,o);T.gul=v;return T}
 var THEMES3={
   k3hijau:mk3('3D Hijau Muda',{tex:'p-bercak',c1:'#d3e9b4',c2:'#9cc873',ed:'#4f7d33',acc:'#2f6a2a',g:'#a8892f',bg:'#cfe0b0',paper:'#dfecc8',ink:'#16280f'}),
   k3biru:mk3('3D Biru Muda',{tex:'c-lembut',c1:'#d3e8f8',c2:'#93c3ea',ed:'#3f7bab',acc:'#1f5f8b',g:'#b08d2e',bg:'#cddbe6',paper:'#eaf0f4',ink:'#0f2233'}),
@@ -1051,7 +1095,12 @@ var THEMES3={
   k3hitam:mk3('3D Hitam Emas',{dark:1,tex:'p-hitam',lt:1,shine:1,pat:patBrushed(1,1),c1:'#3f3f42',c2:'#121214',ed:'#000000',acc:'#d9b85c',pa:'#6b520f',bd:'#8a6d1e',g:'#e2bf5f',ka:'#f0cf7a',kt:'#f3e6bd',bg:'#141414',paper:'#1d1d1f',pp:'#f3ead0',ink:'#efe6cc',ink2:'#b8ad90',bar:['#0a0a0a','#2a2418','#f0e2b0']}),
   k3pita1:mkp('3D Pita Jingga',{lt:1,shine:0,c1:'#f57a30',c2:'#ee2224',ed:'#a31212',acc:'#b3201a',g:'#f6d77e',ka:'#fff2e4',kt:'#ffffff',bg:'#f0d5c8',paper:'#fbeee8',ink:'#2a1012',pg:'#8a5a1c'},'pita1'),
   k3pita2:mkp('3D Pita Kuning',{c1:'#fdc815',c2:'#f78e1e',ed:'#b5600d',acc:'#a85a0c',g:'#7a4410',kt:'#4a2406',bg:'#f2e4b8',paper:'#fbf3d8',ink:'#33200a'},'pita2'),
-  k3pita3:mkp('3D Pita Hijau',{c1:'#79c957',c2:'#69bb42',ed:'#3b7c24',acc:'#2f6a2a',g:'#a8892f',kt:'#143808',bg:'#d3e8c4',paper:'#eef7e6',ink:'#10261b'},'pita3')
+  k3pita3:mkp('3D Pita Hijau',{c1:'#79c957',c2:'#69bb42',ed:'#3b7c24',acc:'#2f6a2a',g:'#a8892f',kt:'#143808',bg:'#d3e8c4',paper:'#eef7e6',ink:'#10261b'},'pita3'),
+  k3gul1:mkg('3D Gulungan Merah Muda',{lt:1,c1:'#e8607a',c2:'#d8456b',ed:'#a02548',acc:'#b02a4e',g:'#f6d77e',ka:'#fff2e4',kt:'#ffffff',bg:'#f1d3da',paper:'#fbeef1',ink:'#2d1219'},'g1'),
+  k3gul2:mkg('3D Gulungan Kuning',{c1:'#fbbd45',c2:'#f6b33c',ed:'#b07a14',acc:'#a8700f',g:'#7a4410',kt:'#4a2d06',bg:'#f3e5bd',paper:'#fbf4dc',ink:'#33220a'},'g2'),
+  k3gul3:mkg('3D Gulungan Tosca',{lt:1,c1:'#2dbba9',c2:'#1fa99b',ed:'#127068',acc:'#117a70',g:'#a8892f',ka:'#fff2e4',kt:'#ffffff',bg:'#cfe9e4',paper:'#ecf7f5',ink:'#0c2a27'},'g3'),
+  k3gul4:mkg('3D Gulungan Biru',{lt:1,c1:'#2c93c9',c2:'#1d7fb8',ed:'#0f5686',acc:'#13608f',g:'#b08d2e',ka:'#fff2e4',kt:'#ffffff',bg:'#cfe1ee',paper:'#ebf3f9',ink:'#0e2233'},'g4'),
+  k3gul5:mkg('3D Gulungan Ungu',{lt:1,c1:'#8b6bb0',c2:'#6f4f9a',ed:'#47306c',acc:'#533a7c',g:'#b0862c',ka:'#fff2e4',kt:'#ffffff',bg:'#dcd3e8',paper:'#f0ecf6',ink:'#1e1830'},'g5')
 };
 var THEME3_ORDER=Object.keys(THEMES3);
 Object.keys(THEMES3).forEach(function(k){THEMES[k]=THEMES3[k]});
@@ -1253,7 +1302,7 @@ function applyTheme(){
   ['bg','paper','ink','ink2','accent','accent2','nfill','nink'].forEach(function(k){r.setProperty('--'+k,T[k])});
   r.colorScheme=T.dark?'dark':'light';r.setProperty('--h1',T.dark?'13%':'26%');r.setProperty('--h2',T.dark?'6%':'13%');r.setProperty('--h3',T.dark?'4%':'9%');r.setProperty('--h4',T.dark?'11%':'24%');
   $('metatheme').setAttribute('content',T.bg);
-  document.documentElement.setAttribute('data-fx',S.fx||'none');document.documentElement.setAttribute('data-pita',T.pita||'');r.setProperty('--gdk',(T.dark||T.lt)?'1':'0');
+  document.documentElement.setAttribute('data-fx',S.fx||'none');document.documentElement.setAttribute('data-pita',T.pita||'');document.documentElement.setAttribute('data-gulung',T.gul||'');r.setProperty('--gdk',(T.dark||T.lt)?'1':'0');
   var tx=TEXTURES[S.tex];
   r.setProperty('--tex',texURI(S.tex,!!T.dark));
   /* top bar: versi gelap dari warna tema (gradasi) + teks terang */
@@ -1521,8 +1570,8 @@ window.addEventListener('hashchange',route);
    ===================================================================== */
 var sheetOpener=null;
 function swatchTheme(id){var T=THEMES[id];return '<button class="sw" role="radio" aria-checked="'+(S.theme===id)+'" data-k="theme" data-v="'+id+'"><div class="p th">'+[T.bg,T.paper,T.accent,T.accent2].map(function(c){return '<i style="background:'+c+'"></i>'}).join('')+'</div>'+T.n+'</button>'}
-function swatchTheme3(id){var T=THEMES[id];return '<button class="sw" role="radio" aria-checked="'+(S.theme===id)+'" data-k="theme" data-v="'+id+'"><div class="p k3" data-k3="'+id+'"'+(T.pita?' data-pita="'+T.pita+'"':'')+'></div>'+T.n+'</button>'}
-function paint3D(){[].forEach.call(document.querySelectorAll('#sheet [data-k3]'),function(e){if(THEMES[e.dataset.k3].pita)return;var K=THEMES[e.dataset.k3].k3,st=e.style;
+function swatchTheme3(id){var T=THEMES[id];return '<button class="sw" role="radio" aria-checked="'+(S.theme===id)+'" data-k="theme" data-v="'+id+'"><div class="p k3" data-k3="'+id+'"'+(T.pita?' data-pita="'+T.pita+'"':'')+(T.gul?' data-gulung="'+T.gul+'"':'')+'></div>'+T.n+'</button>'}
+function paint3D(){[].forEach.call(document.querySelectorAll('#sheet [data-k3]'),function(e){if(THEMES[e.dataset.k3].pita||THEMES[e.dataset.k3].gul)return;var K=THEMES[e.dataset.k3].k3,st=e.style;
   st.backgroundColor=K.k2;st.backgroundImage=[K.kgl,K.kpat,'linear-gradient(180deg,'+K.k1+','+K.k2+')'].join(',');st.backgroundSize=['100% 100%',K.kpsz,'100% 100%'].join(',');
   st.borderColor=K.ke;st.boxShadow='inset 0 1px 0 '+K.khl+',0 3px 0 '+K.ke})}
 function swatchTex(id){var T=TEXTURES[id],dk=!!THEMES[S.theme].dark;return '<button class="sw" role="radio" aria-checked="'+(S.tex===id)+'" data-k="tex" data-v="'+id+'"><div class="p tx" data-tx="'+id+'"></div>'+T.n+'</button>'}
