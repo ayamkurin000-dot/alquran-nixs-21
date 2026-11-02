@@ -2064,7 +2064,12 @@ if(document.fonts&&document.fonts.ready){
 }
 /* Service worker: cache aplikasi, font, dan doa.json supaya benar-benar bisa offline */
 if('serviceWorker' in navigator&&(location.protocol==='https:'||location.hostname==='localhost')){
-  window.addEventListener('load',function(){navigator.serviceWorker.register('sw.js').catch(function(){})});
+  window.addEventListener('load',function(){
+    var ada=!!navigator.serviceWorker.controller,muat=false;
+    /* versi baru aktif -> muat ulang sekali agar pengguna langsung melihat tampilan terbaru */
+    navigator.serviceWorker.addEventListener('controllerchange',function(){if(ada&&!muat){muat=true;location.reload()}});
+    navigator.serviceWorker.register('sw.js',{updateViaCache:'none'}).then(function(rg){rg.update().catch(function(){})}).catch(function(){});
+  });
 }
 })();
 </script>
