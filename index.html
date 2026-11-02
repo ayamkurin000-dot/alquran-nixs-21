@@ -751,6 +751,37 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;ba
   box-shadow:inset 0 0 26px rgba(var(--kpr,139,90,30),.65),inset 0 0 3px rgba(70,40,8,.7),0 2px 5px rgba(0,0,0,.45)}
 .dgnote b{font-weight:800}
 @media (prefers-reduced-motion:reduce){.dgs{transition:none}.dgbody{animation:none}}
+
+/* =====================================================================================
+   KARTU TAB Surat / Juz / Penanda: huruf KAPITAL seperti terukir, tampilan sama saat dipilih
+   maupun tidak. Pembeda hanya ikon power di kiri: HIJAU = terpilih, BIRU = tidak terpilih.
+   ===================================================================================== */
+.tabs .tab,.tabs .tab[aria-selected=true]{
+  position:relative;text-transform:uppercase;font-weight:800;letter-spacing:.09em;
+  font-size:clamp(11px,3.3vw,15px);
+  padding:11px 6px 11px 38px;white-space:nowrap;
+  color:color-mix(in srgb,var(--kt) 82%,#000);
+  /* ukiran: tepi bawah terang (cahaya), tepi atas gelap (cekungan) */
+  text-shadow:0 1.5px 0 rgba(255,255,255,.55),0 -1px 0 rgba(0,0,0,.45);
+  background-color:var(--k2);
+  background-image:var(--kgl),var(--kpat),linear-gradient(180deg,var(--k1),var(--k2));
+  background-size:100% 100%,var(--kpsz),100% 100%;
+  background-position:0 0;background-repeat:repeat;
+  border:2px solid var(--ke);transform:none;
+  box-shadow:var(--gx),inset 0 1.5px 0 var(--khl),0 4px 0 var(--ke),0 10px 14px -4px var(--ksh),0 18px 22px -10px rgba(0,0,0,.28)}
+html[data-fx^="glass"] .tabs .tab,html[data-fx^="glass"] .tabs .tab[aria-selected=true]{
+  background-image:var(--gimg),var(--kpat),linear-gradient(180deg,var(--k1),var(--k2));
+  background-size:var(--gsz),var(--kpsz),100% 100%;
+  background-position:var(--gpos),0 0,0 0,0 0;
+  background-repeat:var(--grep),repeat,repeat,repeat}
+html[data-fx="matte"] .tabs .tab,html[data-fx="matte"] .tabs .tab[aria-selected=true]{text-shadow:0 1.5px 0 rgba(255,255,255,.45),0 -1px 0 rgba(0,0,0,.4)!important}
+.tabs .tab:active,.tabs .tab[aria-selected=true]:active{transform:translateY(3px);
+  box-shadow:var(--gx),inset 0 1.5px 0 var(--khl),0 1px 0 var(--ke)}
+/* ikon power (kiri kartu) */
+.tabs .tab::before{content:'';position:absolute;left:9px;top:50%;width:26px;height:26px;margin-top:-13px;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cdefs%3E%3ClinearGradient id='r' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%23fafafa'/%3E%3Cstop offset='.5' stop-color='%238a8f94'/%3E%3Cstop offset='1' stop-color='%23eceff1'/%3E%3C/linearGradient%3E%3CradialGradient id='g' cx='.5' cy='.9' r='.95'%3E%3Cstop offset='0' stop-color='%237fd8f5'/%3E%3Cstop offset='.6' stop-color='%231aa3cf'/%3E%3Cstop offset='1' stop-color='%230a6a8c'/%3E%3C/radialGradient%3E%3C/defs%3E%3Ccircle cx='24' cy='24' r='23' fill='url(%23r)'/%3E%3Ccircle cx='24' cy='24' r='19.5' fill='url(%23g)'/%3E%3Cellipse cx='24' cy='13.5' rx='13.5' ry='7.5' fill='%23fff' opacity='.3'/%3E%3Cpath d='M16.93 17.57A11 11 0 1 0 31.07 17.57' fill='none' stroke='%23fff' stroke-width='3.2' stroke-linecap='round'/%3E%3Cpath d='M24 10V25' stroke='%23fff' stroke-width='3.2' stroke-linecap='round'/%3E%3C/svg%3E") center/contain no-repeat;
+  filter:drop-shadow(0 2px 2px rgba(0,0,0,.4));pointer-events:none}
+.tabs .tab[aria-selected=true]::before{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cdefs%3E%3ClinearGradient id='r' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%23fafafa'/%3E%3Cstop offset='.5' stop-color='%238a8f94'/%3E%3Cstop offset='1' stop-color='%23eceff1'/%3E%3C/linearGradient%3E%3CradialGradient id='g' cx='.5' cy='.9' r='.95'%3E%3Cstop offset='0' stop-color='%238dff6a'/%3E%3Cstop offset='.6' stop-color='%231db81c'/%3E%3Cstop offset='1' stop-color='%230a7a12'/%3E%3C/radialGradient%3E%3C/defs%3E%3Ccircle cx='24' cy='24' r='23' fill='url(%23r)'/%3E%3Ccircle cx='24' cy='24' r='19.5' fill='url(%23g)'/%3E%3Cellipse cx='24' cy='13.5' rx='13.5' ry='7.5' fill='%23fff' opacity='.3'/%3E%3Cpath d='M16.93 17.57A11 11 0 1 0 31.07 17.57' fill='none' stroke='%23fff' stroke-width='3.2' stroke-linecap='round'/%3E%3Cpath d='M24 10V25' stroke='%23fff' stroke-width='3.2' stroke-linecap='round'/%3E%3C/svg%3E")}
 </style>
 </head>
 <body>
