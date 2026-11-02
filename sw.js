@@ -1,7 +1,7 @@
 /* Service worker Al-Qur'an Digital
    Strategi: tampilkan dari cache dulu (cepat & offline), lalu perbarui cache di latar belakang.
    Update dari repo utama akan terlihat pada pembukaan berikutnya. Naikkan VERSI untuk membuang cache lama. */
-var VERSI = 'qk-v8';
+var VERSI = 'qk-v9';
 var INTI = ['./', 'index.html', 'doa.json', 'font/LPMQ-Isep-Misbah.ttf',
             'logo/foto-keluarga-kecil.jpg', 'logo/logo-nu.jpg'];
 

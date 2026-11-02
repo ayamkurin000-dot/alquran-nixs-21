@@ -873,6 +873,46 @@ html[data-gulung^="g"]:not(#_) .row .mid small,html[data-gulung^="g"]:not(#_) .r
 .sw .p.k3[data-gulung]{--gc:13px;--gw:14px;height:42px;border:0;border-radius:5px;
   background-color:var(--gb);background-image:var(--gbg);background-size:var(--gc) var(--gc),var(--gc) var(--gc),var(--gw) 100%,100% 100%,100% 100%;
   background-position:100% 100%,100% 100%,0 0,0 0,0 0;background-repeat:no-repeat;box-shadow:0 3px 0 var(--ge)}
+
+/* =====================================================================================
+   TEMA 3D TOMBOL PERAK 1-3: tombol pil kaca berwarna di dalam bingkai perak
+   ===================================================================================== */
+html[data-tombol="t1"],.sw .p[data-tombol="t1"]{--ta:#134f7a;--tb:#0a5f8c;--tt:#fff;--tts:0 1px 1px rgba(0,30,60,.65)}
+html[data-tombol="t2"],.sw .p[data-tombol="t2"]{--ta:#a24f2c;--tb:#d0703d;--tt:#fff;--tts:0 1px 1px rgba(70,25,5,.65)}
+html[data-tombol="t3"],.sw .p[data-tombol="t3"]{--ta:#6ea92e;--tb:#aacb1d;--tt:#12300a;--tts:0 1px 0 rgba(235,255,200,.6)}
+
+html[data-tombol^="t"],.sw .p[data-tombol]{
+  --tbez:linear-gradient(180deg,#fcfcfc 0%,#e4e5e6 42%,#c9cbcd 56%,#f1f1f2 100%);
+  --tin:linear-gradient(180deg,rgba(255,255,255,.52) 0%,rgba(255,255,255,.2) 48%,rgba(255,255,255,0) 52%),linear-gradient(180deg,var(--ta),var(--tb))}
+html[data-tombol^="t"]:not(#_) .row,html[data-tombol^="t"]:not(#_) .rcard,html[data-tombol^="t"]:not(#_) .tabs .tab,html[data-tombol^="t"]:not(#_) .tabs .tab[aria-selected=true],html[data-tombol^="t"]:not(#_) .hbx.tx{
+  --ti:7px;
+  position:relative;isolation:isolate;overflow:visible;content-visibility:visible;transform:none;
+  border:0;border-radius:999px;background:var(--tbez);
+  box-shadow:inset 0 0 0 1px rgba(0,0,0,.14),0 5px 6px -2px rgba(0,0,0,.45),0 12px 14px -8px rgba(0,0,0,.35);
+  color:var(--tt);text-shadow:var(--tts)}
+html[data-tombol^="t"]:not(#_) .row{padding:12px 30px 12px 26px}
+html[data-tombol^="t"]:not(#_) .rcard{border-radius:34px;padding-left:28px}
+html[data-tombol^="t"]:not(#_) .hbx.tx{border-radius:30px;overflow:hidden}
+html[data-tombol^="t"]:not(#_) .hbx.tx .hpat{display:none}
+html[data-tombol^="t"]:not(#_) .tabs .tab,html[data-tombol^="t"]:not(#_) .tabs .tab[aria-selected=true]{--ti:5px;padding:12px 6px 12px 40px;text-shadow:var(--tts);color:var(--tt)}
+html[data-tombol^="t"]:not(#_) .tabs .tab::before{z-index:2;left:13px;width:24px;height:24px;margin-top:-12px}
+html[data-tombol^="t"]:not(#_) .tabs .tab,html[data-tombol^="t"]:not(#_) .tabs .tab[aria-selected=true]{padding-left:46px;padding-right:4px;letter-spacing:.05em;font-size:clamp(10px,3vw,14px)}
+html[data-tombol^="t"]:not(#_) .hdoa,html[data-tombol^="t"]:not(#_) .hmri{font-size:clamp(10px,2.9vw,14px);letter-spacing:.03em}
+html[data-tombol^="t"]:not(#_) .row:active,html[data-tombol^="t"]:not(#_) .rcard:active,html[data-tombol^="t"]:not(#_) .tabs .tab:active{transform:translateY(2px)}
+/* tombol kaca di dalam bingkai */
+html[data-tombol^="t"]:not(#_) .row::after,html[data-tombol^="t"]:not(#_) .rcard::after,html[data-tombol^="t"]:not(#_) .tabs .tab::after,html[data-tombol^="t"]:not(#_) .hbx.tx::after{
+  content:'';display:block;position:absolute;inset:var(--ti);width:auto;height:auto;margin:0;border:0;border-radius:inherit;z-index:-1;pointer-events:none;
+  background:var(--tin);
+  box-shadow:0 0 0 1.5px rgba(0,0,0,.30),inset 0 2px 3px rgba(0,0,0,.35),0 2px 0 1.5px #fff}
+html[data-tombol^="t"]:not(#_) .rcard::after,html[data-tombol^="t"]:not(#_) .hbx.tx::after{border-radius:27px}
+html[data-tombol^="t"]:not(#_) .row .row{background:none;border:0;box-shadow:none;border-radius:0;padding:0;margin:0;isolation:auto}
+html[data-tombol^="t"]:not(#_) .row .row::after,html[data-tombol^="t"]:not(#_) .row .row::before{display:none}
+/* teks */
+html[data-tombol^="t"]:not(#_) .row .mid b,html[data-tombol^="t"]:not(#_) .rcard b,html[data-tombol^="t"]:not(#_) .row .nm,html[data-tombol^="t"]:not(#_) .rcard .go,html[data-tombol^="t"]:not(#_) .hdoa,html[data-tombol^="t"]:not(#_) .hmri,html[data-tombol^="t"]:not(#_) #hero-logo,html[data-tombol^="t"]:not(#_) #credit{color:var(--tt);text-shadow:var(--tts);opacity:1}
+html[data-tombol^="t"]:not(#_) .row .mid small,html[data-tombol^="t"]:not(#_) .rcard small{color:var(--tt);opacity:.88}
+/* pratinjau di menu Tema 3D */
+.sw .p.k3[data-tombol]{position:relative;height:42px;border:0;border-radius:999px;background:var(--tbez);box-shadow:inset 0 0 0 1px rgba(0,0,0,.14),0 3px 4px -1px rgba(0,0,0,.4)}
+.sw .p.k3[data-tombol]::after{content:'';position:absolute;inset:5px;border-radius:999px;background:var(--tin);box-shadow:0 0 0 1px rgba(0,0,0,.3),inset 0 1.5px 2px rgba(0,0,0,.35)}
 </style>
 </head>
 <body>
@@ -1072,6 +1112,7 @@ function mk3(n,o){
   return T}
 function mkp(n,o,v){var T=mk3(n,o);T.pita=v;return T}
 function mkg(n,o,v){var T=mk3(n,o);T.gul=v;return T}
+function mkt(n,o,v){var T=mk3(n,o);T.tmb=v;return T}
 var THEMES3={
   k3hijau:mk3('3D Hijau Muda',{tex:'p-bercak',c1:'#d3e9b4',c2:'#9cc873',ed:'#4f7d33',acc:'#2f6a2a',g:'#a8892f',bg:'#cfe0b0',paper:'#dfecc8',ink:'#16280f'}),
   k3biru:mk3('3D Biru Muda',{tex:'c-lembut',c1:'#d3e8f8',c2:'#93c3ea',ed:'#3f7bab',acc:'#1f5f8b',g:'#b08d2e',bg:'#cddbe6',paper:'#eaf0f4',ink:'#0f2233'}),
@@ -1100,7 +1141,10 @@ var THEMES3={
   k3gul2:mkg('3D Gulungan Kuning',{c1:'#fbbd45',c2:'#f6b33c',ed:'#b07a14',acc:'#a8700f',g:'#7a4410',kt:'#4a2d06',bg:'#f3e5bd',paper:'#fbf4dc',ink:'#33220a'},'g2'),
   k3gul3:mkg('3D Gulungan Tosca',{lt:1,c1:'#2dbba9',c2:'#1fa99b',ed:'#127068',acc:'#117a70',g:'#a8892f',ka:'#fff2e4',kt:'#ffffff',bg:'#cfe9e4',paper:'#ecf7f5',ink:'#0c2a27'},'g3'),
   k3gul4:mkg('3D Gulungan Biru',{lt:1,c1:'#2c93c9',c2:'#1d7fb8',ed:'#0f5686',acc:'#13608f',g:'#b08d2e',ka:'#fff2e4',kt:'#ffffff',bg:'#cfe1ee',paper:'#ebf3f9',ink:'#0e2233'},'g4'),
-  k3gul5:mkg('3D Gulungan Ungu',{lt:1,c1:'#8b6bb0',c2:'#6f4f9a',ed:'#47306c',acc:'#533a7c',g:'#b0862c',ka:'#fff2e4',kt:'#ffffff',bg:'#dcd3e8',paper:'#f0ecf6',ink:'#1e1830'},'g5')
+  k3gul5:mkg('3D Gulungan Ungu',{lt:1,c1:'#8b6bb0',c2:'#6f4f9a',ed:'#47306c',acc:'#533a7c',g:'#b0862c',ka:'#fff2e4',kt:'#ffffff',bg:'#dcd3e8',paper:'#f0ecf6',ink:'#1e1830'},'g5'),
+  k3tmb1:mkt('3D Tombol Perak Biru',{lt:1,c1:'#6fa0bd',c2:'#0b5a85',ed:'#08405e',acc:'#134f7a',g:'#b08d2e',ka:'#fff2e4',kt:'#ffffff',bg:'#cfdde8',paper:'#ecf2f7',ink:'#0e2233'},'t1'),
+  k3tmb2:mkt('3D Tombol Perak Cokelat',{lt:1,c1:'#d3a08c',c2:'#b5582f',ed:'#7a3a1c',acc:'#a24f2c',g:'#b08d2e',ka:'#fff2e4',kt:'#ffffff',bg:'#ecd9cd',paper:'#f8eee6',ink:'#2e160a'},'t2'),
+  k3tmb3:mkt('3D Tombol Perak Hijau',{c1:'#a6c820',c2:'#6ea92e',ed:'#3f6e1a',acc:'#4f7d1c',g:'#a8892f',kt:'#12300a',bg:'#dfe9c4',paper:'#f1f6e2',ink:'#16280f'},'t3')
 };
 var THEME3_ORDER=Object.keys(THEMES3);
 Object.keys(THEMES3).forEach(function(k){THEMES[k]=THEMES3[k]});
@@ -1302,7 +1346,7 @@ function applyTheme(){
   ['bg','paper','ink','ink2','accent','accent2','nfill','nink'].forEach(function(k){r.setProperty('--'+k,T[k])});
   r.colorScheme=T.dark?'dark':'light';r.setProperty('--h1',T.dark?'13%':'26%');r.setProperty('--h2',T.dark?'6%':'13%');r.setProperty('--h3',T.dark?'4%':'9%');r.setProperty('--h4',T.dark?'11%':'24%');
   $('metatheme').setAttribute('content',T.bg);
-  document.documentElement.setAttribute('data-fx',S.fx||'none');document.documentElement.setAttribute('data-pita',T.pita||'');document.documentElement.setAttribute('data-gulung',T.gul||'');r.setProperty('--gdk',(T.dark||T.lt)?'1':'0');
+  document.documentElement.setAttribute('data-fx',S.fx||'none');document.documentElement.setAttribute('data-pita',T.pita||'');document.documentElement.setAttribute('data-gulung',T.gul||'');document.documentElement.setAttribute('data-tombol',T.tmb||'');r.setProperty('--gdk',(T.dark||T.lt)?'1':'0');
   var tx=TEXTURES[S.tex];
   r.setProperty('--tex',texURI(S.tex,!!T.dark));
   /* top bar: versi gelap dari warna tema (gradasi) + teks terang */
@@ -1570,8 +1614,8 @@ window.addEventListener('hashchange',route);
    ===================================================================== */
 var sheetOpener=null;
 function swatchTheme(id){var T=THEMES[id];return '<button class="sw" role="radio" aria-checked="'+(S.theme===id)+'" data-k="theme" data-v="'+id+'"><div class="p th">'+[T.bg,T.paper,T.accent,T.accent2].map(function(c){return '<i style="background:'+c+'"></i>'}).join('')+'</div>'+T.n+'</button>'}
-function swatchTheme3(id){var T=THEMES[id];return '<button class="sw" role="radio" aria-checked="'+(S.theme===id)+'" data-k="theme" data-v="'+id+'"><div class="p k3" data-k3="'+id+'"'+(T.pita?' data-pita="'+T.pita+'"':'')+(T.gul?' data-gulung="'+T.gul+'"':'')+'></div>'+T.n+'</button>'}
-function paint3D(){[].forEach.call(document.querySelectorAll('#sheet [data-k3]'),function(e){if(THEMES[e.dataset.k3].pita||THEMES[e.dataset.k3].gul)return;var K=THEMES[e.dataset.k3].k3,st=e.style;
+function swatchTheme3(id){var T=THEMES[id];return '<button class="sw" role="radio" aria-checked="'+(S.theme===id)+'" data-k="theme" data-v="'+id+'"><div class="p k3" data-k3="'+id+'"'+(T.pita?' data-pita="'+T.pita+'"':'')+(T.gul?' data-gulung="'+T.gul+'"':'')+(T.tmb?' data-tombol="'+T.tmb+'"':'')+'></div>'+T.n+'</button>'}
+function paint3D(){[].forEach.call(document.querySelectorAll('#sheet [data-k3]'),function(e){if(THEMES[e.dataset.k3].pita||THEMES[e.dataset.k3].gul||THEMES[e.dataset.k3].tmb)return;var K=THEMES[e.dataset.k3].k3,st=e.style;
   st.backgroundColor=K.k2;st.backgroundImage=[K.kgl,K.kpat,'linear-gradient(180deg,'+K.k1+','+K.k2+')'].join(',');st.backgroundSize=['100% 100%',K.kpsz,'100% 100%'].join(',');
   st.borderColor=K.ke;st.boxShadow='inset 0 1px 0 '+K.khl+',0 3px 0 '+K.ke})}
 function swatchTex(id){var T=TEXTURES[id],dk=!!THEMES[S.theme].dark;return '<button class="sw" role="radio" aria-checked="'+(S.tex===id)+'" data-k="tex" data-v="'+id+'"><div class="p tx" data-tx="'+id+'"></div>'+T.n+'</button>'}
