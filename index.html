@@ -787,6 +787,49 @@ html[data-fx="matte"] .tabs .tab,html[data-fx="matte"] .tabs .tab[aria-selected=
   0%,100%{filter:drop-shadow(0 2px 2px rgba(0,0,0,.4)) brightness(1.05);opacity:1}
   50%{filter:drop-shadow(0 0 7px rgba(80,255,70,.95)) drop-shadow(0 0 2px rgba(190,255,170,.9)) brightness(1.5);opacity:.55}}
 .tabs .tab[aria-selected=true]::before{animation:powerKedip 1.1s ease-in-out infinite}
+
+/* =====================================================================================
+   EFEK PITA 1-3: kartu bentuk pil mengkilap dengan pita melengkung di tengah atas
+   (dipilih di Pengaturan > Tema > Efek). Berlaku untuk kartu surat/juz/penanda, tab, dan kartu teks depan.
+   ===================================================================================== */
+html[data-fx="pita1"],.fxp[data-fx="pita1"]{--pa:#f36a22;--pb:#ee2224;--pr:#f57a30;--pl:rgba(205,30,28,.85);--pe:#a31212;--pt:#fff;--pt2:rgba(255,255,255,.9);--pts:0 1px 1px rgba(110,0,0,.6);--pri:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 30' preserveAspectRatio='none'%3E%3Cdefs%3E%3ClinearGradient id='b' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%236f93d4'/%3E%3Cstop offset='1' stop-color='%2327318f'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M6 6Q16 1 29 4L37 21Q16 19 6 6Z' fill='%231c2270'/%3E%3Cpath d='M194 6Q184 1 171 4L163 21Q184 19 194 6Z' fill='%231c2270'/%3E%3Cpath d='M24 4C36 1 38 4 41 12C43 24 48 29 58 29L142 29C152 29 157 24 159 12C162 4 164 1 176 4C150 0 50 0 24 4Z' fill='url(%23b)'/%3E%3Cpath d='M60 28.2L140 28.2' stroke='rgba(255,255,255,.35)' stroke-width='.8'/%3E%3C/svg%3E")}
+html[data-fx="pita2"],.fxp[data-fx="pita2"]{--pa:#fdc815;--pb:#f78e1e;--pr:#fdc81a;--pl:rgba(214,104,30,.85);--pe:#b5600d;--pt:#4a2406;--pt2:#6b3a10;--pts:0 1px 0 rgba(255,238,160,.65);--pri:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 30' preserveAspectRatio='none'%3E%3Cdefs%3E%3ClinearGradient id='b' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%23f46b7c'/%3E%3Cstop offset='1' stop-color='%2385261c'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M6 6Q16 1 29 4L37 21Q16 19 6 6Z' fill='%236e1a14'/%3E%3Cpath d='M194 6Q184 1 171 4L163 21Q184 19 194 6Z' fill='%236e1a14'/%3E%3Cpath d='M24 4C36 1 38 4 41 12C43 24 48 29 58 29L142 29C152 29 157 24 159 12C162 4 164 1 176 4C150 0 50 0 24 4Z' fill='url(%23b)'/%3E%3Cpath d='M60 28.2L140 28.2' stroke='rgba(255,255,255,.35)' stroke-width='.8'/%3E%3C/svg%3E")}
+html[data-fx="pita3"],.fxp[data-fx="pita3"]{--pa:#79c957;--pb:#69bb42;--pr:#82cf66;--pl:rgba(50,150,50,.8);--pe:#3b7c24;--pt:#143808;--pt2:#2a5816;--pts:0 1px 0 rgba(225,255,205,.6);--pri:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 30' preserveAspectRatio='none'%3E%3Cdefs%3E%3ClinearGradient id='b' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%23f4ec5c'/%3E%3Cstop offset='1' stop-color='%235b8a2b'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M6 6Q16 1 29 4L37 21Q16 19 6 6Z' fill='%233f6e1f'/%3E%3Cpath d='M194 6Q184 1 171 4L163 21Q184 19 194 6Z' fill='%233f6e1f'/%3E%3Cpath d='M24 4C36 1 38 4 41 12C43 24 48 29 58 29L142 29C152 29 157 24 159 12C162 4 164 1 176 4C150 0 50 0 24 4Z' fill='url(%23b)'/%3E%3Cpath d='M60 28.2L140 28.2' stroke='rgba(255,255,255,.35)' stroke-width='.8'/%3E%3C/svg%3E")}
+
+html[data-fx^="pita"] .row,html[data-fx^="pita"] .rcard,html[data-fx^="pita"] .tabs .tab,html[data-fx^="pita"] .tabs .tab[aria-selected=true],html[data-fx^="pita"] .hbx.tx{
+  position:relative;overflow:visible;content-visibility:visible;
+  background-color:var(--pb);
+  background-image:linear-gradient(180deg,rgba(255,255,255,.26) 0%,rgba(255,255,255,0) 46%),linear-gradient(180deg,var(--pa),var(--pb));
+  background-size:100% 100%,100% 100%;background-position:0 0,0 0;background-repeat:no-repeat;
+  border:3px solid var(--pr);
+  box-shadow:inset 0 0 0 1.5px var(--pl),inset 0 -10px 14px rgba(0,0,0,.10),0 4px 0 var(--pe),0 10px 14px -5px rgba(0,0,0,.38);
+  color:var(--pt);text-shadow:var(--pts)}
+html[data-fx^="pita"] .row{border-radius:999px;padding:14px 24px 10px 18px;margin-top:11px}
+html[data-fx^="pita"] .rcard{border-radius:34px;margin-top:11px}
+html[data-fx^="pita"] .tabs .tab,html[data-fx^="pita"] .tabs .tab[aria-selected=true]{border-radius:999px;margin-top:8px;transform:none;
+  letter-spacing:.09em;text-shadow:var(--pts)}
+html[data-fx^="pita"] .hbx.tx{border-radius:30px}
+html[data-fx^="pita"] .row:active,html[data-fx^="pita"] .rcard:active{box-shadow:inset 0 0 0 1.5px var(--pl),inset 0 3px 10px rgba(0,0,0,.28),0 1px 0 var(--pe)}
+html[data-fx^="pita"] .tabs .tab:active{transform:translateY(3px);box-shadow:inset 0 0 0 1.5px var(--pl),0 1px 0 var(--pe)}
+/* pita melengkung */
+html[data-fx^="pita"] .row::after,html[data-fx^="pita"] .rcard::after,html[data-fx^="pita"] .tabs .tab::after,html[data-fx^="pita"] .hbx.tx::after{
+  content:'';display:block;position:absolute;inset:auto;left:50%;top:-14px;width:58%;height:22px;margin:0;border:0;border-radius:0;
+  transform:translateX(-50%);background:var(--pri) center/100% 100% no-repeat;pointer-events:none;z-index:4;
+  filter:drop-shadow(0 1.5px 1px rgba(0,0,0,.3))}
+html[data-fx^="pita"] .tabs .tab::after{height:17px;top:-11px;width:50%}
+html[data-fx^="pita"] .hbx.tx::after{top:-12px;width:60%}
+/* teks */
+html[data-fx^="pita"] .row .mid b,html[data-fx^="pita"] .rcard b,html[data-fx^="pita"] .row .nm,html[data-fx^="pita"] .rcard .go,
+html[data-fx^="pita"] .hdoa,html[data-fx^="pita"] .hmri,html[data-fx^="pita"] #hero-logo,html[data-fx^="pita"] #credit{color:var(--pt);text-shadow:var(--pts);opacity:1}
+html[data-fx^="pita"] .row .mid small,html[data-fx^="pita"] .rcard small{color:var(--pt2)}
+html[data-fx^="pita"] .tabs .tab,html[data-fx^="pita"] .tabs .tab[aria-selected=true]{color:var(--pt)}
+html[data-fx^="pita"] .row .row{background:none;border:0;box-shadow:none;border-radius:0;padding:0;margin:0}
+html[data-fx^="pita"] .row .row::after{display:none}
+/* pratinjau di menu Tema */
+.fxp[data-fx^="pita"] i{background-color:var(--pb);background-image:var(--pri),linear-gradient(180deg,var(--pa),var(--pb));background-size:64% 13px,100% 100%;background-position:50% 0,0 0;background-repeat:no-repeat;
+  border:2px solid var(--pr);border-radius:15px;box-shadow:inset 0 0 0 1px var(--pl),0 2px 0 var(--pe),0 4px 7px rgba(0,0,0,.3)}
+.fxp[data-fx^="pita"] i::before{top:14px;height:3px;background:var(--pt)}
+.fxp[data-fx^="pita"] i::after{top:20px;height:3px;background:var(--pt)}
 </style>
 </head>
 <body>
@@ -1067,7 +1110,7 @@ var FRAMES={
 var FRAME_ORDER=Object.keys(FRAMES);
 
 /* EFEK PERMUKAAN: dipilih di Pengaturan > Tema. none = 3D mengkilap bawaan; matte = 3D tanpa kilap; glass1..6 = kilap kaca DI ATAS tekstur 3D (tekstur tema tidak hilang; glass6 = mengkilap) (CSS ada di blok "EFEK PERMUKAAN") */
-var FX={none:{n:'Standar'},matte:{n:'Matte'},glass1:{n:'Kaca 1 \u00b7 Tipis'},glass2:{n:'Kaca 2 \u00b7 Berair'},glass3:{n:'Kaca 3 \u00b7 Buram'},glass4:{n:'Kaca 4 \u00b7 Kristal'},glass5:{n:'Kaca 5 \u00b7 Cair'},glass6:{n:'Kaca 6 \u00b7 Kilap'}};
+var FX={none:{n:'Standar'},matte:{n:'Matte'},glass1:{n:'Kaca 1 \u00b7 Tipis'},glass2:{n:'Kaca 2 \u00b7 Berair'},glass3:{n:'Kaca 3 \u00b7 Buram'},glass4:{n:'Kaca 4 \u00b7 Kristal'},glass5:{n:'Kaca 5 \u00b7 Cair'},glass6:{n:'Kaca 6 \u00b7 Kilap'},pita1:{n:'Pita 1 \u00b7 Jingga'},pita2:{n:'Pita 2 \u00b7 Kuning'},pita3:{n:'Pita 3 \u00b7 Hijau'}};
 var FX_ORDER=Object.keys(FX);
 
 var DEF={font:'lpmq',theme:'k3gold',tex:'w-tegak',frame:'none',fx:'glass2',ar:22,trs:1,showTr:false};
@@ -1487,7 +1530,7 @@ function buildSheet(){
   FONT_ORDER.forEach(function(id){var F=FONTS[id];h+='<button class="opt" role="radio" aria-checked="'+(S.font===id)+'" data-k="font" data-v="'+id+'"><span>'+F.n+(F.note?'<small>'+F.note+'</small>':'')+'</span><span class="s" lang="ar" style="font-family:'+F.st.replace(/"/g,"'")+'">بِسْمِ اللّٰهِ</span></button>'});
   h+='</div><h3>Ukuran terjemahan</h3><div class="row2s"><label for="trs">Terjemah</label><input type="range" id="trs" min="0.8" max="1.5" step="0.05" value="'+S.trs+'" aria-label="Ukuran terjemahan"></div>';
   h+='<h3>Tema 3D &mdash; kartu depan &amp; Do&#39;a &amp; Bacaan</h3><div class="grid" role="radiogroup" aria-label="Tema 3D">'+THEME3_ORDER.map(swatchTheme3).join('')+'</div><h3>Warna klasik</h3><div class="grid" role="radiogroup" aria-label="Tema warna">'+THEME_ORDER.map(swatchTheme).join('')+'</div>';
-  h+='<h3>Efek &mdash; Matte &amp; Kaca</h3><div class="grid" role="radiogroup" aria-label="Efek permukaan">'+FX_ORDER.map(swatchFx).join('')+'</div>';
+  h+='<h3>Efek &mdash; Matte, Kaca &amp; Pita</h3><div class="grid" role="radiogroup" aria-label="Efek permukaan">'+FX_ORDER.map(swatchFx).join('')+'</div>';
   h+='<h3>Tekstur kertas</h3><div class="grid" role="radiogroup" aria-label="Tekstur">'+TEX_ORDER.map(swatchTex).join('')+'</div>';
   h+='<h3>Bingkai</h3><div class="grid" role="radiogroup" aria-label="Bingkai">'+FRAME_ORDER.map(swatchFrame).join('')+'</div>';
   h+='<button class="reset" id="rst">Kembalikan ke bawaan</button>';
