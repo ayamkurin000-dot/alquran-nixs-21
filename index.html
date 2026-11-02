@@ -1327,11 +1327,24 @@ var MEDAL={ring:17.4,pad:1.6,cap:{1:.50,2:.44,3:.36}};
 /* Ukuran ditentukan dari KOTAK TINTA hasil ukur (bukan font-size): digit LPMQ sangat pendek (±0,29em).
    s = min(batas tinggi per jumlah digit, batas agar sudut kotak tinta tetap di dalam cincin).
    Pusat TINTA angka = pusat medali (24,24). */
+var _mk={};
+function medalK(fn,rf){
+  if(_mk[fn])return _mk[fn];
+  var kmin=Infinity,ok=false;
+  for(var n=1;n<=286;n++){
+    var str=toAr(n),b=inkBox(str,fn);
+    if(!b.w||!b.h)return 0.3;                           // font belum siap: jangan simpan, hitung ulang nanti
+    var cap=MEDAL.cap[Math.min(3,str.length)]*48;
+    var k=Math.min(cap/b.h,2*rf/Math.hypot(b.w,b.h));
+    if(k<kmin)kmin=k;ok=true;
+  }
+  if(ok)_mk[fn]=kmin;
+  return kmin;
+}
 function medalCalc(num){
   var str=toAr(num),b=inkBox(str,fontName()),rf=MEDAL.ring-MEDAL.pad;
   if(!b.w||!b.h){return[24,35.7,80]}                   // font belum siap: perkiraan, dihitung ulang saat siap
-  var cap=MEDAL.cap[Math.min(3,str.length)]*48;
-  var k=Math.min(cap/b.h,2*rf/Math.hypot(b.w,b.h));   // satuan viewBox per piksel ukur (font 100px)
+  var k=medalK(fontName(),rf);   // satu ukuran huruf untuk SEMUA nomor (acuan: yang terkecil, mis. 114); tetap di tengah bingkai
   return[24-b.cx*k,24+b.cy*k,100*k];
 }
 function medalSVG(num,cls){
