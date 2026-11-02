@@ -948,6 +948,11 @@ html[data-neon^="n"]:not(#_) body::before{background:none}
 html[data-neon^="n"]:not(#_) #doa{background-color:#03050b;background-image:var(--bgimg);background-size:var(--bgsz);background-repeat:repeat}
 /* pratinjau di menu Tema 3D */
 .sw .p.k3[data-neon]{height:42px;border-radius:999px;border:2.5px solid var(--nl);background:#070b14;box-shadow:0 0 3px var(--nl),0 0 9px var(--nc),inset 0 0 6px var(--nc)}
+
+/* ---- teks tab SURAT/JUZ/PENANDA: tepat di tengah, diukur dari tepi kanan ikon power ke bingkai kanan ---- */
+.tabs .tab,.tabs .tab[aria-selected=true]{text-align:center!important;white-space:nowrap;letter-spacing:.02em!important;font-size:clamp(9px,2.7vw,13px)!important;padding-left:41px!important;padding-right:6px!important}
+html[data-gulung^="g"] .tabs .tab,html[data-gulung^="g"] .tabs .tab[aria-selected=true]{padding-left:49px!important;padding-right:6px!important}
+html[data-tombol^="t"] .tabs .tab,html[data-tombol^="t"] .tabs .tab[aria-selected=true],html[data-neon^="n"] .tabs .tab,html[data-neon^="n"] .tabs .tab[aria-selected=true]{padding-left:43px!important;padding-right:6px!important}
 </style>
 </head>
 <body>
