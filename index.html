@@ -2185,5 +2185,73 @@ if('serviceWorker' in navigator&&(location.protocol==='https:'||location.hostnam
 }
 })();
 </script>
+
+<script>
+/* Geser dengan mouse: klik-tahan lalu seret untuk menggulir (daftar, pembaca, Do'a & Bacaan, pengaturan).
+   Roda mouse tetap bekerja seperti biasa. Tahan Shift/Ctrl/Alt saat menyeret bila ingin menyeleksi teks. */
+(function(){
+  var st=null,swallow=false,raf=0;
+  var css=document.createElement('style');
+  css.textContent='html.drg,html.drg *{cursor:grabbing!important;-webkit-user-select:none!important;user-select:none!important}';
+  document.head.appendChild(css);
+  function scrollerOf(el){
+    while(el&&el!==document.body&&el!==document.documentElement){
+      if(el.nodeType===1){
+        var cs=getComputedStyle(el),oy=cs.overflowY,ox=cs.overflowX;
+        if(((oy==='auto'||oy==='scroll')&&el.scrollHeight>el.clientHeight+1)||((ox==='auto'||ox==='scroll')&&el.scrollWidth>el.clientWidth+1))return el;
+      }
+      el=el.parentNode;
+    }
+    return document.scrollingElement||document.documentElement;
+  }
+  function pos(s){return s===document.scrollingElement||s===document.documentElement?{x:window.pageXOffset,y:window.pageYOffset}:{x:s.scrollLeft,y:s.scrollTop}}
+  function to(s,x,y){if(s===document.scrollingElement||s===document.documentElement)window.scrollTo(x,y);else{s.scrollLeft=x;s.scrollTop=y}}
+  function inScrollbar(s,e){
+    if(s===document.scrollingElement||s===document.documentElement)return e.clientX>=document.documentElement.clientWidth||e.clientY>=document.documentElement.clientHeight;
+    var r=s.getBoundingClientRect();return e.clientX>r.left+s.clientWidth||e.clientY>r.top+s.clientHeight;
+  }
+  document.addEventListener('mousedown',function(e){
+    if(e.button!==0||e.shiftKey||e.ctrlKey||e.altKey||e.metaKey)return;
+    cancelAnimationFrame(raf);
+    var t=e.target;
+    if(t.closest&&t.closest('input,textarea,select,[contenteditable="true"]'))return;
+    var s=scrollerOf(t);
+    if(inScrollbar(s,e))return;
+    var p=pos(s);
+    st={s:s,sx:e.clientX,sy:e.clientY,ox:p.x,oy:p.y,drag:false,lx:e.clientX,ly:e.clientY,lt:Date.now(),vx:0,vy:0};
+  },true);
+  document.addEventListener('mousemove',function(e){
+    if(!st)return;
+    if(!(e.buttons&1)){st=null;document.documentElement.classList.remove('drg');return}
+    var dx=e.clientX-st.sx,dy=e.clientY-st.sy;
+    if(!st.drag){
+      if(Math.abs(dx)<5&&Math.abs(dy)<5)return;
+      st.drag=true;document.documentElement.classList.add('drg');
+      var g=window.getSelection&&window.getSelection();if(g&&g.removeAllRanges)g.removeAllRanges();
+    }
+    var now=Date.now(),dt=Math.max(1,now-st.lt);
+    st.vx=(st.lx-e.clientX)/dt;st.vy=(st.ly-e.clientY)/dt;st.lx=e.clientX;st.ly=e.clientY;st.lt=now;
+    to(st.s,st.ox-dx,st.oy-dy);
+    e.preventDefault();
+  },true);
+  function end(){
+    if(!st)return;
+    var s=st;st=null;document.documentElement.classList.remove('drg');
+    if(!s.drag)return;
+    swallow=true;setTimeout(function(){swallow=false},0);
+    if(Date.now()-s.lt>80)return;
+    var vx=s.vx*16,vy=s.vy*16;   /* sedikit gerak lanjut setelah dilepas */
+    (function step(){
+      if(Math.abs(vx)<.5&&Math.abs(vy)<.5)return;
+      var p=pos(s.s);to(s.s,p.x+vx,p.y+vy);
+      vx*=.93;vy*=.93;raf=requestAnimationFrame(step);
+    })();
+  }
+  document.addEventListener('mouseup',end,true);
+  window.addEventListener('blur',function(){st=null;document.documentElement.classList.remove('drg')});
+  document.addEventListener('click',function(e){if(swallow){e.stopPropagation();e.preventDefault();swallow=false}},true);
+  document.addEventListener('wheel',function(){cancelAnimationFrame(raf)},{passive:true});
+})();
+</script>
 </body>
 </html>
