@@ -1135,7 +1135,7 @@ html[data-tombol^="t"]:not([data-tombol="t1"],[data-tombol="t2"],[data-tombol="t
   <div id="doa-top">
     <button class="ib" id="doa-back" type="button" aria-label="Kembali"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
     <div class="ttl"><b id="doa-ttl"></b><small id="doa-sub"></small></div>
-    <button class="dtg" id="doa-lat" type="button" aria-pressed="true" aria-label="Tampilkan atau sembunyikan tulisan Latin">Latin</button><button class="dtg" id="doa-arti" type="button" aria-pressed="true" aria-label="Tampilkan atau sembunyikan arti atau terjemah">Arti</button><button class="ib" id="doa-set" type="button" aria-label="Pengaturan tampilan" aria-haspopup="dialog"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h9M17 7h3M4 17h3M11 17h9"/><circle cx="15" cy="7" r="2.2"/><circle cx="9" cy="17" r="2.2"/></svg></button>
+    <button class="dtg" id="doa-lat" type="button" aria-pressed="false" aria-label="Tampilkan atau sembunyikan tulisan Latin">Latin</button><button class="dtg" id="doa-arti" type="button" aria-pressed="false" aria-label="Tampilkan atau sembunyikan arti atau terjemah">Arti</button><button class="ib" id="doa-set" type="button" aria-label="Pengaturan tampilan" aria-haspopup="dialog"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h9M17 7h3M4 17h3M11 17h9"/><circle cx="15" cy="7" r="2.2"/><circle cx="9" cy="17" r="2.2"/></svg></button>
   </div>
   <div id="doa-q"><label class="qbox"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><input id="doa-qi" type="search" placeholder="Cari do’a… (mis. qunut, iftitah, tahlil)" autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="search" aria-label="Cari do’a"><button id="doa-qx" type="button" aria-label="Hapus pencarian" hidden>&times;</button></label></div>
   <div id="doa-scroll"><div class="wrap" id="doa-body"></div></div>
@@ -1827,8 +1827,8 @@ $('bset').onclick=function(){openSheet($('bset'))};
 $('doa-set').onclick=function(){openSheet($('doa-set'))};
 /* tampil/sembunyi Latin & Arti di Do'a & Bacaan; pilihan diingat di perangkat */
 (function(){
-  var K='qk.doa.tampil',st={lat:true,arti:true};
-  try{var v=JSON.parse(localStorage.getItem(K)||'null');if(v){st.lat=v.lat!==false;st.arti=v.arti!==false}}catch(e){}
+  var K='qk.doa.tampil2',st={lat:false,arti:false};   /* bawaan: Latin & Arti disembunyikan; kunci baru supaya pilihan lama tidak menimpa */
+  try{var v=JSON.parse(localStorage.getItem(K)||'null');if(v){st.lat=v.lat===true;st.arti=v.arti===true}}catch(e){}
   function apply(){
     var d=$('doa');d.classList.toggle('nolatin',!st.lat);d.classList.toggle('noarti',!st.arti);
     $('doa-lat').setAttribute('aria-pressed',st.lat?'true':'false');
