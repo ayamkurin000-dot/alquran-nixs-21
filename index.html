@@ -1904,7 +1904,7 @@ function doaSubs(it){
   var h=it.sh?'<p class="dlb dsh">'+dEsc(it.sh)+'</p>':'';
   it.sub.forEach(function(s){
     var bg=dBadge(s);
-    h+='<div class="dsub"><div class="dsn"><span>'+dEsc(s.n)+'</span>'+bg+'</div>'+dAr(s.a)+(s.l?'<p class="dla">'+dEsc(s.l)+'</p>':'')+(s.t?'<p class="dtr">'+dEsc(s.t)+'</p>':'')+dMeta('Dasar tuntunan',s.dt)+dMeta('Waktu membaca',s.k)+dMeta('Adab',s.d)+dMeta('Sumber',s.s)+dChk(s.v)+'</div>'
+    h+='<div class="dsub"><div class="dsn"><span>'+dEsc(s.n)+'</span>'+bg+'</div>'+dAr(s.a)+(s.l?'<p class="dla">'+dEsc(s.l)+'</p>':'')+(s.t?'<p class="dtr">'+dEsc(s.t)+'</p>':'')+dMeta('Dasar tuntunan',s.dt)+dMeta('Keutamaan',s.f)+dMeta('Waktu membaca',s.k)+dMeta('Adab',s.d)+dMeta('Sumber',s.s)+dChk(s.v)+'</div>'
   });
   return h
 }
