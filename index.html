@@ -232,7 +232,7 @@ input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;bac
 #bnav{position:fixed;left:0;right:0;bottom:0;z-index:20;display:flex;justify-content:center;padding:0 8px calc(8px + env(safe-area-inset-bottom));pointer-events:none}
 #bnav .pl{pointer-events:auto;position:relative;width:100%;max-width:520px;padding:8px 10px 11px;border-radius:22px;color:#cfe9ff;animation:logoIn .2s both}
 #bnav .pl::before{content:'';position:absolute;inset:0;border-radius:inherit;background:var(--pb);border:1px solid var(--pbd);box-shadow:var(--pbs);pointer-events:none;z-index:0}
-#bnav .pl::before,#bnav .lcd,#bnav .deck{opacity:var(--op,1)}
+#bnav .pl::before,#bnav .lcd,#bnav .deck{opacity:var(--op,.8)}
 #bnav .lcd,#bnav .deck{position:relative;z-index:1}
 #bnav .lcd{border-radius:10px;padding:5px 8px 6px;background:var(--lcdbg);
   box-shadow:inset 0 2px 6px #000,0 1px 0 rgba(255,255,255,.12);font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
@@ -305,8 +305,8 @@ input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;bac
 #bnav #avl{flex:1;min-width:0;max-width:none}
 
 /* ===================== Skin & opacity pemutar ===================== */
-#bnav .pl,#bnav .sw{--h:207;--s:6%;--pbd:#000;--mbd:#050505;
-  --pb:linear-gradient(hsl(var(--h) var(--s) 27%) 0%,hsl(var(--h) var(--s) 15%) 14%,hsl(var(--h) var(--s) 9%) 60%,hsl(var(--h) var(--s) 5%) 100%);
+#bnav .pl,#bnav .sw{--h:207;--s:6%;--bh:var(--h);--bs:var(--s);--pbd:#000;--mbd:#050505;
+  --pb:linear-gradient(hsl(var(--bh) var(--bs) 27%) 0%,hsl(var(--bh) var(--bs) 15%) 14%,hsl(var(--bh) var(--bs) 9%) 60%,hsl(var(--bh) var(--bs) 5%) 100%);
   --pbs:inset 0 1px 0 rgba(255,255,255,.22),inset 0 -1px 0 rgba(255,255,255,.06),0 10px 28px rgba(0,0,0,.5);
   --lcdbg:hsl(var(--h) 60% 3%) repeating-linear-gradient(0deg,rgba(255,255,255,.025) 0 1px,transparent 1px 3px);
   --lt:hsl(var(--h) 100% 75%);--ltg:hsl(var(--h) 100% 55% / .8);
@@ -314,10 +314,10 @@ input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;bac
   --chs:hsl(var(--h) 55% 13%);--chb2:hsl(var(--h) 45% 40%);--jbg:hsl(var(--h) 55% 7%);
   --ac:hsl(var(--h) 100% 63%);--ac2:hsl(var(--h) 100% 72%);--acg:hsl(var(--h) 100% 62% / .55);
   --ic:#d5dce2;--ic2:#e6eef5;--mt:#e4ecf2;
-  --mbbg:linear-gradient(hsl(var(--h) var(--s) 37%) 0%,hsl(var(--h) var(--s) 20%) 48%,hsl(var(--h) var(--s) 11%) 52%,hsl(var(--h) var(--s) 17%) 100%);
-  --pillbg:linear-gradient(hsl(var(--h) var(--s) 10%),hsl(var(--h) var(--s) 18%) 60%,hsl(var(--h) var(--s) 13%));
-  --ringbg:radial-gradient(circle at 50% 30%,hsl(var(--h) var(--s) 24%),hsl(var(--h) var(--s) 6%) 72%);
-  --menubg:linear-gradient(hsl(var(--h) var(--s) 18%),hsl(var(--h) var(--s) 8%));
+  --mbbg:linear-gradient(hsl(var(--bh) var(--bs) 37%) 0%,hsl(var(--bh) var(--bs) 20%) 48%,hsl(var(--bh) var(--bs) 11%) 52%,hsl(var(--bh) var(--bs) 17%) 100%);
+  --pillbg:linear-gradient(hsl(var(--bh) var(--bs) 10%),hsl(var(--bh) var(--bs) 18%) 60%,hsl(var(--bh) var(--bs) 13%));
+  --ringbg:radial-gradient(circle at 50% 30%,hsl(var(--bh) var(--bs) 24%),hsl(var(--bh) var(--bs) 6%) 72%);
+  --menubg:linear-gradient(hsl(var(--bh) var(--bs) 18%),hsl(var(--bh) var(--bs) 8%));
   --playbg:radial-gradient(circle at 50% 22%,hsl(var(--h) 100% 78%) 0,hsl(var(--h) 75% 54%) 38%,hsl(var(--h) 85% 38%) 72%,hsl(var(--h) 90% 26%) 100%);
   --pg0:hsl(var(--h) 100% 60% / .35);--pg1:hsl(var(--h) 100% 62% / .7);
   --thumbbg:radial-gradient(circle at 35% 30%,hsl(var(--h) 100% 88%),hsl(var(--h) 75% 55%) 55%,hsl(var(--h) 80% 30%));--trk:hsl(var(--h) 40% 6%)}
@@ -337,9 +337,16 @@ input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;bac
 #bnav #qmenu{z-index:5}
 #bnav #smenu[hidden]{display:none}
 #bnav #smenu .sh{font-size:13px;font-weight:700;letter-spacing:.03em}
-#bnav .sg{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:8px 0 12px}
-#bnav .sk{display:flex;flex-direction:column;align-items:stretch;gap:3px;padding:4px;border:0;background:none;border-radius:10px;color:var(--mt);font-size:11px;text-align:center}
-#bnav .sk[aria-pressed=true]{box-shadow:0 0 0 2px var(--ac);background:rgba(255,255,255,.07)}
+#bnav .sg,#bnav .bg{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:8px 0 12px}
+#bnav .sk,#bnav .bk{display:flex;flex-direction:column;align-items:stretch;gap:3px;padding:4px;border:0;background:none;border-radius:10px;color:var(--mt);font-size:11px;text-align:center}
+#bnav .sk[aria-pressed=true],#bnav .bk[aria-pressed=true]{box-shadow:0 0 0 2px var(--ac);background:rgba(255,255,255,.07)}
+#bnav .sl{margin-top:2px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;opacity:.7}
+#bnav .sl small{font-size:10px;font-weight:400;letter-spacing:0;text-transform:none}
+#bnav .sl+.sg,#bnav .sl+.bg{margin-top:6px}
+#bnav .pl:not([data-skin="perak"]) #bhint{display:none}
+#bnav .pl[data-skin="perak"] .bg{opacity:.4;pointer-events:none}
+#bnav .bw{display:block;height:22px;border-radius:7px;border:1px solid #000;
+  background:linear-gradient(hsl(var(--bh) var(--bs) 30%),hsl(var(--bh) var(--bs) 14%) 55%,hsl(var(--bh) var(--bs) 7%));box-shadow:inset 0 1px 0 rgba(255,255,255,.25)}
 #bnav .sw{display:grid;place-items:center;width:100%;height:30px;border-radius:9px;background:var(--pb);border:1px solid var(--pbd);box-shadow:inset 0 1px 0 rgba(255,255,255,.25)}
 #bnav .sw i{width:16px;height:16px;border-radius:50%;background:var(--playbg);box-shadow:0 0 6px var(--pg1)}
 #bnav .so{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--mt)}
@@ -1303,8 +1310,11 @@ html:not([data-tombol^="t"]):not([data-gulung^="g"]):not([data-pita^="pita"]):no
     <div id="qmenu" role="listbox" aria-label="Pilih qari" hidden></div>
     <div id="smenu" role="dialog" aria-label="Tampilan pemutar" hidden>
       <div class="sh">Tampilan pemutar</div>
+      <div class="sl">Skin tombol</div>
       <div class="sg" id="sg"></div>
-      <label class="so"><span>Opacity</span><input type="range" id="aop" min="30" max="100" step="5" value="100"><b id="aopv">100%</b></label>
+      <div class="sl">Warna pemutar <small id="bhint">· Perak memakai warna sendiri</small></div>
+      <div class="bg" id="bg"></div>
+      <label class="so"><span>Opacity</span><input type="range" id="aop" min="30" max="100" step="5" value="80"><b id="aopv">80%</b></label>
       <button type="button" id="asr">Setel ulang</button>
     </div>
     <div class="deck">
@@ -2843,14 +2853,29 @@ document.addEventListener('visibilitychange',mqKick);
 if(window.ResizeObserver)new ResizeObserver(mqKick).observe(MQ.cv);
 /* ---------- Skin & opacity pemutar (tersimpan) ---------- */
 var SKINS=[['biru','Biru'],['zamrud','Zamrud'],['emas','Emas'],['rubi','Rubi'],['ungu','Ungu'],['karbon','Karbon'],['perak','Perak']],
-    SK={skin:ls('qk.skin')||'biru',op:ls('qk.op')};
+    /* warna badan pemutar (gelap): [id, label, hue, saturasi]; 'auto' = ikut hue skin */
+    BODIES=[['auto','Otomatis',null,null],['hitam','Hitam',0,'0%'],['malam','Malam',222,'40%'],['hutan','Hutan',150,'34%'],
+            ['anggur','Anggur',340,'40%'],['senja','Senja',265,'38%'],['kopi','Kopi',24,'38%'],['samudra','Samudra',190,'40%']],
+    OP_DEF=80,
+    SK={skin:ls('qk.skin')||'biru',op:ls('qk.op'),body:ls('qk.body')||'auto'};
 if(!SKINS.some(function(x){return x[0]===SK.skin}))SK.skin='biru';
-if(typeof SK.op!=='number'||SK.op<30||SK.op>100)SK.op=100;
+if(!BODIES.some(function(x){return x[0]===SK.body}))SK.body='auto';
+if(typeof SK.op!=='number'||SK.op<30||SK.op>100)SK.op=OP_DEF;
+function skBody(el){
+  var b=BODIES.filter(function(x){return x[0]===SK.body})[0];
+  if(b&&b[2]!==null){el.style.setProperty('--bh',b[2]);el.style.setProperty('--bs',b[3])}
+  else{el.style.removeProperty('--bh');el.style.removeProperty('--bs')}
+}
 function skApply(){
   $('pl').setAttribute('data-skin',SK.skin);
   $('pl').style.setProperty('--op',SK.op/100);
+  skBody($('pl'));
   $('aop').value=SK.op;$('aopv').textContent=SK.op+'%';
-  [].forEach.call($('sg').children,function(b){b.setAttribute('aria-pressed',b.dataset.k===SK.skin?'true':'false')});
+  [].forEach.call($('sg').children,function(b){
+    b.setAttribute('aria-pressed',b.dataset.k===SK.skin?'true':'false');
+    skBody(b.firstChild);   /* swatch skin ikut menampilkan warna pemutar terpilih */
+  });
+  [].forEach.call($('bg').children,function(b){b.setAttribute('aria-pressed',b.dataset.k===SK.body?'true':'false')});
 }
 function skClose(){$('smenu').hidden=true;$('askn').setAttribute('aria-expanded','false')}
 SKINS.forEach(function(x){
@@ -2859,8 +2884,17 @@ SKINS.forEach(function(x){
   b.onclick=function(){SK.skin=x[0];ls('qk.skin',SK.skin);skApply()};
   $('sg').appendChild(b);
 });
+BODIES.forEach(function(x){
+  var b=document.createElement('button'),w;b.type='button';b.className='bk';b.dataset.k=x[0];
+  b.innerHTML='<span class="bw"></span><span>'+x[1]+'</span>';
+  w=b.firstChild;
+  if(x[2]===null){w.style.setProperty('--bh','var(--h)');w.style.setProperty('--bs','var(--s)')}
+  else{w.style.setProperty('--bh',x[2]);w.style.setProperty('--bs',x[3])}
+  b.onclick=function(){SK.body=x[0];ls('qk.body',SK.body);skApply()};
+  $('bg').appendChild(b);
+});
 $('aop').addEventListener('input',function(){SK.op=+this.value;ls('qk.op',SK.op);skApply()});
-$('asr').onclick=function(){SK.skin='biru';SK.op=100;ls('qk.skin',SK.skin);ls('qk.op',SK.op);skApply()};
+$('asr').onclick=function(){SK.skin='biru';SK.body='auto';SK.op=OP_DEF;ls('qk.skin',SK.skin);ls('qk.body',SK.body);ls('qk.op',SK.op);skApply()};
 $('askn').onclick=function(e){
   e.stopPropagation();qClose();
   var m=$('smenu'),open=m.hidden;m.hidden=!open;this.setAttribute('aria-expanded',open?'true':'false');
