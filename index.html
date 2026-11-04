@@ -2052,13 +2052,38 @@ document.addEventListener('toggle',function(e){
   });
 },true);
 $('doa-qx').addEventListener('click',function(){doaQClear();doaSearch();$('doa-qi').focus()});
+/* tutup satu tingkat di dalam halaman: kartu do'a terbuka dulu, lalu sub bab terbuka. true = ada yang ditutup */
+function doaCloseOpen(){
+  var sc=$('doa-scroll');if(!sc)return false;
+  var l=sc.querySelectorAll('details.ditem[open]'),el=l.length?l[l.length-1]:sc.querySelector('details.dgrp[open]');
+  if(!el)return false;
+  var par=el.parentElement?el.parentElement.closest('details.dgrp'):null;
+  el.open=false;
+  var t=par||el;
+  (window.requestAnimationFrame||setTimeout)(function(){
+    var y=t.getBoundingClientRect().top-sc.getBoundingClientRect().top;
+    if(y<0)sc.scrollTop=Math.max(0,sc.scrollTop+y-8);
+    doaSubUpd()
+  });
+  return true
+}
+/* teks di bawah judul mengikuti apa yang akan ditutup oleh tombol kembali */
+function doaSubUpd(){
+  if(doaLv!==2||$('doa-qi').value)return;
+  var sc=$('doa-scroll');
+  $('doa-sub').textContent=sc.querySelector('details.ditem[open]')?'‹ Tutup kartu do\'a':sc.querySelector('details.dgrp[open]')?'‹ Tutup sub bab':'‹ Kembali ke kategori'
+}
+document.addEventListener('toggle',function(e){var d=e.target;if(d&&d.classList&&(d.classList.contains('ditem')||d.classList.contains('dgrp')))setTimeout(doaSubUpd,0)},true);
 function doaBack(){
+  if(doaCloseOpen())return;
   if($('doa-qi').value){doaQClear();if(doaLv===2)doaShowCat(doaCat);else doaShowCats();return}
   if(doaHist){history.back();return}   /* popstate yang mengatur tampilan */
   if(doaLv===2){doaLv=1;doaShowCats()}else closeDoa()
 }
 window.addEventListener('popstate',function(e){
   if(!doaLv)return;
+  /* tombol back HP/browser: tutup kartu/sub bab dulu, tetap di halaman yang sama */
+  if(doaCloseOpen()){doaPush(doaLv);return}
   var lv=(e.state&&e.state.doa)||0;
   if(lv===0)closeDoa();
   else if(lv===1){doaLv=1;doaShowCats()}
