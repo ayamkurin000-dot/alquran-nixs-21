@@ -166,8 +166,8 @@ input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;bac
 
 .mushaf{position:relative;max-width:720px;margin:12px auto 0;padding:46px 26px 40px;background:var(--paper);border-radius:6px;font-family:var(--arfont)}
 @media (min-width:760px){.mushaf{margin-top:16px;padding:54px 44px 48px}}
-#reader{padding:0 0 calc(150px + env(safe-area-inset-bottom))}
-@media (max-width:759px){#reader{padding:0 8px calc(150px + env(safe-area-inset-bottom))}}
+#reader{padding:0 0 calc(var(--bnh,150px) + 80px)}
+@media (max-width:759px){#reader{padding:0 8px calc(var(--bnh,150px) + 80px)}}
 
 /* Judul surat — gaya terkunci (Aref Ruqaa tebal), tidak ikut pilihan font */
 .sname{position:relative;margin:0 auto 14px;max-width:460px;text-align:center;padding:12px 22px 10px;border:1.5px solid var(--accent);border-radius:14px;outline:1px solid color-mix(in srgb,var(--accent) 45%,transparent);outline-offset:3px;background:color-mix(in srgb,var(--accent) 7%,transparent)}
@@ -216,55 +216,76 @@ input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;bac
 .rub{display:inline-block;width:.95em;height:.95em;vertical-align:-.12em;margin:0 .15em;color:var(--accent2)}
 
 /* Bar bawah: pindah ayat */
-#bnav{position:fixed;left:0;right:0;bottom:0;z-index:20;display:flex;justify-content:center;padding:0 10px calc(8px + env(safe-area-inset-bottom));pointer-events:none}
-#bnav .in{pointer-events:auto;display:flex;align-items:center;gap:4px;padding:4px 8px;border-radius:99px;background:color-mix(in srgb,var(--paper) 97%,transparent);border:1px solid var(--soft);box-shadow:0 6px 22px rgba(0,0,0,.18)}
-#bnav .ib{width:38px;height:38px}
-#jump{width:70px;border:1px solid var(--soft);background:transparent;color:var(--ink);text-align:center;border-radius:99px;padding:6px 4px;font:inherit;font-weight:700;font-size:15px;outline:none}
-#jump:focus{border-color:var(--accent)}
-#jtot{font-size:12.5px;color:var(--ink2);margin-right:2px}
-#abar{position:fixed;left:0;right:0;bottom:calc(58px + env(safe-area-inset-bottom));z-index:19;display:flex;justify-content:center;pointer-events:none;padding:0 10px}
+#abar{position:fixed;left:0;right:0;bottom:calc(var(--bnh,150px) + 6px);z-index:19;display:flex;justify-content:center;pointer-events:none;padding:0 10px}
 #abar .in{pointer-events:auto;display:flex;align-items:center;gap:2px;padding:4px 6px 4px 14px;border-radius:14px;background:var(--paper);border:1px solid var(--accent);box-shadow:0 8px 26px rgba(0,0,0,.22);animation:logoIn .2s both}
 #abar b{margin-right:6px;font-size:14px}
 #abar button{border:0;background:none;padding:8px 10px;border-radius:8px;font-size:13.5px;font-weight:600;color:var(--accent2)}
 #abar button:hover{background:var(--soft)}
 #abar button[aria-pressed=true]{background:var(--accent2);color:var(--paper)}
 #abar .in{flex-wrap:wrap;justify-content:center;max-width:calc(100vw - 20px)}
-/* pemutar audio (Mishary Alafasy) */
-
-/* ===== AUDIO PLAYER BAR - MODEL SPECTRUM ANALYZER DIGITAL - GLOSSY LIKE SCREENSHOT ===== */
-#apl{position:fixed;left:0;right:0;bottom:calc(58px + env(safe-area-inset-bottom));z-index:30;display:flex;justify-content:center;pointer-events:none;padding:0 10px}
-#apl[hidden]{display:none!important}
-#apl .ap-shell{pointer-events:auto;width:min(760px,calc(100vw - 16px));display:flex;flex-direction:column;gap:6px;animation:logoIn .28s both}
-#apCanvasWrap{width:100%;height:52px;border-radius:14px;overflow:hidden;background:linear-gradient(180deg,#1a1a22 0%,#0d0d12 100%);border:1px solid rgba(255,255,255,.08);box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 4px 16px rgba(0,0,0,.35);position:relative}
-#apCanvasWrap canvas{width:100%;height:100%;display:block}
-#apCanvasWrap .ap-led{position:absolute;right:10px;top:6px;width:8px;height:8px;border-radius:50%;background:#ff3b3b;box-shadow:0 0 8px #ff3b3b;opacity:.0;transition:opacity .2s}
-#apCanvasWrap.on .ap-led{opacity:1;animation:blink 1s steps(2) infinite}
-@keyframes blink{50%{opacity:.2}}
-#apl .ap-bar{pointer-events:auto;display:flex;align-items:center;gap:0;padding:4px 8px 4px 6px;border-radius:999px;background:linear-gradient(180deg,#3a3a3f 0%,#1e1e24 55%,#15151a 100%);border:1px solid #2a2a30;box-shadow:inset 0 1px 0 rgba(255,255,255,.18),inset 0 -1px 0 rgba(0,0,0,.7),0 8px 24px rgba(0,0,0,.45),0 0 0 1px rgba(0,0,0,.6);position:relative}
-#apl .ap-bar::before{content:'';position:absolute;inset:1px 1px 55% 1px;border-radius:999px;background:linear-gradient(180deg,rgba(255,255,255,.22),rgba(255,255,255,0));pointer-events:none}
-.ap-icon{width:34px;height:34px;border-radius:8px;border:1px solid transparent;background:linear-gradient(180deg,#2e2e35,#1c1c22);color:#cbd5d1;display:grid;place-items:center;cursor:pointer;box-shadow:inset 0 1px 0 rgba(255,255,255,.12);transition:all .15s}
-.ap-icon:hover{background:linear-gradient(180deg,#3a3a44,#24242c);color:#fff}
-.ap-icon:active{transform:translateY(1px) scale(.97)}
-.ap-icon.on{background:linear-gradient(180deg,#3a7bff,#1a4fd1);color:#fff;border-color:#5b93ff;box-shadow:0 0 12px rgba(59,123,255,.6),inset 0 1px 0 rgba(255,255,255,.3)}
-.ap-main{display:flex;align-items:center;gap:4px;margin:0 6px;padding:3px 8px;border-radius:999px;background:linear-gradient(180deg,#2a2a30,#15151b);border:1px solid #000;box-shadow:inset 0 1px 2px rgba(0,0,0,.8)}
-.ap-main button{width:38px;height:28px;border-radius:7px;border:1px solid #000;background:linear-gradient(180deg,#3d3d47,#1f1f26);color:#e8e8ea;display:grid;place-items:center;cursor:pointer;box-shadow:inset 0 1px 0 rgba(255,255,255,.15)}
-.ap-main button:hover{filter:brightness(1.15)}
-.ap-play{width:56px!important;height:56px!important;border-radius:50%!important;margin:-12px 4px;background:radial-gradient(60% 60% at 35% 30%,#aee1ff 0%,#5ba8ff 20%,#1a5bff 55%,#0a2a8a 100%)!important;border:2px solid #8ec5ff!important;box-shadow:0 0 0 4px #0a0a0f,0 0 18px rgba(66,133,255,.9),inset 0 2px 6px rgba(255,255,255,.8)!important;color:#fff!important;transition:all .15s}
-.ap-play.playing{background:radial-gradient(60% 60% at 35% 30%,#ffd1a8 0%,#ff8a3d 25%,#ff3b1f 60%,#8a0a0a 100%)!important;border-color:#ffb07a!important;box-shadow:0 0 0 4px #0a0a0f,0 0 18px rgba(255,100,40,.9),inset 0 2px 6px rgba(255,255,255,.8)!important}
-.ap-play svg{width:26px;height:26px;filter:drop-shadow(0 1px 1px rgba(0,0,0,.6))}
-.ap-vol{display:flex;align-items:center;gap:6px;margin-left:auto;padding-left:8px}
-.ap-vol .ap-icon{width:32px;height:28px}
-.ap-slider{-webkit-appearance:none;width:84px;height:20px;background:transparent;cursor:pointer}
-.ap-slider::-webkit-slider-runnable-track{height:6px;border-radius:99px;background:linear-gradient(180deg,#0a0a0f,#1e1e26);border:1px solid #000;box-shadow:inset 0 1px 2px rgba(0,0,0,.8)}
-.ap-slider::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;margin-top:-6px;border-radius:50%;background:radial-gradient(40% 40% at 35% 30%,#cfe6ff,#3a7bff 60%,#0a2a8a);border:1px solid #8ec5ff;box-shadow:0 0 8px rgba(66,133,255,.8),0 1px 3px rgba(0,0,0,.6)}
-.ap-qori{margin-left:6px;background:linear-gradient(180deg,#2a2a33,#1a1a22);border:1px solid #333;color:#d0d6ff;border-radius:8px;padding:4px 6px;font-size:11px;max-width:124px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.ap-info{display:flex;align-items:center;gap:8px;color:#9fb0c8;font-size:11px;padding:2px 8px}
-.ap-info b{color:#e0e8ff;font-size:12px}
-
+/* ===================== Pemutar metalik + Spectrum Analyzer digital ===================== */
+#bnav{position:fixed;left:0;right:0;bottom:0;z-index:20;display:flex;justify-content:center;padding:0 8px calc(8px + env(safe-area-inset-bottom));pointer-events:none}
+#bnav .pl{pointer-events:auto;position:relative;width:100%;max-width:520px;padding:8px 10px 11px;border-radius:22px;color:#cfe9ff;
+  background:linear-gradient(#41444a 0%,#232529 14%,#141517 60%,#0a0b0c 100%);border:1px solid #000;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.22),inset 0 -1px 0 rgba(255,255,255,.06),0 10px 28px rgba(0,0,0,.5);animation:logoIn .2s both}
+#bnav .lcd{border-radius:10px;padding:5px 8px 6px;background:#04070a repeating-linear-gradient(0deg,rgba(255,255,255,.025) 0 1px,transparent 1px 3px);
+  box-shadow:inset 0 2px 6px #000,0 1px 0 rgba(255,255,255,.12);font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+#bnav .lt{display:flex;align-items:center;gap:5px;min-height:22px}
+#bnav #apn{flex:1;min-width:0;font-size:12px;font-weight:700;letter-spacing:.02em;color:#7fe3ff;text-shadow:0 0 6px rgba(26,167,255,.8);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#bnav .chip{flex:none;border:1px solid #27465e;background:linear-gradient(#10202c,#08121a);color:#8fdcff;border-radius:6px;padding:3px 6px;font:700 11px/1.1 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  max-width:78px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;box-shadow:inset 0 1px 0 rgba(255,255,255,.08)}
+#bnav .chip:active{background:#0c2233}
+#bnav .chip[aria-expanded=true]{border-color:#46b4ff;box-shadow:0 0 8px rgba(70,180,255,.5)}
+#bnav #amin{padding:3px 5px}
+#bnav #amin svg{width:12px;height:12px;display:block;transition:transform .2s}
+#bnav .pl.mini #amin svg{transform:rotate(180deg)}
+#bnav .jw{display:flex;align-items:center;gap:2px;flex:none}
+#bnav #jump{width:40px;border:1px solid #27465e;background:#08121a;color:#8fdcff;text-align:center;border-radius:6px;padding:2px 2px;font:700 12px ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;outline:none;-moz-appearance:textfield;appearance:textfield}
+#bnav #jump::-webkit-inner-spin-button,#bnav #jump::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}
+#bnav #jump:focus{border-color:#46b4ff;box-shadow:0 0 8px rgba(70,180,255,.5)}
+#bnav #jtot{font-size:11px;color:#5aa9cf}
+#bnav #spec{display:block;width:100%;height:34px;margin-top:4px;filter:drop-shadow(0 0 3px rgba(60,255,200,.3))}
+#bnav .pl.mini #spec{display:none}
+#bnav #qmenu{position:absolute;left:10px;right:10px;bottom:calc(100% + 6px);z-index:3;padding:6px;border-radius:14px;background:linear-gradient(#2b2e33,#121315);border:1px solid #000;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.18),0 10px 26px rgba(0,0,0,.55)}
+#bnav #qmenu[hidden]{display:none}
+#bnav #qmenu button{display:flex;align-items:center;gap:8px;width:100%;text-align:left;border:0;background:none;color:#d5e6f3;padding:9px 10px;border-radius:9px;font-size:14px}
+#bnav #qmenu button small{margin-left:auto;font-size:11px;color:#7fc9ee;border:1px solid #27465e;border-radius:5px;padding:1px 6px}
+#bnav #qmenu button[aria-selected=true]{background:#0c2233;color:#8fdcff;box-shadow:inset 0 0 0 1px #2e6e9c}
+#bnav .deck{display:flex;align-items:center;gap:6px;height:48px;margin-top:11px}
+#bnav .mb{flex:none;width:34px;height:34px;padding:0;display:grid;place-items:center;border-radius:9px;border:1px solid #050505;color:#d5dce2;
+  background:linear-gradient(#5a5e64 0%,#2f3236 48%,#1b1d20 52%,#282a2e 100%);box-shadow:inset 0 1px 0 rgba(255,255,255,.3),0 1px 0 rgba(255,255,255,.08),0 2px 4px rgba(0,0,0,.55)}
+#bnav .mb svg{width:18px;height:18px;display:block}
+#bnav .mb:active{transform:translateY(1px);background:linear-gradient(#1b1d20,#2b2e32);box-shadow:inset 0 2px 4px rgba(0,0,0,.7)}
+#bnav .mb[aria-pressed=true]{color:#79d8ff;box-shadow:inset 0 1px 0 rgba(255,255,255,.3),inset 0 -2px 0 #3bb4ff,0 0 9px rgba(59,180,255,.6)}
+#bnav .mb[aria-pressed=true] svg{filter:drop-shadow(0 0 4px #3bb4ff)}
+#bnav .pill{flex:1;min-width:0;height:36px;padding:0 3px;display:flex;align-items:center;justify-content:space-between;border-radius:11px;
+  background:linear-gradient(#17181b,#2a2d31 60%,#1f2225);box-shadow:inset 0 2px 5px rgba(0,0,0,.85),0 1px 0 rgba(255,255,255,.16)}
+#bnav .tb{flex:none;width:38px;height:30px;padding:0;border:0;background:none;color:#e6eef5;display:grid;place-items:center;border-radius:8px}
+#bnav .tb svg{width:21px;height:21px;display:block;filter:drop-shadow(0 1px 1px #000)}
+#bnav .tb:active{color:#79d8ff;background:rgba(255,255,255,.06)}
+#bnav .bump{position:relative;flex:none;width:62px;height:62px;margin:-14px 0;border-radius:50%;display:grid;place-items:center;
+  background:radial-gradient(circle at 50% 30%,#3a3d42,#0b0c0e 72%);box-shadow:0 0 0 1px #000,inset 0 1px 0 rgba(255,255,255,.2),0 4px 10px rgba(0,0,0,.6)}
+#bnav .bigp{position:relative;width:48px;height:48px;padding:0;border:0;border-radius:50%;display:grid;place-items:center;color:#fff;
+  background:radial-gradient(circle at 50% 22%,#8fcbff 0,#2a7de0 38%,#0d49b8 72%,#0a3485 100%);
+  box-shadow:inset 0 -3px 6px rgba(0,20,80,.6),inset 0 2px 3px rgba(255,255,255,.55),0 0 0 2px #0a0c10,0 0 10px rgba(47,160,255,.35);transition:box-shadow .25s,transform .08s}
+#bnav .bigp::before{content:'';position:absolute;left:17%;right:17%;top:6%;height:38%;border-radius:50%;background:linear-gradient(rgba(255,255,255,.7),rgba(255,255,255,0));pointer-events:none}
+#bnav .bigp svg{position:relative;width:24px;height:24px;display:block;filter:drop-shadow(0 1px 1px rgba(0,30,90,.8))}
+#bnav .bigp:active{transform:scale(.94)}
+#bnav .pl.on .bigp{box-shadow:inset 0 -3px 6px rgba(0,20,80,.6),inset 0 2px 3px rgba(255,255,255,.55),0 0 0 2px #0a0c10,0 0 18px 4px rgba(60,180,255,.75);animation:bpulse 1.8s ease-in-out infinite}
+@keyframes bpulse{50%{box-shadow:inset 0 -3px 6px rgba(0,20,80,.6),inset 0 2px 3px rgba(255,255,255,.55),0 0 0 2px #0a0c10,0 0 10px 1px rgba(60,180,255,.45)}}
+@media (prefers-reduced-motion:reduce){#bnav .pl.on .bigp{animation:none}}
+#bnav #avl{flex:1;min-width:44px;max-width:120px;height:22px;margin:0;background:none;outline:none;--v:100%}
+#bnav #avl::-webkit-slider-runnable-track{height:4px;border-radius:3px;background:linear-gradient(90deg,#46b4ff var(--v),#0a0f14 var(--v));box-shadow:0 1px 0 rgba(255,255,255,.14),inset 0 1px 2px #000}
+#bnav #avl::-moz-range-track{height:4px;border-radius:3px;background:#0a0f14;box-shadow:0 1px 0 rgba(255,255,255,.14)}
+#bnav #avl::-moz-range-progress{height:4px;border-radius:3px;background:#46b4ff}
+#bnav #avl::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;margin-top:-6px;border-radius:50%;border:0;background:radial-gradient(circle at 35% 30%,#c4e6ff,#2f86e8 55%,#0f3f8f);box-shadow:0 0 8px #2fa0ff,0 1px 2px #000}
+#bnav #avl::-moz-range-thumb{width:16px;height:16px;border-radius:50%;border:0;background:radial-gradient(circle at 35% 30%,#c4e6ff,#2f86e8 55%,#0f3f8f);box-shadow:0 0 8px #2fa0ff,0 1px 2px #000}
+#bnav button:focus-visible,#bnav input:focus-visible{outline:2px solid #46b4ff;outline-offset:1px}
 .snav{display:flex;gap:10px;margin-top:22px}
 .snav button{flex:1;border:1px solid var(--accent);background:transparent;color:var(--accent2);border-radius:12px;padding:10px;font-weight:700;font-size:14px}
 .snav button:disabled{opacity:.35}
-#toast{position:fixed;left:50%;bottom:calc(120px + env(safe-area-inset-bottom));transform:translateX(-50%);z-index:60;background:var(--ink);color:var(--paper);padding:8px 14px;border-radius:99px;font-size:13px;opacity:0;pointer-events:none;transition:opacity .2s}
+#toast{position:fixed;left:50%;bottom:calc(var(--bnh,150px) + 62px);transform:translateX(-50%);z-index:60;background:var(--ink);color:var(--paper);padding:8px 14px;border-radius:99px;font-size:13px;opacity:0;pointer-events:none;transition:opacity .2s}
 #toast.on{opacity:.95}
 
 /* ===================== Bingkai ornamen ===================== */
@@ -1197,32 +1218,29 @@ html:not([data-tombol^="t"]):not([data-gulung^="g"]):not([data-pita^="pita"]):no
     <div class="snav"><button id="sprev"></button><button id="snext"></button></div>
   </div>
   <div id="abar" hidden><div class="in"><b id="abn"></b><button id="abp" aria-label="Putar audio ayat ini">▶ Putar</button><button id="abm" aria-pressed="false">Penanda</button><button id="abl">Terakhir dibaca</button><button id="abc">Salin</button><button class="xbtn" id="abx" aria-label="Tutup">×</button></div></div>
-  <div id="apl" hidden>
-  <div class="ap-shell">
-    <div id="apCanvasWrap"><canvas id="apVis" width="600" height="52"></canvas><div class="ap-led"></div></div>
-    <div class="ap-bar">
-      <button class="ap-icon" id="apShuffle" title="Acak" aria-label="Acak"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 3h4v4M4 20l7-7M20 4l-5 5M16 21h4v-4M4 4l5 5M20 20l-5-5"/></svg></button>
-      <button class="ap-icon" id="apr" title="Ulangi ayat" aria-label="Ulangi"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 9H5V5"/><path d="M5 9a7 7 0 1 1 0 6"/></svg></button>
-      <button class="ap-icon" id="apStopTop" title="Stop" aria-label="Stop" style="margin-left:2px"><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><rect x="6" y="6" width="12" height="12" rx="1"/></svg></button>
-      <div class="ap-main">
-        <button id="apv" aria-label="Sebelumnya"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M11 18L4 12l7-6v12zM20 18l-7-6 7-6v12z"/></svg></button>
-        <button id="apt" class="ap-play" aria-label="Putar"><svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></button>
-        <button id="apf" aria-label="Berikutnya"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M13 6v12l7-6-7-6zM4 6v12l7-6-7-6z"/></svg></button>
+  <nav id="bnav" aria-label="Pemutar audio dan pindah ayat"><div class="pl" id="pl">
+    <div class="lcd">
+      <div class="lt">
+        <button class="chip" id="amin" type="button" aria-label="Ciutkan atau bentangkan spektrum"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button>
+        <b id="apn">—</b>
+        <button class="chip" id="aqr" type="button" aria-haspopup="listbox" aria-expanded="false" aria-label="Pilih qari">Alafasy</button>
+        <button class="chip" id="aps" type="button" aria-label="Kecepatan putar">1×</button>
+        <span class="jw"><input id="jump" type="number" inputmode="numeric" min="1" aria-label="Lompat ke ayat"><span id="jtot"></span></span>
       </div>
-      <button class="ap-icon" id="apMute" title="Volume"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M15 9a4 4 0 0 1 0 6"/><path d="M19 7a8 8 0 0 1 0 10"/></svg></button>
-      <input id="apVol" class="ap-slider" type="range" min="0" max="1" step="0.02" value="1" aria-label="Volume">
-      <select id="apQori" class="ap-qori" aria-label="Pilih Qari"></select>
-      <div class="ap-info"><b id="apn">-</b><span id="aps">1×</span></div>
-      <button class="ap-icon" id="apx" aria-label="Tutup" style="margin-left:4px"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+      <canvas id="spec" aria-hidden="true"></canvas>
     </div>
-  </div>
-</div>
-  <div id="apSkinPanel" hidden><div class="ap-skin-box"><div class="ap-skin-head"><b>🎨 Pilih Skin Player — 10 Spectrum Soft</b><button id="apSkinClose" class="ap-icon" style="width:32px;height:32px">✕</button></div><div id="apSkinGrid" class="ap-skin-grid"></div></div></div>
-<nav id="bnav" aria-label="Pindah ayat"><div class="in">
-    <button class="ib" id="aprev" aria-label="Ayat sebelumnya"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 15l6-6 6 6"/></svg></button>
-    <input id="jump" type="number" inputmode="numeric" min="1" aria-label="Lompat ke ayat">
-    <span id="jtot"></span>
-    <button class="ib" id="anext" aria-label="Ayat berikutnya"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button>
+    <div id="qmenu" role="listbox" aria-label="Pilih qari" hidden></div>
+    <div class="deck">
+      <button class="mb" id="apr" type="button" aria-pressed="false" aria-label="Ulangi ayat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 2l3 3-3 3"/><path d="M4 11V9a4 4 0 0 1 4-4h12"/><path d="M7 22l-3-3 3-3"/><path d="M20 13v2a4 4 0 0 1-4 4H4"/><path d="M10.5 10.5l1.5-1v5.5" stroke-width="1.8"/></svg></button>
+      <button class="mb" id="apx" type="button" aria-label="Berhenti"><svg viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="6" width="12" height="12" rx="1.8"/></svg></button>
+      <div class="pill">
+        <button class="tb" id="apv" type="button" aria-label="Ayat sebelumnya"><svg viewBox="0 0 24 24" fill="currentColor"><rect x="4.5" y="5" width="2.6" height="14" rx="1"/><path d="M20 5.2v13.6a.6.6 0 0 1-.95.5L9 12.5a.6.6 0 0 1 0-1l10.05-6.8a.6.6 0 0 1 .95.5z"/></svg></button>
+        <span class="bump"><button class="bigp" id="apt" type="button" aria-label="Putar ayat"></button></span>
+        <button class="tb" id="apf" type="button" aria-label="Ayat berikutnya"><svg viewBox="0 0 24 24" fill="currentColor"><rect x="16.9" y="5" width="2.6" height="14" rx="1"/><path d="M4 5.2v13.6a.6.6 0 0 0 .95.5L15 12.5a.6.6 0 0 0 0-1L4.95 4.7A.6.6 0 0 0 4 5.2z"/></svg></button>
+      </div>
+      <button class="mb" id="avm" type="button" aria-label="Bisukan"></button>
+      <input type="range" id="avl" min="0" max="100" value="100" aria-label="Volume">
+    </div>
   </div></nav>
 </div>
 
@@ -1774,8 +1792,6 @@ $('abc').onclick=function(){
   if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(function(){toast('Disalin')},function(){toast('Gagal menyalin')})}
   else{var t=document.createElement('textarea');t.value=txt;document.body.appendChild(t);t.select();try{document.execCommand('copy');toast('Disalin')}catch(e){toast('Gagal menyalin')}t.remove()}
 };
-$('aprev').onclick=function(){goAyat(Math.max(1,rd.cur-1))};
-$('anext').onclick=function(){goAyat(Math.min(rd.n,rd.cur+1))};
 $('jump').addEventListener('keydown',function(e){if(e.key==='Enter'){goAyat(+this.value);this.blur()}});
 $('jump').addEventListener('change',function(){goAyat(+this.value)});
 $('jump').addEventListener('focus',function(){this.select()});
@@ -2296,44 +2312,36 @@ setCustomFotoUI();
 })();
 
 
-
 /* =====================================================================
-   AUDIO — MULTI QARI + SPECTRUM ANALYZER DIGITAL
-   Sumber: EveryAyah. Auto-play ayat yang tampil. Model glossy bar.
+   AUDIO — per ayat, beberapa qari, + Spectrum Analyzer digital.
+   Sumber utama: EveryAyah; cadangan: Islamic Network. Disiarkan (butuh internet), tidak ditanam.
    ===================================================================== */
-var AU=new Audio(),PRE=new Audio(),PL={on:false,s:0,a:0,rep:false,rate:1,alt:false,qari:'alafasy'},RATES=[0.75,1,1.25,1.5,2];
-var QORIS=[
-  {id:'alafasy', label:'Mishary Alafasy', folder:'Alafasy_128kbps', speed:'Sedang'},
-  {id:'shatri', label:'Abu Bakr Ash-Shatri (Cepat)', folder:'Abu_Bakr_Ash-Shaatree_128kbps', speed:'Cepat'},
-  {id:'ajmy', label:'Ahmed Al-Ajmy (Cepat)', folder:'Ahmed_ibn_Ali_al-Ajamy_128kbps', speed:'Cepat'},
-  {id:'maher', label:'Maher Al-Muaiqly (Cepat)', folder:'Maher_128kbps', speed:'Cepat'},
-  {id:'yasser', label:'Yasser Ad-Dosari (Sangat Cepat)', folder:'Yasser_Ad-Dossari_128kbps', speed:'Sgt Cepat'},
-  {id:'shuraym', label:'Saud Ash-Shuraim (Cepat)', folder:'Saood_ash-Shuraym_128kbps', speed:'Cepat'},
-  {id:'sudais', label:'Abdurrahman As-Sudais (Cepat)', folder:'Abdurrahmaan_As-Sudais_192kbps', speed:'Cepat'},
-  {id:'husary', label:'Mahmoud Al-Husary (Jelas)', folder:'Husary_128kbps', speed:'Sedang'}
+var QARI=[
+  {id:'alafasy',n:'Mishary Alafasy',k:'Alafasy',d:'Alafasy_128kbps',i:'ar.alafasy',sp:'Sedang'},
+  {id:'rifai',n:"Hani Ar-Rifa'i",k:"Rifa'i",d:'Hani_Rifai_192kbps',i:'ar.hanirifai',sp:'Cepat'},
+  {id:'shuraym',n:'Saud Asy-Syuraim',k:'Syuraim',d:'Saood_ash-Shuraym_128kbps',i:'ar.saoodshuraym',sp:'Cepat'},
+  {id:'ayyoub',n:'Muhammad Ayyub',k:'Ayyub',d:'Muhammad_Ayyoub_128kbps',i:'ar.muhammadayyoub',sp:'Cepat'},
+  {id:'shatree',n:'Abu Bakr Asy-Syatri',k:'Asy-Syatri',d:'Abu_Bakr_Ash-Shaatree_128kbps',i:'ar.shaatree',sp:'Cepat'},
+  {id:'jibreel',n:'Muhammad Jibril',k:'Jibril',d:'Muhammad_Jibreel_128kbps',i:'ar.muhammadjibreel',sp:'Cepat'}
 ];
-var SKINS=[
-  {id:'dark', name:'Midnight Blue', desc:'Glossy original', bg:'linear-gradient(180deg,#1a1a22 0%,#0d0d12 100%)', bar:'linear-gradient(180deg,#3a3a3f 0%,#1e1e24 55%,#15151a 100%)', play:'#1a5bff', glow:'rgba(66,133,255,.9)', spectrum:['#0a1a4a','#3a7bff','#8ec5ff']},
-  {id:'ocean', name:'Ocean Soft', desc:'Biru laut lembut', bg:'linear-gradient(180deg,#0e1a2a 0%,#0a1220 100%)', bar:'linear-gradient(180deg,#2a3a5a 0%,#162040 60%,#0f1830 100%)', play:'#00c6ff', glow:'rgba(0,198,255,.7)', spectrum:['#0a2a4a','#00aaff','#7de8ff']},
-  {id:'sunset', name:'Sunset Peach', desc:'Oranye peach hangat', bg:'linear-gradient(180deg,#2a1a1e 0%,#1a1112 100%)', bar:'linear-gradient(180deg,#5a3a3a 0%,#3d2222 60%,#2a1818 100%)', play:'#ff7a45', glow:'rgba(255,122,69,.7)', spectrum:['#4a1a1a','#ff6a45','#ffcc8a']},
-  {id:'emerald', name:'Emerald Soft', desc:'Hijau zamrud adem', bg:'linear-gradient(180deg,#0f1f1a 0%,#0a1510 100%)', bar:'linear-gradient(180deg,#2a4a3a 0%,#1a3026 60%,#12221c 100%)', play:'#2ecc71', glow:'rgba(46,204,113,.7)', spectrum:['#0a2a1a','#2ecc71','#a8f5c8']},
-  {id:'lavender', name:'Lavender Dream', desc:'Ungu lavender soft', bg:'linear-gradient(180deg,#1e182a 0%,#13101a 100%)', bar:'linear-gradient(180deg,#4a3a6a 0%,#30224a 60%,#221830 100%)', play:'#a78bfa', glow:'rgba(167,139,250,.7)', spectrum:['#2a1a4a','#8b5cf6','#d8b4fe']},
-  {id:'rose', name:'Rose Gold', desc:'Pink gold elegan', bg:'linear-gradient(180deg,#2a1a22 0%,#1a1014 100%)', bar:'linear-gradient(180deg,#5a3a4a 0%,#3d2230 60%,#2a1822 100%)', play:'#f472b6', glow:'rgba(244,114,182,.7)', spectrum:['#4a1a2a','#f472b6','#fbcfe8']},
-  {id:'gold', name:'Golden Sand', desc:'Emas pasir soft', bg:'linear-gradient(180deg,#2a2210 0%,#1a160a 100%)', bar:'linear-gradient(180deg,#5a4a2a 0%,#3d341c 60%,#2a2414 100%)', play:'#fbbf24', glow:'rgba(251,191,36,.7)', spectrum:['#4a3a0a','#f59e0b','#fde68a']},
-  {id:'mint', name:'Mint Fresh', desc:'Mint segar', bg:'linear-gradient(180deg,#0f2220 0%,#0a1816 100%)', bar:'linear-gradient(180deg,#2a4a46 0%,#1a302e 60%,#12221f 100%)', play:'#34d399', glow:'rgba(52,211,153,.7)', spectrum:['#0a2a22','#34d399','#a7f3d0']},
-  {id:'slate', name:'Slate Light', desc:'Abu terang soft', bg:'linear-gradient(180deg,#1f242e 0%,#151a22 100%)', bar:'linear-gradient(180deg,#3a445a 0%,#2a3446 60%,#1e2632 100%)', play:'#94a3b8', glow:'rgba(148,163,184,.6)', spectrum:['#1e2a3a','#64748b','#cbd5e1']},
-  {id:'aurora', name:'Aurora Mix', desc:'Rainbow soft', bg:'linear-gradient(180deg,#1a1a2a 0%,#0f0f18 100%)', bar:'linear-gradient(180deg,#3a3a5a 0%,#2a2a44 60%,#1e1e32 100%)', play:'#60a5fa', glow:'rgba(96,165,250,.8)', spectrum:['#ff6a6a','#fbbf24','#34d399','#60a5fa','#a78bfa']}
-];
-var CUR_SKIN=null;
+function qariById(id){for(var i=0;i<QARI.length;i++)if(QARI[i].id===id)return QARI[i];return QARI[0]}
+var AU=new Audio(),PRE=new Audio(),
+    PL={on:false,s:0,a:0,rep:false,rate:1,k:0,flip:false,altFirst:false,noCors:false,q:qariById(ls('qk.qari')),vol:1,mute:false},
+    RATES=[0.75,1,1.25,1.5,1.75,2];
+var sv=ls('qk.vol');if(typeof sv==='number'&&sv>=0&&sv<=1)PL.vol=sv;
 var I_PLAY='<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>',
-    I_PAUSE='<svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/></svg>';
-AU.preload='auto';PRE.preload='auto';AU.crossOrigin='anonymous';
+    I_PAUSE='<svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/></svg>',
+    I_VOL='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10v4h4l5 4V6L7 10H3z" fill="currentColor"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.3 5.7a9 9 0 0 1 0 12.6"/></svg>',
+    I_MUTE='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10v4h4l5 4V6L7 10H3z" fill="currentColor"/><path d="M16 9.5l5 5M21 9.5l-5 5"/></svg>';
+AU.preload='auto';PRE.preload='auto';AU.crossOrigin='anonymous';PRE.crossOrigin='anonymous';
 function p3(n){return('00'+n).slice(-3)}
 function gid(s,a){var n=a;for(var i=0;i<s-1;i++)n+=Q[i][3].length;return n}
-function aUrl(s,a,alt){
-  var q=QORIS.find(function(q){return q.id===PL.qari})||QORIS[0];
-  if(alt) return 'https://cdn.islamic.network/quran/audio/128/ar.alafasy/'+gid(s,a)+'.mp3';
-  return 'https://everyayah.com/data/'+q.folder+'/'+p3(s)+p3(a)+'.mp3';
+/* k = percobaan ke-berapa (0 = sumber utama, 1 = sumber cadangan); urutan bisa terbalik bila cadangan yang ternyata jalan */
+function aUrl(s,a,k){
+  var q=PL.q;
+  var ev='https://everyayah.com/data/'+q.d+'/'+p3(s)+p3(a)+'.mp3',
+      is='https://cdn.islamic.network/quran/audio/128/'+q.i+'/'+gid(s,a)+'.mp3';
+  return((PL.altFirst?[is,ev]:[ev,is])[k%2]);
 }
 function nextOf(s,a){if(a<Q[s-1][3].length)return[s,a+1];if(s<114)return[s+1,1];return null}
 function prevOf(s,a){if(a>1)return[s,a-1];if(s>1)return[s-1,Q[s-2][3].length];return null}
@@ -2342,67 +2350,62 @@ function aMark(){
   AP.s=PL.on?PL.s:0;AP.a=PL.on?PL.a:0;
   if(PL.on&&rd.open&&rd.s===PL.s&&rd.els[PL.a-1])rd.els[PL.a-1].classList.add('play');
 }
-function aPos(){
-  var b=$('abar');
-  var apl=$('apl');
-  if(!apl) return;
-  apl.style.bottom=b.hidden?'':'calc('+(58+b.offsetHeight+8)+'px + env(safe-area-inset-bottom))';
+function aLbl(){
+  var s=PL.on?PL.s:rd.s,a=PL.on?PL.a:rd.cur;
+  $('apn').textContent=(s&&Q[s-1])?Q[s-1][1]+' : '+a:'—';
+}
+function aVolUI(){
+  var v=PL.mute?0:PL.vol;
+  $('avl').value=Math.round(PL.vol*100);
+  $('avl').style.setProperty('--v',(PL.mute?0:Math.round(PL.vol*100))+'%');
+  $('avm').innerHTML=v===0?I_MUTE:I_VOL;
+  $('avm').setAttribute('aria-label',v===0?'Aktifkan suara':'Bisukan');
+  AU.volume=v;
 }
 function aUI(){
-  var apl=$('apl'); if(!apl) return;
-  apl.hidden=!PL.on;
-  if(!PL.on){$('apCanvasWrap').classList.remove('on'); return;}
-  $('apCanvasWrap').classList.add('on');
-  $('apn').textContent=Q[PL.s-1][1]+':'+PL.a;
-  var pt=$('apt');
-  if(pt){
-    pt.innerHTML=AU.paused?I_PLAY:I_PAUSE;
-    pt.classList.toggle('playing',!AU.paused);
-    pt.setAttribute('aria-label',AU.paused?'Putar':'Jeda');
-  }
-  $('apr').classList.toggle('on',!!PL.rep);
+  var pl=PL.on&&!AU.paused;
+  $('pl').classList.toggle('on',pl);
+  $('apt').innerHTML=pl?I_PAUSE:I_PLAY;
+  $('apt').setAttribute('aria-label',pl?'Jeda':(PL.on?'Lanjutkan':'Putar ayat'));
   $('apr').setAttribute('aria-pressed',PL.rep?'true':'false');
   $('aps').textContent=PL.rate+'×';
-  var qSel=$('apQori'); if(qSel && qSel.value!==PL.qari) qSel.value=PL.qari;
-  aPos();
+  $('aqr').textContent=PL.q.k;
+  aLbl();
 }
 function aMeta(){
   if(!('mediaSession' in navigator)||!window.MediaMetadata)return;
-  try{
-    var q=QORIS.find(function(x){return x.id===PL.qari});
-    navigator.mediaSession.metadata=new MediaMetadata({title:'QS '+Q[PL.s-1][1]+': '+PL.a,artist:q?q.label:'Mishary Rashid Alafasy',album:'Al-Qur\'an Digital'})
-  }catch(e){}
+  try{navigator.mediaSession.metadata=new MediaMetadata({title:'QS '+Q[PL.s-1][1]+': '+PL.a,artist:PL.q.n,album:'Al-Qur\'an Digital'})}catch(e){}
 }
 function aFollow(a){
   var el=rd.els[a-1];if(!el)return;
   var r=el.getBoundingClientRect(),top=($('topbar').offsetHeight||90)+8;
-  if(r.top<top||r.bottom>window.innerHeight-140)goAyat(a);
+  if(r.top<top||r.bottom>window.innerHeight-($('bnav').offsetHeight+60))goAyat(a);
 }
-function getVisibleAyat(){
-  if(!rd.open||!rd.els||!rd.els.length) return null;
-  var top=($('topbar').offsetHeight||90)+12;
-  var best=null,bestDist=1e9;
-  for(var i=0;i<rd.els.length;i++){
-    var el=rd.els[i]; if(!el) continue;
-    var r=el.getBoundingClientRect();
-    if(r.bottom<top) continue;
-    if(r.top>window.innerHeight-120) break;
-    var dist=Math.abs(r.top-top);
-    if(r.top>=top && r.top<=top+200) return i+1;
-    if(dist<bestDist){bestDist=dist;best=i+1}
+/* ayat yang benar-benar tampil di layar: bila ayat pertama hanya tersisa sedikit di atas, pakai ayat berikutnya */
+function aVisible(){
+  var a=rd.cur||1,el=rd.els[a-1];
+  if(el&&a<rd.n){
+    var rc=el.getClientRects();
+    if(rc.length){
+      var t=rc[0].top,b=rc[rc.length-1].bottom,lim=$('topbar').offsetHeight+6,h=b-t;
+      if(h>0&&(b-Math.max(t,lim))/h<0.3)a++;
+    }
   }
-  return best||rd.cur||1;
+  return a;
+}
+function aLoad(s,a,k){
+  PL.k=k;
+  AU.src=aUrl(s,a,k);
+  AU.defaultPlaybackRate=PL.rate;AU.playbackRate=PL.rate;
+  var pr=AU.play();if(pr&&pr.catch)pr.catch(function(){aUI()});
 }
 function aPlay(s,a){
-  PL.on=true;PL.s=s;PL.a=a;PL.alt=false;
-  AU.src=aUrl(s,a,false);
-  AU.defaultPlaybackRate=PL.rate;AU.playbackRate=PL.rate;
-  try{localStorage.setItem('qari',PL.qari)}catch(e){}
-  var pr=AU.play();if(pr&&pr.catch)pr.catch(function(){aUI()});
+  PL.on=true;PL.s=s;PL.a=a;
+  vzCtx();
+  aLoad(s,a,0);
   if(rd.open&&rd.s===s){renderUpTo(a+CH);aMark();aFollow(a)}else aMark();
   aUI();aMeta();
-  var n=nextOf(s,a);if(n)PRE.src=aUrl(n[0],n[1],false);
-  initAudioAnalyser();
+  var n=nextOf(s,a);if(n)PRE.src=aUrl(n[0],n[1],0);   /* muat ayat berikutnya lebih dulu agar tidak terputus */
 }
 /* pindah ke ayat lain; bila pembaca sedang menampilkan surat yang diputar, tampilan ikut pindah surat */
 function aGo(s,a){
@@ -2413,182 +2416,205 @@ function aGo(s,a){
   aPlay(s,a);
 }
 function aStop(){
-  PL.on=false;AU.pause();aMark();aUI();
+  PL.on=false;AU.pause();aMark();aUI();vzKick();
   if('mediaSession' in navigator){try{navigator.mediaSession.metadata=null}catch(e){}}
-  if(analyserRAF) cancelAnimationFrame(analyserRAF);
 }
-AU.addEventListener('ended',function(){
-  if(!PL.on)return;
-  if(PL.rep){AU.currentTime=0;AU.play().catch(function(){});return}
-  var n=nextOf(PL.s,PL.a);
-  if(!n){aStop();toast('Selesai');return}
-  aGo(n[0],n[1]);
-});
-AU.addEventListener('error',function(){
-  if(!PL.on)return;
-  if(!PL.alt){PL.alt=true;AU.src=aUrl(PL.s,PL.a,true);var pr=AU.play();if(pr&&pr.catch)pr.catch(function(){});return}
+/* elemen audio baru (cors=true: boleh dianalisis spektrumnya; false: pemutaran biasa tanpa CORS) */
+function aSwap(cors){
+  try{AU.pause();AU.removeAttribute('src');AU.load()}catch(e){}
+  AU=new Audio();AU.preload='auto';
+  if(cors)AU.crossOrigin='anonymous';
+  if(cors)PRE.crossOrigin='anonymous';else PRE.removeAttribute('crossorigin');
+  PL.noCors=!cors;VZ.real=false;
+  bindAU(AU);aVolUI();
+}
+function aErr(){
+  if(PL.k<1){PL.k=1;PL.flip=true;aLoad(PL.s,PL.a,1);return}
+  if(!PL.noCors){aSwap(false);aLoad(PL.s,PL.a,0);return}   /* server tanpa CORS: tetap putar, spektrum disimulasikan */
   toast('Audio gagal dimuat — butuh sambungan internet');aStop();
-});
-AU.addEventListener('play',aUI);AU.addEventListener('pause',aUI);
-$('abp').onclick=function(){var a=rd.sel;if(!a)return;selectAyat(0);aPlay(rd.s,a)};
-/* ==== NEW CONTROLS ==== */
-function ensurePlay(){
-  if(PL.on) return;
-  var s=rd.s||1;
-  var a=rd.sel||getVisibleAyat()||rd.cur||1;
-  aPlay(s,a);
 }
-$('apt').onclick=function(){
-  if(!PL.on){ensurePlay();return}
-  if(AU.paused)AU.play().catch(function(){});else AU.pause()
+function bindAU(el){
+  el.addEventListener('ended',function(){
+    if(el!==AU||!PL.on)return;
+    if(PL.rep){AU.currentTime=0;AU.play().catch(function(){});return}
+    var n=nextOf(PL.s,PL.a);
+    if(!n){aStop();toast('Selesai');return}
+    aGo(n[0],n[1]);
+  });
+  el.addEventListener('error',function(){if(el===AU&&PL.on)aErr()});
+  el.addEventListener('play',function(){if(el===AU){aUI();vzKick()}});
+  el.addEventListener('pause',function(){if(el===AU)aUI()});
+  el.addEventListener('playing',function(){
+    if(el!==AU)return;
+    if(PL.flip){PL.altFirst=!PL.altFirst;PL.flip=false}
+    vzAttach();vzKick();
+  });
+}
+bindAU(AU);
+
+/* ---------- Qari ---------- */
+function qBuild(){
+  var m=$('qmenu');m.innerHTML='';
+  QARI.forEach(function(q){
+    var b=document.createElement('button');b.type='button';b.setAttribute('role','option');
+    b.setAttribute('aria-selected',q===PL.q?'true':'false');
+    b.innerHTML='<span></span><small></small>';
+    b.firstChild.textContent=q.n;b.lastChild.textContent=q.sp;
+    b.onclick=function(e){e.stopPropagation();setQari(q.id);qClose()};
+    m.appendChild(b);
+  });
+}
+function qClose(){$('qmenu').hidden=true;$('aqr').setAttribute('aria-expanded','false')}
+function setQari(id){
+  var q=qariById(id);if(q===PL.q)return;
+  PL.q=q;ls('qk.qari',q.id);PL.altFirst=false;PL.flip=false;
+  if(PL.noCors)aSwap(true);
+  qBuild();aUI();
+  if(PL.on){var was=!AU.paused;aPlay(PL.s,PL.a);if(!was)AU.pause()}
+  toast('Qari: '+q.n);
+}
+$('aqr').onclick=function(e){
+  e.stopPropagation();
+  var m=$('qmenu'),open=m.hidden;m.hidden=!open;this.setAttribute('aria-expanded',open?'true':'false');
 };
-$('apv').onclick=function(){if(!PL.on){ensurePlay();return} if(AU.currentTime>3){AU.currentTime=0;return}var p=prevOf(PL.s,PL.a);if(p)aGo(p[0],p[1])};
-$('apf').onclick=function(){if(!PL.on){ensurePlay();return} var n=nextOf(PL.s,PL.a);if(n)aGo(n[0],n[1])};
+document.addEventListener('click',function(e){if(!$('qmenu').hidden&&!$('qmenu').contains(e.target))qClose()});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!$('qmenu').hidden){qClose();e.stopImmediatePropagation()}},true);
+
+/* ---------- Spectrum Analyzer digital (batang LED + penahan puncak) ----------
+   Analisis nyata: captureStream() -> AnalyserNode (tidak mengubah jalur suara, jadi putar di layar kunci tetap aman).
+   Bila peramban/sumber tidak mendukung (mis. Safari iOS), animasi disimulasikan dari status putar. */
+var VZ={ctx:null,an:null,node:null,data:null,real:false,raf:0,N:30,S:9,lv:[],pk:[],hd:[],t:0,zero:0},
+    SEG=['#1de9b6','#1de9b6','#1de9b6','#3df08a','#8cf03a','#c8f03a','#ffd23a','#ff9a30','#ff4b3a'],
+    cv=$('spec'),cx=cv.getContext('2d'),SW=0,SH=0;
+for(var vi=0;vi<VZ.N;vi++){VZ.lv.push(0);VZ.pk.push(0);VZ.hd.push(0)}
+function vzCtx(){
+  var AC=window.AudioContext||window.webkitAudioContext;
+  if(!AC)return;
+  try{
+    if(!VZ.ctx){
+      VZ.ctx=new AC();VZ.an=VZ.ctx.createAnalyser();
+      VZ.an.fftSize=512;VZ.an.smoothingTimeConstant=.6;VZ.an.minDecibels=-90;VZ.an.maxDecibels=-20;
+      VZ.data=new Uint8Array(VZ.an.frequencyBinCount);
+    }
+    if(VZ.ctx.state==='suspended')VZ.ctx.resume();
+  }catch(e){VZ.ctx=null}
+}
+function vzAttach(){
+  VZ.real=false;VZ.zero=0;
+  if(PL.noCors||!VZ.ctx)return;
+  var cs=AU.captureStream||AU.mozCaptureStream;if(!cs)return;
+  try{
+    var st=cs.call(AU);
+    if(!st.getAudioTracks().length)return;
+    if(VZ.node){try{VZ.node.disconnect()}catch(e){}}
+    VZ.node=VZ.ctx.createMediaStreamSource(st);VZ.node.connect(VZ.an);   /* tidak disambung ke speaker */
+    VZ.real=true;
+  }catch(e){VZ.real=false}
+}
+function vzSize(){
+  var r=cv.getBoundingClientRect(),d=Math.min(window.devicePixelRatio||1,2);
+  SW=r.width;SH=r.height;
+  if(!SW||!SH)return;
+  cv.width=Math.round(SW*d);cv.height=Math.round(SH*d);cx.setTransform(d,0,0,d,0,0);
+  vzDraw();
+}
+function vzLevels(playing){
+  var N=VZ.N,out=[],i,j;
+  if(playing&&VZ.real&&VZ.an){
+    VZ.an.getByteFrequencyData(VZ.data);
+    var sum=0;
+    for(i=0;i<N;i++){
+      var lo=Math.floor(Math.pow(110,i/N)),hi=Math.max(lo+1,Math.floor(Math.pow(110,(i+1)/N))),m=0;
+      for(j=lo;j<hi&&j<VZ.data.length;j++)if(VZ.data[j]>m)m=VZ.data[j];
+      sum+=m;
+      out.push(Math.min(1,Math.pow(m/255,1.35)*(1+.5*i/N)));
+    }
+    if(sum===0&&AU.readyState>=3){if(++VZ.zero>90)VZ.real=false}else if(sum>0)VZ.zero=0;   /* terus senyap padahal diputar → anggap tak terbaca */
+    return out;
+  }
+  VZ.t+=.045;
+  for(i=0;i<N;i++){
+    var e=playing?((.5+.5*Math.sin(VZ.t*2.3+i*.55))*(.55+.45*Math.sin(VZ.t*1.1+i*1.7))*(1-.45*i/N)*.85+Math.random()*.2):0;
+    out.push(Math.min(1,e));
+  }
+  return out;
+}
+function vzDraw(){
+  if(!SW||!SH)return;
+  cx.clearRect(0,0,SW,SH);
+  var N=VZ.N,S=VZ.S,gw=2,bw=(SW-(N-1)*gw)/N,sg=1.5,sh=(SH-(S-1)*sg)/S,i,j;
+  for(i=0;i<N;i++){
+    var x=i*(bw+gw),on=Math.round(VZ.lv[i]*S),pi=Math.min(S-1,Math.round(VZ.pk[i]*S)-1);
+    for(j=0;j<S;j++){
+      cx.fillStyle=j<on?SEG[j]:(j===pi&&VZ.pk[i]>.04?'#eaffff':'rgba(110,190,255,.07)');
+      cx.fillRect(x,SH-(j+1)*sh-j*sg,bw,sh);
+    }
+  }
+}
+function vzFrame(){
+  VZ.raf=0;
+  var playing=PL.on&&!AU.paused&&!AU.ended,lv=vzLevels(playing),act=false;
+  for(var i=0;i<VZ.N;i++){
+    var v=lv[i];
+    VZ.lv[i]=v>VZ.lv[i]?VZ.lv[i]+(v-VZ.lv[i])*.7:Math.max(0,VZ.lv[i]-.06);
+    if(VZ.lv[i]>VZ.pk[i]){VZ.pk[i]=VZ.lv[i];VZ.hd[i]=14}
+    else if(VZ.hd[i]>0)VZ.hd[i]--;
+    else VZ.pk[i]=Math.max(0,VZ.pk[i]-.025);
+    if(VZ.lv[i]>.01||VZ.pk[i]>.01)act=true;
+  }
+  if(!document.hidden&&!$('pl').classList.contains('mini'))vzDraw();
+  if(playing||act)VZ.raf=requestAnimationFrame(vzFrame);
+}
+function vzKick(){if(!VZ.raf)VZ.raf=requestAnimationFrame(vzFrame)}
+window.addEventListener('resize',vzSize);
+if(window.ResizeObserver)new ResizeObserver(vzSize).observe(cv);
+
+/* ---------- Kontrol ---------- */
+$('apt').onclick=function(){
+  if(PL.on){vzCtx();if(AU.paused)AU.play().catch(function(){});else AU.pause();return}
+  if(!rd.open)return;
+  /* belum memutar: baca ayat yang dipilih pengguna; bila tidak ada, ayat yang sedang tampil di layar */
+  var a=rd.sel||aVisible();
+  if(rd.sel)selectAyat(0);
+  aPlay(rd.s,a);
+};
+$('abp').onclick=function(){var a=rd.sel;if(!a)return;selectAyat(0);aPlay(rd.s,a)};
+$('apv').onclick=function(){
+  if(PL.on){if(AU.currentTime>3){AU.currentTime=0;return}var p=prevOf(PL.s,PL.a);if(p)aGo(p[0],p[1])}
+  else goAyat(Math.max(1,rd.cur-1));
+};
+$('apf').onclick=function(){
+  if(PL.on){var n=nextOf(PL.s,PL.a);if(n)aGo(n[0],n[1])}
+  else goAyat(Math.min(rd.n,rd.cur+1));
+};
 $('apr').onclick=function(){PL.rep=!PL.rep;aUI();toast(PL.rep?'Ulangi ayat: aktif':'Ulangi ayat: mati')};
 $('aps').onclick=function(){PL.rate=RATES[(RATES.indexOf(PL.rate)+1)%RATES.length];AU.defaultPlaybackRate=PL.rate;AU.playbackRate=PL.rate;aUI()};
-$('apx').onclick=aStop;
-$('apStopTop').onclick=aStop;
-$('apShuffle').onclick=function(){var s=Math.floor(Math.random()*114)+1; var max=Q[s-1][3].length; var a=Math.floor(Math.random()*max)+1; aGo(s,a); toast('Acak: '+Q[s-1][1]+':'+a)};
-$('apMute').onclick=function(){AU.muted=!AU.muted; $('apMute').classList.toggle('on',AU.muted)};
-$('apVol').oninput=function(){AU.volume=parseFloat(this.value); AU.muted=AU.volume===0};
-try{PL.qari=localStorage.getItem('qari')||'shatri'}catch(e){}
-var qSelEl=$('apQori');
-if(qSelEl){
-  qSelEl.innerHTML='';
-  QORIS.forEach(function(q){
-    var o=document.createElement('option');o.value=q.id;o.textContent=q.label+(q.speed?' — '+q.speed:'');qSelEl.appendChild(o);
-  });
-  qSelEl.value=PL.qari;
-  qSelEl.onchange=function(){PL.qari=this.value; if(PL.on){AU.src=aUrl(PL.s,PL.a,false); AU.play().catch(function(){}) } aMeta(); toast('Qari: '+this.options[this.selectedIndex].textContent); try{localStorage.setItem('qari',PL.qari)}catch(e){}};
-function applySkin(id){
-  var sk=SKINS.find(function(s){return s.id===id})||SKINS[0];
-  CUR_SKIN=sk;
-  var wrap=document.getElementById('apCanvasWrap');
-  var bar=document.querySelector('#apl .ap-bar');
-  if(wrap){ wrap.style.background=sk.bg; }
-  if(bar){ bar.style.background=sk.bar; bar.style.boxShadow='inset 0 1px 0 rgba(255,255,255,.18),inset 0 -1px 0 rgba(0,0,0,.7),0 8px 24px rgba(0,0,0,.45),0 0 0 1px rgba(0,0,0,.6),0 0 18px '+sk.glow; }
-  var apl=document.getElementById('apl');
-  if(apl){ apl.style.setProperty('--skin-glow', sk.glow); }
-  try{localStorage.setItem('ap_skin', sk.id)}catch(e){}
-  renderSkinGrid();
-}
-function renderSkinGrid(){
-  var grid=document.getElementById('apSkinGrid'); if(!grid) return;
-  grid.innerHTML='';
-  SKINS.forEach(function(sk){
-    var div=document.createElement('button');
-    div.className='ap-skin-item'+(CUR_SKIN&&CUR_SKIN.id===sk.id?' on':'');
-    var bars=sk.spectrum.map(function(c){return '<s style="background:'+c+'"></s>'}).join('');
-    div.innerHTML='<div class="prev" style="background:'+sk.bg+';border:1px solid '+sk.glow+'"><i>'+bars+'</i></div><div class="nm">'+sk.name+'</div><div class="ds">'+sk.desc+'</div>';
-    div.onclick=function(){applySkin(sk.id);};
-    grid.appendChild(div);
-  });
-}
-(function initSkin(){
-  var saved='dark';
-  try{saved=localStorage.getItem('ap_skin')||'dark'}catch(e){}
-  setTimeout(function(){ applySkin(saved); },120);
-  var btn=document.getElementById('apSkinBtn'), panel=document.getElementById('apSkinPanel'), close=document.getElementById('apSkinClose');
-  if(btn) btn.onclick=function(){ panel.hidden=false; renderSkinGrid(); };
-  if(close) close.onclick=function(){ panel.hidden=true; };
-  if(panel) panel.addEventListener('click',function(e){ if(e.target===panel) panel.hidden=true; });
-})();
-}
-/* ==== SPECTRUM ANALYZER DIGITAL ==== */
-var audioCtx=null,analyser=null,analyserRAF=null;
-function initAudioAnalyser(){
-  try{
-    if(!audioCtx){
-      audioCtx=new (window.AudioContext||window.webkitAudioContext)();
-    }
-    if(audioCtx.state==='suspended') audioCtx.resume();
-    if(!analyser){
-      analyser=audioCtx.createAnalyser();
-      analyser.fftSize=256;
-      var src=audioCtx.createMediaElementSource(AU);
-      src.connect(analyser);
-      analyser.connect(audioCtx.destination);
-    }
-    drawVis();
-  }catch(e){ console.log('analyser fail',e); fakeVis(); }
-}
-function drawVis(){
-  var canvas=$('apVis'); if(!canvas) return;
-  var ctx=canvas.getContext('2d');
-  var W=canvas.width=canvas.clientWidth*2;
-  var H=canvas.height=52*2;
-  var buffer= new Uint8Array(analyser.frequencyBinCount);
-  function loop(){
-    analyserRAF=requestAnimationFrame(loop);
-    if(AU.paused){ return; }
-    analyser.getByteFrequencyData(buffer);
-    ctx.clearRect(0,0,W,H);
-    // background grid
-    ctx.fillStyle='#0d0d14';
-    ctx.fillRect(0,0,W,H);
-    var barCount=48;
-    var barW=W/barCount*0.62;
-    var gap=W/barCount*0.38;
-    for(var i=0;i<barCount;i++){
-      var idx=Math.floor(i/ barCount * buffer.length*0.7);
-      var v=buffer[idx]/255;
-      var bh= (v*H*0.85)+4;
-      var x=i*(barW+gap)+gap/2;
-      var y=H-bh;
-      var sp=(CUR_SKIN&&CUR_SKIN.spectrum)||['#0a1a4a','#3a7bff','#8ec5ff'];
-      var grad=ctx.createLinearGradient(x,y,x,y+bh);
-      grad.addColorStop(0, sp[2]||'#8ec5ff');
-      grad.addColorStop(0.35, sp[1]||'#3a7bff');
-      grad.addColorStop(1, sp[0]||'#0a1a4a');
-      ctx.fillStyle=grad;
-      ctx.shadowColor=(CUR_SKIN&&CUR_SKIN.glow)||'rgba(66,133,255,0.8)';
-      ctx.shadowBlur=8;
-      ctx.fillRect(x,y,barW,bh);
-      ctx.shadowBlur=0;
-      // mirror tiny
-      ctx.globalAlpha=0.22;
-      ctx.fillRect(x,H-bh*0.12,barW,bh*0.12);
-      ctx.globalAlpha=1;
-    }
-    // scan line
-    ctx.strokeStyle='rgba(120,180,255,0.15)';
-    ctx.lineWidth=1;
-    for(var yy=0;yy<H;yy+=H/6){ ctx.beginPath(); ctx.moveTo(0,yy); ctx.lineTo(W,yy); ctx.stroke(); }
-  }
-  loop();
-}
-function fakeVis(){
-  var canvas=$('apVis'); if(!canvas) return;
-  var ctx=canvas.getContext('2d');
-  var W=canvas.width=canvas.clientWidth*2; var H=canvas.height=52*2;
-  function loop(){
-    analyserRAF=requestAnimationFrame(loop);
-    if(AU.paused) return;
-    ctx.clearRect(0,0,W,H);
-    ctx.fillStyle='#0d0d14'; ctx.fillRect(0,0,W,H);
-    var t=Date.now()*0.01;
-    var barCount=48; var barW=W/barCount*0.62; var gap=W/barCount*0.38;
-    for(var i=0;i<barCount;i++){
-      var v=Math.abs(Math.sin(t*0.1+i*0.5))*0.8+Math.random()*0.2;
-      var bh=v*H*0.85;
-      var x=i*(barW+gap)+gap/2; var y=H-bh;
-      var col=(CUR_SKIN&&CUR_SKIN.spectrum&&CUR_SKIN.spectrum[1])||'#3a7bff'; ctx.fillStyle=col; ctx.fillRect(x,y,barW,bh);
-    }
-  }
-  loop();
-}
-if(window.MutationObserver)new MutationObserver(aPos).observe($('abar'),{attributes:true,attributeFilter:['hidden']});
-window.addEventListener('resize',aPos);
+$('apx').onclick=function(){if(PL.on)aStop()};
+$('avl').addEventListener('input',function(){PL.vol=this.value/100;PL.mute=false;ls('qk.vol',PL.vol);aVolUI()});
+$('avm').onclick=function(){PL.mute=!PL.mute;if(!PL.mute&&PL.vol===0)PL.vol=.5;aVolUI()};
+$('amin').onclick=function(){
+  var m=$('pl').classList.toggle('mini');ls('qk.amin',m?1:0);
+  if(!m){vzSize();vzKick()}
+};
+if(ls('qk.amin')===1)$('pl').classList.add('mini');
+/* tinggi pemutar dipakai untuk menempatkan bilah ayat terpilih, toast, dan ruang kosong di bawah bacaan */
+function bnH(){document.documentElement.style.setProperty('--bnh',$('bnav').offsetHeight+'px')}
+if(window.ResizeObserver)new ResizeObserver(bnH).observe($('bnav'));
+window.addEventListener('resize',bnH);
 /* tombol di layar kunci / headset */
 if('mediaSession' in navigator){try{
   navigator.mediaSession.setActionHandler('play',function(){$('apt').onclick()});
   navigator.mediaSession.setActionHandler('pause',function(){$('apt').onclick()});
   navigator.mediaSession.setActionHandler('previoustrack',function(){$('apv').onclick()});
   navigator.mediaSession.setActionHandler('nexttrack',function(){$('apf').onclick()});
+  navigator.mediaSession.setActionHandler('stop',function(){$('apx').onclick()});
 }catch(e){}}
-/* buka surat lain saat audio jalan: sorotan ayat ikut menyesuaikan */
+/* buka surat lain / geser ayat: label & sorotan ikut menyesuaikan */
 var _openSurah=openSurah;
-openSurah=function(){_openSurah.apply(this,arguments);aMark()};
+openSurah=function(){_openSurah.apply(this,arguments);aMark();aLbl();bnH()};
+var _updateCur=updateCur;
+updateCur=function(){_updateCur.apply(this,arguments);if(!PL.on)aLbl()};
+qBuild();aVolUI();aUI();bnH();vzSize();
 
 /* =====================================================================
    INIT
