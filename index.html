@@ -2533,7 +2533,7 @@ function vzAttach(){
     var st=cs.call(AU);VZ.st=st;
     if(!st.getAudioTracks().length)return;
     if(VZ.node){try{VZ.node.disconnect()}catch(e){}}
-    VZ.src=AU.currentSrc;VZ.node=VZ.ctx.createMediaStreamSource(st);VZ.node.connect(VZ.an);   /* tidak disambung ke speaker */
+    VZ.src=AU.currentSrc;VZ.node=VZ.ctx.createMediaStreamSource(st);VZ.node.connect(VZ.an);
     VZ.real=true;
   }catch(e){VZ.real=false}
 }
@@ -2577,7 +2577,8 @@ function vzDraw(){
     }
   }
 }
-function vzFrame(ts){
+function vzFrame(ts){try{vzFrame0(ts)}catch(e){VZ.raf=setTimeout(function(){VZ.raf=0;vzKick()},300)}}
+function vzFrame0(ts){
   VZ.raf=0;
   if(ts&&VZ.last&&ts-VZ.last<VZ.gap){VZ.raf=requestAnimationFrame(vzFrame);return}
   var t0=performance.now();VZ.last=ts||t0;
@@ -2681,10 +2682,19 @@ var MODES=[
   {c:'#3dff6f',d:function(){return MQ.pb.length*2000},f:function(t){return mqSlide(t,false)}},                                             /* vertikal turun */
   {c:'#ffb81f',d:function(){return MQ.pb.length*(70*7*6+900)},f:function(t){                                                              /* mengetik */
      var per=70*7*6+900,p=Math.floor(t/per),n=Math.floor((t%per)/45),a=mqPage(p);return a.map(function(v,i){return i<n?v:0})}},
-  {c:'#ff3b30',d:function(){return(MQ.C+MQ.full.length)*28+300},f:function(t){return mqScroll(Math.floor(t/28),1,true,t)}}                    /* bergelombang */
+  {c:'#ff3b30',d:function(){return MQ.pb.length*2200},f:function(t){                                                                   /* buka dari tengah */
+     var p=Math.floor(t/2200),u=t%2200,h=u<500?Math.ceil(MQ.C/2*u/500):MQ.C,m=MQ.C/2;
+     return mqPage(p).map(function(v,i){return Math.abs(i+.5-m)<=h?v:0})}}
 ];
 function mqNext(now){
-  var i;do{i=Math.floor(Math.random()*MODES.length)}while(i===MQ.prev&&MODES.length>1);
+  if(!MQ.bag||!MQ.bag.length){
+    var n=MODES.length,x=[],i,j,t;
+    for(i=0;i<n;i++)x.push(i);
+    for(i=n-1;i>0;i--){j=Math.floor(Math.random()*(i+1));t=x[i];x[i]=x[j];x[j]=t}
+    if(x[x.length-1]===MQ.prev&&n>1){t=x[0];x[0]=x[x.length-1];x[x.length-1]=t}
+    MQ.bag=x;
+  }
+  i=MQ.bag.pop();
   MQ.prev=i;MQ.mode=MODES[i];MQ.t0=now;MQ.dur=MQ.mode.d();
 }
 function mqSize(){
@@ -2694,6 +2704,11 @@ function mqSize(){
   var d=Math.min(window.devicePixelRatio||1,2);
   MQ.W=r.width;MQ.H=r.height;MQ.P=1.215;MQ.C=Math.floor(MQ.W/MQ.P);
   MQ.cv.width=Math.round(MQ.W*d);MQ.cv.height=Math.round(MQ.H*d);MQ.cx.setTransform(d,0,0,d,0,0);
+  var bg=document.createElement('canvas');bg.width=MQ.cv.width;bg.height=MQ.cv.height;
+  var bc=bg.getContext('2d'),P0=MQ.P,bx=(MQ.W-MQ.C*P0)/2,by=(MQ.H-7*P0)/2;
+  bc.scale(d,d);bc.fillStyle='rgba(255,255,255,.08)';
+  for(var bi=0;bi<MQ.C;bi++)for(var bj=0;bj<7;bj++)bc.fillRect(bx+bi*P0+P0*.11,by+bj*P0+P0*.11,P0*.78,P0*.78);
+  MQ.bg=bg;
   MQ.full=mqBits(MQ.txt);
   var n=Math.max(1,Math.floor((MQ.C+1)/6)),pg=[];   /* layar sempit: teks dipecah per halaman */
   for(var i=0;i<MQ.txt.length;i+=n)pg.push(MQ.txt.substr(i,n));
@@ -2701,19 +2716,14 @@ function mqSize(){
   mqNext(performance.now());
 }
 function mqDraw(g,col){
-  var c=MQ.cx,P=MQ.P,r=P*.42,x0=(MQ.W-MQ.C*P)/2,yo=(MQ.H-7*P)/2,i,j;
+  var c=MQ.cx,P=MQ.P,x0=(MQ.W-MQ.C*P)/2,yo=(MQ.H-7*P)/2,w=P*.78,o=P*.11,i,j;
   c.clearRect(0,0,MQ.W,MQ.H);
-  c.fillStyle='rgba(255,255,255,.07)';c.beginPath();
-  for(i=0;i<MQ.C;i++)for(j=0;j<7;j++){var x=x0+(i+.5)*P,y=yo+(j+.5)*P;c.moveTo(x+r,y);c.arc(x,y,r,0,6.2832)}
-  c.fill();
-  c.fillStyle=col;c.globalAlpha=.25;c.beginPath();
-  for(i=0;i<MQ.C;i++)for(j=0;j<7;j++)if((g[i]>>j)&1){var x=x0+(i+.5)*P,y=yo+(j+.5)*P;c.moveTo(x+r*1.7,y);c.arc(x,y,r*1.7,0,6.2832)}
-  c.fill();
-  c.globalAlpha=1;c.beginPath();
-  for(i=0;i<MQ.C;i++)for(j=0;j<7;j++)if((g[i]>>j)&1){var x=x0+(i+.5)*P,y=yo+(j+.5)*P;c.moveTo(x+r,y);c.arc(x,y,r,0,6.2832)}
-  c.fill();
+  if(MQ.bg)c.drawImage(MQ.bg,0,0,MQ.W,MQ.H);
+  c.fillStyle=col;
+  for(i=0;i<MQ.C;i++){var v=g[i];if(!v)continue;for(j=0;j<7;j++)if((v>>j)&1)c.fillRect(x0+i*P+o,yo+j*P+o,w,w)}
 }
-function mqFrame(ts){
+function mqFrame(ts){try{mqFrame0(ts)}catch(e){MQ.raf=setTimeout(function(){MQ.raf=0;mqKick()},300)}}
+function mqFrame0(ts){
   MQ.raf=0;
   if(!MQ.C||document.hidden)return;
   if(ts-MQ.last>=MQ.gap){
