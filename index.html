@@ -1396,7 +1396,7 @@ var FRAME_ORDER=Object.keys(FRAMES);
 var FX={none:{n:'Standar'},matte:{n:'Matte'},glass1:{n:'Kaca 1 \u00b7 Tipis'},glass2:{n:'Kaca 2 \u00b7 Berair'},glass3:{n:'Kaca 3 \u00b7 Buram'},glass4:{n:'Kaca 4 \u00b7 Kristal'},glass5:{n:'Kaca 5 \u00b7 Cair'},glass6:{n:'Kaca 6 \u00b7 Kilap'}};
 var FX_ORDER=Object.keys(FX);
 
-var DEF={font:'lpmq',theme:'k3tmb3',tex:'c-kartun',frame:'none',fx:'glass2',ar:22,trs:1,showTr:false};
+var DEF={font:'lpmq',theme:'k3tmb3',tex:'c-kartun',texR:'w-tegak',frame:'none',fx:'glass2',ar:22,trs:1,showTr:false};
 
 /* =====================================================================
    UTIL
@@ -1406,7 +1406,7 @@ function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;
 function ls(k,v){try{if(v===undefined){var x=localStorage.getItem(k);return x==null?null:JSON.parse(x)}localStorage.setItem(k,JSON.stringify(v))}catch(e){return null}}
 function toAr(n){return String(n).replace(/\d/g,function(d){return String.fromCharCode(0x660+ +d)})}
 var S=Object.assign({},DEF,ls('qk.set')||{});
-if(!FONTS[S.font])S.font=DEF.font;if(!THEMES[S.theme])S.theme=DEF.theme;if(!TEXTURES[S.tex])S.tex=DEF.tex;if(!FRAMES[S.frame])S.frame=DEF.frame;if(!FX[S.fx])S.fx=DEF.fx;
+if(!FONTS[S.font])S.font=DEF.font;if(!THEMES[S.theme])S.theme=DEF.theme;if(!TEXTURES[S.tex])S.tex=DEF.tex;if(!TEXTURES[S.texR])S.texR=DEF.texR;if(!FRAMES[S.frame])S.frame=DEF.frame;if(!FX[S.fx])S.fx=DEF.fx;
 function save(){ls('qk.set',S)}
 /* tampilan awal baru (v2): diterapkan SEKALI pada perangkat yang sudah punya pengaturan lama; setelah itu pilihan pengguna dihormati */
 if(ls('qk.v')!==4){S.theme=DEF.theme;S.tex=DEF.tex;S.frame=DEF.frame;S.fx=DEF.fx;ls('qk.v',4);save()}
@@ -1552,6 +1552,9 @@ function applyTheme(){
   r.setProperty('--barA',T.dark?mixHex(T.paper,'#000000',.5):mixHex(T.accent2,'#000000',.52));
   r.setProperty('--barB',T.dark?mixHex(T.paper,T.accent2,.24):mixHex(T.accent2,'#000000',.2));
   r.setProperty('--bari',T.dark?T.ink:'#fff4d8');apply3D(T,r);r.setProperty('--texop',(T.dark&&tx.opd!=null?tx.opd:tx.op)||0);r.setProperty('--texsz',tx.grad?'100% 100%':(tx.szs||(tx.sz||300)+'px'));
+  /* halaman bacaan Al-Qur'an: tekstur sendiri (S.texR), tidak ikut dan tidak mengubah tekstur tema utama */
+  var txr=TEXTURES[S.texR]||TEXTURES[DEF.texR],rs=$('reader').style;
+  rs.setProperty('--tex',texURI(S.texR,!!T.dark));rs.setProperty('--texop',(T.dark&&txr.opd!=null?txr.opd:txr.op)||0);rs.setProperty('--texsz',txr.grad?'100% 100%':(txr.szs||(txr.sz||300)+'px'));
 }
 function applyFrame(){
   var m=$('mushaf');m.dataset.frame=S.frame;m.querySelector('.fx').innerHTML=frameHTML(S.frame);
@@ -1817,7 +1820,8 @@ function swatchTheme3(id){var T=THEMES[id];return '<button class="sw" role="radi
 function paint3D(){[].forEach.call(document.querySelectorAll('#sheet [data-k3]'),function(e){if(THEMES[e.dataset.k3].pita||THEMES[e.dataset.k3].gul||THEMES[e.dataset.k3].tmb||THEMES[e.dataset.k3].neon)return;var K=THEMES[e.dataset.k3].k3,st=e.style;
   st.backgroundColor=K.k2;st.backgroundImage=[K.kgl,K.kpat,'linear-gradient(180deg,'+K.k1+','+K.k2+')'].join(',');st.backgroundSize=['100% 100%',K.kpsz,'100% 100%'].join(',');
   st.borderColor=K.ke;st.boxShadow='inset 0 1px 0 '+K.khl+',0 3px 0 '+K.ke})}
-function swatchTex(id){var T=TEXTURES[id],dk=!!THEMES[S.theme].dark;return '<button class="sw" role="radio" aria-checked="'+(S.tex===id)+'" data-k="tex" data-v="'+id+'"><div class="p tx" data-tx="'+id+'"></div>'+T.n+'</button>'}
+function texKey(){return $('reader').hidden?'tex':'texR'}
+function swatchTex(id){var T=TEXTURES[id],dk=!!THEMES[S.theme].dark,tk=texKey();return '<button class="sw" role="radio" aria-checked="'+(S[tk]===id)+'" data-k="'+tk+'" data-v="'+id+'"><div class="p tx" data-tx="'+id+'"></div>'+T.n+'</button>'}
 function paintTex(){var dk=!!THEMES[S.theme].dark;[].forEach.call(document.querySelectorAll('#sheet [data-tx]'),function(e){var T=TEXTURES[e.dataset.tx];e.style.setProperty('--tex',texURI(e.dataset.tx,dk,1));e.style.setProperty('--texop',(dk&&T.opd!=null?T.opd:T.op)||0);e.style.setProperty('--texsz',T.grad?'100% 100%':(T.szs||(T.sz||300)+'px'))})}
 function swatchFrame(id){return '<button class="sw" role="radio" aria-checked="'+(S.frame===id)+'" data-k="frame" data-v="'+id+'"><div class="p pv" data-frame="'+id+'"><div class="fx">'+frameHTML(id)+'</div></div>'+FRAMES[id].n+'</button>'}
 function swatchFx(id){return '<button class="sw" role="radio" aria-checked="'+(S.fx===id)+'" data-k="fx" data-v="'+id+'"><div class="p fxp" data-fx="'+id+'"><i></i></div>'+FX[id].n+'</button>'}
@@ -1856,7 +1860,7 @@ function sheetClick(e){
   keepAnchor(function(){S[k]=v;
     if(k==='font'){applyFontSizes();relayoutMedals();ensureFonts().then(function(){calibrate();keepAnchor(function(){applyFontSizes();relayoutMedals()})})}
     else if(k==='theme'){if(THEMES[v].tex)S.tex=THEMES[v].tex;applyTheme()}
-    else if(k==='tex'){applyTheme()}
+    else if(k==='tex'||k==='texR'){applyTheme()}
     else if(k==='fx'){applyTheme()}
     else if(k==='frame'){applyFrame()}
   });
