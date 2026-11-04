@@ -1034,6 +1034,39 @@ html[data-tombol="t14"]:not(#_) .dcat,html[data-tombol="t14"]:not(#_) .dgs,html[
 html[data-tombol="t14"]:not(#_) .dcat::after,html[data-tombol="t14"]:not(#_) .dgs::before,html[data-tombol="t14"]:not(#_) .ditem::after,html[data-tombol="t15"]:not(#_) .dcat::after,html[data-tombol="t15"]:not(#_) .dgs::before,html[data-tombol="t15"]:not(#_) .ditem::after,html[data-tombol="t16"]:not(#_) .dcat::after,html[data-tombol="t16"]:not(#_) .dgs::before,html[data-tombol="t16"]:not(#_) .ditem::after,html[data-tombol="t17"]:not(#_) .dcat::after,html[data-tombol="t17"]:not(#_) .dgs::before,html[data-tombol="t17"]:not(#_) .ditem::after,html[data-tombol="t18"]:not(#_) .dcat::after,html[data-tombol="t18"]:not(#_) .dgs::before,html[data-tombol="t18"]:not(#_) .ditem::after,html[data-tombol="t19"]:not(#_) .dcat::after,html[data-tombol="t19"]:not(#_) .dgs::before,html[data-tombol="t19"]:not(#_) .ditem::after,html[data-tombol="t20"]:not(#_) .dcat::after,html[data-tombol="t20"]:not(#_) .dgs::before,html[data-tombol="t20"]:not(#_) .ditem::after,html[data-tombol="t21"]:not(#_) .dcat::after,html[data-tombol="t21"]:not(#_) .dgs::before,html[data-tombol="t21"]:not(#_) .ditem::after,html[data-tombol="t22"]:not(#_) .dcat::after,html[data-tombol="t22"]:not(#_) .dgs::before,html[data-tombol="t22"]:not(#_) .ditem::after,html[data-tombol="t23"]:not(#_) .dcat::after,html[data-tombol="t23"]:not(#_) .dgs::before,html[data-tombol="t23"]:not(#_) .ditem::after{box-shadow:0 0 0 2px #fff,0 0 0 3.5px #1a1a1a,inset 0 2px 3px rgba(0,0,0,.35)}
 
 html[data-tombol^="t"]:not([data-tombol="t1"],[data-tombol="t2"],[data-tombol="t3"]):not(#_) .ditem .dbody,html[data-tombol^="t"]:not([data-tombol="t1"],[data-tombol="t2"],[data-tombol="t3"]):not(#_) .ditem .dbody *{text-shadow:none}
+/* ===== Tema Tombol (perak/krom): tekstur kertas + efek matte/kaca ikut tampil di kartu halaman depan =====
+   Pil berwarna (::after) tadinya menutup tekstur dan efek. Sekarang: tekstur = ::before tepat di atas pil,
+   kaca = lapisan embun/kilau di dalam pil, matte = pil datar tanpa kilap. */
+html[data-tombol^="t"]:not(#_) .row::before,
+html[data-tombol^="t"]:not(#_) .rcard::before,
+html[data-tombol^="t"]:not(#_) .hbx.tx::before{
+  content:'';display:block;position:absolute;inset:var(--ti,7px);width:auto;height:auto;margin:0;border:0;z-index:-1;pointer-events:none;
+  border-radius:inherit;background-image:var(--tex);background-size:var(--texsz,360px);background-repeat:repeat;opacity:var(--texop)}
+html[data-tombol^="t"]:not(#_) .rcard::before,
+html[data-tombol^="t"]:not(#_) .hbx.tx::before{border-radius:27px}
+html[data-tombol^="t"]:not(#_) .row .row::before{display:none}
+html[data-tombol^="t"]:not(#_) .row::after,
+html[data-tombol^="t"]:not(#_) .rcard::after,
+html[data-tombol^="t"]:not(#_) .hbx.tx::after{z-index:-2}
+html[data-fx^="glass"][data-tombol^="t"]:not(#_) :is(.row,.rcard,.tabs .tab,.hbx.tx)::after{
+  background-image:var(--gimg),var(--tin);
+  background-size:var(--gsz),100% 100%,100% 100%,100% 100%;
+  background-position:var(--gpos),0 0,0 0,0 0;
+  background-repeat:var(--grep),no-repeat,no-repeat,no-repeat;
+  box-shadow:0 0 0 1.5px rgba(0,0,0,.30),inset 0 2px 3px rgba(0,0,0,.35),var(--gx),0 2px 0 1.5px #fff}
+html[data-fx="matte"][data-tombol^="t"]:not(#_) :is(.row,.rcard,.tabs .tab,.hbx.tx){
+  --tbez:linear-gradient(180deg,#ececed,#d2d4d6);text-shadow:none}
+html[data-fx="matte"][data-tombol^="t"]:not(#_) :is(.row,.rcard,.tabs .tab,.hbx.tx)::after{
+  background:linear-gradient(180deg,var(--ta),var(--tb));
+  box-shadow:0 0 0 1.5px rgba(0,0,0,.22),inset 0 1px 2px rgba(0,0,0,.22)}
+/* tema biasa (bukan tombol/pita/gulung/neon): kartu daftar depan juga berpola kertas */
+html:not([data-tombol^="t"]):not([data-gulung^="g"]):not([data-pita^="pita"]):not([data-neon^="n"]):not(#_) .row,
+html:not([data-tombol^="t"]):not([data-gulung^="g"]):not([data-pita^="pita"]):not([data-neon^="n"]):not(#_) .rcard{position:relative;isolation:isolate}
+html:not([data-tombol^="t"]):not([data-gulung^="g"]):not([data-pita^="pita"]):not([data-neon^="n"]):not(#_) .row::before,
+html:not([data-tombol^="t"]):not([data-gulung^="g"]):not([data-pita^="pita"]):not([data-neon^="n"]):not(#_) .rcard::before{
+  content:'';position:absolute;inset:0;z-index:-1;pointer-events:none;border-radius:inherit;
+  background-image:var(--tex);background-size:var(--texsz,360px);opacity:var(--texop)}
+html:not([data-tombol^="t"]):not([data-gulung^="g"]):not([data-pita^="pita"]):not([data-neon^="n"]):not(#_) .row .row::before{display:none}
 </style>
 </head>
 <body>
