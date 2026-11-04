@@ -223,6 +223,11 @@ input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;bac
 #abar button:hover{background:var(--soft)}
 #abar button[aria-pressed=true]{background:var(--accent2);color:var(--paper)}
 #abar .in{flex-wrap:wrap;justify-content:center;max-width:calc(100vw - 20px)}
+/* ayat dipilih: hanya tombol Putar yang tampil */
+#abar b,#abar button:not(#abp){display:none}
+#abar .in{padding:4px;border-radius:999px}
+#abar #abp{background:var(--accent2);color:var(--paper);padding:10px 26px;border-radius:999px;font-size:15px;font-weight:700;letter-spacing:.02em}
+#abar #abp:hover,#abar #abp:active{background:var(--accent2);filter:brightness(1.1)}
 /* ===================== Pemutar metalik + Spectrum Analyzer digital ===================== */
 #bnav{position:fixed;left:0;right:0;bottom:0;z-index:20;display:flex;justify-content:center;padding:0 8px calc(8px + env(safe-area-inset-bottom));pointer-events:none}
 #bnav .pl{pointer-events:auto;position:relative;width:100%;max-width:520px;padding:8px 10px 11px;border-radius:22px;color:#cfe9ff;
@@ -2448,7 +2453,7 @@ function aSwap(cors){
 function aErr(){
   if(PL.k<1){PL.k=1;PL.flip=true;aLoad(PL.s,PL.a,1);return}
   if(!PL.noCors){aSwap(false);aLoad(PL.s,PL.a,0);return}   /* server tanpa CORS: tetap putar, spektrum disimulasikan */
-  toast('Audio gagal dimuat — butuh sambungan internet');aStop();
+  toast('Audio gagal dimuat — butuh sambungan internet');PL.pend=0;aStop();
 }
 function bindAU(el){
   el.addEventListener('ended',function(){
@@ -2464,6 +2469,7 @@ function bindAU(el){
   el.addEventListener('playing',function(){
     if(el!==AU)return;
     if(PL.flip){PL.altFirst=!PL.altFirst;PL.flip=false}
+    if(PL.pend){var pd=PL.pend;PL.pend=0;if(rd.sel===pd)selectAyat(0)}
     vzAttach();vzKick();
   });
 }
@@ -2602,7 +2608,7 @@ $('apt').onclick=function(){
   if(rd.sel)selectAyat(0);
   aPlay(rd.s,a);
 };
-$('abp').onclick=function(){var a=rd.sel;if(!a)return;selectAyat(0);aPlay(rd.s,a)};
+$('abp').onclick=function(){var a=rd.sel;if(!a)return;PL.pend=a;aPlay(rd.s,a)};   /* bilah baru hilang setelah audio benar-benar bunyi */
 $('apv').onclick=function(){
   if(PL.on){if(AU.currentTime>3){AU.currentTime=0;return}var p=prevOf(PL.s,PL.a);if(p)aGo(p[0],p[1])}
   else goAyat(Math.max(1,rd.cur-1));
