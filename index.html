@@ -741,6 +741,7 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;ba
 .dgc{flex:none;margin-left:auto;padding:2px 9px;border-radius:99px;font-size:11.5px;font-weight:700;letter-spacing:0;text-transform:none;
   border:1.5px solid rgba(255,244,216,.55);background:rgba(0,0,0,.3);text-shadow:none}
 /* kartu folder kategori: hanya nama (maks 3 baris), ukuran seragam */
+html .dcat:not(.dlegc) b,html .dcat:not(.dlegc) b *,html .dgs .dgt{text-transform:uppercase!important;font-variant-caps:normal!important}
 .dcat:not(.dlegc) b{text-transform:uppercase;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;line-clamp:3;overflow:hidden;line-height:1.25;min-height:3.75em;overflow-wrap:anywhere}
 .dcat:not(.dlegc){min-height:112px}
 html[data-tombol^="t"]:not([data-tombol="t1"],[data-tombol="t2"],[data-tombol="t3"]):not(#_) .dcat:not(.dlegc){min-height:130px}
@@ -1362,7 +1363,7 @@ var FRAME_ORDER=Object.keys(FRAMES);
 var FX={none:{n:'Standar'},matte:{n:'Matte'},glass1:{n:'Kaca 1 \u00b7 Tipis'},glass2:{n:'Kaca 2 \u00b7 Berair'},glass3:{n:'Kaca 3 \u00b7 Buram'},glass4:{n:'Kaca 4 \u00b7 Kristal'},glass5:{n:'Kaca 5 \u00b7 Cair'},glass6:{n:'Kaca 6 \u00b7 Kilap'}};
 var FX_ORDER=Object.keys(FX);
 
-var DEF={font:'lpmq',theme:'k3gold',tex:'w-tegak',frame:'none',fx:'glass2',ar:22,trs:1,showTr:false};
+var DEF={font:'lpmq',theme:'k3tmb3',tex:'c-kartun',frame:'none',fx:'glass2',ar:22,trs:1,showTr:false};
 
 /* =====================================================================
    UTIL
@@ -1375,7 +1376,7 @@ var S=Object.assign({},DEF,ls('qk.set')||{});
 if(!FONTS[S.font])S.font=DEF.font;if(!THEMES[S.theme])S.theme=DEF.theme;if(!TEXTURES[S.tex])S.tex=DEF.tex;if(!FRAMES[S.frame])S.frame=DEF.frame;if(!FX[S.fx])S.fx=DEF.fx;
 function save(){ls('qk.set',S)}
 /* tampilan awal baru (v2): diterapkan SEKALI pada perangkat yang sudah punya pengaturan lama; setelah itu pilihan pengguna dihormati */
-if(ls('qk.v')!==3){S.theme=DEF.theme;S.tex=DEF.tex;S.frame=DEF.frame;S.fx=DEF.fx;ls('qk.v',3);save()}
+if(ls('qk.v')!==4){S.theme=DEF.theme;S.tex=DEF.tex;S.frame=DEF.frame;S.fx=DEF.fx;ls('qk.v',4);save()}
 var toastT;function toast(m){var t=$('toast');t.textContent=m;t.classList.add('on');clearTimeout(toastT);toastT=setTimeout(function(){t.classList.remove('on')},1600)}
 
 /* Normalisasi untuk pencarian */
