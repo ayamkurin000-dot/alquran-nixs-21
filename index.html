@@ -297,7 +297,7 @@ input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;bac
 #bnav .bigp{width:44px;height:44px}
 #bnav .bigp svg{width:22px;height:22px}
 #bnav .vg{flex:1;min-width:80px;display:flex;flex-direction:column;gap:3px}
-#bnav #mq{display:block;width:100%;height:17px;border-radius:4px;background:#020603;box-shadow:inset 0 1px 3px #000,0 1px 0 rgba(255,255,255,.12)}
+#bnav #mq{display:block;width:100%;height:9px;border-radius:4px;background:#020603;box-shadow:inset 0 1px 3px #000,0 1px 0 rgba(255,255,255,.12)}
 #bnav .vr{display:flex;align-items:center;gap:4px;min-width:0}
 #bnav .vr .mb{width:26px;height:22px;border-radius:7px}
 #bnav .vr .mb svg{width:14px;height:14px}
@@ -2674,14 +2674,14 @@ function mqSlide(t,up){
   return mqPage(p).map(function(v){return mqShift(v,y)});
 }
 var MODES=[
-  {c:'#3dff6f',d:function(){return(MQ.C+MQ.full.length)*55+300},f:function(t){return mqScroll(Math.floor(t/55),1,false,t)}},                /* geser kiri */
+  {c:'#3dff6f',d:function(){return(MQ.C+MQ.full.length)*28+300},f:function(t){return mqScroll(Math.floor(t/28),1,false,t)}},                /* geser kiri */
   {c:'#ff3b30',d:function(){return MQ.pb.length*1500},f:function(t){return(t%1500)/300%2<1?mqPage(Math.floor(t/1500)):new Array(MQ.C).fill(0)}}, /* berkedip */
   {c:'#27e1ff',d:function(){return MQ.pb.length*2000},f:function(t){return mqSlide(t,true)}},                                              /* vertikal naik */
-  {c:'#ffb81f',d:function(){return(MQ.C+MQ.full.length)*55+300},f:function(t){return mqScroll(Math.floor(t/55),-1,false,t)}},               /* geser kanan */
+  {c:'#ffb81f',d:function(){return(MQ.C+MQ.full.length)*28+300},f:function(t){return mqScroll(Math.floor(t/28),-1,false,t)}},               /* geser kanan */
   {c:'#3dff6f',d:function(){return MQ.pb.length*2000},f:function(t){return mqSlide(t,false)}},                                             /* vertikal turun */
   {c:'#ffb81f',d:function(){return MQ.pb.length*(70*7*6+900)},f:function(t){                                                              /* mengetik */
      var per=70*7*6+900,p=Math.floor(t/per),n=Math.floor((t%per)/45),a=mqPage(p);return a.map(function(v,i){return i<n?v:0})}},
-  {c:'#ff3b30',d:function(){return(MQ.C+MQ.full.length)*55+300},f:function(t){return mqScroll(Math.floor(t/55),1,true,t)}}                    /* bergelombang */
+  {c:'#ff3b30',d:function(){return(MQ.C+MQ.full.length)*28+300},f:function(t){return mqScroll(Math.floor(t/28),1,true,t)}}                    /* bergelombang */
 ];
 function mqNext(now){
   var i;do{i=Math.floor(Math.random()*MODES.length)}while(i===MQ.prev&&MODES.length>1);
@@ -2692,7 +2692,7 @@ function mqSize(){
   if(!r.width){MQ.C=0;return}
   if(Math.abs(r.width-MQ.W)<.5&&MQ.C)return;
   var d=Math.min(window.devicePixelRatio||1,2);
-  MQ.W=r.width;MQ.H=r.height;MQ.P=MQ.H/7;MQ.C=Math.floor(MQ.W/MQ.P);
+  MQ.W=r.width;MQ.H=r.height;MQ.P=1.215;MQ.C=Math.floor(MQ.W/MQ.P);
   MQ.cv.width=Math.round(MQ.W*d);MQ.cv.height=Math.round(MQ.H*d);MQ.cx.setTransform(d,0,0,d,0,0);
   MQ.full=mqBits(MQ.txt);
   var n=Math.max(1,Math.floor((MQ.C+1)/6)),pg=[];   /* layar sempit: teks dipecah per halaman */
@@ -2701,16 +2701,16 @@ function mqSize(){
   mqNext(performance.now());
 }
 function mqDraw(g,col){
-  var c=MQ.cx,P=MQ.P,r=P*.38,x0=(MQ.W-MQ.C*P)/2,i,j;
+  var c=MQ.cx,P=MQ.P,r=P*.42,x0=(MQ.W-MQ.C*P)/2,yo=(MQ.H-7*P)/2,i,j;
   c.clearRect(0,0,MQ.W,MQ.H);
   c.fillStyle='rgba(255,255,255,.07)';c.beginPath();
-  for(i=0;i<MQ.C;i++)for(j=0;j<7;j++){var x=x0+(i+.5)*P,y=(j+.5)*P;c.moveTo(x+r,y);c.arc(x,y,r,0,6.2832)}
+  for(i=0;i<MQ.C;i++)for(j=0;j<7;j++){var x=x0+(i+.5)*P,y=yo+(j+.5)*P;c.moveTo(x+r,y);c.arc(x,y,r,0,6.2832)}
   c.fill();
   c.fillStyle=col;c.globalAlpha=.25;c.beginPath();
-  for(i=0;i<MQ.C;i++)for(j=0;j<7;j++)if((g[i]>>j)&1){var x=x0+(i+.5)*P,y=(j+.5)*P;c.moveTo(x+r*1.7,y);c.arc(x,y,r*1.7,0,6.2832)}
+  for(i=0;i<MQ.C;i++)for(j=0;j<7;j++)if((g[i]>>j)&1){var x=x0+(i+.5)*P,y=yo+(j+.5)*P;c.moveTo(x+r*1.7,y);c.arc(x,y,r*1.7,0,6.2832)}
   c.fill();
   c.globalAlpha=1;c.beginPath();
-  for(i=0;i<MQ.C;i++)for(j=0;j<7;j++)if((g[i]>>j)&1){var x=x0+(i+.5)*P,y=(j+.5)*P;c.moveTo(x+r,y);c.arc(x,y,r,0,6.2832)}
+  for(i=0;i<MQ.C;i++)for(j=0;j<7;j++)if((g[i]>>j)&1){var x=x0+(i+.5)*P,y=yo+(j+.5)*P;c.moveTo(x+r,y);c.arc(x,y,r,0,6.2832)}
   c.fill();
 }
 function mqFrame(ts){
