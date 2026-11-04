@@ -740,6 +740,13 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;ba
 .dgt{flex:1;min-width:0}
 .dgc{flex:none;margin-left:auto;padding:2px 9px;border-radius:99px;font-size:11.5px;font-weight:700;letter-spacing:0;text-transform:none;
   border:1.5px solid rgba(255,244,216,.55);background:rgba(0,0,0,.3);text-shadow:none}
+/* kartu folder kategori: hanya nama (maks 3 baris), ukuran seragam */
+.dcat:not(.dlegc) b{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;line-clamp:3;overflow:hidden;line-height:1.25;min-height:3.75em;overflow-wrap:anywhere}
+.dcat:not(.dlegc){min-height:112px}
+html[data-tombol^="t"]:not([data-tombol="t1"],[data-tombol="t2"],[data-tombol="t3"]):not(#_) .dcat:not(.dlegc){min-height:130px}
+/* nomor urut di kiri folder sub bab */
+.dgn{flex:none;box-sizing:border-box;min-width:26px;height:26px;padding:0 6px;border-radius:99px;display:inline-flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;letter-spacing:0;line-height:1;text-shadow:none;
+  background:radial-gradient(circle at 35% 30%,var(--kb1,#6b4a1c),var(--kb2,#2f1f08) 85%);border:1.5px solid var(--kbb,#f3e3b0);color:var(--kbi,#fff7dc);box-shadow:0 1px 3px rgba(0,0,0,.4)}
 .dgbody{position:relative;margin:14px 0 2px 20px;animation:dpap .22s ease-out}
 .dgbody::before{content:'';position:absolute;left:-12px;top:-8px;bottom:10px;width:3px;border-radius:3px;
   background:color-mix(in srgb,var(--k2,#6b4e16) 45%,#000);opacity:.65}
@@ -1921,7 +1928,7 @@ function doaItem(it,ix,no){
 }
 function doaShowCats(){
   doaQClear();var D=doaLoad(),h='';
-  D.c.forEach(function(c,ci){h+='<button type="button" class="dcat tx" data-c="'+c.id+'"><span><b>'+dEsc(c.t)+'</b><small>'+dEsc(c.d)+'</small></span><span class="drow"><span class="dcn">'+((D.i[c.id]||[]).length)+' doa</span><span class="dcn dno" aria-hidden="true">'+(ci+1)+'</span></span></button>'});
+  D.c.forEach(function(c,ci){h+='<button type="button" class="dcat tx" data-c="'+c.id+'"><span><b>'+dEsc(c.t)+'</b></span><span class="drow"><span class="dcn">'+((D.i[c.id]||[]).length)+' doa</span><span class="dcn dno" aria-hidden="true">'+(ci+1)+'</span></span></button>'});
   var pn='';
   if(D.p&&D.p.h){
     pn='<details class="dpeng"><summary><span class="dtt">'+dEsc(D.p.t)+'</span><span class="dbd">Baca dulu</span></summary>';
@@ -1950,16 +1957,16 @@ function doaShowCat(id){
   if(!cat){doaShowCats();return}
   doaCat=id;doaCur=D.i[id]||[];doaLz={};
   /* isi tiap sub bab baru dibuat saat sub bab dibuka (supaya kategori besar tampil cepat) */
-  var h='',g=null,no=0,openG=false,gh='',gs='',gk=0;
+  var h='',g=null,no=0,openG=false,gh='',gs='',gk=0,gno=0;
   function closeG(){if(openG){doaLz[gk]=gh;h+=gs+'<div class="dgbody"></div></details>';openG=false}}
   doaCur.forEach(function(it,ix){
     var sg=it.g||'';
     if(sg!==g){
       closeG();g=sg;no=0;
       if(sg){
-        var cnt=0,j;for(j=ix;j<doaCur.length&&(doaCur[j].g||'')===sg;j++)cnt++;
+        var cnt=0,j;for(j=ix;j<doaCur.length&&(doaCur[j].g||'')===sg;j++)cnt++;gno++;
         var nt=doaGNote(D,sg);
-        gk=ix;gs='<details class="dgrp" data-lz="'+gk+'"><summary class="dgs"><span class="dgt">'+dEsc(sg)+'</span><span class="dgc">'+cnt+' doa</span></summary>';
+        gk=ix;gs='<details class="dgrp" data-lz="'+gk+'"><summary class="dgs"><span class="dgn" aria-hidden="true">'+gno+'</span><span class="dgt">'+dEsc(sg)+'</span><span class="dgc">'+cnt+' doa</span></summary>';
         gh=(nt?'<p class="dgnote">'+dFmt(nt)+'</p>':'');
         openG=true
       }
