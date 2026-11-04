@@ -282,6 +282,21 @@ input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;bac
 #bnav #avl::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;margin-top:-6px;border-radius:50%;border:0;background:radial-gradient(circle at 35% 30%,#c4e6ff,#2f86e8 55%,#0f3f8f);box-shadow:0 0 8px #2fa0ff,0 1px 2px #000}
 #bnav #avl::-moz-range-thumb{width:16px;height:16px;border-radius:50%;border:0;background:radial-gradient(circle at 35% 30%,#c4e6ff,#2f86e8 55%,#0f3f8f);box-shadow:0 0 8px #2fa0ff,0 1px 2px #000}
 #bnav button:focus-visible,#bnav input:focus-visible{outline:2px solid #46b4ff;outline-offset:1px}
+
+/* --- perbaikan tumpang tindih + running text LED --- */
+#bnav .deck{gap:5px}
+#bnav .mb{width:32px;height:32px}
+#bnav .pill{flex:0 0 122px;min-width:0}
+#bnav .tb{width:30px}
+#bnav .bump{width:54px;height:54px;margin:-9px 0}
+#bnav .bigp{width:44px;height:44px}
+#bnav .bigp svg{width:22px;height:22px}
+#bnav .vg{flex:1;min-width:80px;display:flex;flex-direction:column;gap:3px}
+#bnav #mq{display:block;width:100%;height:17px;border-radius:4px;background:#020603;box-shadow:inset 0 1px 3px #000,0 1px 0 rgba(255,255,255,.12)}
+#bnav .vr{display:flex;align-items:center;gap:4px;min-width:0}
+#bnav .vr .mb{width:26px;height:22px;border-radius:7px}
+#bnav .vr .mb svg{width:14px;height:14px}
+#bnav #avl{flex:1;min-width:0;max-width:none}
 .snav{display:flex;gap:10px;margin-top:22px}
 .snav button{flex:1;border:1px solid var(--accent);background:transparent;color:var(--accent2);border-radius:12px;padding:10px;font-weight:700;font-size:14px}
 .snav button:disabled{opacity:.35}
@@ -1238,8 +1253,10 @@ html:not([data-tombol^="t"]):not([data-gulung^="g"]):not([data-pita^="pita"]):no
         <span class="bump"><button class="bigp" id="apt" type="button" aria-label="Putar ayat"></button></span>
         <button class="tb" id="apf" type="button" aria-label="Ayat berikutnya"><svg viewBox="0 0 24 24" fill="currentColor"><rect x="16.9" y="5" width="2.6" height="14" rx="1"/><path d="M4 5.2v13.6a.6.6 0 0 0 .95.5L15 12.5a.6.6 0 0 0 0-1L4.95 4.7A.6.6 0 0 0 4 5.2z"/></svg></button>
       </div>
-      <button class="mb" id="avm" type="button" aria-label="Bisukan"></button>
-      <input type="range" id="avl" min="0" max="100" value="100" aria-label="Volume">
+      <div class="vg">
+        <canvas id="mq" role="img" aria-label="Mannixs-21"></canvas>
+        <div class="vr"><button class="mb" id="avm" type="button" aria-label="Bisukan"></button><input type="range" id="avl" min="0" max="100" value="100" aria-label="Volume"></div>
+      </div>
     </div>
   </div></nav>
 </div>
@@ -2621,7 +2638,91 @@ var _openSurah=openSurah;
 openSurah=function(){_openSurah.apply(this,arguments);aMark();aLbl();bnH()};
 var _updateCur=updateCur;
 updateCur=function(){_updateCur.apply(this,arguments);if(!PL.on)aLbl()};
-qBuild();aVolUI();aUI();bnH();vzSize();
+/* ---------- Running text LED matriks titik: "Mannixs-21" ---------- */
+var FONT={'M':[127,2,12,2,127],'a':[32,84,84,84,120],'n':[124,8,4,4,120],'i':[0,68,125,64,0],'x':[68,40,16,40,68],'s':[72,84,84,84,32],'-':[8,8,8,8,8],'2':[66,97,81,73,70],'1':[0,66,127,64,0]},
+    MQ={txt:'Mannixs-21',cv:$('mq'),cx:$('mq').getContext('2d'),W:0,H:0,C:0,P:2.4,raf:0,last:0,gap:60,mode:null,t0:0,dur:0,prev:-1,full:[],pb:[]};
+function mqBits(str){
+  var o=[];
+  for(var i=0;i<str.length;i++){var g=FONT[str[i]]||[0,0,0,0,0];for(var j=0;j<g.length;j++)o.push(g[j]);if(i<str.length-1)o.push(0)}
+  return o;
+}
+function mqShift(v,y){return y>0?(v<<y)&127:v>>(-y)}
+function mqPage(p){
+  var b=MQ.pb[p%MQ.pb.length],off=Math.floor((MQ.C-b.length)/2),a=[];
+  for(var i=0;i<MQ.C;i++)a.push(b[i-off]||0);
+  return a;
+}
+function mqScroll(o,dir,wave,t){
+  var a=[],L=MQ.full.length;
+  for(var i=0;i<MQ.C;i++){
+    var k=dir>0?i+o-MQ.C:i+L-o,v=(k>=0&&k<L)?MQ.full[k]:0;
+    if(wave&&v)v=mqShift(v,Math.round(Math.sin((i+t/90)*.7)*2));
+    a.push(v);
+  }
+  return a;
+}
+function mqSlide(t,up){
+  var u=t%2000,p=Math.floor(t/2000),y=0;
+  if(u<450)y=Math.round(7*(1-u/450));else if(u>=1550)y=-Math.round(7*((u-1550)/450));
+  if(!up)y=-y;
+  return mqPage(p).map(function(v){return mqShift(v,y)});
+}
+var MODES=[
+  {c:'#3dff6f',d:function(){return(MQ.C+MQ.full.length)*55+300},f:function(t){return mqScroll(Math.floor(t/55),1,false,t)}},                /* geser kiri */
+  {c:'#ff3b30',d:function(){return MQ.pb.length*1500},f:function(t){return(t%1500)/300%2<1?mqPage(Math.floor(t/1500)):new Array(MQ.C).fill(0)}}, /* berkedip */
+  {c:'#27e1ff',d:function(){return MQ.pb.length*2000},f:function(t){return mqSlide(t,true)}},                                              /* vertikal naik */
+  {c:'#ffb81f',d:function(){return(MQ.C+MQ.full.length)*55+300},f:function(t){return mqScroll(Math.floor(t/55),-1,false,t)}},               /* geser kanan */
+  {c:'#3dff6f',d:function(){return MQ.pb.length*2000},f:function(t){return mqSlide(t,false)}},                                             /* vertikal turun */
+  {c:'#ffb81f',d:function(){return MQ.pb.length*(70*7*6+900)},f:function(t){                                                              /* mengetik */
+     var per=70*7*6+900,p=Math.floor(t/per),n=Math.floor((t%per)/45),a=mqPage(p);return a.map(function(v,i){return i<n?v:0})}},
+  {c:'#ff3b30',d:function(){return(MQ.C+MQ.full.length)*55+300},f:function(t){return mqScroll(Math.floor(t/55),1,true,t)}}                    /* bergelombang */
+];
+function mqNext(now){
+  var i;do{i=Math.floor(Math.random()*MODES.length)}while(i===MQ.prev&&MODES.length>1);
+  MQ.prev=i;MQ.mode=MODES[i];MQ.t0=now;MQ.dur=MQ.mode.d();
+}
+function mqSize(){
+  var r=MQ.cv.getBoundingClientRect();
+  if(!r.width){MQ.C=0;return}
+  if(Math.abs(r.width-MQ.W)<.5&&MQ.C)return;
+  var d=Math.min(window.devicePixelRatio||1,2);
+  MQ.W=r.width;MQ.H=r.height;MQ.P=MQ.H/7;MQ.C=Math.floor(MQ.W/MQ.P);
+  MQ.cv.width=Math.round(MQ.W*d);MQ.cv.height=Math.round(MQ.H*d);MQ.cx.setTransform(d,0,0,d,0,0);
+  MQ.full=mqBits(MQ.txt);
+  var n=Math.max(1,Math.floor((MQ.C+1)/6)),pg=[];   /* layar sempit: teks dipecah per halaman */
+  for(var i=0;i<MQ.txt.length;i+=n)pg.push(MQ.txt.substr(i,n));
+  MQ.pb=pg.map(mqBits);
+  mqNext(performance.now());
+}
+function mqDraw(g,col){
+  var c=MQ.cx,P=MQ.P,r=P*.38,x0=(MQ.W-MQ.C*P)/2,i,j;
+  c.clearRect(0,0,MQ.W,MQ.H);
+  c.fillStyle='rgba(255,255,255,.07)';c.beginPath();
+  for(i=0;i<MQ.C;i++)for(j=0;j<7;j++){var x=x0+(i+.5)*P,y=(j+.5)*P;c.moveTo(x+r,y);c.arc(x,y,r,0,6.2832)}
+  c.fill();
+  c.fillStyle=col;c.globalAlpha=.25;c.beginPath();
+  for(i=0;i<MQ.C;i++)for(j=0;j<7;j++)if((g[i]>>j)&1){var x=x0+(i+.5)*P,y=(j+.5)*P;c.moveTo(x+r*1.7,y);c.arc(x,y,r*1.7,0,6.2832)}
+  c.fill();
+  c.globalAlpha=1;c.beginPath();
+  for(i=0;i<MQ.C;i++)for(j=0;j<7;j++)if((g[i]>>j)&1){var x=x0+(i+.5)*P,y=(j+.5)*P;c.moveTo(x+r,y);c.arc(x,y,r,0,6.2832)}
+  c.fill();
+}
+function mqFrame(ts){
+  MQ.raf=0;
+  if(!MQ.C||document.hidden)return;
+  if(ts-MQ.last>=MQ.gap){
+    MQ.last=ts;
+    var t=ts-MQ.t0;
+    if(t>MQ.dur){mqNext(ts);t=0}
+    mqDraw(MQ.mode.f(t),MQ.mode.c);
+  }
+  MQ.raf=requestAnimationFrame(mqFrame);
+}
+function mqKick(){mqSize();if(MQ.C&&!MQ.raf)MQ.raf=requestAnimationFrame(mqFrame)}
+window.addEventListener('resize',mqKick);
+document.addEventListener('visibilitychange',mqKick);
+if(window.ResizeObserver)new ResizeObserver(mqKick).observe(MQ.cv);
+qBuild();aVolUI();aUI();bnH();vzSize();mqKick();
 
 /* =====================================================================
    INIT
