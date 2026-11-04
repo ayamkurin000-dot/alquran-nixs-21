@@ -3,7 +3,7 @@
    - index.html, doa.json & navigasi  -> JARINGAN DULU (selalu ambil versi terbaru), cache hanya cadangan saat offline.
    - font & gambar                    -> cache dulu, diperbarui di latar belakang.
    Naikkan VERSI setiap ada perubahan agar cache lama dibuang dan pengguna langsung mendapat versi baru. */
-var VERSI = 'qk-v65';
+var VERSI = 'qk-v66';
 var INTI = ['./', 'index.html', 'doa.json', 'font/LPMQ-Isep-Misbah.ttf',
             'logo/foto-keluarga-kecil.jpg', 'logo/logo-nu.jpg'];
 

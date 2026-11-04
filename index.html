@@ -2646,8 +2646,35 @@ openSurah=function(){_openSurah.apply(this,arguments);aMark();aLbl();bnH()};
 var _updateCur=updateCur;
 updateCur=function(){_updateCur.apply(this,arguments);if(!PL.on)aLbl()};
 /* ---------- Running text LED matriks titik: "Mannixs-21" ---------- */
-var FONT={'M':[127,2,12,2,127],'a':[32,84,84,84,120],'n':[124,8,4,4,120],'i':[0,68,125,64,0],'x':[68,40,16,40,68],'s':[72,84,84,84,32],'-':[8,8,8,8,8],'2':[66,97,81,73,70],'1':[0,66,127,64,0]},
-    MQ={txt:'Mannixs-21',cv:$('mq'),cx:$('mq').getContext('2d'),W:0,H:0,C:0,P:2.4,raf:0,last:0,gap:60,mode:null,t0:0,dur:0,prev:-1,full:[],pb:[]};
+var BRAND='Mannixs-21',
+    MSGS=[
+  `NKRI-NU Nahdlotul Ulama'`,
+  `Ahlus sunnah wal jama'ah`,
+  `Sholatlah sebelum engkau disholatkan`,
+  `Sebaik-baik manusia adalah yang banyak manfaatnya bagi yang lain`,
+  `Melakukan sholat berjama'ah Isya dan Shubuh seakan-akan sholat semalam suntuk`,
+  `Wirid yang ringan diucapkan di lidah tapi berat timbangan di akhirat : Subhanallah wa bihamdih, subhanallahhil 'adziim`,
+  `Amal yang pasti diterima meskipun tidak ikhlas adalah "Sholawat"`,
+  `Wirid yang disukai Allah SWT : Subhanallah, Alhamdulillah, Laa ilaa ha illallah, Allahu Akbar`,
+  `Siapa yang mengucapkan Subhanallah 33X, Alhamdulillah 33X dan Allahu Akbar 33X setelah sholat, maka dosanya akan diampuni meskipun sebanyak buih di lautan`,
+  `Bukanlah Kesabaran jika masih mempunyai batas & Bukanlah keikhlasan jika masih merasakan sakit`,
+  `Jadikanlah Sabar & Sholat sebagai penolongmu`,
+  `Sungguh menakjubkan urusan seorang mukmin, jika mendapat kesenangan, ia bersyukur, maka itu baik baginya. Jika ditimpa musibah, ia bersabar, maka itupun baik baginya`,
+  `SABAR kemudian SYUKUR lalu IKHLAS`,
+  `Sesungguhnya ALLAH bersama orang-orang yang sabar (Al Anfal : 46)`,
+  `Sholat Dhuha adalah seperti bersedekah untuk setiap persendian (360)`,
+  `2 Rokaat sebelum shubuh, 4 sebelum Dzuhur, 2 setelahnya, 2 setelah maghrib, 2 setelah Isya' (12 rokaat), Allah membangunkannya rumah di Surga`,
+  `"Sholat yang paling utama setelah fardhu adalah sholat malam." (HR. Muslim : 1163)`,
+  `Sholat malam memperkuat hubungan batin dengan Allah dan menambah kedekatan saat wafat`
+],
+    MCOL=['#3dff6f','#ffb81f','#27e1ff','#ff6a3d'];
+var FH={" ":"000000","!":"00005F0000","\"":"0007000700","#":"147F147F14","%":"2313086462","&":"3649552250","'":"0000070000","(":"001C224100",")":"0041221C00","*":"2A1C7F1C2A","+":"08083E0808",",":"0050300000","-":"0808080808",".":"0060600000","/":"2010080402",
+"0":"3E5149453E","1":"00427F4000","2":"4261514946","3":"2141454B31","4":"1814127F10","5":"2745454539","6":"3C4A494930","7":"0171090503","8":"3649494936","9":"064949291E",":":"0036360000",";":"0056360000","=":"1414141414","?":"0201510906",
+"A":"7E1111117E","B":"7F49494936","C":"3E41414122","D":"7F4141221C","E":"7F49494941","F":"7F09090901","G":"3E41494 97A".replace(" ",""),"H":"7F0808087F","I":"00417F4100","J":"2040413F01","K":"7F08142241","L":"7F40404040","M":"7F020C027F","N":"7F0408107F","O":"3E4141413E","P":"7F09090906","Q":"3E4151215E","R":"7F09192946","S":"4649494931","T":"0101 7F0101".replace(" ",""),"U":"3F4040403F","V":"1F2040201F","W":"3F4038403F","X":"6314081463","Y":"0708700807","Z":"6151494543",
+"a":"2054545478","b":"7F48444438","c":"3844444420","d":"384444487F","e":"3854545418","f":"087E090102","g":"0C5252523E","h":"7F08040478","i":"004 47D4000".replace(" ",""),"j":"2040443D00","k":"7F10284400","l":"00417F4000","m":"7C04180478","n":"7C08040478","o":"3844444438","p":"7C14141408","q":"08141418 7C".replace(" ",""),"r":"7C08040408","s":"4854545420","t":"043F444020","u":"3C4040207C","v":"1C2040201C","w":"3C4030403C","x":"4428102844","y":"0C5050503C","z":"4464544C44"},
+    FONT={};
+(function(){for(var k in FH){var h=FH[k],a=[];for(var i=0;i<h.length;i+=2)a.push(parseInt(h.substr(i,2),16));FONT[k]=a}})();
+var MQ={phase:'brand',left:3,mi:0,txt:BRAND,cv:$('mq'),cx:$('mq').getContext('2d'),W:0,H:0,C:0,P:1.215,raf:0,last:0,gap:60,mode:null,t0:0,dur:0,prev:-1,full:[],pb:[]};
 function mqBits(str){
   var o=[];
   for(var i=0;i<str.length;i++){var g=FONT[str[i]]||[0,0,0,0,0];for(var j=0;j<g.length;j++)o.push(g[j]);if(i<str.length-1)o.push(0)}
@@ -2686,16 +2713,38 @@ var MODES=[
      var p=Math.floor(t/2200),u=t%2200,h=u<500?Math.ceil(MQ.C/2*u/500):MQ.C,m=MQ.C/2;
      return mqPage(p).map(function(v,i){return Math.abs(i+.5-m)<=h?v:0})}}
 ];
+function mqSetText(t){
+  MQ.txt=t;MQ.full=mqBits(t);
+  var n=Math.max(1,Math.floor((MQ.C+1)/6)),pg=[];   /* layar sempit: gaya diam dipecah per halaman */
+  for(var i=0;i<t.length;i+=n)pg.push(t.substr(i,n));
+  MQ.pb=pg.map(mqBits);
+}
+/* Alur: Mannixs-21 (3 variasi) → pesan 1 → Mannixs-21 (2 variasi) → pesan 2 → ... → habis → ulang dari awal */
 function mqNext(now){
+  var i;
+  MQ.t0=now;
+  if(MQ.phase==='msg'){
+    MQ.mi++;
+    if(MQ.mi>=MSGS.length){MQ.mi=0;MQ.left=3}else MQ.left=2;
+    MQ.phase='brand';
+  }
+  if(MQ.phase==='brand'&&MQ.left<=0){
+    MQ.phase='msg';
+    mqSetText(MSGS[MQ.mi]);
+    MQ.mode={c:MCOL[MQ.mi%MCOL.length],d:function(){return(MQ.C+MQ.full.length)*30+300},f:function(t){return mqScroll(Math.floor(t/30),1,false,t)}};
+    MQ.dur=MQ.mode.d();return;
+  }
+  if(MQ.txt!==BRAND)mqSetText(BRAND);
+  MQ.left--;
   if(!MQ.bag||!MQ.bag.length){
-    var n=MODES.length,x=[],i,j,t;
+    var n=MODES.length,x=[],j,t;
     for(i=0;i<n;i++)x.push(i);
     for(i=n-1;i>0;i--){j=Math.floor(Math.random()*(i+1));t=x[i];x[i]=x[j];x[j]=t}
     if(x[x.length-1]===MQ.prev&&n>1){t=x[0];x[0]=x[x.length-1];x[x.length-1]=t}
     MQ.bag=x;
   }
   i=MQ.bag.pop();
-  MQ.prev=i;MQ.mode=MODES[i];MQ.t0=now;MQ.dur=MQ.mode.d();
+  MQ.prev=i;MQ.mode=MODES[i];MQ.dur=MQ.mode.d();
 }
 function mqSize(){
   var r=MQ.cv.getBoundingClientRect();
@@ -2709,11 +2758,8 @@ function mqSize(){
   bc.scale(d,d);bc.fillStyle='rgba(255,255,255,.08)';
   for(var bi=0;bi<MQ.C;bi++)for(var bj=0;bj<7;bj++)bc.fillRect(bx+bi*P0+P0*.11,by+bj*P0+P0*.11,P0*.78,P0*.78);
   MQ.bg=bg;
-  MQ.full=mqBits(MQ.txt);
-  var n=Math.max(1,Math.floor((MQ.C+1)/6)),pg=[];   /* layar sempit: teks dipecah per halaman */
-  for(var i=0;i<MQ.txt.length;i+=n)pg.push(MQ.txt.substr(i,n));
-  MQ.pb=pg.map(mqBits);
-  mqNext(performance.now());
+  mqSetText(MQ.txt);
+  if(!MQ.mode)mqNext(performance.now());else MQ.dur=MQ.mode.d();
 }
 function mqDraw(g,col){
   var c=MQ.cx,P=MQ.P,x0=(MQ.W-MQ.C*P)/2,yo=(MQ.H-7*P)/2,w=P*.78,o=P*.11,i,j;
