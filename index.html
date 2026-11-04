@@ -405,6 +405,9 @@ input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;bac
 #doa-qi::-webkit-search-cancel-button,#doa-qi::-webkit-search-decoration{-webkit-appearance:none;display:none}
 #doa-qx{flex:none;width:30px;height:30px;border:0;border-radius:50%;background:var(--accent2);color:#fff7dc;font-size:20px;line-height:1;cursor:pointer}
 #doa-qx[hidden]{display:none}
+#doa-nav{display:flex;align-items:center;gap:6px;width:100%;margin-top:8px;padding:8px 14px 8px 10px;border:1.5px solid var(--accent2);border-radius:99px;background:transparent;color:var(--accent2);font:inherit;font-size:14.5px;font-weight:700;cursor:pointer;text-align:left}
+#doa-nav:active{background:var(--soft)}
+#doa-nav svg{flex:none;width:18px;height:18px}
 .dnone{text-align:center;padding:26px 10px;color:var(--ink2);font-size:15px}
 /* ===== Thumbnail kategori do'a: gelap + 3D ===== */
 .dgrid{gap:15px 13px;padding-bottom:6px}
@@ -1137,7 +1140,7 @@ html[data-tombol^="t"]:not([data-tombol="t1"],[data-tombol="t2"],[data-tombol="t
     <div class="ttl"><b id="doa-ttl"></b><small id="doa-sub"></small></div>
     <button class="dtg" id="doa-lat" type="button" aria-pressed="false" aria-label="Tampilkan atau sembunyikan tulisan Latin">Latin</button><button class="dtg" id="doa-arti" type="button" aria-pressed="false" aria-label="Tampilkan atau sembunyikan arti atau terjemah">Arti</button><button class="ib" id="doa-set" type="button" aria-label="Pengaturan tampilan" aria-haspopup="dialog"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h9M17 7h3M4 17h3M11 17h9"/><circle cx="15" cy="7" r="2.2"/><circle cx="9" cy="17" r="2.2"/></svg></button>
   </div>
-  <div id="doa-q"><label class="qbox"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><input id="doa-qi" type="search" placeholder="Cari do’a… (mis. qunut, iftitah, tahlil)" autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="search" aria-label="Cari do’a"><button id="doa-qx" type="button" aria-label="Hapus pencarian" hidden>&times;</button></label></div>
+  <div id="doa-q"><label class="qbox"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><input id="doa-qi" type="search" placeholder="Cari do’a… (mis. qunut, iftitah, tahlil)" autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="search" aria-label="Cari do’a"><button id="doa-qx" type="button" aria-label="Hapus pencarian" hidden>&times;</button></label><button id="doa-nav" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg><span id="doa-nav-t">Kembali</span></button></div>
   <div id="doa-scroll"><div class="wrap" id="doa-body"></div></div>
 </div>
 <!-- Data doa ada di doa.json: diunduh saat menu Do'a & Bacaan dibuka (dan di-prefetch saat browser nganggur), tidak memperlambat Al-Qur'an -->
@@ -1935,7 +1938,7 @@ function doaShowCats(){
     pn+='</details>'
   }
   $('doa-body').innerHTML=pn+'<div class="dgrid">'+h+'<div class="dcat dlegc"><b class="dlh">Keterangan label</b><p class="dlt"><i class="lb">Qur’an</i> = lafaznya langsung berupa ayat Al-Qur’an (misalnya doa para nabi); <i class="lb">Shahih</i> = bersumber dari Bukhari/Muslim atau tertulis shahih pada sumbernya; <i class="lb">Hasan</i> = hadits hasan; <i class="lr">Tradisi NU</i> / <i class="lr">Tradisi Ulama</i> = amaliyah NU/ulama (<span class="lr">bukan dalil langsung dari Nabi ﷺ</span>, tertulis jujur sebagai tradisi); <i class="lr">Diperselisihkan</i> = derajat haditsnya diperselisihkan ulama; <i class="lr">Hadits Dhaif</i> = ada riwayatnya dari Nabi ﷺ tetapi sanadnya dinilai lemah; <i class="lr">Lafaz Ulama</i> = lafaz yang dicatat para ulama dalam kitab mereka, bukan lafaz Nabi ﷺ yang pasti; dasar hadits yang lebih kuat ditulis di bagian bawah kartu.</p></div></div>';
-  $('doa-ttl').textContent="Do'a & Bacaan";$('doa-sub').textContent='Pilih kategori';
+  $('doa-ttl').textContent="Do'a & Bacaan";$('doa-sub').textContent='Pilih kategori';doaNavT("Kembali ke Al-Qur'an");
   $('doa-scroll').scrollTop=0;doaCur=[]
 }
 /* teks/bacaan milik sub bab (tampil di dalam kartu sub bab). Bisa juga diisi dari doa.json: {"gn":{"Nama Sub Bab":"teks"}} */
@@ -1968,7 +1971,7 @@ function doaShowCat(id){
   });
   closeG();
   $('doa-body').innerHTML=h;
-  $('doa-ttl').textContent=cat.t;$('doa-sub').textContent=doaCur.length+' doa';
+  $('doa-ttl').textContent=cat.t;$('doa-sub').textContent=doaCur.length+' doa';doaNavT('Kembali ke daftar kategori');
   $('doa-scroll').scrollTop=0
 }
 function doaFill(d){
@@ -2023,7 +2026,7 @@ function doaSearch(){
     l.forEach(function(x){doaCur.push(x.it);total++;h+=doaItem(x.it,doaCur.length-1,++no)})
   });
   $('doa-body').innerHTML=total?h:'<p class="dnone">Tidak ditemukan untuk “'+dEsc(q.trim())+'”.<br>Coba kata lain, mis. <i>qunut</i>, <i>iftitah</i>, <i>wudhu</i>.</p>';
-  $('doa-ttl').textContent='Hasil pencarian';$('doa-sub').textContent=total+' doa ditemukan';
+  doaNavT('Tutup pencarian');$('doa-ttl').textContent='Hasil pencarian';$('doa-sub').textContent=total+' doa ditemukan';
   $('doa-scroll').scrollTop=0;
   if(total===1){var d=$('doa-body').querySelector('details.ditem');if(d)d.open=true}
 }
@@ -2052,6 +2055,7 @@ document.addEventListener('toggle',function(e){
   });
 },true);
 $('doa-qx').addEventListener('click',function(){doaQClear();doaSearch();$('doa-qi').focus()});
+function doaNavT(t){var e=$('doa-nav-t');if(e)e.textContent=t}
 function doaBack(){
   if($('doa-qi').value){doaQClear();if(doaLv===2)doaShowCat(doaCat);else doaShowCats();return}
   if(doaHist){history.back();return}   /* popstate yang mengatur tampilan */
@@ -2078,7 +2082,7 @@ $('doa-body').addEventListener('click',function(e){
   if(p){doaCopy(+p.getAttribute('data-i'));return}
   if(c){doaCat=c.getAttribute('data-c');doaLv=2;doaPush(2);doaShowCat(doaCat)}
 });
-$('doa-back').onclick=doaBack;
+$('doa-back').onclick=doaBack;$('doa-nav').onclick=doaBack;
 document.addEventListener('keydown',function(e){if(e.key==='Escape'&&doaLv&&!$('sbd'))doaBack()});
 $('kdoa').onclick=openDoa;
 $('kdoa').onkeydown=function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();openDoa()}};
