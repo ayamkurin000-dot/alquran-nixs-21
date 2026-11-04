@@ -244,7 +244,7 @@ input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;bac
 #bnav #jump::-webkit-inner-spin-button,#bnav #jump::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}
 #bnav #jump:focus{border-color:#46b4ff;box-shadow:0 0 8px rgba(70,180,255,.5)}
 #bnav #jtot{font-size:11px;color:#5aa9cf}
-#bnav #spec{display:block;width:100%;height:34px;margin-top:4px;filter:drop-shadow(0 0 3px rgba(60,255,200,.3))}
+#bnav #spec{display:block;width:100%;height:34px;margin-top:4px}
 #bnav .pl.mini #spec{display:none}
 #bnav #qmenu{position:absolute;left:10px;right:10px;bottom:calc(100% + 6px);z-index:3;padding:6px;border-radius:14px;background:linear-gradient(#2b2e33,#121315);border:1px solid #000;
   box-shadow:inset 0 1px 0 rgba(255,255,255,.18),0 10px 26px rgba(0,0,0,.55)}
@@ -272,7 +272,7 @@ input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;bac
 #bnav .bigp::before{content:'';position:absolute;left:17%;right:17%;top:6%;height:38%;border-radius:50%;background:linear-gradient(rgba(255,255,255,.7),rgba(255,255,255,0));pointer-events:none}
 #bnav .bigp svg{position:relative;width:24px;height:24px;display:block;filter:drop-shadow(0 1px 1px rgba(0,30,90,.8))}
 #bnav .bigp:active{transform:scale(.94)}
-#bnav .pl.on .bigp{box-shadow:inset 0 -3px 6px rgba(0,20,80,.6),inset 0 2px 3px rgba(255,255,255,.55),0 0 0 2px #0a0c10,0 0 18px 4px rgba(60,180,255,.75);animation:bpulse 1.8s ease-in-out infinite}
+#bnav .pl.on .bigp{box-shadow:inset 0 -3px 6px rgba(0,20,80,.6),inset 0 2px 3px rgba(255,255,255,.55),0 0 0 2px #0a0c10,0 0 14px 3px rgba(60,180,255,.7)}
 @keyframes bpulse{50%{box-shadow:inset 0 -3px 6px rgba(0,20,80,.6),inset 0 2px 3px rgba(255,255,255,.55),0 0 0 2px #0a0c10,0 0 10px 1px rgba(60,180,255,.45)}}
 @media (prefers-reduced-motion:reduce){#bnav .pl.on .bigp{animation:none}}
 #bnav #avl{flex:1;min-width:44px;max-width:120px;height:22px;margin:0;background:none;outline:none;--v:100%}
@@ -2483,7 +2483,7 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!$('qmenu')
 /* ---------- Spectrum Analyzer digital (batang LED + penahan puncak) ----------
    Analisis nyata: captureStream() -> AnalyserNode (tidak mengubah jalur suara, jadi putar di layar kunci tetap aman).
    Bila peramban/sumber tidak mendukung (mis. Safari iOS), animasi disimulasikan dari status putar. */
-var VZ={ctx:null,an:null,node:null,data:null,real:false,raf:0,N:30,S:9,lv:[],pk:[],hd:[],t:0,zero:0},
+var VZ={ctx:null,an:null,node:null,data:null,real:false,raf:0,N:30,S:9,lv:[],pk:[],hd:[],t:0,zero:0,last:0,gap:30,cost:0,light:false,src:""},
     SEG=['#1de9b6','#1de9b6','#1de9b6','#3df08a','#8cf03a','#c8f03a','#ffd23a','#ff9a30','#ff4b3a'],
     cv=$('spec'),cx=cv.getContext('2d'),SW=0,SH=0;
 for(var vi=0;vi<VZ.N;vi++){VZ.lv.push(0);VZ.pk.push(0);VZ.hd.push(0)}
@@ -2500,14 +2500,17 @@ function vzCtx(){
   }catch(e){VZ.ctx=null}
 }
 function vzAttach(){
-  VZ.real=false;VZ.zero=0;
-  if(PL.noCors||!VZ.ctx)return;
+  VZ.zero=0;
+  if(VZ.light||PL.noCors||!VZ.ctx){VZ.real=false;return}
+  if(VZ.real&&VZ.src===AU.currentSrc)return;
+  VZ.real=false;
   var cs=AU.captureStream||AU.mozCaptureStream;if(!cs)return;
+  if(VZ.st){try{VZ.st.getTracks().forEach(function(t){t.stop()})}catch(e){}}
   try{
-    var st=cs.call(AU);
+    var st=cs.call(AU);VZ.st=st;
     if(!st.getAudioTracks().length)return;
     if(VZ.node){try{VZ.node.disconnect()}catch(e){}}
-    VZ.node=VZ.ctx.createMediaStreamSource(st);VZ.node.connect(VZ.an);   /* tidak disambung ke speaker */
+    VZ.src=AU.currentSrc;VZ.node=VZ.ctx.createMediaStreamSource(st);VZ.node.connect(VZ.an);   /* tidak disambung ke speaker */
     VZ.real=true;
   }catch(e){VZ.real=false}
 }
@@ -2551,8 +2554,10 @@ function vzDraw(){
     }
   }
 }
-function vzFrame(){
+function vzFrame(ts){
   VZ.raf=0;
+  if(ts&&VZ.last&&ts-VZ.last<VZ.gap){VZ.raf=requestAnimationFrame(vzFrame);return}
+  var t0=performance.now();VZ.last=ts||t0;
   var playing=PL.on&&!AU.paused&&!AU.ended,lv=vzLevels(playing),act=false;
   for(var i=0;i<VZ.N;i++){
     var v=lv[i];
@@ -2563,6 +2568,8 @@ function vzFrame(){
     if(VZ.lv[i]>.01||VZ.pk[i]>.01)act=true;
   }
   if(!document.hidden&&!$('pl').classList.contains('mini'))vzDraw();
+  VZ.cost=(VZ.cost||0)*.9+(performance.now()-t0)*.1;
+  if(VZ.cost>8&&VZ.gap<60){VZ.gap=66;VZ.real=false;VZ.light=true}   /* perangkat lambat: 15 fps, tanpa analisis nyata */
   if(playing||act)VZ.raf=requestAnimationFrame(vzFrame);
 }
 function vzKick(){if(!VZ.raf)VZ.raf=requestAnimationFrame(vzFrame)}
