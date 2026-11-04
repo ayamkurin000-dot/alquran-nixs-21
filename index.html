@@ -230,14 +230,37 @@ input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;bac
 #abar button[aria-pressed=true]{background:var(--accent2);color:var(--paper)}
 #abar .in{flex-wrap:wrap;justify-content:center;max-width:calc(100vw - 20px)}
 /* pemutar audio (Mishary Alafasy) */
-#apl{position:fixed;left:0;right:0;bottom:calc(58px + env(safe-area-inset-bottom));z-index:20;display:flex;justify-content:center;pointer-events:none;padding:0 10px}
-#apl[hidden]{display:none}
-#apl .in{pointer-events:auto;display:flex;align-items:center;gap:2px;padding:4px 6px 4px 14px;border-radius:14px;background:var(--paper);border:1px solid var(--accent);box-shadow:0 8px 26px rgba(0,0,0,.22);animation:logoIn .2s both;max-width:calc(100vw - 20px)}
-#apl b{margin-right:6px;font-size:14px;white-space:nowrap}
-#apl button{border:0;background:none;padding:8px 10px;border-radius:8px;font-size:13.5px;font-weight:600;color:var(--accent2);display:inline-flex;align-items:center;justify-content:center;min-width:38px}
-#apl button:hover{background:var(--soft)}
-#apl button[aria-pressed=true]{background:var(--accent2);color:var(--paper)}
-#apl button svg{width:20px;height:20px}
+
+/* ===== AUDIO PLAYER BAR - MODEL SPECTRUM ANALYZER DIGITAL - GLOSSY LIKE SCREENSHOT ===== */
+#apl{position:fixed;left:0;right:0;bottom:calc(58px + env(safe-area-inset-bottom));z-index:30;display:flex;justify-content:center;pointer-events:none;padding:0 10px}
+#apl[hidden]{display:none!important}
+#apl .ap-shell{pointer-events:auto;width:min(760px,calc(100vw - 16px));display:flex;flex-direction:column;gap:6px;animation:logoIn .28s both}
+#apCanvasWrap{width:100%;height:52px;border-radius:14px;overflow:hidden;background:linear-gradient(180deg,#1a1a22 0%,#0d0d12 100%);border:1px solid rgba(255,255,255,.08);box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 4px 16px rgba(0,0,0,.35);position:relative}
+#apCanvasWrap canvas{width:100%;height:100%;display:block}
+#apCanvasWrap .ap-led{position:absolute;right:10px;top:6px;width:8px;height:8px;border-radius:50%;background:#ff3b3b;box-shadow:0 0 8px #ff3b3b;opacity:.0;transition:opacity .2s}
+#apCanvasWrap.on .ap-led{opacity:1;animation:blink 1s steps(2) infinite}
+@keyframes blink{50%{opacity:.2}}
+#apl .ap-bar{pointer-events:auto;display:flex;align-items:center;gap:0;padding:4px 8px 4px 6px;border-radius:999px;background:linear-gradient(180deg,#3a3a3f 0%,#1e1e24 55%,#15151a 100%);border:1px solid #2a2a30;box-shadow:inset 0 1px 0 rgba(255,255,255,.18),inset 0 -1px 0 rgba(0,0,0,.7),0 8px 24px rgba(0,0,0,.45),0 0 0 1px rgba(0,0,0,.6);position:relative}
+#apl .ap-bar::before{content:'';position:absolute;inset:1px 1px 55% 1px;border-radius:999px;background:linear-gradient(180deg,rgba(255,255,255,.22),rgba(255,255,255,0));pointer-events:none}
+.ap-icon{width:34px;height:34px;border-radius:8px;border:1px solid transparent;background:linear-gradient(180deg,#2e2e35,#1c1c22);color:#cbd5d1;display:grid;place-items:center;cursor:pointer;box-shadow:inset 0 1px 0 rgba(255,255,255,.12);transition:all .15s}
+.ap-icon:hover{background:linear-gradient(180deg,#3a3a44,#24242c);color:#fff}
+.ap-icon:active{transform:translateY(1px) scale(.97)}
+.ap-icon.on{background:linear-gradient(180deg,#3a7bff,#1a4fd1);color:#fff;border-color:#5b93ff;box-shadow:0 0 12px rgba(59,123,255,.6),inset 0 1px 0 rgba(255,255,255,.3)}
+.ap-main{display:flex;align-items:center;gap:4px;margin:0 6px;padding:3px 8px;border-radius:999px;background:linear-gradient(180deg,#2a2a30,#15151b);border:1px solid #000;box-shadow:inset 0 1px 2px rgba(0,0,0,.8)}
+.ap-main button{width:38px;height:28px;border-radius:7px;border:1px solid #000;background:linear-gradient(180deg,#3d3d47,#1f1f26);color:#e8e8ea;display:grid;place-items:center;cursor:pointer;box-shadow:inset 0 1px 0 rgba(255,255,255,.15)}
+.ap-main button:hover{filter:brightness(1.15)}
+.ap-play{width:56px!important;height:56px!important;border-radius:50%!important;margin:-12px 4px;background:radial-gradient(60% 60% at 35% 30%,#aee1ff 0%,#5ba8ff 20%,#1a5bff 55%,#0a2a8a 100%)!important;border:2px solid #8ec5ff!important;box-shadow:0 0 0 4px #0a0a0f,0 0 18px rgba(66,133,255,.9),inset 0 2px 6px rgba(255,255,255,.8)!important;color:#fff!important;transition:all .15s}
+.ap-play.playing{background:radial-gradient(60% 60% at 35% 30%,#ffd1a8 0%,#ff8a3d 25%,#ff3b1f 60%,#8a0a0a 100%)!important;border-color:#ffb07a!important;box-shadow:0 0 0 4px #0a0a0f,0 0 18px rgba(255,100,40,.9),inset 0 2px 6px rgba(255,255,255,.8)!important}
+.ap-play svg{width:26px;height:26px;filter:drop-shadow(0 1px 1px rgba(0,0,0,.6))}
+.ap-vol{display:flex;align-items:center;gap:6px;margin-left:auto;padding-left:8px}
+.ap-vol .ap-icon{width:32px;height:28px}
+.ap-slider{-webkit-appearance:none;width:84px;height:20px;background:transparent;cursor:pointer}
+.ap-slider::-webkit-slider-runnable-track{height:6px;border-radius:99px;background:linear-gradient(180deg,#0a0a0f,#1e1e26);border:1px solid #000;box-shadow:inset 0 1px 2px rgba(0,0,0,.8)}
+.ap-slider::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;margin-top:-6px;border-radius:50%;background:radial-gradient(40% 40% at 35% 30%,#cfe6ff,#3a7bff 60%,#0a2a8a);border:1px solid #8ec5ff;box-shadow:0 0 8px rgba(66,133,255,.8),0 1px 3px rgba(0,0,0,.6)}
+.ap-qori{margin-left:6px;background:linear-gradient(180deg,#2a2a33,#1a1a22);border:1px solid #333;color:#d0d6ff;border-radius:8px;padding:4px 6px;font-size:11px;max-width:124px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ap-info{display:flex;align-items:center;gap:8px;color:#9fb0c8;font-size:11px;padding:2px 8px}
+.ap-info b{color:#e0e8ff;font-size:12px}
+
 .snav{display:flex;gap:10px;margin-top:22px}
 .snav button{flex:1;border:1px solid var(--accent);background:transparent;color:var(--accent2);border-radius:12px;padding:10px;font-weight:700;font-size:14px}
 .snav button:disabled{opacity:.35}
@@ -1174,7 +1197,26 @@ html:not([data-tombol^="t"]):not([data-gulung^="g"]):not([data-pita^="pita"]):no
     <div class="snav"><button id="sprev"></button><button id="snext"></button></div>
   </div>
   <div id="abar" hidden><div class="in"><b id="abn"></b><button id="abp" aria-label="Putar audio ayat ini">▶ Putar</button><button id="abm" aria-pressed="false">Penanda</button><button id="abl">Terakhir dibaca</button><button id="abc">Salin</button><button class="xbtn" id="abx" aria-label="Tutup">×</button></div></div>
-  <div id="apl" hidden><div class="in"><b id="apn"></b><button id="apv" aria-label="Ayat sebelumnya">‹</button><button id="apt" aria-label="Jeda"></button><button id="apf" aria-label="Ayat berikutnya">›</button><button id="apr" aria-pressed="false" aria-label="Ulangi ayat">Ulang</button><button id="aps" aria-label="Kecepatan">1×</button><button class="xbtn" id="apx" aria-label="Hentikan audio">×</button></div></div>
+  <div id="apl" hidden>
+  <div class="ap-shell">
+    <div id="apCanvasWrap"><canvas id="apVis" width="600" height="52"></canvas><div class="ap-led"></div></div>
+    <div class="ap-bar">
+      <button class="ap-icon" id="apShuffle" title="Acak" aria-label="Acak"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 3h4v4M4 20l7-7M20 4l-5 5M16 21h4v-4M4 4l5 5M20 20l-5-5"/></svg></button>
+      <button class="ap-icon" id="apr" title="Ulangi ayat" aria-label="Ulangi"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 9H5V5"/><path d="M5 9a7 7 0 1 1 0 6"/></svg></button>
+      <button class="ap-icon" id="apStopTop" title="Stop" aria-label="Stop" style="margin-left:2px"><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><rect x="6" y="6" width="12" height="12" rx="1"/></svg></button>
+      <div class="ap-main">
+        <button id="apv" aria-label="Sebelumnya"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M11 18L4 12l7-6v12zM20 18l-7-6 7-6v12z"/></svg></button>
+        <button id="apt" class="ap-play" aria-label="Putar"><svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></button>
+        <button id="apf" aria-label="Berikutnya"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M13 6v12l7-6-7-6zM4 6v12l7-6-7-6z"/></svg></button>
+      </div>
+      <button class="ap-icon" id="apMute" title="Volume"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M15 9a4 4 0 0 1 0 6"/><path d="M19 7a8 8 0 0 1 0 10"/></svg></button>
+      <input id="apVol" class="ap-slider" type="range" min="0" max="1" step="0.02" value="1" aria-label="Volume">
+      <select id="apQori" class="ap-qori" aria-label="Pilih Qari"></select>
+      <div class="ap-info"><b id="apn">-</b><span id="aps">1×</span></div>
+      <button class="ap-icon" id="apx" aria-label="Tutup" style="margin-left:4px"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    </div>
+  </div>
+</div>
   <nav id="bnav" aria-label="Pindah ayat"><div class="in">
     <button class="ib" id="aprev" aria-label="Ayat sebelumnya"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 15l6-6 6 6"/></svg></button>
     <input id="jump" type="number" inputmode="numeric" min="1" aria-label="Lompat ke ayat">
@@ -2253,19 +2295,31 @@ setCustomFotoUI();
 })();
 
 
+
 /* =====================================================================
-   AUDIO — Mishary Rashid Alafasy, per ayat.
-   Sumber utama: EveryAyah; cadangan: Islamic Network. Disiarkan (butuh internet), tidak ditanam.
+   AUDIO — MULTI QARI + SPECTRUM ANALYZER DIGITAL
+   Sumber: EveryAyah. Auto-play ayat yang tampil. Model glossy bar.
    ===================================================================== */
-var AU=new Audio(),PRE=new Audio(),PL={on:false,s:0,a:0,rep:false,rate:1,alt:false},RATES=[0.75,1,1.25,1.5];
+var AU=new Audio(),PRE=new Audio(),PL={on:false,s:0,a:0,rep:false,rate:1,alt:false,qari:'alafasy'},RATES=[0.75,1,1.25,1.5,2];
+var QORIS=[
+  {id:'alafasy', label:'Mishary Alafasy', folder:'Alafasy_128kbps', speed:'Sedang'},
+  {id:'shatri', label:'Abu Bakr Ash-Shatri (Cepat)', folder:'Abu_Bakr_Ash-Shaatree_128kbps', speed:'Cepat'},
+  {id:'ajmy', label:'Ahmed Al-Ajmy (Cepat)', folder:'Ahmed_ibn_Ali_al-Ajamy_128kbps', speed:'Cepat'},
+  {id:'maher', label:'Maher Al-Muaiqly (Cepat)', folder:'Maher_128kbps', speed:'Cepat'},
+  {id:'yasser', label:'Yasser Ad-Dosari (Sangat Cepat)', folder:'Yasser_Ad-Dossari_128kbps', speed:'Sgt Cepat'},
+  {id:'shuraym', label:'Saud Ash-Shuraim (Cepat)', folder:'Saood_ash-Shuraym_128kbps', speed:'Cepat'},
+  {id:'sudais', label:'Abdurrahman As-Sudais (Cepat)', folder:'Abdurrahmaan_As-Sudais_192kbps', speed:'Cepat'},
+  {id:'husary', label:'Mahmoud Al-Husary (Jelas)', folder:'Husary_128kbps', speed:'Sedang'}
+];
 var I_PLAY='<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>',
     I_PAUSE='<svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/></svg>';
-AU.preload='auto';PRE.preload='auto';
+AU.preload='auto';PRE.preload='auto';AU.crossOrigin='anonymous';
 function p3(n){return('00'+n).slice(-3)}
 function gid(s,a){var n=a;for(var i=0;i<s-1;i++)n+=Q[i][3].length;return n}
 function aUrl(s,a,alt){
-  return alt?'https://cdn.islamic.network/quran/audio/128/ar.alafasy/'+gid(s,a)+'.mp3'
-            :'https://everyayah.com/data/Alafasy_128kbps/'+p3(s)+p3(a)+'.mp3';
+  var q=QORIS.find(function(q){return q.id===PL.qari})||QORIS[0];
+  if(alt) return 'https://cdn.islamic.network/quran/audio/128/ar.alafasy/'+gid(s,a)+'.mp3';
+  return 'https://everyayah.com/data/'+q.folder+'/'+p3(s)+p3(a)+'.mp3';
 }
 function nextOf(s,a){if(a<Q[s-1][3].length)return[s,a+1];if(s<114)return[s+1,1];return null}
 function prevOf(s,a){if(a>1)return[s,a-1];if(s>1)return[s-1,Q[s-2][3].length];return null}
@@ -2276,35 +2330,65 @@ function aMark(){
 }
 function aPos(){
   var b=$('abar');
-  $('apl').style.bottom=b.hidden?'':'calc('+(58+b.offsetHeight+8)+'px + env(safe-area-inset-bottom))';
+  var apl=$('apl');
+  if(!apl) return;
+  apl.style.bottom=b.hidden?'':'calc('+(58+b.offsetHeight+8)+'px + env(safe-area-inset-bottom))';
 }
 function aUI(){
-  $('apl').hidden=!PL.on;
-  if(!PL.on)return;
+  var apl=$('apl'); if(!apl) return;
+  apl.hidden=!PL.on;
+  if(!PL.on){$('apCanvasWrap').classList.remove('on'); return;}
+  $('apCanvasWrap').classList.add('on');
   $('apn').textContent=Q[PL.s-1][1]+':'+PL.a;
-  $('apt').innerHTML=AU.paused?I_PLAY:I_PAUSE;
-  $('apt').setAttribute('aria-label',AU.paused?'Lanjutkan':'Jeda');
+  var pt=$('apt');
+  if(pt){
+    pt.innerHTML=AU.paused?I_PLAY:I_PAUSE;
+    pt.classList.toggle('playing',!AU.paused);
+    pt.setAttribute('aria-label',AU.paused?'Putar':'Jeda');
+  }
+  $('apr').classList.toggle('on',!!PL.rep);
   $('apr').setAttribute('aria-pressed',PL.rep?'true':'false');
   $('aps').textContent=PL.rate+'×';
+  var qSel=$('apQori'); if(qSel && qSel.value!==PL.qari) qSel.value=PL.qari;
   aPos();
 }
 function aMeta(){
   if(!('mediaSession' in navigator)||!window.MediaMetadata)return;
-  try{navigator.mediaSession.metadata=new MediaMetadata({title:'QS '+Q[PL.s-1][1]+': '+PL.a,artist:'Mishary Rashid Alafasy',album:'Al-Qur\'an Digital'})}catch(e){}
+  try{
+    var q=QORIS.find(function(x){return x.id===PL.qari});
+    navigator.mediaSession.metadata=new MediaMetadata({title:'QS '+Q[PL.s-1][1]+': '+PL.a,artist:q?q.label:'Mishary Rashid Alafasy',album:'Al-Qur\'an Digital'})
+  }catch(e){}
 }
 function aFollow(a){
   var el=rd.els[a-1];if(!el)return;
   var r=el.getBoundingClientRect(),top=($('topbar').offsetHeight||90)+8;
   if(r.top<top||r.bottom>window.innerHeight-140)goAyat(a);
 }
+function getVisibleAyat(){
+  if(!rd.open||!rd.els||!rd.els.length) return null;
+  var top=($('topbar').offsetHeight||90)+12;
+  var best=null,bestDist=1e9;
+  for(var i=0;i<rd.els.length;i++){
+    var el=rd.els[i]; if(!el) continue;
+    var r=el.getBoundingClientRect();
+    if(r.bottom<top) continue;
+    if(r.top>window.innerHeight-120) break;
+    var dist=Math.abs(r.top-top);
+    if(r.top>=top && r.top<=top+200) return i+1;
+    if(dist<bestDist){bestDist=dist;best=i+1}
+  }
+  return best||rd.cur||1;
+}
 function aPlay(s,a){
   PL.on=true;PL.s=s;PL.a=a;PL.alt=false;
   AU.src=aUrl(s,a,false);
   AU.defaultPlaybackRate=PL.rate;AU.playbackRate=PL.rate;
+  try{localStorage.setItem('qari',PL.qari)}catch(e){}
   var pr=AU.play();if(pr&&pr.catch)pr.catch(function(){aUI()});
   if(rd.open&&rd.s===s){renderUpTo(a+CH);aMark();aFollow(a)}else aMark();
   aUI();aMeta();
-  var n=nextOf(s,a);if(n)PRE.src=aUrl(n[0],n[1],false);   /* muat ayat berikutnya lebih dulu agar tidak terputus */
+  var n=nextOf(s,a);if(n)PRE.src=aUrl(n[0],n[1],false);
+  initAudioAnalyser();
 }
 /* pindah ke ayat lain; bila pembaca sedang menampilkan surat yang diputar, tampilan ikut pindah surat */
 function aGo(s,a){
@@ -2317,6 +2401,7 @@ function aGo(s,a){
 function aStop(){
   PL.on=false;AU.pause();aMark();aUI();
   if('mediaSession' in navigator){try{navigator.mediaSession.metadata=null}catch(e){}}
+  if(analyserRAF) cancelAnimationFrame(analyserRAF);
 }
 AU.addEventListener('ended',function(){
   if(!PL.on)return;
@@ -2332,12 +2417,118 @@ AU.addEventListener('error',function(){
 });
 AU.addEventListener('play',aUI);AU.addEventListener('pause',aUI);
 $('abp').onclick=function(){var a=rd.sel;if(!a)return;selectAyat(0);aPlay(rd.s,a)};
-$('apt').onclick=function(){if(!PL.on)return;if(AU.paused)AU.play().catch(function(){});else AU.pause()};
-$('apv').onclick=function(){if(!PL.on)return;if(AU.currentTime>3){AU.currentTime=0;return}var p=prevOf(PL.s,PL.a);if(p)aGo(p[0],p[1])};
-$('apf').onclick=function(){if(!PL.on)return;var n=nextOf(PL.s,PL.a);if(n)aGo(n[0],n[1])};
+/* ==== NEW CONTROLS ==== */
+function ensurePlay(){
+  if(PL.on) return;
+  var s=rd.s||1;
+  var a=rd.sel||getVisibleAyat()||rd.cur||1;
+  aPlay(s,a);
+}
+$('apt').onclick=function(){
+  if(!PL.on){ensurePlay();return}
+  if(AU.paused)AU.play().catch(function(){});else AU.pause()
+};
+$('apv').onclick=function(){if(!PL.on){ensurePlay();return} if(AU.currentTime>3){AU.currentTime=0;return}var p=prevOf(PL.s,PL.a);if(p)aGo(p[0],p[1])};
+$('apf').onclick=function(){if(!PL.on){ensurePlay();return} var n=nextOf(PL.s,PL.a);if(n)aGo(n[0],n[1])};
 $('apr').onclick=function(){PL.rep=!PL.rep;aUI();toast(PL.rep?'Ulangi ayat: aktif':'Ulangi ayat: mati')};
 $('aps').onclick=function(){PL.rate=RATES[(RATES.indexOf(PL.rate)+1)%RATES.length];AU.defaultPlaybackRate=PL.rate;AU.playbackRate=PL.rate;aUI()};
 $('apx').onclick=aStop;
+$('apStopTop').onclick=aStop;
+$('apShuffle').onclick=function(){var s=Math.floor(Math.random()*114)+1; var max=Q[s-1][3].length; var a=Math.floor(Math.random()*max)+1; aGo(s,a); toast('Acak: '+Q[s-1][1]+':'+a)};
+$('apMute').onclick=function(){AU.muted=!AU.muted; $('apMute').classList.toggle('on',AU.muted)};
+$('apVol').oninput=function(){AU.volume=parseFloat(this.value); AU.muted=AU.volume===0};
+try{PL.qari=localStorage.getItem('qari')||'shatri'}catch(e){}
+var qSelEl=$('apQori');
+if(qSelEl){
+  qSelEl.innerHTML='';
+  QORIS.forEach(function(q){
+    var o=document.createElement('option');o.value=q.id;o.textContent=q.label+(q.speed?' — '+q.speed:'');qSelEl.appendChild(o);
+  });
+  qSelEl.value=PL.qari;
+  qSelEl.onchange=function(){PL.qari=this.value; if(PL.on){AU.src=aUrl(PL.s,PL.a,false); AU.play().catch(function(){}) } aMeta(); toast('Qari: '+this.options[this.selectedIndex].textContent); try{localStorage.setItem('qari',PL.qari)}catch(e){}};
+}
+/* ==== SPECTRUM ANALYZER DIGITAL ==== */
+var audioCtx=null,analyser=null,analyserRAF=null;
+function initAudioAnalyser(){
+  try{
+    if(!audioCtx){
+      audioCtx=new (window.AudioContext||window.webkitAudioContext)();
+    }
+    if(audioCtx.state==='suspended') audioCtx.resume();
+    if(!analyser){
+      analyser=audioCtx.createAnalyser();
+      analyser.fftSize=256;
+      var src=audioCtx.createMediaElementSource(AU);
+      src.connect(analyser);
+      analyser.connect(audioCtx.destination);
+    }
+    drawVis();
+  }catch(e){ console.log('analyser fail',e); fakeVis(); }
+}
+function drawVis(){
+  var canvas=$('apVis'); if(!canvas) return;
+  var ctx=canvas.getContext('2d');
+  var W=canvas.width=canvas.clientWidth*2;
+  var H=canvas.height=52*2;
+  var buffer= new Uint8Array(analyser.frequencyBinCount);
+  function loop(){
+    analyserRAF=requestAnimationFrame(loop);
+    if(AU.paused){ return; }
+    analyser.getByteFrequencyData(buffer);
+    ctx.clearRect(0,0,W,H);
+    // background grid
+    ctx.fillStyle='#0d0d14';
+    ctx.fillRect(0,0,W,H);
+    var barCount=48;
+    var barW=W/barCount*0.62;
+    var gap=W/barCount*0.38;
+    for(var i=0;i<barCount;i++){
+      var idx=Math.floor(i/ barCount * buffer.length*0.7);
+      var v=buffer[idx]/255;
+      var bh= (v*H*0.85)+4;
+      var x=i*(barW+gap)+gap/2;
+      var y=H-bh;
+      var grad=ctx.createLinearGradient(x,y,x,y+bh);
+      grad.addColorStop(0,'#8ec5ff');
+      grad.addColorStop(0.3,'#3a7bff');
+      grad.addColorStop(1,'#0a1a4a');
+      ctx.fillStyle=grad;
+      ctx.shadowColor='rgba(66,133,255,0.8)';
+      ctx.shadowBlur=8;
+      ctx.fillRect(x,y,barW,bh);
+      ctx.shadowBlur=0;
+      // mirror tiny
+      ctx.globalAlpha=0.22;
+      ctx.fillRect(x,H-bh*0.12,barW,bh*0.12);
+      ctx.globalAlpha=1;
+    }
+    // scan line
+    ctx.strokeStyle='rgba(120,180,255,0.15)';
+    ctx.lineWidth=1;
+    for(var yy=0;yy<H;yy+=H/6){ ctx.beginPath(); ctx.moveTo(0,yy); ctx.lineTo(W,yy); ctx.stroke(); }
+  }
+  loop();
+}
+function fakeVis(){
+  var canvas=$('apVis'); if(!canvas) return;
+  var ctx=canvas.getContext('2d');
+  var W=canvas.width=canvas.clientWidth*2; var H=canvas.height=52*2;
+  function loop(){
+    analyserRAF=requestAnimationFrame(loop);
+    if(AU.paused) return;
+    ctx.clearRect(0,0,W,H);
+    ctx.fillStyle='#0d0d14'; ctx.fillRect(0,0,W,H);
+    var t=Date.now()*0.01;
+    var barCount=48; var barW=W/barCount*0.62; var gap=W/barCount*0.38;
+    for(var i=0;i<barCount;i++){
+      var v=Math.abs(Math.sin(t*0.1+i*0.5))*0.8+Math.random()*0.2;
+      var bh=v*H*0.85;
+      var x=i*(barW+gap)+gap/2; var y=H-bh;
+      ctx.fillStyle='#3a7bff'; ctx.fillRect(x,y,barW,bh);
+    }
+  }
+  loop();
+}
 if(window.MutationObserver)new MutationObserver(aPos).observe($('abar'),{attributes:true,attributeFilter:['hidden']});
 window.addEventListener('resize',aPos);
 /* tombol di layar kunci / headset */
