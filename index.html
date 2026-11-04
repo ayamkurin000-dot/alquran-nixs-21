@@ -2336,22 +2336,51 @@ function aPos(){
 }
 function aUI(){
   var apl=$('apl'); if(!apl) return;
-  apl.hidden=!PL.on;
-  if(!PL.on){$('apCanvasWrap').classList.remove('on'); return;}
-  $('apCanvasWrap').classList.add('on');
-  $('apn').textContent=Q[PL.s-1][1]+':'+PL.a;
+  // PLAYER SELALU TAMPIL SAAT BACAAN TERBUKA, tidak hanya saat PL.on
+  var shouldShow = (rd.open && rd.s>0) || PL.on;
+  apl.hidden = !shouldShow;
+  var wrap=$('apCanvasWrap');
+  if(!wrap) return;
+  if(!PL.on || AU.paused){
+    wrap.classList.remove('on');
+  }else{
+    wrap.classList.add('on');
+  }
+  if(rd.open && rd.s>0){
+    var curVis = getVisibleAyat()||PL.a||rd.cur||1;
+    var sName = Q[rd.s-1]?Q[rd.s-1][1]:'';
+    $('apn').textContent = PL.on ? (Q[PL.s-1][1]+':'+PL.a) : (sName+':'+curVis+' (siap)');
+  }else{
+    $('apn').textContent = PL.on ? (Q[PL.s-1][1]+':'+PL.a) : '-';
+  }
   var pt=$('apt');
   if(pt){
     pt.innerHTML=AU.paused?I_PLAY:I_PAUSE;
-    pt.classList.toggle('playing',!AU.paused);
+    pt.classList.toggle('playing', PL.on && !AU.paused);
     pt.setAttribute('aria-label',AU.paused?'Putar':'Jeda');
   }
-  $('apr').classList.toggle('on',!!PL.rep);
-  $('apr').setAttribute('aria-pressed',PL.rep?'true':'false');
-  $('aps').textContent=PL.rate+'×';
+  var repBtn=$('apr'); if(repBtn){ repBtn.classList.toggle('on',!!PL.rep); repBtn.setAttribute('aria-pressed',PL.rep?'true':'false'); }
+  var sp=$('aps'); if(sp) sp.textContent=PL.rate+'×';
   var qSel=$('apQori'); if(qSel && qSel.value!==PL.qari) qSel.value=PL.qari;
   aPos();
+  // update visible ayat label saat idle
+  if(!PL.on && rd.open) {
+    try{
+      var v=getVisibleAyat();
+      if(v) $('apn').textContent = Q[rd.s-1][1]+':'+v+' (siap)';
+    }catch(e){}
+  }
 }
+
+// update label ayat teratas saat scroll (ketika player idle)
+var _scrollTimer=null;
+window.addEventListener('scroll',function(){
+  if(PL.on) return;
+  if(!rd.open) return;
+  clearTimeout(_scrollTimer);
+  _scrollTimer=setTimeout(function(){ try{ aUI(); }catch(e){} },120);
+},{passive:true});
+
 function aMeta(){
   if(!('mediaSession' in navigator)||!window.MediaMetadata)return;
   try{
@@ -2365,19 +2394,24 @@ function aFollow(a){
   if(r.top<top||r.bottom>window.innerHeight-140)goAyat(a);
 }
 function getVisibleAyat(){
-  if(!rd.open||!rd.els||!rd.els.length) return null;
-  var top=($('topbar').offsetHeight||90)+12;
-  var best=null,bestDist=1e9;
+  if(!rd.open||!rd.els||!rd.els.length) return rd.cur||1;
+  var top=($('topbar').offsetHeight||90)+14;
+  // cari ayat pertama yang sepenuhnya terlihat di viewport atas
   for(var i=0;i<rd.els.length;i++){
     var el=rd.els[i]; if(!el) continue;
     var r=el.getBoundingClientRect();
-    if(r.bottom<top) continue;
-    if(r.top>window.innerHeight-120) break;
-    var dist=Math.abs(r.top-top);
-    if(r.top>=top && r.top<=top+200) return i+1;
-    if(dist<bestDist){bestDist=dist;best=i+1}
+    if(r.top>=top-8 && r.top<window.innerHeight*0.6) return i+1;
   }
-  return best||rd.cur||1;
+  // fallback: ayat terdekat dengan top
+  var best=1,bestDist=1e9;
+  for(var j=0;j<rd.els.length;j++){
+    var e2=rd.els[j]; if(!e2) continue;
+    var rr=e2.getBoundingClientRect();
+    if(rr.bottom<top) continue;
+    var d=Math.abs(rr.top-top);
+    if(d<bestDist){bestDist=d;best=j+1}
+  }
+  return best;
 }
 function aPlay(s,a){
   PL.on=true;PL.s=s;PL.a=a;PL.alt=false;
@@ -2401,7 +2435,8 @@ function aGo(s,a){
 function aStop(){
   PL.on=false;AU.pause();aMark();aUI();
   if('mediaSession' in navigator){try{navigator.mediaSession.metadata=null}catch(e){}}
-  if(analyserRAF) cancelAnimationFrame(analyserRAF);
+  // jangan hapus visual sepenuhnya, biar tetap bisa pilih qori
+  if(analyserRAF){ cancelAnimationFrame(analyserRAF); analyserRAF=null; }
 }
 AU.addEventListener('ended',function(){
   if(!PL.on)return;
@@ -2411,17 +2446,28 @@ AU.addEventListener('ended',function(){
   aGo(n[0],n[1]);
 });
 AU.addEventListener('error',function(){
-  if(!PL.on)return;
-  if(!PL.alt){PL.alt=true;AU.src=aUrl(PL.s,PL.a,true);var pr=AU.play();if(pr&&pr.catch)pr.catch(function(){});return}
-  toast('Audio gagal dimuat — butuh sambungan internet');aStop();
+  // JANGAN sembunyikan player saat error, biar user bisa ganti qori
+  if(!PL.on) return;
+  if(!PL.alt){
+    PL.alt=true;
+    AU.src=aUrl(PL.s,PL.a,true);
+    var pr=AU.play();if(pr&&pr.catch)pr.catch(function(){});
+    return;
+  }
+  toast('Qari ini gagal / offline, coba qari lain (cepat) di dropdown →');
+  AU.pause();
+  // tetap tampil
+  PL.on=false;
+  aMark(); aUI();
 });
 AU.addEventListener('play',aUI);AU.addEventListener('pause',aUI);
 $('abp').onclick=function(){var a=rd.sel;if(!a)return;selectAyat(0);aPlay(rd.s,a)};
 /* ==== NEW CONTROLS ==== */
 function ensurePlay(){
-  if(PL.on) return;
+  if(PL.on && !AU.paused) return;
   var s=rd.s||1;
-  var a=rd.sel||getVisibleAyat()||rd.cur||1;
+  // prioritas: ayat dipilih user > ayat teratas di layar > cur > 1
+  var a = rd.sel ? rd.sel : (getVisibleAyat()||rd.cur||1);
   aPlay(s,a);
 }
 $('apt').onclick=function(){
@@ -2540,7 +2586,15 @@ if('mediaSession' in navigator){try{
 }catch(e){}}
 /* buka surat lain saat audio jalan: sorotan ayat ikut menyesuaikan */
 var _openSurah=openSurah;
-openSurah=function(){_openSurah.apply(this,arguments);aMark()};
+openSurah=function(){
+  _openSurah.apply(this,arguments);
+  aMark();
+  // tampilkan player langsung saat surat dibuka, dengan ayat teratas
+  setTimeout(function(){
+    PL.s=rd.s;
+    try{ aUI(); }catch(e){}
+  },120);
+};
 
 /* =====================================================================
    INIT
