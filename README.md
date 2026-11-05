@@ -52,8 +52,11 @@ logo/foto-keluarga.png
 logo/pratinjau.jpg
 ```
 
+**Foto acak setiap dibuka (semua repo):**
+Taruh foto di `logo/galeri/1.jpg`, `2.jpg`, `3.jpg` ... (maksimal 12, ukuran ±800-1080px). Setiap aplikasi dibuka, foto header dipilih acak (tidak sama dengan sebelumnya). Folder `logo/galeri/` di-exclude dari sinkron, jadi aman per repo. Kalau folder kosong, tampil `logo/foto-keluarga-kecil.jpg` seperti biasa.
+
 **Khusus `alquran4all`:**
-Repo ini punya fitur **Ganti Foto Sendiri**. Pengunjung bisa upload foto dari HP nya sendiri, foto disimpan di `localStorage` HP nya (bukan di file repo). Jadi 1 link bisa dipakai banyak orang dengan foto masing-masing. Foto custom ini tidak akan hilang saat ada update dari repo utama.
+Pengunjung bisa **Tambah Foto** (boleh banyak sekaligus) dari HP nya sendiri. Foto disimpan di IndexedDB HP nya (bukan di file repo) dan tampil acak setiap dibuka. Tombol **Hapus Foto Ini** menghapus satu foto. Kalau pengguna belum menambah foto, dipakai galeri repo atau foto bawaan. Foto pengguna tidak hilang saat ada update dari repo utama.
 
 Lihat file workflow: `.github/workflows/sinkron.yml`
 
