@@ -1199,6 +1199,24 @@ html:not([data-tombol^="t"]):not([data-gulung^="g"]):not([data-pita^="pita"]):no
   content:'';position:absolute;inset:0;z-index:-1;pointer-events:none;border-radius:inherit;
   background-image:var(--tex);background-size:var(--texsz,360px);opacity:var(--texop)}
 html:not([data-tombol^="t"]):not([data-gulung^="g"]):not([data-pita^="pita"]):not([data-neon^="n"]):not(#_) .row .row::before{display:none}
+
+/* ===== BINGKAI KARTU DI BAWAH BARIS PENCARIAN: kotak, pojok sedikit oval, berlaku untuk SEMUA tema =====
+   Mengganti bentuk pil/oval (999px / 34px) dari tema pita, tombol, neon agar teks tidak keluar dari bingkai.
+   Ubah angka --rk untuk menambah/mengurangi lengkung pojok. */
+html:not(#_):not(#_):not(#_){--rk:10px}
+html:not(#_):not(#_):not(#_) :is(.row,.rcard):not(.row .row){border-radius:var(--rk)}
+html:not(#_):not(#_):not(#_) :is(.row,.rcard):not(.row .row)::before,
+html:not(#_):not(#_):not(#_) :is(.row,.rcard):not(.row .row)::after{border-radius:inherit}
+html[data-tombol^="t"]:not(#_):not(#_):not(#_) :is(.row,.rcard):not(.row .row)::before,
+html[data-tombol^="t"]:not(#_):not(#_):not(#_) :is(.row,.rcard):not(.row .row)::after{border-radius:max(2px,calc(var(--rk) - var(--ti,7px)))}
+/* pita & gulungan: hiasan aslinya tetap, hanya pojok kartu yang dibuat kotak */
+html[data-pita^="pita"]:not(#_):not(#_):not(#_) :is(.row,.rcard):not(.row .row)::after{border-radius:0}
+html[data-gulung^="g"]:not(#_):not(#_):not(#_) :is(.row,.rcard):not(.row .row)::before{border-radius:7px}
+html[data-gulung^="g"]:not(#_):not(#_):not(#_) :is(.row,.rcard):not(.row .row)::after{border-radius:6px}
+/* padding tema pil dilonggarkan sedikit karena tidak ada lagi lengkung besar */
+html[data-tombol^="t"]:not(#_):not(#_):not(#_) .row{padding:12px 16px 12px 16px}
+html[data-neon^="n"]:not(#_):not(#_):not(#_) .row{padding:12px 14px}
+html[data-pita^="pita"]:not(#_):not(#_):not(#_) .row{padding:14px 14px 10px 14px}
 </style>
 </head>
 <body>
