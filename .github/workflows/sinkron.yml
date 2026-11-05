@@ -54,6 +54,7 @@ jobs:
             --exclude='logo/foto-keluarga-kecil.jpg' \
             --exclude='logo/foto-keluarga.png' \
             --exclude='logo/pratinjau.jpg' \
+            --exclude='logo/galeri/' \
             utama/ target/
           sed -i "s#alquran-nixs-21#${{ matrix.repo }}#g" target/index.html
       - name: Commit dan push
