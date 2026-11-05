@@ -2319,7 +2319,7 @@ var CUSTOM_KEY = 'qk.foto.4all.custom';   /* versi lama: 1 foto di localStorage 
 var FOTO_DEF_KECIL='logo/foto-keluarga-kecil.jpg',FOTO_DEF_ASLI='logo/foto-keluarga.png';
 var FOTO_KECIL=FOTO_DEF_KECIL,FOTO_ASLI=FOTO_DEF_ASLI;
 /* Foto ACAK setiap dibuka.
-   - Repo biasa (termasuk nixs-21): taruh foto di logo/galeri/1.jpg, 2.jpg, 3.jpg ... (maks 12, tanpa lompat nomor tidak wajib).
+   - Repo biasa (termasuk nixs-21): taruh di logo/galeri/ -> 1.jpg (kecil, untuk header) + 1-asli.jpg (resolusi bagus, tampil saat diklik; opsional), 2.jpg + 2-asli.jpg, dst (maks 12).
      Folder logo/galeri/ TIDAK ikut tertimpa sinkron. Kalau folder kosong, tampil foto-keluarga-kecil.jpg seperti biasa.
    - alquran4all: pengguna menambah fotonya sendiri (disimpan di IndexedDB HP-nya). Kalau belum menambah, pakai galeri repo / foto bawaan. */
 var GALERI_DIR='logo/galeri/',GALERI_MAX=12,GALERI_LS='qk.galeri.list',LAST_LS='qk.foto.last';
@@ -2345,7 +2345,7 @@ function setFoto(small,big){
 }
 function fotoInfo(){
   var p=$('fcount'); if(!p) return;
-  p.textContent = CUR.n>1 ? ('Foto '+(CUR.i+1)+' dari '+CUR.n+' · tampil acak setiap dibuka') : '';
+  p.textContent = "Dilarang memodifikasi web Al-Qur'an ini dalam bentuk apapun";
 }
 /* ---- IndexedDB: kumpulan foto pengguna (khusus alquran4all) ---- */
 var IDB=null;
@@ -2390,9 +2390,13 @@ function fotoUser(){
 /* ---- galeri repo: logo/galeri/1.jpg ... N.jpg ---- */
 function galeriProbe(){
   var jobs=[];
-  for(var i=1;i<=GALERI_MAX;i++)(function(u){
-    jobs.push(fetch(u,{method:'HEAD',cache:'no-cache'}).then(function(r){ return r.ok?u:null; }).catch(function(){ return undefined; }));
-  })(GALERI_DIR+i+'.jpg');
+  function cek(u){ return fetch(u,{method:'HEAD',cache:'no-cache'}).then(function(r){ return r.ok?u:null; }).catch(function(){ return undefined; }); }
+  for(var i=1;i<=GALERI_MAX;i++)(function(i){
+    jobs.push(Promise.all([cek(GALERI_DIR+i+'.jpg'),cek(GALERI_DIR+i+'-asli.jpg')]).then(function(r){
+      if(r[0]===undefined||r[1]===undefined) return undefined;
+      return r[0]?{k:r[0],a:r[1]}:null;     /* k = foto kecil (header), a = resolusi asli saat diklik (opsional) */
+    }));
+  })(i);
   return Promise.all(jobs).then(function(a){
     for(var k=0;k<a.length;k++) if(a[k]===undefined) return null;   /* offline: jangan timpa daftar tersimpan */
     return a.filter(Boolean);
@@ -2400,7 +2404,8 @@ function galeriProbe(){
 }
 function pakaiGaleri(list){
   if(!list.length) return;
-  var i=pickIdx(list.length); CUR={id:null,n:list.length,i:i}; setFoto(list[i]);
+  var i=pickIdx(list.length),it=list[i]; if(typeof it==='string') it={k:it,a:null};
+  CUR={id:null,n:list.length,i:i}; setFoto(it.k,it.a||it.k);
 }
 function pakaiGaleriRepo(){
   var cached=[]; try{ cached=JSON.parse(lsGet(GALERI_LS)||'[]'); }catch(e){}
@@ -2412,7 +2417,7 @@ function pakaiGaleriRepo(){
     if(j===JSON.stringify(cached)) return;
     lsSet(GALERI_LS,j);
     if(!had) pakaiGaleri(list);             /* kunjungan pertama */
-    setTimeout(function(){ list.forEach(function(u){ fetch(u).catch(function(){}); }); },1500);   /* simpan semua ke cache supaya tetap acak saat offline */
+    setTimeout(function(){ list.forEach(function(it){ fetch(it.k).catch(function(){}); }); },1500);   /* simpan foto kecil ke cache supaya tetap acak saat offline */
   });
 }
 function initFoto(){
