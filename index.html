@@ -2807,8 +2807,29 @@ function vzKick(){if(!VZ.raf)VZ.raf=requestAnimationFrame(vzFrame)}
 window.addEventListener('resize',vzSize);
 if(window.ResizeObserver)new ResizeObserver(vzSize).observe(cv);
 
+/* ---------- Kembali ke surat yang sedang diputar ----------
+   Bila audio sedang jalan tetapi layar menampilkan surat lain (atau ayat yang diputar sudah
+   tergulung jauh), tombol jeda / sebelumnya / berikutnya hanya mengembalikan tampilan ke
+   surat & ayat yang sedang dibacakan. Ketukan berikutnya baru menjalankan fungsi tombolnya. */
+function aAway(){
+  if(!PL.on||document.hidden)return false;
+  if(rd.open&&rd.s===PL.s){
+    var el=rd.els[PL.a-1];
+    if(el){
+      var r=el.getBoundingClientRect(),top=$('topbar').offsetHeight||90,bot=window.innerHeight-($('bnav').offsetHeight||0);
+      if(r.bottom>top&&r.top<bot)return false;   /* ayat yang diputar sudah terlihat */
+    }
+    goAyat(PL.a);
+  }else{
+    var h='#/'+PL.s+(PL.a>1?'/'+PL.a:'');
+    if(location.hash===h)openSurah(PL.s,PL.a);else location.hash=h;
+  }
+  toast('Kembali ke QS '+Q[PL.s-1][1]+': '+PL.a);
+  return true;
+}
 /* ---------- Kontrol ---------- */
 $('apt').onclick=function(){
+  if(aAway())return;
   if(PL.on){vzCtx();if(AU.paused)AU.play().catch(function(){});else AU.pause();return}
   if(!rd.open)return;
   /* belum memutar: baca ayat yang dipilih pengguna; bila tidak ada, ayat yang sedang tampil di layar */
@@ -2818,10 +2839,12 @@ $('apt').onclick=function(){
 };
 $('abp').onclick=function(){var a=rd.sel;if(!a)return;PL.pend=a;aPlay(rd.s,a)};   /* bilah baru hilang setelah audio benar-benar bunyi */
 $('apv').onclick=function(){
+  if(aAway())return;
   if(PL.on){if(AU.currentTime>3){AU.currentTime=0;return}var p=prevOf(PL.s,PL.a);if(p)aGo(p[0],p[1])}
   else goAyat(Math.max(1,rd.cur-1));
 };
 $('apf').onclick=function(){
+  if(aAway())return;
   if(PL.on){var n=nextOf(PL.s,PL.a);if(n)aGo(n[0],n[1])}
   else goAyat(Math.min(rd.n,rd.cur+1));
 };
