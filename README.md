@@ -58,6 +58,8 @@ Taruh foto di `logo/galeri/`: `1.jpg` = foto kecil untuk header (±400-600px, <6
 **Khusus `alquran4all`:**
 Pengunjung bisa **Tambah Foto** (boleh banyak sekaligus) dari HP nya sendiri. Foto disimpan di IndexedDB HP nya (bukan di file repo) dan tampil acak setiap dibuka. Tombol **Hapus Foto Ini** menghapus satu foto. Kalau pengguna belum menambah foto, dipakai galeri repo atau foto bawaan. Foto pengguna tidak hilang saat ada update dari repo utama.
 
+**Foto bawaan permanen alquran4all:** `logo/galeri/foto-murrotal-kecil.jpg` (header) dan `logo/galeri/foto-murrotal.jpg` (saat diklik) diunggah **langsung ke repo alquran4all** (bukan ke nixs-21), karena folder `logo/galeri/` tidak ikut sinkron. Di sana foto ini tampil pertama kali, selalu ikut diacak bersama foto tambahan pengguna, dan tidak punya tombol hapus. Repo anak lain tidak memakainya. Untuk menggantinya, timpa kedua file itu di repo 4all dengan nama yang sama lalu naikkan `VERSI` di `sw.js`.
+
 Lihat file workflow: `.github/workflows/sinkron.yml`
 
 ### 🚀 Cara Update
