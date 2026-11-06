@@ -1,9 +1,10 @@
 /* Service worker Al-Qur'an Digital
    Strategi baru:
-   - index.html, doa.json & navigasi  -> JARINGAN DULU (selalu ambil versi terbaru), cache hanya cadangan saat offline.
+   - index.html, doa.json & navigasi  -> CACHE DULU (buka instan), lalu diam-diam diperbarui di latar belakang;
+                                         versi baru tampil di pembukaan berikutnya. Kunjungan pertama / cache kosong -> jaringan.
    - font & gambar                    -> cache dulu, diperbarui di latar belakang.
    Naikkan VERSI setiap ada perubahan agar cache lama dibuang dan pengguna langsung mendapat versi baru. */
-var VERSI = 'qk-v76';
+var VERSI = 'qk-v77';
 var INTI = ['./', 'index.html', 'doa.json', 'font/LPMQ-Isep-Misbah.ttf',
             'logo/foto-keluarga-kecil.jpg', 'logo/logo-nu.jpg'];
 
@@ -28,13 +29,19 @@ self.addEventListener('message', function (e) {
   if (e.data === 'skipWaiting') self.skipWaiting();
 });
 
-function jaringanDulu(r, c) {
-  return fetch(r, { cache: 'no-cache' }).then(function (res) {
-    if (res && res.ok) c.put(r, res.clone());
-    return res;
-  }).catch(function () {
-    return c.match(r, { ignoreSearch: true }).then(function (hit) {
-      return hit || c.match('index.html');
+function cacheDuluSegarkan(e, r, c) {
+  return c.match(r, { ignoreSearch: true }).then(function (hit) {
+    /* selalu minta versi terbaru ke jaringan (lewati cache HTTP) dan simpan untuk pembukaan berikutnya */
+    var net = fetch(r, { cache: 'no-cache' }).then(function (res) {
+      if (res && res.ok) c.put(r, res.clone());
+      return res;
+    }).catch(function () { return null; });
+    if (hit) {
+      e.waitUntil(net);          /* pembaruan latar belakang tetap selesai walau halaman sudah tampil */
+      return hit;                /* tampil langsung dari cache */
+    }
+    return net.then(function (res) {   /* belum ada cache (kunjungan pertama) atau cache terhapus */
+      return res || c.match('index.html');
     });
   });
 }
@@ -55,6 +62,6 @@ self.addEventListener('fetch', function (e) {
   var p = new URL(r.url).pathname;
   var penting = r.mode === 'navigate' || /\.(html|json)$/i.test(p) || /\/$/.test(p);
   e.respondWith(caches.open(VERSI).then(function (c) {
-    return penting ? jaringanDulu(r, c) : cacheDulu(r, c);
+    return penting ? cacheDuluSegarkan(e, r, c) : cacheDulu(r, c);
   }));
 });
