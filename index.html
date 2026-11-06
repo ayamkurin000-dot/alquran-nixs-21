@@ -246,11 +246,14 @@ input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;bac
 #bnav #amin{padding:3px 5px}
 #bnav #amin svg{width:12px;height:12px;display:block;transition:transform .2s}
 #bnav .pl.mini #amin svg{transform:rotate(180deg)}
-#bnav .jw{display:flex;align-items:center;gap:2px;flex:none}
-#bnav #jump{width:40px;border:1px solid var(--chb);background:var(--jbg);color:var(--chc);text-align:center;border-radius:6px;padding:2px 2px;font:700 12px ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;outline:none;-moz-appearance:textfield;appearance:textfield}
-#bnav #jump::-webkit-inner-spin-button,#bnav #jump::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}
-#bnav #jump:focus{border-color:var(--ac);box-shadow:0 0 8px var(--acg)}
-#bnav #jtot{font-size:11px;color:var(--chd)}
+#bnav #atr[aria-pressed=true]{border-color:var(--ac);color:var(--ac2);box-shadow:0 0 8px var(--acg)}
+/* jendela terjemah: ikut tema/skin/opacity pemutar */
+#bnav #trwin{position:absolute;left:10px;right:10px;bottom:calc(100% + 6px);z-index:4;border-radius:12px;padding:7px 10px 8px;background:var(--lcdbg);color:var(--mt);
+  border:1px solid var(--chb);box-shadow:inset 0 2px 6px #000,0 10px 26px rgba(0,0,0,.55);opacity:max(var(--op,.8),.93)}
+#bnav #trwin[hidden]{display:none}
+#bnav #trwin .th{font:700 11px ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;color:var(--lt);text-shadow:0 0 6px var(--ltg);letter-spacing:.03em;margin-bottom:4px}
+#bnav #trwin .tb2{max-height:min(26vh,150px);overflow-y:auto;scrollbar-width:thin;scrollbar-color:var(--chb2) transparent;-webkit-overflow-scrolling:touch;overscroll-behavior:contain}
+#bnav #trwin p{margin:0;font-size:14px;line-height:1.55;color:var(--mt)}
 #bnav #spec{display:block;width:100%;height:34px;margin-top:4px}
 #bnav .pl.mini #spec{display:none}
 #bnav #qmenu{position:absolute;left:10px;right:10px;bottom:calc(100% + 6px);z-index:3;padding:6px;border-radius:14px;background:var(--menubg);border:1px solid #000;
@@ -1335,10 +1338,11 @@ html[data-pita^="pita"]:not(#_):not(#_):not(#_) .row{padding:14px 14px 10px 14px
         <b id="apn">—</b>
         <button class="chip" id="aqr" type="button" aria-haspopup="listbox" aria-expanded="false" aria-label="Pilih qari">Alafasy</button>
         <button class="chip" id="aps" type="button" aria-label="Kecepatan putar">1×</button>
-        <span class="jw"><input id="jump" type="number" inputmode="numeric" min="1" aria-label="Lompat ke ayat"><span id="jtot"></span></span>
+        <button class="chip" id="atr" type="button" aria-pressed="false" aria-label="Jendela terjemah ayat yang sedang diputar">Terjemah</button>
       </div>
       <canvas id="spec" aria-hidden="true"></canvas>
     </div>
+    <div id="trwin" role="region" aria-label="Terjemah ayat yang sedang diputar" aria-live="polite" hidden><div class="th"><b id="trwh"></b></div><div class="tb2" id="trwb"><p id="trwt"></p></div></div>
     <div id="qmenu" role="listbox" aria-label="Pilih qari" hidden></div>
     <div id="smenu" role="dialog" aria-label="Tampilan pemutar" hidden>
       <div class="sh">Tampilan pemutar</div>
@@ -1590,7 +1594,7 @@ var FRAME_ORDER=Object.keys(FRAMES);
 var FX={none:{n:'Standar'},matte:{n:'Matte'},glass1:{n:'Kaca 1 \u00b7 Tipis'},glass2:{n:'Kaca 2 \u00b7 Berair'},glass3:{n:'Kaca 3 \u00b7 Buram'},glass4:{n:'Kaca 4 \u00b7 Kristal'},glass5:{n:'Kaca 5 \u00b7 Cair'},glass6:{n:'Kaca 6 \u00b7 Kilap'}};
 var FX_ORDER=Object.keys(FX);
 
-var DEF={font:'lpmq',theme:'k3tmb3',tex:'c-kartun',texR:'w-tegak',frame:'none',fx:'glass2',ar:22,trs:1,showTr:false};
+var DEF={font:'lpmq',theme:'k3tmb3',tex:'c-kartun',texR:'w-tegak',frame:'none',fx:'glass2',ar:22,trs:1,showTr:false,plTr:false};
 
 /* =====================================================================
    UTIL
@@ -1764,7 +1768,8 @@ function applyAll(){
   applyTheme();applyFrame();applyFontSizes();
   $('mushaf').classList.toggle('flow',!S.showTr);
   $('btr').setAttribute('aria-pressed',S.showTr?'true':'false');
-  relayoutMedals();syncTbh();
+  if(S.showTr)S.plTr=false;
+  relayoutMedals();syncTbh();trSync();
 }
 /* Jaga posisi ayat yang sedang dibaca saat ukuran/font/mode berubah */
 function keepAnchor(fn){
@@ -1835,13 +1840,12 @@ function openSurah(s,a,fromHash){
   $('ayl').innerHTML='';$('abar').hidden=true;
   if(fresh){   /* tiap membuka bacaan: mulai dari huruf terkecil & tanpa terjemahan */
     S.ar=+$('szr').min||22;S.showTr=false;applyFontSizes();
-    $('mushaf').classList.add('flow');$('btr').setAttribute('aria-pressed','false');
+    $('mushaf').classList.add('flow');$('btr').setAttribute('aria-pressed','false');trSync();
   }
   $('shead').innerHTML='';   /* bingkai nama surat dihapus; infonya pindah ke top bar */
   var showB=(s!==1&&s!==9);$('bsm').hidden=!showB;
   if(showB)$('bsm').querySelector('.bt').textContent=Q[0][3][0];
   $('tt').textContent='Surat '+d[1];$('ts').textContent=d[2];$('tj').textContent=rd.n+' ayat · Juz '+juzOf(s,a);$('tar').textContent=d[0];
-  $('jump').max=rd.n;$('jump').value=a;$('jtot').textContent='/ '+rd.n;
   var p=$('sprev'),n=$('snext');
   p.textContent=s>1?'‹ '+Q[s-2][1]:'';p.disabled=s<=1;p.style.visibility=s>1?'visible':'hidden';
   n.textContent=s<114?Q[s][1]+' ›':'';n.disabled=s>=114;n.style.visibility=s<114?'visible':'hidden';
@@ -1861,7 +1865,7 @@ function goAyat(a,instant){
   var r=el.getClientRects()[0]||el.getBoundingClientRect();
   var y=r.top+window.scrollY-(parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--tbh'))||96)-10;
   window.scrollTo({top:Math.max(0,y),behavior:instant?'auto':'smooth'});
-  rd.cur=a;$('jump').value=a;
+  rd.cur=a;
 }
 /* Muat ayat berikutnya selama penanda akhir (#sent) masih dalam jangkauan 1400px dari layar.
    IntersectionObserver hanya melapor saat status "berpotongan" BERUBAH. Pada surat berayat pendek,
@@ -1886,7 +1890,7 @@ function updateCur(){
   while(lo<hi){var mid=(lo+hi)>>1,rc=rd.els[mid].getClientRects(),r=rc[rc.length-1];if(r&&r.bottom>lim)hi=mid;else lo=mid+1}
   var a=lo+1;
   if(window.innerHeight+window.scrollY>=document.documentElement.scrollHeight-4&&rd.rendered>=rd.n)a=rd.n;
-  if(a!==rd.cur||!rd.tick){rd.cur=a;setLast(rd.s,a);$('tj').textContent=rd.n+' ayat · Juz '+juzOf(rd.s,a);if(document.activeElement!==$('jump'))$('jump').value=a}
+  if(a!==rd.cur||!rd.tick){rd.cur=a;setLast(rd.s,a);$('tj').textContent=rd.n+' ayat · Juz '+juzOf(rd.s,a)}
   rd.tick=1;
 }
 ['wheel','touchstart','keydown','mousedown'].forEach(function(ev){window.addEventListener(ev,function(){rd.moved=true},{passive:true})});
@@ -1928,14 +1932,11 @@ $('abc').onclick=function(){
   if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(function(){toast('Disalin')},function(){toast('Gagal menyalin')})}
   else{var t=document.createElement('textarea');t.value=txt;document.body.appendChild(t);t.select();try{document.execCommand('copy');toast('Disalin')}catch(e){toast('Gagal menyalin')}t.remove()}
 };
-$('jump').addEventListener('keydown',function(e){if(e.key==='Enter'){goAyat(+this.value);this.blur()}});
-$('jump').addEventListener('change',function(){goAyat(+this.value)});
-$('jump').addEventListener('focus',function(){this.select()});
 $('sprev').onclick=function(){if(rd.s>1)location.hash='#/'+(rd.s-1)};
 $('snext').onclick=function(){if(rd.s<114)location.hash='#/'+(rd.s+1)};
 $('bk').onclick=function(){if(navCount>1)history.back();else location.hash='#/'};
 $('szr').addEventListener('input',function(){keepAnchor(function(){S.ar=+$('szr').value;applyFontSizes()});save()});
-$('btr').onclick=function(){keepAnchor(function(){S.showTr=!S.showTr;$('mushaf').classList.toggle('flow',!S.showTr);$('btr').setAttribute('aria-pressed',S.showTr?'true':'false')});save()};
+$('btr').onclick=function(){keepAnchor(function(){S.showTr=!S.showTr;if(S.showTr)S.plTr=false;$('mushaf').classList.toggle('flow',!S.showTr);$('btr').setAttribute('aria-pressed',S.showTr?'true':'false')});trSync();save()};
 if(window.ResizeObserver)new ResizeObserver(syncTbh).observe($('topbar'));
 
 /* =====================================================================
@@ -2748,11 +2749,54 @@ function aMark(){
   [].forEach.call(document.querySelectorAll('.ay.play'),function(e){e.classList.remove('play')});
   AP.s=PL.on?PL.s:0;AP.a=PL.on?PL.a:0;
   if(PL.on&&rd.open&&rd.s===PL.s&&rd.els[PL.a-1])rd.els[PL.a-1].classList.add('play');
+  trSync();
 }
 function aLbl(){
   var s=PL.on?PL.s:rd.s,a=PL.on?PL.a:rd.cur;
   $('apn').textContent=(s&&Q[s-1])?Q[s-1][1]+':'+a:'—';
 }
+/* ---------- Jendela terjemah di pemutar (tema mengikuti pemutar) ----------
+   Hanya salah satu aktif: tombol "Terjemah" atas (di bawah ayat) ATAU tombol "Terjemah" pemutar (jendela).
+   Jendela tampil hanya saat ada bacaan; berhenti -> dikosongkan & disembunyikan. Teks panjang digulir otomatis
+   mengikuti progres audio ayat yang dibaca. */
+var TRW={key:'',raf:0};
+function trSync(){
+  if(typeof PL==='undefined'||!PL||typeof AU==='undefined'){return}
+  var on=!!S.plTr,show=on&&PL.on&&PL.s&&Q[PL.s-1];
+  $('atr').setAttribute('aria-pressed',on?'true':'false');
+  var w=$('trwin');
+  if(!show){
+    w.hidden=true;TRW.key='';$('trwh').textContent='';$('trwt').textContent='';$('trwb').scrollTop=0;
+    if(TRW.raf){cancelAnimationFrame(TRW.raf);TRW.raf=0}
+    return;
+  }
+  var k=PL.s+':'+PL.a;
+  if(k!==TRW.key){
+    TRW.key=k;
+    $('trwh').textContent=Q[PL.s-1][1]+' : '+PL.a;
+    $('trwt').textContent=(Q[PL.s-1][4]||[])[PL.a-1]||'';
+    $('trwb').scrollTop=0;
+  }
+  w.hidden=false;
+  if(!TRW.raf)TRW.raf=requestAnimationFrame(trScroll);
+}
+function trScroll(){
+  TRW.raf=0;
+  if($('trwin').hidden)return;
+  var b=$('trwb'),max=b.scrollHeight-b.clientHeight;
+  if(max>2&&PL.on&&AU.duration>0&&isFinite(AU.duration)){
+    var p=AU.currentTime/AU.duration,q=Math.max(0,Math.min(1,(p-.06)/.84));   /* beri jeda awal & akhir agar nyaman dibaca */
+    b.scrollTop=max*q;
+  }
+  TRW.raf=requestAnimationFrame(trScroll);
+}
+$('atr').onclick=function(e){
+  e.stopPropagation();
+  S.plTr=!S.plTr;
+  if(S.plTr&&S.showTr){S.showTr=false;keepAnchor(function(){$('mushaf').classList.add('flow');$('btr').setAttribute('aria-pressed','false')})}
+  save();trSync();
+  toast(S.plTr?'Terjemah di pemutar: aktif':'Terjemah di pemutar: mati');
+};
 function aVolUI(){
   var v=PL.mute?0:PL.vol;
   $('avl').value=Math.round(PL.vol*100);
