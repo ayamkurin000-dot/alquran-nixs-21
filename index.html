@@ -1849,10 +1849,19 @@ function goAyat(a,instant){
   window.scrollTo({top:Math.max(0,y),behavior:instant?'auto':'smooth'});
   rd.cur=a;$('jump').value=a;
 }
+/* Muat ayat berikutnya selama penanda akhir (#sent) masih dalam jangkauan 1400px dari layar.
+   IntersectionObserver hanya melapor saat status "berpotongan" BERUBAH. Pada surat berayat pendek,
+   24 ayat baru tidak cukup mendorong penanda keluar dari jangkauan, status tetap "berpotongan",
+   tidak ada laporan lagi, dan pemuatan berhenti (layar tak bisa digulir ke ayat selanjutnya). */
+function fillAhead(){
+  var s=$('sent'),guard=0;
+  if(!rd.open||!s)return;
+  while(rd.rendered<rd.n&&guard++<12&&s.getBoundingClientRect().top<window.innerHeight+1400)renderUpTo(rd.rendered+CH);
+}
 function setupObserver(){
   if(rd.io)rd.io.disconnect();
   rd.io=new IntersectionObserver(function(es){
-    if(es[0].isIntersecting&&rd.rendered<rd.n){renderUpTo(rd.rendered+CH);}
+    if(es[0].isIntersecting)fillAhead();
   },{rootMargin:'1400px 0px'});
   rd.io.observe($('sent'));
 }
@@ -1868,7 +1877,7 @@ function updateCur(){
 }
 ['wheel','touchstart','keydown','mousedown'].forEach(function(ev){window.addEventListener(ev,function(){rd.moved=true},{passive:true})});
 var raf=0;
-window.addEventListener('scroll',function(){if(!rd.open||raf)return;raf=requestAnimationFrame(function(){raf=0;updateCur()})},{passive:true});
+window.addEventListener('scroll',function(){if(!rd.open||raf)return;raf=requestAnimationFrame(function(){raf=0;fillAhead();updateCur()})},{passive:true});
 
 function selectAyat(a){
   if(rd.sel&&rd.els[rd.sel-1])rd.els[rd.sel-1].classList.remove('sel');
