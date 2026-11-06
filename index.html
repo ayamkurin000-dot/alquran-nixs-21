@@ -243,10 +243,16 @@ input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;bac
   max-width:78px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;box-shadow:inset 0 1px 0 rgba(255,255,255,.08)}
 #bnav .chip:active{background:var(--chs)}
 #bnav .chip[aria-expanded=true]{border-color:var(--ac);box-shadow:0 0 8px var(--acg)}
+#bnav #aqr .mq{display:inline-block;vertical-align:top}
+#bnav #aqr.run{text-overflow:clip}
+@media (prefers-reduced-motion:no-preference){#bnav #aqr.run .mq{animation:qmq var(--md,5s) ease-in-out infinite alternate}}
+@keyframes qmq{0%,18%{transform:translateX(0)}82%,100%{transform:translateX(var(--mv,0))}}
 #bnav #amin{padding:3px 5px}
 #bnav #amin svg{width:12px;height:12px;display:block;transition:transform .2s}
 #bnav .pl.mini #amin svg{transform:rotate(180deg)}
-#bnav #atr[aria-pressed=true]{border-color:var(--ac);color:var(--ac2);box-shadow:0 0 8px var(--acg)}
+#bnav #atr{display:inline-flex;align-items:center;gap:5px}
+#bnav #atr .led{flex:none;width:7px;height:7px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#2a2a2a,#000 70%);box-shadow:inset 0 0 0 1px #000,0 0 0 1px rgba(255,255,255,.12)}
+#bnav #atr[aria-pressed=true] .led{background:radial-gradient(circle at 35% 30%,#d6ffe0,#3dff6e 45%,#0a9a30);box-shadow:0 0 0 1px #052b10,0 0 6px 2px rgba(61,255,110,.85)}
 /* jendela terjemah: satu kesatuan dengan layar LCD pemutar (di atas VU), huruf hijau LED, maks 4 baris */
 #bnav #trwin{margin-top:5px;padding:4px 6px;border-radius:6px;border:1px solid hsl(140 55% 14%);background:hsl(140 70% 3%);box-shadow:inset 0 1px 4px #000}
 #bnav #trwin[hidden]{display:none}
@@ -1337,7 +1343,7 @@ html[data-pita^="pita"]:not(#_):not(#_):not(#_) .row{padding:14px 14px 10px 14px
         <b id="apn">—</b>
         <button class="chip" id="aqr" type="button" aria-haspopup="listbox" aria-expanded="false" aria-label="Pilih qari">Alafasy</button>
         <button class="chip" id="aps" type="button" aria-label="Kecepatan putar">1×</button>
-        <button class="chip" id="atr" type="button" aria-pressed="false" aria-label="Jendela terjemah ayat yang sedang diputar">Terjemah</button>
+        <button class="chip" id="atr" type="button" aria-pressed="false" aria-label="Jendela terjemah ayat yang sedang diputar"><i class="led" aria-hidden="true"></i>Terjemah</button>
       </div>
       <div id="trwin" role="region" aria-label="Terjemah ayat yang sedang diputar" aria-live="polite" hidden><div class="tb2" id="trwb"><p id="trwt"></p></div></div>
       <canvas id="spec" aria-hidden="true"></canvas>
@@ -2804,6 +2810,16 @@ function aVolUI(){
   $('avm').setAttribute('aria-label',v===0?'Aktifkan suara':'Bisukan');
   AU.volume=v;
 }
+/* nama qari: bila tidak muat di tombol, berjalan (running text) bolak-balik */
+function aqrName(){
+  var b=$('aqr'),sp=document.createElement('span');
+  sp.className='mq';sp.textContent=PL.q.k;
+  b.textContent='';b.appendChild(sp);b.classList.remove('run');b.style.removeProperty('--mv');b.style.removeProperty('--md');
+  requestAnimationFrame(function(){
+    var cs=getComputedStyle(b),room=b.clientWidth-parseFloat(cs.paddingLeft)-parseFloat(cs.paddingRight),over=sp.offsetWidth-room;
+    if(over>1){b.style.setProperty('--mv',(-Math.ceil(over)-1)+'px');b.style.setProperty('--md',(Math.max(2.5,over/18)+1.6).toFixed(1)+'s');b.classList.add('run')}
+  });
+}
 function aUI(){
   var pl=PL.on&&!AU.paused;
   $('pl').classList.toggle('on',pl);
@@ -2811,7 +2827,7 @@ function aUI(){
   $('apt').setAttribute('aria-label',pl?'Jeda':(PL.on?'Lanjutkan':'Putar ayat'));
   $('apr').setAttribute('aria-pressed',PL.rep?'true':'false');
   $('aps').textContent=PL.rate+'×';
-  $('aqr').textContent=PL.q.k;
+  aqrName();
   aLbl();
 }
 function aMeta(){
