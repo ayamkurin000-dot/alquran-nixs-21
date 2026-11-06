@@ -38,7 +38,8 @@ html.pre #splash{visibility:visible;position:fixed;inset:0;z-index:99999;display
 <!-- Font opsional dari Google Fonts (offline: otomatis jatuh ke font sistem). LPMQ tertanam base64 di bawah. -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amiri+Quran&family=Aref+Ruqaa:wght@400;700&family=Noto+Naskh+Arabic:wght@400;700&family=Scheherazade+New:wght@400;700&display=swap">
+<link id="gfonts" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amiri+Quran&family=Aref+Ruqaa:wght@400;700&family=Noto+Naskh+Arabic:wght@400;700&family=Scheherazade+New:wght@400;700&display=swap" media="print" onload="this.media='all';this.dataset.ok=1">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amiri+Quran&family=Aref+Ruqaa:wght@400;700&family=Noto+Naskh+Arabic:wght@400;700&family=Scheherazade+New:wght@400;700&display=swap"></noscript>
 <style>
 /* ===== Font LPMQ Isep Misbah (Kemenag) — file font/LPMQ-Isep-Misbah.ttf, di-cache service worker untuk offline ===== */
 @font-face{font-family:'LPMQ Isep Misbah';src:url('font/LPMQ-Isep-Misbah.ttf') format('truetype');font-display:swap}
@@ -2443,8 +2444,11 @@ function pakaiGaleriRepo(){
   var cached=[]; try{ cached=JSON.parse(lsGet(GALERI_LS)||'[]'); }catch(e){}
   var had=cached.length>0;
   if(had) pakaiGaleri(cached);              /* langsung, tanpa menunggu jaringan */
+  var T_LS='qk.galeri.t',now=Date.now(),last=parseInt(lsGet(T_LS),10)||0;
+  if(had&&now-last<86400000) return;        /* daftar galeri masih segar (<24 jam): lewati 24 request HEAD */
   galeriProbe().then(function(list){
     if(!list) return;
+    lsSet(T_LS,String(now));
     var j=JSON.stringify(list);
     if(j===JSON.stringify(cached)) return;
     lsSet(GALERI_LS,j);
@@ -3105,6 +3109,18 @@ if(document.fonts&&document.fonts.ready){
     if(rd.open&&rd.target&&!rd.moved)goAyat(rd.target,true);
   });
 }
+/* Google Fonts kini dimuat tanpa memblokir tampilan: setelah stylesheet-nya datang, muat fontnya lalu kalibrasi ulang tata letak */
+(function(){
+  var gf=document.getElementById('gfonts');
+  if(!gf||!document.fonts)return;
+  function lagi(){
+    ensureFonts().then(function(){return document.fonts.ready}).then(function(){
+      calibrate();applyFontSizes();relayoutMedals();
+      if(rd.open&&rd.target&&!rd.moved)goAyat(rd.target,true);
+    });
+  }
+  if(gf.dataset.ok)lagi();else gf.addEventListener('load',lagi);
+})();
 /* Service worker: cache aplikasi, font, dan doa.json supaya benar-benar bisa offline */
 if('serviceWorker' in navigator&&(location.protocol==='https:'||location.hostname==='localhost')){
   window.addEventListener('load',function(){
