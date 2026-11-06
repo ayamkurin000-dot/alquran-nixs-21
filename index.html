@@ -443,6 +443,19 @@ input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;bac
 #fotobd #fmsg{font-size:13px;font-weight:400;min-height:1.2em}
 #fotobd .xbtn{position:absolute;top:calc(10px + env(safe-area-inset-top));right:10px;width:52px;height:52px;padding:0;border-radius:50%;background:rgba(255,255,255,.22);color:#fff;font-size:32px;line-height:1;display:grid;place-items:center;z-index:2;border:1px solid rgba(255,255,255,.4)}
 #fotobd .xbtn:hover,#fotobd .xbtn:focus-visible{background:rgba(255,255,255,.38);outline:none}
+/* editor foto profil: geser, zoom, putar */
+#cropbd{position:fixed;inset:0;z-index:80;background:rgba(0,0,0,.94);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:calc(12px + env(safe-area-inset-top)) 14px calc(12px + env(safe-area-inset-bottom));color:#f1e8d0;overflow:auto}
+#cropbd .ct{font-size:15px;font-weight:700;text-align:center}
+#cropbd .ch{font-size:12.5px;opacity:.8;text-align:center;max-width:420px}
+#cropbd .cs{border-radius:14px;overflow:hidden;line-height:0;box-shadow:0 0 0 2px var(--accent,#d4b25a),0 10px 40px rgba(0,0,0,.6);cursor:grab;touch-action:none;outline:none;flex:none}
+#cropbd .cs:focus-visible{box-shadow:0 0 0 3px #fff,0 10px 40px rgba(0,0,0,.6)}
+#cropbd canvas{display:block;touch-action:none}
+#cropbd .cz{display:flex;align-items:center;gap:10px;width:min(100%,360px);font-weight:700}
+#cropbd .cz input{flex:1;min-width:0}
+#cropbd .cb{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+#cropbd .cb button{min-height:44px;border:1px solid rgba(255,255,255,.55);background:rgba(255,255,255,.12);color:#fff;border-radius:99px;padding:8px 16px;font-weight:700;font-size:14.5px}
+#cropbd .cb button:hover{background:rgba(255,255,255,.24)}
+#cropbd .cb button.pri{background:var(--accent,#d4b25a);border-color:var(--accent,#d4b25a);color:#1b1305}
 #nubd .xbtn{position:absolute;top:calc(12px + env(safe-area-inset-top));right:14px;color:#fff;font-size:30px}
 
 /* ===================== DO'A & BACAAN (kategori dulu) ===================== */
@@ -2401,7 +2414,7 @@ function idb(){
 function idbAll(){
   return idb().then(function(db){ return new Promise(function(ok,no){
     var out=[],c=db.transaction('f').objectStore('f').openCursor();
-    c.onsuccess=function(){ var x=c.result; if(x){ out.push({id:x.key,data:x.value}); x.continue(); } else ok(out); };
+    c.onsuccess=function(){ var x=c.result; if(x){ var v=x.value; out.push(v&&typeof v==='object'?{id:x.key,data:v.k,full:v.a}:{id:x.key,data:v}); x.continue(); } else ok(out); };
     c.onerror=function(){ no(c.error); };
   }); });
 }
@@ -2467,7 +2480,7 @@ function pakaiPool4all(arr){
   var pool=[{id:null,bawaan:true}].concat(arr||[]);
   var i=pickIdx(pool.length),it=pool[i];
   CUR={id:it.id,n:pool.length,i:i};
-  if(it.bawaan) setFoto(FOTO_4ALL_KECIL,FOTO_4ALL_ASLI); else setFoto(it.data);
+  if(it.bawaan) setFoto(FOTO_4ALL_KECIL,FOTO_4ALL_ASLI); else setFoto(it.data,it.full);
 }
 function initFoto(){
   if(!IS_4ALL){ pakaiGaleriRepo(); return; }
@@ -2524,6 +2537,131 @@ function shrinkFoto(src,done,fail){
   im.onerror=function(){ if(fail) fail(); else alert('Format foto tidak didukung. Pilih foto JPG, PNG, atau WebP.') };
   im.src=src;
 }
+/* ---- Editor foto profil: pilih bagian yang tampil (geser + zoom) dan putar, sesuai bentuk bingkai ---- */
+function cropFoto(src,no,total){
+  return new Promise(function(resolve,reject){
+    var im=new Image();
+    im.onerror=function(){reject(new Error('img'))};
+    im.onload=function(){
+      var fr=$('foto'),r0=fr?fr.getBoundingClientRect():null;
+      var R=(r0&&r0.width>20&&r0.height>20)?r0.width/r0.height:1;
+      R=Math.max(.4,Math.min(2.5,R));
+      /* sumber diperkecil (maks 2048 px) supaya hemat memori */
+      var k0=Math.min(1,2048/Math.max(im.naturalWidth,im.naturalHeight));
+      var base=document.createElement('canvas');
+      base.width=Math.max(1,Math.round(im.naturalWidth*k0));base.height=Math.max(1,Math.round(im.naturalHeight*k0));
+      var g0=base.getContext('2d');g0.fillStyle='#fff';g0.fillRect(0,0,base.width,base.height);g0.drawImage(im,0,0,base.width,base.height);
+
+      var rot=0,rcv=document.createElement('canvas'),bgc=document.createElement('canvas'),iw=1,ih=1,z=1,ox=0,oy=0,done=false;
+      function rebuild(){
+        var w=rot%2?base.height:base.width,h=rot%2?base.width:base.height;
+        rcv.width=iw=w;rcv.height=ih=h;
+        var g=rcv.getContext('2d');g.save();g.translate(w/2,h/2);g.rotate(rot*Math.PI/2);g.drawImage(base,-base.width/2,-base.height/2);g.restore();
+        bgc.width=32;bgc.height=Math.max(8,Math.round(32/R));          /* latar kabur kecil untuk area kosong saat foto diperkecil */
+        var b=bgc.getContext('2d'),s=Math.max(bgc.width/iw,bgc.height/ih);
+        b.drawImage(rcv,(bgc.width-iw*s)/2,(bgc.height-ih*s)/2,iw*s,ih*s);
+      }
+      function lim(){var a=Math.max(1,iw/(R*ih)),b=Math.max(1,ih*R/iw);return{a:a,b:b,zmin:1/Math.max(a,b)}}
+      function clamp(){
+        var L=lim();z=Math.min(4,Math.max(L.zmin,z));
+        var sw=z*L.a,sh=z*L.b,mx=sw>1?(sw-1)/2:0,my=sh>1?(sh-1)/2:0;
+        ox=Math.max(-mx,Math.min(mx,ox));oy=Math.max(-my,Math.min(my,oy));
+      }
+      function fill(){z=1;ox=0;oy=(lim().b-1)*.5;clamp()}               /* awal: memenuhi bingkai, rata atas (kepala di bagian atas foto tidak terpotong) */
+      function draw(g,W,H){
+        var L=lim(),sw=z*L.a*W,sh=z*L.b*H;
+        g.imageSmoothingEnabled=true;g.imageSmoothingQuality='high';
+        g.drawImage(bgc,0,0,W,H);
+        g.drawImage(rcv,W/2+ox*W-sw/2,H/2+oy*H-sh/2,sw,sh);
+      }
+
+      var bd=document.createElement('div');bd.id='cropbd';bd.setAttribute('role','dialog');bd.setAttribute('aria-modal','true');bd.setAttribute('aria-label','Atur foto profil');
+      bd.innerHTML='<div class="ct">Atur foto profil'+(total>1?' ('+no+' dari '+total+')':'')+'</div>'
+        +'<div class="ch">Geser foto untuk memilih bagian yang tampil. Cubit atau gunakan slider untuk zoom.</div>'
+        +'<div class="cs" tabindex="0" aria-label="Area foto: geser dengan jari atau tombol panah, zoom dengan plus dan minus"><canvas></canvas></div>'
+        +'<div class="cz"><span aria-hidden="true">−</span><input type="range" min="0" max="100" value="0" aria-label="Zoom"><span aria-hidden="true">+</span></div>'
+        +'<div class="cb"><button type="button" data-a="l">⟲ Putar kiri</button><button type="button" data-a="r">⟳ Putar kanan</button></div>'
+        +'<div class="cb"><button type="button" data-a="fit">Tampilkan semua</button><button type="button" data-a="fill">Isi bingkai</button></div>'
+        +'<div class="cb"><button type="button" data-a="skip">'+(total>1?'Lewati foto ini':'Batal')+'</button><button type="button" class="pri" data-a="ok">Simpan</button></div>';
+      document.body.appendChild(bd);
+      var cv=bd.querySelector('canvas'),sl=bd.querySelector('input'),stage=bd.querySelector('.cs');
+
+      function syncSl(){var L=lim();sl.value=String(Math.round(Math.log(z/L.zmin)/Math.log(4/L.zmin)*100))}
+      function paint(){var g=cv.getContext('2d');g.clearRect(0,0,cv.width,cv.height);draw(g,cv.width,cv.height);syncSl()}
+      function layout(){
+        var maxW=Math.min(window.innerWidth-28,520),maxH=Math.max(160,window.innerHeight-300);
+        var cw=Math.min(maxW,maxH*R),ch=cw/R,dpr=Math.min(2,window.devicePixelRatio||1);
+        cv.style.width=cw+'px';cv.style.height=ch+'px';
+        cv.width=Math.round(cw*dpr);cv.height=Math.round(ch*dpr);
+        paint();
+      }
+
+      /* geser (1 jari) & cubit (2 jari) */
+      var ptr={},last=null;
+      function pts(){return Object.keys(ptr).map(function(k){return ptr[k]})}
+      function snap(){
+        var p=pts();
+        if(p.length>=2){var a=p[0],b=p[1];last={n:2,d:Math.hypot(a.x-b.x,a.y-b.y)||1,x:(a.x+b.x)/2,y:(a.y+b.y)/2}}
+        else if(p.length===1)last={n:1,x:p[0].x,y:p[0].y};
+        else last=null;
+      }
+      cv.addEventListener('pointerdown',function(e){ptr[e.pointerId]={x:e.clientX,y:e.clientY};try{cv.setPointerCapture(e.pointerId)}catch(x){}snap();e.preventDefault()});
+      cv.addEventListener('pointermove',function(e){
+        if(!ptr[e.pointerId])return;
+        ptr[e.pointerId]={x:e.clientX,y:e.clientY};
+        var p=pts(),r=cv.getBoundingClientRect();
+        if(!last)return;
+        if(p.length>=2&&last.n===2){
+          var a=p[0],b=p[1],d=Math.hypot(a.x-b.x,a.y-b.y)||1,mx=(a.x+b.x)/2,my=(a.y+b.y)/2;
+          z*=d/last.d;ox+=(mx-last.x)/r.width;oy+=(my-last.y)/r.height;last={n:2,d:d,x:mx,y:my};
+        }else if(p.length===1&&last.n===1){
+          ox+=(p[0].x-last.x)/r.width;oy+=(p[0].y-last.y)/r.height;last={n:1,x:p[0].x,y:p[0].y};
+        }
+        clamp();paint();
+      });
+      function up(e){delete ptr[e.pointerId];snap()}
+      cv.addEventListener('pointerup',up);cv.addEventListener('pointercancel',up);
+      cv.addEventListener('wheel',function(e){e.preventDefault();z*=Math.exp(-e.deltaY*.0015);clamp();paint()},{passive:false});
+      sl.addEventListener('input',function(){var L=lim();z=L.zmin*Math.pow(4/L.zmin,sl.value/100);clamp();paint()});
+      stage.addEventListener('keydown',function(e){
+        var st=.03,h=true;
+        if(e.key==='ArrowLeft')ox-=st;else if(e.key==='ArrowRight')ox+=st;
+        else if(e.key==='ArrowUp')oy-=st;else if(e.key==='ArrowDown')oy+=st;
+        else if(e.key==='+'||e.key==='=')z*=1.1;else if(e.key==='-')z/=1.1;
+        else h=false;
+        if(h){e.preventDefault();clamp();paint()}
+      });
+
+      function exportAll(){
+        var M=900,W,H;if(R>=1){W=M;H=Math.round(M/R)}else{H=M;W=Math.round(M*R)}
+        var c=document.createElement('canvas');c.width=W;c.height=H;draw(c.getContext('2d'),W,H);
+        var kk=Math.min(1,1080/Math.max(iw,ih)),f=document.createElement('canvas');
+        f.width=Math.round(iw*kk);f.height=Math.round(ih*kk);f.getContext('2d').drawImage(rcv,0,0,f.width,f.height);
+        return{k:c.toDataURL('image/jpeg',.88),a:f.toDataURL('image/jpeg',.85)};
+      }
+      function finish(res,err){
+        if(done)return;done=true;
+        window.removeEventListener('resize',layout);document.removeEventListener('keydown',esc,true);
+        bd.remove();
+        if(err)reject(err);else resolve(res);
+      }
+      function esc(e){if(e.key==='Escape'){e.stopImmediatePropagation();e.preventDefault();finish(null)}}
+      bd.addEventListener('click',function(e){
+        var b=e.target.closest('button');if(!b)return;
+        var a=b.getAttribute('data-a');
+        if(a==='l'||a==='r'){rot=(rot+(a==='r'?1:3))%4;rebuild();fill();paint()}
+        else if(a==='fit'){z=lim().zmin;ox=0;oy=0;clamp();paint()}
+        else if(a==='fill'){fill();paint()}
+        else if(a==='skip')finish(null);
+        else if(a==='ok'){var out;try{out=exportAll()}catch(x){return finish(null,x)}finish(out)}
+      });
+      window.addEventListener('resize',layout);document.addEventListener('keydown',esc,true);
+      rebuild();fill();layout();
+      var okb=bd.querySelector('[data-a="ok"]');if(okb)okb.focus();
+    };
+    im.src=src;
+  });
+}
 (function(){
   var inp=$('fotoInput');
   if(!inp) return;
@@ -2540,9 +2678,9 @@ function shrinkFoto(src,done,fail){
       if(!last){ alert(msg.join('\n')); return; }
       idbAll().then(function(arr){
         var ix=0; for(var i=0;i<arr.length;i++) if(arr[i].id===last.id) ix=i;
-        CUR={id:last.id,n:arr.length+1,i:ix+1}; setFoto(last.data); lsSet(FOTO_4ALL_N,String(arr.length));
+        CUR={id:last.id,n:arr.length+1,i:ix+1}; setFoto(last.data,last.full); lsSet(FOTO_4ALL_N,String(arr.length));
         var bd=$('fotobd');
-        if(bd){ var img=bd.querySelector('img'); if(img){ img.src=last.data; img.classList.remove('ld'); }
+        if(bd){ var img=bd.querySelector('img'); if(img){ img.src=last.full||last.data; img.classList.remove('ld'); }
           var h=$('fthapus'); if(h) h.style.display='inline-block'; fotoInfo(); }
         alert(msg.join('\n'));
       });
@@ -2554,11 +2692,11 @@ function shrinkFoto(src,done,fail){
       var rd=new FileReader();
       rd.onerror=function(){ fail++; next(k+1); };
       rd.onload=function(ev){
-        shrinkFoto(ev.target.result,function(data){
-          idbAdd(data).then(function(id){ ok++; last={id:id,data:data}; })
-            .catch(function(){ fail++; })
-            .then(function(){ next(k+1); });
-        },function(){ fail++; next(k+1); });
+        cropFoto(ev.target.result,k+1,files.length).then(function(res){
+          if(!res) return;                                  /* dilewati/dibatalkan pengguna */
+          return idbAdd({k:res.k,a:res.a}).then(function(id){ ok++; last={id:id,data:res.k,full:res.a}; });
+        }).catch(function(){ fail++; })
+          .then(function(){ next(k+1); });
       };
       rd.readAsDataURL(f);
     }
