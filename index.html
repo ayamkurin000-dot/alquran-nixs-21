@@ -1895,6 +1895,12 @@ $('ayl').addEventListener('click',function(e){
   selectAyat(+ay.dataset.a);
 });
 $('abx').onclick=function(){selectAyat(0)};
+/* ketuk bingkai pemutar utama (di luar tombol, slider, dan menu) -> bilah "Putar" hilang */
+$('pl').addEventListener('click',function(e){
+  if(!rd.sel)return;
+  if(e.target.closest('button,input,label,select,a,#qmenu,#smenu'))return;
+  selectAyat(0);
+});
 $('abm').onclick=function(){
   var a=rd.sel,on=bmToggle(rd.s,a);rd.els[a-1].classList.toggle('bm',on);
   $('abm').setAttribute('aria-pressed',on?'true':'false');$('abm').textContent=on?'Hapus penanda':'Penanda';
