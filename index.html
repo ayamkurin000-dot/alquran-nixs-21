@@ -2795,6 +2795,7 @@ $('atr').onclick=function(e){
   S.plTr=!S.plTr;
   if(S.plTr&&S.showTr){S.showTr=false;keepAnchor(function(){$('mushaf').classList.add('flow');$('btr').setAttribute('aria-pressed','false')})}
   save();trSync();
+  if(S.plTr&&PL.on&&rd.open&&rd.s===PL.s)aFollow(PL.a);
   toast(S.plTr?'Terjemah di pemutar: aktif':'Terjemah di pemutar: mati');
 };
 function aVolUI(){
@@ -2822,7 +2823,8 @@ function aMeta(){
 function aFollow(a){
   var el=rd.els[a-1];if(!el)return;
   var r=el.getBoundingClientRect(),top=($('topbar').offsetHeight||90)+8;
-  if(r.top<top||r.bottom>window.innerHeight-($('bnav').offsetHeight+60))goAyat(a);
+  var tw=$('trwin').hidden?0:$('trwin').offsetHeight+8;   /* jendela terjemah menutupi bagian bawah layar */
+  if(r.top<top||r.bottom>window.innerHeight-($('bnav').offsetHeight+60+tw))goAyat(a);
 }
 /* ayat yang benar-benar tampil di layar: bila ayat pertama hanya tersisa sedikit di atas, pakai ayat berikutnya */
 function aVisible(){
