@@ -1634,7 +1634,7 @@ var FRAME_ORDER=Object.keys(FRAMES);
 var FX={none:{n:'Standar'},matte:{n:'Matte'},glass1:{n:'Kaca 1 \u00b7 Tipis'},glass2:{n:'Kaca 2 \u00b7 Berair'},glass3:{n:'Kaca 3 \u00b7 Buram'},glass4:{n:'Kaca 4 \u00b7 Kristal'},glass5:{n:'Kaca 5 \u00b7 Cair'},glass6:{n:'Kaca 6 \u00b7 Kilap'}};
 var FX_ORDER=Object.keys(FX);
 
-var DEF={font:'lpmq',theme:'k3tmb3',tex:'c-kartun',texR:'w-tegak',frame:'none',fx:'glass2',ar:22,trs:1,showTr:false,plTr:false};
+var DEF={font:'lpmq',theme:'k3tmb3',tex:'c-kartun',texR:'w-tegak',frame:'none',fx:'glass2',ar:22,trs:1,showTr:false,plTr:true};
 
 /* =====================================================================
    UTIL
@@ -3686,10 +3686,7 @@ TABS.forEach(function(p){$(p[0]).onclick=function(){
 
 
 $('asr').onclick=function(){
-  SK.skin='biru';SK.pskin='warna';SK.body='auto';SK.op=OP_DEF;SK.mat=normMat();SK.pmat=normMat();
-  TR.fg='hijau';TR.bg='bawaan';TR.tx='polos';TR.gl=true;
-  ls('qk.skin',SK.skin);ls('qk.pskin',SK.pskin);ls('qk.body',SK.body);ls('qk.op',SK.op);ls('qk.mat',SK.mat);ls('qk.pmat',SK.pmat);
-  ls('qk.trfg',TR.fg);ls('qk.trbg',TR.bg);ls('qk.trtx',TR.tx);ls('qk.trgl',TR.gl);skApply();trApply()};
+  SK.body='auto';ls('qk.body',SK.body);dvApply();skApply();trApply()};
 $('askn').onclick=function(e){
   e.stopPropagation();qClose();
   var m=$('smenu'),open=m.hidden;m.hidden=!open;this.setAttribute('aria-expanded',open?'true':'false');skFit();
@@ -3697,7 +3694,20 @@ $('askn').onclick=function(e){
 $('aqr').addEventListener('click',skClose);
 document.addEventListener('click',function(e){if(!$('smenu').hidden&&!$('smenu').contains(e.target))skClose()});
 document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!$('smenu').hidden){skClose();e.stopImmediatePropagation()}},true);
-skApply();trApply();
+/* tampilan awal: skin pemutar Steel (Stainless), skin tombol Daun (Pakis), opacity 80%, teks krem, latar hijau tua, tekstur bintik, terjemah pemutar aktif.
+   Diterapkan sekali (penanda qk.dv); sesudahnya pilihan pengguna tetap tersimpan seperti biasa. */
+function dvApply(){
+  SK.skin='daun';SK.pskin='steel';SK.op=OP_DEF;SK.mat=normMat({daun:1});SK.pmat=normMat({steel:0});
+  TR.fg='krem';TR.bg='hijau';TR.tx='bintik';TR.gl=true;
+  ls('qk.skin',SK.skin);ls('qk.pskin',SK.pskin);ls('qk.op',SK.op);ls('qk.mat',SK.mat);ls('qk.pmat',SK.pmat);
+  ls('qk.trfg',TR.fg);ls('qk.trbg',TR.bg);ls('qk.trtx',TR.tx);ls('qk.trgl',TR.gl);
+}
+if(ls('qk.dv')!==1){
+  dvApply();S.plTr=true;
+  if(S.showTr){S.showTr=false;$('mushaf').classList.add('flow');$('btr').setAttribute('aria-pressed','false')}
+  ls('qk.dv',1);save();
+}
+skApply();trApply();trSync();
 qBuild();aVolUI();aUI();bnH();vzSize();mqKick();
 
 /* =====================================================================
