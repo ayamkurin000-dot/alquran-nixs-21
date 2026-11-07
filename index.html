@@ -2971,6 +2971,7 @@ function aLoad(s,a,k){
   var pr=AU.play();if(pr&&pr.catch)pr.catch(function(){aUI()});
 }
 function aPlay(s,a){
+  if(DEAD)return;
   if(PL.auto){var o=ls('qk.own');if(o&&o.id!==TAB&&o.t>OWN.t){aYield(o.t);return}}else aClaim();
   PL.on=true;PL.s=s;PL.a=a;PL.up=false;PL.rs=0;kaSync(true);
   vzCtx();
@@ -3044,12 +3045,38 @@ var TAB=Math.random().toString(36).slice(2),OWN={t:0},BC=null;
 function aClaim(){OWN.t=Date.now();ls('qk.own',{id:TAB,t:OWN.t});try{if(BC)BC.postMessage({id:TAB,t:OWN.t})}catch(e){}}
 function aYield(t){if(PL.on&&t>OWN.t){aStop();toast('Dihentikan: audio sedang diputar di tab / jendela lain')}}
 function aOwnCheck(){var o=ls('qk.own');if(o&&o.id!==TAB&&o.t>OWN.t&&PL.on&&!AU.paused)aYield(o.t)}
-try{BC=new BroadcastChannel('qk-audio');BC.onmessage=function(e){var d=e.data;if(d&&d.id!==TAB)aYield(d.t)}}catch(e){}
+try{BC=new BroadcastChannel('qk-audio');BC.onmessage=function(e){var d=e.data;if(!d||d.id===TAB)return;if(d.k==='open'){if(d.t>INST_T)iDie();return}aYield(d.t)}}catch(e){}
 window.addEventListener('storage',function(e){if(e.key==='qk.own')aOwnCheck()});
 setInterval(aOwnCheck,2000);
 document.addEventListener('visibilitychange',aOwnCheck);
 document.addEventListener('resume',aOwnCheck);
 window.addEventListener('pageshow',aOwnCheck);
+/* Satu tab saja: membuka aplikasi di tab/jendela baru menonaktifkan yang lama (audio berhenti, tab ditutup bila peramban mengizinkan,
+   bila tidak, tampil layar penutup). Peramban tidak mengizinkan skrip menutup tab yang bukan dibuka oleh skrip, jadi ada layar penutup. */
+var DEAD=false,INST_T=Date.now();
+function iClaim(){ls('qk.inst',{id:TAB,t:INST_T});try{if(BC)BC.postMessage({k:'open',id:TAB,t:INST_T})}catch(e){}}
+function iDie(){
+  if(DEAD)return;DEAD=true;
+  try{if(PL.on)aStop()}catch(e){}
+  try{AU.pause();PRE.pause()}catch(e){}
+  try{window.close()}catch(e){}
+  setTimeout(function(){
+    var d=document.createElement('div');
+    d.style.cssText='position:fixed;inset:0;z-index:2147483647;background:#0b0f0d;color:#f3e6c4;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:28px;text-align:center;font:16px/1.5 system-ui,sans-serif';
+    d.innerHTML="<div style='font-size:20px;font-weight:700'>Al-Qur\u2019an dibuka di tab lain</div><div style='max-width:320px;opacity:.85'>Tab ini dinonaktifkan agar audio tidak bertumpuk. Silakan tutup tab ini.</div>";
+    var b=document.createElement('button');b.type='button';b.textContent='Pakai di tab ini';
+    b.style.cssText='padding:12px 22px;border-radius:12px;border:0;background:#f3e6c4;color:#0b0f0d;font:600 16px system-ui,sans-serif';
+    b.onclick=function(){location.reload()};
+    d.appendChild(b);document.body.appendChild(d);
+  },250);
+}
+function iCheck(){if(DEAD)return;var o=ls('qk.inst');if(o&&o.id!==TAB&&o.t>INST_T)iDie()}
+window.addEventListener('storage',function(e){if(e.key==='qk.inst')iCheck()});
+setInterval(iCheck,2000);
+document.addEventListener('visibilitychange',iCheck);
+document.addEventListener('resume',iCheck);
+window.addEventListener('pageshow',iCheck);
+iClaim();
 
 /* ---------- Qari ---------- */
 function qBuild(){
