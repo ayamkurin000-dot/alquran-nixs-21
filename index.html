@@ -2822,6 +2822,29 @@ function aqrName(){
     }
   });
 }
+/* Pemutar latar belakang: audio senyap berulang terus selama bacaan aktif. Peramban HP menganggap halaman
+   tetap "sedang memutar media" (juga di sela pergantian ayat & saat layar mati / pindah aplikasi),
+   sehingga tidak dibekukan atau dimatikan. Dilepas saat berhenti atau dijeda oleh pengguna. */
+var KA={el:null};
+function kaMake(){
+  if(KA.el)return KA.el;
+  try{
+    var n=8000,b=new ArrayBuffer(44+n),v=new DataView(b),i;
+    function w(o,t){for(var k=0;k<t.length;k++)v.setUint8(o+k,t.charCodeAt(k))}
+    w(0,'RIFF');v.setUint32(4,36+n,true);w(8,'WAVEfmt ');v.setUint32(16,16,true);v.setUint16(20,1,true);v.setUint16(22,1,true);
+    v.setUint32(24,8000,true);v.setUint32(28,8000,true);v.setUint16(32,1,true);v.setUint16(34,8,true);w(36,'data');v.setUint32(40,n,true);
+    for(i=0;i<n;i++)v.setUint8(44+i,128+(i%2));   /* ±1 dari titik nol: tak terdengar */
+    var el=new Audio(URL.createObjectURL(new Blob([b],{type:'audio/wav'})));
+    el.loop=true;el.preload='auto';el.setAttribute('playsinline','');
+    KA.el=el;
+  }catch(e){KA.el=null}
+  return KA.el;
+}
+function kaSync(want){
+  var el=want?kaMake():KA.el;if(!el)return;
+  if(want){if(el.paused){var p=el.play();if(p&&p.catch)p.catch(function(){})}}
+  else if(!el.paused)el.pause();
+}
 /* layar tetap menyala selama audio diputar (Screen Wake Lock; perlu HTTPS). Dilepas saat jeda/berhenti. */
 var WL={lock:null,want:false};
 function wlSync(want){
@@ -2837,7 +2860,7 @@ function wlSync(want){
 document.addEventListener('visibilitychange',function(){if(document.visibilityState==='visible'&&WL.want&&!WL.lock)wlSync(true)});
 function aUI(){
   var pl=PL.on&&!AU.paused;
-  wlSync(pl);
+  wlSync(pl);kaSync(PL.on&&!PL.up);
   if('mediaSession' in navigator){try{navigator.mediaSession.playbackState=PL.on?(pl?'playing':'paused'):'none'}catch(e){}}
   $('pl').classList.toggle('on',pl);
   $('apt').innerHTML=pl?I_PAUSE:I_PLAY;
@@ -2875,7 +2898,7 @@ function aLoad(s,a,k){
   var pr=AU.play();if(pr&&pr.catch)pr.catch(function(){aUI()});
 }
 function aPlay(s,a){
-  PL.on=true;PL.s=s;PL.a=a;PL.up=false;PL.rs=0;
+  PL.on=true;PL.s=s;PL.a=a;PL.up=false;PL.rs=0;kaSync(true);
   vzCtx();
   aLoad(s,a,0);
   if(rd.open&&rd.s===s){renderUpTo(a+CH);aMark();aFollow(a)}else aMark();
