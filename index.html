@@ -334,9 +334,9 @@ input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;bac
 #bnav [data-skin="rubi"]{--h:356;--s:34%}
 #bnav [data-skin="ungu"]{--h:272;--s:28%}
 #bnav [data-skin="karbon"]{--h:190;--s:0%}
-#bnav [data-skin="perak"]{--pb:linear-gradient(#fff,#e6eaee 16%,#c9d0d6 62%,#aeb6be);--pbd:#6d767e;--mbd:#7c858d;--pbs:inset 0 1px 0 #fff,0 10px 28px rgba(0,0,0,.35);
-  --mbbg:linear-gradient(#fff,#e9edf0 48%,#cbd2d8 52%,#dde2e6);--ic:#2c353c;--ic2:#27313a;--pillbg:linear-gradient(#a9b1b9,#d6dce1 60%,#c2c9cf);
+#bnav [data-skin="perak"]{--mbd:#7c858d;--mbbg:linear-gradient(#fff,#e9edf0 48%,#cbd2d8 52%,#dde2e6);--ic:#2c353c;--ic2:#27313a;--pillbg:linear-gradient(#a9b1b9,#d6dce1 60%,#c2c9cf);
   --ringbg:radial-gradient(circle at 50% 30%,#f2f4f6,#98a1a9 72%)}
+#bnav [data-pskin="perak"]{--pb:linear-gradient(#fff,#e6eaee 16%,#c9d0d6 62%,#aeb6be);--pbd:#6d767e;--pbs:inset 0 1px 0 #fff,0 10px 28px rgba(0,0,0,.35)}
 /* menu: tab, bahan skin, pengaturan terjemah */
 #bnav #smenu{max-height:min(74vh,560px);overflow-y:auto;overscroll-behavior:contain}
 #bnav .stabs{display:flex;gap:4px;margin:7px 0 4px;padding:3px;border-radius:10px;background:rgba(0,0,0,.35)}
@@ -345,8 +345,8 @@ input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;bac
 #bnav .sg5{display:grid;grid-template-columns:repeat(5,1fr);gap:5px;margin:6px 0 10px}
 #bnav .sg5 .sk{font-size:10px;line-height:1.15;padding:3px}
 #bnav .sg5 .sw{height:26px}
-#bnav #mvbox{margin-top:-4px;padding:6px 7px 1px;border-radius:10px;background:rgba(255,255,255,.05)}
-#bnav #mvbox[hidden],#bnav #mvbox [hidden]{display:none}
+#bnav #pvbox,#bnav #kvbox{margin-top:-4px;padding:6px 7px 1px;border-radius:10px;background:rgba(255,255,255,.05)}
+#bnav #pvbox[hidden],#bnav #kvbox[hidden],#bnav #pvbox [hidden],#bnav #kvbox [hidden]{display:none}
 #bnav .cg{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:6px 0 12px}
 #bnav .cg .bk{font-size:10.5px}
 #bnav #ttx .bw{height:26px}
@@ -355,6 +355,8 @@ input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;bac
 #bnav #tgl[aria-pressed=true]{border-color:var(--ac);box-shadow:0 0 8px var(--acg)}
 #bnav #trprev{position:sticky;top:-10px;z-index:3;margin:6px 0 4px;padding:7px 9px;min-height:calc(1.45em*2 + 14px)}
 #bnav .sw{background:var(--pb)}
+#bnav .sw.bt{background:var(--mbbg);border-color:var(--mbd)}
+#bnav #pcol[hidden]{display:none}
 #bnav #askn{padding:3px 5px}
 #bnav #askn svg{width:12px;height:12px;display:block}
 #bnav #askn[aria-expanded=true]{border-color:var(--ac);box-shadow:0 0 8px var(--acg)}
@@ -369,8 +371,6 @@ input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;bac
 #bnav .sl{margin-top:2px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;opacity:.7}
 #bnav .sl small{font-size:10px;font-weight:400;letter-spacing:0;text-transform:none}
 #bnav .sl+.sg,#bnav .sl+.bg{margin-top:6px}
-#bnav .pl:not([data-skin="perak"],[data-skin="mat"]) #bhint{display:none}
-#bnav .pl[data-skin="perak"] .bg,#bnav .pl[data-skin="mat"] .bg{opacity:.4;pointer-events:none}
 #bnav .bw{display:block;height:22px;border-radius:7px;border:1px solid #000;
   background:linear-gradient(hsl(var(--bh) var(--bs) 30%),hsl(var(--bh) var(--bs) 14%) 55%,hsl(var(--bh) var(--bs) 7%));box-shadow:inset 0 1px 0 rgba(255,255,255,.25)}
 #bnav .sw{display:grid;place-items:center;width:100%;height:30px;border-radius:9px;background:var(--pb);border:1px solid var(--pbd);box-shadow:inset 0 1px 0 rgba(255,255,255,.25)}
@@ -1368,14 +1368,18 @@ html[data-pita^="pita"]:not(#_):not(#_):not(#_) .row{padding:14px 14px 10px 14px
     <div id="qmenu" role="listbox" aria-label="Pilih qari" hidden></div>
     <div id="smenu" role="dialog" aria-label="Tampilan pemutar" hidden>
       <div class="sh">Tampilan pemutar</div>
-      <div class="stabs" role="tablist"><button type="button" id="stp" role="tab" aria-selected="true">Pemutar</button><button type="button" id="stt" role="tab" aria-selected="false">Teks terjemah</button></div>
+      <div class="stabs" role="tablist"><button type="button" id="stp" role="tab" aria-selected="true">Skin pemutar</button><button type="button" id="stk" role="tab" aria-selected="false">Skin tombol</button><button type="button" id="stt" role="tab" aria-selected="false">Teks terjemah</button></div>
       <div id="spp">
+        <div class="sl">Skin pemutar</div>
+        <div class="sg" id="pg"></div>
+        <div id="pvbox" hidden><div class="sl" id="pvl1"></div><div class="sg5" id="pv1"></div><div class="sl" id="pvl2" hidden></div><div class="sg5" id="pv2" hidden></div></div>
+        <div id="pcol"><div class="sl">Warna pemutar</div><div class="bg" id="bg"></div></div>
+        <label class="so"><span>Opacity</span><input type="range" id="aop" min="30" max="100" step="5" value="80"><b id="aopv">80%</b></label>
+      </div>
+      <div id="spk" hidden>
         <div class="sl">Skin tombol</div>
         <div class="sg" id="sg"></div>
-        <div id="mvbox" hidden><div class="sl" id="mvl1"></div><div class="sg5" id="mv1"></div><div class="sl" id="mvl2" hidden></div><div class="sg5" id="mv2" hidden></div></div>
-        <div class="sl">Warna pemutar <small id="bhint">· Perak &amp; bahan memakai warna sendiri</small></div>
-        <div class="bg" id="bg"></div>
-        <label class="so"><span>Opacity</span><input type="range" id="aop" min="30" max="100" step="5" value="80"><b id="aopv">80%</b></label>
+        <div id="kvbox" hidden><div class="sl" id="kvl1"></div><div class="sg5" id="kv1"></div><div class="sl" id="kvl2" hidden></div><div class="sg5" id="kv2" hidden></div></div>
       </div>
       <div id="spt" hidden>
         <div id="trprev" aria-hidden="true"><p>Demi masa. Sungguh, manusia berada dalam kerugian, kecuali orang-orang yang beriman.</p></div>
@@ -3362,17 +3366,21 @@ if(window.ResizeObserver)new ResizeObserver(mqKick).observe(MQ.cv);
 /* ---------- Skin & opacity pemutar (tersimpan) ---------- */
 var SKINS=[['biru','Biru'],['zamrud','Zamrud'],['emas','Emas'],['rubi','Rubi'],['ungu','Ungu'],['karbon','Karbon'],['perak','Perak'],
            ['gold','Gold'],['silver','Silver'],['kayu','Kayu'],['jeruk','Kulit Jeruk'],['marmer','Marmer']],
-    /* warna badan pemutar (gelap): [id, label, hue, saturasi]; 'auto' = ikut hue skin */
+    PSKINS=[['warna','Warna'],['perak','Perak'],['gold','Gold'],['silver','Silver'],['kayu','Kayu'],['jeruk','Kulit Jeruk'],['marmer','Marmer']],
+    /* warna badan pemutar (gelap): [id, label, hue, saturasi]; 'auto' = ikut hue skin tombol */
     BODIES=[['auto','Otomatis',null,null],['hitam','Hitam',0,'0%'],['malam','Malam',222,'40%'],['hutan','Hutan',150,'34%'],
             ['anggur','Anggur',340,'40%'],['senja','Senja',265,'38%'],['kopi','Kopi',24,'38%'],['samudra','Samudra',190,'40%']],
     OP_DEF=80,
     MATF={gold:1,silver:1,kayu:1,jeruk:1,marmer:1},
-    SK={skin:ls('qk.skin')||'biru',op:ls('qk.op'),body:ls('qk.body')||'auto',mat:ls('qk.mat')};
+    SK={skin:ls('qk.skin')||'biru',pskin:ls('qk.pskin'),op:ls('qk.op'),body:ls('qk.body')||'auto',mat:ls('qk.mat'),pmat:ls('qk.pmat')};
+function normMat(m){var o={};if(!m||typeof m!=='object')m={};['gold','silver','kayu','jeruk','jerukc','marmer'].forEach(function(k){var v=m[k];o[k]=(typeof v==='number'&&v>=0&&v<=4&&v%1===0)?v:0});return o}
 if(!SKINS.some(function(x){return x[0]===SK.skin}))SK.skin='biru';
+/* pengguna lama: skin perak/bahan dulu mengubah badan + tombol sekaligus → pertahankan tampilannya */
+if(SK.pskin===null||SK.pskin===undefined)SK.pskin=(SK.skin==='perak'||MATF[SK.skin])?SK.skin:'warna';
+if(!PSKINS.some(function(x){return x[0]===SK.pskin}))SK.pskin='warna';
 if(!BODIES.some(function(x){return x[0]===SK.body}))SK.body='auto';
 if(typeof SK.op!=='number'||SK.op<30||SK.op>100)SK.op=OP_DEF;
-if(!SK.mat||typeof SK.mat!=='object')SK.mat={};
-['gold','silver','kayu','jeruk','jerukc','marmer'].forEach(function(k){var v=SK.mat[k];if(typeof v!=='number'||v<0||v>4||v%1)SK.mat[k]=0});
+SK.mat=normMat(SK.mat);SK.pmat=normMat(SK.pmat||SK.mat);
 
 /* ===== Bahan skin: gold, silver, kayu, kulit jeruk, marmer =====
    Semua tekstur dibuat dari filter SVG (tanpa file gambar) → ringan & tajam di layar apa pun. */
@@ -3421,7 +3429,7 @@ var MATS={
     {n:'Carrara',b:'#e9ebec',vein:'#79838c',k:'m'},{n:'Nero',b:'#1c1e21',vein:'#e9e9e9',k:'m'},{n:'Verde',b:'#1e5742',vein:'#d6efe1',k:'m'},
     {n:'Rosa',b:'#e4bcbd',vein:'#98686e',k:'m'},{n:'Calacatta',b:'#f3f0e8',vein:'#c39b44',k:'m'}]}
 };
-var MXK=['--pb','--pbd','--mbd','--pbs','--mbbg','--ic','--ic2','--pillbg','--ringbg','--h'],MXC={};
+var MXB=['--pb','--pbd','--pbs'],MXT=['--mbbg','--mbd','--ic','--ic2','--pillbg','--ringbg','--h'],MXC={};
 function mxBody(fam,i,j){
   var d=MATS[fam],b,k,v,lay=[],base,hue;
   if(fam==='jeruk'){b=d.warna[j][1];k='j'+i}else{v=d.v[i];b=v.b;k=v.k}
@@ -3476,60 +3484,68 @@ function mxSpec(fam,i,j){
   o['--h']=Math.round(x.hue);
   return MXC[key]=o;
 }
-function mxPut(el,sp){MXK.forEach(function(k){el.style.setProperty(k,sp[k])})}
-function mxClr(el){MXK.forEach(function(k){el.style.removeProperty(k)})}
-function mxCur(fam){return fam==='jeruk'?[SK.mat.jeruk,SK.mat.jerukc]:[SK.mat[fam],0]}
+function mxPut(el,sp,keys){keys.forEach(function(k){el.style.setProperty(k,sp[k])})}
+function mxClr(el,keys){keys.forEach(function(k){el.style.removeProperty(k)})}
+/* dua kategori terpisah: p = skin pemutar (badan), t = skin tombol (tombol, ikon, aksen) */
+var CAT={
+  p:{sk:'pskin',mat:'pmat',keys:MXB,ls:'qk.pskin',lm:'qk.pmat',attr:'data-pskin',list:PSKINS,g:'pg',box:'pvbox',v1:'pv1',v2:'pv2',l1:'pvl1',l2:'pvl2',bt:0},
+  t:{sk:'skin',mat:'mat',keys:MXT,ls:'qk.skin',lm:'qk.mat',attr:'data-skin',list:SKINS,g:'sg',box:'kvbox',v1:'kv1',v2:'kv2',l1:'kvl1',l2:'kvl2',bt:1}};
+function mxCur(c,fam){var m=SK[c.mat];return fam==='jeruk'?[m.jeruk,m.jerukc]:[m[fam],0]}
 
 function skBody(el){
   var b=BODIES.filter(function(x){return x[0]===SK.body})[0];
   if(b&&b[2]!==null){el.style.setProperty('--bh',b[2]);el.style.setProperty('--bs',b[3])}
   else{el.style.removeProperty('--bh');el.style.removeProperty('--bs')}
 }
-function mvPaint(){
-  var fam=SK.skin;if(!MATF[fam])return;
-  var c=mxCur(fam);
-  [].forEach.call($('mv1').children,function(b){var i=+b.dataset.i,sp=fam==='jeruk'?mxSpec(fam,i,c[1]):mxSpec(fam,i,0);mxPut(b.firstChild,sp);b.setAttribute('aria-pressed',i===c[0]?'true':'false')});
-  [].forEach.call($('mv2').children,function(b){var j=+b.dataset.i;mxPut(b.firstChild,mxSpec(fam,c[0],j));b.setAttribute('aria-pressed',j===c[1]?'true':'false')});
+function catPaint(c){
+  var fam=SK[c.sk];if(!MATF[fam])return;
+  var cur=mxCur(c,fam);
+  [].forEach.call($(c.v1).children,function(b){var i=+b.dataset.i;mxPut(b.firstChild,mxSpec(fam,i,fam==='jeruk'?cur[1]:0),c.keys);b.setAttribute('aria-pressed',i===cur[0]?'true':'false')});
+  [].forEach.call($(c.v2).children,function(b){var j=+b.dataset.i;mxPut(b.firstChild,mxSpec(fam,cur[0],j),c.keys);b.setAttribute('aria-pressed',j===cur[1]?'true':'false')});
 }
-function mvBuild(){
-  var fam=SK.skin,d=MATS[fam],box=$('mvbox'),j=fam==='jeruk';
-  $('mv1').textContent='';$('mv2').textContent='';
+function catBuild(c){
+  var fam=SK[c.sk],d=MATS[fam],box=$(c.box),j=fam==='jeruk';
+  $(c.v1).textContent='';$(c.v2).textContent='';
   box.hidden=!d;if(!d)return;
-  $('mvl1').textContent=d.lbl;$('mvl2').textContent=d.lbl2||'';
-  $('mvl2').hidden=$('mv2').hidden=!j;
-  function mk(host,names,key,idx){names.forEach(function(nm,i){
+  $(c.l1).textContent=d.lbl;$(c.l2).textContent=d.lbl2||'';
+  $(c.l2).hidden=$(c.v2).hidden=!j;
+  function mk(host,names,key){names.forEach(function(nm,i){
     var b=document.createElement('button');b.type='button';b.className='sk';b.dataset.i=i;
-    b.innerHTML='<span class="sw" data-skin="mat"><i></i></span><span></span>';b.lastChild.textContent=nm;
-    b.onclick=function(){SK.mat[key]=i;ls('qk.mat',SK.mat);skApply()};host.appendChild(b)})}
-  if(j){mk($('mv1'),d.motif,'jeruk');mk($('mv2'),d.warna.map(function(w){return w[0]}),'jerukc')}
-  else mk($('mv1'),d.v.map(function(w){return w.n}),fam);
-  mvPaint();
+    b.innerHTML='<span class="sw'+(c.bt?' bt':'')+'"><i></i></span><span></span>';b.lastChild.textContent=nm;
+    b.onclick=function(){SK[c.mat][key]=i;ls(c.lm,SK[c.mat]);skApply()};host.appendChild(b)})}
+  if(j){mk($(c.v1),d.motif,'jeruk');mk($(c.v2),d.warna.map(function(w){return w[0]}),'jerukc')}
+  else mk($(c.v1),d.v.map(function(w){return w.n}),fam);
+  catPaint(c);
 }
 function skApply(){
-  var pl=$('pl'),fam=SK.skin,mat=!!MATF[fam];
-  pl.setAttribute('data-skin',mat?'mat':SK.skin);
-  if(mat){var c=mxCur(fam);mxPut(pl,mxSpec(fam,c[0],c[1]))}else mxClr(pl);
+  var pl=$('pl'),ALL=MXB.concat(MXT);
+  pl.setAttribute('data-skin',SK.skin);pl.setAttribute('data-pskin',SK.pskin);
+  mxClr(pl,ALL);
+  ['p','t'].forEach(function(k){var c=CAT[k],fam=SK[c.sk];if(MATF[fam]){var cu=mxCur(c,fam);mxPut(pl,mxSpec(fam,cu[0],cu[1]),c.keys)}});
   pl.style.setProperty('--op',SK.op/100);
   skBody(pl);
   $('aop').value=SK.op;$('aopv').textContent=SK.op+'%';
-  [].forEach.call($('sg').children,function(b){
-    var k=b.dataset.k;
-    b.setAttribute('aria-pressed',k===SK.skin?'true':'false');
-    if(MATF[k]){var c=mxCur(k);b.firstChild.setAttribute('data-skin','mat');mxPut(b.firstChild,mxSpec(k,c[0],c[1]))}
-    else mxClr(b.firstChild);
-    skBody(b.firstChild);   /* swatch skin ikut menampilkan warna pemutar terpilih */
+  $('pcol').hidden=SK.pskin!=='warna';
+  ['p','t'].forEach(function(k){
+    var c=CAT[k],fam=SK[c.sk];
+    [].forEach.call($(c.g).children,function(b){
+      var id=b.dataset.k,w=b.firstChild;
+      b.setAttribute('aria-pressed',id===fam?'true':'false');
+      mxClr(w,ALL);
+      if(MATF[id]){var cu=mxCur(c,id);mxPut(w,mxSpec(id,cu[0],cu[1]),c.keys)}
+      skBody(w);   /* swatch ikut menampilkan warna pemutar terpilih */
+    });
+    if(MATF[fam]){if($(c.box).dataset.f!==fam){$(c.box).dataset.f=fam;catBuild(c)}else catPaint(c)}
+    else{$(c.box).hidden=true;$(c.box).dataset.f=''}
   });
   [].forEach.call($('bg').children,function(b){b.setAttribute('aria-pressed',b.dataset.k===SK.body?'true':'false')});
-  if(mat){if($('mvbox').dataset.f!==fam){$('mvbox').dataset.f=fam;mvBuild()}else mvPaint()}
-  else{$('mvbox').hidden=true;$('mvbox').dataset.f=''}
 }
 function skClose(){$('smenu').hidden=true;$('askn').setAttribute('aria-expanded','false')}
-SKINS.forEach(function(x){
+['p','t'].forEach(function(k){var c=CAT[k];c.list.forEach(function(x){
   var b=document.createElement('button');b.type='button';b.className='sk';b.dataset.k=x[0];
-  b.innerHTML='<span class="sw" data-skin="'+x[0]+'"><i></i></span><span>'+x[1]+'</span>';
-  b.onclick=function(){SK.skin=x[0];ls('qk.skin',SK.skin);skApply()};
-  $('sg').appendChild(b);
-});
+  b.innerHTML='<span class="sw'+(c.bt?' bt':'')+'" '+c.attr+'="'+x[0]+'"><i></i></span><span>'+x[1]+'</span>';
+  b.onclick=function(){SK[c.sk]=x[0];ls(c.ls,x[0]);skApply()};
+  $(c.g).appendChild(b)})});
 BODIES.forEach(function(x){
   var b=document.createElement('button'),w;b.type='button';b.className='bk';b.dataset.k=x[0];
   b.innerHTML='<span class="bw"></span><span>'+x[1]+'</span>';
@@ -3586,14 +3602,16 @@ trBuild($('tfg'),TFG,'fg',function(w,x){w.style.cssText='background:linear-gradi
 trBuild($('tbg'),TBG,'bg',function(w,x){w.style.cssText='background:'+x[2]});
 trBuild($('ttx'),TTX,'tx',function(w,x){var t=trTex(x[0]);w.style.cssText='background:'+(t?t+',':'')+'#8a8f94'});
 $('tgl').onclick=function(){TR.gl=!TR.gl;ls('qk.trgl',TR.gl);trApply()};
-[['stp','spp'],['stt','spt']].forEach(function(p){$(p[0]).onclick=function(){
-  [['stp','spp'],['stt','spt']].forEach(function(q){var on=q[0]===p[0];$(q[0]).setAttribute('aria-selected',on?'true':'false');$(q[1]).hidden=!on});
+var TABS=[['stp','spp'],['stk','spk'],['stt','spt']];
+TABS.forEach(function(p){$(p[0]).onclick=function(){
+  TABS.forEach(function(q){var on=q[0]===p[0];$(q[0]).setAttribute('aria-selected',on?'true':'false');$(q[1]).hidden=!on});
 }});
 
+
 $('asr').onclick=function(){
-  SK.skin='biru';SK.body='auto';SK.op=OP_DEF;SK.mat={gold:0,silver:0,kayu:0,jeruk:0,jerukc:0,marmer:0};
+  SK.skin='biru';SK.pskin='warna';SK.body='auto';SK.op=OP_DEF;SK.mat=normMat();SK.pmat=normMat();
   TR.fg='hijau';TR.bg='bawaan';TR.tx='polos';TR.gl=true;
-  ls('qk.skin',SK.skin);ls('qk.body',SK.body);ls('qk.op',SK.op);ls('qk.mat',SK.mat);
+  ls('qk.skin',SK.skin);ls('qk.pskin',SK.pskin);ls('qk.body',SK.body);ls('qk.op',SK.op);ls('qk.mat',SK.mat);ls('qk.pmat',SK.pmat);
   ls('qk.trfg',TR.fg);ls('qk.trbg',TR.bg);ls('qk.trtx',TR.tx);ls('qk.trgl',TR.gl);skApply();trApply()};
 $('askn').onclick=function(e){
   e.stopPropagation();qClose();
