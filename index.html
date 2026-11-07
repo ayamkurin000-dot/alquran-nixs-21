@@ -2762,7 +2762,8 @@ function aLbl(){
    Hanya salah satu aktif: tombol "Terjemah" atas (di bawah ayat) ATAU tombol "Terjemah" pemutar (jendela).
    Jendela ada di dalam layar LCD pemutar (tinggi maks 4 baris) dan tampil hanya saat ada bacaan; berhenti -> dikosongkan & disembunyikan. Teks panjang digulir otomatis
    mengikuti progres audio ayat yang dibaca. */
-var TRW={key:'',raf:0};
+var TRW={key:'',raf:0,t0:0,manual:false};
+['wheel','touchmove','mousedown'].forEach(function(ev){window.addEventListener(ev,function(){TRW.manual=true},{passive:true})});   /* pengguna menggulir sendiri: berhenti mengikuti sampai ayat berganti */
 function trSync(){
   if(typeof PL==='undefined'||!PL||typeof AU==='undefined'){return}
   var on=!!S.plTr,show=on&&PL.on&&PL.s&&Q[PL.s-1];
@@ -2775,12 +2776,24 @@ function trSync(){
   }
   var k=PL.s+':'+PL.a;
   if(k!==TRW.key){
-    TRW.key=k;
+    TRW.key=k;TRW.t0=performance.now();TRW.manual=false;
     $('trwt').textContent=(Q[PL.s-1][4]||[])[PL.a-1]||'';
     $('trwb').scrollTop=0;
   }
   w.hidden=false;
   if(!TRW.raf)TRW.raf=requestAnimationFrame(trScroll);
+}
+/* Ayat Arab yang lebih tinggi dari ruang di atas pemutar: gulir pelan mengikuti progres audio
+   agar bagian yang sedang dibaca tidak tertutup pemutar / jendela terjemah. */
+function trFollowArab(){
+  if(TRW.manual||!PL.on||!rd.open||rd.s!==PL.s||!(AU.duration>0)||!isFinite(AU.duration))return;
+  if(performance.now()-TRW.t0<900)return;   /* beri waktu gulir awal ke ayat selesai */
+  var el=rd.els[PL.a-1];if(!el)return;
+  var r=el.getBoundingClientRect(),tb=$('topbar').offsetHeight+8,avail=window.innerHeight-$('bnav').offsetHeight-tb-14;
+  if(r.height<=avail)return;
+  var p=AU.currentTime/AU.duration,q=Math.max(0,Math.min(1,(p-.05)/.85)),
+      want=tb-(r.height-avail)*q,d=r.top-want;
+  if(Math.abs(d)>1)window.scrollBy({top:d,behavior:'instant'});
 }
 function trScroll(){
   TRW.raf=0;
@@ -2790,6 +2803,7 @@ function trScroll(){
     var p=AU.currentTime/AU.duration,q=Math.max(0,Math.min(1,(p-.06)/.84));   /* beri jeda awal & akhir agar nyaman dibaca */
     b.scrollTop=max*q;
   }
+  trFollowArab();
   TRW.raf=requestAnimationFrame(trScroll);
 }
 $('atr').onclick=function(e){
@@ -2860,7 +2874,7 @@ function wlSync(want){
 document.addEventListener('visibilitychange',function(){if(document.visibilityState==='visible'&&WL.want&&!WL.lock)wlSync(true)});
 function aUI(){
   var pl=PL.on&&!AU.paused;
-  wlSync(pl);kaSync(PL.on&&!PL.up);
+  wlSync(pl);kaSync(PL.on&&!PL.up);if(pl)flKick();
   if('mediaSession' in navigator){try{navigator.mediaSession.playbackState=PL.on?(pl?'playing':'paused'):'none'}catch(e){}}
   $('pl').classList.toggle('on',pl);
   $('apt').innerHTML=pl?I_PAUSE:I_PLAY;
@@ -2879,6 +2893,25 @@ function aFollow(a){
   var r=el.getBoundingClientRect(),top=($('topbar').offsetHeight||90)+8;
 if(r.top<top||r.bottom>window.innerHeight-($('bnav').offsetHeight+60))goAyat(a);
 }
+/* Ayat yang lebih tinggi daripada ruang di atas pemutar: gulir halaman pelan-pelan mengikuti progres audio,
+   supaya bagian yang sedang dibaca tidak tertutup pemutar / jendela terjemah. Berhenti sebentar bila pengguna menggulir sendiri. */
+var FL={raf:0,inp:0};
+['wheel','touchstart','touchmove','keydown','mousedown'].forEach(function(ev){window.addEventListener(ev,function(){FL.inp=Date.now()},{passive:true})});
+function flStep(){
+  FL.raf=0;
+  if(!PL.on||PL.up||AU.paused||!rd.open||rd.s!==PL.s)return;
+  FL.raf=requestAnimationFrame(flStep);
+  if(Date.now()-FL.inp<4000)return;
+  var el=rd.els[PL.a-1];if(!el||!(AU.duration>0)||!isFinite(AU.duration))return;
+  var rc=el.getClientRects();if(!rc.length)return;
+  var r0=rc[0],r1=rc[rc.length-1],h=r1.bottom-r0.top;
+  var top=($('topbar').offsetHeight||90)+8,bot=window.innerHeight-$('bnav').offsetHeight-10,avail=bot-top;
+  if(h<=avail)return;                       /* muat: cukup ditangani aFollow */
+  var q=Math.max(0,Math.min(1,(AU.currentTime/AU.duration-.04)/.88));
+  var want=top-(h-avail)*q,diff=r0.top-want;
+  if(Math.abs(diff)>1)window.scrollBy(0,diff*.18);
+}
+function flKick(){if(!FL.raf)FL.raf=requestAnimationFrame(flStep)}
 /* ayat yang benar-benar tampil di layar: bila ayat pertama hanya tersisa sedikit di atas, pakai ayat berikutnya */
 function aVisible(){
   var a=rd.cur||1,el=rd.els[a-1];
