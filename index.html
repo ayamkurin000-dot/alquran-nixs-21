@@ -2838,6 +2838,7 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 function aUI(){
   var pl=PL.on&&!AU.paused;
   wlSync(pl);
+  if('mediaSession' in navigator){try{navigator.mediaSession.playbackState=PL.on?(pl?'playing':'paused'):'none'}catch(e){}}
   $('pl').classList.toggle('on',pl);
   $('apt').innerHTML=pl?I_PAUSE:I_PLAY;
   $('apt').setAttribute('aria-label',pl?'Jeda':(PL.on?'Lanjutkan':'Putar ayat'));
@@ -2874,7 +2875,7 @@ function aLoad(s,a,k){
   var pr=AU.play();if(pr&&pr.catch)pr.catch(function(){aUI()});
 }
 function aPlay(s,a){
-  PL.on=true;PL.s=s;PL.a=a;
+  PL.on=true;PL.s=s;PL.a=a;PL.up=false;PL.rs=0;
   vzCtx();
   aLoad(s,a,0);
   if(rd.open&&rd.s===s){renderUpTo(a+CH);aMark();aFollow(a)}else aMark();
@@ -2907,6 +2908,15 @@ function aErr(){
   if(!PL.noCors){aSwap(false);aLoad(PL.s,PL.a,0);return}   /* server tanpa CORS: tetap putar, spektrum disimulasikan */
   toast('Audio gagal dimuat — butuh sambungan internet');PL.pend=0;aStop();
 }
+/* Layar mati / aplikasi di latar belakang: peramban kadang menghentikan audio sendiri.
+   Bila bukan karena pengguna, lanjutkan lagi (maks 3x per ayat agar tidak melawan panggilan telepon dsb.) */
+function aResume(){
+  if(!PL.on||PL.up||!AU.paused||AU.ended||(PL.rs|0)>=3)return;
+  PL.rs=(PL.rs|0)+1;
+  var pr=AU.play();if(pr&&pr.catch)pr.catch(function(){});
+}
+setInterval(aResume,3000);
+document.addEventListener('visibilitychange',function(){if(document.visibilityState==='visible'){PL.rs=0;aResume()}});
 function bindAU(el){
   el.addEventListener('ended',function(){
     if(el!==AU||!PL.on)return;
@@ -2917,10 +2927,11 @@ function bindAU(el){
   });
   el.addEventListener('error',function(){if(el===AU&&PL.on)aErr()});
   el.addEventListener('play',function(){if(el===AU){aUI();vzKick()}});
-  el.addEventListener('pause',function(){if(el===AU)aUI()});
+  el.addEventListener('pause',function(){if(el===AU){aUI();if(PL.on&&!PL.up&&!AU.ended)setTimeout(aResume,400)}});
   el.addEventListener('playing',function(){
     if(el!==AU)return;
     if(PL.flip){PL.altFirst=!PL.altFirst;PL.flip=false}
+    PL.rs=0;
     if(PL.pend){var pd=PL.pend;PL.pend=0;if(rd.sel===pd)selectAyat(0)}
     vzAttach();vzKick();
   });
@@ -3075,7 +3086,7 @@ function aAway(){
 /* ---------- Kontrol ---------- */
 $('apt').onclick=function(){
   if(aAway())return;
-  if(PL.on){vzCtx();if(AU.paused)AU.play().catch(function(){});else AU.pause();return}
+  if(PL.on){vzCtx();if(AU.paused){PL.up=false;PL.rs=0;AU.play().catch(function(){})}else{PL.up=true;AU.pause()}return}
   if(!rd.open)return;
   /* belum memutar: baca ayat yang dipilih pengguna; bila tidak ada, ayat yang sedang tampil di layar */
   var a=rd.sel||aVisible();
