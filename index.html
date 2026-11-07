@@ -2971,6 +2971,7 @@ function aLoad(s,a,k){
   var pr=AU.play();if(pr&&pr.catch)pr.catch(function(){aUI()});
 }
 function aPlay(s,a){
+  if(PL.auto){var o=ls('qk.own');if(o&&o.id!==TAB&&o.t>OWN.t){aYield(o.t);return}}else aClaim();
   PL.on=true;PL.s=s;PL.a=a;PL.up=false;PL.rs=0;kaSync(true);
   vzCtx();
   aLoad(s,a,0);
@@ -3021,13 +3022,14 @@ function bindAU(el){
     if(PL.rep){AU.currentTime=0;AU.play().catch(function(){});return}
     var n=nextOf(PL.s,PL.a);
     if(!n){aStop();toast('Selesai');return}
-    aGo(n[0],n[1]);
+    PL.auto=true;try{aGo(n[0],n[1])}finally{PL.auto=false}
   });
   el.addEventListener('error',function(){if(el===AU&&PL.on)aErr()});
   el.addEventListener('play',function(){if(el!==AU){try{el.pause()}catch(x){}return}aSolo();aUI();vzKick()});
   el.addEventListener('pause',function(){if(el===AU){aUI();if(PL.on&&!PL.up&&!AU.ended)setTimeout(aResume,400)}});
   el.addEventListener('playing',function(){
     if(el!==AU)return;
+    var ow=ls('qk.own');if(ow&&ow.id!==TAB&&ow.t>OWN.t&&PL.on){aYield(ow.t);return}
     if(PL.flip){PL.altFirst=!PL.altFirst;PL.flip=false}
     PL.rs=0;
     if(PL.pend){var pd=PL.pend;PL.pend=0;if(rd.sel===pd)selectAyat(0)}
@@ -3035,6 +3037,19 @@ function bindAU(el){
   });
 }
 bindAU(AU);
+/* Satu pemutar saja: bila aplikasi terbuka di lebih dari satu tab / jendela (mis. tab Chrome + aplikasi terpasang),
+   yang terakhir diputar pengguna menjadi pemilik; yang lain berhenti sendiri agar suara tidak bertumpuk
+   (termasuk tab yang dibekukan Chrome di latar lalu hidup lagi). */
+var TAB=Math.random().toString(36).slice(2),OWN={t:0},BC=null;
+function aClaim(){OWN.t=Date.now();ls('qk.own',{id:TAB,t:OWN.t});try{if(BC)BC.postMessage({id:TAB,t:OWN.t})}catch(e){}}
+function aYield(t){if(PL.on&&t>OWN.t){aStop();toast('Dihentikan: audio sedang diputar di tab / jendela lain')}}
+function aOwnCheck(){var o=ls('qk.own');if(o&&o.id!==TAB&&o.t>OWN.t&&PL.on&&!AU.paused)aYield(o.t)}
+try{BC=new BroadcastChannel('qk-audio');BC.onmessage=function(e){var d=e.data;if(d&&d.id!==TAB)aYield(d.t)}}catch(e){}
+window.addEventListener('storage',function(e){if(e.key==='qk.own')aOwnCheck()});
+setInterval(aOwnCheck,2000);
+document.addEventListener('visibilitychange',aOwnCheck);
+document.addEventListener('resume',aOwnCheck);
+window.addEventListener('pageshow',aOwnCheck);
 
 /* ---------- Qari ---------- */
 function qBuild(){
@@ -3189,7 +3204,7 @@ function aAway(){
 /* ---------- Kontrol ---------- */
 $('apt').onclick=function(){
   if(aAway())return;
-  if(PL.on){vzCtx();if(AU.paused){PL.up=false;PL.rs=0;AU.play().catch(function(){})}else{PL.up=true;AU.pause()}return}
+  if(PL.on){vzCtx();if(AU.paused){aClaim();PL.up=false;PL.rs=0;PL.rl=[];AU.play().catch(function(){})}else{PL.up=true;AU.pause()}return}
   if(!rd.open)return;
   /* belum memutar: baca ayat yang dipilih pengguna; bila tidak ada, ayat yang sedang tampil di layar */
   var a=rd.sel||aVisible();
