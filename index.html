@@ -2774,6 +2774,9 @@ var I_PLAY='<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"
     I_VOL='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10v4h4l5 4V6L7 10H3z" fill="currentColor"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.3 5.7a9 9 0 0 1 0 12.6"/></svg>',
     I_MUTE='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10v4h4l5 4V6L7 10H3z" fill="currentColor"/><path d="M16 9.5l5 5M21 9.5l-5 5"/></svg>';
 AU.preload='auto';PRE.preload='auto';AU.crossOrigin='anonymous';PRE.crossOrigin='anonymous';
+/* semua elemen audio yang pernah dibuat; hanya AU (yang aktif) boleh bunyi, sisanya langsung dijeda agar suara tidak menumpuk */
+var AUS=[AU];
+function aSolo(){AUS.forEach(function(e){if(e!==AU&&!e.paused){try{e.pause()}catch(x){}}});if(!PRE.paused){try{PRE.pause()}catch(x){}}}
 function p3(n){return('00'+n).slice(-3)}
 function gid(s,a){var n=a;for(var i=0;i<s-1;i++)n+=Q[i][3].length;return n}
 /* k = percobaan ke-berapa (0 = sumber utama, 1 = sumber cadangan); urutan bisa terbalik bila cadangan yang ternyata jalan */
@@ -2962,7 +2965,7 @@ function aVisible(){
   return a;
 }
 function aLoad(s,a,k){
-  PL.k=k;
+  aSolo();PL.k=k;
   AU.src=aUrl(s,a,k);
   AU.defaultPlaybackRate=PL.rate;AU.playbackRate=PL.rate;
   var pr=AU.play();if(pr&&pr.catch)pr.catch(function(){aUI()});
@@ -2990,7 +2993,7 @@ function aStop(){
 /* elemen audio baru (cors=true: boleh dianalisis spektrumnya; false: pemutaran biasa tanpa CORS) */
 function aSwap(cors){
   try{AU.pause();AU.removeAttribute('src');AU.load()}catch(e){}
-  AU=new Audio();AU.preload='auto';
+  AU=new Audio();AU.preload='auto';AUS.push(AU);if(AUS.length>4)AUS.shift();
   if(cors)AU.crossOrigin='anonymous';
   if(cors)PRE.crossOrigin='anonymous';else PRE.removeAttribute('crossorigin');
   PL.noCors=!cors;VZ.real=false;
@@ -3004,12 +3007,14 @@ function aErr(){
 /* Layar mati / aplikasi di latar belakang: peramban kadang menghentikan audio sendiri.
    Bila bukan karena pengguna, lanjutkan lagi (maks 3x per ayat agar tidak melawan panggilan telepon dsb.) */
 function aResume(){
-  if(!PL.on||PL.up||!AU.paused||AU.ended||(PL.rs|0)>=3)return;
-  PL.rs=(PL.rs|0)+1;
+  if(!PL.on||PL.up||!AU.paused||AU.ended)return;
+  var t=Date.now();PL.rl=(PL.rl||[]).filter(function(x){return t-x<20000});
+  if(PL.rl.length>=3)return;   /* maks 3x per 20 detik (tidak direset oleh event 'playing'), mencegah tombol play/pause bergantian */
+  PL.rl.push(t);
   var pr=AU.play();if(pr&&pr.catch)pr.catch(function(){});
 }
 setInterval(aResume,3000);
-document.addEventListener('visibilitychange',function(){if(document.visibilityState==='visible'){PL.rs=0;aResume()}});
+document.addEventListener('visibilitychange',function(){if(document.visibilityState==='visible'){PL.rs=0;PL.rl=[];aResume()}});
 function bindAU(el){
   el.addEventListener('ended',function(){
     if(el!==AU||!PL.on)return;
@@ -3019,7 +3024,7 @@ function bindAU(el){
     aGo(n[0],n[1]);
   });
   el.addEventListener('error',function(){if(el===AU&&PL.on)aErr()});
-  el.addEventListener('play',function(){if(el===AU){aUI();vzKick()}});
+  el.addEventListener('play',function(){if(el!==AU){try{el.pause()}catch(x){}return}aSolo();aUI();vzKick()});
   el.addEventListener('pause',function(){if(el===AU){aUI();if(PL.on&&!PL.up&&!AU.ended)setTimeout(aResume,400)}});
   el.addEventListener('playing',function(){
     if(el!==AU)return;
@@ -3049,7 +3054,7 @@ function setQari(id){
   PL.q=q;ls('qk.qari',q.id);PL.altFirst=false;PL.flip=false;
   if(PL.noCors)aSwap(true);
   qBuild();aUI();
-  if(PL.on){var was=!AU.paused;aPlay(PL.s,PL.a);if(!was)AU.pause()}
+  if(PL.on){var was=!AU.paused;aPlay(PL.s,PL.a);if(!was){PL.up=true;AU.pause()}}
   toast('Qari: '+q.n);
 }
 $('aqr').onclick=function(e){
@@ -3161,18 +3166,23 @@ if(window.ResizeObserver)new ResizeObserver(vzSize).observe(cv);
    tergulung jauh), tombol jeda / sebelumnya / berikutnya hanya mengembalikan tampilan ke
    surat & ayat yang sedang dibacakan. Ketukan berikutnya baru menjalankan fungsi tombolnya. */
 function aAway(){
-  if(!PL.on||document.hidden)return false;
-  if(rd.open&&rd.s===PL.s){
-    var el=rd.els[PL.a-1];
-    if(el){
-      var r=el.getBoundingClientRect(),top=$('topbar').offsetHeight||90,bot=window.innerHeight-($('bnav').offsetHeight||0);
-      if(r.bottom>top&&r.top<bot)return false;   /* ayat yang diputar sudah terlihat */
+  if(!PL.on||document.visibilityState==='hidden')return false;
+  try{
+    if(rd.open&&rd.s===PL.s){
+      var el=rd.els[PL.a-1];
+      if(el){
+        var r=el.getBoundingClientRect(),top=$('topbar').offsetHeight||90,bot=window.innerHeight-($('bnav').offsetHeight||0);
+        if(r.bottom>top&&r.top<bot)return false;   /* ayat yang diputar sudah terlihat */
+      }
+      goAyat(PL.a);
+    }else{
+      var h='#/'+PL.s+(PL.a>1?'/'+PL.a:'');
+      closeSheet(true);
+      if(location.hash===h)openSurah(PL.s,PL.a);else location.hash=h;
+      /* cadangan: bila hashchange tidak jalan (mis. setelah aplikasi dibangunkan), buka langsung */
+      setTimeout(function(){if(PL.on&&!(rd.open&&rd.s===PL.s))openSurah(PL.s,PL.a)},150);
     }
-    goAyat(PL.a);
-  }else{
-    var h='#/'+PL.s+(PL.a>1?'/'+PL.a:'');
-    if(location.hash===h)openSurah(PL.s,PL.a);else location.hash=h;
-  }
+  }catch(e){return false}
   toast('Kembali ke QS '+Q[PL.s-1][1]+': '+PL.a);
   return true;
 }
