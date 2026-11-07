@@ -2822,8 +2822,22 @@ function aqrName(){
     }
   });
 }
+/* layar tetap menyala selama audio diputar (Screen Wake Lock; perlu HTTPS). Dilepas saat jeda/berhenti. */
+var WL={lock:null,want:false};
+function wlSync(want){
+  WL.want=want;
+  if(!('wakeLock' in navigator))return;
+  if(want&&!WL.lock&&document.visibilityState==='visible'){
+    navigator.wakeLock.request('screen').then(function(l){
+      WL.lock=l;l.addEventListener('release',function(){if(WL.lock===l)WL.lock=null});
+      if(!WL.want){l.release()}
+    }).catch(function(){});
+  }else if(!want&&WL.lock){var l=WL.lock;WL.lock=null;l.release().catch(function(){})}
+}
+document.addEventListener('visibilitychange',function(){if(document.visibilityState==='visible'&&WL.want&&!WL.lock)wlSync(true)});
 function aUI(){
   var pl=PL.on&&!AU.paused;
+  wlSync(pl);
   $('pl').classList.toggle('on',pl);
   $('apt').innerHTML=pl?I_PAUSE:I_PLAY;
   $('apt').setAttribute('aria-label',pl?'Jeda':(PL.on?'Lanjutkan':'Putar ayat'));
