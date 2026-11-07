@@ -245,8 +245,6 @@ input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;bac
 #bnav .chip[aria-expanded=true]{border-color:var(--ac);box-shadow:0 0 8px var(--acg)}
 #bnav #aqr .mq{display:inline-block;vertical-align:top}
 #bnav #aqr.run{text-overflow:clip}
-@media (prefers-reduced-motion:no-preference){#bnav #aqr.run .mq{animation:qmq var(--md,5s) ease-in-out infinite alternate}}
-@keyframes qmq{0%,18%{transform:translateX(0)}82%,100%{transform:translateX(var(--mv,0))}}
 #bnav #amin{padding:3px 5px}
 #bnav #amin svg{width:12px;height:12px;display:block;transition:transform .2s}
 #bnav .pl.mini #amin svg{transform:rotate(180deg)}
@@ -2813,11 +2811,15 @@ function aVolUI(){
 /* nama qari: bila tidak muat di tombol, berjalan (running text) bolak-balik */
 function aqrName(){
   var b=$('aqr'),sp=document.createElement('span');
-  sp.className='mq';sp.textContent=PL.q.k;
-  b.textContent='';b.appendChild(sp);b.classList.remove('run');b.style.removeProperty('--mv');b.style.removeProperty('--md');
+  sp.className='mq';sp.textContent=PL.q.n;
+  if(b._an){try{b._an.cancel()}catch(e){}b._an=null}
+  b.textContent='';b.appendChild(sp);b.classList.remove('run');
   requestAnimationFrame(function(){
     var cs=getComputedStyle(b),room=b.clientWidth-parseFloat(cs.paddingLeft)-parseFloat(cs.paddingRight),over=sp.offsetWidth-room;
-    if(over>1){b.style.setProperty('--mv',(-Math.ceil(over)-1)+'px');b.style.setProperty('--md',(Math.max(2.5,over/18)+1.6).toFixed(1)+'s');b.classList.add('run')}
+    if(over>1&&sp.animate){   /* Web Animations API: tidak ikut dimatikan aturan 'kurangi animasi' */
+      b.classList.add('run');
+      b._an=sp.animate([{transform:'translateX(0)',offset:0},{transform:'translateX(0)',offset:.18},{transform:'translateX('+(-Math.ceil(over)-1)+'px)',offset:.82},{transform:'translateX('+(-Math.ceil(over)-1)+'px)',offset:1}],{duration:(Math.max(2.5,over/18)+1.6)*1000,iterations:Infinity,direction:'alternate',easing:'ease-in-out'});
+    }
   });
 }
 function aUI(){
