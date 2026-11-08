@@ -135,6 +135,10 @@ html:not(#_) #kled.hbx::after{display:block !important;content:'' !important;pos
 #kled .qs .az2{font-size:2.5em;line-height:1.02;letter-spacing:.04em;white-space:nowrap;animation:lbk .9s steps(1) infinite}
 #kled .qs .az3{font-size:.85em;line-height:1.15;white-space:nowrap}
 #kled .qs .az1.bl{animation:lbk .9s steps(1) infinite}
+#kled .qs .sn1,#kled .qs .sn2,#kled .qs .sn3{white-space:nowrap;letter-spacing:.04em}
+#kled .qs .sn1{font-size:1.2em;line-height:1.15}
+#kled .qs .sn2{font-size:2.3em;line-height:1.1;margin-top:.04em}
+#kled .qs .sn3{font-size:1.3em;line-height:1.2;margin-top:.06em}
 #kled .qs .nt1{font-size:2.4em;line-height:1.1;letter-spacing:.04em;white-space:nowrap}
 #kled .qs .nt2{font-size:1.1em;line-height:1.2;white-space:nowrap;margin-top:.15em}
 @media (prefers-reduced-motion:reduce){#kled .qs .az2,#kled .qs .az1.bl{animation:none!important}}
@@ -1751,7 +1755,7 @@ html[data-gulung^="g"]:not(#_):not(#_):not(#_):not(#_) .row:not(.row .row){margi
   '2 Rokaat sebelum shubuh, 4 sebelum Dzuhur, 2 setelahnya, 2 setelah maghrib, 2 setelah Isya’ (12 rokaat), Allah membangunkannya rumah di Surga',
   '“Sholat yang paling utama setelah fardhu adalah sholat malam.” (HR. Muslim : 1163)',
   'Sholat malam memperkuat hubungan batin dengan Allah dan menambah kedekatan saat wafat'];
-  var pn=0, KQ='qk.led.q', qi=0, PL=['waktu','next','q','run','q'], pc=-1, cur=null, DURS={jadwal:12000,jam:13000,run:20000,waktu:31000,next:10000};
+  var pn=0, KQ='qk.led.q', qi=0, PL=['waktu','next','mundur','q','run','q'], pc=-1, cur=null, DURS={jadwal:12000,jam:13000,run:20000,waktu:31000,next:30000,mundur:30000};
   try{qi=(+localStorage.getItem(KQ)||0)%QT.length}catch(e){}
   function bungkus(t,w){var o=[],c='';t.split(' ').forEach(function(x){if(c&&(c+' '+x).length>w){o.push(c);c=x}else c=c?c+' '+x:x});if(c)o.push(c);return o}
   function hitungCol(){ /* berapa huruf muat dalam satu baris papan di layar ini */
@@ -1847,19 +1851,47 @@ html[data-gulung^="g"]:not(#_):not(#_):not(#_):not(#_) .row:not(.row .row){margi
     }
     v.classList.toggle('out',ph>=WDUR-650);
   }
-  /* ---- halaman "sholat berikutnya": nama besar + hitung mundur diawali tanda minus, 10 detik, sekali tiap putaran ---- */
+  /* ---- halaman "sholat berikutnya": 30 detik, sekali tiap putaran ---- */
   var NFX=['zi','right','blur','flip','top','wipe','left','zo','bottom','fade'], nCy=0;
+  function fitBaris(d,base){ /* kecilkan huruf bila baris terlalu lebar agar tetap muat di papan */
+    var f=base,k=0; d.style.fontSize=f+'em';
+    while(k++<10&&d.scrollWidth>d.clientWidth+1){f*=.92; d.style.fontSize=f+'em'}
+  }
+  /* "SELANJUTNYA ASHAR \u2022 2 JAM 5 MENIT LAGI": huruf besar, 3 baris (jam tidak ditulis; sudah ada permanen di pojok kanan), 30 detik */
   function halamanNext(bx,now,nxt){
     var q=bx.querySelector('.qs'); if(!q)return;
+    bx.classList.add('qm'); bx.classList.remove('xo');
     if(!cur.b){
       cur.b=1; nCy++;
-      q.innerHTML='<div class="nm1"></div><div class="nm2"></div>'; q.style.setProperty('--s',1);
+      q.innerHTML='<div class="sn1">SELANJUTNYA</div><div class="sn2"></div><div class="sn3"></div>'; q.style.setProperty('--s',1);
+      q.children[0].style.setProperty('--c','#ff9a1f'); q.children[1].style.setProperty('--c','#ffe600'); q.children[2].style.setProperty('--c','#2dff6e');
+      q.className='qs'; void q.offsetWidth; q.className='qs fx-'+NFX[nCy%NFX.length];
+      cur.t1=cur.t2='';
+    }
+    var t1=nmz(nxt.n), t2='\u2022 '+durasi(Math.max(1,Math.ceil((nxt.t-now)/MS)))+' LAGI';
+    if(t1!==cur.t1||t2!==cur.t2){
+      cur.t1=t1; cur.t2=t2;
+      q.children[1].textContent=t1; q.children[2].textContent=t2;
+      fitBaris(q.children[0],1.2); fitBaris(q.children[1],2.8); fitBaris(q.children[2],1.3);
+    }
+    q.classList.toggle('out',now-pgAt>=cur.dur-800);
+  }
+  /* ---- halaman hitung mundur: nama sholat + -jam:menit:detik, tanda ":" berkedip, 30 detik; tampil setelah halaman SELANJUTNYA ---- */
+  function halamanMundur(bx,now,nxt){
+    var q=bx.querySelector('.qs'); if(!q)return;
+    bx.classList.add('qm'); bx.classList.remove('xo');
+    if(!cur.b){
+      cur.b=1; nCy++;
+      q.innerHTML='<div class="nm1"></div><div class="nm2"><span class="mh"></span><span class="kb">:</span><span class="mm"></span><span class="kb">:</span><span class="ms"></span></div>'; q.style.setProperty('--s',1);
       q.children[0].style.setProperty('--c','#ff9a1f'); q.children[1].style.setProperty('--c','#ffe600');
       q.className='qs'; void q.offsetWidth; q.className='qs fx-'+NFX[nCy%NFX.length];
+      cur.t1='';
     }
-    var a=q.children[0], c=q.children[1], t='-'+hms(nxt.t-now);
-    if(a.textContent!==nxt.n)a.textContent=nxt.n; if(c.textContent!==t)c.textContent=t;
-    bx.classList.add('qm'); bx.classList.remove('xo');
+    var nm=nmz(nxt.n), p=hms(nxt.t-now).split(':');
+    var a=q.children[0], c=q.children[1], h=c.querySelector('.mh'), m=c.querySelector('.mm'), d=c.querySelector('.ms');
+    if(cur.t1!==nm){cur.t1=nm; a.textContent=nm; fitBaris(a,2.5)}
+    var th='-'+p[0]; if(h.textContent!==th)h.textContent=th; if(m.textContent!==p[1])m.textContent=p[1]; if(d.textContent!==p[2])d.textContent=p[2];
+    if(!cur.fz){cur.fz=1; fitBaris(c,2.1)}
     q.classList.toggle('out',now-pgAt>=cur.dur-800);
   }
   function halaman(now,nxt){
@@ -1870,6 +1902,7 @@ html[data-gulung^="g"]:not(#_):not(#_):not(#_):not(#_) .row:not(.row .row){margi
     if(!cur)lanjut(now);
     else if(cur.t==='waktu'){ if(now-pgAt>=cur.dur)lanjut(now) }
     else if(cur.t==='next'){ if(!nxt||now-pgAt>=cur.dur)lanjut(now) }
+    else if(cur.t==='mundur'){ if(!nxt||now-pgAt>=cur.dur)lanjut(now) }
     else if(cur.t==='n'){ if(now-pgAt>=cur.dur)lanjut(now) }
     else if(cur.t==='q'&&cur.mode==='s'){ if(now-pgAt>=cur.dur)lanjut(now) }
     else{
@@ -1878,6 +1911,7 @@ html[data-gulung^="g"]:not(#_):not(#_):not(#_):not(#_) .row:not(.row .row){margi
     }
     if(cur.t==='waktu'){ halamanWaktu(bx,now,hariIni(now)); return }
     if(cur.t==='next'){ if(nxt){halamanNext(bx,now,nxt);return} cur=null; return }
+    if(cur.t==='mundur'){ if(nxt){halamanMundur(bx,now,nxt);return} cur=null; return }
     if(cur.t==='n'){ halamanNotif(bx,now); return }
     var stat=cur.t==='q'&&cur.mode==='s'; bx.classList.toggle('qm',stat);
     if(stat){var qq=bx.querySelector('.qs'); if(qq)qq.classList.toggle('out',now-pgAt>=cur.dur-1000); return}
