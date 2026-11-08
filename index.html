@@ -86,6 +86,10 @@ svg{display:block}
 #kdoa{min-height:44px;padding:7px 8px}
 #kdoa .hdoa{font-size:clamp(12px,3.7vw,17px);line-height:1.25}
 #kmri{grid-column:2;grid-row:3;min-height:44px;padding:7px 8px;text-decoration:none}
+#kjs1,#kjs2{grid-row:4;min-height:44px;padding:7px 8px;cursor:default}
+#kjs1{grid-column:1}#kjs2{grid-column:2}
+.hjs{position:relative;z-index:1;line-height:1.3;text-wrap:balance}
+.hjs b{font-weight:800}
 .hmri{position:relative;z-index:1;font-family:Georgia,'Times New Roman',serif;font-weight:700;font-size:clamp(11px,3.3vw,15px);letter-spacing:.05em;line-height:1.25;color:var(--accent2);text-wrap:balance}
 .hbx.photo{grid-row:1/4}
 .lv{color:#e11d48}
@@ -1323,8 +1327,86 @@ html[data-pita^="pita"]:not(#_):not(#_):not(#_) .row{padding:14px 14px 10px 14px
         <span class="hc tl" aria-hidden="true"><svg viewBox="0 0 48 48"><use href="#c-gulir"/></svg></span><span class="hc tr" aria-hidden="true"><svg viewBox="0 0 48 48"><use href="#c-gulir"/></svg></span><span class="hc bl" aria-hidden="true"><svg viewBox="0 0 48 48"><use href="#c-gulir"/></svg></span><span class="hc br" aria-hidden="true"><svg viewBox="0 0 48 48"><use href="#c-gulir"/></svg></span>
         <div class="hmri">MATA RANTAI ISLAM</div>
       </a>
+      <!-- waktu sholat Blitar: sudah masuk (kiri) dan berikutnya (kanan); dihitung di perangkat -->
+      <div class="hbx tx" id="kjs1" role="group" aria-label="Waktu sholat yang sudah masuk, wilayah Blitar">
+        <i class="hpat" aria-hidden="true"></i>
+        <span class="hc tl" aria-hidden="true"><svg viewBox="0 0 48 48"><use href="#c-gulir"/></svg></span><span class="hc tr" aria-hidden="true"><svg viewBox="0 0 48 48"><use href="#c-gulir"/></svg></span><span class="hc bl" aria-hidden="true"><svg viewBox="0 0 48 48"><use href="#c-gulir"/></svg></span><span class="hc br" aria-hidden="true"><svg viewBox="0 0 48 48"><use href="#c-gulir"/></svg></span>
+                <div class="hmri hjs" aria-live="off"><b id="js1n"></b> <span id="js1w"></span></div>
+      </div>
+      <div class="hbx tx" id="kjs2" role="group" aria-label="Waktu sholat berikutnya, wilayah Blitar">
+        <i class="hpat" aria-hidden="true"></i>
+        <span class="hc tl" aria-hidden="true"><svg viewBox="0 0 48 48"><use href="#c-gulir"/></svg></span><span class="hc tr" aria-hidden="true"><svg viewBox="0 0 48 48"><use href="#c-gulir"/></svg></span><span class="hc bl" aria-hidden="true"><svg viewBox="0 0 48 48"><use href="#c-gulir"/></svg></span><span class="hc br" aria-hidden="true"><svg viewBox="0 0 48 48"><use href="#c-gulir"/></svg></span>
+                <div class="hmri hjs" aria-live="off"><b id="js2n"></b> <span id="js2w"></span></div>
+      </div>
     </div>
   </header>
+<script>
+/* Waktu sholat Blitar (hitungan astronomi, metode Kemenag RI: Subuh 20 derajat, Isya 18 derajat,
+   Ashar mazhab Syafi'i, ihtiyath +2 menit). Tanpa internet. Ubah LAT/LNG untuk kota lain. */
+(function(){
+  var LAT=-8.0983, LNG=112.1681, IH=2, MS=60000;
+  var NAMA=['SUBUH','DZUHUR','ASHAR','MAGHRIB','ISYA\u2019'];
+  function rad(d){return d*Math.PI/180}
+  function deg(r){return r*180/Math.PI}
+  function fix(a,b){a=a-b*Math.floor(a/b);return a<0?a+b:a}
+  function hari(y,m,d){
+    var base=Date.UTC(y,m,d);
+    var jd=base/864e5+2440587.5+(12-LNG/15)/24, D=jd-2451545;
+    var g=fix(357.529+0.98560028*D,360), q=fix(280.459+0.98564736*D,360);
+    var L=fix(q+1.915*Math.sin(rad(g))+0.020*Math.sin(rad(2*g)),360);
+    var e=23.439-0.00000036*D;
+    var RA=fix(deg(Math.atan2(Math.cos(rad(e))*Math.sin(rad(L)),Math.cos(rad(L))))/15,24);
+    var eqt=q/15-RA; eqt=fix(eqt+12,24)-12;
+    var dec=deg(Math.asin(Math.sin(rad(e))*Math.sin(rad(L))));
+    var noon=12-LNG/15-eqt;
+    var sp=Math.sin(rad(LAT))*Math.sin(rad(dec)), cp=Math.cos(rad(LAT))*Math.cos(rad(dec));
+    function ha(alt){return deg(Math.acos((Math.sin(rad(alt))-sp)/cp))/15}
+    var asrAlt=deg(Math.atan(1/(1+Math.tan(rad(Math.abs(LAT-dec))))));
+    function t(h,extra){return base+h*3600000+extra*MS}
+    return [t(noon-ha(-20),IH),t(noon,IH),t(noon+ha(asrAlt),IH),t(noon+ha(-0.833),IH),t(noon+ha(-18),IH)];
+  }
+  function daftar(now){
+    var w=new Date(now+7*3600000), out=[];
+    for(var k=-1;k<=1;k++){
+      var dd=new Date(Date.UTC(w.getUTCFullYear(),w.getUTCMonth(),w.getUTCDate()+k));
+      var ev=hari(dd.getUTCFullYear(),dd.getUTCMonth(),dd.getUTCDate());
+      for(var i=0;i<5;i++) out.push({n:NAMA[i],t:ev[i]});
+    }
+    out.sort(function(a,b){return a.t-b.t});
+    return out;
+  }
+  function durasi(mnt){
+    var h=Math.floor(mnt/60), m=mnt%60, p=[];
+    if(h>0)p.push(h+' jam'); if(m>0)p.push(m+' menit');
+    return p.join(' ');
+  }
+  function hitung(now){
+    var ev=daftar(now), cur=null, nxt=null;
+    for(var i=0;i<ev.length;i++){ if(ev[i].t<=now)cur=ev[i]; else {nxt=ev[i];break} }
+    var a=Math.floor((now-cur.t)/MS), b=Math.max(1,Math.ceil((nxt.t-now)/MS));
+    return {
+      a:{n:cur.n,w:(a<1?'kurang dari 1 menit':durasi(a))+' yang lalu'},
+      b:{n:nxt.n,w:durasi(b)+' lagi'}
+    };
+  }
+  if(typeof window!=='undefined') window.__jadwalSholat={hitung:hitung,daftar:daftar};
+  if(typeof document==='undefined') return;
+  function isi(){
+    try{
+      var r=hitung(Date.now()), ids=[['js1n','js1w','kjs1',r.a],['js2n','js2w','kjs2',r.b]];
+      ids.forEach(function(x){
+        var n=document.getElementById(x[0]), w=document.getElementById(x[1]), k=document.getElementById(x[2]);
+        if(!n||!w)return;
+        n.textContent=x[3].n+':'; w.textContent=x[3].w;
+        if(k)k.setAttribute('aria-label',x[3].n+': '+x[3].w+' (wilayah Blitar)');
+      });
+    }catch(e){}
+  }
+  isi(); setInterval(isi,20000);
+  document.addEventListener('visibilitychange',function(){if(!document.hidden)isi()});
+  window.addEventListener('pageshow',isi);
+})();
+</script>
   <div id="hbar">
     <input id="q" type="search" inputmode="search" enterkeyhint="search" autocomplete="off" placeholder="Cari surat, ayat, atau 2:255" aria-label="Pencarian">
     <div class="tabs" role="tablist">
