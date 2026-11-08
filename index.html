@@ -1544,7 +1544,7 @@ html[data-gulung^="g"]:not(#_):not(#_):not(#_):not(#_) .row:not(.row .row){margi
     function bersih(v){return v?String(v).trim():''}
     function cari(re,ks){for(var i=0;i<ks.length;i++){var v=bersih(a[ks[i]]); if(v&&re.test(v))return v} return ''}
     var all=['suburb','city_district','district','municipality','town','village','neighbourhood','quarter','county','state_district','city','region'];
-    var kec=cari(/^Kecamatan\b/i,all).replace(/^Kecamatan\s+/i,'')||bersih(a.suburb||a.city_district||a.district||a.municipality||a.town);
+    var kec=cari(/^Kecamatan\b/i,all).replace(/^Kecamatan\s+/i,'')||bersih(a.city_district||a.district||a.municipality||a.suburb||a.town);
     var kota=cari(/^Kota\b/i,['city','county','state_district','town','municipality']);
     var kab=cari(/^Kabupaten\b/i,['county','state_district','city','region','municipality']).replace(/^Kabupaten\s+/i,'');
     if(!kota&&!kab){var c=bersih(a.city||a.county||a.state_district||a.state); if(c){ if(a.city&&!a.county)kota='Kota '+c; else kab=c.replace(/^Kab\.?\s+/i,'')}}
@@ -1553,9 +1553,10 @@ html[data-gulung^="g"]:not(#_):not(#_):not(#_):not(#_) .row:not(.row .row){margi
     var p=[]; if(kec)p.push('Kec. '+kec); if(kota)p.push(kota); if(kab)p.push('Kab. '+kab);
     return p.length?{kec:kec,kota:kota,kab:kab,nama:p.join(', ')}:null;
   }
+  function susunNama(kec,kota,kab){var p=[]; if(kec)p.push('Kec. '+kec); if(kota)p.push(kota); if(kab)p.push('Kab. '+kab); return p.join(', ')}
   function lengkapi(id,lat,lng){
     ambil('https://nominatim.openstreetmap.org/reverse?format=jsonv2&zoom=14&addressdetails=1&accept-language=id&lat='+lat+'&lon='+lng,7000)
-      .then(function(j){var n=pilihNama(j); if(n&&L.t===id){L.nama=n.nama;L.kec=n.kec;L.kota=n.kota;L.kab=n.kab;L.v=2;simpan();isi()}}).catch(function(){});
+      .then(function(j){var n=pilihNama(j); if(n&&L.t===id){ if(L.kecM&&L.kec)n.kec=L.kec; L.kec=n.kec;L.kota=n.kota;L.kab=n.kab;L.nama=susunNama(n.kec,n.kota,n.kab)||n.nama;L.v=2;simpan();isi()}}).catch(function(){});
     ambil('https://api.open-meteo.com/v1/elevation?latitude='+lat+'&longitude='+lng,7000)
       .then(function(j){var e=j&&j.elevation&&j.elevation[0]; if(typeof e==='number'&&isFinite(e)&&L.t===id){L.alt=Math.max(0,Math.round(e));simpan();isi()}}).catch(function(){});
   }
@@ -1564,7 +1565,7 @@ html[data-gulung^="g"]:not(#_):not(#_):not(#_):not(#_) .row:not(.row .row){margi
     sedang=false;
     var c=pos.coords, baru={lat:+c.latitude.toFixed(4),lng:+c.longitude.toFixed(4),sumber:'gps',t:Date.now()};
     var dekat=L.sumber==='gps'&&L.nama&&jarak(L,baru)<5;
-    if(dekat){ baru.nama=L.nama; baru.alt=L.alt; }
+    if(dekat){ baru.nama=L.nama; baru.alt=L.alt; baru.kec=L.kec; baru.kota=L.kota; baru.kab=L.kab; baru.v=L.v; baru.kecM=L.kecM; }
     else {
       baru.nama=terdekat(baru); 
       baru.alt=(c.altitude!=null&&isFinite(c.altitude)&&c.altitude>=0)?Math.round(c.altitude):0;
@@ -1859,7 +1860,15 @@ html[data-gulung^="g"]:not(#_):not(#_):not(#_):not(#_) .row:not(.row .row){margi
 
   (function(){
     var box=el('kled'), b=el('lbell'), izinMinta=false; if(!box||!b)return;
-    box.addEventListener('click',function(){minta(true)});
+    var bxT=0, bxF=false;
+    box.addEventListener('click',function(){ if(bxF){bxF=false;return} minta(true)});
+    box.addEventListener('pointerdown',function(){bxF=false;clearTimeout(bxT);bxT=setTimeout(function(){
+      bxF=true; var cur0=L.kec||''; var v=null; try{v=window.prompt('Nama kecamatan (kosongkan untuk deteksi otomatis):',cur0)}catch(x){}
+      if(v===null)return; v=v.replace(/^\s*kec(amatan|\.)?\s+/i,'').trim();
+      if(v){L.kec=v;L.kecM=1;L.nama=susunNama(L.kec,L.kota,L.kab)||L.nama;simpan();isi();info('Kecamatan: '+v)}
+      else{L.kecM=0;L.kec='';simpan();isi();lengkapi(L.t,L.lat,L.lng);info('Kecamatan: deteksi otomatis')}
+    },900)});
+    ['pointerup','pointerleave','pointercancel'].forEach(function(n){box.addEventListener(n,function(){clearTimeout(bxT)})});
     b.addEventListener('pointerdown',function(ev){ev.stopPropagation();lpF=false;clearTimeout(lpT);lpT=setTimeout(function(){lpF=true;buka();info('Uji suara: Subuh');bunyi({n:'SUBUH',t:Date.now()},true);tick()},800)});
     ['pointerup','pointerleave','pointercancel'].forEach(function(n){b.addEventListener(n,function(){clearTimeout(lpT)})});
     b.addEventListener('click',function(ev){
