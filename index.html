@@ -1646,7 +1646,7 @@ html[data-pita^="pita"]:not(#_):not(#_):not(#_) .row{padding:14px 14px 10px 14px
   '2 Rokaat sebelum shubuh, 4 sebelum Dzuhur, 2 setelahnya, 2 setelah maghrib, 2 setelah Isya’ (12 rokaat), Allah membangunkannya rumah di Surga',
   '“Sholat yang paling utama setelah fardhu adalah sholat malam.” (HR. Muslim : 1163)',
   'Sholat malam memperkuat hubungan batin dengan Allah dan menambah kedekatan saat wafat'];
-  var KQ='qk.led.q', qi=0, PL=['jadwal','q','jam','q','run','q'], pc=-1, cur=null, DURS={jadwal:12000,jam:13000,run:20000};
+  var KQ='qk.led.q', qi=0, PL=['jadwal','q','run','q'], pc=-1, cur=null, DURS={jadwal:12000,jam:13000,run:20000};
   try{qi=(+localStorage.getItem(KQ)||0)%QT.length}catch(e){}
   function bungkus(t,w){var o=[],c='';t.split(' ').forEach(function(x){if(c&&(c+' '+x).length>w){o.push(c);c=x}else c=c?c+' '+x:x});if(c)o.push(c);return o}
   function hitungCol(){ /* berapa huruf muat dalam satu baris papan di layar ini */
@@ -1694,7 +1694,7 @@ html[data-pita^="pita"]:not(#_):not(#_):not(#_) .row{padding:14px 14px 10px 14px
       setL(0,'SUBUH '+t5[0]+' \u2605 DZUHUR '+t5[1]+' \u2605 ASHAR '+t5[2]+' \u2605 MAGHRIB '+t5[3]+' \u2605 '+NAMA[4]+' '+t5[4],'mq',0,id);
       setL(1,'SHOLATLAH SEBELUM ENGKAU DISHOLATKAN \u2022 JADIKANLAH SABAR & SHOLAT SEBAGAI PENOLONGMU','mr',0,id);
       setL(2,'SELANJUTNYA '+nn+' '+(nxt?hm(nxt.t)+' \u2022 '+durasi(Math.max(1,Math.ceil(cd/MS)))+' LAGI':''),'mq',0,id);
-      setL(3,p2(d.getHours())+':'+p2(d.getMinutes()),'',0,id);
+      setL(3,'','',0,id);
     }else{ /* kalimat hikmah panjang: running (bergulir naik) */
       var ch=cur.ch, el_=now-pgAt, j;
       {
