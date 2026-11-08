@@ -86,10 +86,11 @@ svg{display:block}
 #kdoa{min-height:44px;padding:7px 8px}
 #kdoa .hdoa{font-size:clamp(12px,3.7vw,17px);line-height:1.25}
 #kmri{grid-column:2;grid-row:3;min-height:44px;padding:7px 8px;text-decoration:none}
-#kjs1,#kjs2{grid-row:4;min-height:44px;padding:7px 8px;cursor:default}
+#kjs1,#kjs2{grid-row:4;min-height:44px;padding:7px 8px}
 #kjs1{grid-column:1}#kjs2{grid-column:2}
 .hjs{position:relative;z-index:1;line-height:1.3;text-wrap:balance}
 .hjs b{font-weight:800}
+.hjk{display:block;margin-top:2px;font-size:.78em;font-weight:600;letter-spacing:.03em;opacity:.85;line-height:1.2}
 .hmri{position:relative;z-index:1;font-family:Georgia,'Times New Roman',serif;font-weight:700;font-size:clamp(11px,3.3vw,15px);letter-spacing:.05em;line-height:1.25;color:var(--accent2);text-wrap:balance}
 .hbx.photo{grid-row:1/4}
 .lv{color:#e11d48}
@@ -1327,50 +1328,57 @@ html[data-pita^="pita"]:not(#_):not(#_):not(#_) .row{padding:14px 14px 10px 14px
         <span class="hc tl" aria-hidden="true"><svg viewBox="0 0 48 48"><use href="#c-gulir"/></svg></span><span class="hc tr" aria-hidden="true"><svg viewBox="0 0 48 48"><use href="#c-gulir"/></svg></span><span class="hc bl" aria-hidden="true"><svg viewBox="0 0 48 48"><use href="#c-gulir"/></svg></span><span class="hc br" aria-hidden="true"><svg viewBox="0 0 48 48"><use href="#c-gulir"/></svg></span>
         <div class="hmri">MATA RANTAI ISLAM</div>
       </a>
-      <!-- waktu sholat Blitar: sudah masuk (kiri) dan berikutnya (kanan); dihitung di perangkat -->
-      <div class="hbx tx" id="kjs1" role="group" aria-label="Waktu sholat yang sudah masuk, wilayah Blitar">
+      <!-- waktu sholat sesuai lokasi pengguna (metode LFNU). Kiri: yang sudah masuk + nama kota; kanan: berikutnya. Ketuk = perbarui lokasi -->
+      <div class="hbx tx" id="kjs1" role="button" tabindex="0" aria-live="off">
         <i class="hpat" aria-hidden="true"></i>
         <span class="hc tl" aria-hidden="true"><svg viewBox="0 0 48 48"><use href="#c-gulir"/></svg></span><span class="hc tr" aria-hidden="true"><svg viewBox="0 0 48 48"><use href="#c-gulir"/></svg></span><span class="hc bl" aria-hidden="true"><svg viewBox="0 0 48 48"><use href="#c-gulir"/></svg></span><span class="hc br" aria-hidden="true"><svg viewBox="0 0 48 48"><use href="#c-gulir"/></svg></span>
-                <div class="hmri hjs" aria-live="off"><b id="js1n"></b> <span id="js1w"></span></div>
+                <div class="hmri hjs"><b id="js1n"></b> <span id="js1w"></span><small class="hjk" id="js1k"></small></div>
       </div>
-      <div class="hbx tx" id="kjs2" role="group" aria-label="Waktu sholat berikutnya, wilayah Blitar">
+      <div class="hbx tx" id="kjs2" role="button" tabindex="0" aria-live="off">
         <i class="hpat" aria-hidden="true"></i>
         <span class="hc tl" aria-hidden="true"><svg viewBox="0 0 48 48"><use href="#c-gulir"/></svg></span><span class="hc tr" aria-hidden="true"><svg viewBox="0 0 48 48"><use href="#c-gulir"/></svg></span><span class="hc bl" aria-hidden="true"><svg viewBox="0 0 48 48"><use href="#c-gulir"/></svg></span><span class="hc br" aria-hidden="true"><svg viewBox="0 0 48 48"><use href="#c-gulir"/></svg></span>
-                <div class="hmri hjs" aria-live="off"><b id="js2n"></b> <span id="js2w"></span></div>
+                <div class="hmri hjs"><b id="js2n"></b> <span id="js2w"></span><small class="hjk" id="js2k"></small></div>
       </div>
     </div>
   </header>
 <script>
-/* Waktu sholat Blitar (hitungan astronomi, metode Kemenag RI: Subuh 20 derajat, Isya 18 derajat,
-   Ashar mazhab Syafi'i, ihtiyath +2 menit). Tanpa internet. Ubah LAT/LNG untuk kota lain. */
+/* Waktu sholat sesuai lokasi pengguna, metode Lembaga Falakiyah NU (LFNU):
+   Subuh -20 derajat, Isya -18 derajat, Ashar mazhab Syafi'i, Maghrib/terbit memperhitungkan ketinggian tempat,
+   dibulatkan ke menit berikutnya. Dihitung di perangkat (tanpa internet); internet hanya dipakai untuk nama kota
+   dan ketinggian. IHTIYATH: NU Online sejak 2025 memakai 0; isi 2 untuk gaya jadwal cetak lama. */
 (function(){
-  var LAT=-8.0983, LNG=112.1681, IH=2, MS=60000;
+  var IHTIYATH=0, SUBUH=-20, ISYA=-18, MS=60000, KEY='qk.lokasi', KTANYA='qk.lokasi.tanya';
+  var DEF={lat:-8.0983,lng:112.1681,alt:167,nama:'Blitar',sumber:'bawaan',t:0};
   var NAMA=['SUBUH','DZUHUR','ASHAR','MAGHRIB','ISYA\u2019'];
+  var KOTA=[['Banda Aceh',5.55,95.32],['Medan',3.59,98.67],['Padang',-0.95,100.35],['Pekanbaru',0.51,101.45],['Batam',1.05,104.03],['Jambi',-1.61,103.61],['Palembang',-2.98,104.75],['Bengkulu',-3.80,102.26],['Bandar Lampung',-5.43,105.26],['Pangkalpinang',-2.13,106.11],['Jakarta',-6.21,106.85],['Tangerang',-6.18,106.63],['Bekasi',-6.24,106.99],['Depok',-6.40,106.82],['Bogor',-6.60,106.80],['Serang',-6.12,106.15],['Bandung',-6.92,107.61],['Cirebon',-6.71,108.56],['Tasikmalaya',-7.33,108.22],['Semarang',-6.97,110.42],['Surakarta',-7.57,110.83],['Yogyakarta',-7.80,110.36],['Magelang',-7.47,110.22],['Purwokerto',-7.43,109.24],['Tegal',-6.87,109.14],['Pekalongan',-6.89,109.68],['Kudus',-6.80,110.84],['Surabaya',-7.25,112.75],['Sidoarjo',-7.45,112.72],['Gresik',-7.16,112.65],['Lamongan',-7.12,112.42],['Tuban',-6.90,112.05],['Bojonegoro',-7.15,111.88],['Mojokerto',-7.47,112.43],['Jombang',-7.55,112.23],['Pasuruan',-7.65,112.91],['Probolinggo',-7.75,113.22],['Malang',-7.98,112.63],['Kediri',-7.82,112.01],['Blitar',-8.10,112.17],['Tulungagung',-8.07,111.90],['Madiun',-7.63,111.52],['Jember',-8.17,113.70],['Banyuwangi',-8.22,114.37],['Pamekasan',-7.16,113.48],['Pontianak',-0.03,109.33],['Palangkaraya',-2.21,113.92],['Banjarmasin',-3.32,114.59],['Samarinda',-0.50,117.15],['Balikpapan',-1.24,116.83],['Tarakan',3.30,117.63],['Manado',1.47,124.84],['Gorontalo',0.54,123.06],['Palu',-0.90,119.87],['Mamuju',-2.68,118.89],['Makassar',-5.15,119.43],['Kendari',-3.97,122.51],['Denpasar',-8.65,115.22],['Mataram',-8.58,116.12],['Kupang',-10.18,123.60],['Ambon',-3.70,128.18],['Ternate',0.79,127.38],['Sorong',-0.88,131.26],['Manokwari',-0.86,134.08],['Jayapura',-2.53,140.72],['Merauke',-8.50,140.40]];
   function rad(d){return d*Math.PI/180}
   function deg(r){return r*180/Math.PI}
   function fix(a,b){a=a-b*Math.floor(a/b);return a<0?a+b:a}
-  function hari(y,m,d){
+  function atas(ms){return Math.ceil(ms/MS)*MS}
+
+  /* ---- hisab ---- */
+  function hari(lat,lng,alt,y,m,d){
     var base=Date.UTC(y,m,d);
-    var jd=base/864e5+2440587.5+(12-LNG/15)/24, D=jd-2451545;
+    var jd=base/864e5+2440587.5+(12-lng/15)/24, D=jd-2451545;
     var g=fix(357.529+0.98560028*D,360), q=fix(280.459+0.98564736*D,360);
-    var L=fix(q+1.915*Math.sin(rad(g))+0.020*Math.sin(rad(2*g)),360);
-    var e=23.439-0.00000036*D;
+    var L=fix(q+1.915*Math.sin(rad(g))+0.020*Math.sin(rad(2*g)),360), e=23.439-0.00000036*D;
     var RA=fix(deg(Math.atan2(Math.cos(rad(e))*Math.sin(rad(L)),Math.cos(rad(L))))/15,24);
-    var eqt=q/15-RA; eqt=fix(eqt+12,24)-12;
+    var eqt=fix(q/15-RA+12,24)-12;
     var dec=deg(Math.asin(Math.sin(rad(e))*Math.sin(rad(L))));
-    var noon=12-LNG/15-eqt;
-    var sp=Math.sin(rad(LAT))*Math.sin(rad(dec)), cp=Math.cos(rad(LAT))*Math.cos(rad(dec));
-    function ha(alt){return deg(Math.acos((Math.sin(rad(alt))-sp)/cp))/15}
-    var asrAlt=deg(Math.atan(1/(1+Math.tan(rad(Math.abs(LAT-dec))))));
-    function t(h,extra){return base+h*3600000+extra*MS}
-    return [t(noon-ha(-20),IH),t(noon,IH),t(noon+ha(asrAlt),IH),t(noon+ha(-0.833),IH),t(noon+ha(-18),IH)];
+    var noon=12-lng/15-eqt;
+    var sp=Math.sin(rad(lat))*Math.sin(rad(dec)), cp=Math.cos(rad(lat))*Math.cos(rad(dec));
+    function ha(a){var x=(Math.sin(rad(a))-sp)/cp; return (x<-1||x>1)?NaN:deg(Math.acos(x))/15}
+    var dip=alt>0?1.76/60*Math.sqrt(alt):0, hs=-(0.8333+dip);
+    var asr=deg(Math.atan(1/(1+Math.tan(rad(Math.abs(lat-dec))))));
+    function t(h){return h===h?atas(base+h*3600000)+IHTIYATH*MS:NaN}
+    return [t(noon-ha(SUBUH)),t(noon),t(noon+ha(asr)),t(noon+ha(hs)),t(noon+ha(ISYA))];
   }
-  function daftar(now){
-    var w=new Date(now+7*3600000), out=[];
+  function daftar(now,l){
+    var w=new Date(now+l.lng/15*3600000), out=[];
     for(var k=-1;k<=1;k++){
       var dd=new Date(Date.UTC(w.getUTCFullYear(),w.getUTCMonth(),w.getUTCDate()+k));
-      var ev=hari(dd.getUTCFullYear(),dd.getUTCMonth(),dd.getUTCDate());
-      for(var i=0;i<5;i++) out.push({n:NAMA[i],t:ev[i]});
+      var ev=hari(l.lat,l.lng,l.alt||0,dd.getUTCFullYear(),dd.getUTCMonth(),dd.getUTCDate());
+      for(var i=0;i<5;i++) if(ev[i]===ev[i]) out.push({n:NAMA[i],t:ev[i]});
     }
     out.sort(function(a,b){return a.t-b.t});
     return out;
@@ -1380,31 +1388,118 @@ html[data-pita^="pita"]:not(#_):not(#_):not(#_) .row{padding:14px 14px 10px 14px
     if(h>0)p.push(h+' jam'); if(m>0)p.push(m+' menit');
     return p.join(' ');
   }
-  function hitung(now){
-    var ev=daftar(now), cur=null, nxt=null;
+  function hitung(now,l){
+    var ev=daftar(now,l), cur=null, nxt=null;
     for(var i=0;i<ev.length;i++){ if(ev[i].t<=now)cur=ev[i]; else {nxt=ev[i];break} }
+    if(!cur||!nxt) return null;
     var a=Math.floor((now-cur.t)/MS), b=Math.max(1,Math.ceil((nxt.t-now)/MS));
-    return {
-      a:{n:cur.n,w:(a<1?'kurang dari 1 menit':durasi(a))+' yang lalu'},
-      b:{n:nxt.n,w:durasi(b)+' lagi'}
-    };
+    return {a:{n:cur.n,w:(a<1?'kurang dari 1 menit':durasi(a))+' yang lalu'}, b:{n:nxt.n,w:durasi(b)+' lagi'}};
   }
-  if(typeof window!=='undefined') window.__jadwalSholat={hitung:hitung,daftar:daftar};
+
+  /* ---- lokasi ---- */
+  function jarak(a,b){
+    var R=6371, dl=rad(b.lat-a.lat), dg=rad(b.lng-a.lng);
+    var x=Math.sin(dl/2)*Math.sin(dl/2)+Math.cos(rad(a.lat))*Math.cos(rad(b.lat))*Math.sin(dg/2)*Math.sin(dg/2);
+    return 2*R*Math.asin(Math.sqrt(x));
+  }
+  function terdekat(l){
+    var best=null,bd=1e9;
+    for(var i=0;i<KOTA.length;i++){var d=jarak(l,{lat:KOTA[i][1],lng:KOTA[i][2]}); if(d<bd){bd=d;best=KOTA[i][0]}}
+    return bd<=30?best:(bd<=80?'Dekat '+best:null);
+  }
+  function muat(){
+    try{
+      var o=JSON.parse(localStorage.getItem(KEY)||'null');
+      if(o&&isFinite(o.lat)&&isFinite(o.lng)&&Math.abs(o.lat)<=90&&Math.abs(o.lng)<=180) return o;
+    }catch(e){}
+    return null;
+  }
+  function simpan(){try{localStorage.setItem(KEY,JSON.stringify(L))}catch(e){}}
+  var L=muat()||DEF, sedang=false;
+
+  function ambil(url,ms){
+    var c=typeof AbortController!=='undefined'?new AbortController():null, tm=setTimeout(function(){if(c)c.abort()},ms);
+    return fetch(url,c?{signal:c.signal}:{}).then(function(r){clearTimeout(tm); if(!r.ok)throw 0; return r.json()});
+  }
+  function pilihNama(j){
+    var a=j&&j.address; if(!a)return null;
+    var n=a.city||a.county||a.town||a.municipality||a.state_district||a.village||a.state;
+    return n?String(n).replace(/^Kabupaten /,'Kab. '):null;
+  }
+  function lengkapi(id,lat,lng){
+    ambil('https://nominatim.openstreetmap.org/reverse?format=jsonv2&zoom=10&addressdetails=1&accept-language=id&lat='+lat+'&lon='+lng,7000)
+      .then(function(j){var n=pilihNama(j); if(n&&L.t===id){L.nama=n;simpan();isi()}}).catch(function(){});
+    ambil('https://api.open-meteo.com/v1/elevation?latitude='+lat+'&longitude='+lng,7000)
+      .then(function(j){var e=j&&j.elevation&&j.elevation[0]; if(typeof e==='number'&&isFinite(e)&&L.t===id){L.alt=Math.max(0,Math.round(e));simpan();isi()}}).catch(function(){});
+  }
+  var tT; function info(m){var t=document.getElementById('toast'); if(!t)return; t.textContent=m; t.classList.add('on'); clearTimeout(tT); tT=setTimeout(function(){t.classList.remove('on')},2800);}
+  function dapat(pos,manual){
+    sedang=false;
+    var c=pos.coords, baru={lat:+c.latitude.toFixed(4),lng:+c.longitude.toFixed(4),sumber:'gps',t:Date.now()};
+    var dekat=L.sumber==='gps'&&L.nama&&jarak(L,baru)<5;
+    if(dekat){ baru.nama=L.nama; baru.alt=L.alt; }
+    else {
+      baru.nama=terdekat(baru); 
+      baru.alt=(c.altitude!=null&&isFinite(c.altitude)&&c.altitude>=0)?Math.round(c.altitude):0;
+    }
+    L=baru; simpan(); isi();
+    if(!dekat) lengkapi(L.t,L.lat,L.lng);
+    if(manual) info('Lokasi diperbarui'+(L.nama?': '+L.nama:''));
+  }
+  function gagal(err,manual){
+    sedang=false; isi();
+    if(!manual)return;
+    info(err&&err.code===1?'Izin lokasi ditolak. Aktifkan lokasi untuk situs ini di pengaturan peramban.':'Lokasi belum ditemukan. Coba lagi.');
+  }
+  function minta(manual){
+    if(sedang)return;
+    if(!navigator.geolocation||(typeof isSecureContext!=='undefined'&&!isSecureContext)){
+      if(manual)info('Lokasi hanya bisa dipakai lewat https dan peramban yang mendukung.'); return;
+    }
+    sedang=true; if(manual)info('Mencari lokasi\u2026'); isi();
+    navigator.geolocation.getCurrentPosition(function(p){dapat(p,manual)},function(e){gagal(e,manual)},{enableHighAccuracy:false,timeout:12000,maximumAge:600000});
+  }
+  function otomatis(){
+    if(!navigator.geolocation)return;
+    if(L.sumber==='gps'&&Date.now()-L.t<30*MS)return;
+    function jalan(st){
+      if(st==='denied')return;
+      if(st==='prompt'){
+        var t=0; try{t=+localStorage.getItem(KTANYA)||0}catch(e){}
+        if(Date.now()-t<864e5)return;           /* jangan menanyakan izin berulang-ulang */
+        try{localStorage.setItem(KTANYA,String(Date.now()))}catch(e){}
+      }
+      minta(false);
+    }
+    if(navigator.permissions&&navigator.permissions.query) navigator.permissions.query({name:'geolocation'}).then(function(p){jalan(p.state)},function(){jalan('prompt')});
+    else jalan('prompt');
+  }
+
+  /* ---- tampilan ---- */
+  if(typeof window!=='undefined') window.__jadwalSholat={hitung:hitung,daftar:daftar,hari:hari};
   if(typeof document==='undefined') return;
+  function el(i){return document.getElementById(i)}
   function isi(){
     try{
-      var r=hitung(Date.now()), ids=[['js1n','js1w','kjs1',r.a],['js2n','js2w','kjs2',r.b]];
-      ids.forEach(function(x){
-        var n=document.getElementById(x[0]), w=document.getElementById(x[1]), k=document.getElementById(x[2]);
+      var r=hitung(Date.now(),L), kota=sedang?'Mencari lokasi\u2026':((L.nama||'Lokasi Anda')+(L.sumber==='bawaan'?' (bawaan)':''));
+      var data=[['js1n','js1w','js1k','kjs1',r?r.a:null,kota],['js2n','js2w','js2k','kjs2',r?r.b:null,'Metode LFNU']];
+      data.forEach(function(x){
+        var n=el(x[0]),w=el(x[1]),k=el(x[2]),box=el(x[3]);
         if(!n||!w)return;
-        n.textContent=x[3].n+':'; w.textContent=x[3].w;
-        if(k)k.setAttribute('aria-label',x[3].n+': '+x[3].w+' (wilayah Blitar)');
+        n.textContent=x[4]?x[4].n+':':'\u2014'; w.textContent=x[4]?x[4].w:'';
+        if(k)k.textContent=x[5];
+        if(box)box.setAttribute('aria-label',(x[4]?x[4].n+': '+x[4].w+'. ':'')+(x[2]==='js1k'?x[5]+'. ':'Metode LFNU. ')+'Ketuk untuk memperbarui lokasi.');
       });
     }catch(e){}
   }
-  isi(); setInterval(isi,20000);
-  document.addEventListener('visibilitychange',function(){if(!document.hidden)isi()});
-  window.addEventListener('pageshow',isi);
+  ['kjs1','kjs2'].forEach(function(id){
+    var k=el(id); if(!k)return;
+    k.addEventListener('click',function(){minta(true)});
+    k.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();minta(true)}});
+  });
+  isi(); otomatis(); setInterval(isi,20000);
+  document.addEventListener('visibilitychange',function(){if(!document.hidden){isi();otomatis()}});
+  window.addEventListener('pageshow',function(){isi();otomatis()});
 })();
 </script>
   <div id="hbar">
