@@ -150,6 +150,9 @@ html:not(#_) #kled.hbx::after{display:block !important;content:'' !important;pos
   text-shadow:0 0 2px #2dff6e,0 0 9px rgba(45,255,110,.75),0 0 18px rgba(45,255,110,.4)}
 #kled .nx b{font-size:clamp(15px,4.7vw,21px);line-height:1.2;letter-spacing:.01em;white-space:nowrap}
 #kled .nx span{font-size:clamp(15px,4.6vw,21px);line-height:1.3;margin-top:3px;letter-spacing:.04em}
+#kled .nx .nj{display:block;font-style:normal;font-size:clamp(13px,4vw,18px);line-height:1.15;margin-bottom:4px;letter-spacing:.04em;white-space:nowrap;color:#ff2a2a;text-shadow:0 0 2px #ff2a2a,0 0 9px rgba(255,42,42,.75),0 0 18px rgba(255,42,42,.4)}
+#kled .nx .nj u{text-decoration:none}
+#kled .nx .nj .kb{animation:lbk 1s steps(1) infinite}
 html:not(#_) #kled .lbell{position:absolute;top:4px;right:5px;width:24px;height:24px;font-size:12px}
 .lbell{position:relative;z-index:4;flex:none;width:30px;height:30px;border-radius:50%;border:1px solid #5a4210;background:#140d02;color:#ffb300;font-size:15px;line-height:1;padding:0;cursor:pointer;-webkit-tap-highlight-color:transparent}
 .lbell:active{filter:brightness(1.4)}
@@ -1397,7 +1400,7 @@ html[data-pita^="pita"]:not(#_):not(#_):not(#_) .row{padding:14px 14px 10px 14px
       <!-- papan LED jadwal sholat (gaya running text Arduino P10): 4 baris, banyak mode tampilan. Ketuk papan = perbarui lokasi; tombol lonceng = alarm -->
       <div class="hbx tx" id="kled" role="group" aria-label="Papan jadwal sholat">
         <div class="led" aria-hidden="true"><div class="ln"><span></span></div><div class="ln"><span></span></div><div class="ln"><span></span></div><div class="ln"><span></span></div><div class="qs"></div></div>
-        <div class="nx" aria-hidden="true"><b id="nxn">—</b><span id="nxt">--.--</span></div>
+        <div class="nx" aria-hidden="true"><i id="nxj" class="nj"><u id="njh">--</u><u class="kb">:</u><u id="njm">--</u></i><b id="nxn">—</b><span id="nxt">--.--</span></div>
         <button type="button" id="lbell" class="lbell" aria-label="Aktifkan notifikasi dan suara adzan">&#128277;</button>
       </div>
     </div>
@@ -1618,7 +1621,7 @@ html[data-pita^="pita"]:not(#_):not(#_):not(#_) .row{padding:14px 14px 10px 14px
     return ev.map(function(t){return t===t?hm(t):'--:--'});
   }
   function kota(){return (L.nama||'LOKASI ANDA')}
-  function kotakNext(n){var a=el('nxn'),b=el('nxt'); if(!a||!b)return; var x=n?n.n:'\u2014', y=n?hm(n.t).replace(':','.'):'--.--'; if(a.textContent!==x)a.textContent=x; if(b.textContent!==y)b.textContent=y}
+  function kotakNext(n){var a=el('nxn'),b=el('nxt'); if(!a||!b)return; var D=new Date(),jh=el('njh'),jm=el('njm'),H=p2(D.getHours()),M=p2(D.getMinutes()); if(jh&&jh.textContent!==H)jh.textContent=H; if(jm&&jm.textContent!==M)jm.textContent=M; var x=n?n.n:'\u2014', y=n?hm(n.t).replace(':','.'):'--.--'; if(a.textContent!==x)a.textContent=x; if(b.textContent!==y)b.textContent=y}
   var BLF=['JANUARI','FEBRUARI','MARET','APRIL','MEI','JUNI','JULI','AGUSTUS','SEPTEMBER','OKTOBER','NOVEMBER','DESEMBER'];
   function halamanAlarm(A,id){
     el('kled').classList.remove('qm');
