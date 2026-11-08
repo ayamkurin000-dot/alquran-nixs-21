@@ -129,6 +129,8 @@ html:not(#_) #kled.hbx::after{display:block !important;content:'' !important;pos
 #kled .qs .cdt{font-size:1.3em;line-height:1.2;white-space:nowrap}
 #kled .qs .cdw{font-size:3.4em;line-height:1.05;letter-spacing:.04em;white-space:nowrap;margin-top:.08em}
 #kled .qs .kb{animation:lbk 1s steps(1) infinite}
+#kled .qs .nm1{font-size:2.5em;line-height:1.1;letter-spacing:.04em;white-space:nowrap}
+#kled .qs .nm2{font-size:2.1em;line-height:1.15;letter-spacing:.04em;white-space:nowrap;margin-top:.05em}
 #kled .qs .az1{font-size:1em;line-height:1.1;white-space:nowrap}
 #kled .qs .az2{font-size:2.5em;line-height:1.02;letter-spacing:.04em;white-space:nowrap;animation:lbk .9s steps(1) infinite}
 #kled .qs .az3{font-size:.85em;line-height:1.15;white-space:nowrap}
@@ -1725,7 +1727,7 @@ html[data-gulung^="g"]:not(#_):not(#_):not(#_):not(#_) .row:not(.row .row){margi
   '2 Rokaat sebelum shubuh, 4 sebelum Dzuhur, 2 setelahnya, 2 setelah maghrib, 2 setelah Isya’ (12 rokaat), Allah membangunkannya rumah di Surga',
   '“Sholat yang paling utama setelah fardhu adalah sholat malam.” (HR. Muslim : 1163)',
   'Sholat malam memperkuat hubungan batin dengan Allah dan menambah kedekatan saat wafat'];
-  var pn=0, KQ='qk.led.q', qi=0, PL=['waktu','q','run','q'], pc=-1, cur=null, DURS={jadwal:12000,jam:13000,run:20000,waktu:31000};
+  var pn=0, KQ='qk.led.q', qi=0, PL=['waktu','next','q','run','q'], pc=-1, cur=null, DURS={jadwal:12000,jam:13000,run:20000,waktu:31000,next:10000};
   try{qi=(+localStorage.getItem(KQ)||0)%QT.length}catch(e){}
   function bungkus(t,w){var o=[],c='';t.split(' ').forEach(function(x){if(c&&(c+' '+x).length>w){o.push(c);c=x}else c=c?c+' '+x:x});if(c)o.push(c);return o}
   function hitungCol(){ /* berapa huruf muat dalam satu baris papan di layar ini */
@@ -1795,6 +1797,21 @@ html[data-gulung^="g"]:not(#_):not(#_):not(#_):not(#_) .row:not(.row .row){margi
     }
     v.classList.toggle('out',ph>=WDUR-650);
   }
+  /* ---- halaman "sholat berikutnya": nama besar + hitung mundur diawali tanda minus, 10 detik, sekali tiap putaran ---- */
+  var NFX=['zi','right','blur','flip','top','wipe','left','zo','bottom','fade'], nCy=0;
+  function halamanNext(bx,now,nxt){
+    var q=bx.querySelector('.qs'); if(!q)return;
+    if(!cur.b){
+      cur.b=1; nCy++;
+      q.innerHTML='<div class="nm1"></div><div class="nm2"></div>'; q.style.setProperty('--s',1);
+      q.children[0].style.setProperty('--c','#ff9a1f'); q.children[1].style.setProperty('--c','#ffe600');
+      q.className='qs'; void q.offsetWidth; q.className='qs fx-'+NFX[nCy%NFX.length];
+    }
+    var a=q.children[0], c=q.children[1], t='-'+hms(nxt.t-now);
+    if(a.textContent!==nxt.n)a.textContent=nxt.n; if(c.textContent!==t)c.textContent=t;
+    bx.classList.add('qm'); bx.classList.remove('xo');
+    q.classList.toggle('out',now-pgAt>=cur.dur-800);
+  }
   function halaman(now,nxt){
     var bx0=el('kled'); bx0.classList.remove('wm');
     if(nxt&&nxt.t-now>0&&nxt.t-now<=jendelaCD(nxt.n)*60000){hitungMundurBesar(bx0,nxt,now);return}
@@ -1802,12 +1819,14 @@ html[data-gulung^="g"]:not(#_):not(#_):not(#_):not(#_) .row:not(.row .row){margi
     var bx=el('kled'), EXIT=700;
     if(!cur)lanjut(now);
     else if(cur.t==='waktu'){ if(now-pgAt>=cur.dur)lanjut(now) }
+    else if(cur.t==='next'){ if(!nxt||now-pgAt>=cur.dur)lanjut(now) }
     else if(cur.t==='q'&&cur.mode==='s'){ if(now-pgAt>=cur.dur)lanjut(now) }
     else{
       if(!cur.xo&&now-pgAt>=cur.dur-EXIT){cur.xo=now; bx.classList.add('xo')}
       if(cur.xo&&now-cur.xo>=EXIT)lanjut(now);
     }
     if(cur.t==='waktu'){ halamanWaktu(bx,now,hariIni(now)); return }
+    if(cur.t==='next'){ if(nxt){halamanNext(bx,now,nxt);return} cur=null; return }
     var stat=cur.t==='q'&&cur.mode==='s'; bx.classList.toggle('qm',stat);
     if(stat){var qq=bx.querySelector('.qs'); if(qq)qq.classList.toggle('out',now-pgAt>=cur.dur-1000); return}
     var t=cur.t, d=new Date(now), cd=nxt?nxt.t-now:0, t5=hariIni(now), nn=nxt?nxt.n:'\u2014', id='p'+pn+t;
