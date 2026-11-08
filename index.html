@@ -139,9 +139,12 @@ html:not(#_) #kled.hbx::after{display:block !important;content:'' !important;pos
 #kled .qs .sn1{font-size:1.2em;line-height:1.15}
 #kled .qs .sn2{font-size:2.3em;line-height:1.1;margin-top:.04em}
 #kled .qs .sn3{font-size:1.3em;line-height:1.2;margin-top:.06em}
+@keyframes snc{0%{color:#ffe600;opacity:1}18%{opacity:0}25%{color:#19e8ff;opacity:1}43%{opacity:0}50%{color:#ff5fd0;opacity:1}68%{opacity:0}75%{color:#2dff6e;opacity:1}93%{opacity:0}100%{color:#ffe600;opacity:1}}
+#kled .qs .sn2.cc{animation:snc 3.2s steps(1) infinite}
+#kled .qs .nm2 .cl{color:#ff5fd0}
 #kled .qs .nt1{font-size:2.4em;line-height:1.1;letter-spacing:.04em;white-space:nowrap}
 #kled .qs .nt2{font-size:1.1em;line-height:1.2;white-space:nowrap;margin-top:.15em}
-@media (prefers-reduced-motion:reduce){#kled .qs .az2,#kled .qs .az1.bl{animation:none!important}}
+@media (prefers-reduced-motion:reduce){#kled .qs .az2,#kled .qs .az1.bl,#kled .qs .sn2.cc{animation:none!important}}
 #kled .qs.fx-fade{animation:qfi 1s ease-out both}#kled .qs.fx-fade.out{animation:qfo .8s ease-in both}
 #kled .qs.fx-zi{animation:qzi .9s cubic-bezier(.2,1.3,.4,1) both}#kled .qs.fx-zi.out{animation:qzio .7s ease-in both}
 #kled .qs.fx-zo{animation:qzo .9s cubic-bezier(.2,.9,.3,1) both}#kled .qs.fx-zo.out{animation:qzoo .7s ease-in both}
@@ -1863,7 +1866,7 @@ html[data-gulung^="g"]:not(#_):not(#_):not(#_):not(#_) .row:not(.row .row){margi
     bx.classList.add('qm'); bx.classList.remove('xo');
     if(!cur.b){
       cur.b=1; nCy++;
-      q.innerHTML='<div class="sn1">SELANJUTNYA</div><div class="sn2"></div><div class="sn3"></div>'; q.style.setProperty('--s',1);
+      q.innerHTML='<div class="sn1">SELANJUTNYA</div><div class="sn2 cc"></div><div class="sn3"></div>'; q.style.setProperty('--s',1);
       q.children[0].style.setProperty('--c','#ff9a1f'); q.children[1].style.setProperty('--c','#ffe600'); q.children[2].style.setProperty('--c','#2dff6e');
       q.className='qs'; void q.offsetWidth; q.className='qs fx-'+NFX[nCy%NFX.length];
       cur.t1=cur.t2='';
@@ -1882,7 +1885,7 @@ html[data-gulung^="g"]:not(#_):not(#_):not(#_):not(#_) .row:not(.row .row){margi
     bx.classList.add('qm'); bx.classList.remove('xo');
     if(!cur.b){
       cur.b=1; nCy++;
-      q.innerHTML='<div class="nm1"></div><div class="nm2"><span class="mh"></span><span class="kb">:</span><span class="mm"></span><span class="kb">:</span><span class="ms"></span></div>'; q.style.setProperty('--s',1);
+      q.innerHTML='<div class="nm1"></div><div class="nm2"><span class="mh"></span><span class="cl">:</span><span class="mm"></span><span class="cl">:</span><span class="ms"></span></div>'; q.style.setProperty('--s',1);
       q.children[0].style.setProperty('--c','#ff9a1f'); q.children[1].style.setProperty('--c','#ffe600');
       q.className='qs'; void q.offsetWidth; q.className='qs fx-'+NFX[nCy%NFX.length];
       cur.t1='';
