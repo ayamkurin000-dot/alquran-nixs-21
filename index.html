@@ -1794,6 +1794,24 @@ html[data-gulung^="g"]:not(#_):not(#_):not(#_):not(#_) .row:not(.row .row){margi
   window.addEventListener('pageshow',function(){isi();otomatis()});
 })();
 </script>
+<script>
+/* Layar HP tidak meredup/mati selama aplikasi tampil di layar (Screen Wake Lock API, perlu HTTPS) */
+(function(){
+  var kunci=null, mau=true;
+  function minta(){
+    if(!mau||document.hidden||!navigator.wakeLock||kunci)return;
+    navigator.wakeLock.request('screen').then(function(l){
+      kunci=l; l.addEventListener('release',function(){kunci=null});
+    }).catch(function(){kunci=null});
+  }
+  document.addEventListener('visibilitychange',function(){if(!document.hidden)minta()});
+  window.addEventListener('pageshow',minta);
+  window.addEventListener('focus',minta);
+  ['pointerdown','keydown','touchstart'].forEach(function(n){document.addEventListener(n,minta,{passive:true})});
+  setInterval(minta,15000); /* coba lagi bila sistem sempat melepas (hemat daya, dll.) */
+  minta();
+})();
+</script>
   <div id="hbar">
     <input id="q" type="search" inputmode="search" enterkeyhint="search" autocomplete="off" placeholder="Cari surat, ayat, atau 2:255" aria-label="Pencarian">
     <div class="tabs" role="tablist">
