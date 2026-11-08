@@ -1760,6 +1760,9 @@ html[data-gulung^="g"]:not(#_):not(#_):not(#_):not(#_) .row:not(.row .row){margi
   'Sholat malam memperkuat hubungan batin dengan Allah dan menambah kedekatan saat wafat'];
   var pn=0, KQ='qk.led.q', qi=0, PL=['waktu','next','mundur','q','run','q'], pc=-1, cur=null, DURS={jadwal:12000,jam:13000,run:20000,waktu:31000,next:30000,mundur:30000};
   try{qi=(+localStorage.getItem(KQ)||0)%QT.length}catch(e){}
+  function balikQuote(){ /* kalimat mutiara yang sedang tampil lalu terpotong hitung mundur / Masuk Waktu: tampil ulang di giliran berikutnya, tidak ada yang terlewat */
+    if(cur&&cur.t==='q'&&cur.i!==undefined){qi=cur.i; try{localStorage.setItem(KQ,String(qi))}catch(e){}}
+  }
   function bungkus(t,w){var o=[],c='';t.split(' ').forEach(function(x){if(c&&(c+' '+x).length>w){o.push(c);c=x}else c=c?c+' '+x:x});if(c)o.push(c);return o}
   function hitungCol(){ /* berapa huruf muat dalam satu baris papan di layar ini */
     try{var led=document.querySelector('#kled .led'), fs=parseFloat(getComputedStyle(led.querySelector('.ln')).fontSize)||13, w=led.clientWidth;
@@ -1900,7 +1903,7 @@ html[data-gulung^="g"]:not(#_):not(#_):not(#_):not(#_) .row:not(.row .row){margi
   function halaman(now,nxt){
     var bx0=el('kled'); bx0.classList.remove('wm');
     if(nxt&&nxt.t-now>0&&nxt.t-now<=jendelaCD(nxt.n)*60000){hitungMundurBesar(bx0,nxt,now);return}
-    if(cdOn||azOn){cdOn=false; azOn=false; cur=null; var q0=bx0.querySelector('.qs'); if(q0){q0.innerHTML='';q0.className='qs';q0.removeAttribute('data-az')} bx0.classList.remove('qm','xo')}
+    if(cdOn||azOn){cdOn=false; azOn=false; balikQuote(); cur=null; var q0=bx0.querySelector('.qs'); if(q0){q0.innerHTML='';q0.className='qs';q0.removeAttribute('data-az')} bx0.classList.remove('qm','xo')}
     var bx=el('kled'), EXIT=700;
     if(!cur)lanjut(now);
     else if(cur.t==='waktu'){ if(now-pgAt>=cur.dur)lanjut(now) }
@@ -1956,7 +1959,7 @@ html[data-gulung^="g"]:not(#_):not(#_):not(#_):not(#_) .row:not(.row .row){margi
       for(i=0;i<ev.length;i++) if(ev[i].t>now){nxt=ev[i];break}
       for(i=0;i<ev.length;i++){ var e=ev[i]; if(e.t<=now&&now-e.t<120000&&!sudah(e)){tandai(e);bunyi(e);break} }
       var A=alarm&&now-alarm.s<MW?alarm:null;   /* MASUK WAKTU tampil tepat 30 detik, terlepas dari lama suara */
-      if(alarm&&!A){alarm=null;pgAt=now;cur=null;pc=-1}   /* lalu kembali ke awal siklus */
+      if(alarm&&!A){alarm=null;pgAt=now;balikQuote();cur=null;pc=-1}   /* lalu kembali ke awal siklus */
       var box=el('kled'); box.classList.toggle('al',!!A); if(A){box.classList.remove('xo','wm');wIdx=-1}
       if(A)halamanAlarm(A,'a'+A.n+A.t); else halaman(now,nxt);
       kotakNext(nxt);
