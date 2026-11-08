@@ -107,9 +107,18 @@ html:not(#_) #kled.hbx::after{display:block !important;content:'' !important;pos
 @keyframes lbk{50%{opacity:0}}
 @keyframes lir{from{transform:translateX(120%)}}
 @keyframes liu{from{transform:translateY(110%)}}
+#kled .ln .wp{animation:lwp .9s steps(14) both;animation-delay:var(--dl,0s)}
+#kled .ln .ty{animation:lty var(--ty,1.6s) steps(var(--n,20)) both;animation-delay:var(--dl,0s)}
+#kled .ln .id{animation:lid .5s steps(6) both;animation-delay:var(--dl,0s)}
+@keyframes lwp{from{clip-path:inset(0 50% 0 50%)}to{clip-path:inset(0 0 0 0)}}
+@keyframes lty{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
+@keyframes lid{from{transform:translateY(-110%)}}
+#kled .led::before{content:'';position:absolute;top:0;bottom:0;left:-25%;width:20%;z-index:2;pointer-events:none;background:linear-gradient(90deg,transparent,rgba(255,210,90,.13),transparent);animation:lsw 6s linear infinite}
+#kled.al .led::before{background:linear-gradient(90deg,transparent,rgba(255,90,70,.18),transparent);animation-duration:2s}
+@keyframes lsw{to{left:115%}}
 .lbell{position:relative;z-index:4;flex:none;width:30px;height:30px;border-radius:50%;border:1px solid #5a4210;background:#140d02;color:#ffb300;font-size:15px;line-height:1;padding:0;cursor:pointer;-webkit-tap-highlight-color:transparent}
 .lbell:active{filter:brightness(1.4)}
-@media (prefers-reduced-motion:reduce){#kled .ln .mq,#kled .ln .mr{animation:none;padding-left:0}#kled .ln .bk,#kled .ln .fb,#kled .ln .ir,#kled .ln .iu{animation:none}}
+@media (prefers-reduced-motion:reduce){#kled .led::before{display:none}#kled .ln .wp,#kled .ln .ty,#kled .ln .id{animation:none}#kled .ln .mq,#kled .ln .mr{animation:none;padding-left:0}#kled .ln .bk,#kled .ln .fb,#kled .ln .ir,#kled .ln .iu{animation:none}}
 .hjs{position:relative;z-index:1;line-height:1.3;text-wrap:balance}
 .hjs b{font-weight:800}
 .hjk{display:block;margin-top:2px;font-size:.78em;font-weight:600;letter-spacing:.03em;opacity:.85;line-height:1.2}
@@ -1509,7 +1518,7 @@ html[data-pita^="pita"]:not(#_):not(#_):not(#_) .row{padding:14px 14px 10px 14px
   var TAKBIR_AR='\u0627\u0644\u0644\u0651\u0670\u0647\u064F \u0623\u064E\u0643\u0652\u0628\u064E\u0631\u064F \u060C \u0627\u0644\u0644\u0651\u0670\u0647\u064F \u0623\u064E\u0643\u0652\u0628\u064E\u0631\u064F \u060C \u0627\u0644\u0644\u0651\u0670\u0647\u064F \u0623\u064E\u0643\u0652\u0628\u064E\u0631\u064F \u060C \u0627\u0644\u0644\u0651\u0670\u0647\u064F \u0623\u064E\u0643\u0652\u0628\u064E\u0631\u064F';
   var on=false; try{on=localStorage.getItem(KA)==='1'}catch(e){}
   var au=new Audio(), alarm=null, playing=false, unlocked=false, tk=0, pg=0, pgAt=Date.now(), LN=null, lpT=0, lpF=false;
-  var DUR=[9,8,12,7];
+  
 
   function setBell(){var b=el('lbell'); if(!b)return; b.textContent=playing?'\u23F9':(on?'\uD83D\uDD14':'\uD83D\uDD15');
     b.setAttribute('aria-label',playing?'Hentikan suara adzan':(on?'Alarm adzan aktif. Ketuk untuk menonaktifkan. Tahan untuk uji suara.':'Aktifkan notifikasi dan suara adzan'))}
@@ -1558,8 +1567,8 @@ html[data-pita^="pita"]:not(#_):not(#_):not(#_) .row{padding:14px 14px 10px 14px
   /* ---- papan LED ---- */
   function setL(i,tx,cls,dl,pid){
     var s=LN[i]; if(!s)return; var k=pid+'|'+(cls||'')+'|'+(dl||0);
-    if(s.getAttribute('data-k')!==k){ s.setAttribute('data-k',k); s.className=''; void s.offsetWidth; s.className=cls||''; s.style.setProperty('--dl',(dl||0)+'s'); s.removeAttribute('data-t') }
-    if(s.textContent!==tx){ s.textContent=tx; if(cls==='mq'||cls==='mr')s.style.setProperty('--d',Math.max(9,Math.round(tx.length*.27+6))+'s') }
+    if(s.getAttribute('data-k')!==k){ s.setAttribute('data-k',k); s.className=''; void s.offsetWidth; s.className=cls||''; s.style.setProperty('--dl',(dl||0)+'s') }
+    if(s.textContent!==tx){ s.textContent=tx; if(cls==='mq'||cls==='mr')s.style.setProperty('--d',Math.max(9,Math.round(tx.length*.27+6))+'s'); if(cls==='ty'){s.style.setProperty('--n',Math.max(1,tx.length));s.style.setProperty('--ty',Math.min(2.2,tx.length*.08)+'s')} }
   }
   function hariIni(now){
     var w=new Date(now+L.lng/15*3600000), ev=hari(L.lat,L.lng,L.alt||0,w.getUTCFullYear(),w.getUTCMonth(),w.getUTCDate());
@@ -1573,29 +1582,58 @@ html[data-pita^="pita"]:not(#_):not(#_):not(#_) .row{padding:14px 14px 10px 14px
     setL(2,A.n+'  '+hm(A.t),'bk',0,id);
     setL(3,'SEGERA TUNAIKAN SHOLAT \u2022 '+kota(),'mq',0,id);
   }
+  /* ---- kalimat hikmah: disisipkan di sela jadwal, berurutan satu per satu (urutan tersimpan) ---- */
+  var QT=['NKRI-NU Nahdlotul Ulama’','Ahlus sunnah wal jama’ah','Sholatlah sebelum engkau disholatkan','Sebaik-baik manusia adalah yang banyak manfaatnya bagi yang lain',
+  'Melakukan sholat berjama’ah Isya dan Shubuh seakan-akan sholat semalam suntuk',
+  'Wirid yang ringan diucapkan di lidah tapi berat timbangan di akhirat : Subhanallah wa bihamdih, subhanallahil ’adziim',
+  'Amal yang pasti diterima meskipun tidak ikhlas adalah “Sholawat”',
+  'Wirid yang disukai Allah SWT : Subhanallah, Alhamdulillah, Laa ilaaha illallah, Allahu Akbar',
+  'Siapa yang mengucapkan Subhanallah 33X, Alhamdulillah 33X dan Allahu Akbar 33X setelah sholat, maka dosanya akan diampuni meskipun sebanyak buih di lautan',
+  'Bukanlah Kesabaran jika masih mempunyai batas & Bukanlah keikhlasan jika masih merasakan sakit',
+  'Jadikanlah Sabar & Sholat sebagai penolongmu',
+  'Sungguh menakjubkan urusan seorang mukmin, jika mendapat kesenangan, ia bersyukur, maka itu baik baginya. Jika ditimpa musibah, ia bersabar, maka itupun baik baginya',
+  'SABAR kemudian SYUKUR lalu IKHLAS','Sesungguhnya ALLAH bersama orang-orang yang sabar (Al Anfal : 46)',
+  'Sholat Dhuha adalah seperti bersedekah untuk setiap persendian (360)',
+  '2 Rokaat sebelum shubuh, 4 sebelum Dzuhur, 2 setelahnya, 2 setelah maghrib, 2 setelah Isya’ (12 rokaat), Allah membangunkannya rumah di Surga',
+  '“Sholat yang paling utama setelah fardhu adalah sholat malam.” (HR. Muslim : 1163)',
+  'Sholat malam memperkuat hubungan batin dengan Allah dan menambah kedekatan saat wafat'];
+  var KQ='qk.led.q', qi=0, SCR=3800, COL=24, PL=['jam','q','jadwal','q','run','q','next','q'], pc=-1, cur=null;
+  try{qi=(+localStorage.getItem(KQ)||0)%QT.length}catch(e){}
+  function bungkus(t,w){var o=[],c='';t.split(' ').forEach(function(x){if(c&&(c+' '+x).length>w){o.push(c);c=x}else c=c?c+' '+x:x});if(c)o.push(c);return o}
+  function lanjut(now){
+    pc=(pc+1)%PL.length; var t=PL[pc]; cur={t:t,dur:{jam:9000,jadwal:8000,run:12000,next:7000}[t]||0};
+    if(t==='q'){ cur.i=qi; cur.ch=bungkus(QT[qi],COL); cur.sc=Math.ceil(cur.ch.length/3); cur.dur=Math.max(5000,cur.sc*SCR);
+      qi=(qi+1)%QT.length; try{localStorage.setItem(KQ,String(qi))}catch(e){} }
+    pgAt=now;
+  }
   function halaman(now,nxt){
-    if(now-pgAt>=DUR[pg]*1000){pg=(pg+1)%DUR.length;pgAt=now}
-    var d=new Date(now), id='p'+pg, cd=nxt?nxt.t-now:0, t5=hariIni(now), nn=nxt?nxt.n:'\u2014';
-    if(pg===0){
+    if(!cur||now-pgAt>=cur.dur)lanjut(now);
+    var t=cur.t, d=new Date(now), cd=nxt?nxt.t-now:0, t5=hariIni(now), nn=nxt?nxt.n:'\u2014', id='p'+pc+t;
+    if(t==='jam'){
+      var cl=d.getSeconds()%2?' ':':';
       setL(0,kota()+' \u2022 METODE LFNU \u2022 '+(on?'ALARM ADZAN AKTIF':'KETUK LONCENG UNTUK ALARM'),'mq',0,id);
-      setL(1,p2(d.getHours())+(d.getSeconds()%2?' ':':')+p2(d.getMinutes())+(d.getSeconds()%2?' ':':')+p2(d.getSeconds()),'',0,id);
-      setL(2,HR[d.getDay()]+', '+d.getDate()+' '+BL[d.getMonth()]+' '+d.getFullYear(),'iu',0,id);
+      setL(1,p2(d.getHours())+cl+p2(d.getMinutes())+cl+p2(d.getSeconds()),'',0,id);
+      setL(2,HR[d.getDay()]+', '+d.getDate()+' '+BL[d.getMonth()]+' '+d.getFullYear(),'id',0,id);
       setL(3,nn+' -'+hms(cd),cd<600000?'bk':'',0,id);
-    }else if(pg===1){
-      setL(0,'JADWAL SHOLAT HARI INI','bk',0,id);
-      setL(1,'SUBUH '+t5[0]+'  DZUHUR '+t5[1],'ir',0,id);
-      setL(2,'ASHAR '+t5[2]+'  MAGHRIB '+t5[3],'ir',.5,id);
-      setL(3,NAMA[4]+' '+t5[4],'ir',1,id);
-    }else if(pg===2){
+    }else if(t==='jadwal'){
+      setL(0,'JADWAL SHOLAT HARI INI','wp',0,id);
+      setL(1,'SUBUH '+t5[0]+'  DZUHUR '+t5[1],'ir',.3,id);
+      setL(2,'ASHAR '+t5[2]+'  MAGHRIB '+t5[3],'ir',.8,id);
+      setL(3,NAMA[4]+' '+t5[4],'ir',1.3,id);
+    }else if(t==='run'){
       setL(0,'SUBUH '+t5[0]+' \u2605 DZUHUR '+t5[1]+' \u2605 ASHAR '+t5[2]+' \u2605 MAGHRIB '+t5[3]+' \u2605 '+NAMA[4]+' '+t5[4],'mq',0,id);
-      setL(1,'JADIKANLAH SABAR & SHOLAT SEBAGAI PENOLONGMU \u2022 SHOLATLAH SEBELUM ENGKAU DISHOLATKAN','mr',0,id);
+      setL(1,'NKRI-NU \u2022 AHLUS SUNNAH WAL JAMA\u2019AH \u2022 SHOLATLAH SEBELUM ENGKAU DISHOLATKAN','mr',0,id);
       setL(2,'SELANJUTNYA '+nn+' '+(nxt?hm(nxt.t)+' \u2022 '+durasi(Math.max(1,Math.ceil(cd/MS)))+' LAGI':''),'mq',0,id);
       setL(3,p2(d.getHours())+':'+p2(d.getMinutes()),'',0,id);
-    }else{
-      setL(0,'WAKTU BERIKUTNYA','',0,id);
+    }else if(t==='next'){
+      setL(0,'WAKTU BERIKUTNYA','wp',0,id);
       setL(1,nn,'bk',0,id);
-      setL(2,nxt?'PUKUL '+hm(nxt.t):'','iu',0,id);
+      setL(2,nxt?'PUKUL '+hm(nxt.t):'','ty',.2,id);
       setL(3,'-'+hms(cd),cd<600000?'bk':'',0,id);
+    }else{ /* kalimat hikmah: dipecah per layar (3 baris), diketik per baris */
+      var k=Math.min(cur.sc-1,Math.floor((now-pgAt)/SCR)), idq=id+'s'+k, ch=cur.ch;
+      setL(0,'MUTIARA HIKMAH '+(cur.i+1)+'/'+QT.length,k?'':'wp',0,idq);
+      for(var j=0;j<3;j++){var tx=ch[k*3+j]||''; setL(j+1,tx,tx?'ty':'',j*.55,idq)}
     }
   }
   function tick(){
