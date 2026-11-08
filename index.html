@@ -195,6 +195,11 @@ html:not(#_) #kled .bw .lbell{position:absolute;left:50%;bottom:-2px;top:auto;ri
 @media (prefers-reduced-motion:reduce){#kled .wk .wv,#kled .wk .wrb{animation:none!important;transition:none!important}}
 .lbell{position:relative;z-index:4;flex:none;width:30px;height:30px;border-radius:50%;border:1px solid #5a4210;background:#140d02;color:#ffb300;font-size:15px;line-height:1;padding:0;cursor:pointer;-webkit-tap-highlight-color:transparent}
 .lbell:active{filter:brightness(1.4)}
+.lscr{position:relative;z-index:4;flex:none;width:30px;height:30px;border-radius:50%;border:1px solid #5a4210;background:#140d02;color:#7a6a3a;font-size:15px;line-height:1;padding:0;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.lscr:active{filter:brightness(1.4)}
+.lscr[aria-pressed="true"]{background:#ffb300;color:#140d02;border-color:#ffd666;box-shadow:0 0 8px rgba(255,179,0,.7)}
+html:not(#_) #kled .bw .lbell{left:calc(50% - 11px)}
+html:not(#_) #kled .bw .lscr{position:absolute;left:calc(50% + 11px);bottom:-2px;top:auto;right:auto;transform:translateX(-50%);width:18px;height:18px;font-size:11px;margin:0;display:flex;align-items:center;justify-content:center}
 @media (prefers-reduced-motion:reduce){#kled .led::before{display:none}#kled .ln .wp,#kled .ln .ty,#kled .ln .id{animation:none}#kled .ln .mq,#kled .ln .mr{animation:none;padding-left:0}#kled .ln.rb{animation:none}#kled .ln .bk,#kled .ln .fb,#kled .ln .ir,#kled .ln .iu{animation:none}}
 .hjs{position:relative;z-index:1;line-height:1.3;text-wrap:balance}
 .hjs b{font-weight:800}
@@ -1456,7 +1461,7 @@ html[data-gulung^="g"]:not(#_):not(#_):not(#_):not(#_) .row:not(.row .row){margi
       <!-- papan LED jadwal sholat (gaya running text Arduino P10): 4 baris, banyak mode tampilan. Ketuk papan = perbarui lokasi; tombol lonceng = alarm -->
       <div class="hbx tx" id="kled" role="group" aria-label="Papan jadwal sholat">
         <div class="led" aria-hidden="true"><div class="ln"><span></span></div><div class="ln"><span></span></div><div class="ln"><span></span></div><div class="ln"><span></span></div><div class="qs"></div><div class="wk"><div class="wrb" id="wrb"></div><div class="wr" id="wr"></div><div class="wb"><div class="wv" id="wv"><div class="wn"></div><div class="wt"></div></div></div></div></div>
-        <div class="nx"><div class="bw"><button type="button" id="lbell" class="lbell" aria-label="Aktifkan notifikasi dan suara adzan">&#128277;</button></div><i id="nxj" class="nj" aria-hidden="true"><u id="njh">--</u><u class="kb">:</u><u id="njm">--</u></i><b id="nxn" aria-hidden="true">—</b><span id="nxt" aria-hidden="true">--.--</span></div>
+        <div class="nx"><div class="bw"><button type="button" id="lbell" class="lbell" aria-label="Aktifkan notifikasi dan suara adzan">&#128277;</button><button type="button" id="lscr" class="lscr" aria-pressed="false" aria-label="Jaga layar tetap menyala">&#9728;</button></div><i id="nxj" class="nj" aria-hidden="true"><u id="njh">--</u><u class="kb">:</u><u id="njm">--</u></i><b id="nxn" aria-hidden="true">—</b><span id="nxt" aria-hidden="true">--.--</span></div>
       </div>
     </div>
   </header>
@@ -1903,7 +1908,7 @@ html[data-gulung^="g"]:not(#_):not(#_):not(#_):not(#_) .row:not(.row .row){margi
     var box=el('kled'), b=el('lbell'), izinMinta=false; if(!box||!b)return;
     var bxT=0, bxF=false;
     box.addEventListener('click',function(){ if(bxF){bxF=false;return} minta(true)});
-    box.addEventListener('pointerdown',function(){bxF=false;clearTimeout(bxT);bxT=setTimeout(function(){
+    box.addEventListener('pointerdown',function(ev){if(ev&&ev.target&&ev.target.closest&&ev.target.closest('#lscr'))return;bxF=false;clearTimeout(bxT);bxT=setTimeout(function(){
       bxF=true; var cur0=L.kec||''; var v=null; try{v=window.prompt('Nama kecamatan (kosongkan untuk deteksi otomatis):',cur0)}catch(x){}
       if(v===null)return; v=v.replace(/^\s*kec(amatan|\.)?\s+/i,'').trim();
       if(v){L.kec=v;L.kecM=1;L.nama=susunNama(L.kec,L.kota,L.kab)||L.nama;simpan();isi();info('Kecamatan: '+v)}
@@ -1937,13 +1942,14 @@ html[data-gulung^="g"]:not(#_):not(#_):not(#_):not(#_) .row:not(.row .row){margi
    - Membaca Al-Qur'an (#reader) atau doa: layar tetap menyala selama tampil, seperti sebelumnya.
    - Audio murottal yang sedang diputar punya kunci sendiri (lihat wlSync di bawah). */
 (function(){
-  var kunci=null, meminta=false, BATAS=90000, mulai=0;
+  var kunci=null, meminta=false, BATAS=90000, mulai=0, KL='qk.layar', terus=false;
+  try{terus=localStorage.getItem(KL)==='1'}catch(x){}   /* sakelar: layar selalu menyala di beranda (agar adzan pasti berbunyi) */
   function ada(i){return document.getElementById(i)}
   function membaca(){var r=ada('reader'),d=ada('doa');return !!((r&&!r.hidden)||(d&&!d.hidden))}
   function lepas(){if(kunci){var l=kunci;kunci=null;try{l.release().catch(function(){})}catch(x){}}}
   function boleh(){
     if(document.hidden){mulai=0;return false}
-    if(membaca()){mulai=0;return true}          /* baca Al-Qur'an / doa: tanpa batas */
+    if(terus||membaca()){mulai=0;return true}   /* sakelar aktif, atau baca Al-Qur'an / doa: tanpa batas */
     if(!mulai)mulai=Date.now();                 /* beranda jadwal sholat: hitung 90 detik */
     return Date.now()-mulai<BATAS;
   }
@@ -1962,6 +1968,25 @@ html[data-gulung^="g"]:not(#_):not(#_):not(#_):not(#_) .row:not(.row .row){margi
   ['pointerdown','keydown','touchstart'].forEach(function(n){document.addEventListener(n,minta,{passive:true})});
   setInterval(function(){if(!boleh())lepas()},1000);   /* lepas tepat saat 90 detik habis */
   setInterval(minta,15000);                             /* coba lagi bila sistem sempat melepas (hemat daya, dll.) */
+  function tombol(){
+    var b=ada('lscr'); if(!b)return;
+    b.setAttribute('aria-pressed',terus?'true':'false');
+    b.setAttribute('aria-label',terus?'Layar selalu menyala: aktif. Ketuk untuk mematikan':'Layar selalu menyala: mati (meredup setelah 90 detik). Ketuk agar adzan pasti berbunyi');
+    b.title=terus?'Layar selalu menyala':'Layar meredup setelah 90 detik';
+  }
+  var tT;
+  function kabar(m){var t=ada('toast'); if(!t)return; t.textContent=m; t.classList.add('on'); clearTimeout(tT); tT=setTimeout(function(){t.classList.remove('on')},3200)}
+  (function(){
+    var b=ada('lscr'); if(!b)return;
+    b.addEventListener('click',function(e){
+      e.stopPropagation();
+      terus=!terus; try{localStorage.setItem(KL,terus?'1':'0')}catch(x){}
+      mulai=0; tombol();
+      kabar(terus?'Layar selalu menyala: AKTIF (adzan & takbir pasti berbunyi selama aplikasi terbuka)':'Layar selalu menyala: mati. Layar meredup setelah 90 detik');
+      minta();
+    });
+  })();
+  tombol();
   minta();
 })();
 </script>
