@@ -1932,20 +1932,36 @@ html[data-gulung^="g"]:not(#_):not(#_):not(#_):not(#_) .row:not(.row .row){margi
 })();
 </script>
 <script>
-/* Layar HP tidak meredup/mati selama aplikasi tampil di layar (Screen Wake Lock API, perlu HTTPS) */
+/* Layar HP (Screen Wake Lock API, perlu HTTPS):
+   - Tampilan jadwal sholat (beranda): layar dijaga tetap menyala hanya 90 detik sejak beranda tampil, lalu dilepas supaya layar meredup normal.
+   - Membaca Al-Qur'an (#reader) atau doa: layar tetap menyala selama tampil, seperti sebelumnya.
+   - Audio murottal yang sedang diputar punya kunci sendiri (lihat wlSync di bawah). */
 (function(){
-  var kunci=null, mau=true;
-  function minta(){
-    if(!mau||document.hidden||!navigator.wakeLock||kunci)return;
-    navigator.wakeLock.request('screen').then(function(l){
-      kunci=l; l.addEventListener('release',function(){kunci=null});
-    }).catch(function(){kunci=null});
+  var kunci=null, meminta=false, BATAS=90000, mulai=0;
+  function ada(i){return document.getElementById(i)}
+  function membaca(){var r=ada('reader'),d=ada('doa');return !!((r&&!r.hidden)||(d&&!d.hidden))}
+  function lepas(){if(kunci){var l=kunci;kunci=null;try{l.release().catch(function(){})}catch(x){}}}
+  function boleh(){
+    if(document.hidden){mulai=0;return false}
+    if(membaca()){mulai=0;return true}          /* baca Al-Qur'an / doa: tanpa batas */
+    if(!mulai)mulai=Date.now();                 /* beranda jadwal sholat: hitung 90 detik */
+    return Date.now()-mulai<BATAS;
   }
-  document.addEventListener('visibilitychange',function(){if(!document.hidden)minta()});
+  function minta(){
+    if(!boleh()){lepas();return}
+    if(!navigator.wakeLock||kunci||meminta)return;
+    meminta=true;
+    navigator.wakeLock.request('screen').then(function(l){
+      meminta=false; kunci=l; l.addEventListener('release',function(){if(kunci===l)kunci=null});
+      if(!boleh())lepas();
+    }).catch(function(){meminta=false;kunci=null});
+  }
+  document.addEventListener('visibilitychange',function(){if(document.hidden){mulai=0;lepas()}else minta()});
   window.addEventListener('pageshow',minta);
   window.addEventListener('focus',minta);
   ['pointerdown','keydown','touchstart'].forEach(function(n){document.addEventListener(n,minta,{passive:true})});
-  setInterval(minta,15000); /* coba lagi bila sistem sempat melepas (hemat daya, dll.) */
+  setInterval(function(){if(!boleh())lepas()},1000);   /* lepas tepat saat 90 detik habis */
+  setInterval(minta,15000);                             /* coba lagi bila sistem sempat melepas (hemat daya, dll.) */
   minta();
 })();
 </script>
