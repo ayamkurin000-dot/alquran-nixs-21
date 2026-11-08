@@ -1578,20 +1578,42 @@ html[data-gulung^="g"]:not(#_):not(#_):not(#_):not(#_) .row:not(.row .row){margi
   }
   function gagal(err,manual){
     sedang=false; isi();
+    if(L.sumber!=='gps')ipLokasi(manual);
     if(!manual)return;
     info(err&&err.code===1?'Izin lokasi ditolak. Aktifkan lokasi untuk situs ini di pengaturan peramban.':'Lokasi belum ditemukan. Coba lagi.');
   }
   function minta(manual){
     if(sedang)return;
     if(!navigator.geolocation||(typeof isSecureContext!=='undefined'&&!isSecureContext)){
+      if(L.sumber!=='gps')ipLokasi(manual);
       if(manual)info('Lokasi hanya bisa dipakai lewat https dan peramban yang mendukung.'); return;
     }
     sedang=true; if(manual)info('Mencari lokasi\u2026'); isi();
     navigator.geolocation.getCurrentPosition(function(p){dapat(p,manual)},function(e){gagal(e,manual)},{enableHighAccuracy:false,timeout:12000,maximumAge:600000});
   }
+  /* ---- cadangan: lokasi perkiraan dari alamat IP (tanpa izin), dipakai selama GPS belum ada / ditolak ---- */
+  var ipBusy=false;
+  function ipLokasi(manual){
+    if(ipBusy||L.sumber==='gps')return;
+    if(!manual&&L.sumber==='ip'&&Date.now()-L.t<6*3600000)return;
+    ipBusy=true;
+    function ok(la,lo,kota,prov){
+      la=+la; lo=+lo; if(!isFinite(la)||!isFinite(lo)||Math.abs(la)>90||Math.abs(lo)>180)throw 0;
+      if(L.sumber==='gps')return true;                      /* GPS menang bila sudah ada */
+      var nm=[kota,prov].filter(function(x){return x}).join(', ')||terdekat({lat:la,lng:lo})||'';
+      L={lat:+la.toFixed(4),lng:+lo.toFixed(4),alt:0,nama:nm,sumber:'ip',t:Date.now(),v:2}; simpan(); isi();
+      ambil('https://api.open-meteo.com/v1/elevation?latitude='+L.lat+'&longitude='+L.lng,7000)
+        .then(function(j){var e=j&&j.elevation&&j.elevation[0]; if(typeof e==='number'&&isFinite(e)&&L.sumber==='ip'){L.alt=Math.max(0,Math.round(e));simpan();isi()}}).catch(function(){});
+      if(manual)info('Lokasi perkiraan dari jaringan'+(nm?': '+nm:'')); return true;
+    }
+    ambil('https://ipwho.is/',7000).then(function(j){ if(!j||j.success===false)throw 0; return ok(j.latitude,j.longitude,j.city,j.region)})
+      .catch(function(){ return ambil('https://get.geojs.io/v1/ip/geo.json',7000).then(function(j){return ok(j.latitude,j.longitude,j.city,j.region)}) })
+      .catch(function(){}).then(function(){ipBusy=false});
+  }
   function otomatis(){
-    if(!navigator.geolocation)return;
     if(L.sumber==='gps'&&Date.now()-L.t<30*MS)return;
+    if(L.sumber!=='gps')ipLokasi(false);                    /* perkiraan instan dulu, GPS menyusul bila diizinkan */
+    if(!navigator.geolocation)return;
     function jalan(st){
       if(st==='denied')return;
       if(st==='prompt'){
@@ -1775,7 +1797,7 @@ html[data-gulung^="g"]:not(#_):not(#_):not(#_):not(#_) .row:not(.row .row){margi
     r.style.fontSize=''; var k=0; while(k++<5&&(r.scrollHeight>r.clientHeight+1||r.scrollWidth>r.clientWidth+1)){r.style.fontSize=(parseFloat(getComputedStyle(r).fontSize)*.9)+'px'}
   }
   var WBIG=5000, WGO=5800;   /* 5 dtk wilayah besar di tengah, lalu geser ke atas & mengecil, baru waktu sholat bergantian */
-  function wilBaris(){var a=[]; if(L.kec)a.push('Kec. '+L.kec); if(L.kota)a.push(L.kota); if(L.kab)a.push('Kab. '+L.kab); if(!a.length)a.push(L.nama||'LOKASI ANDA'); return a}
+  function wilBaris(){var a=[]; if(L.kec)a.push('Kec. '+L.kec); if(L.kota)a.push(L.kota); if(L.kab)a.push('Kab. '+L.kab); if(!a.length)a.push(L.nama||'LOKASI ANDA'); if(L.sumber==='ip')a.push('(perkiraan)'); return a}
   function halamanWaktu(bx,now,t5){
     var r=el('wr'), rb=el('wrb'), v=el('wv'), wk=bx.querySelector('.wk'); if(!r||!rb||!v||!wk)return;
     var e=now-pgAt;
