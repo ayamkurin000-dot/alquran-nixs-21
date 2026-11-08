@@ -92,24 +92,25 @@ html:not(#_) #kled.hbx{grid-column:1/-1;grid-row:4;display:flex;flex-direction:r
   box-shadow:inset 0 0 16px #000,inset 0 0 0 2px #1d1405,0 6px 14px -6px rgba(0,0,0,.5) !important;overflow:hidden;transform:none}
 html:not(#_) #kled.hbx::before{display:none !important}
 html:not(#_) #kled.hbx::after{display:block !important;content:'' !important;position:absolute !important;inset:0 !important;width:auto !important;height:auto !important;top:0 !important;left:0 !important;transform:none !important;border:0 !important;border-radius:0 !important;opacity:1 !important;z-index:3;pointer-events:none;
-  background:radial-gradient(circle at 50% 50%,transparent 0 38%,rgba(0,0,0,.55) 66%) 0 0/3px 3px !important}
+  background:radial-gradient(circle at 50% 50%,transparent 0 55%,rgba(0,0,0,.3) 100%) 0 0/2px 2px !important}
 #kled .led{flex:1;min-width:0;position:relative;z-index:1}
-#kled .ln{height:1.5em;overflow:hidden;white-space:nowrap;text-align:center;font:700 clamp(12px,3.9vw,19px)/1.5 'Courier New',ui-monospace,Consolas,monospace;letter-spacing:.05em;text-transform:uppercase;color:#ffb300;text-shadow:0 0 4px #ff9100,0 0 11px rgba(255,120,0,.6)}
-#kled.al .ln{color:#ff4a3a;text-shadow:0 0 4px #f00,0 0 11px rgba(255,0,0,.6)}
+#kled .ln{height:1.5em;overflow:hidden;white-space:nowrap;text-align:center;font:800 clamp(12px,3.9vw,19px)/1.5 ui-monospace,'SF Mono',Menlo,Consolas,'DejaVu Sans Mono','Liberation Mono',monospace;letter-spacing:.04em;text-transform:uppercase;-webkit-font-smoothing:antialiased;color:var(--c,#ffe600);text-shadow:0 0 2px var(--c,#ffe600),0 0 8px color-mix(in srgb,var(--c,#ffe600) 65%,transparent),0 0 16px color-mix(in srgb,var(--c,#ffe600) 35%,transparent)}
+#kled .ln.rb{animation:lrb 5s linear infinite}
+@keyframes lrb{to{filter:hue-rotate(360deg)}}
 #kled .ln span{display:inline-block;will-change:transform}
 #kled .ln .mq,#kled .ln .mr{padding-left:100%;animation:lmq var(--d,14s) linear infinite}
 #kled .ln .mr{animation-direction:reverse}
 #kled .ln .bk{animation:lbk 1s steps(1) infinite}
 #kled .ln .fb{animation:lbk .34s steps(1) infinite}
-#kled .ln .ir{animation:lir .8s steps(16) both;animation-delay:var(--dl,0s)}
-#kled .ln .iu{animation:liu .5s steps(6) both}
+#kled .ln .ir{animation:lir .9s cubic-bezier(.2,.8,.2,1) both;animation-delay:var(--dl,0s)}
+#kled .ln .iu{animation:liu .6s cubic-bezier(.2,.8,.2,1) both}
 @keyframes lmq{to{transform:translateX(-100%)}}
 @keyframes lbk{50%{opacity:0}}
 @keyframes lir{from{transform:translateX(120%)}}
 @keyframes liu{from{transform:translateY(110%)}}
-#kled .ln .wp{animation:lwp .9s steps(14) both;animation-delay:var(--dl,0s)}
+#kled .ln .wp{animation:lwp 1s cubic-bezier(.3,.7,.2,1) both;animation-delay:var(--dl,0s)}
 #kled .ln .ty{animation:lty var(--ty,1.6s) steps(var(--n,20)) both;animation-delay:var(--dl,0s)}
-#kled .ln .id{animation:lid .5s steps(6) both;animation-delay:var(--dl,0s)}
+#kled .ln .id{animation:lid .6s cubic-bezier(.2,.8,.2,1) both;animation-delay:var(--dl,0s)}
 @keyframes lwp{from{clip-path:inset(0 50% 0 50%)}to{clip-path:inset(0 0 0 0)}}
 @keyframes lty{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
 @keyframes lid{from{transform:translateY(-110%)}}
@@ -118,7 +119,7 @@ html:not(#_) #kled.hbx::after{display:block !important;content:'' !important;pos
 @keyframes lsw{to{left:115%}}
 .lbell{position:relative;z-index:4;flex:none;width:30px;height:30px;border-radius:50%;border:1px solid #5a4210;background:#140d02;color:#ffb300;font-size:15px;line-height:1;padding:0;cursor:pointer;-webkit-tap-highlight-color:transparent}
 .lbell:active{filter:brightness(1.4)}
-@media (prefers-reduced-motion:reduce){#kled .led::before{display:none}#kled .ln .wp,#kled .ln .ty,#kled .ln .id{animation:none}#kled .ln .mq,#kled .ln .mr{animation:none;padding-left:0}#kled .ln .bk,#kled .ln .fb,#kled .ln .ir,#kled .ln .iu{animation:none}}
+@media (prefers-reduced-motion:reduce){#kled .led::before{display:none}#kled .ln .wp,#kled .ln .ty,#kled .ln .id{animation:none}#kled .ln .mq,#kled .ln .mr{animation:none;padding-left:0}#kled .ln.rb{animation:none}#kled .ln .bk,#kled .ln .fb,#kled .ln .ir,#kled .ln .iu{animation:none}}
 .hjs{position:relative;z-index:1;line-height:1.3;text-wrap:balance}
 .hjs b{font-weight:800}
 .hjk{display:block;margin-top:2px;font-size:.78em;font-weight:600;letter-spacing:.03em;opacity:.85;line-height:1.2}
@@ -1565,9 +1566,11 @@ html[data-pita^="pita"]:not(#_):not(#_):not(#_) .row{padding:14px 14px 10px 14px
   function tandai(e){try{localStorage.setItem(KLAST,e.n+e.t)}catch(x){}}
 
   /* ---- papan LED ---- */
+  var PAL=['#2dff6e','#c471ff','#ff3d3d','#43a6ff','#ffe600','#19e8ff','#ff9a1f','#ff5fd0'], ALC=['#ff3d3d','#ffe600','#2dff6e','#43a6ff'];
+  function warna(i,pid){var h=0,k;for(k=0;k<pid.length;k++)h=(h*31+pid.charCodeAt(k))|0;return pid.charAt(0)==='a'?ALC[i%4]:PAL[(Math.abs(h)+i*3)%PAL.length]}
   function setL(i,tx,cls,dl,pid){
     var s=LN[i]; if(!s)return; var k=pid+'|'+(cls||'')+'|'+(dl||0);
-    if(s.getAttribute('data-k')!==k){ s.setAttribute('data-k',k); s.className=''; void s.offsetWidth; s.className=cls||''; s.style.setProperty('--dl',(dl||0)+'s') }
+    if(s.getAttribute('data-k')!==k){ s.setAttribute('data-k',k); s.className=''; void s.offsetWidth; s.className=cls||''; s.style.setProperty('--dl',(dl||0)+'s'); var P=s.parentNode; P.style.setProperty('--c',warna(i,pid)); P.classList.toggle('rb',/jam$/.test(pid)&&i===1) }
     if(s.textContent!==tx){ s.textContent=tx; if(cls==='mq'||cls==='mr')s.style.setProperty('--d',Math.max(9,Math.round(tx.length*.27+6))+'s'); if(cls==='ty'){s.style.setProperty('--n',Math.max(1,tx.length));s.style.setProperty('--ty',Math.min(2.2,tx.length*.08)+'s')} }
   }
   function hariIni(now){
