@@ -125,6 +125,9 @@ html:not(#_) #kled.hbx::after{display:block !important;content:'' !important;pos
 #kled .qs div{max-width:100%;padding:0 .1em;font-family:ui-monospace,'SF Mono',Menlo,Consolas,'DejaVu Sans Mono','Liberation Mono',monospace;font-weight:800;letter-spacing:.02em;text-transform:uppercase;-webkit-font-smoothing:antialiased;color:var(--c,#ffe600);
   text-shadow:0 0 2px var(--c,#ffe600),0 0 8px color-mix(in srgb,var(--c,#ffe600) 65%,transparent),0 0 16px color-mix(in srgb,var(--c,#ffe600) 35%,transparent)}
 #kled .qs span{display:inline-block}
+#kled .qs .cdt{font-size:1.3em;line-height:1.2;white-space:nowrap}
+#kled .qs .cdw{font-size:3.4em;line-height:1.05;letter-spacing:.04em;white-space:nowrap;margin-top:.08em}
+#kled .qs .kb{animation:lbk 1s steps(1) infinite}
 #kled .qs.fx-fade{animation:qfi 1s ease-out both}#kled .qs.fx-fade.out{animation:qfo .8s ease-in both}
 #kled .qs.fx-zi{animation:qzi .9s cubic-bezier(.2,1.3,.4,1) both}#kled .qs.fx-zi.out{animation:qzio .7s ease-in both}
 #kled .qs.fx-zo{animation:qzo .9s cubic-bezier(.2,.9,.3,1) both}#kled .qs.fx-zo.out{animation:qzoo .7s ease-in both}
@@ -1691,7 +1694,25 @@ html[data-gulung^="g"]:not(#_):not(#_):not(#_):not(#_) .row:not(.row .row){margi
       qi=(qi+1)%QT.length; try{localStorage.setItem(KQ,String(qi))}catch(e){} }
     pgAt=now; el('kled').classList.remove('xo');
   }
+  /* ---- hitung mundur besar: 5 menit sebelum SUBUH & MAGHRIB, 3 menit sebelum waktu sholat lain ---- */
+  var cdOn=false;
+  function jendelaCD(n){return (n==='SUBUH'||n==='MAGHRIB')?5:3}
+  function hitungMundurBesar(bx,nxt,now){
+    var q=bx.querySelector('.qs'); if(!q)return;
+    if(!cdOn){
+      cdOn=true; q.innerHTML='<div class="cdt"></div><div class="cdw"><span class="cm"></span><span class="kb">:</span><span class="cs"></span></div>';
+      q.className='qs'; q.style.setProperty('--s',1);
+      q.firstChild.style.setProperty('--c','#ffe600'); q.lastChild.style.setProperty('--c','#ff2a2a');
+    }
+    bx.classList.add('qm'); bx.classList.remove('xo');
+    var sec=Math.max(0,Math.ceil((nxt.t-now)/1000)), T=nxt.n+' '+hm(nxt.t).replace(':','.'), M=p2(Math.floor(sec/60)), S=p2(sec%60),
+        a=q.querySelector('.cdt'), m=q.querySelector('.cm'), c=q.querySelector('.cs');
+    if(a.textContent!==T)a.textContent=T; if(m.textContent!==M)m.textContent=M; if(c.textContent!==S)c.textContent=S;
+  }
   function halaman(now,nxt){
+    var bx0=el('kled');
+    if(nxt&&nxt.t-now>0&&nxt.t-now<=jendelaCD(nxt.n)*60000){hitungMundurBesar(bx0,nxt,now);return}
+    if(cdOn){cdOn=false; cur=null; var q0=bx0.querySelector('.qs'); if(q0){q0.innerHTML='';q0.className='qs'} bx0.classList.remove('qm','xo')}
     var bx=el('kled'), EXIT=700;
     if(!cur)lanjut(now);
     else if(cur.t==='q'&&cur.mode==='s'){ if(now-pgAt>=cur.dur)lanjut(now) }
