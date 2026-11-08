@@ -99,13 +99,15 @@ html:not(#_) #kled.hbx::after{display:block !important;content:'' !important;pos
 #kled .ln.rb{animation:lrb 5s linear infinite}
 @keyframes lrb{to{filter:hue-rotate(360deg)}}
 #kled .ln span{display:inline-block;will-change:transform}
-#kled .ln .mq,#kled .ln .mr{padding-left:100%;animation:lmq var(--d,14s) linear infinite}
+#kled .ln .mq,#kled .ln .mr{padding-left:100%;animation:lmq var(--d,14s) linear var(--it,infinite) forwards}
 #kled .ln .mr{animation-direction:reverse}
 #kled .ln .bk{animation:lbk 1s steps(1) infinite}
 #kled .ln .fb{animation:lbk .34s steps(1) infinite}
 #kled .ln .ir{animation:lir .9s cubic-bezier(.2,.8,.2,1) both;animation-delay:var(--dl,0s)}
 #kled .ln .iu{animation:liu .6s cubic-bezier(.2,.8,.2,1) both}
 @keyframes lmq{to{transform:translateX(-100%)}}
+#kled.xo .ln span:not(.mq):not(.mr){animation:lxo .6s ease-in both}
+@keyframes lxo{to{clip-path:inset(0 50% 0 50%);opacity:0}}
 @keyframes lbk{50%{opacity:0}}
 @keyframes lir{from{transform:translateX(120%)}}
 @keyframes liu{from{transform:translateY(110%)}}
@@ -1607,14 +1609,15 @@ html[data-pita^="pita"]:not(#_):not(#_):not(#_) .row{padding:14px 14px 10px 14px
   var PAL=['#2dff6e','#c471ff','#ff3d3d','#43a6ff','#ffe600','#19e8ff','#ff9a1f','#ff5fd0'], ALC=['#ff3d3d','#ffe600','#2dff6e','#43a6ff'];
   function warna(i,pid){pid=pid.replace(/k\d+$/,'');var h=0,k;for(k=0;k<pid.length;k++)h=(h*31+pid.charCodeAt(k))|0;return pid.charAt(0)==='a'?ALC[i%4]:PAL[(Math.abs(h)+i*3)%PAL.length]}
   var COL=26;
-  function ajar(s,tx,cls,spd){
-    if(cls==='mq'||cls==='mr')s.style.setProperty('--d',Math.max(8,Math.round((tx.length+COL)/(spd||5.5)))+'s');
+  function cyc(tx,spd){return Math.max(8,Math.round((tx.length+COL)/(spd||5.5)))}
+  function ajar(s,tx,cls,spd,fd){
+    if(cls==='mq'||cls==='mr'){s.style.setProperty('--d',(fd||cyc(tx,spd))+'s'); if(fd)s.style.setProperty('--it','1'); else s.style.removeProperty('--it')}
     if(cls==='ty'){s.style.setProperty('--n',Math.max(1,tx.length));s.style.setProperty('--ty',Math.min(2.2,tx.length*.08)+'s')}
   }
-  function setL(i,tx,cls,dl,pid,spd){
-    var s=LN[i]; if(!s)return; var k=pid+'|'+(cls||'')+'|'+(dl||0);
-    if(s.getAttribute('data-k')!==k){ s.setAttribute('data-k',k); s.className=''; void s.offsetWidth; ajar(s,tx,cls,spd); s.className=cls||''; s.style.setProperty('--dl',(dl||0)+'s'); var P=s.parentNode; P.style.setProperty('--c',warna(i,pid)); P.classList.toggle('rb',/jam$/.test(pid)&&i===1) }
-    if(s.textContent!==tx){ s.textContent=tx; ajar(s,tx,cls,spd) }
+  function setL(i,tx,cls,dl,pid,spd,fd){
+    var s=LN[i]; if(!s)return; var k=pid+'|'+(cls||'')+'|'+(dl||0), fresh=s.getAttribute('data-k')!==k, mqf=fd&&(cls==='mq'||cls==='mr');
+    if(fresh){ s.setAttribute('data-k',k); s.className=''; void s.offsetWidth; ajar(s,tx,cls,spd,fd); s.className=cls||''; s.style.setProperty('--dl',(dl||0)+'s'); var P=s.parentNode; P.style.setProperty('--c',warna(i,pid)); P.classList.toggle('rb',/jam$/.test(pid)&&i===1) }
+    if(s.textContent!==tx&&(fresh||!mqf)){ s.textContent=tx; ajar(s,tx,cls,spd,fd) }
   }
   function hariIni(now){
     var w=new Date(now+L.lng/15*3600000), ev=hari(L.lat,L.lng,L.alt||0,w.getUTCFullYear(),w.getUTCMonth(),w.getUTCDate());
@@ -1671,19 +1674,26 @@ html[data-pita^="pita"]:not(#_):not(#_):not(#_) .row{padding:14px 14px 10px 14px
       if(lay){cur.mode='s'; cur.s=lay.s; cur.ch=lay.ch; cur.fx=FX[qi%FX.length]; cur.dur=6500+tx.length*90; bangunQ()}   /* muat 1 layar: rata tengah, diam cukup lama */
       else{cur.mode='r'; cur.ch=bungkus(tx,COL); cur.stp=cur.ch.length-4; cur.dur=3500+cur.stp*2800+3500}                /* panjang: bergulir naik pelan-pelan */
       qi=(qi+1)%QT.length; try{localStorage.setItem(KQ,String(qi))}catch(e){} }
-    pgAt=now;
+    pgAt=now; el('kled').classList.remove('xo');
   }
   function halaman(now,nxt){
-    if(!cur||now-pgAt>=cur.dur)lanjut(now);
-    var bx=el('kled'), stat=cur.t==='q'&&cur.mode==='s'; bx.classList.toggle('qm',stat);
+    var bx=el('kled'), EXIT=700;
+    if(!cur)lanjut(now);
+    else if(cur.t==='q'&&cur.mode==='s'){ if(now-pgAt>=cur.dur)lanjut(now) }
+    else{
+      if(!cur.xo&&now-pgAt>=cur.dur-EXIT){cur.xo=now; bx.classList.add('xo')}
+      if(cur.xo&&now-cur.xo>=EXIT)lanjut(now);
+    }
+    var stat=cur.t==='q'&&cur.mode==='s'; bx.classList.toggle('qm',stat);
     if(stat){var qq=bx.querySelector('.qs'); if(qq)qq.classList.toggle('out',now-pgAt>=cur.dur-1000); return}
     var t=cur.t, d=new Date(now), cd=nxt?nxt.t-now:0, t5=hariIni(now), nn=nxt?nxt.n:'\u2014', id='p'+pc+t;
     function ef(x,e){return x.length<=COL?e:'mq'}
+    var Q=[]; function sl(i,tx,cls,dl,spd){Q.push([i,tx,cls,dl,spd])}
     var judul='JADWAL SHOLAT WILAYAH '+kota()+', '+HR[d.getDay()]+', '+d.getDate()+' '+BLF[d.getMonth()]+' '+d.getFullYear();
     if(t==='jadwal'){
       var l1='SUBUH '+t5[0]+' DZUHUR '+t5[1], l2='ASHAR '+t5[2]+' MAGHRIB '+t5[3], l3=NAMA[4]+' '+t5[4];
-      setL(0,judul,'mq',0,id,7.5);
-      setL(1,l1,ef(l1,'ir'),.2,id); setL(2,l2,ef(l2,'ir'),.7,id); setL(3,l3,ef(l3,'ir'),1.2,id);
+      sl(0,judul,'mq',0,7.5);
+      sl(1,l1,ef(l1,'ir'),.2); sl(2,l2,ef(l2,'ir'),.7); sl(3,l3,ef(l3,'ir'),1.2);
     }else if(t==='jam'){
       var cl=d.getSeconds()%2?' ':':', cdl=nn+' -'+hms(cd);
       setL(0,'WILAYAH '+kota()+' \u2022 METODE LFNU \u2022 '+(on?'ALARM ADZAN AKTIF':'KETUK LONCENG UNTUK ALARM'),'mq',0,id,7);
@@ -1691,16 +1701,20 @@ html[data-pita^="pita"]:not(#_):not(#_):not(#_) .row{padding:14px 14px 10px 14px
       setL(2,HR[d.getDay()]+', '+d.getDate()+' '+BL[d.getMonth()]+' '+d.getFullYear(),ef(HR[d.getDay()]+', 28 SEP 2026','id'),0,id);
       setL(3,cdl,cd<600000&&cdl.length<=COL?'bk':'',0,id);
     }else if(t==='run'){
-      setL(0,'SUBUH '+t5[0]+' \u2605 DZUHUR '+t5[1]+' \u2605 ASHAR '+t5[2]+' \u2605 MAGHRIB '+t5[3]+' \u2605 '+NAMA[4]+' '+t5[4],'mq',0,id);
-      setL(1,'SHOLATLAH SEBELUM ENGKAU DISHOLATKAN \u2022 JADIKANLAH SABAR & SHOLAT SEBAGAI PENOLONGMU','mr',0,id);
-      setL(2,'SELANJUTNYA '+nn+' '+(nxt?hm(nxt.t)+' \u2022 '+durasi(Math.max(1,Math.ceil(cd/MS)))+' LAGI':''),'mq',0,id);
-      setL(3,'','',0,id);
+      sl(0,'SUBUH '+t5[0]+' \u2605 DZUHUR '+t5[1]+' \u2605 ASHAR '+t5[2]+' \u2605 MAGHRIB '+t5[3]+' \u2605 '+NAMA[4]+' '+t5[4],'mq',0);
+      sl(1,'SHOLATLAH SEBELUM ENGKAU DISHOLATKAN \u2022 JADIKANLAH SABAR & SHOLAT SEBAGAI PENOLONGMU','mr',0);
+      sl(2,'SELANJUTNYA '+nn+' '+(nxt?hm(nxt.t)+' \u2022 '+durasi(Math.max(1,Math.ceil(cd/MS)))+' LAGI':''),'mq',0);
+      sl(3,'','',0);
     }else{ /* kalimat hikmah panjang: running (bergulir naik) */
       var ch=cur.ch, el_=now-pgAt, j;
       {
         var k=el_<3500?0:Math.min(cur.stp,1+Math.floor((el_-3500)/2800)), idq=id+'k'+k;
         for(j=0;j<4;j++){var tr=ch[k+j]||''; setL(j,tr,tr?(k?'iu':'ty'):'',k?0:j*.6,idq)}
       }
+    }
+    if(Q.length){
+      if(cur.D===undefined){var D=0; Q.forEach(function(a){if(a[2]==='mq'||a[2]==='mr')D=Math.max(D,cyc(a[1],a[4]))}); cur.D=D; if(D)cur.dur=D*1000+1800}
+      Q.forEach(function(a){setL(a[0],a[1],a[2],a[3],id,a[4],cur.D||0)});
     }
   }
   function tick(){
@@ -1710,8 +1724,8 @@ html[data-pita^="pita"]:not(#_):not(#_):not(#_) .row{padding:14px 14px 10px 14px
       for(i=0;i<ev.length;i++) if(ev[i].t>now){nxt=ev[i];break}
       for(i=0;i<ev.length;i++){ var e=ev[i]; if(e.t<=now&&now-e.t<120000&&!sudah(e)){tandai(e);bunyi(e);break} }
       var A=alarm&&alarm.until>now&&(playing||!on||now<alarm.until)?alarm:null;
-      if(alarm&&!A){alarm=null;pgAt=now}
-      var box=el('kled'); box.classList.toggle('al',!!A);
+      if(alarm&&!A){alarm=null;pgAt=now;cur=null}
+      var box=el('kled'); box.classList.toggle('al',!!A); if(A)box.classList.remove('xo');
       if(A)halamanAlarm(A,'a'+A.n+A.t); else halaman(now,nxt);
       kotakNext(nxt);
       if(now-(tick.m||0)>20000){tick.m=now; var r=hitung(now,L);
