@@ -4,7 +4,7 @@
                                          versi baru tampil di pembukaan berikutnya. Kunjungan pertama / cache kosong -> jaringan.
    - font & gambar                    -> cache dulu, diperbarui di latar belakang.
    Naikkan VERSI setiap ada perubahan agar cache lama dibuang dan pengguna langsung mendapat versi baru. */
-var VERSI = 'qk-v111';
+var VERSI = 'qk-v112';
 var INTI = ['./', 'index.html', 'doa.json', 'font/LPMQ-Isep-Misbah.ttf',
             'logo/foto-keluarga-kecil.jpg', 'logo/logo-nu.jpg'];
 
@@ -60,8 +60,17 @@ self.addEventListener('fetch', function (e) {
   var r = e.request;
   if (r.method !== 'GET' || new URL(r.url).origin !== location.origin) return;
   var p = new URL(r.url).pathname;
+  if (/\/audio\//i.test(p) || /\.(mp3|ogg|m4a|wav)$/i.test(p)) return;   /* adzan/takbir: langsung dari jaringan agar bisa di-seek & tidak memenuhi cache */
   var penting = r.mode === 'navigate' || /\.(html|json)$/i.test(p) || /\/$/.test(p);
   e.respondWith(caches.open(VERSI).then(function (c) {
     return penting ? cacheDuluSegarkan(e, r, c) : cacheDulu(r, c);
+  }));
+});
+
+self.addEventListener('notificationclick', function (e) {
+  e.notification.close();
+  e.waitUntil(self.clients.matchAll({ type: 'window', includeUncontrolled: true }).then(function (cs) {
+    for (var i = 0; i < cs.length; i++) { if ('focus' in cs[i]) return cs[i].focus(); }
+    if (self.clients.openWindow) return self.clients.openWindow('./');
   }));
 });
