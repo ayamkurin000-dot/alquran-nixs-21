@@ -1311,10 +1311,10 @@ html[data-pita^="pita"]:not(#_):not(#_):not(#_) .row{padding:14px 14px 10px 14px
       </div>
       <input type="file" id="fotoInput" accept="image/*" hidden>
       <!-- kanan: judul + kredit Mannixs-21 (seluruh kotak diklik = logo NU) -->
-      <div class="hbx tx" id="kqr" role="button" tabindex="0" aria-haspopup="dialog" aria-label="Al-Quran Al-Karim, Mannixs-21: tampilkan logo NU">
+      <div class="hbx tx" id="kqr" role="button" tabindex="0" aria-haspopup="dialog" aria-label="Al-Qur’an Al-Karim, Mannixs-21: tampilkan logo NU">
         <i class="hpat" aria-hidden="true"></i>
         <span class="hc tl" aria-hidden="true"><svg viewBox="0 0 48 48"><use href="#c-gulir"/></svg></span><span class="hc tr" aria-hidden="true"><svg viewBox="0 0 48 48"><use href="#c-gulir"/></svg></span><span class="hc bl" aria-hidden="true"><svg viewBox="0 0 48 48"><use href="#c-gulir"/></svg></span><span class="hc br" aria-hidden="true"><svg viewBox="0 0 48 48"><use href="#c-gulir"/></svg></span>
-        <span id="hero-logo" role="img" aria-label="Al-Quran Al-Karim" lang="ar" dir="rtl">القرآن الكريم</span>
+        <span id="hero-logo" role="img" aria-label="Al-Qur’an Al-Karim" lang="ar" dir="rtl">القرآن الكريم</span>
         <div><span id="credit"><span class="lv">❤️</span>Mannixs-21 💕</span></div>
       </div>
       <!-- bawah: MATA RANTAI ISLAM (klik = buka situs) -->
@@ -2183,7 +2183,7 @@ function openNU(){
   $('nux').focus();
 }
 function closeNU(){var b=$('nubd');if(b)b.remove();$('kqr').focus()}
-$('kqr').onclick=openNU;   /* seluruh kotak "Al-Quran Al-Karim" -> logo NU */
+$('kqr').onclick=openNU;   /* seluruh kotak "Al-Qur’an Al-Karim" -> logo NU */
 $('kqr').onkeydown=function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();openNU()}};
 /* ===== Do'a & Bacaan: kategori dulu; data di-parse & dirender hanya saat dibutuhkan ===== */
 var DOA=null,doaLv=0,doaCat=null,doaCur=[],doaHist=true;
