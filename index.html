@@ -534,6 +534,8 @@ input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;bac
 #lkm.on{display:flex}
 #lkm .bx{width:100%;max-width:340px;background:var(--paper);color:var(--ink);border:1px solid var(--accent);border-radius:14px;padding:16px;box-shadow:0 10px 30px rgba(0,0,0,.35)}
 #lkm h3{margin:0 0 6px;font-size:16px}
+#lkm p{margin:0 0 4px;font-size:13px;line-height:1.4;opacity:.9}
+#lkm p:empty{display:none}
 #lkm label{display:block;font-size:12px;margin:10px 0 4px;opacity:.8}
 #lkm select,#lkm input{width:100%;box-sizing:border-box;padding:9px 10px;border-radius:10px;border:1px solid var(--accent);background:transparent;color:inherit;font-size:14px}
 #lkm select option{color:#000}
@@ -1593,9 +1595,12 @@ html[data-gulung^="g"]:not(#_):not(#_):not(#_):not(#_) .row:not(.row .row){margi
     if(L.sumber==='manual')return;                          /* pilihan manual tidak ditimpa deteksi otomatis */
     var c=pos.coords;
     if(c.accuracy>BATAS_AKURASI){                           /* perkiraan jaringan (PC tanpa GPS) terlalu kasar: jangan timpa lokasi yang ada */
-      if(manual||!kasarInfo){kasarInfo=true; info('Lokasi kurang akurat (\u00b1'+Math.round(c.accuracy/1000)+' km). Tekan lama papan jadwal untuk memilih kota.')}
+      var km=Math.max(1,Math.round(c.accuracy/1000));
       if(L.sumber!=='gps')ipLokasi(manual);
-      isi(); return;
+      isi();
+      if(L.sumber==='gps')return;                            /* sudah ada lokasi GPS yang baik: abaikan bacaan kasar */
+      if(manual||tanyaSekali()) bukaPilih('Lokasi dari perangkat kurang akurat (\u00b1'+km+' km). Pilih kota Anda supaya jadwal sholat tepat.');
+      return;
     }
     var baru={lat:+c.latitude.toFixed(4),lng:+c.longitude.toFixed(4),sumber:'gps',t:Date.now()};
     var dekat=L.sumber==='gps'&&L.nama&&jarak(L,baru)<5;
@@ -1992,10 +1997,15 @@ html[data-gulung^="g"]:not(#_):not(#_):not(#_):not(#_) .row:not(.row .row){margi
   /* ---- pilih lokasi manual (tekan lama papan): untuk PC tanpa GPS yang lokasinya salah ---- */
   var lkm=null;
   function tutupPilih(){if(lkm)lkm.classList.remove('on')}
-  function bukaPilih(){
+  function tanyaSekali(){ /* dialog otomatis hanya sekali per sesi peramban, supaya tidak mengganggu berulang */
+    var k='qk.lokasi.dlg';
+    try{ if(sessionStorage.getItem(k))return false; sessionStorage.setItem(k,'1') }catch(e){ if(kasarInfo)return false }
+    kasarInfo=true; return true;
+  }
+  function bukaPilih(pesan){
     if(!lkm){
       lkm=document.createElement('div'); lkm.id='lkm'; lkm.setAttribute('role','dialog'); lkm.setAttribute('aria-modal','true'); lkm.setAttribute('aria-label','Pilih lokasi jadwal sholat');
-      var h='<div class="bx"><h3>Lokasi jadwal sholat</h3><label for="lkS">Kota</label><select id="lkS"><option value="auto">Otomatis (GPS / jaringan)</option><option value="blitar">Kota Blitar</option>';
+      var h='<div class="bx"><h3>Lokasi jadwal sholat</h3><p id="lkN"></p><label for="lkS">Kota</label><select id="lkS"><option value="auto">Otomatis (GPS / jaringan)</option><option value="blitar">Kota Blitar</option>';
       for(var i=0;i<KOTA.length;i++)h+='<option value="'+i+'">'+KOTA[i][0]+'</option>';
       h+='</select><label for="lkK">Kecamatan (opsional)</label><input id="lkK" type="text" autocomplete="off" placeholder="nama kecamatan"><div class="tb"><button type="button" id="lkB">Batal</button><button type="button" id="lkO" class="p">Simpan</button></div></div>';
       lkm.innerHTML=h; document.body.appendChild(lkm);
@@ -2004,7 +2014,7 @@ html[data-gulung^="g"]:not(#_):not(#_):not(#_):not(#_) .row:not(.row .row){margi
       document.getElementById('lkO').addEventListener('click',simpanPilih);
       document.addEventListener('keydown',function(ev){if(ev.key==='Escape')tutupPilih()});
     }
-    var s=document.getElementById('lkS'), k=document.getElementById('lkK');
+    var s=document.getElementById('lkS'), k=document.getElementById('lkK'); document.getElementById('lkN').textContent=pesan||'';
     s.value=(L.sumber==='manual'&&L.mid!=null)?String(L.mid):'auto';
     k.value=L.kec||'';
     lkm.classList.add('on'); try{s.focus()}catch(x){}
