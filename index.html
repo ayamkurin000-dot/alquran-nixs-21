@@ -127,6 +127,9 @@ html:not(#_) #kled.hbx::after{display:block !important;content:'' !important;pos
   text-shadow:0 0 2px var(--c,#ffe600),0 0 8px color-mix(in srgb,var(--c,#ffe600) 65%,transparent),0 0 16px color-mix(in srgb,var(--c,#ffe600) 35%,transparent)}
 #kled .qs span{display:inline-block}
 #kled .qs .cdt{font-size:1.3em;line-height:1.2;white-space:nowrap}
+/* nama sholat pada hitung mundur besar: berkedip + ganti warna (kata "kurang" tetap diam) */
+@keyframes cdc{0%{color:#ffe600;text-shadow:0 0 2px rgb(255,230,0),0 0 8px rgba(255,230,0,.65),0 0 16px rgba(255,230,0,.35);opacity:1}15%{opacity:0}20%{color:#19e8ff;text-shadow:0 0 2px rgb(25,232,255),0 0 8px rgba(25,232,255,.65),0 0 16px rgba(25,232,255,.35);opacity:1}35%{opacity:0}40%{color:#ff5fd0;text-shadow:0 0 2px rgb(255,95,208),0 0 8px rgba(255,95,208,.65),0 0 16px rgba(255,95,208,.35);opacity:1}55%{opacity:0}60%{color:#2dff6e;text-shadow:0 0 2px rgb(45,255,110),0 0 8px rgba(45,255,110,.65),0 0 16px rgba(45,255,110,.35);opacity:1}75%{opacity:0}80%{color:#ff9a1f;text-shadow:0 0 2px rgb(255,154,31),0 0 8px rgba(255,154,31,.65),0 0 16px rgba(255,154,31,.35);opacity:1}95%{opacity:0}100%{color:#ffe600;text-shadow:0 0 2px rgb(255,230,0),0 0 8px rgba(255,230,0,.65),0 0 16px rgba(255,230,0,.35);opacity:1}}
+#kled .qs .cdn{animation:cdc 3s steps(1) infinite}
 #kled .qs .cdw{font-size:3.1em;line-height:1.05;letter-spacing:.04em;white-space:nowrap;margin-top:.08em}
 #kled .qs .kb{animation:lbk 1s steps(1) infinite}
 #kled .qs .nm1{font-size:2.5em;line-height:1.1;letter-spacing:.04em;white-space:nowrap}
@@ -144,7 +147,7 @@ html:not(#_) #kled.hbx::after{display:block !important;content:'' !important;pos
 #kled .qs .nm2 .cl{color:#ff5fd0}
 #kled .qs .nt1{font-size:2.4em;line-height:1.1;letter-spacing:.04em;white-space:nowrap}
 #kled .qs .nt2{font-size:1.1em;line-height:1.2;white-space:nowrap;margin-top:.15em}
-@media (prefers-reduced-motion:reduce){#kled .qs .az2,#kled .qs .az1.bl,#kled .qs .sn2.cc{animation:none!important}}
+@media (prefers-reduced-motion:reduce){#kled .qs .az2,#kled .qs .az1.bl,#kled .qs .sn2.cc,#kled .qs .cdn{animation:none!important}}
 #kled .qs.fx-fade{animation:qfi 1s ease-out both}#kled .qs.fx-fade.out{animation:qfo .8s ease-in both}
 #kled .qs.fx-zi{animation:qzi .9s cubic-bezier(.2,1.3,.4,1) both}#kled .qs.fx-zi.out{animation:qzio .7s ease-in both}
 #kled .qs.fx-zo{animation:qzo .9s cubic-bezier(.2,.9,.3,1) both}#kled .qs.fx-zo.out{animation:qzoo .7s ease-in both}
@@ -1805,13 +1808,18 @@ html[data-gulung^="g"]:not(#_):not(#_):not(#_):not(#_) .row:not(.row .row){margi
       d.style.setProperty('--c',warna(j,'q'+cur.i)); d.style.setProperty('--n',l.length); d.style.setProperty('--ty',Math.min(2,l.length*.09)+'s'); d.style.setProperty('--dl',(j*.7)+'s'); q.appendChild(d)});
     q.className='qs'; void q.offsetWidth; q.className='qs fx-'+cur.fx;
   }
+  /* halaman hitung mundur (-jam:menit:detik) hanya ikut bergilir bila sholat berikutnya tinggal <= MUNDUR_MENIT menit */
+  var MUNDUR_MENIT=15, NXT=null;
+  function mundurBoleh(now){return !!(NXT&&NXT.t-now>0&&NXT.t-now<=MUNDUR_MENIT*60000)}
   function lanjut(now){
     hitungCol();
     if(cur&&cur.t!=='n'&&pc===PL.length-1){   /* 1 putaran selesai -> notif "n menit yang lalu" (bila masih dalam 10 menit pertama) */
       var NT=notifKini(now);
       if(NT){pn++; cur={t:'n',dur:NDUR,N:NT}; pgAt=now; wIdx=-1; el('kled').classList.remove('xo'); return}
     }
-    pc=(pc+1)%PL.length; pn++; var t=PL[pc]; cur={t:t,dur:DURS[t]||0};
+    pc=(pc+1)%PL.length; pn++; var t=PL[pc];
+    if(t==='mundur'&&!mundurBoleh(now)){pc=(pc+1)%PL.length; t=PL[pc]}   /* belum <= 15 menit: lewati */
+    cur={t:t,dur:DURS[t]||0};
     if(t==='q'){ var tx=QT[qi], lay=tataQ(tx); cur.i=qi;
       if(lay){cur.mode='s'; cur.s=lay.s; cur.ch=lay.ch; cur.fx=FX[qi%FX.length]; cur.dur=6500+tx.length*90; bangunQ()}   /* muat 1 layar: rata tengah, diam cukup lama */
       else{cur.mode='r'; cur.ch=bungkus(tx,COL); cur.stp=cur.ch.length-4; cur.dur=3500+cur.stp*2800+3500}                /* panjang: bergulir naik pelan-pelan */
@@ -1845,13 +1853,13 @@ html[data-gulung^="g"]:not(#_):not(#_):not(#_):not(#_) .row:not(.row .row){margi
   function hitungMundurBesar(bx,nxt,now){
     var q=bx.querySelector('.qs'); if(!q)return;
     if(!cdOn){
-      cdOn=true; q.innerHTML='<div class="cdt"></div><div class="cdw"><span class="cm"></span><span class="kb">:</span><span class="cs"></span></div>';
+      cdOn=true; q.innerHTML='<div class="cdt"><span class="cdn"></span> <span class="cdk">kurang</span></div><div class="cdw"><span class="cm"></span><span class="kb">:</span><span class="cs"></span></div>';
       q.className='qs'; q.style.setProperty('--s',1);
       q.firstChild.style.setProperty('--c','#ffe600'); q.lastChild.style.setProperty('--c','#ff2a2a');
     }
     bx.classList.add('qm'); bx.classList.remove('xo');
-    var sec=Math.max(0,Math.ceil((nxt.t-now)/1000)), T=nmz(nxt.n)+' kurang', M='-'+p2(Math.floor(sec/60)), S=p2(sec%60),
-        a=q.querySelector('.cdt'), m=q.querySelector('.cm'), c=q.querySelector('.cs');
+    var sec=Math.max(0,Math.ceil((nxt.t-now)/1000)), T=nmz(nxt.n), M='-'+p2(Math.floor(sec/60)), S=p2(sec%60),
+        a=q.querySelector('.cdn'), m=q.querySelector('.cm'), c=q.querySelector('.cs');
     if(a.textContent!==T)a.textContent=T; if(m.textContent!==M)m.textContent=M; if(c.textContent!==S)c.textContent=S;
   }
   /* ---- halaman waktu sholat: wilayah tetap di atas tengah; tiap waktu sholat tampil 5 detik (nama besar, jam di bawahnya) ---- */
@@ -1907,7 +1915,7 @@ html[data-gulung^="g"]:not(#_):not(#_):not(#_):not(#_) .row:not(.row .row){margi
     }
     q.classList.toggle('out',now-pgAt>=cur.dur-800);
   }
-  /* ---- halaman hitung mundur: nama sholat + -jam:menit:detik, tanda ":" berkedip, 30 detik; tampil setelah halaman SELANJUTNYA ---- */
+  /* ---- halaman hitung mundur: nama sholat + -jam:menit:detik, tanda ":" berkedip, 30 detik; tampil setelah halaman SELANJUTNYA, hanya bila sholat berikutnya tinggal <= 15 menit ---- */
   function halamanMundur(bx,now,nxt){
     var q=bx.querySelector('.qs'); if(!q)return;
     bx.classList.add('qm'); bx.classList.remove('xo');
@@ -1926,6 +1934,7 @@ html[data-gulung^="g"]:not(#_):not(#_):not(#_):not(#_) .row:not(.row .row){margi
     q.classList.toggle('out',now-pgAt>=cur.dur-800);
   }
   function halaman(now,nxt){
+    NXT=nxt;
     var bx0=el('kled'); bx0.classList.remove('wm');
     if(nxt&&nxt.t-now>0&&nxt.t-now<=jendelaCD(nxt.n)*60000){hitungMundurBesar(bx0,nxt,now);return}
     if(cdOn||azOn){cdOn=false; azOn=false; balikQuote(); cur=null; var q0=bx0.querySelector('.qs'); if(q0){q0.innerHTML='';q0.className='qs';q0.removeAttribute('data-az')} bx0.classList.remove('qm','xo')}
