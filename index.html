@@ -672,7 +672,8 @@ input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;bac
 #ens-body{max-width:720px;margin:0 auto}
 .dgrid.e1{grid-template-columns:1fr}
 .dcat.ecat{flex-direction:row;align-items:center;justify-content:flex-start;width:100%;min-height:64px;padding:14px 56px 14px 16px}
-.dcat.ecat b{font-size:16.5px;line-height:1.3}
+.dcat.ecat>span:first-child{flex:1;min-width:0}
+html:not(#_):not(#_):not(#_) .dcat.ecat b{min-height:0;height:auto;font-size:16.5px;line-height:1.3;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;overflow-wrap:anywhere}
 .dcat.ecat .dno{top:50%;right:14px;margin-top:-14px;min-width:28px;height:28px;display:grid;place-items:center;font-size:13px;padding:0 6px}
 .enum{flex:none;display:inline-grid;place-items:center;min-width:30px;height:30px;box-sizing:border-box;border-radius:50%;background:radial-gradient(circle at 35% 30%,var(--kb1,#5f8a3a),var(--kb2,#1e3a12) 85%);border:1.5px solid var(--kbb,#f3e3b0);color:var(--kbi,#fff7dc);font-size:14px;font-weight:800;line-height:1;box-shadow:0 1px 3px rgba(0,0,0,.35)}
 .etit{display:flex;align-items:center;gap:10px;margin:4px 0 6px;font-size:20px;line-height:1.3}
@@ -3567,12 +3568,22 @@ function closeEns(){if(!ensLv)return;ensLv=0;ensCur=-1;$('ens').hidden=true;$('e
 function ensShowList(){
   ensLv=1;ensCur=-1;
   $('ens-ttl').textContent=ENS.t||'Ensiklopedia';$('ens-sub').textContent=ENS.k.length+' judul';
-  var h=ENS.d?'<p class="eint">'+dFmt(ENS.d)+'</p>':'';
+  var h='';
   h+='<div class="dgrid e1">';
   ENS.k.forEach(function(k,i){h+='<button type="button" class="dcat tx ecat" data-i="'+i+'"><span><b>'+dFmt(k.t)+'</b></span><span class="dcn dno" aria-hidden="true">'+(i+1)+'</span></button>'});
   h+='</div>';
-  $('ens-body').innerHTML=h;$('ens-scroll').scrollTop=0
+  $('ens-body').innerHTML=h;$('ens-scroll').scrollTop=0;ensFit()
 }
+/* judul kartu maksimal 2 baris; bila terlalu panjang, huruf dikecilkan (shrink to fit) */
+function ensFit(){
+  var l=document.querySelectorAll('#ens-body .ecat b');
+  for(var i=0;i<l.length;i++){
+    var b=l[i],fs=16.5;b.style.fontSize=fs+'px';
+    while(fs>10&&b.scrollHeight>fs*1.3*2+1){fs-=.5;b.style.fontSize=fs+'px'}
+  }
+}
+window.addEventListener('resize',function(){if(ensLv===1&&ENS)ensFit()});
+if(document.fonts&&document.fonts.ready)document.fonts.ready.then(function(){if(ensLv===1&&ENS)ensFit()});
 function ensShowCard(i){
   var k=ENS.k[i];if(!k){ensShowList();return}
   ensLv=2;ensCur=i;
