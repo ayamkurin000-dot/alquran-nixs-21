@@ -4523,7 +4523,7 @@ if(!BODIES.some(function(x){return x[0]===SK.body}))SK.body='auto';
 if(typeof SK.op!=='number'||SK.op<30||SK.op>100)SK.op=OP_DEF;
 SK.mat=normMat(SK.mat);SK.pmat=normMat(SK.pmat||SK.mat);
 /* skin tombol: warna tombol (kc), latar tombol (kl), panah play (kp), ikon lain (ki), aksen LCD/LED/slider (ka) — hex atau 'auto' */
-var KB_DEF={kc:'#2f7d3a',kl:'#14301f',kp:'#ffffff',ki:'auto',ka:'auto'},KBP={};
+var KB_DEF={kc:'#2f7d3a',kl:'#14301f',kp:'#ffffff',ki:'auto',ka:'#e03131'},KBP={};   /* aksen bawaan: merah (layar LCD, LED, slider) */
 function isHex(v){return typeof v==='string'&&/^#[0-9a-fA-F]{6}$/.test(v)}
 Object.keys(KB_DEF).forEach(function(k){var v=ls('qk.'+k);SK[k]=(isHex(v)||(v==='auto'&&k!=='kc'&&k!=='kl'))?v:KB_DEF[k]});
 
@@ -4936,6 +4936,8 @@ if(ls('qk.dv')!==1){
   if(S.showTr){S.showTr=false;$('mushaf').classList.add('flow');$('btr').setAttribute('aria-pressed','false')}
   ls('qk.dv',1);save();
 }
+/* aksen bawaan kini merah: perangkat yang aksennya masih 'auto' (belum pernah dipilih) ikut diganti sekali saja */
+if(ls('qk.dvk')!==1){if(SK.ka==='auto'){SK.ka=KB_DEF.ka;ls('qk.ka',SK.ka)}ls('qk.dvk',1)}
 skApply();trApply();trSync();
 qBuild();aVolUI();aUI();bnH();vzSize();mqKick();
 
