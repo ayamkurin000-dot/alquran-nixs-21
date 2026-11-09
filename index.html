@@ -1602,6 +1602,52 @@ html[data-pita^="pita"]:not(#_):not(#_):not(#_):not(#_) :is(#kqr,#kdoa,#kmri,#ke
 html[data-gulung^="g"]:not(#_):not(#_):not(#_):not(#_) :is(#kqr,#kdoa,#kmri,#kens).hbx{box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 3px 0 var(--ge),0 5px 6px -4px rgba(0,0,0,.32)}
 html[data-neon^="n"]:not(#_):not(#_):not(#_):not(#_) :is(#kqr,#kdoa,#kmri,#kens).hbx{box-shadow:0 0 2px var(--nl),0 0 4px var(--nc),inset 0 0 6px var(--nc),inset 0 0 10px color-mix(in srgb,var(--nc) 30%,transparent)}
 html[data-pita^="pita"]:not(#_):not(#_):not(#_):not(#_) :is(#kdoa,#kmri,#kens).hbx::after{top:-11px;height:15px;width:46%}
+/* =====================================================================================
+   PITA 1-3 DI DALAM HALAMAN DO'A & BACAAN DAN ENSIKLOPEDIA
+   Sebelumnya hanya warna yang ikut tema pita; bentuknya (pita melengkung di tengah atas, bingkai
+   berwarna, bayangan) tidak. Sekarang kartu kategori (.dcat / .ecat), judul sub bab (.dgs) dan kartu
+   doa (.ditem) memakai gaya yang sama dengan kartu di halaman depan. Pojok mengikuti --rk (kotak).
+   ===================================================================================== */
+html[data-pita^="pita"]:not(#_):not(#_):not(#_) :is(.dcat:not(.dlegc),.dgs,.ditem){
+  position:relative;overflow:visible;
+  border:3px solid var(--pr);border-radius:var(--rk);
+  background-color:var(--pb);
+  background-image:linear-gradient(180deg,rgba(255,255,255,.26) 0%,rgba(255,255,255,0) 46%),linear-gradient(180deg,var(--pa),var(--pb));
+  background-size:100% 100%,100% 100%;background-position:0 0,0 0;background-repeat:no-repeat,no-repeat;
+  box-shadow:inset 0 0 0 1.5px var(--pl),inset 0 -10px 14px rgba(0,0,0,.10),0 4px 0 var(--pe),0 7px 8px -5px rgba(0,0,0,.32);
+  color:var(--pt);text-shadow:var(--pts)}
+/* kartu doa terbuka: tetap berwarna pita, isi (kertas) tidak berubah */
+html[data-pita^="pita"]:not(#_):not(#_):not(#_) .ditem[open]{
+  background-image:linear-gradient(180deg,rgba(255,255,255,.26) 0%,rgba(255,255,255,0) 46%),linear-gradient(180deg,var(--pa),var(--pb));
+  background-size:100% 100%,100% 100%;
+  box-shadow:inset 0 0 0 1.5px var(--pl),inset 0 -10px 14px rgba(0,0,0,.10),0 4px 0 var(--pe),0 7px 8px -5px rgba(0,0,0,.32)}
+html[data-pita^="pita"]:not(#_):not(#_):not(#_) .ditem[open]>summary{
+  background:linear-gradient(180deg,var(--pa),var(--pb));
+  border-radius:calc(var(--rk) - 2px) calc(var(--rk) - 2px) 6px 6px;
+  box-shadow:0 7px 9px -6px rgba(0,0,0,.4)}
+html[data-pita^="pita"]:not(#_):not(#_):not(#_) .dgrp[open]>.dgs{
+  box-shadow:inset 0 0 0 1.5px var(--pl),inset 0 3px 10px rgba(0,0,0,.22),0 4px 0 var(--pe),0 7px 8px -5px rgba(0,0,0,.32)}
+html[data-pita^="pita"]:not(#_):not(#_):not(#_) :is(.dcat:not(.dlegc),.ditem:not([open])):active,
+html[data-pita^="pita"]:not(#_):not(#_):not(#_) .dgrp:not([open])>.dgs:active{
+  box-shadow:inset 0 0 0 1.5px var(--pl),inset 0 3px 10px rgba(0,0,0,.28),0 1px 0 var(--pe)}
+/* jarak atas supaya pita melengkung tidak terpotong / menimpa kartu di atasnya */
+html[data-pita^="pita"]:not(#_):not(#_):not(#_) .dgrid{padding-top:12px;row-gap:22px}
+html[data-pita^="pita"]:not(#_):not(#_):not(#_) .dgrp{margin-top:14px}
+html[data-pita^="pita"]:not(#_):not(#_):not(#_) .ditem{margin-top:14px}
+/* pita melengkung di tengah atas */
+html[data-pita^="pita"]:not(#_):not(#_):not(#_) :is(.dcat:not(.dlegc),.ditem)::after,
+html[data-pita^="pita"]:not(#_):not(#_):not(#_) .dgs::before{
+  content:'';display:block;position:absolute;inset:auto;left:50%;top:-14px;width:min(52%,150px);height:21px;margin:0;border:0;border-radius:0;
+  transform:translateX(-50%);background:var(--pri) center/100% 100% no-repeat;pointer-events:none;z-index:4;
+  box-shadow:none;filter:drop-shadow(0 1.5px 1px rgba(0,0,0,.3))}
+html[data-pita^="pita"]:not(#_):not(#_):not(#_) .dcat.ecat::after{width:min(34%,120px);height:19px;top:-13px}
+/* teks & lencana angka */
+html[data-pita^="pita"]:not(#_):not(#_):not(#_) :is(.dcat:not(.dlegc) b,.dgs,.dgs .dgt,.ditem summary,.ditem summary::after,.dgs::after){color:var(--pt);text-shadow:var(--pts);opacity:1}
+html[data-pita^="pita"]:not(#_):not(#_):not(#_) :is(.dcat:not(.dlegc) small,.ditem summary .dn small){color:var(--pt2);text-shadow:none}
+html[data-pita^="pita"]:not(#_):not(#_):not(#_) :is(.dcat:not(.dlegc) .dcn,.dgn,.dgc,.ditem summary::before){
+  background:var(--pt);color:var(--pb);border:1.5px solid var(--pr);text-shadow:none;box-shadow:0 1px 2px rgba(0,0,0,.35)}
+html[data-pita^="pita"]:not(#_):not(#_):not(#_) .ditem .dbg{border-color:var(--pt2);color:var(--pt)}
+html[data-pita^="pita"]:not(#_):not(#_):not(#_) .ditem .dbg.s{background:var(--pt);color:var(--pb)}
 </style>
 </head>
 <body>
