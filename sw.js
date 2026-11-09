@@ -4,8 +4,8 @@
                                          versi baru tampil di pembukaan berikutnya. Kunjungan pertama / cache kosong -> jaringan.
    - font & gambar                    -> cache dulu, diperbarui di latar belakang.
    Naikkan VERSI setiap ada perubahan agar cache lama dibuang dan pengguna langsung mendapat versi baru. */
-var VERSI = 'qk-v127';
-var INTI = ['./', 'index.html', 'doa.json', 'font/LPMQ-Isep-Misbah.ttf',
+var VERSI = 'qk-v128';
+var INTI = ['./', 'index.html', 'doa.json', 'ensiklopedia.json', 'font/LPMQ-Isep-Misbah.ttf',
             'logo/foto-keluarga-kecil.jpg', 'logo/logo-nu.jpg'];
 
 self.addEventListener('install', function (e) {

@@ -659,6 +659,29 @@ input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;bac
 #nubd .xbtn{position:absolute;top:calc(12px + env(safe-area-inset-top));right:14px;color:#fff;font-size:30px}
 
 /* ===================== DO'A & BACAAN (kategori dulu) ===================== */
+/* ===== Ensiklopedia: daftar judul -> kartu; data di ensiklopedia.json ===== */
+#ens{position:fixed;inset:0;z-index:45;background:var(--bg);color:var(--ink);display:flex;flex-direction:column;animation:fade .18s both}
+#ens[hidden]{display:none!important}
+#ens-top{flex:none;display:flex;align-items:center;gap:6px;padding:calc(6px + env(safe-area-inset-top)) 8px 6px;background:linear-gradient(135deg,var(--barA,#3a2a0c) 0%,var(--barB,#6b4e16) 100%);color:var(--bari,#fff4d8);border-bottom:1.5px solid var(--accent)}
+#ens-top .ib{width:40px;height:40px;color:var(--bari,#fff4d8)}
+#ens-top .ib:hover,#ens-top .ib:focus-visible{background:rgba(255,255,255,.16)}
+#ens-top .ttl{flex:1;min-width:0;line-height:1.2;cursor:pointer;align-self:stretch;display:flex;flex-direction:column;justify-content:center}
+#ens-top .ttl b{display:block;font-size:16px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#ens-top .ttl small{display:block;font-size:12px;opacity:.85;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#ens-scroll{flex:1;min-height:0;overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;padding:12px 14px calc(28px + env(safe-area-inset-bottom))}
+#ens-body{max-width:720px;margin:0 auto}
+.ecard{display:block;width:100%;text-align:left;margin:0 0 12px;padding:14px 16px;border:1px solid var(--soft);border-left:5px solid var(--accent2);border-radius:14px;background:var(--paper);color:var(--ink);font:inherit;cursor:pointer}
+.ecard b{display:block;font-size:16.5px;line-height:1.3}
+.ecard small{display:block;margin-top:5px;font-size:13px;line-height:1.45;color:var(--ink2)}
+.etit{margin:4px 0 6px;font-size:20px;line-height:1.3}
+.eint{margin:0 0 6px;font-size:14px;line-height:1.5;color:var(--ink2);font-style:italic}
+.eart p{margin:0 0 12px;font-size:16px;line-height:1.7}
+.esec{margin:22px 0 10px;padding:3px 0 3px 10px;font-size:15px;font-weight:800;color:var(--accent2);border-left:5px solid var(--accent2)}
+.eq{margin:6px 0 16px;padding:10px 14px;border-radius:12px;background:var(--paper);border:1px solid var(--soft)}
+.eq .et{margin:2px 0 4px;font-size:15px}
+.eq .es{margin:0;font-size:12.5px;font-weight:700;color:var(--accent2)}
+.esrc{margin:0;padding-left:20px;font-size:13px;line-height:1.55;color:var(--ink2)}
+.esrc li{margin-bottom:6px}
 #doa{position:fixed;inset:0;z-index:45;background:var(--bg);color:var(--ink);display:flex;flex-direction:column;animation:fade .18s both}
 #doa[hidden]{display:none!important}
 #doa-top{flex:none;display:flex;align-items:center;gap:6px;padding:calc(6px + env(safe-area-inset-top)) 8px 6px;background:linear-gradient(135deg,var(--barA,#3a2a0c) 0%,var(--barB,#6b4e16) 100%);color:var(--bari,#fff4d8);border-bottom:1.5px solid var(--accent)}
@@ -2515,6 +2538,13 @@ html:not(#_):not(#_) #kqr #credit{margin-top:2px}
 </div>
 
 <!-- ===================== DO'A & BACAAN ===================== -->
+<div id="ens" hidden role="dialog" aria-modal="true" aria-label="Ensiklopedia">
+  <div id="ens-top">
+    <button class="ib" id="ens-back" type="button" aria-label="Kembali"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+    <div class="ttl" id="ens-ttlbtn" role="button" tabindex="0" aria-label="Kembali satu tingkat"><b id="ens-ttl"></b><small id="ens-sub"></small></div>
+  </div>
+  <div id="ens-scroll"><div class="wrap" id="ens-body"></div></div>
+</div>
 <div id="doa" hidden role="dialog" aria-modal="true" aria-label="Do'a &amp; Bacaan">
   <div id="doa-top">
     <button class="ib" id="doa-back" type="button" aria-label="Kembali"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
@@ -3506,10 +3536,60 @@ $('doa-back').onclick=doaBack;$('doa-ttlbtn').onclick=doaBack;$('doa-ttlbtn').on
 document.addEventListener('keydown',function(e){if(e.key==='Escape'&&doaLv&&!$('sbd'))doaBack()});
 $('kdoa').onclick=openDoa;
 $('kdoa').onkeydown=function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();openDoa()}};
-/* tombol Ensiklopedia (di bawah Mata Rantai Islam): isi ENS_URL dengan alamat situs/halaman Ensiklopedia bila sudah ada;
-   selama masih kosong, ketukan hanya menampilkan pesan singkat */
-var ENS_URL='';
-function openEns(){if(ENS_URL)window.open(ENS_URL,'_blank','noopener');else toast('Ensiklopedia sedang disiapkan')}
+/* tombol Ensiklopedia (di bawah Mata Rantai Islam): klik -> daftar judul -> kartu; isi di ensiklopedia.json */
+var ENS=null,ensLv=0,ensCur=-1,ensHist=true;
+function ensFetch(ok,fail){
+  if(ENS){ok();return}
+  fetch('ensiklopedia.json').then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(d){ENS=d;ok()}).catch(function(){fail&&fail()})
+}
+/* prefetch pelan-pelan supaya ikut ter-cache untuk offline */
+window.addEventListener('load',function(){var f=function(){if(!ENS)ensFetch(function(){},null)};if(window.requestIdleCallback)requestIdleCallback(f,{timeout:9000});else setTimeout(f,5000)});
+function ensPush(lv){try{history.pushState({ens:lv},'')}catch(e){ensHist=false}}
+function openEns(){
+  if(ensLv)return;
+  ensLv=1;ensPush(1);$('ens').hidden=false;$('ens-back').focus();
+  if(ENS){ensShowList();return}
+  $('ens-ttl').textContent='Ensiklopedia';$('ens-sub').textContent='Memuat…';
+  $('ens-body').innerHTML='<p class="dleg">Memuat ensiklopedia…</p>';
+  ensFetch(function(){if(ensLv===1)ensShowList()},function(){if(ensLv)$('ens-body').innerHTML='<p class="dleg">Ensiklopedia belum bisa dimuat. Hubungkan internet sekali, lalu buka kembali.</p>'})
+}
+function closeEns(){if(!ensLv)return;ensLv=0;ensCur=-1;$('ens').hidden=true;$('ens-body').innerHTML='';$('kens').focus()}
+function ensShowList(){
+  ensLv=1;ensCur=-1;
+  $('ens-ttl').textContent=ENS.t||'Ensiklopedia';$('ens-sub').textContent=ENS.k.length+' judul';
+  var h=ENS.d?'<p class="eint">'+dFmt(ENS.d)+'</p>':'';
+  ENS.k.forEach(function(k,i){h+='<button type="button" class="ecard" data-i="'+i+'"><b>'+dFmt(k.t)+'</b><small>'+dFmt(k.d||'')+'</small></button>'});
+  $('ens-body').innerHTML=h;$('ens-scroll').scrollTop=0
+}
+function ensShowCard(i){
+  var k=ENS.k[i];if(!k){ensShowList();return}
+  ensLv=2;ensCur=i;
+  $('ens-ttl').textContent=k.t;$('ens-sub').textContent=ENS.t||'Ensiklopedia';
+  var h='<article class="eart"><h2 class="etit">'+dFmt(k.t)+'</h2>'+(k.d?'<p class="eint">'+dFmt(k.d)+'</p>':'');
+  (k.b||[]).forEach(function(b){
+    h+='<h3 class="esec">'+dFmt(b.h)+'</h3>';
+    (b.p||[]).forEach(function(t){h+='<p>'+dFmt(t)+'</p>'});
+    (b.q||[]).forEach(function(q){h+='<div class="eq"><div class="dar" lang="ar" dir="rtl">'+dEsc(q.a)+'</div><p class="et">'+dFmt(q.t)+'</p><p class="es">'+dEsc(q.s)+'</p></div>'})
+  });
+  if(k.s&&k.s.length){h+='<h3 class="esec">Sumber</h3><ol class="esrc">';k.s.forEach(function(t){h+='<li>'+dFmt(t)+'</li>'});h+='</ol>'}
+  $('ens-body').innerHTML=h+'</article>';$('ens-scroll').scrollTop=0
+}
+function ensBack(){
+  if(ensHist){history.back();return}
+  if(ensLv===2)ensShowList();else closeEns()
+}
+$('ens-body').addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('.ecard');if(b){ensPush(2);ensShowCard(parseInt(b.getAttribute('data-i'),10))}});
+$('ens-back').onclick=ensBack;$('ens-ttlbtn').onclick=ensBack;
+$('ens-ttlbtn').onkeydown=function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();ensBack()}};
+document.addEventListener('keydown',function(e){if(e.key==='Escape'&&ensLv)ensBack()});
+window.addEventListener('popstate',function(e){
+  if(!ensLv)return;
+  var lv=(e.state&&e.state.ens)||0;
+  if(lv===0)closeEns();
+  else if(lv===1)ensShowList();
+  else if(ensCur>=0)ensShowCard(ensCur);
+  else ensShowList()
+});
 $('kens').onclick=openEns;
 $('kens').onkeydown=function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();openEns()}};
 /* klik foto kecil -> tampil resolusi asli dari folder logo */
