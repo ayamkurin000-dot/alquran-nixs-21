@@ -1589,6 +1589,19 @@ html[data-gulung^="g"]:not(#_):not(#_):not(#_) .hbx.photo::after{
   background:linear-gradient(135deg,transparent 46%,rgba(0,0,0,.30) 50%,transparent 60%),linear-gradient(135deg,transparent 50%,#ffffff 50%,#c6ccd0 100%)}
 /* kolom jam kanan (lonceng, hitung mundur, nama & waktu sholat) diturunkan: lonceng tidak menempel bingkai atas */
 html:not(#_):not(#_):not(#_) #kled.hbx .nx{padding-top:14px}
+/* ===== 4 kotak kolom kanan (القرآن الكريم, Do'a & Bacaan, Mata Rantai Islam, Ensiklopedia): bayangan diperkecil + jarak diperlebar
+   supaya bayangan/pita satu kotak tidak menumpuk di kotak lain, di SEMUA tema. Ubah --gr4 untuk jarak antar kotak. ===== */
+html:not(#_):not(#_):not(#_){--gr4:9px}
+html:not(#_):not(#_):not(#_) .hb{row-gap:var(--gr4)}
+html[data-pita^="pita"]:not(#_):not(#_):not(#_){--gr4:15px}
+html:not(#_):not(#_):not(#_):not(#_) :is(#kqr,#kdoa,#kmri,#kens).hbx{
+  box-shadow:var(--gx,inset 0 0 0 0 transparent),inset 0 2px 0 var(--khl,rgba(255,255,255,.4)),inset 0 -12px 18px rgba(0,0,0,.16),0 3px 0 var(--ke,var(--accent2)),0 5px 6px -4px var(--ksh,rgba(0,0,0,.35))}
+html[data-tombol^="t"]:not(#_):not(#_):not(#_):not(#_) :is(#kqr,#kdoa,#kmri,#kens).hbx{box-shadow:inset 0 0 0 1px rgba(0,0,0,.14),0 3px 4px -2px rgba(0,0,0,.4)}
+html:is([data-tombol="t14"],[data-tombol="t15"],[data-tombol="t16"],[data-tombol="t17"],[data-tombol="t18"],[data-tombol="t19"],[data-tombol="t20"],[data-tombol="t21"],[data-tombol="t22"],[data-tombol="t23"]):not(#_):not(#_):not(#_):not(#_) :is(#kqr,#kdoa,#kmri,#kens).hbx{box-shadow:0 0 0 2px #121212,0 3px 3px -2px rgba(0,0,0,.45)}
+html[data-pita^="pita"]:not(#_):not(#_):not(#_):not(#_) :is(#kqr,#kdoa,#kmri,#kens).hbx{box-shadow:inset 0 0 0 1.5px var(--pl),inset 0 -10px 14px rgba(0,0,0,.10),0 3px 0 var(--pe),0 5px 6px -4px rgba(0,0,0,.32)}
+html[data-gulung^="g"]:not(#_):not(#_):not(#_):not(#_) :is(#kqr,#kdoa,#kmri,#kens).hbx{box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 3px 0 var(--ge),0 5px 6px -4px rgba(0,0,0,.32)}
+html[data-neon^="n"]:not(#_):not(#_):not(#_):not(#_) :is(#kqr,#kdoa,#kmri,#kens).hbx{box-shadow:0 0 2px var(--nl),0 0 4px var(--nc),inset 0 0 6px var(--nc),inset 0 0 10px color-mix(in srgb,var(--nc) 30%,transparent)}
+html[data-pita^="pita"]:not(#_):not(#_):not(#_):not(#_) :is(#kdoa,#kmri,#kens).hbx::after{top:-11px;height:15px;width:46%}
 </style>
 </head>
 <body>
