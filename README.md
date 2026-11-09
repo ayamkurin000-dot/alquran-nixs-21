@@ -25,6 +25,10 @@ Al-Qur'an Digital berbasis Mushaf Standar Indonesia dari Kemenag RI. Dibuat untu
 ```
 /
 ├── index.html                         # File utama aplikasi
+├── audio/
+│   ├── adzan.mp3                      # Adzan (Maghrib & cadangan)
+│   ├── adzan-subuh.mp3                # Adzan Subuh
+│   └── takbir.mp3                     # Takbir (waktu sholat lainnya)
 ├── logo/
 │   ├── foto-keluarga-kecil.jpg        # Foto kecil di header (yang tampil)
 │   ├── foto-keluarga.png              # Foto resolusi asli (saat diklik)
