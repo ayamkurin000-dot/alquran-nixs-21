@@ -1705,6 +1705,8 @@ html[data-gulung^="g"]:not(#_):not(#_):not(#_) .dgrp+.dgrp>.dgs::before{
   content:'';display:block;position:absolute;inset:auto;left:5px;width:12px;margin:0;border:0;border-radius:0;transform:none;opacity:1;
   top:-19px;height:23px;z-index:3;pointer-events:none;
   background:linear-gradient(90deg,#767c82,#f7f8f9 38%,#c3c8cc 62%,#737980);box-shadow:0 0 2px rgba(0,0,0,.45)}
+/* gulungan: pipa tidak menjulur ke atas dari kartu pertama daftar (Al-Fatihah); pipa mulai dari dalam kartu */
+html[data-gulung^="g"]:not(#_):not(#_):not(#_):not(#_) #hlist>.row:first-child::after{top:0}
 </style>
 </head>
 <body>
