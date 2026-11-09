@@ -1832,7 +1832,7 @@ html[data-gulung^="g"]:not(#_):not(#_):not(#_):not(#_) .row:not(.row .row){margi
      Kalimat hikmah & jadwal tampil dengan GAYA ACAK (tidak berulang berurutan) supaya tidak membosankan:
      running besar kiri->kanan lalu kanan->kiri, 2-3 baris running berlawanan arah, baris datang dari kiri & kanan lalu tetap,
      dari atas & bawah, rolling huruf (masuk satu arah, keluar arah sebaliknya), swipe, swing, tirai, kata demi kata, dll. */
-  var vAktif=false, vtm=0, vHist=[], vS=null, c0=0;
+  var qFi=0, qFl=-1, vAktif=false, vtm=0, vHist=[], vS=null, c0=0;
   function vsEl(){var led=document.querySelector('#kled .led'); if(!led)return null; var s=led.querySelector('.vs'); if(!s){s=document.createElement('div'); s.className='vs'; led.appendChild(s)} return s}
   function vsStop(){
     if(vtm){clearTimeout(vtm); vtm=0}
@@ -1853,8 +1853,8 @@ html[data-gulung^="g"]:not(#_):not(#_):not(#_):not(#_) .row:not(.row .row){margi
   function mkT(txt,z,c,par){var d=document.createElement('div'); d.className='vt'; d.textContent=txt; d.style.setProperty('--z',z); d.style.setProperty('--c',c); (par||vS).appendChild(d); return d}
   function vmuat(d,mw){var z=parseFloat(d.style.getPropertyValue('--z'))||1,k=0; while(k++<14&&d.offsetWidth>mw){z*=.93; d.style.setProperty('--z',z)} return z}
   /* susun kalimat pendek -> beberapa baris besar rata tengah; null bila tidak muat dalam satu layar */
-  function susun(tx){
-    var SC=[2.8,2.4,2.0,1.7,1.45,1.25,1.1,.95], mx=Math.max.apply(null,tx.split(' ').map(function(x){return x.length})), i;
+  function susun(tx,SCo){
+    var SC=SCo||[2.8,2.4,2.0,1.7,1.45,1.25,1.1,.95], mx=Math.max.apply(null,tx.split(' ').map(function(x){return x.length})), i;
     for(i=0;i<SC.length;i++){var w=Math.floor(COL/SC[i]), rows=Math.floor(5.2/(1.3*SC[i])); if(rows<1||w<8||mx>w)continue; var ch=bungkus(tx,w); if(ch.length<=rows)return {z:SC[i],ch:ch}}
     return null;
   }
@@ -2026,6 +2026,18 @@ html[data-gulung^="g"]:not(#_):not(#_):not(#_):not(#_) .row:not(.row .row){margi
       K(e,total,[[s,{transform:ef[0],opacity:0},'cubic-bezier(.15,.9,.25,1.05)'],[s+350,{transform:ef[1],opacity:1}],[s+350+hd,{transform:ef[1],opacity:1},'cubic-bezier(.6,0,.9,.4)'],[s+350+hd+250,{transform:ef[2],opacity:0}]])});
     return total;
   }
+  /* ULANG UTUH: setelah gaya yang memecah kalimat (kata demi kata, running potongan, baris berlawanan), kalimat ditampilkan lengkap & mudah dibaca.
+     Muat satu layar -> tampil sekali utuh; terlalu panjang -> dibagi beberapa halaman (3-4 baris) berurutan, huruf normal. */
+  function sRecap(tx,T0,lay){
+    lay=lay||susun(tx,[1.5,1.25,1.1,.95,.85]); var pages=[], z, t=T0, plan=[];
+    if(lay){z=lay.z; pages=[lay.ch]}
+    else{z=1; var ch=bungkus(tx,COL), rows=Math.floor(5.2/1.3), np=Math.ceil(ch.length/rows), per=Math.ceil(ch.length/np), i; for(i=0;i<ch.length;i+=per)pages.push(ch.slice(i,i+per))}
+    pages.forEach(function(pg){var h=1800+pg.join(' ').length*85; plan.push([t,h]); t+=500+h+400});
+    var total=t+100;
+    pages.forEach(function(pg,k){var R=baris({z:z,ch:pg}), s0=plan[k][0], h=plan[k][1];
+      R.forEach(function(o){K(o.r,total,[[s0,{opacity:0,transform:'translateY(.7em)'},'ease-out'],[s0+500,{opacity:1,transform:'translateY(0em)'}],[s0+500+h,{opacity:1,transform:'translateY(0em)'},'ease-in'],[s0+500+h+400,{opacity:0,transform:'translateY(-.7em)'}]])})});
+    return total;
+  }
   var SC_STAT=[['roll',sRoll,1],['swing',sSwing,1],['split',sSplit,1],['scatter',sScatter,1],['wave',sWave,1],['ketik',sType,1],['tirai',sCurtain,1],['cascade',sCascade,2],['jepit',sJepit,2],['swipe',sSwipe,1]];
   function vsPilih(tx,lay,grp){
     var ok=[]; if(lay)SC_STAT.forEach(function(a){if(lay.ch.length>=a[2])ok.push(a[0])});
@@ -2052,7 +2064,9 @@ html[data-gulung^="g"]:not(#_):not(#_):not(#_):not(#_) .row:not(.row .row){margi
     c0=Math.random()*PAL.length|0;
     var nm=vsPilih(tx,lay,grp), total=0, i;
     for(i=0;i<SC_STAT.length;i++) if(SC_STAT[i][0]===nm) total=SC_STAT[i][1](lay,tx,hold);
-    if(nm==='bigrun')total=sBigRun(tx); else if(nm==='rows')total=sRows(tx); else if(nm==='words')total=sWords(grp);
+    if(nm==='bigrun'){total=sBigRun(tx); if(!bigInfo(tx).dua)total=sRecap(tx,total+200,kind==='jv'?lay:null)}
+    else if(nm==='rows')total=sRecap(tx,sRows(tx)+200,kind==='jv'?lay:null);
+    else if(nm==='words')total=sRecap(tx,sWords(grp)+200,kind==='jv'?lay:null);
     if(!total)throw 0;
     vtm=setTimeout(function(){vtm=0; tick()},total+60);
     return total;
@@ -2076,7 +2090,7 @@ html[data-gulung^="g"]:not(#_):not(#_):not(#_):not(#_) .row:not(.row .row){margi
       catch(e){ vsStop(); if(t==='v'){t='q'; cur.t='q'} else{t='run'; cur.t='run'; cur.dur=DURS.run} }
     }
     if(t==='q'){ var tx=QT[qi], lay=tataQ(tx); cur.i=qi;
-      if(lay){cur.mode='s'; cur.s=lay.s; cur.ch=lay.ch; cur.fx=FX[qi%FX.length]; cur.dur=6500+tx.length*90; bangunQ()}   /* muat 1 layar: rata tengah, diam cukup lama */
+      if(lay){cur.mode='s'; cur.s=lay.s; cur.ch=lay.ch; do{qFi=Math.random()*FX.length|0}while(qFi===qFl&&FX.length>1); qFl=qFi; cur.fx=FX[qFi]; cur.dur=6500+tx.length*90; bangunQ()}   /* muat 1 layar: rata tengah, diam cukup lama */
       else{cur.mode='r'; cur.ch=bungkus(tx,COL); cur.stp=cur.ch.length-4; cur.dur=3500+cur.stp*2800+3500}                /* panjang: bergulir naik pelan-pelan */
       qi=(qi+1)%QT.length; try{localStorage.setItem(KQ,String(qi))}catch(e){} }
     pgAt=now; wIdx=-1; el('kled').classList.remove('xo');
