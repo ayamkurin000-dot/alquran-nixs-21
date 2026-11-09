@@ -530,6 +530,16 @@ input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;bac
 .snav button:disabled{opacity:.35}
 #toast{position:fixed;left:50%;bottom:calc(var(--bnh,150px) + 62px);transform:translateX(-50%);z-index:60;background:var(--ink);color:var(--paper);padding:8px 14px;border-radius:99px;font-size:13px;opacity:0;pointer-events:none;transition:opacity .2s}
 #toast.on{opacity:.95}
+#lkm{position:fixed;inset:0;z-index:70;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.5);padding:16px}
+#lkm.on{display:flex}
+#lkm .bx{width:100%;max-width:340px;background:var(--paper);color:var(--ink);border:1px solid var(--accent);border-radius:14px;padding:16px;box-shadow:0 10px 30px rgba(0,0,0,.35)}
+#lkm h3{margin:0 0 6px;font-size:16px}
+#lkm label{display:block;font-size:12px;margin:10px 0 4px;opacity:.8}
+#lkm select,#lkm input{width:100%;box-sizing:border-box;padding:9px 10px;border-radius:10px;border:1px solid var(--accent);background:transparent;color:inherit;font-size:14px}
+#lkm select option{color:#000}
+#lkm .tb{display:flex;gap:8px;margin-top:14px}
+#lkm .tb button{flex:1;border:1px solid var(--accent);background:transparent;color:var(--accent2);border-radius:10px;padding:9px;font-weight:700;font-size:14px}
+#lkm .tb button.p{background:var(--accent);color:var(--paper)}
 
 /* ===================== Bingkai ornamen ===================== */
 .fx{position:absolute;inset:6px;pointer-events:none;z-index:1;border-radius:4px;color:var(--accent)}
@@ -1468,7 +1478,7 @@ html[data-gulung^="g"]:not(#_):not(#_):not(#_):not(#_) .row:not(.row .row){margi
         <span class="hc tl" aria-hidden="true"><svg viewBox="0 0 48 48"><use href="#c-gulir"/></svg></span><span class="hc tr" aria-hidden="true"><svg viewBox="0 0 48 48"><use href="#c-gulir"/></svg></span><span class="hc bl" aria-hidden="true"><svg viewBox="0 0 48 48"><use href="#c-gulir"/></svg></span><span class="hc br" aria-hidden="true"><svg viewBox="0 0 48 48"><use href="#c-gulir"/></svg></span>
         <div class="hmri">MATA RANTAI ISLAM</div>
       </a>
-      <!-- papan LED jadwal sholat (gaya running text Arduino P10): 4 baris, banyak mode tampilan. Ketuk papan = perbarui lokasi; tombol lonceng = alarm -->
+      <!-- papan LED jadwal sholat (gaya running text Arduino P10): 4 baris, banyak mode tampilan. Ketuk papan = perbarui lokasi; tekan lama = pilih kota/kecamatan manual; tombol lonceng = alarm -->
       <div class="hbx tx" id="kled" role="group" aria-label="Papan jadwal sholat">
         <div class="led" aria-hidden="true"><div class="ln"><span></span></div><div class="ln"><span></span></div><div class="ln"><span></span></div><div class="ln"><span></span></div><div class="qs"></div><div class="wk"><div class="wrb" id="wrb"></div><div class="wr" id="wr"></div><div class="wb"><div class="wv" id="wv"><div class="wn"></div><div class="wt"></div></div></div></div></div>
         <div class="nx"><div class="bw"><button type="button" id="lbell" class="lbell" aria-label="Aktifkan notifikasi dan suara adzan">&#128277;</button><button type="button" id="lscr" class="lscr" aria-pressed="false" aria-label="Jaga layar tetap menyala">&#9728;</button></div><i id="nxj" class="nj" aria-hidden="true"><u id="njh">--</u><u class="kb">:</u><u id="njm">--</u></i><b id="nxn" aria-hidden="true">—</b><span id="nxt" aria-hidden="true">--.--</span></div>
@@ -1549,7 +1559,7 @@ html[data-gulung^="g"]:not(#_):not(#_):not(#_):not(#_) .row:not(.row .row){margi
     return null;
   }
   function simpan(){try{localStorage.setItem(KEY,JSON.stringify(L))}catch(e){}}
-  var L=muat()||DEF, sedang=false;
+  var L=muat()||DEF, sedang=false, BATAS_AKURASI=20000, kasarInfo=false; /* akurasi lebih kasar dari 20 km (meter) ditolak */
   setTimeout(function(){try{if(L&&L.t&&L.sumber==='gps'&&L.v!==2)lengkapi(L.t,L.lat,L.lng)}catch(e){}},1500);
 
   function ambil(url,ms){
@@ -1580,7 +1590,14 @@ html[data-gulung^="g"]:not(#_):not(#_):not(#_):not(#_) .row:not(.row .row){margi
   var tT; function info(m){var t=document.getElementById('toast'); if(!t)return; t.textContent=m; t.classList.add('on'); clearTimeout(tT); tT=setTimeout(function(){t.classList.remove('on')},2800);}
   function dapat(pos,manual){
     sedang=false;
-    var c=pos.coords, baru={lat:+c.latitude.toFixed(4),lng:+c.longitude.toFixed(4),sumber:'gps',t:Date.now()};
+    if(L.sumber==='manual')return;                          /* pilihan manual tidak ditimpa deteksi otomatis */
+    var c=pos.coords;
+    if(c.accuracy>BATAS_AKURASI){                           /* perkiraan jaringan (PC tanpa GPS) terlalu kasar: jangan timpa lokasi yang ada */
+      if(manual||!kasarInfo){kasarInfo=true; info('Lokasi kurang akurat (\u00b1'+Math.round(c.accuracy/1000)+' km). Tekan lama papan jadwal untuk memilih kota.')}
+      if(L.sumber!=='gps')ipLokasi(manual);
+      isi(); return;
+    }
+    var baru={lat:+c.latitude.toFixed(4),lng:+c.longitude.toFixed(4),sumber:'gps',t:Date.now()};
     var dekat=L.sumber==='gps'&&L.nama&&jarak(L,baru)<5;
     if(dekat){ baru.nama=L.nama; baru.alt=L.alt; baru.kec=L.kec; baru.kota=L.kota; baru.kab=L.kab; baru.v=L.v; baru.kecM=L.kecM; }
     else {
@@ -1593,11 +1610,13 @@ html[data-gulung^="g"]:not(#_):not(#_):not(#_):not(#_) .row:not(.row .row){margi
   }
   function gagal(err,manual){
     sedang=false; isi();
+    if(L.sumber==='manual')return;
     if(L.sumber!=='gps')ipLokasi(manual);
     if(!manual)return;
     info(err&&err.code===1?'Izin lokasi ditolak. Aktifkan lokasi untuk situs ini di pengaturan peramban.':'Lokasi belum ditemukan. Coba lagi.');
   }
   function minta(manual){
+    if(L.sumber==='manual'){ if(manual)info('Lokasi manual: '+(L.nama||'')+'. Tekan lama papan untuk mengubah.'); return; }
     if(sedang)return;
     if(!navigator.geolocation||(typeof isSecureContext!=='undefined'&&!isSecureContext)){
       if(L.sumber!=='gps')ipLokasi(manual);
@@ -1609,12 +1628,12 @@ html[data-gulung^="g"]:not(#_):not(#_):not(#_):not(#_) .row:not(.row .row){margi
   /* ---- cadangan: lokasi perkiraan dari alamat IP (tanpa izin), dipakai selama GPS belum ada / ditolak ---- */
   var ipBusy=false;
   function ipLokasi(manual){
-    if(ipBusy||L.sumber==='gps')return;
+    if(ipBusy||L.sumber==='gps'||L.sumber==='manual')return;
     if(!manual&&L.sumber==='ip'&&Date.now()-L.t<6*3600000)return;
     ipBusy=true;
     function ok(la,lo,kota,prov){
       la=+la; lo=+lo; if(!isFinite(la)||!isFinite(lo)||Math.abs(la)>90||Math.abs(lo)>180)throw 0;
-      if(L.sumber==='gps')return true;                      /* GPS menang bila sudah ada */
+      if(L.sumber==='gps'||L.sumber==='manual')return true;                      /* GPS menang bila sudah ada */
       var nm=[kota,prov].filter(function(x){return x}).join(', ')||terdekat({lat:la,lng:lo})||'';
       L={lat:+la.toFixed(4),lng:+lo.toFixed(4),alt:0,nama:nm,sumber:'ip',t:Date.now(),v:2}; simpan(); isi();
       ambil('https://api.open-meteo.com/v1/elevation?latitude='+L.lat+'&longitude='+L.lng,7000)
@@ -1626,6 +1645,7 @@ html[data-gulung^="g"]:not(#_):not(#_):not(#_):not(#_) .row:not(.row .row){margi
       .catch(function(){}).then(function(){ipBusy=false});
   }
   function otomatis(){
+    if(L.sumber==='manual')return;
     if(L.sumber==='gps'&&Date.now()-L.t<30*MS)return;
     if(L.sumber!=='gps')ipLokasi(false);                    /* perkiraan instan dulu, GPS menyusul bila diizinkan */
     if(!navigator.geolocation)return;
@@ -1964,20 +1984,58 @@ html[data-gulung^="g"]:not(#_):not(#_):not(#_):not(#_) .row:not(.row .row){margi
       if(A)halamanAlarm(A,'a'+A.n+A.t); else halaman(now,nxt);
       kotakNext(nxt);
       if(now-(tick.m||0)>20000){tick.m=now; var r=hitung(now,L);
-        box.setAttribute('aria-label','Papan jadwal sholat. '+(r?r.a.n+' '+r.a.w+'. Berikutnya '+r.b.n+' '+r.b.w+'. ':'')+kota()+'. Ketuk untuk memperbarui lokasi.')}
+        box.setAttribute('aria-label','Papan jadwal sholat. '+(r?r.a.n+' '+r.a.w+'. Berikutnya '+r.b.n+' '+r.b.w+'. ':'')+kota()+'. Ketuk untuk memperbarui lokasi, tekan lama untuk memilih kota.')}
     }catch(e){}
   }
   function isi(){tick()}
+
+  /* ---- pilih lokasi manual (tekan lama papan): untuk PC tanpa GPS yang lokasinya salah ---- */
+  var lkm=null;
+  function tutupPilih(){if(lkm)lkm.classList.remove('on')}
+  function bukaPilih(){
+    if(!lkm){
+      lkm=document.createElement('div'); lkm.id='lkm'; lkm.setAttribute('role','dialog'); lkm.setAttribute('aria-modal','true'); lkm.setAttribute('aria-label','Pilih lokasi jadwal sholat');
+      var h='<div class="bx"><h3>Lokasi jadwal sholat</h3><label for="lkS">Kota</label><select id="lkS"><option value="auto">Otomatis (GPS / jaringan)</option><option value="blitar">Kota Blitar</option>';
+      for(var i=0;i<KOTA.length;i++)h+='<option value="'+i+'">'+KOTA[i][0]+'</option>';
+      h+='</select><label for="lkK">Kecamatan (opsional)</label><input id="lkK" type="text" autocomplete="off" placeholder="nama kecamatan"><div class="tb"><button type="button" id="lkB">Batal</button><button type="button" id="lkO" class="p">Simpan</button></div></div>';
+      lkm.innerHTML=h; document.body.appendChild(lkm);
+      lkm.addEventListener('click',function(ev){if(ev.target===lkm)tutupPilih()});
+      document.getElementById('lkB').addEventListener('click',tutupPilih);
+      document.getElementById('lkO').addEventListener('click',simpanPilih);
+      document.addEventListener('keydown',function(ev){if(ev.key==='Escape')tutupPilih()});
+    }
+    var s=document.getElementById('lkS'), k=document.getElementById('lkK');
+    s.value=(L.sumber==='manual'&&L.mid!=null)?String(L.mid):'auto';
+    k.value=L.kec||'';
+    lkm.classList.add('on'); try{s.focus()}catch(x){}
+  }
+  function simpanPilih(){
+    var s=document.getElementById('lkS').value, v=document.getElementById('lkK').value.replace(/^\s*kec(amatan|\.)?\s+/i,'').trim();
+    tutupPilih();
+    if(s==='auto'){
+      if(L.sumber==='manual'){                               /* kembali ke deteksi otomatis */
+        L={lat:DEF.lat,lng:DEF.lng,alt:DEF.alt,nama:DEF.nama,sumber:'bawaan',t:0}; simpan(); isi();
+        info('Lokasi: deteksi otomatis'); ipLokasi(false); minta(true); return;
+      }
+      if(v){L.kec=v;L.kecM=1;L.nama=susunNama(L.kec,L.kota,L.kab)||L.nama;simpan();isi();info('Kecamatan: '+v)}
+      else{L.kecM=0;L.kec='';simpan();isi();lengkapi(L.t,L.lat,L.lng);info('Kecamatan: deteksi otomatis')}
+      return;
+    }
+    var nm,la,lo,alt=0,t0=Date.now();
+    if(s==='blitar'){la=DEF.lat;lo=DEF.lng;alt=DEF.alt;nm='Kota Blitar'}
+    else{var ko=KOTA[+s]; if(!ko)return; nm=ko[0];la=ko[1];lo=ko[2]}
+    L={lat:la,lng:lo,alt:alt,nama:susunNama(v,nm,''),kec:v,kecM:v?1:0,kota:nm,kab:'',sumber:'manual',mid:s,t:t0,v:2};
+    simpan(); isi(); info('Lokasi: '+L.nama);
+    if(!alt) ambil('https://api.open-meteo.com/v1/elevation?latitude='+la+'&longitude='+lo,7000)
+      .then(function(j){var ev=j&&j.elevation&&j.elevation[0]; if(typeof ev==='number'&&isFinite(ev)&&L.sumber==='manual'&&L.t===t0){L.alt=Math.max(0,Math.round(ev));simpan();isi()}}).catch(function(){});
+  }
 
   (function(){
     var box=el('kled'), b=el('lbell'), izinMinta=false; if(!box||!b)return;
     var bxT=0, bxF=false;
     box.addEventListener('click',function(){ if(bxF){bxF=false;return} minta(true)});
     box.addEventListener('pointerdown',function(ev){if(ev&&ev.target&&ev.target.closest&&ev.target.closest('#lscr'))return;bxF=false;clearTimeout(bxT);bxT=setTimeout(function(){
-      bxF=true; var cur0=L.kec||''; var v=null; try{v=window.prompt('Nama kecamatan (kosongkan untuk deteksi otomatis):',cur0)}catch(x){}
-      if(v===null)return; v=v.replace(/^\s*kec(amatan|\.)?\s+/i,'').trim();
-      if(v){L.kec=v;L.kecM=1;L.nama=susunNama(L.kec,L.kota,L.kab)||L.nama;simpan();isi();info('Kecamatan: '+v)}
-      else{L.kecM=0;L.kec='';simpan();isi();lengkapi(L.t,L.lat,L.lng);info('Kecamatan: deteksi otomatis')}
+      bxF=true; bukaPilih();
     },900)});
     ['pointerup','pointerleave','pointercancel'].forEach(function(n){box.addEventListener(n,function(){clearTimeout(bxT)})});
     b.addEventListener('pointerdown',function(ev){ev.stopPropagation();lpF=false;clearTimeout(lpT);lpT=setTimeout(function(){lpF=true;buka();info('Uji suara: Subuh');bunyi({n:'SUBUH',t:Date.now()},true);tick()},800)});
