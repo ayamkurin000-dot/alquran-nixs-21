@@ -92,9 +92,15 @@ html:not(#_) #kled.hbx{grid-column:1/-1;grid-row:4;display:flex;flex-direction:r
   box-shadow:inset 0 0 16px #000,inset 0 0 0 2px #1d1405,0 6px 14px -6px rgba(0,0,0,.5) !important;overflow:hidden;transform:none}
 html:not(#_) #kled.hbx::before{display:none !important}
 html:not(#_) #kled.hbx::after{display:block !important;content:'' !important;position:absolute !important;inset:0 !important;width:auto !important;height:auto !important;top:0 !important;left:0 !important;transform:none !important;border:0 !important;border-radius:0 !important;opacity:1 !important;z-index:3;pointer-events:none;
-  background:radial-gradient(circle at 50% 50%,transparent 0 55%,rgba(0,0,0,.3) 100%) 0 0/2px 2px !important}
+  background:radial-gradient(circle at 50% 50%,rgba(255,235,200,.10) 0 32%,rgba(0,0,0,var(--lg,.72)) 66%) 0 0/var(--lp) var(--lp) !important}
 #kled .led{flex:1;min-width:0;position:relative;z-index:1}
-#kled .led{font-size:clamp(10.5px,3.2vw,16px);height:6.2em;overflow:hidden;display:flex;flex-direction:column;justify-content:center}
+#kled{--lf:clamp(11.5px,3.4vw,16px);--lp:1.5px}
+@media (min-width:560px){#kled{--lf:clamp(19px,3vw,23px);--lp:3px;--lg:.6}
+  #kled.hbx .nx{width:140px}#kled.hbx .nx b,#kled.hbx .nx span{font-size:27px}#kled.hbx .nx .nj{font-size:23px}
+  #kled.hbx .led,#kled.hbx .nx{-webkit-text-stroke:.6px currentColor}}
+/* huruf sedikit ditebalkan + dicerahkan supaya tetap jelas terbaca di balik kisi titik LED */
+#kled .led,#kled .nx{-webkit-text-stroke:.3px currentColor;filter:brightness(1.2) saturate(1.15)}
+#kled .led{font-size:var(--lf);height:6.2em;overflow:hidden;display:flex;flex-direction:column;justify-content:center}
 #kled .led .ln{flex:none}#kled .led .ln.em{display:none}
 #kled .ln{height:1.5em;overflow:hidden;white-space:nowrap;text-align:center;font:800 1em/1.5 ui-monospace,'SF Mono',Menlo,Consolas,'DejaVu Sans Mono','Liberation Mono',monospace;letter-spacing:.02em;text-transform:uppercase;-webkit-font-smoothing:antialiased;color:var(--c,#ffe600);text-shadow:0 0 2px var(--c,#ffe600),0 0 8px color-mix(in srgb,var(--c,#ffe600) 65%,transparent),0 0 16px color-mix(in srgb,var(--c,#ffe600) 35%,transparent)}
 #kled .ln.rb{animation:lrb 5s linear infinite}
