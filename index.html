@@ -1710,6 +1710,23 @@ html[data-gulung^="g"]:not(#_):not(#_):not(#_) .dgrp+.dgrp>.dgs::before{
   background:linear-gradient(90deg,#767c82,#f7f8f9 38%,#c3c8cc 62%,#737980);box-shadow:0 0 2px rgba(0,0,0,.45)}
 /* gulungan: pipa tidak menjulur ke atas dari kartu pertama daftar (Al-Fatihah); pipa mulai dari dalam kartu */
 html[data-gulung^="g"]:not(#_):not(#_):not(#_):not(#_) #hlist>.row:first-child::after{top:0}
+
+/* =====================================================================================
+   RAMPING: tiga bingkai (Do'a & Bacaan, Mata Rantai Islam, Ensiklopedia) berukuran sama, tinggi tetap, 1 baris.
+   Bingkai القرآن الكريم tidak diubah. Foto ikut memendek mengikuti kolom kanan, sehingga daftar surat lebih lega.
+   Ubah --tb-h untuk tinggi tiga bingkai itu. ===================================================================================== */
+html:not(#_):not(#_):not(#_):not(#_):not(#_){--tb-h:34px}
+html:not(#_):not(#_):not(#_):not(#_):not(#_) .hb{grid-template-rows:auto var(--tb-h) var(--tb-h) var(--tb-h) auto}
+html:not(#_):not(#_):not(#_):not(#_):not(#_) :is(#kdoa,#kmri,#kens).hbx{
+  height:var(--tb-h);min-height:0;padding:0 6px;flex-direction:row;align-items:center;justify-content:center}
+html:not(#_):not(#_):not(#_):not(#_):not(#_) :is(#kdoa,#kmri,#kens) :is(.hdoa,.hmri){
+  white-space:nowrap;text-wrap:nowrap;line-height:1;max-width:100%;overflow:hidden;text-overflow:clip;
+  font-size:clamp(8.5px,2.75vw,14px);letter-spacing:.02em}
+/* tema gulungan: sisi kiri tertutup gulungan, jadi teks digeser agar tetap di tengah bagian kosong */
+html[data-gulung^="g"]:not(#_):not(#_):not(#_):not(#_):not(#_) :is(#kdoa,#kmri,#kens).hbx{padding:0 3px 0 18px}
+html[data-gulung^="g"]:not(#_):not(#_):not(#_):not(#_):not(#_) :is(#kdoa,#kmri,#kens) :is(.hdoa,.hmri){font-size:clamp(8px,2.6vw,12px);letter-spacing:.01em}
+/* foto tidak lagi memaksa tinggi 210px; tingginya mengikuti kolom kanan */
+html:not(#_):not(#_):not(#_):not(#_):not(#_) .hbx.photo{min-height:0}
 </style>
 </head>
 <body>
