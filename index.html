@@ -227,7 +227,7 @@ html:not(#_) #kled .bw .lbell{position:absolute;left:50%;bottom:-2px;top:auto;ri
 #kled .wk .wv.fx-wipe{animation:qwp 1s cubic-bezier(.3,.7,.2,1) both}#kled .wk .wv.fx-wipe.out{animation:qwpo .7s ease-in both}
 @media (prefers-reduced-motion:reduce){#kled .wk .wv,#kled .wk .wrb{animation:none!important;transition:none!important}}
 .lbell{position:relative;z-index:4;flex:none;width:30px;height:30px;border-radius:50%;border:1px solid #5a4210;background:#140d02;color:#ffb300;font-size:15px;line-height:1;padding:0;cursor:pointer;-webkit-tap-highlight-color:transparent}
-.lbell:active{filter:brightness(1.4)}
+.lbell:active{filter:brightness(1.4)} .lbell{touch-action:none;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none} html:not(#_) #kled .bw .lbell::before{content:"";position:absolute;left:-4px;right:-4px;top:-16px;bottom:-16px}
 .lscr{position:relative;z-index:4;flex:none;width:30px;height:30px;border-radius:50%;border:1px solid #5a4210;background:#140d02;color:#7a6a3a;font-size:15px;line-height:1;padding:0;cursor:pointer;-webkit-tap-highlight-color:transparent}
 .lscr:active{filter:brightness(1.4)}
 .lscr[aria-pressed="true"]{background:#ffb300;color:#140d02;border-color:#ffd666;box-shadow:0 0 8px rgba(255,179,0,.7)}
@@ -2594,7 +2594,8 @@ html[data-gulung^="g"]:not(#_):not(#_):not(#_):not(#_) #hlist>.row:first-child::
     },900)});
     ['pointerup','pointerleave','pointercancel'].forEach(function(n){box.addEventListener(n,function(){clearTimeout(bxT)})});
     b.addEventListener('pointerdown',function(ev){ev.stopPropagation();lpF=false;clearTimeout(lpT);lpT=setTimeout(function(){lpF=true;buka();info('Uji suara: Subuh');bunyi({n:'SUBUH',t:Date.now()},true);tick()},800)});
-    ['pointerup','pointerleave','pointercancel'].forEach(function(n){b.addEventListener(n,function(){clearTimeout(lpT)})});
+    b.addEventListener('contextmenu',function(ev){ev.preventDefault()});
+    ['pointerup','pointerleave','pointercancel'].forEach(function(n){b.addEventListener(n,function(ev){if(n==='pointerleave'&&ev&&ev.pointerType&&ev.pointerType!=='mouse')return;clearTimeout(lpT)})});
     b.addEventListener('click',function(ev){
       ev.stopPropagation(); if(lpF){lpF=false;return}
       if(playing){berhenti();return}
