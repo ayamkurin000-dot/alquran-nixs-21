@@ -3,19 +3,19 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#cfe1ee" id="metatheme">
-<!-- sembunyikan halaman sampai tema (3D Gulungan Biru) selesai dipasang, supaya tidak berkedip hijau dulu -->
+<meta name="theme-color" content="#070b14" id="metatheme">
+<!-- sembunyikan halaman sampai tema (3D Neon Kuning) selesai dipasang, supaya tidak berkedip terang dulu -->
 <style>
-html.pre{visibility:hidden;background:#cfe1ee}
+html.pre{visibility:hidden;background:#070b14}
 #splash{display:none}
 html.pre #splash{visibility:visible;position:fixed;inset:0;z-index:99999;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;text-align:center;padding:24px;
-  background:radial-gradient(120% 70% at 50% 0%,#ebf3f9 0,#cfe1ee 60%,#a9c7de 100%);color:#0f5686;font-family:system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif}
-#splash .ar{font-family:'Aref Ruqaa','Amiri',serif;font-size:34px;line-height:1.5;color:#13608f;direction:rtl}
-#splash .ring{width:54px;height:54px;border-radius:50%;border:5px solid rgba(19,96,143,.22);border-top-color:#1d7fb8;animation:spl 0.9s linear infinite;box-shadow:0 6px 14px rgba(15,86,134,.25)}
+  background:radial-gradient(120% 70% at 50% 0%,#18213d 0,#0b1222 60%,#04060c 100%);color:#ffc21a;font-family:system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif}
+#splash .ar{font-family:'Aref Ruqaa','Amiri',serif;font-size:34px;line-height:1.5;color:#fff0a8;direction:rtl}
+#splash .ring{width:54px;height:54px;border-radius:50%;border:5px solid rgba(255,194,26,.22);border-top-color:#ffc21a;animation:spl 0.9s linear infinite;box-shadow:0 0 14px rgba(255,194,26,.35)}
 #splash .t{font-weight:700;font-size:17px;letter-spacing:.02em}
 #splash .s{font-size:13px;opacity:.75;margin-top:-8px}
-#splash .bar{width:160px;height:6px;border-radius:99px;background:rgba(122,87,16,.2);overflow:hidden}
-#splash .bar i{display:block;height:100%;width:40%;border-radius:99px;background:linear-gradient(90deg,#cf9b22,#7a5710);animation:splb 1.3s ease-in-out infinite}
+#splash .bar{width:160px;height:6px;border-radius:99px;background:rgba(255,194,26,.2);overflow:hidden}
+#splash .bar i{display:block;height:100%;width:40%;border-radius:99px;background:linear-gradient(90deg,#ffc21a,#fff0a8);animation:splb 1.3s ease-in-out infinite}
 @keyframes spl{to{transform:rotate(360deg)}}
 @keyframes splb{0%{transform:translateX(-100%)}100%{transform:translateX(350%)}}
 @media (prefers-reduced-motion:reduce){#kled .qs,#kled .qs span{animation:none!important}#splash .ring,#splash .bar i{animation-duration:3s}}
@@ -2998,7 +2998,7 @@ var FRAME_ORDER=Object.keys(FRAMES);
 var FX={none:{n:'Standar'},matte:{n:'Matte'},glass1:{n:'Kaca 1 \u00b7 Tipis'},glass2:{n:'Kaca 2 \u00b7 Berair'},glass3:{n:'Kaca 3 \u00b7 Buram'},glass4:{n:'Kaca 4 \u00b7 Kristal'},glass5:{n:'Kaca 5 \u00b7 Cair'},glass6:{n:'Kaca 6 \u00b7 Kilap'}};
 var FX_ORDER=Object.keys(FX);
 
-var DEF={font:'lpmq',theme:'k3gul4',tex:'halus',texR:'w-tegak',frame:'none',fx:'glass2',ar:22,trs:1,showTr:false,plTr:true};
+var DEF={font:'lpmq',theme:'k3neon2',tex:'p-emas',texR:'w-tegak',frame:'none',fx:'glass2',ar:22,trs:1,showTr:false,plTr:true};
 
 /* =====================================================================
    UTIL
@@ -3011,7 +3011,7 @@ var S=Object.assign({},DEF,ls('qk.set')||{});
 if(!FONTS[S.font])S.font=DEF.font;if(!THEMES[S.theme])S.theme=DEF.theme;if(!TEXTURES[S.tex])S.tex=DEF.tex;if(!TEXTURES[S.texR])S.texR=DEF.texR;if(!FRAMES[S.frame])S.frame=DEF.frame;if(!FX[S.fx])S.fx=DEF.fx;
 function save(){ls('qk.set',S)}
 /* tampilan awal baru (v2): diterapkan SEKALI pada perangkat yang sudah punya pengaturan lama; setelah itu pilihan pengguna dihormati */
-if(ls('qk.v')!==4){S.theme=DEF.theme;S.tex=DEF.tex;S.frame=DEF.frame;S.fx=DEF.fx;ls('qk.v',4);save()}
+if(ls('qk.v')!==5){S.theme=DEF.theme;S.tex=DEF.tex;S.frame=DEF.frame;S.fx=DEF.fx;ls('qk.v',5);save()}
 var toastT;function toast(m){var t=$('toast');t.textContent=m;t.classList.add('on');clearTimeout(toastT);toastT=setTimeout(function(){t.classList.remove('on')},1600)}
 
 /* Normalisasi untuk pencarian */
