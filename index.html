@@ -1484,11 +1484,13 @@ html:not(#_):not(#_):not(#_):not(#_) .row:not(.row .row):not(.hit) .nm{font-size
 html[data-gulung^="g"]:not(#_):not(#_):not(#_):not(#_):not(#_) .row:not(.row .row){margin-bottom:16px;content-visibility:visible}
 /* gulungan: pipa perak menembus semua kartu (content-visibility:auto di atas memotong bagian pipa yang keluar dari kartu, sehingga terputus) */
 /* ===== Tombol ENSIKLOPEDIA (di bawah Mata Rantai Islam) + susunan rapat kolom kanan ===== */
-#kens{grid-column:2;grid-row:4;min-height:0;text-decoration:none}
+#kens{grid-column:2;grid-row:4;min-height:44px;text-decoration:none}
 html:not(#_):not(#_) .hb{row-gap:6px}                                  /* jarak antarkotak kolom kanan dirapatkan */
 html:not(#_):not(#_) #kled.hbx{margin-top:7px}                         /* jarak papan LED tetap seperti semula (6px + 7px = 13px) */
-html:not(#_):not(#_) #kens.hbx{padding:5px 8px;min-height:30px}
-html:not(#_):not(#_) #kens .hmri{font-size:clamp(10px,2.9vw,13px);line-height:1.2;letter-spacing:.05em}
+html:not(#_):not(#_) :is(#kdoa,#kmri,#kens).hbx{padding:7px 8px;min-height:47px}  /* tiga tombol (Do'a & Bacaan, Mata Rantai Islam, Ensiklopedia) selalu sama tinggi */
+/* baris 2-4 (Do'a & Bacaan, Mata Rantai Islam, Ensiklopedia) dibuat sama tinggi di semua tema: ikut yang tertinggi */
+html:not(#_):not(#_) .hb{grid-template-rows:auto 1fr 1fr 1fr auto}
+/* teks Ensiklopedia kini memakai gaya .hmri yang sama persis dengan Mata Rantai Islam */
 /* bingkai "القرآن الكريم" dipersempit sedikit */
 html:not(#_):not(#_) #kqr.hbx{min-height:0;padding:7px 8px}
 html:not(#_):not(#_) #kqr #hero-logo{line-height:1.3}
