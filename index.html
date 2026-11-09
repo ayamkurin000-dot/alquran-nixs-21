@@ -677,9 +677,17 @@ input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;bac
 .eint{margin:0 0 6px;font-size:14px;line-height:1.5;color:var(--ink2);font-style:italic}
 .eart p{margin:0 0 12px;font-size:16px;line-height:1.7}
 .esec{margin:22px 0 10px;padding:3px 0 3px 10px;font-size:15px;font-weight:800;color:var(--accent2);border-left:5px solid var(--accent2)}
-.eq{margin:6px 0 16px;padding:10px 14px;border-radius:12px;background:var(--paper);border:1px solid var(--soft)}
-.eq .et{margin:2px 0 4px;font-size:15px}
-.eq .es{margin:0;font-size:12.5px;font-weight:700;color:var(--accent2)}
+.eq{position:relative;margin:12px 0 18px;padding:10px 14px;border:1.5px solid transparent;border-radius:16px;background:linear-gradient(135deg,#f1fbf5,#eef8fd 52%,#fdf1f7) padding-box,linear-gradient(135deg,#8fdcb4,#8cc8ee 52%,#f3acc9) border-box;box-shadow:0 1px 2px #ec489924,0 6px 12px -4px #3896c838,0 16px 28px -10px #10966e4d;animation:ensMengambang 7s ease-in-out infinite}
+.eq:before,.eq:after{content:"";display:none;position:absolute;top:0;left:0;border-radius:50%;pointer-events:none;offset-path:inset(0 round 16px);offset-rotate:0deg;animation:ensOrbit 9s linear infinite}
+@supports (offset-path:inset(0 round 16px)){.eq:before,.eq:after{display:block}}
+.eq:before{width:8px;height:8px;margin:-4px 0 0 -4px;background:radial-gradient(circle,#fff 0 32%,#fde047 66%,#fb923c);box-shadow:0 0 5px 1px #fffffff2,0 0 10px 3px #f59e0b99,0 0 18px 6px #a78bfa59}
+.eq:after{width:6px;height:6px;margin:-3px 0 0 -3px;opacity:.65;animation-delay:-8.82s;background:radial-gradient(circle,#fff 0 30%,#c4b5fd 70%,#fcd34d);box-shadow:0 0 8px 3px #8b5cf673}
+@keyframes ensOrbit{0%{offset-distance:0%}to{offset-distance:100%}}
+@keyframes ensMengambang{0%,to{transform:translateY(0)}50%{transform:translateY(-3px)}}
+@media (prefers-reduced-motion:reduce){.eq,.eq:before,.eq:after{animation:none}}
+.eq .dar{color:#0f4a44;margin:4px 0}
+.eq .et{margin:6px 0 4px;padding-top:5px;border-top:1px dashed rgba(236,72,153,.35);font-size:15px;line-height:1.55;color:#475569;font-style:italic}
+.eq .es{margin:0;font-size:12.5px;font-weight:700;color:#0e7490}
 .esrc{margin:0;padding-left:20px;font-size:13px;line-height:1.55;color:var(--ink2)}
 .esrc li{margin-bottom:6px}
 #doa{position:fixed;inset:0;z-index:45;background:var(--bg);color:var(--ink);display:flex;flex-direction:column;animation:fade .18s both}
