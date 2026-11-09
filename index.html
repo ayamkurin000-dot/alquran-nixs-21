@@ -1492,6 +1492,101 @@ html:not(#_):not(#_) #kens .hmri{font-size:clamp(10px,2.9vw,13px);line-height:1.
 html:not(#_):not(#_) #kqr.hbx{min-height:0;padding:7px 8px}
 html:not(#_):not(#_) #kqr #hero-logo{line-height:1.3}
 html:not(#_):not(#_) #kqr #credit{margin-top:2px}
+/* =====================================================================================
+   BINGKAI FOTO + PAPAN JADWAL SHOLAT: ikut tema (perak/krom, pita, gulungan, neon, 3D biasa)
+   Papan jadwal: pojok hanya sedikit oval (--frl). Foto: lengkung pojok mengikuti gaya tema (--frp).
+   Variabel: --fb lebar bingkai luar | --fa lebar pita warna di dalamnya | --fbez isi bingkai luar | --fband isi pita
+             --fring cincin tipis di tepi dalam | --fsh bayangan luar | --fpn warna panel LED
+             --pfb / --pfa = --fb / --fa khusus foto
+   ===================================================================================== */
+html{--frl:10px;--frp:14px;--fb:5px;--fa:2px;--pfb:7px;--pfa:0px;--fpn:#070400;
+  --fbez:var(--kgl,linear-gradient(transparent,transparent)),linear-gradient(180deg,var(--k1,var(--paper)),var(--k2,var(--paper)));
+  --fband:linear-gradient(var(--ke,var(--accent2)),var(--ke,var(--accent2)));
+  --fring:inset 0 0 0 0 transparent;
+  --fsh:0 0 0 2px var(--ke,var(--accent2)),0 6px 0 var(--ke,var(--accent2)),0 9px 10px -5px var(--ksh,rgba(0,0,0,.4))}
+/* --- perak / krom (tombol t1-t23) --- */
+html[data-tombol^="t"]:not(#_){--fb:5px;--fa:3px;--pfb:6px;--pfa:4px;--frp:28px;
+  --fbez:var(--tbez);--fband:linear-gradient(180deg,var(--ta),var(--tb));
+  --fring:inset 0 0 0 1.5px rgba(0,0,0,.34),inset 0 2px 3px rgba(0,0,0,.3);
+  --fsh:0 0 0 1px rgba(0,0,0,.14),0 4px 5px -2px rgba(0,0,0,.4)}
+html:is([data-tombol="t9"],[data-tombol="t10"],[data-tombol="t11"],[data-tombol="t12"],[data-tombol="t13"]):not(#_):not(#_){--fband:var(--tin)}
+html:is([data-tombol="t14"],[data-tombol="t15"],[data-tombol="t16"],[data-tombol="t17"],[data-tombol="t18"],[data-tombol="t19"],[data-tombol="t20"],[data-tombol="t21"],[data-tombol="t22"],[data-tombol="t23"]):not(#_):not(#_){
+  --fb:6px;--fa:5px;--pfb:8px;--pfa:6px;
+  --fband:linear-gradient(180deg,var(--ta) 0%,var(--tb) 58%,#05090c 100%);
+  --fring:inset 0 0 0 1px #1a1a1a,inset 0 0 0 2.5px #fff,inset 0 3px 3px 2px rgba(0,0,0,.25);
+  --fsh:0 0 0 2px #121212,0 5px 5px -3px rgba(0,0,0,.45)}
+/* --- pita --- */
+html[data-pita^="pita"]:not(#_){--fb:3px;--fa:3px;--pfb:3px;--pfa:6px;--frp:28px;
+  --fbez:linear-gradient(var(--pr),var(--pr));--fband:linear-gradient(180deg,var(--pa),var(--pb));
+  --fring:inset 0 0 0 1.5px var(--pl);--fsh:0 4px 0 var(--pe),0 7px 8px -5px rgba(0,0,0,.32)}
+/* --- neon --- */
+html[data-neon^="n"]:not(#_){--fb:2.5px;--fa:0px;--pfb:2.5px;--pfa:5px;--frp:28px;--fpn:transparent;
+  --fbez:linear-gradient(var(--nl),var(--nl));--fband:linear-gradient(#050409,#050409);
+  --fring:inset 0 0 0 0 transparent;--fsh:var(--nglow)}
+
+/* ---------- PAPAN LED JADWAL SHOLAT ---------- */
+html:not(#_):not(#_):not(#_) #kled.hbx{
+  --ri:max(2px,calc(var(--frl) - var(--fb) - var(--fa)));
+  padding:calc(var(--fa) + 3px) calc(var(--fa) + 3px) calc(var(--fa) + 3px) calc(var(--fa) + 2px);
+  border:var(--fb) solid transparent !important;border-radius:var(--frl) !important;
+  background-color:transparent !important;
+  background-image:var(--fband),var(--fbez) !important;
+  background-size:100% 100% !important;background-repeat:no-repeat !important;background-position:0 0 !important;
+  background-origin:padding-box,border-box !important;background-clip:padding-box,border-box !important;
+  box-shadow:var(--fring),var(--fsh) !important}
+html:not(#_):not(#_):not(#_) #kled.hbx::before{
+  display:block !important;content:'' !important;position:absolute !important;inset:var(--fa) !important;
+  width:auto !important;height:auto !important;margin:0 !important;border:0 !important;opacity:1 !important;transform:none !important;
+  border-radius:var(--ri) !important;background:var(--fpn) !important;
+  box-shadow:inset 0 0 16px #000,inset 0 0 0 2px #1d1405 !important;z-index:0 !important;pointer-events:none}
+html[data-neon^="n"]:not(#_):not(#_):not(#_) #kled.hbx::before{box-shadow:none !important}
+html:not(#_):not(#_):not(#_) #kled.hbx::after{inset:var(--fa) !important;border-radius:var(--ri) !important}
+/* gulungan: batang gulung di kiri, pojok sedikit oval */
+html[data-gulung^="g"]:not(#_):not(#_):not(#_) #kled.hbx{
+  --gw:16px;--ri:3px;
+  padding:7px 7px 7px calc(var(--gw) + 8px);
+  border:0 !important;border-radius:6px !important;
+  background-color:var(--gb) !important;
+  background-image:var(--groll),linear-gradient(180deg,rgba(255,255,255,.14),rgba(0,0,0,.07)),linear-gradient(90deg,var(--ga),var(--gb)) !important;
+  background-size:var(--gw) 100%,100% 100%,100% 100% !important;background-position:0 0 !important;background-repeat:no-repeat !important;
+  background-origin:padding-box !important;background-clip:border-box !important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 4px 0 var(--ge),0 7px 8px -5px rgba(0,0,0,.32) !important}
+html[data-gulung^="g"]:not(#_):not(#_):not(#_) #kled.hbx::before,
+html[data-gulung^="g"]:not(#_):not(#_):not(#_) #kled.hbx::after{inset:5px 5px 5px calc(var(--gw) + 4px) !important;border-radius:3px !important}
+
+/* ---------- FOTO (perak/krom, pita, neon) ---------- */
+html:is([data-tombol^="t"],[data-pita^="pita"],[data-neon^="n"]):not(#_):not(#_):not(#_) .hbx.photo{
+  --ri:max(3px,calc(var(--frp) - var(--pfb) - var(--pfa)));
+  border:var(--pfb) solid transparent;border-radius:var(--frp);
+  background-color:transparent;
+  background-image:var(--fband),var(--fbez);
+  background-size:100% 100%;background-repeat:no-repeat;background-position:0 0;
+  background-origin:padding-box,border-box;background-clip:padding-box,border-box;
+  box-shadow:var(--fring),var(--fsh)}
+html:is([data-tombol^="t"],[data-pita^="pita"],[data-neon^="n"]):not(#_):not(#_):not(#_) .hbx.photo img{
+  inset:var(--pfa);width:calc(100% - 2*var(--pfa));height:calc(100% - 2*var(--pfa));border-radius:var(--ri);transform:none}
+html:is([data-tombol^="t"],[data-pita^="pita"],[data-neon^="n"]):not(#_):not(#_):not(#_) .hbx.photo::before{inset:var(--pfa);border-radius:var(--ri)}
+/* pita: pita melengkung di tengah atas foto */
+html[data-pita^="pita"]:not(#_):not(#_):not(#_) .hbx.photo{overflow:visible}
+html[data-pita^="pita"]:not(#_):not(#_):not(#_) .hbx.photo::after{
+  display:block;content:'';position:absolute;inset:auto;left:50%;top:-14px;width:58%;height:22px;margin:0;border:0;border-radius:0;
+  transform:translateX(-50%);background:var(--pri) center/100% 100% no-repeat;pointer-events:none;z-index:4;
+  filter:drop-shadow(0 1.5px 1px rgba(0,0,0,.3))}
+/* ---------- FOTO (gulungan) ---------- */
+html[data-gulung^="g"]:not(#_):not(#_):not(#_) .hbx.photo{
+  --gw:22px;--gc:28px;
+  border:0;border-radius:6px;
+  background-color:var(--gb);
+  background-image:var(--groll),linear-gradient(180deg,rgba(255,255,255,.14),rgba(0,0,0,.07)),linear-gradient(90deg,var(--ga),var(--gb));
+  background-size:var(--gw) 100%,100% 100%,100% 100%;background-position:0 0;background-repeat:no-repeat;
+  background-origin:padding-box;background-clip:border-box;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 4px 0 var(--ge),0 7px 8px -5px rgba(0,0,0,.32)}
+html[data-gulung^="g"]:not(#_):not(#_):not(#_) .hbx.photo img{
+  inset:6px 6px 6px calc(var(--gw) + 4px);width:calc(100% - var(--gw) - 10px);height:calc(100% - 12px);border-radius:3px;transform:none}
+html[data-gulung^="g"]:not(#_):not(#_):not(#_) .hbx.photo::before{inset:6px 6px 6px calc(var(--gw) + 4px);border-radius:3px}
+html[data-gulung^="g"]:not(#_):not(#_):not(#_) .hbx.photo::after{
+  display:block;content:'';position:absolute;inset:auto;right:0;bottom:0;left:auto;top:auto;width:var(--gc);height:var(--gc);margin:0;border:0;border-radius:0;z-index:4;pointer-events:none;
+  background:linear-gradient(135deg,transparent 46%,rgba(0,0,0,.30) 50%,transparent 60%),linear-gradient(135deg,transparent 50%,#ffffff 50%,#c6ccd0 100%)}
 </style>
 </head>
 <body>
