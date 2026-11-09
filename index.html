@@ -1659,6 +1659,52 @@ html[data-gulung^="g"]:not(#_):not(#_):not(#_):not(#_) :is(#kdoa,#kmri,#kens).hb
   content:'';display:block;position:absolute;inset:auto;left:4px;top:calc(-1 * var(--gr4,9px) - 2px);width:12px;height:calc(var(--gr4,9px) + 4px);
   margin:0;border:0;border-radius:0;transform:none;opacity:1;z-index:3;pointer-events:none;
   background:linear-gradient(90deg,#767c82,#f7f8f9 38%,#c3c8cc 62%,#737980);box-shadow:0 0 2px rgba(0,0,0,.45)}
+/* =====================================================================================
+   GULUNGAN 1-5 DI DALAM HALAMAN DO'A & BACAAN DAN ENSIKLOPEDIA
+   Kartu kategori (.dcat/.ecat), judul sub bab (.dgs) dan kartu doa (.ditem) kini bergaya gulungan seperti
+   kartu depan: gulungan di kiri, sudut kanan-bawah terlipat, dan pipa perak yang menyambung antar kartu.
+   ===================================================================================== */
+html[data-gulung^="g"]:not(#_):not(#_):not(#_) :is(.dcat:not(.dlegc),.ditem,.dgs){
+  --gc:22px;--gw:24px;
+  position:relative;overflow:visible;
+  border:0;border-radius:6px;
+  background-color:var(--gb);background-image:var(--gbg);
+  background-size:var(--gc) var(--gc),var(--gc) var(--gc),var(--gw) 100%,100% 100%,100% 100%;
+  background-position:100% 100%,100% 100%,0 0,0 0,0 0;background-repeat:no-repeat;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 4px 0 var(--ge),0 7px 8px -5px rgba(0,0,0,.32);
+  color:var(--gt);text-shadow:var(--gts)}
+html[data-gulung^="g"]:not(#_):not(#_):not(#_) .dcat:not(.dlegc){--gw:20px;padding-left:28px;padding-right:10px}
+html[data-gulung^="g"]:not(#_):not(#_):not(#_) .dcat.ecat{--gw:24px;padding-left:38px;padding-right:52px}
+html[data-gulung^="g"]:not(#_):not(#_):not(#_) .dgs{padding-left:38px}
+html[data-gulung^="g"]:not(#_):not(#_):not(#_) .ditem summary{padding-left:58px}
+html[data-gulung^="g"]:not(#_):not(#_):not(#_) .ditem summary::before{left:33px}
+/* kartu doa terbuka: tetap bergaya gulungan; judul yang menempel di atas ikut warna gulungan */
+html[data-gulung^="g"]:not(#_):not(#_):not(#_) .ditem[open]{
+  background-image:var(--gbg);background-size:var(--gc) var(--gc),var(--gc) var(--gc),var(--gw) 100%,100% 100%,100% 100%;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 4px 0 var(--ge),0 7px 8px -5px rgba(0,0,0,.32)}
+html[data-gulung^="g"]:not(#_):not(#_):not(#_) .ditem[open]>summary{
+  background:var(--groll) 0 0/var(--gw) 100% no-repeat,linear-gradient(90deg,var(--ga),var(--gb));
+  border-radius:6px 6px 4px 4px;box-shadow:0 7px 9px -6px rgba(0,0,0,.4)}
+html[data-gulung^="g"]:not(#_):not(#_):not(#_) .dgrp[open]>.dgs{
+  box-shadow:inset 0 3px 10px rgba(0,0,0,.22),0 4px 0 var(--ge),0 7px 8px -5px rgba(0,0,0,.32)}
+html[data-gulung^="g"]:not(#_):not(#_):not(#_) :is(.dcat:not(.dlegc),.ditem:not([open])):active,
+html[data-gulung^="g"]:not(#_):not(#_):not(#_) .dgrp:not([open])>.dgs:active{
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.3),0 1px 0 var(--ge)}
+/* teks & lencana */
+html[data-gulung^="g"]:not(#_):not(#_):not(#_) :is(.dcat:not(.dlegc) b,.dgs,.dgs .dgt,.ditem summary,.ditem summary::after,.dgs::after){color:var(--gt);text-shadow:var(--gts);opacity:1}
+html[data-gulung^="g"]:not(#_):not(#_):not(#_) :is(.dcat:not(.dlegc) small,.ditem summary .dn small){color:var(--gt2);text-shadow:none}
+html[data-gulung^="g"]:not(#_):not(#_):not(#_) :is(.dcat:not(.dlegc) .dcn,.dgn,.dgc,.ditem summary::before){
+  background:var(--gt);color:var(--gb);border:1.5px solid var(--gr);text-shadow:none;box-shadow:0 1px 2px rgba(0,0,0,.35)}
+html[data-gulung^="g"]:not(#_):not(#_):not(#_) .ditem .dbg{border-color:var(--gt2);color:var(--gt)}
+html[data-gulung^="g"]:not(#_):not(#_):not(#_) .ditem .dbg.s{background:var(--gt);color:var(--gb)}
+/* ---- pipa perak di sela kartu (hanya terlihat di celah; ujungnya masuk ke gulungan kartu) ---- */
+html[data-gulung^="g"]:not(#_):not(#_):not(#_) .dgrid:not(.e1)>.dcat:not(.dlegc):nth-child(n+3)::after,
+html[data-gulung^="g"]:not(#_):not(#_):not(#_) .dgrid.e1>.dcat+.dcat::after,
+html[data-gulung^="g"]:not(#_):not(#_):not(#_) .ditem+.ditem::after,
+html[data-gulung^="g"]:not(#_):not(#_):not(#_) .dgrp+.dgrp>.dgs::before{
+  content:'';display:block;position:absolute;inset:auto;left:5px;width:12px;margin:0;border:0;border-radius:0;transform:none;opacity:1;
+  top:-19px;height:23px;z-index:3;pointer-events:none;
+  background:linear-gradient(90deg,#767c82,#f7f8f9 38%,#c3c8cc 62%,#737980);box-shadow:0 0 2px rgba(0,0,0,.45)}
 </style>
 </head>
 <body>
