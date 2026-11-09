@@ -186,6 +186,20 @@ html:not(#_) #kled.hbx::after{display:block !important;content:'' !important;pos
 #kled .nx .nj .kb{animation:lbk 1s steps(1) infinite}
 #kled .bw{position:relative;width:100%;height:0;flex:none;z-index:4}
 html:not(#_) #kled .bw .lbell{position:absolute;left:50%;bottom:-2px;top:auto;right:auto;transform:translateX(-50%);width:18px;height:18px;font-size:10px;margin:0;display:flex;align-items:center;justify-content:center}
+/* ---- panggung variasi (.vs): kalimat & jadwal tampil dengan banyak gaya acak: running besar, rolling, swipe, swing, tirai, dll ---- */
+#kled .vs{position:absolute;inset:0;display:none;overflow:hidden;z-index:1;pointer-events:none}
+#kled.vm .vs{display:block}#kled.vm .ln{visibility:hidden}
+#kled .vs .vr{position:absolute;left:0;right:0;display:flex;align-items:center;justify-content:center}
+#kled .vs .vt{flex:none;position:relative;white-space:nowrap;font:800 calc(1em*var(--z,1))/1.2 ui-monospace,'SF Mono',Menlo,Consolas,'DejaVu Sans Mono','Liberation Mono',monospace;letter-spacing:.03em;text-transform:uppercase;-webkit-font-smoothing:antialiased;color:var(--c,#ffe600);
+  text-shadow:0 0 2px var(--c,#ffe600),0 0 8px color-mix(in srgb,var(--c,#ffe600) 65%,transparent),0 0 16px color-mix(in srgb,var(--c,#ffe600) 35%,transparent)}
+#kled .vs .vt.ab{position:absolute;left:0;top:50%;margin-top:-.6em}
+#kled .vs .rc{display:inline-block;height:1.2em;overflow:hidden;vertical-align:top}
+#kled .vs .rc i{display:block;font-style:normal}
+#kled .vs .rc b{display:block;height:1.2em;line-height:1.2em;font-weight:inherit}
+#kled .vs .cw{display:inline-block}
+#kled .vs .wd{display:inline-block;white-space:pre}
+#kled .vs .vc{position:absolute;top:-2px;bottom:-2px;width:50.6%;background:#070400;z-index:2;box-shadow:0 0 14px var(--c,#ffe600),inset 0 0 10px #000}
+#kled .vs .vb{position:absolute;width:.2em;border-radius:.1em;background:#fff;z-index:2;box-shadow:0 0 .5em .12em var(--c,#ffe600),0 0 1.1em .3em color-mix(in srgb,var(--c,#ffe600) 55%,transparent)}
 /* ---- halaman waktu sholat: wilayah tetap di atas tengah, nama sholat + jam bergantian tiap 5 detik ---- */
 #kled .wk{position:absolute;inset:0;display:none;flex-direction:column;align-items:center;z-index:1;pointer-events:none;overflow:hidden}
 #kled.wm .wk{display:flex}#kled.wm .ln{visibility:hidden}
@@ -1792,10 +1806,10 @@ html[data-gulung^="g"]:not(#_):not(#_):not(#_):not(#_) .row:not(.row .row){margi
   '2 Rokaat sebelum shubuh, 4 sebelum Dzuhur, 2 setelahnya, 2 setelah maghrib, 2 setelah Isya’ (12 rokaat), Allah membangunkannya rumah di Surga',
   '“Sholat yang paling utama setelah fardhu adalah sholat malam.” (HR. Muslim : 1163)',
   'Sholat malam memperkuat hubungan batin dengan Allah dan menambah kedekatan saat wafat'];
-  var pn=0, KQ='qk.led.q', qi=0, PL=['waktu','next','mundur','q','run','q'], pc=-1, cur=null, DURS={jadwal:12000,jam:13000,run:20000,waktu:31000,next:30000,mundur:30000};
+  var pn=0, KQ='qk.led.q', qi=0, PL=['waktu','next','mundur','v','run','v','q','jv'], pc=-1, cur=null, DURS={jadwal:12000,jam:13000,run:20000,waktu:31000,next:30000,mundur:30000};
   try{qi=(+localStorage.getItem(KQ)||0)%QT.length}catch(e){}
   function balikQuote(){ /* kalimat mutiara yang sedang tampil lalu terpotong hitung mundur / Masuk Waktu: tampil ulang di giliran berikutnya, tidak ada yang terlewat */
-    if(cur&&cur.t==='q'&&cur.i!==undefined){qi=cur.i; try{localStorage.setItem(KQ,String(qi))}catch(e){}}
+    if(cur&&(cur.t==='q'||cur.t==='v')&&cur.i!==undefined){qi=cur.i; try{localStorage.setItem(KQ,String(qi))}catch(e){}}
   }
   function bungkus(t,w){var o=[],c='';t.split(' ').forEach(function(x){if(c&&(c+' '+x).length>w){o.push(c);c=x}else c=c?c+' '+x:x});if(c)o.push(c);return o}
   function hitungCol(){ /* berapa huruf muat dalam satu baris papan di layar ini */
@@ -1814,10 +1828,240 @@ html[data-gulung^="g"]:not(#_):not(#_):not(#_):not(#_) .row:not(.row .row){margi
       d.style.setProperty('--c',warna(j,'q'+cur.i)); d.style.setProperty('--n',l.length); d.style.setProperty('--ty',Math.min(2,l.length*.09)+'s'); d.style.setProperty('--dl',(j*.7)+'s'); q.appendChild(d)});
     q.className='qs'; void q.offsetWidth; q.className='qs fx-'+cur.fx;
   }
+  /* ================= PANGGUNG VARIASI =================
+     Kalimat hikmah & jadwal tampil dengan GAYA ACAK (tidak berulang berurutan) supaya tidak membosankan:
+     running besar kiri->kanan lalu kanan->kiri, 2-3 baris running berlawanan arah, baris datang dari kiri & kanan lalu tetap,
+     dari atas & bawah, rolling huruf (masuk satu arah, keluar arah sebaliknya), swipe, swing, tirai, kata demi kata, dll. */
+  var vAktif=false, vtm=0, vHist=[], vS=null, c0=0;
+  function vsEl(){var led=document.querySelector('#kled .led'); if(!led)return null; var s=led.querySelector('.vs'); if(!s){s=document.createElement('div'); s.className='vs'; led.appendChild(s)} return s}
+  function vsStop(){
+    if(vtm){clearTimeout(vtm); vtm=0}
+    var s=vsEl(); if(s){try{s.getAnimations({subtree:true}).forEach(function(a){a.cancel()})}catch(e){} s.innerHTML=''}
+    var bx=el('kled'); if(bx)bx.classList.remove('vm'); vAktif=false;
+  }
+  function vsDim(){var led=document.querySelector('#kled .led'); return {W:led.clientWidth,H:led.clientHeight,fs:parseFloat(getComputedStyle(led).fontSize)||13}}
+  function rnd(a,b){return a+Math.random()*(b-a)}
+  function col(j){return PAL[(c0+j*3)%PAL.length]}
+  /* K: satu animasi berisi beberapa titik waktu mutlak (ms): pts=[[t,{properti},easing],...] */
+  function K(e,total,pts){
+    var a=pts.slice(); if(a[0][0]>0)a.unshift([0,a[0][1]]);
+    var z=a[a.length-1]; if(z[0]<total)a.push([total,z[1]]);
+    var kf=a.map(function(p){var o={offset:Math.max(0,Math.min(1,p[0]/total))},k; for(k in p[1])o[k]=p[1][k]; if(p[2])o.easing=p[2]; return o});
+    return e.animate(kf,{duration:total,fill:'both'});
+  }
+  function mkR(top,h){var r=document.createElement('div'); r.className='vr'; r.style.top=top+'px'; r.style.height=h+'px'; vS.appendChild(r); return r}
+  function mkT(txt,z,c,par){var d=document.createElement('div'); d.className='vt'; d.textContent=txt; d.style.setProperty('--z',z); d.style.setProperty('--c',c); (par||vS).appendChild(d); return d}
+  function vmuat(d,mw){var z=parseFloat(d.style.getPropertyValue('--z'))||1,k=0; while(k++<14&&d.offsetWidth>mw){z*=.93; d.style.setProperty('--z',z)} return z}
+  /* susun kalimat pendek -> beberapa baris besar rata tengah; null bila tidak muat dalam satu layar */
+  function susun(tx){
+    var SC=[2.8,2.4,2.0,1.7,1.45,1.25,1.1,.95], mx=Math.max.apply(null,tx.split(' ').map(function(x){return x.length})), i;
+    for(i=0;i<SC.length;i++){var w=Math.floor(COL/SC[i]), rows=Math.floor(5.2/(1.3*SC[i])); if(rows<1||w<8||mx>w)continue; var ch=bungkus(tx,w); if(ch.length<=rows)return {z:SC[i],ch:ch}}
+    return null;
+  }
+  function baris(lay){
+    var D=vsDim(), lh=1.3*lay.z*D.fs, top0=(D.H-lh*lay.ch.length)/2, out=[], zm=99;
+    lay.ch.forEach(function(l,j){var r=mkR(top0+j*lh,lh), t=mkT(l,lay.z,col(j),r); zm=Math.min(zm,vmuat(t,D.W-10)); out.push({r:r,t:t,l:l,top:top0+j*lh,lh:lh})});
+    out.forEach(function(o){o.t.style.setProperty('--z',zm)});
+    return out;
+  }
+  function bagi(tx,n){ /* pecah kalimat jadi n bagian kira-kira sama panjang */
+    var w=tx.split(' '),tot=tx.length,o=[],c='',i;
+    for(i=0;i<w.length;i++){var nx=c?c+' '+w[i]:w[i]; if(c&&o.length<n-1&&nx.length>tot/n+w[i].length/2){o.push(c);c=w[i]}else c=nx}
+    o.push(c); return o;
+  }
+  var GL='ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', NB='\u00a0';
+  function acak(){return GL.charAt(Math.random()*GL.length|0)}
+  function ctk(c){return c===' '?NB:c}
+
+  /* 1. ROLLING: huruf bergulir seperti mesin slot & tertata di papan; setelah terbaca bergulir kembali dari arah sebaliknya */
+  function sRoll(lay,tx,hold){
+    var R=baris(lay), up=Math.random()<.5, ED=950, maxd=0, recs=[];
+    R.forEach(function(o,j){
+      o.t.textContent='';
+      for(var k=0;k<o.l.length;k++){
+        var c=o.l.charAt(k), sp=c===' ', rc=document.createElement('span'), cl=document.createElement('i');
+        rc.className='rc';
+        [NB,sp?NB:acak(),sp?NB:acak(),ctk(c),sp?NB:acak(),sp?NB:acak(),NB].forEach(function(g){var b=document.createElement('b'); b.textContent=g; cl.appendChild(b)});
+        rc.appendChild(cl); o.t.appendChild(rc);
+        var d=j*160+k*38; recs.push([cl,d]); maxd=Math.max(maxd,d);
+      }
+    });
+    var X0=maxd+ED+hold, total=X0+maxd+ED, s0=up?'translateY(0em)':'translateY(-7.2em)', mid='translateY(-3.6em)';
+    recs.forEach(function(a){var d=a[1];
+      K(a[0],total,[[d,{transform:s0},'cubic-bezier(.2,.7,.2,1)'],[d+ED,{transform:mid}],[X0+d,{transform:mid},'cubic-bezier(.6,0,.4,1)'],[X0+d+ED,{transform:s0}]])});
+    return total;
+  }
+  /* 2. SWING: baris bergantung & berayun seperti papan nama, lalu berayun keluar */
+  function sSwing(lay,tx,hold){
+    var R=baris(lay), sg=Math.random()<.5?1:-1, n=R.length, maxd=(n-1)*140, X0=maxd+1250+hold, total=X0+maxd+1000;
+    function rt(a,o){return {transform:'rotate('+(a*sg)+'deg)',opacity:o===undefined?1:o}}
+    R.forEach(function(o,j){var d=j*140; o.r.style.transformOrigin='50% '+(-o.top)+'px';
+      K(o.r,total,[[d,rt(-75,0),'ease-in-out'],[d+180,rt(32),'ease-in-out'],[d+450,rt(-17),'ease-in-out'],[d+720,rt(9),'ease-in-out'],[d+950,rt(-4),'ease-in-out'],[d+1250,rt(0),'ease-in-out'],
+        [X0+d,rt(0),'ease-in-out'],[X0+d+300,rt(-7),'ease-in'],[X0+d+1000,rt(75,0)]])});
+    return total;
+  }
+  /* 3. SPLIT: kata bergantian datang dari kiri & kanan lalu menyatu di tengah; keluar menembus / kembali */
+  function sSplit(lay,tx,hold){
+    var R=baris(lay), D=vsDim(), ES=1100, maxd=0, per=[], back=Math.random()<.5;
+    R.forEach(function(o,j){var ws=o.l.split(' '); o.t.textContent='';
+      ws.forEach(function(w,k){var sp=document.createElement('span'); sp.className='wd'; sp.textContent=w+(k<ws.length-1?' ':''); o.t.appendChild(sp); var d=j*200+k*140; per.push([sp,k%2?1:-1,d]); maxd=Math.max(maxd,d)})});
+    var X0=maxd+ES+hold, total=X0+maxd+ES;
+    per.forEach(function(a){var off=a[1]*(D.W+40), d=a[2], ex=back?off:-off;
+      K(a[0],total,[[d,{transform:'translateX('+off+'px)',opacity:0},'cubic-bezier(.15,.85,.25,1)'],[d+ES,{transform:'translateX(0px)',opacity:1}],[X0+d,{transform:'translateX(0px)',opacity:1},'cubic-bezier(.6,0,.9,.4)'],[X0+d+ES,{transform:'translateX('+ex+'px)',opacity:0}]])});
+    return total;
+  }
+  /* 4. SCATTER: huruf beterbangan dari segala arah lalu menyusun kalimat; bubar lagi saat selesai */
+  function sScatter(lay,tx,hold){
+    var R=baris(lay), D=vsDim(), ES=1300, maxd=0, per=[];
+    R.forEach(function(o){o.t.textContent=''; for(var k=0;k<o.l.length;k++){var sp=document.createElement('span'); sp.className='cw'; sp.textContent=ctk(o.l.charAt(k)); o.t.appendChild(sp); var d=rnd(0,700); per.push([sp,d]); maxd=Math.max(maxd,d)}});
+    var X0=maxd+ES+hold, total=X0+maxd+ES, id='translate(0px,0px) rotate(0deg) scale(1)';
+    function rt(){return 'translate('+rnd(-D.W*.6,D.W*.6)+'px,'+rnd(-D.H*1.2,D.H*1.2)+'px) rotate('+rnd(-300,300)+'deg) scale('+rnd(.2,2.6)+')'}
+    per.forEach(function(a){var d=a[1];
+      K(a[0],total,[[d,{transform:rt(),opacity:0},'cubic-bezier(.2,.8,.2,1)'],[d+ES,{transform:id,opacity:1}],[X0+d,{transform:id,opacity:1},'cubic-bezier(.6,0,.9,.4)'],[X0+d+ES,{transform:rt(),opacity:0}]])});
+    return total;
+  }
+  /* 5. WAVE: huruf naik berurutan & terus bergelombang selama dibaca */
+  function sWave(lay,tx,hold){
+    var R=baris(lay), D=vsDim(), ES=900, maxd=0, per=[], ud=Math.random()<.5?1:-1;
+    R.forEach(function(o,j){o.t.textContent='';
+      for(var k=0;k<o.l.length;k++){var ow=document.createElement('span'), iw=document.createElement('span'); ow.className='cw'; iw.className='cw'; iw.textContent=ctk(o.l.charAt(k)); ow.appendChild(iw); o.t.appendChild(ow); var d=j*150+k*45; per.push([ow,iw,d,k+j*3]); maxd=Math.max(maxd,d)}});
+    var X0=maxd+ES+hold, total=X0+maxd+ES;
+    per.forEach(function(a){var d=a[2];
+      K(a[0],total,[[d,{transform:'translateY('+(ud*D.H)+'px) scale(.3)',opacity:0},'cubic-bezier(.2,1.6,.4,1)'],[d+ES,{transform:'translateY(0px) scale(1)',opacity:1}],[X0+d,{transform:'translateY(0px) scale(1)',opacity:1},'cubic-bezier(.6,0,.9,.4)'],[X0+d+ES,{transform:'translateY('+(-ud*D.H)+'px) scale(.3)',opacity:0}]]);
+      a[1].animate([{transform:'translateY(-.14em)'},{transform:'translateY(.14em)'}],{duration:620,iterations:Infinity,direction:'alternate',easing:'ease-in-out',delay:-(a[3]*110)})});
+    return total;
+  }
+  /* 6. KETIK: huruf muncul satu-satu berurutan dari atas ke bawah; lalu terhapus mundur dari baris terbawah */
+  function sType(lay,tx,hold){
+    var R=baris(lay), t=250, ins=[], v0='inset(-30% 100% -30% -6%)', v1='inset(-30% -8% -30% -6%)';
+    R.forEach(function(o){var du=Math.max(300,o.l.length*65); ins.push([o,t,du]); t+=du+120});
+    var X0=t+hold, x=X0, outs=[];
+    R.slice().reverse().forEach(function(o){var du=Math.max(200,o.l.length*32); outs.push([o,x,du]); x+=du+60});
+    var total=x+200;
+    ins.forEach(function(a,i){var o=a[0], s=a[1], du=a[2], ou=outs[R.length-1-i], n=o.l.length;
+      K(o.t,total,[[s,{clipPath:v0},'steps('+n+',end)'],[s+du,{clipPath:v1}],[ou[1],{clipPath:v1},'steps('+n+',end)'],[ou[1]+ou[2],{clipPath:v0}]])});
+    return total;
+  }
+  /* 7. TIRAI: dua tirai gelap membuka dari tengah ke kiri-kanan, menutup lagi setelah terbaca */
+  function sCurtain(lay,tx,hold){
+    var R=baris(lay), OD=1500, X0=500+OD+hold, total=X0+OD+300, a=document.createElement('div'), b=document.createElement('div'), c=col(R.length);
+    a.className='vc'; b.className='vc'; a.style.left='0'; b.style.right='0'; a.style.setProperty('--c',c); b.style.setProperty('--c',c); vS.appendChild(a); vS.appendChild(b);
+    var e='cubic-bezier(.5,0,.2,1)';
+    K(a,total,[[500,{transform:'translateX(0%)'},e],[500+OD,{transform:'translateX(-102%)'}],[X0,{transform:'translateX(-102%)'},e],[X0+OD,{transform:'translateX(0%)'}]]);
+    K(b,total,[[500,{transform:'translateX(0%)'},e],[500+OD,{transform:'translateX(102%)'}],[X0,{transform:'translateX(102%)'},e],[X0+OD,{transform:'translateX(0%)'}]]);
+    return total;
+  }
+  /* 8. CASCADE: baris pertama berlari dari kiri & tetap, disusul baris kedua dari kanan & tetap, dst; keluar menembus / kembali */
+  function sCascade(lay,tx,hold){
+    var R=baris(lay), D=vsDim(), ES=1400, st=480, n=R.length, thru=Math.random()<.5, s0=Math.random()<.5?1:-1, maxd=(n-1)*st, X0=maxd+ES+hold, total=X0+(n-1)*220+1000;
+    R.forEach(function(o,j){var sg=(j%2?1:-1)*s0, off=sg*(D.W+30), d=j*st, x=X0+j*220, ex=thru?-off:off;
+      K(o.r,total,[[d,{transform:'translateX('+off+'px)'},'cubic-bezier(.12,.8,.2,1)'],[d+ES,{transform:'translateX(0px)'}],[x,{transform:'translateX(0px)'},'cubic-bezier(.6,0,.9,.4)'],[x+1000,{transform:'translateX('+ex+'px)'}]])});
+    return total;
+  }
+  /* 9. JEPIT: separuh baris turun dari atas, separuh naik dari bawah, bertemu di tengah */
+  function sJepit(lay,tx,hold){
+    var R=baris(lay), D=vsDim(), n=R.length, half=Math.ceil(n/2), ES=1100, cross=Math.random()<.5, maxd=(half)*180, X0=maxd+ES+hold, total=X0+maxd+1000;
+    R.forEach(function(o,j){var top=j<half, off=top?-(o.top+o.lh+12):(D.H-o.top+12), d=(top?j:(n-1-j))*180, x=X0+d, ex=cross?-off:off;
+      K(o.r,total,[[d,{transform:'translateY('+off+'px)'},'cubic-bezier(.15,1.2,.3,1)'],[d+ES,{transform:'translateY(0px)'}],[x,{transform:'translateY(0px)'},'cubic-bezier(.6,0,.9,.4)'],[x+1000,{transform:'translateY('+ex+'px)'}]])});
+    return total;
+  }
+  /* 10. SWIPE: batang cahaya menyapu membuka huruf (kiri->kanan, baris berikutnya kanan->kiri), lalu menyapu menghapus */
+  function sSwipe(lay,tx,hold){
+    var R=baris(lay), D=vsDim(), ED=1100, st=350, s0=Math.random()<.5?1:-1, n=R.length, maxd=(n-1)*st, X0=maxd+ED+hold, total=X0+maxd+ED+250, back=Math.random()<.5;
+    R.forEach(function(o,j){
+      var dir=(j%2?-1:1)*s0, tw=o.t.offsetWidth, x0=(D.W-tw)/2, d=j*st, x=X0+d, c=col(j), b=document.createElement('div');
+      b.className='vb'; b.style.left=x0+'px'; b.style.top=(o.top-2)+'px'; b.style.height=(o.lh+4)+'px'; b.style.setProperty('--c',c); vS.appendChild(b);
+      var hid1=dir>0?'inset(-30% 100% -30% -10%)':'inset(-30% -10% -30% 100%)', full='inset(-30% -10% -30% -10%)',
+          hid2=(dir>0)!==back?'inset(-30% -10% -30% 100%)':'inset(-30% 100% -30% -10%)', d2=((dir>0)!==back)?1:-1,
+          e='cubic-bezier(.45,0,.2,1)', bs=function(p){return 'translateX('+p+'px)'};
+      K(o.t,total,[[d,{clipPath:hid1},e],[d+ED,{clipPath:full}],[x,{clipPath:full},e],[x+ED,{clipPath:hid2}]]);
+      K(b,total,[[Math.max(0,d-1),{transform:bs(dir>0?0:tw),opacity:0}],[d,{transform:bs(dir>0?0:tw),opacity:1},e],[d+ED,{transform:bs(dir>0?tw:0),opacity:1}],[d+ED+150,{transform:bs(dir>0?tw:0),opacity:0}],
+        [x-1,{transform:bs(d2>0?0:tw),opacity:0}],[x,{transform:bs(d2>0?0:tw),opacity:1},e],[x+ED,{transform:bs(d2>0?tw:0),opacity:1}],[x+ED+150,{transform:bs(d2>0?tw:0),opacity:0}]]);
+    });
+    return total;
+  }
+  /* 11. RUNNING BESAR: huruf setinggi papan berlari penuh layar; potongan kalimat bergantian kiri->kanan lalu kanan->kiri */
+  function bigInfo(tx){var D=vsDim(), ch=bungkus(tx,34), z=Math.min(3.8,(D.H/D.fs)/1.5), cw=.63*z*D.fs, t=0; ch.forEach(function(s){t+=(D.W/cw+s.length)/5.2+.15}); var dua=(ch.length===1&&t<9); return {D:D,ch:ch,z:z,cw:cw,t:dua?t*2:t,dua:dua}}
+  function sBigRun(tx){
+    var I=bigInfo(tx), D=I.D, ps=I.ch.slice(), dir=Math.random()<.5?1:-1, t=0, r=mkR(0,D.H), jobs=[], pxs=5.2*I.cw;
+    r.style.overflow='hidden'; if(I.dua)ps.push(ps[0]);
+    ps.forEach(function(s,k){var e=mkT(s,I.z,col(k),r); e.classList.add('ab'); var tw=e.offsetWidth, du=(D.W+tw)/pxs*1000; jobs.push([e,t,du,dir>0?-tw:D.W,dir>0?D.W:-tw]); t+=du+120; dir=-dir});
+    var total=t+250;
+    jobs.forEach(function(a){K(a[0],total,[[a[1],{transform:'translateX('+a[3]+'px)'}],[a[1]+a[2],{transform:'translateX('+a[4]+'px)'}]])});
+    return total;
+  }
+  /* 12. BARIS BERLAWANAN: 2-3 baris running sekaligus; baris atas ke kanan, baris bawah ke kiri (dst) */
+  function rowsInfo(tx){
+    var D=vsDim(), n=tx.length>100?3:2, ps=bagi(tx,n), h=D.H/ps.length, z=Math.min(2.6,(h/D.fs)/1.3), cw=.63*z*D.fs, m=0;
+    ps.forEach(function(s){m=Math.max(m,(D.W/cw+s.length)/6)});
+    return {D:D,ps:ps,h:h,z:z,cw:cw,t:m+(ps.length-1)*.4,ok:tx.split(' ').length>=4&&ps.length>=2};
+  }
+  function sRows(tx){
+    var I=rowsInfo(tx), D=I.D, d0=Math.random()<.5?1:-1, T=0, jobs=[], pxs=6*I.cw;
+    I.ps.forEach(function(s,j){var r=mkR(j*I.h,I.h); r.style.overflow='hidden'; var e=mkT(s,I.z,col(j),r); e.classList.add('ab');
+      var tw=e.offsetWidth, dir=(j%2?-1:1)*d0, du=(D.W+tw)/pxs*1000, st=j*400; jobs.push([e,st,du,dir>0?-tw:D.W,dir>0?D.W:-tw]); T=Math.max(T,st+du)});
+    T+=250;
+    jobs.forEach(function(a){K(a[0],T,[[a[1],{transform:'translateX('+a[3]+'px)'}],[a[1]+a[2],{transform:'translateX('+a[4]+'px)'}]])});
+    return T;
+  }
+  /* 13. KATA DEMI KATA: 1-3 kata sekaligus, besar memenuhi papan, tiap potongan masuk-keluar dengan efek berbeda */
+  function wordsPlan(grp){var t=0; grp.forEach(function(g){t+=350+300+250+g.length*75}); return t}
+  function sWords(grp){
+    var D=vsDim(), W=D.W, H=D.H, t=0, last=-1, jobs=[], i,
+      EF=[['scale(.15)','scale(1)','scale(2.8)'],
+          ['translateX('+(-W)+'px)','translateX(0px)','translateX('+W+'px)'],
+          ['translateX('+W+'px)','translateX(0px)','translateX('+(-W)+'px)'],
+          ['translateY('+(-H)+'px)','translateY(0px)','translateY('+H+'px)'],
+          ['translateY('+H+'px)','translateY(0px)','translateY('+(-H)+'px)'],
+          ['perspective(400px) rotateX(90deg)','perspective(400px) rotateX(0deg)','perspective(400px) rotateX(-90deg)'],
+          ['rotate(-200deg) scale(.1)','rotate(0deg) scale(1)','rotate(200deg) scale(.1)'],
+          ['translateX('+(-W)+'px) skewX(40deg)','translateX(0px) skewX(0deg)','translateX('+W+'px) skewX(-40deg)']];
+    grp.forEach(function(g,k){
+      var r=mkR(0,H), z=Math.min(3.8,(H/D.fs)/1.5,(W-12)/(.63*D.fs*g.length)), e=mkT(g,z,col(k),r), f; vmuat(e,W-10);
+      do{f=Math.random()*EF.length|0}while(f===last&&EF.length>1); last=f;
+      var hd=300+g.length*75; jobs.push([e,t,EF[f],hd]); t+=350+hd+250;
+    });
+    var total=t+100;
+    jobs.forEach(function(a){var e=a[0],s=a[1],ef=a[2],hd=a[3];
+      K(e,total,[[s,{transform:ef[0],opacity:0},'cubic-bezier(.15,.9,.25,1.05)'],[s+350,{transform:ef[1],opacity:1}],[s+350+hd,{transform:ef[1],opacity:1},'cubic-bezier(.6,0,.9,.4)'],[s+350+hd+250,{transform:ef[2],opacity:0}]])});
+    return total;
+  }
+  var SC_STAT=[['roll',sRoll,1],['swing',sSwing,1],['split',sSplit,1],['scatter',sScatter,1],['wave',sWave,1],['ketik',sType,1],['tirai',sCurtain,1],['cascade',sCascade,2],['jepit',sJepit,2],['swipe',sSwipe,1]];
+  function vsPilih(tx,lay,grp){
+    var ok=[]; if(lay)SC_STAT.forEach(function(a){if(lay.ch.length>=a[2])ok.push(a[0])});
+    if(bigInfo(tx).t<=28){ok.push('bigrun'); ok.push('bigrun')}
+    var ri=rowsInfo(tx); if(ri.ok&&ri.t<=24){ok.push('rows'); ok.push('rows')}
+    if(wordsPlan(grp)<=26000){ok.push('words')}
+    var pool=ok.filter(function(n){return vHist.indexOf(n)<0}); if(!pool.length)pool=ok;
+    var p=pool[Math.random()*pool.length|0]; vHist.push(p); while(vHist.length>Math.max(0,Math.min(6,ok.length-1)))vHist.shift();
+    return p;
+  }
+  function vsMulai(kind,now){
+    var tx, lay, grp, hold;
+    if(kind==='jv'){
+      var t5=hariIni(now).map(function(x){return x.replace(':','.')}), a='SUBUH '+t5[0]+'  DZUHUR '+t5[1], b='ASHAR '+t5[2]+'  MAGHRIB '+t5[3], c=NAMA[4]+' '+t5[4], mx=Math.max(a.length,b.length,c.length);
+      lay={z:Math.min(2,Math.max(.8,COL/mx*.98)),ch:[a,b,c]};
+      grp=[NAMA[0]+' '+t5[0],NAMA[1]+' '+t5[1],NAMA[2]+' '+t5[2],NAMA[3]+' '+t5[3],NAMA[4]+' '+t5[4]];
+      tx=grp.join(' \u2022 '); hold=6500;
+    }else{
+      tx=QT[qi]; lay=susun(tx); grp=bungkus(tx,tx.length>100?20:(tx.length>60?16:13)); hold=Math.max(3600,2200+tx.length*80);
+    }
+    var D0=vsDim(); if(D0.W<60||D0.H<24)throw 0;
+    vsStop(); vS=vsEl(); if(!vS)throw 0;
+    var bx=el('kled'); bx.classList.remove('qm','xo','wm'); bx.classList.add('vm'); vAktif=true;
+    c0=Math.random()*PAL.length|0;
+    var nm=vsPilih(tx,lay,grp), total=0, i;
+    for(i=0;i<SC_STAT.length;i++) if(SC_STAT[i][0]===nm) total=SC_STAT[i][1](lay,tx,hold);
+    if(nm==='bigrun')total=sBigRun(tx); else if(nm==='rows')total=sRows(tx); else if(nm==='words')total=sWords(grp);
+    if(!total)throw 0;
+    vtm=setTimeout(function(){vtm=0; tick()},total+60);
+    return total;
+  }
   /* halaman hitung mundur (-jam:menit:detik) hanya ikut bergilir bila sholat berikutnya tinggal <= MUNDUR_MENIT menit */
   var MUNDUR_MENIT=15, NXT=null;
   function mundurBoleh(now){return !!(NXT&&NXT.t-now>0&&NXT.t-now<=MUNDUR_MENIT*60000)}
   function lanjut(now){
+    if(vAktif)vsStop();
     hitungCol();
     if(cur&&cur.t!=='n'&&pc===PL.length-1){   /* 1 putaran selesai -> notif "n menit yang lalu" (bila masih dalam 10 menit pertama) */
       var NT=notifKini(now);
@@ -1826,6 +2070,11 @@ html[data-gulung^="g"]:not(#_):not(#_):not(#_):not(#_) .row:not(.row .row){margi
     pc=(pc+1)%PL.length; pn++; var t=PL[pc];
     if(t==='mundur'&&!mundurBoleh(now)){pc=(pc+1)%PL.length; t=PL[pc]}   /* belum <= 15 menit: lewati */
     cur={t:t,dur:DURS[t]||0};
+    if(t==='v'||t==='jv'){   /* panggung variasi: gaya tampil acak */
+      try{ if(!(window.Element&&Element.prototype.animate))throw 0; cur.dur=vsMulai(t,now);
+        if(t==='v'){cur.i=qi; qi=(qi+1)%QT.length; try{localStorage.setItem(KQ,String(qi))}catch(e){}} }
+      catch(e){ vsStop(); if(t==='v'){t='q'; cur.t='q'} else{t='run'; cur.t='run'; cur.dur=DURS.run} }
+    }
     if(t==='q'){ var tx=QT[qi], lay=tataQ(tx); cur.i=qi;
       if(lay){cur.mode='s'; cur.s=lay.s; cur.ch=lay.ch; cur.fx=FX[qi%FX.length]; cur.dur=6500+tx.length*90; bangunQ()}   /* muat 1 layar: rata tengah, diam cukup lama */
       else{cur.mode='r'; cur.ch=bungkus(tx,COL); cur.stp=cur.ch.length-4; cur.dur=3500+cur.stp*2800+3500}                /* panjang: bergulir naik pelan-pelan */
@@ -1942,7 +2191,7 @@ html[data-gulung^="g"]:not(#_):not(#_):not(#_):not(#_) .row:not(.row .row){margi
   function halaman(now,nxt){
     NXT=nxt;
     var bx0=el('kled'); bx0.classList.remove('wm');
-    if(nxt&&nxt.t-now>0&&nxt.t-now<=jendelaCD(nxt.n)*60000){hitungMundurBesar(bx0,nxt,now);return}
+    if(nxt&&nxt.t-now>0&&nxt.t-now<=jendelaCD(nxt.n)*60000){if(vAktif)vsStop();hitungMundurBesar(bx0,nxt,now);return}
     if(cdOn||azOn){cdOn=false; azOn=false; balikQuote(); cur=null; var q0=bx0.querySelector('.qs'); if(q0){q0.innerHTML='';q0.className='qs';q0.removeAttribute('data-az')} bx0.classList.remove('qm','xo')}
     var bx=el('kled'), EXIT=700;
     if(!cur)lanjut(now);
@@ -1950,6 +2199,7 @@ html[data-gulung^="g"]:not(#_):not(#_):not(#_):not(#_) .row:not(.row .row){margi
     else if(cur.t==='next'){ if(!nxt||now-pgAt>=cur.dur)lanjut(now) }
     else if(cur.t==='mundur'){ if(!nxt||now-pgAt>=cur.dur)lanjut(now) }
     else if(cur.t==='n'){ if(now-pgAt>=cur.dur)lanjut(now) }
+    else if(cur.t==='v'||cur.t==='jv'){ if(now-pgAt>=cur.dur)lanjut(now) }
     else if(cur.t==='q'&&cur.mode==='s'){ if(now-pgAt>=cur.dur)lanjut(now) }
     else{
       if(!cur.xo&&now-pgAt>=cur.dur-EXIT){cur.xo=now; bx.classList.add('xo')}
@@ -1959,6 +2209,7 @@ html[data-gulung^="g"]:not(#_):not(#_):not(#_):not(#_) .row:not(.row .row){margi
     if(cur.t==='next'){ if(nxt){halamanNext(bx,now,nxt);return} cur=null; return }
     if(cur.t==='mundur'){ if(nxt){halamanMundur(bx,now,nxt);return} cur=null; return }
     if(cur.t==='n'){ halamanNotif(bx,now); return }
+    if(cur.t==='v'||cur.t==='jv'){ return }
     var stat=cur.t==='q'&&cur.mode==='s'; bx.classList.toggle('qm',stat);
     if(stat){var qq=bx.querySelector('.qs'); if(qq)qq.classList.toggle('out',now-pgAt>=cur.dur-1000); return}
     var t=cur.t, d=new Date(now), cd=nxt?nxt.t-now:0, t5=hariIni(now), nn=nxt?nxt.n:'\u2014', id='p'+pn+t;
@@ -2000,7 +2251,7 @@ html[data-gulung^="g"]:not(#_):not(#_):not(#_):not(#_) .row:not(.row .row){margi
       for(i=0;i<ev.length;i++){ var e=ev[i]; if(e.t<=now&&now-e.t<120000&&!sudah(e)){tandai(e);bunyi(e);break} }
       var A=alarm&&now-alarm.s<MW?alarm:null;   /* MASUK WAKTU tampil tepat 30 detik, terlepas dari lama suara */
       if(alarm&&!A){alarm=null;pgAt=now;balikQuote();cur=null;pc=-1}   /* lalu kembali ke awal siklus */
-      var box=el('kled'); box.classList.toggle('al',!!A); if(A){box.classList.remove('xo','wm');wIdx=-1}
+      var box=el('kled'); box.classList.toggle('al',!!A); if(A){if(vAktif)vsStop();box.classList.remove('xo','wm');wIdx=-1}
       if(A)halamanAlarm(A,'a'+A.n+A.t); else halaman(now,nxt);
       kotakNext(nxt);
       if(now-(tick.m||0)>20000){tick.m=now; var r=hitung(now,L);
