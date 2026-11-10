@@ -38,8 +38,8 @@ html.pre #splash{visibility:visible;position:fixed;inset:0;z-index:99999;display
 <!-- Font opsional dari Google Fonts (offline: otomatis jatuh ke font sistem). LPMQ tertanam base64 di bawah. -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link id="gfonts" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amiri+Quran&family=Aref+Ruqaa:wght@400;700&family=Noto+Naskh+Arabic:wght@400;700&family=Scheherazade+New:wght@400;700&display=swap" media="print" onload="this.media='all';this.dataset.ok=1">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amiri+Quran&family=Aref+Ruqaa:wght@400;700&family=Noto+Naskh+Arabic:wght@400;700&family=Scheherazade+New:wght@400;700&display=swap"></noscript>
+<link id="gfonts" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amiri+Quran&family=Aref+Ruqaa:wght@400;700&family=Noto+Naskh+Arabic:wght@400;700&family=Scheherazade+New:wght@400;700&family=Shadows+Into+Light&family=Parisienne&family=Dancing+Script:wght@600&display=swap" media="print" onload="this.media='all';this.dataset.ok=1">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amiri+Quran&family=Aref+Ruqaa:wght@400;700&family=Noto+Naskh+Arabic:wght@400;700&family=Scheherazade+New:wght@400;700&family=Shadows+Into+Light&family=Parisienne&family=Dancing+Script:wght@600&display=swap"></noscript>
 <style>
 /* ===== Font LPMQ Isep Misbah (Kemenag) — file font/LPMQ-Isep-Misbah.ttf, di-cache service worker untuk offline ===== */
 @font-face{font-family:'LPMQ Isep Misbah';src:url('font/LPMQ-Isep-Misbah.ttf') format('truetype');font-display:swap}
@@ -677,27 +677,55 @@ html:not(#_):not(#_):not(#_) .dcat.ecat{flex-direction:row;align-items:center;ju
 html:not(#_):not(#_):not(#_) .dcat.ecat b{min-height:0;height:auto;font-size:16.5px;line-height:1.3;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;overflow-wrap:anywhere}
 .dcat.ecat .dno{top:50%;right:14px;margin-top:-14px;min-width:28px;height:28px;display:grid;place-items:center;font-size:13px;padding:0 6px}
 .enum{flex:none;display:inline-grid;place-items:center;min-width:30px;height:30px;box-sizing:border-box;border-radius:50%;background:radial-gradient(circle at 35% 30%,var(--kb1,#5f8a3a),var(--kb2,#1e3a12) 85%);border:1.5px solid var(--kbb,#f3e3b0);color:var(--kbi,#fff7dc);font-size:14px;font-weight:800;line-height:1;box-shadow:0 1px 3px rgba(0,0,0,.35)}
-/* ===== Ensiklopedia: lembar bacaan = kertas kuno SAMA dengan teks kartu Do'a & Bacaan (aturan kertas dibagi dengan .ditem .dbody di bawah) ===== */
-.etit{display:flex;align-items:center;gap:10px;margin:4px 0 6px;font-size:20px;line-height:1.3;color:var(--ink)}
-.eart .eint{margin:0 0 6px;font-size:14px;line-height:1.45;color:var(--ink2);font-style:italic}
-.eart p{margin:4px 0 8px;font-size:15px;line-height:1.45}   /* ukuran & jarak baris = .dtr kartu Do'a */
-.esec{margin:20px 0 8px;padding:3px 0 3px 10px;font-size:14.5px;font-weight:800;line-height:1.35;color:var(--accent2);border-left:5px solid var(--accent2)}
-/* kotak ayat / hadits / do'a: animasi tetap (cahaya mengitari tepi + mengambang). Isi dua lapis: Arab (pastel sejuk) di atas, Latin/terjemah (kuning kertas) di bawah */
-.eq{position:relative;margin:12px 0 16px;padding:0;border:1.5px solid transparent;border-radius:16px;background:linear-gradient(#eef8fd,#eef8fd) padding-box,linear-gradient(135deg,#8fdcb4,#8cc8ee 52%,#f3acc9) border-box;box-shadow:0 1px 2px #ec489924,0 6px 12px -4px #3896c838,0 16px 28px -10px #10966e4d;animation:ensMengambang 7s ease-in-out infinite}
-.eq .eqa{padding:8px 14px 6px;border-radius:14px 14px 0 0;background:linear-gradient(135deg,#f1fbf5,#eef8fd 52%,#fdf1f7)}
-.eq .eqb{padding:8px 14px 9px;border-radius:0 0 14px 14px;border-top:1.5px dashed rgba(var(--kpr),.5);background:linear-gradient(180deg,rgba(var(--kpr),.22),rgba(var(--kpr),.12))}
-.eq:before,.eq:after{content:"";display:none;position:absolute;top:0;left:0;border-radius:50%;pointer-events:none;offset-path:inset(0 round 16px);offset-rotate:0deg;animation:ensOrbit 9s linear infinite}
-@supports (offset-path:inset(0 round 16px)){.eq:before,.eq:after{display:block}}
-.eq:before{width:8px;height:8px;margin:-4px 0 0 -4px;background:radial-gradient(circle,#fff 0 32%,#fde047 66%,#fb923c);box-shadow:0 0 5px 1px #fffffff2,0 0 10px 3px #f59e0b99,0 0 18px 6px #a78bfa59}
-.eq:after{width:6px;height:6px;margin:-3px 0 0 -3px;opacity:.65;animation-delay:-8.82s;background:radial-gradient(circle,#fff 0 30%,#c4b5fd 70%,#fcd34d);box-shadow:0 0 8px 3px #8b5cf673}
+/* ===== Ensiklopedia: kartu bacaan meniru kartu Syekh Jumadil Qubro (Mata Rantai Islam, varian hijau): bingkai berornamen, kertas hijau,
+   judul tulisan tangan, bab bernomor, penekanan merah/emas/garis bawah, kotak ayat, tanda tangan Mannixs-21. Teks bergulir di dalam bingkai. ===== */
+#ens-scroll.kartu{overflow:hidden;padding:10px 8px calc(10px + env(safe-area-inset-bottom))}
+#ens-scroll.kartu #ens-body{max-width:none;height:100%;margin:0;display:flex;justify-content:center}
+.eart{--w:min(460px,calc(100vw - 16px));--kertas:url(logo/kertas.webp);position:relative;box-sizing:border-box;width:var(--w);height:100%;min-height:calc(var(--w) * .8);
+  display:flex;flex-direction:column;overflow:hidden;border-radius:10px;color:#1a2a14;font-size:.8rem;
+  background-color:#cfe0b0;
+  background-image:var(--kertas),radial-gradient(ellipse 120px 90px at 14% 22%,rgba(70,110,40,.18),transparent 70%),radial-gradient(ellipse 150px 110px at 86% 64%,rgba(60,100,35,.16),transparent 70%),radial-gradient(ellipse 100px 70px at 30% 88%,rgba(55,95,30,.14),transparent 70%),linear-gradient(170deg,#e8f1d6,#dfecc8 55%,#d2e2b6);
+  background-size:96px 96px,auto,auto,auto,auto;
+  box-shadow:inset 0 0 22px 4px #14280a59,0 14px 34px #00000080}
+.eart:after{content:"";position:absolute;inset:0;pointer-events:none;z-index:3;box-sizing:border-box;border:1px solid transparent;border-image-source:url(logo/bingkai-hijau.webp);
+  border-image-slice:400 130 244 130;border-image-width:calc(var(--w) * 400 / 1145) calc(var(--w) * 130 / 1145) calc(var(--w) * 244 / 1145) calc(var(--w) * 130 / 1145);border-image-repeat:stretch}
+.etit{flex:0 0 auto;position:relative;z-index:2;margin:calc(var(--w) * .245) calc(var(--w) * .095) 2px;padding:0 0 12px;text-align:center;font-weight:400;color:#25401a;font-size:34px;letter-spacing:.02em;line-height:1.2;
+  font-family:"Shadows Into Light","Abril Fatface",Georgia,cursive;font-synthesis:none;-webkit-text-stroke:.5px #25401a;text-shadow:0 1px 0 rgba(235,248,210,.9),0 6px 8px rgba(30,60,15,.28);text-wrap:balance;overflow-wrap:normal;word-break:normal}
+.etit:after{content:"";position:absolute;left:50%;bottom:0;transform:translate(-50%);width:120px;height:2px;border-radius:2px;background:linear-gradient(90deg,transparent,#b45309 25%,#f59e0b 50%,#b45309 75%,transparent)}
+.escroll{position:relative;z-index:1;flex:1 1 auto;min-height:0;overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;margin:0 calc(var(--w) * .095) calc(var(--w) * .11);padding:6px 4px 4px;
+  line-height:1.42;text-align:justify;text-justify:inter-word;overflow-wrap:anywhere;word-break:break-word;
+  -webkit-mask-image:linear-gradient(transparent 0,#000 14px,#000 calc(100% - 14px),transparent 100%);mask-image:linear-gradient(transparent 0,#000 14px,#000 calc(100% - 14px),transparent 100%)}
+.escroll p{margin:0 0 4px}
+.escroll .du{text-align:center}
+.escroll .du.pred{color:#6a3d8a;font-weight:800;font-size:12.6px;text-transform:uppercase;letter-spacing:.03em;line-height:1.12;margin:8px 4px 16px}
+.escroll h5{margin:9px 0 4px;padding-bottom:2px;font-size:.78rem;text-transform:uppercase;letter-spacing:.5px;font-weight:800;line-height:1.42;color:#3d5a26;border-bottom:1px solid rgba(61,90,38,.45);text-align:left}
+.escroll b{color:#25401a}
+.escroll .hl{color:#8b1a1a;font-weight:800}
+.escroll .gd{color:#7a4a06;font-weight:800}
+.escroll .gr{color:#2f5d2a;font-weight:800}
+.escroll i{color:#3f5632}
+.escroll u{text-decoration-color:#5f7a4a;text-decoration-thickness:2px;text-underline-offset:2px}
+.escroll ul,.escroll ol{margin:2px 0 4px;padding-left:20px}
+.escroll li{margin-bottom:3px}
+.esrc{font-size:.8rem;line-height:1.42;color:#1a2a14}
+/* kotak ayat / hadits / do'a: gaya kotak Jumadil Qubro (hijau); animasi tetap (cahaya mengitari tepi + mengambang). Lapis Arab sedikit berbeda dari lapis Latin */
+.eq{container-type:inline-size;position:relative;margin:10px 0 14px;padding:0;border:1.5px solid rgba(95,122,74,.65);border-radius:12px;background:#f4fae273;box-shadow:inset 0 0 14px #284b1933,0 6px 12px -4px #284b194d;text-align:left;animation:ensMengambang 7s ease-in-out infinite}
+.eq .eqa{padding:8px 10px 6px;border-radius:10.5px 10.5px 0 0;background:linear-gradient(180deg,rgba(252,254,244,.82),rgba(244,250,226,.62))}
+.eq .eqb{padding:6px 10px 7px;border-radius:0 0 10.5px 10.5px;border-top:1px dashed rgba(95,122,74,.5);background:rgba(95,122,74,.15)}
+.eq:before,.eq:after{content:"";display:none;position:absolute;top:0;left:0;border-radius:50%;pointer-events:none;offset-path:inset(0 round 12px);offset-rotate:0deg;animation:ensOrbit 9s linear infinite}
+@supports (offset-path:inset(0 round 12px)){.eq:before,.eq:after{display:block}}
+.eq:before{width:8px;height:8px;margin:-4px 0 0 -4px;background:radial-gradient(circle,#fffbe6 0 32%,#fcd34d 66%,#f59e0b);box-shadow:0 0 5px 1px #fffbe6f2,0 0 10px 3px #f59e0b8c,0 0 18px 6px #d9770659}
+.eq:after{width:6px;height:6px;margin:-3px 0 0 -3px;opacity:.65;animation-delay:-8.82s;background:radial-gradient(circle,#fffbe6 0 30%,#fde68a 70%,#f59e0b);box-shadow:0 0 8px 3px #f59e0b73}
 @keyframes ensOrbit{0%{offset-distance:0%}to{offset-distance:100%}}
 @keyframes ensMengambang{0%,to{transform:translateY(0)}50%{transform:translateY(-3px)}}
-@media (prefers-reduced-motion:reduce){.eq,.eq:before,.eq:after,.eart{animation:none}}
-.eq .dar{color:var(--kpi);text-shadow:0 0 1px rgba(var(--kpr),.25);margin:0}
-.eq .et{margin:0 0 4px;font-size:15px;line-height:1.45;color:var(--ink)}
-.eq .es{margin:0;font-size:13px;line-height:1.45;font-weight:700;color:var(--accent2)}
-.esrc{margin:0;padding-left:20px;font-size:13px;line-height:1.45;color:var(--ink2)}
-.esrc li{margin-bottom:6px}
+@media (prefers-reduced-motion:reduce){.eq,.eq:before,.eq:after{animation:none}}
+.eq .dar{font-size:clamp(17px,6cqw,30px);line-height:1.7;color:#1a2a14;text-shadow:none;margin:0;text-align:right}
+.eq .et{margin:0;font-size:.68rem;line-height:1.25;color:#2f4526;text-align:justify}
+.eq .et b{color:#25401a}
+.eq .et i{font-style:italic;color:#3f5632}
+.eq .es{margin:3px 0 0;font-size:.68rem;line-height:1.2;font-weight:800;color:#7a4a06;text-align:right}
+/* tanda tangan tulisan tangan di akhir setiap kartu */
+.ettd{text-align:right;margin-top:14px;padding-bottom:6px;font-family:'Parisienne','Dancing Script','Georgia',cursive;font-size:1.7rem;color:#14532d;font-weight:400;line-height:1.2}
 #doa{position:fixed;inset:0;z-index:45;background:var(--bg);color:var(--ink);display:flex;flex-direction:column;animation:fade .18s both}
 #doa[hidden]{display:none!important}
 #doa-top{flex:none;display:flex;align-items:center;gap:6px;padding:calc(6px + env(safe-area-inset-top)) 8px 6px;background:linear-gradient(135deg,var(--barA,#3a2a0c) 0%,var(--barB,#6b4e16) 100%);color:var(--bari,#fff4d8);border-bottom:1.5px solid var(--accent)}
@@ -762,7 +790,7 @@ html:not(#_):not(#_):not(#_) .dcat.ecat b{min-height:0;height:auto;font-size:16.
   font-size:11.5px;font-weight:800;line-height:1;letter-spacing:-.02em;text-shadow:none;
   color:#fff7dc;background:radial-gradient(circle at 35% 30%,#5f8a3a,#1e3a12 80%);
   border:2px solid #f3e3b0;box-shadow:0 1px 3px rgba(0,0,0,.45),inset 0 1px 1px rgba(255,255,255,.35)}
-.ditem .dbody,.eart{--ink:var(--kpi);--ink2:var(--kpi2);--accent:var(--kpg);--accent2:var(--kpa);--soft:var(--kps);--paper:var(--kp1);
+.ditem .dbody{--ink:var(--kpi);--ink2:var(--kpi2);--accent:var(--kpg);--accent2:var(--kpa);--soft:var(--kps);--paper:var(--kp1);
   margin:0 15px 15px;padding:10px 14px 14px;color:var(--ink);position:relative;
   border-radius:3px 7px 4px 8px/7px 4px 8px 3px;border:1px solid rgba(var(--kpr),.55);
   background:
@@ -776,7 +804,6 @@ html:not(#_):not(#_):not(#_) .dcat.ecat b{min-height:0;height:auto;font-size:16.
   box-shadow:inset 0 0 26px rgba(var(--kpr),.60),inset 0 0 3px rgba(70,40,8,.7),0 2px 5px rgba(0,0,0,.45);
   animation:dpap .22s ease-out}
 .ditem .dbody .dar{color:var(--kpi);text-shadow:0 0 1px rgba(var(--kpr),.25)}
-.eart{margin:2px 0 8px}
 .ditem .dbody .dcp:hover{background:rgba(120,80,25,.18)}
 @keyframes dpap{from{opacity:0;transform:translateY(-8px) scale(.97)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){.ditem .dbody{animation:none}.ditem{transition:none}}
@@ -1419,7 +1446,7 @@ html[data-tombol^="t"]:not([data-tombol="t1"],[data-tombol="t2"],[data-tombol="t
 html[data-tombol="t14"]:not(#_) .dcat,html[data-tombol="t14"]:not(#_) .dgs,html[data-tombol="t14"]:not(#_) .ditem,html[data-tombol="t15"]:not(#_) .dcat,html[data-tombol="t15"]:not(#_) .dgs,html[data-tombol="t15"]:not(#_) .ditem,html[data-tombol="t16"]:not(#_) .dcat,html[data-tombol="t16"]:not(#_) .dgs,html[data-tombol="t16"]:not(#_) .ditem,html[data-tombol="t17"]:not(#_) .dcat,html[data-tombol="t17"]:not(#_) .dgs,html[data-tombol="t17"]:not(#_) .ditem,html[data-tombol="t18"]:not(#_) .dcat,html[data-tombol="t18"]:not(#_) .dgs,html[data-tombol="t18"]:not(#_) .ditem,html[data-tombol="t19"]:not(#_) .dcat,html[data-tombol="t19"]:not(#_) .dgs,html[data-tombol="t19"]:not(#_) .ditem,html[data-tombol="t20"]:not(#_) .dcat,html[data-tombol="t20"]:not(#_) .dgs,html[data-tombol="t20"]:not(#_) .ditem,html[data-tombol="t21"]:not(#_) .dcat,html[data-tombol="t21"]:not(#_) .dgs,html[data-tombol="t21"]:not(#_) .ditem,html[data-tombol="t22"]:not(#_) .dcat,html[data-tombol="t22"]:not(#_) .dgs,html[data-tombol="t22"]:not(#_) .ditem,html[data-tombol="t23"]:not(#_) .dcat,html[data-tombol="t23"]:not(#_) .dgs,html[data-tombol="t23"]:not(#_) .ditem{box-shadow:0 0 0 2px #121212,0 5px 5px -3px rgba(0,0,0,.45)}
 html[data-tombol="t14"]:not(#_) .dcat::after,html[data-tombol="t14"]:not(#_) .dgs::before,html[data-tombol="t14"]:not(#_) .ditem::after,html[data-tombol="t15"]:not(#_) .dcat::after,html[data-tombol="t15"]:not(#_) .dgs::before,html[data-tombol="t15"]:not(#_) .ditem::after,html[data-tombol="t16"]:not(#_) .dcat::after,html[data-tombol="t16"]:not(#_) .dgs::before,html[data-tombol="t16"]:not(#_) .ditem::after,html[data-tombol="t17"]:not(#_) .dcat::after,html[data-tombol="t17"]:not(#_) .dgs::before,html[data-tombol="t17"]:not(#_) .ditem::after,html[data-tombol="t18"]:not(#_) .dcat::after,html[data-tombol="t18"]:not(#_) .dgs::before,html[data-tombol="t18"]:not(#_) .ditem::after,html[data-tombol="t19"]:not(#_) .dcat::after,html[data-tombol="t19"]:not(#_) .dgs::before,html[data-tombol="t19"]:not(#_) .ditem::after,html[data-tombol="t20"]:not(#_) .dcat::after,html[data-tombol="t20"]:not(#_) .dgs::before,html[data-tombol="t20"]:not(#_) .ditem::after,html[data-tombol="t21"]:not(#_) .dcat::after,html[data-tombol="t21"]:not(#_) .dgs::before,html[data-tombol="t21"]:not(#_) .ditem::after,html[data-tombol="t22"]:not(#_) .dcat::after,html[data-tombol="t22"]:not(#_) .dgs::before,html[data-tombol="t22"]:not(#_) .ditem::after,html[data-tombol="t23"]:not(#_) .dcat::after,html[data-tombol="t23"]:not(#_) .dgs::before,html[data-tombol="t23"]:not(#_) .ditem::after{box-shadow:0 0 0 2px #fff,0 0 0 3.5px #1a1a1a,inset 0 2px 3px rgba(0,0,0,.35)}
 
-html[data-tombol^="t"]:not([data-tombol="t1"],[data-tombol="t2"],[data-tombol="t3"]):not(#_) .ditem .dbody,html[data-tombol^="t"]:not([data-tombol="t1"],[data-tombol="t2"],[data-tombol="t3"]):not(#_) .ditem .dbody *,html[data-tombol^="t"]:not([data-tombol="t1"],[data-tombol="t2"],[data-tombol="t3"]):not(#_) .eart,html[data-tombol^="t"]:not([data-tombol="t1"],[data-tombol="t2"],[data-tombol="t3"]):not(#_) .eart *{text-shadow:none}
+html[data-tombol^="t"]:not([data-tombol="t1"],[data-tombol="t2"],[data-tombol="t3"]):not(#_) .ditem .dbody,html[data-tombol^="t"]:not([data-tombol="t1"],[data-tombol="t2"],[data-tombol="t3"]):not(#_) .ditem .dbody *{text-shadow:none}
 /* ===== Tema Tombol (perak/krom): tekstur kertas + efek matte/kaca ikut tampil di kartu halaman depan =====
    Pil berwarna (::after) tadinya menutup tekstur dan efek. Sekarang: tekstur = ::before tepat di atas pil,
    kaca = lapisan embun/kilau di dalam pil, matte = pil datar tanpa kilap. */
@@ -3814,9 +3841,9 @@ function openEns(){
   $('ens-body').innerHTML='<p class="dleg">Memuat ensiklopedia…</p>';
   ensFetch(function(){if(ensLv===1)ensShowList()},function(){if(ensLv)$('ens-body').innerHTML='<p class="dleg">Ensiklopedia belum bisa dimuat. Hubungkan internet sekali, lalu buka kembali.</p>'})
 }
-function closeEns(){if(!ensLv)return;ensLv=0;ensCur=-1;$('ens').hidden=true;$('ens-body').innerHTML='';$('kens').focus()}
+function closeEns(){if(!ensLv)return;ensLv=0;ensCur=-1;$('ens-scroll').classList.remove('kartu');$('ens').hidden=true;$('ens-body').innerHTML='';$('kens').focus()}
 function ensShowList(){
-  ensLv=1;ensCur=-1;
+  ensLv=1;ensCur=-1;$('ens-scroll').classList.remove('kartu');
   $('ens-ttl').textContent=ENS.t||'Ensiklopedia';$('ens-sub').textContent=ENS.k.length+' judul';
   var h='';
   h+='<div class="dgrid e1">';
@@ -3832,20 +3859,34 @@ function ensFit(){
     while(fs>10&&b.scrollHeight>fs*1.3*2+1){fs-=.5;b.style.fontSize=fs+'px'}
   }
 }
-window.addEventListener('resize',function(){if(ensLv===1&&ENS)ensFit()});
-if(document.fonts&&document.fonts.ready)document.fonts.ready.then(function(){if(ensLv===1&&ENS)ensFit()});
+window.addEventListener('resize',function(){if(ensLv===1&&ENS)ensFit();else if(ensLv===2)ensFitTitle()});
+if(document.fonts&&document.fonts.ready)document.fonts.ready.then(function(){if(ensLv===1&&ENS)ensFit();else if(ensLv===2)ensFitTitle()});
+/* penekanan: **...** pendek (<=3 kata) = emas; lebih panjang = merah; >=7 kata = merah + garis bawah; *...* = miring; __...__ = garis bawah; ==...== = emas; {{...}} = hijau */
+function eFmt(x){
+  var t=dEsc(x);
+  t=t.replace(/\*\*(.+?)\*\*/g,function(m,a){var n=a.trim().split(/\s+/).length;return n<=3?'<b class="gd">'+a+'</b>':(n>=7?'<b class="hl"><u>'+a+'</u></b>':'<b class="hl">'+a+'</b>')});
+  return t.replace(/__(.+?)__/g,'<u>$1</u>').replace(/==(.+?)==/g,'<b class="gd">$1</b>').replace(/\{\{(.+?)\}\}/g,'<b class="gr">$1</b>').replace(/\*(.+?)\*/g,'<i>$1</i>')
+}
+/* judul kartu: maksimal 3 baris; huruf dikecilkan bila terlalu panjang */
+function ensFitTitle(){
+  var t=document.querySelector('#ens-body .etit');if(!t)return;
+  var fs=34;t.style.fontSize=fs+'px';
+  while(fs>16&&t.scrollHeight>fs*1.2*3+14){fs-=1;t.style.fontSize=fs+'px'}
+}
 function ensShowCard(i){
   var k=ENS.k[i];if(!k){ensShowList();return}
   ensLv=2;ensCur=i;
   $('ens-ttl').textContent=k.t;$('ens-sub').textContent=ENS.t||'Ensiklopedia';
-  var h='<article class="eart"><h2 class="etit"><span class="enum">'+(i+1)+'</span>'+dFmt(k.t)+'</h2>'+(k.d?'<p class="eint">'+dFmt(k.d)+'</p>':'');
-  (k.b||[]).forEach(function(b){
-    h+='<h3 class="esec">'+dFmt(b.h)+'</h3>';
-    (b.p||[]).forEach(function(t){h+='<p>'+dFmt(t)+'</p>'});
-    (b.q||[]).forEach(function(q){h+='<div class="eq"><div class="eqa"><div class="dar" lang="ar" dir="rtl">'+dEsc(q.a)+'</div></div><div class="eqb">'+(q.t?'<p class="et">'+dFmt(q.t)+'</p>':'')+(q.s?'<p class="es">'+dEsc(q.s)+'</p>':'')+'</div></div>'})
+  var h='<article class="eart"><h2 class="etit">'+dFmt(k.t)+'</h2><div class="escroll">'+(k.d?'<p class="du pred">'+eFmt(k.d)+'</p>':'');
+  var nb=(k.b||[]).length;
+  (k.b||[]).forEach(function(b,bi){
+    h+='<h5>'+(bi+1)+'. '+eFmt(b.h)+'</h5>';
+    (b.p||[]).forEach(function(t){h+='<p>'+eFmt(t)+'</p>'});
+    (b.q||[]).forEach(function(q){h+='<div class="eq"><div class="eqa"><div class="dar" lang="ar" dir="rtl">'+dEsc(q.a)+'</div></div><div class="eqb">'+(q.t?'<p class="et"><b>Artinya:</b> <i>'+eFmt(q.t)+'</i></p>':'')+(q.s?'<p class="es">'+dEsc(q.s)+'</p>':'')+'</div></div>'})
   });
-  if(k.s&&k.s.length){h+='<h3 class="esec">Sumber</h3><ol class="esrc">';k.s.forEach(function(t){h+='<li>'+dFmt(t)+'</li>'});h+='</ol>'}
-  $('ens-body').innerHTML=h+'</article>';$('ens-scroll').scrollTop=0
+  if(k.s&&k.s.length){h+='<h5>'+(nb+1)+'. Sumber</h5><ol class="esrc">';k.s.forEach(function(t){h+='<li>'+eFmt(t)+'</li>'});h+='</ol>'}
+  h+='<div class="ettd">Mannixs-21</div></div></article>';
+  $('ens-body').innerHTML=h;$('ens-scroll').classList.add('kartu');$('ens-scroll').scrollTop=0;ensFitTitle()
 }
 function ensBack(){
   if(ensHist){history.back();return}
