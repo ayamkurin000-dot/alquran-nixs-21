@@ -1,6 +1,6 @@
 {
  "t": "Ensiklopedia",
- "d": "Kisah awal penciptaan, alam ruh, Nabi Adam عليه السلام, Iblis, malaikat, jin, takdir dan Lailatul Qadar beserta turunnya Al-Qur’an, ‘Arsy, tujuh langit, kisah Isra’ Mi‘raj, Malaikat Maut dan sakaratul maut, alam barzakh, tanda-tanda kiamat (termasuk sepuluh tanda besar dan tiupan sangkakala), serta hari kebangkitan (Mahsyar, hisab, mizan, dan Shirath), Ashabul A‘raf, telaga Nabi ﷺ dan syafa‘at, gambaran Surga dan Neraka, serta Dajjal, Imam Mahdi dan turunnya Nabi ‘Isa عليه السلام, perang akhir zaman (Malhamah Kubra, Konstantinopel, dan as-Sufyani), Ashabul Kahfi, Dzulqarnain beserta Ya’juj dan Ma’juj, Harut–Marut, Qarun, Ashabul Ukhdud, serta Ashabul Fil dan burung Ababil — dituturkan ringan dari Al-Qur’an, hadits, dan penjelasan para ulama.",
+ "d": "Kisah awal penciptaan, alam ruh, Nabi Adam عليه السلام, Iblis, malaikat, jin, takdir dan Lailatul Qadar beserta turunnya Al-Qur’an, ‘Arsy, tujuh langit, kisah Isra’ Mi‘raj, Malaikat Maut dan sakaratul maut, alam barzakh, tanda-tanda kiamat (termasuk sepuluh tanda besar dan tiupan sangkakala), serta hari kebangkitan (Mahsyar, hisab, mizan, dan Shirath), Ashabul A‘raf, telaga Nabi ﷺ dan syafa‘at, gambaran Surga dan Neraka, serta Dajjal, Imam Mahdi dan turunnya Nabi ‘Isa عليه السلام, perang akhir zaman (Malhamah Kubra, Konstantinopel, dan as-Sufyani), Ashabul Kahfi, Dzulqarnain beserta Ya’juj dan Ma’juj, Harut–Marut, Qarun, Ashabul Ukhdud, Ashabul Fil dan burung Ababil, serta kaum Saba’ dan bendungan Ma’rib — dituturkan ringan dari Al-Qur’an, hadits, dan penjelasan para ulama.",
  "k": [
   {
    "id": "awal-penciptaan",
@@ -3050,6 +3050,116 @@
     "HR. at-Tirmidzi dan al-Hakim dari Qais bin Makhramah — kelahiran pada tahun Gajah",
     "Ibnu Hisham, *as-Sirah an-Nabawiyyah* (riwayat Ibnu Ishaq) — Abrahah, gajah Mahmud, ‘Abdul Muthalib, dan kejadian di Mughammis",
     "Ibnu Katsir, *Tafsir al-Qur’an al-‘Azhim* (QS. al-Fil) dan *Al-Bidayah wan Nihayah*; ath-Thabari, *Jami‘ al-Bayan*; al-Qurthubi, *Al-Jami‘ li Ahkam al-Qur’an*"
+   ]
+  },
+  {
+   "id": "kaum-saba-bendungan-marib",
+   "t": "Kaum Saba’ dan Bendungan Ma’rib",
+   "d": "Negeri subur dengan dua hamparan kebun yang diberi kemakmuran dan keamanan, lalu berpaling dari Allah hingga banjir besar menghancurkannya dan mereka tercerai-berai — beserta kaitannya dengan kisah Sulaiman dan sang ratu.",
+   "b": [
+    {
+     "h": "Siapa Saba’?",
+     "p": [
+      "*Saba’* adalah nama sebuah bangsa Arab kuno di Yaman, dan surat Saba’ dinamai dengan nama mereka. Seorang laki-laki pernah bertanya kepada Nabi ﷺ apakah Saba’ itu tanah atau perempuan. Dalam hadits dari Farwah bin Musaik رضي الله عنه (at-Tirmidzi dan Abu Dawud, dinilai hasan oleh al-Albani), beliau menjawab bahwa Saba’ **bukan tanah dan bukan perempuan**, melainkan seorang laki-laki dari bangsa Arab yang memiliki sepuluh anak. Enam di antaranya tinggal di Yaman dan empat di Syam.",
+      "Para ulama menjelaskan bahwa nama itu semula milik leluhur mereka, kemudian dipakai untuk kaum keturunannya dan negeri mereka. Kisah kaum ini disebut dalam surat Saba’ ayat 15–19, dan negeri Saba’ juga muncul dalam kisah Nabi Sulaiman di surat an-Naml, yang dibahas pada bagian terakhir kartu ini."
+     ]
+    },
+    {
+     "h": "Dua kebun di kanan dan kiri",
+     "p": [
+      "Allah menyebut bahwa bagi kaum Saba’ ada **tanda (kebesaran Allah)** di tempat tinggal mereka, yaitu dua kebun di sebelah kanan dan kiri. Mereka diperintahkan makan dari rezeki Tuhan mereka dan bersyukur kepada-Nya. Negeri mereka disebut sebagai negeri yang baik, dan Tuhan mereka Maha Pengampun.",
+      "Para mufassir menjelaskan bahwa maksudnya bukan hanya dua kebun, tetapi dua hamparan kebun yang berjajar di kanan dan kiri lembah, sehingga orang yang berjalan di antaranya bernaung di bawah pepohonan dan memetik buah tanpa membawa bekal."
+     ],
+     "q": [
+      {
+       "a": "لَقَدْ كَانَ لِسَبَإٍ فِي مَسْكَنِهِمْ آيَةٌ ۖ جَنَّتَانِ عَن يَمِينٍ وَشِمَالٍ ۖ كُلُوا مِن رِّزْقِ رَبِّكُمْ وَاشْكُرُوا لَهُ ۚ بَلْدَةٌ طَيِّبَةٌ وَرَبٌّ غَفُورٌ",
+       "t": "Sungguh, bagi kaum Saba’ ada tanda (kebesaran Tuhan) di tempat kediaman mereka, yaitu dua buah kebun di sebelah kanan dan di sebelah kiri. (Kepada mereka dikatakan), “Makanlah olehmu dari rezeki yang (dianugerahkan) Tuhanmu dan bersyukurlah kamu kepada-Nya. (Negerimu) adalah negeri yang baik (nyaman) dan (Tuhanmu) Tuhan Yang Maha Pengampun.”",
+       "s": "QS. Saba’: 15"
+      }
+     ]
+    },
+    {
+     "h": "Mereka berpaling, lalu datang Sailul ‘Arim",
+     "p": [
+      "Namun mereka **berpaling**, maka Allah mengirimkan kepada mereka *sailul ‘arim*, banjir besar dari bendungan. Allah mengganti dua kebun mereka dengan dua kebun yang berbuah pahit, ditumbuhi pohon *atsl* (sejenis cemara) dan sedikit pohon bidara. Allah menegaskan bahwa itulah balasan atas kekufuran mereka, dan Dia tidak membalas demikian kecuali kepada orang yang sangat kufur.",
+      "Para ulama berbeda dalam menjelaskan kata *al-‘arim*. Pendapat yang paling masyhur memahaminya sebagai **bendungan** (dari bahasa Yaman kuno). Pendapat lain memahaminya sebagai banjir yang sangat deras. Sebagian mufassir menukil riwayat bahwa tikus-tikus besar melubangi bendungan itu, tetapi riwayat ini bukan dari hadits sahih, sehingga tidak perlu dijadikan pegangan. Yang pasti, Al-Qur’an menyebut bahwa banjir itu **dikirim Allah** sebagai akibat dari sikap mereka."
+     ],
+     "q": [
+      {
+       "a": "فَأَعْرَضُوا فَأَرْسَلْنَا عَلَيْهِمْ سَيْلَ الْعَرِمِ وَبَدَّلْنَاهُم بِجَنَّتَيْهِمْ جَنَّتَيْنِ ذَوَاتَيْ أُكُلٍ خَمْطٍ وَأَثْلٍ وَشَيْءٍ مِّن سِدْرٍ قَلِيلٍ",
+       "t": "Tetapi mereka berpaling, maka Kami kirimkan kepada mereka banjir yang besar dan Kami ganti kedua kebun mereka dengan dua kebun yang ditumbuhi (pohon-pohon) yang berbuah pahit, pohon cemara, dan sedikit pohon bidara.",
+       "s": "QS. Saba’: 16"
+      }
+     ]
+    },
+    {
+     "h": "Kota-kota yang berdekatan, dan permintaan yang aneh",
+     "p": [
+      "Allah juga menjadikan antara negeri mereka dan negeri-negeri yang diberkahi (Syam) **kota-kota yang saling tampak**, dan menetapkan jarak perjalanan di antaranya, sehingga orang dapat bepergian siang dan malam dengan aman. Perjalanan dagang mereka mudah dan aman, tanpa kekhawatiran akan bekal atau perampok.",
+      "Tetapi mereka berkata, “Ya Tuhan kami, jauhkanlah jarak perjalanan kami.” Sebagian mufassir menjelaskan bahwa mereka bosan dengan kemudahan itu, dan sebagian menjelaskan bahwa mereka ingin keunggulan orang kaya yang mampu menempuh perjalanan jauh dibanding orang miskin. Al-Qur’an menyebut bahwa dengan ucapan itu mereka **menzalimi diri mereka sendiri**."
+     ]
+    },
+    {
+     "h": "Tercerai-berai seperti Saba’",
+     "p": [
+      "Akibatnya, Allah menjadikan mereka **buah bibir** (cerita yang dikisahkan orang) dan mencerai-beraikan mereka sehancur-hancurnya. Dari ayat ini lahir peribahasa Arab *tafarraqu ayadi Saba’*, yang berarti bercerai-berai seperti kaum Saba’.",
+      "Para ahli sejarah dan nasab menyebut bahwa setelah peristiwa itu, banyak kabilah keturunan Saba’ berpindah dari Yaman ke berbagai tempat. Ada yang ke Syam, ada yang ke Hijaz, dan menurut para ahli nasab, kabilah **Aus dan Khazraj**, yang kelak menjadi kaum Anshar di Madinah, termasuk keturunan mereka. Keterangan ini adalah catatan sejarah, bukan hadits sahih, dan kita mengambilnya sebagai latar saja."
+     ],
+     "q": [
+      {
+       "a": "فَقَالُوا رَبَّنَا بَاعِدْ بَيْنَ أَسْفَارِنَا وَظَلَمُوا أَنفُسَهُمْ فَجَعَلْنَاهُمْ أَحَادِيثَ وَمَزَّقْنَاهُمْ كُلَّ مُمَزَّقٍ ۚ إِنَّ فِي ذَٰلِكَ لَآيَاتٍ لِّكُلِّ صَبَّارٍ شَكُورٍ",
+       "t": "Maka mereka berkata, “Ya Tuhan kami, jauhkanlah jarak perjalanan kami,” dan mereka menzalimi diri mereka sendiri; maka Kami jadikan mereka buah tutur (bagi orang-orang) dan Kami hancurkan mereka sehancur-hancurnya. Sungguh, pada yang demikian itu terdapat tanda-tanda (kekuasaan Allah) bagi setiap orang yang sangat sabar dan banyak bersyukur.",
+       "s": "QS. Saba’: 19"
+      }
+     ]
+    },
+    {
+     "h": "Bendungan Ma’rib dalam catatan sejarah",
+     "p": [
+      "Ibu kota Saba’ adalah **Ma’rib** di Yaman. Para sejarawan dan ahli purbakala menyebut bahwa di sana pernah berdiri bendungan besar yang mengatur aliran air lembah dan mengairi lahan pertanian yang luas. Bendungan itu berfungsi berabad-abad, beberapa kali bocor dan diperbaiki, dan sisa-sisanya masih dapat dilihat di sekitar Ma’rib.",
+      "Para sejarawan berbeda dalam menentukan waktu runtuhnya yang terakhir, tetapi umumnya mengaitkannya dengan masa menjelang lahirnya Islam. Sebagian menyebut perbaikan bendungan itu dicatat dalam prasasti pada masa Abrahah, penguasa Yaman yang kemudian memimpin pasukan gajah (lihat kartu Ashabul Fil). Semua ini adalah keterangan sejarah, sedangkan yang menjadi pegangan akidah adalah apa yang disebut dalam ayat: nikmat, sikap berpaling, lalu azab."
+     ]
+    },
+    {
+     "h": "Saba’ di zaman Nabi Sulaiman: hudhud dan sang ratu",
+     "p": [
+      "Negeri Saba’ juga disebut dalam surat an-Naml ayat 22–44. Burung hudhud datang membawa kabar kepada Sulaiman عليه السلام bahwa ia telah mendatangi Saba’ dan menemukan seorang **perempuan yang memerintah mereka**, yang dianugerahi segala sesuatu dan memiliki singgasana agung. Hudhud juga mengabarkan bahwa mereka menyembah matahari, bukan Allah.",
+      "Sulaiman mengirim surat yang dibuka dengan *Bismillahirrahmanirrahim*. Sang ratu bermusyawarah dengan para pembesarnya, mengirim hadiah, lalu mengunjungi Sulaiman. Setelah melihat tanda-tanda kekuasaan Allah, termasuk singgasananya yang dipindahkan dan lantai kaca di istana, ia berkata bahwa ia telah menzalimi dirinya dan berislam bersama Sulaiman kepada Allah, Tuhan semesta alam. Nama **Bilqis** yang populer tidak disebut dalam Al-Qur’an maupun hadits sahih, melainkan berasal dari riwayat tafsir.",
+      "Banyak ulama memandang bahwa Saba’ pada kisah Sulaiman dan Saba’ pada kisah bendungan adalah bangsa yang sama pada dua masa. Pada masa pertama mereka beriman bersama sang ratu, lalu pada masa-masa berikutnya mereka berpaling hingga ditimpa sailul ‘arim. Waktu pasti keduanya tidak dijelaskan, sehingga kita memegang pelajarannya saja."
+     ],
+     "q": [
+      {
+       "a": "وَجِئْتُكَ مِن سَبَإٍ بِنَبَإٍ يَقِينٍ ۝ إِنِّي وَجَدتُّ امْرَأَةً تَمْلِكُهُمْ وَأُوتِيَتْ مِن كُلِّ شَيْءٍ وَلَهَا عَرْشٌ عَظِيمٌ",
+       "t": "Dan aku datang kepadamu dari negeri Saba’ membawa berita yang meyakinkan. Sesungguhnya aku menjumpai seorang perempuan yang memerintah mereka, dan dia dianugerahi segala sesuatu serta memiliki singgasana yang besar.",
+       "s": "QS. an-Naml: 22–23"
+      },
+      {
+       "a": "قَالَتْ رَبِّ إِنِّي ظَلَمْتُ نَفْسِي وَأَسْلَمْتُ مَعَ سُلَيْمَانَ لِلَّهِ رَبِّ الْعَالَمِينَ",
+       "t": "Dia (Balqis) berkata, “Ya Tuhanku, sungguh, aku telah berbuat zalim terhadap diriku dan aku berserah diri bersama Sulaiman kepada Allah, Tuhan seluruh alam.”",
+       "s": "QS. an-Naml: 44"
+      }
+     ]
+    },
+    {
+     "h": "Pelajaran: nikmat menuntut syukur",
+     "p": [
+      "Allah berfirman kepada keluarga Dawud agar beramal untuk bersyukur, dan menyebut bahwa hamba-Nya yang bersyukur itu sedikit. Kaum Saba’ memiliki segala sebab kemakmuran, tetapi mereka tidak mensyukurinya. Al-Qur’an juga menyebut bahwa Iblis telah membuktikan sangkaannya terhadap mereka, sehingga mereka mengikutinya, kecuali sekelompok orang beriman.",
+      "Nabi ﷺ bersabda dalam hadits dari Shuhaib رضي الله عنه (Muslim no. 2999) bahwa urusan orang beriman semuanya baik. Bila mendapat kesenangan ia bersyukur, dan itu baik baginya. Bila ditimpa kesulitan ia bersabar, dan itu juga baik baginya. Ayat penutup kisah Saba’ pun menyebut pelajaran ini: tanda-tanda itu bagi orang yang **sangat sabar dan banyak bersyukur**. Syukur menjaga nikmat, dan berpaling dari Allah dapat mengubah negeri paling subur menjadi gersang."
+     ],
+     "q": [
+      {
+       "a": "وَلَقَدْ صَدَّقَ عَلَيْهِمْ إِبْلِيسُ ظَنَّهُ فَاتَّبَعُوهُ إِلَّا فَرِيقًا مِّنَ الْمُؤْمِنِينَ",
+       "t": "Dan sungguh, Iblis telah dapat membuktikan kebenaran sangkaannya terhadap mereka, lalu mereka mengikutinya, kecuali sebagian dari orang-orang mukmin.",
+       "s": "QS. Saba’: 20"
+      }
+     ]
+    }
+   ],
+   "s": [
+    "QS. Saba’: 13–21; an-Naml: 22–44",
+    "HR. at-Tirmidzi no. 3222 dan Abu Dawud no. 3988 dari Farwah bin Musaik — Saba’ adalah seorang laki-laki dari bangsa Arab; dinilai hasan oleh al-Albani",
+    "HR. Muslim no. 2999 dari Shuhaib — urusan orang beriman semuanya baik",
+    "Ibnu Katsir, *Tafsir al-Qur’an al-‘Azhim* (QS. Saba’: 15–19; an-Naml: 22–44) dan *Al-Bidayah wan Nihayah*; ath-Thabari, *Jami‘ al-Bayan*; al-Qurthubi, *Al-Jami‘ li Ahkam al-Qur’an*"
    ]
   }
  ]
