@@ -1,6 +1,6 @@
 {
  "t": "Ensiklopedia",
- "d": "Kisah awal penciptaan, alam ruh, Nabi Adam عليه السلام, Iblis, malaikat, jin, takdir dan Lailatul Qadar beserta turunnya Al-Qur’an, ‘Arsy, tujuh langit, kisah Isra’ Mi‘raj, terbelahnya bulan, Malaikat Maut dan sakaratul maut, alam barzakh (termasuk pertanyaan kubur oleh Munkar dan Nakir), tanda-tanda kiamat (termasuk sepuluh tanda besar dan tiupan sangkakala), serta hari kebangkitan (Mahsyar, hisab, mizan, dan Shirath), Ashabul A‘raf, telaga Nabi ﷺ dan syafa‘at, gambaran Surga dan Neraka, serta Dajjal, Imam Mahdi dan turunnya Nabi ‘Isa عليه السلام, perang akhir zaman (Malhamah Kubra, Konstantinopel, dan as-Sufyani), Ashabul Kahfi, Dzulqarnain beserta Ya’juj dan Ma’juj, Harut–Marut, ruqyah dan ‘ain, Qarun, Ashabul Ukhdud, Ashabul Fil dan burung Ababil, kaum Saba’ dan bendungan Ma’rib, serta para nabi: Nuh dan tufan, Ibrahim (api yang dingin, pembangunan Ka‘bah, dan kisah penyembelihan), Hud dan kaum ‘Ad (Iram), Shalih dan kaum Tsamud, hingga Yusuf, Ayyub, dan Yunus, Musa (bersama Fir‘aun dan bersama Nabi Khidir), Sulaiman (jin, burung Hud-hud, semut, dan Ratu Balqis), serta Zakariya, Yahya, dan kelahiran Maryam serta ‘Isa, juga Hajar, Isma‘il, dan sumur Zamzam — dituturkan ringan dari Al-Qur’an, hadits, dan penjelasan para ulama.",
+ "d": "Kisah awal penciptaan, alam ruh, Nabi Adam عليه السلام, Iblis, malaikat, jin, takdir dan Lailatul Qadar beserta turunnya Al-Qur’an, ‘Arsy, tujuh langit, kisah Isra’ Mi‘raj, terbelahnya bulan, Malaikat Maut dan sakaratul maut, alam barzakh (termasuk pertanyaan kubur oleh Munkar dan Nakir), tanda-tanda kiamat (termasuk sepuluh tanda besar dan tiupan sangkakala), serta hari kebangkitan (Mahsyar, hisab, mizan, dan Shirath), Ashabul A‘raf, telaga Nabi ﷺ dan syafa‘at, gambaran Surga dan Neraka, serta Dajjal, Imam Mahdi dan turunnya Nabi ‘Isa عليه السلام, perang akhir zaman (Malhamah Kubra, Konstantinopel, dan as-Sufyani), Ashabul Kahfi, Dzulqarnain beserta Ya’juj dan Ma’juj, Harut–Marut, ruqyah dan ‘ain, sapi betina Bani Israil, Samiri dan anak sapi emas, Ashabus Sabt, Qarun, Ashabul Jannah, Ashabul Ukhdud, Ashabul Qaryah (Anthakiyah), Ashabul Fil dan burung Ababil, kaum Saba’ dan bendungan Ma’rib, serta para nabi: Nuh dan tufan, Ibrahim (api yang dingin, pembangunan Ka‘bah, dan kisah penyembelihan), Hud dan kaum ‘Ad (Iram), Shalih dan kaum Tsamud, hingga Yusuf, Ayyub, dan Yunus, Musa (bersama Fir‘aun dan bersama Nabi Khidir), Sulaiman (jin, burung Hud-hud, semut, dan Ratu Balqis), serta Zakariya, Yahya, dan kelahiran Maryam serta ‘Isa, juga Hajar, Isma‘il, dan sumur Zamzam — dituturkan ringan dari Al-Qur’an, hadits, dan penjelasan para ulama.",
  "k": [
   {
    "id": "awal-penciptaan",
@@ -3079,6 +3079,200 @@
    ]
   },
   {
+   "id": "sapi-betina-bani-israil",
+   "t": "Sapi Betina Bani Israil: Perintah yang Dipersulit Sendiri",
+   "d": "Kisah mayat yang tidak diketahui pembunuhnya, perintah menyembelih sapi betina, pertanyaan yang kian menyulitkan, dan hidupnya kembali orang yang terbunuh (QS. al-Baqarah: 67–73).",
+   "b": [
+    {
+     "h": "Mayat tanpa pembunuh, dan perintah dari Allah",
+     "p": [
+      "Kisah ini ada dalam QS. al-Baqarah: 67–73, dan dari kisah inilah surat al-Baqarah (sapi betina) mendapat namanya. Ayat 72 menyebut bahwa ada seseorang yang dibunuh, lalu mereka saling menuduh, sementara Allah akan menyingkapkan apa yang mereka sembunyikan. Para mufassir menukil riwayat bahwa korban dibunuh karena urusan warisan lalu jasadnya diletakkan di depan rumah suatu kaum. Rincian ini bersumber dari penjelasan para ulama tafsir yang sebagian berasal dari kisah Bani Israil, sehingga tidak menjadi pegangan akidah.",
+      "Ketika mereka mengadu kepada Nabi Musa عليه السلام, beliau menyampaikan perintah Allah agar mereka menyembelih seekor sapi betina. Jawaban mereka menunjukkan sikap yang kurang beradab: “Apakah engkau menjadikan kami bahan ejekan?” Nabi Musa menjawab bahwa ia berlindung kepada Allah dari menjadi orang yang bodoh, karena bercanda dalam menyampaikan wahyu adalah kebodohan."
+     ],
+     "q": [
+      {
+       "a": "وَإِذْ قَالَ مُوسَىٰ لِقَوْمِهِ إِنَّ اللَّهَ يَأْمُرُكُمْ أَن تَذْبَحُوا بَقَرَةً ۖ قَالُوا أَتَتَّخِذُنَا هُزُوًا ۖ قَالَ أَعُوذُ بِاللَّهِ أَنْ أَكُونَ مِنَ الْجَاهِلِينَ",
+       "t": "Dan (ingatlah) ketika Musa berkata kepada kaumnya, “Sesungguhnya Allah memerintahkan kamu agar menyembelih seekor sapi betina.” Mereka bertanya, “Apakah engkau akan menjadikan kami bahan ejekan?” Dia (Musa) menjawab, “Aku berlindung kepada Allah agar tidak termasuk orang-orang yang bodoh.”",
+       "s": "QS. al-Baqarah: 67"
+      }
+     ]
+    },
+    {
+     "h": "Pertanyaan demi pertanyaan",
+     "p": [
+      "Setelah itu mereka bertanya tiga kali. Pertama tentang umurnya, dan dijawab bahwa sapi itu **tidak tua dan tidak muda**, pertengahan antara keduanya. Kedua tentang warnanya, dan dijawab bahwa sapi itu berwarna kuning tua yang menyenangkan orang yang memandangnya. Ketiga mereka berkata bahwa sapi itu masih samar bagi mereka dan, dengan menyebut *insya Allah*, mereka akan mendapat petunjuk. Dijawab bahwa sapi itu belum pernah dipakai membajak tanah atau mengairi ladang, sehat, dan tidak ada belangnya.",
+      "Barulah mereka berkata, “Sekarang engkau telah menerangkan hakikatnya”, lalu menyembelihnya, **“dan hampir saja mereka tidak melaksanakannya”** (ayat 71). Diriwayatkan dari Ibnu ‘Abbas رضي الله عنهما dan sejumlah ulama salaf bahwa seandainya mereka menyembelih sapi apa saja sejak awal, hal itu sudah mencukupi, tetapi mereka mempersulit diri sehingga Allah mempersulit mereka. Para mufassir, di antaranya Ibnu Katsir, juga menukil riwayat bahwa sapi itu sangat mahal harganya karena sifat-sifatnya menjadi sangat khusus. Kisah yang menyertainya, tentang seorang pemuda berbakti kepada ayahnya yang akhirnya memiliki sapi itu, dinukil dari sumber Israiliyyat dan tidak dapat dipastikan keabsahannya."
+     ]
+    },
+    {
+     "h": "Mayat yang dihidupkan, dan bukti hari kebangkitan",
+     "p": [
+      "Setelah sapi disembelih, Allah memerintahkan agar mayat itu dipukul dengan **sebagian anggota sapi** tersebut. Al-Qur’an tidak menyebut bagian yang mana, dan para mufassir menyebutkan beberapa pendapat tanpa dalil sahih yang menentukan. Karena Al-Qur’an sendiri tidak merincinya, hal ini tidak perlu dicari-cari.",
+      "Yang jelas, mayat itu hidup kembali dengan kuasa Allah dan, menurut riwayat para mufassir, menyebutkan siapa pembunuhnya. Ayat 73 menegaskan makna utamanya: **“Demikianlah Allah menghidupkan orang yang telah mati.”** Kisah ini menjadi bukti di dunia bagi hari kebangkitan, sekaligus jawaban bagi orang yang menganggap kebangkitan mustahil, sebagaimana juga dibahas di kartu Hari Kebangkitan. Setelah itu ayat 74 menyebut bahwa hati mereka tetap mengeras seperti batu, bahkan lebih keras, padahal tanda sebesar itu telah mereka lihat."
+     ],
+     "q": [
+      {
+       "a": "فَقُلْنَا اضْرِبُوهُ بِبَعْضِهَا ۚ كَذَٰلِكَ يُحْيِي اللَّهُ الْمَوْتَىٰ وَيُرِيكُمْ آيَاتِهِ لَعَلَّكُمْ تَعْقِلُونَ",
+       "t": "Lalu Kami berfirman, “Pukullah (mayat) itu dengan bagian dari (sapi) itu!” Demikianlah Allah menghidupkan (orang) yang telah mati, dan memperlihatkan kepadamu tanda-tanda (kekuasaan-Nya) agar kamu mengerti.",
+       "s": "QS. al-Baqarah: 73"
+      }
+     ]
+    },
+    {
+     "h": "Pelajaran: taat segera dan jangan mempersulit diri",
+     "p": [
+      "Nabi ﷺ bersabda, “Biarkanlah aku dengan apa yang aku tinggalkan untuk kalian. Sesungguhnya yang membinasakan orang-orang sebelum kalian adalah banyaknya pertanyaan mereka dan penyelisihan mereka terhadap para nabi mereka. Jika aku melarang kalian dari sesuatu maka jauhilah, dan jika aku memerintahkan sesuatu maka kerjakanlah semampu kalian” (al-Bukhari no. 7288 dan Muslim no. 1337 dari Abu Hurairah). Para ulama menjadikan kisah sapi sebagai contoh sikap yang dikritik hadits ini. QS. al-Ma’idah: 101 juga melarang menanyakan hal yang jika diterangkan justru memberatkan.",
+      "Namun yang dicela adalah pertanyaan untuk menunda atau mencari celah, bukan bertanya karena ingin belajar. Al-Qur’an memerintahkan bertanya kepada ahli ilmu bila tidak tahu (QS. an-Nahl: 43). Pelajaran kedua, perintah Allah tidak perlu dihadapi dengan sikap bercanda atau meremehkan. Pelajaran ketiga, Allah mampu menyingkap kejahatan yang disembunyikan manusia, dan Dia mampu menghidupkan orang mati sebagaimana menciptakan pertama kali."
+     ]
+    }
+   ],
+   "s": [
+    "QS. al-Baqarah: 67–74; al-Ma’idah: 101; an-Nahl: 43",
+    "HR. al-Bukhari no. 7288 dan Muslim no. 1337 dari Abu Hurairah — larangan banyak bertanya dan menyelisihi perintah",
+    "Ath-Thabari, *Jami‘ al-Bayan*; Ibnu Katsir, *Tafsir al-Qur’an al-‘Azhim* — tafsir QS. al-Baqarah: 67–73, termasuk riwayat dari Ibnu ‘Abbas dan para salaf",
+    "Al-Qurthubi, *al-Jami‘ li Ahkam al-Qur’an* — tafsir QS. al-Baqarah: 67–73",
+    "Ibnu Katsir, *Qashash al-Anbiya’* — kisah sapi Bani Israil dan catatan tentang riwayat Israiliyyat"
+   ]
+  },
+  {
+   "id": "samiri-anak-sapi-emas",
+   "t": "Samiri dan Anak Sapi Emas: Ujian Saat Musa Bermunajat",
+   "d": "Empat puluh malam di Gunung Thur, patung anak sapi yang bersuara, sikap Harun, dialog Musa dan Samiri, serta akhir patung itu (QS. Thaha: 83–98; al-A‘raf: 148–154).",
+   "b": [
+    {
+     "h": "Empat puluh malam, dan ujian di belakang Musa",
+     "p": [
+      "Nabi Musa عليه السلام dijanjikan bermunajat dan menerima Taurat di Gunung Thur selama tiga puluh malam yang digenapkan menjadi empat puluh malam (QS. al-A‘raf: 142). Beliau meninggalkan Nabi Harun عليه السلام sebagai pengganti untuk memimpin kaumnya. Dalam QS. Thaha: 83–84, Musa berangkat lebih dulu karena ingin segera mendapat keridhaan Allah, sementara kaumnya mengikuti di belakang. Allah lalu memberi tahu bahwa kaumnya telah diuji sepeninggalnya dan disesatkan oleh **as-Samiri**.",
+      "Ujian ini datang tidak lama setelah Bani Israil selamat dari Fir‘aun. Ketika melihat suatu kaum menyembah berhala, mereka sudah pernah meminta kepada Musa dibuatkan tuhan seperti itu, dan Musa menyebut mereka kaum yang tidak mengerti (QS. al-A‘raf: 138). Kebiasaan hidup di tengah kaum penyembah berhala masih membekas pada mereka."
+     ]
+    },
+    {
+     "h": "Anak sapi yang bertubuh dan bersuara",
+     "p": [
+      "Menurut QS. Thaha: 87, kaum Musa kemudian beralasan bahwa mereka dahulu diminta membawa beban perhiasan milik kaum Fir‘aun, lalu melemparkannya, dan Samiri pun melemparkan bagiannya. Dari situ Samiri mengeluarkan **patung anak sapi** yang bertubuh dan mengeluarkan suara. Ia berkata, “Inilah Tuhanmu dan Tuhan Musa, tetapi Musa lupa.”",
+      "Al-Qur’an membantah ini dengan satu pertanyaan sederhana: tidakkah mereka melihat bahwa patung itu tidak dapat menjawab perkataan mereka dan tidak kuasa mendatangkan mudarat atau manfaat? (QS. Thaha: 89). Para ulama berbeda pendapat tentang suaranya. Sebagian menyebut bahwa suara itu benar-benar keluar, dan sebagian lain menyebut bahwa suara itu muncul karena angin yang melewati rongganya. Yang pasti, itu bukan tanda ketuhanan, melainkan ujian dari Allah."
+     ],
+     "q": [
+      {
+       "a": "فَأَخْرَجَ لَهُمْ عِجْلًا جَسَدًا لَّهُ خُوَارٌ فَقَالُوا هَٰذَا إِلَٰهُكُمْ وَإِلَٰهُ مُوسَىٰ فَنَسِيَ",
+       "t": "Lalu (dari lubang api itu) dia (Samiri) mengeluarkan (patung) anak sapi yang bertubuh dan bersuara untuk mereka, maka mereka berkata, “Inilah Tuhanmu dan Tuhan Musa, tetapi dia (Musa) lupa.”",
+       "s": "QS. Thaha: 88"
+      }
+     ]
+    },
+    {
+     "h": "Sikap Harun dan kemarahan Musa",
+     "p": [
+      "Nabi Harun sudah memperingatkan kaumnya bahwa mereka hanya diuji dengan patung itu, bahwa Tuhan mereka adalah ar-Rahman, dan agar mereka mengikuti beliau serta menaati perintahnya. Mereka menjawab bahwa mereka akan tetap menyembahnya sampai Musa kembali (QS. Thaha: 90–91). Dalam QS. al-A‘raf: 150, Harun menjelaskan bahwa kaum itu menganggapnya lemah dan hampir membunuhnya.",
+      "Musa kembali dalam keadaan marah dan sedih. Beliau melemparkan lembaran-lembaran Taurat, lalu memegang kepala saudaranya dan menariknya kepadanya. Harun berkata, “Wahai putra ibuku, jangan engkau pegang janggut dan kepalaku. Aku takut engkau berkata bahwa aku telah memecah belah Bani Israil dan tidak menjaga perkataanmu” (QS. Thaha: 94). Setelah mendengar uzurnya, Musa memohonkan ampunan bagi dirinya dan saudaranya (QS. al-A‘raf: 151). Dengan demikian Al-Qur’an membersihkan Harun dari kesalahan itu; anggapan bahwa beliau yang membuat patung tidak berasal dari Al-Qur’an."
+     ]
+    },
+    {
+     "h": "Samiri dan ‘segenggam dari jejak Rasul’",
+     "p": [
+      "Musa lalu bertanya kepada Samiri apa urusannya. Samiri menjawab bahwa ia melihat sesuatu yang tidak dilihat kaumnya, lalu mengambil segenggam dari ‘jejak Rasul’, kemudian melemparkannya, dan begitulah nafsunya membujuknya. Nabi Musa lalu menjatuhkan hukuman: ia diusir dan, selama hidupnya, akan berkata *la misasa* (“jangan menyentuhku”), yaitu terasing dari manusia.",
+      "Para mufassir berbeda tentang makna ‘jejak Rasul’. Pendapat yang banyak dinukil dari sebagian salaf, termasuk riwayat dari Ibnu ‘Abbas رضي الله عنهما, menyebut bahwa Samiri melihat Malaikat Jibril عليه السلام (sebagian menyebut jejak kudanya) saat Bani Israil menyeberangi laut, lalu mengambil segenggam tanah dari bekasnya. Sebagian mufassir memahami bahwa yang dimaksud adalah ajaran yang ia dengar dari Rasul lalu ia campakkan. Para ulama menilai rincian ini tidak ada dalam hadits sahih, sehingga yang kita pegang adalah pokok kisahnya: Samiri menyesatkan dengan nafsunya, dan Allah-lah yang menguji."
+     ],
+     "q": [
+      {
+       "a": "قَالَ بَصُرْتُ بِمَا لَمْ يَبْصُرُوا بِهِ فَقَبَضْتُ قَبْضَةً مِّنْ أَثَرِ الرَّسُولِ فَنَبَذْتُهَا وَكَذَٰلِكَ سَوَّلَتْ لِي نَفْسِي",
+       "t": "Dia (Samiri) menjawab, “Aku mengetahui sesuatu yang tidak mereka ketahui, jadi aku ambil segenggam (tanah dari) jejak Rasul, lalu aku melemparkannya (ke dalam api itu), demikianlah nafsuku membujukku.”",
+       "s": "QS. Thaha: 96"
+      }
+     ]
+    },
+    {
+     "h": "Akhir patung, dan taubat Bani Israil",
+     "p": [
+      "Nabi Musa berkata kepada Samiri agar melihat ‘tuhan’ yang selama ini ia sembah dengan tekun: patung itu akan dibakar lalu dihamburkan ke laut. Lalu Musa menegaskan, “Sesungguhnya Tuhanmu hanyalah Allah, yang tidak ada tuhan selain Dia. Ilmu-Nya meliputi segala sesuatu” (QS. Thaha: 97–98).",
+      "Bani Israil sendiri diperintahkan bertaubat. QS. al-Baqarah: 54 menyebut perintah “bertaubatlah kepada Penciptamu dan bunuhlah dirimu”. Para mufassir, di antaranya Ibnu Katsir, menjelaskan riwayat bahwa yang tidak menyembah patung diperintahkan membunuh yang menyembah, dan itu menjadi bentuk taubat mereka yang berat. QS. al-A‘raf: 152–153 juga menyebut bahwa orang yang menjadikan anak sapi sebagai sesembahan akan ditimpa kemurkaan Tuhannya dan kehinaan di dunia, dan Allah menerima taubat orang yang bertaubat sesudahnya."
+     ]
+    },
+    {
+     "h": "Pelajaran dari kisah ini",
+     "p": [
+      "Pertama, benda tidak mampu menjawab, memberi manfaat, atau menolak mudarat, sehingga tidak layak disembah. Kedua, kesalahan paling besar sering dimulai dari satu orang yang pandai berbicara dan menuruti hawa nafsunya, sebagaimana Samiri berkata bahwa nafsunya yang membujuknya. Ketiga, ujian paling berat sering datang ketika pemimpin atau pembimbing tidak ada, maka iman harus berdiri di atas keyakinan, bukan di atas kehadiran seseorang. Keempat, Nabi Harun mengajarkan bahwa menasihati kaum harus dibarengi kehati-hatian terhadap perpecahan, dan Nabi Musa mengajarkan menerima uzur saudara serta memohonkan ampun baginya. Kisah ini dan kisah sapi betina di kartu sebelumnya sama-sama menunjukkan bagaimana kebiasaan lama dapat membekas pada hati Bani Israil."
+     ]
+    }
+   ],
+   "s": [
+    "QS. Thaha: 83–98; al-A‘raf: 138–154; al-Baqarah: 51–54",
+    "Ath-Thabari, *Jami‘ al-Bayan*; Ibnu Katsir, *Tafsir al-Qur’an al-‘Azhim* — tafsir QS. Thaha: 83–98 dan al-A‘raf: 148–154, termasuk perbedaan ulama tentang ‘jejak Rasul’ dan suara anak sapi",
+    "Al-Qurthubi, *al-Jami‘ li Ahkam al-Qur’an* — tafsir QS. Thaha: 83–98",
+    "Ibnu Katsir, *Qashash al-Anbiya’* — kisah Musa, Harun, dan Samiri"
+   ]
+  },
+  {
+   "id": "ashabus-sabt",
+   "t": "Ashabus Sabt: Penduduk Pantai yang Melanggar Hari Sabtu",
+   "d": "Negeri di tepi laut yang diuji dengan ikan di hari Sabtu, siasat untuk mengakali larangan, tiga golongan di antara mereka, dan azab yang menimpa para pelanggar (QS. al-A‘raf: 163–166).",
+   "b": [
+    {
+     "h": "Negeri di tepi laut dan ujian ikan",
+     "p": [
+      "Allah memerintahkan Nabi ﷺ untuk menanyakan kepada Bani Israil tentang sebuah negeri yang terletak di tepi laut. Di sana mereka diperintahkan menghormati hari Sabtu dengan tidak bekerja dan tidak menangkap ikan. Allah menguji mereka: pada hari Sabtu ikan-ikan datang terapung-apung ke permukaan, sedangkan pada hari selain Sabtu ikan-ikan itu tidak datang. Allah berfirman bahwa demikianlah Dia menguji mereka disebabkan kefasikan mereka.",
+      "Al-Qur’an tidak menyebut nama negerinya. Para mufassir menyebut beberapa kemungkinan. Pendapat yang banyak dinukil dari Ibnu ‘Abbas dan sebagian salaf adalah Ayla di tepi Laut Merah (sekitar Eilat sekarang), sedangkan sebagian lain menyebut Thabariyyah atau Madyan. Karena tidak ada dalil sahih yang memastikan, kita cukup mengambil pelajarannya."
+     ],
+     "q": [
+      {
+       "a": "وَاسْأَلْهُمْ عَنِ الْقَرْيَةِ الَّتِي كَانَتْ حَاضِرَةَ الْبَحْرِ إِذْ يَعْدُونَ فِي السَّبْتِ إِذْ تَأْتِيهِمْ حِيتَانُهُمْ يَوْمَ سَبْتِهِمْ شُرَّعًا وَيَوْمَ لَا يَسْبِتُونَ ۙ لَا تَأْتِيهِمْ ۚ كَذَٰلِكَ نَبْلُوهُم بِمَا كَانُوا يَفْسُقُونَ",
+       "t": "Dan tanyakanlah kepada mereka (Bani Israil) tentang negeri yang terletak di dekat laut ketika mereka melanggar aturan pada hari Sabat, ketika datang kepada mereka ikan-ikan (yang berada di sekitar) mereka terapung-apung di permukaan air, padahal pada hari-hari yang bukan Sabat ikan-ikan itu tidak datang kepada mereka. Demikianlah Kami menguji mereka disebabkan mereka berbuat fasik.",
+       "s": "QS. al-A‘raf: 163"
+      }
+     ]
+    },
+    {
+     "h": "Siasat untuk mengakali larangan",
+     "p": [
+      "Para mufassir menjelaskan bahwa sebagian mereka tidak menangkap ikan terang-terangan pada hari Sabtu, tetapi membuat siasat: menahan ikan yang datang pada hari Sabtu dengan parit atau jaring, lalu mengambilnya pada hari berikutnya. Ibnu Katsir menukil riwayat Ibnu Battah dari Abu Hurairah رضي الله عنه bahwa Nabi ﷺ melarang umat ini meniru perbuatan Yahudi yang menghalalkan larangan Allah dengan **tipu daya yang rendah**, dan menilai sanadnya baik.",
+      "Inti pelanggarannya bukan sekadar soal ikan, melainkan mempermainkan hukum Allah dengan mempertahankan bentuk lahirnya dan membatalkan tujuannya. Karena itu para ulama memperingatkan siasat-siasat semacam ini ketika dipakai untuk menghalalkan yang haram atau menggugurkan kewajiban."
+     ]
+    },
+    {
+     "h": "Tiga golongan di negeri itu",
+     "p": [
+      "Ayat 164–165 menunjukkan bahwa penduduk negeri itu terbagi menjadi tiga golongan menurut penjelasan para mufassir. Golongan pertama adalah para pelanggar. Golongan kedua adalah orang yang melarang dan menasihati mereka. Golongan ketiga adalah orang yang berkata kepada para penasihat, “Mengapa kalian menasihati kaum yang akan dibinasakan atau diazab oleh Allah?” Para penasihat menjawab bahwa nasihat itu agar mereka memiliki **alasan di hadapan Tuhan**, dan agar para pelanggar mungkin bertakwa.",
+      "Allah menyelamatkan orang yang melarang kemungkaran dan menimpakan azab keras kepada orang yang zalim (ayat 165). Ibnu Katsir menukil bahwa Ibnu ‘Abbas رضي الله عنهما menetapkan keselamatan bagi golongan pelarang dan kebinasaan bagi pelanggar, sedangkan tentang golongan ketiga yang hanya mencela penasihat, ayat tidak menyebutnya dengan tegas. Para ulama berbeda pendapat tentang nasib mereka, dan hal ini tidak perlu kita pastikan."
+     ]
+    },
+    {
+     "h": "Dijadikan kera yang hina",
+     "p": [
+      "Ketika mereka bersikap sombong terhadap larangan itu, Allah berfirman kepada mereka, “Jadilah kamu kera yang hina” (QS. al-A‘raf: 166; al-Baqarah: 65–66). Mayoritas mufassir memahami bahwa mereka benar-benar diubah menjadi kera, sedangkan Mujahid, sebagaimana dinukil Ibnu Katsir, berpendapat bahwa yang dimaksud adalah perumpamaan, yaitu hati mereka berubah seperti hati kera.",
+      "Hadits dari ‘Abdullah bin Mas‘ud رضي الله عنه (Muslim no. 2663) menjelaskan satu hal penting: ketika ditanya apakah kera dan babi sekarang adalah keturunan kaum yang diubah, Nabi ﷺ menjawab bahwa Allah tidak menjadikan keturunan bagi kaum yang Dia binasakan, dan kera serta babi sudah ada sebelum itu. Maka anggapan bahwa kera sekarang adalah keturunan Ashabus Sabt tidak benar."
+     ],
+     "q": [
+      {
+       "a": "فَلَمَّا عَتَوْا عَن مَّا نُهُوا عَنْهُ قُلْنَا لَهُمْ كُونُوا قِرَدَةً خَاسِئِينَ",
+       "t": "Maka setelah mereka bersikap sombong terhadap segala apa yang dilarang, Kami katakan kepada mereka, “Jadilah kamu kera yang hina.”",
+       "s": "QS. al-A‘raf: 166"
+      }
+     ]
+    },
+    {
+     "h": "Hari Sabtu dan Bani Israil",
+     "p": [
+      "Hari Sabtu adalah ketetapan khusus bagi Bani Israil. Allah berfirman bahwa Sabtu itu hanya ditetapkan bagi orang-orang yang berselisih tentangnya (QS. an-Nahl: 124), dan Bani Israil diperintahkan agar tidak melanggar aturan hari Sabtu (QS. an-Nisa’: 154). Pelanggaran Ashabus Sabt juga disebut sebagai peringatan bagi Ahli Kitab yang tidak beriman (QS. an-Nisa’: 47). Umat Islam tidak diperintahkan menjalankan aturan Sabtu ini, tetapi mengambil pelajarannya."
+     ]
+    },
+    {
+     "h": "Pelajaran: kemudahan yang menggoda dan tugas menasihati",
+     "p": [
+      "Pertama, ujian sering datang dalam bentuk kemudahan yang menggiurkan, justru di waktu yang dilarang. Kedua, siasat untuk mengakali hukum Allah tidak mengubah hukumnya, dan Allah melihat maksud di balik caranya. Ketiga, amar ma‘ruf dan nahi munkar adalah sebab selamatnya suatu kaum. Nabi ﷺ membuat perumpamaan orang-orang di sebuah kapal yang sebagian berada di bawah dan hendak melubangi bagiannya; jika dibiarkan, semuanya binasa, dan jika dicegah, semuanya selamat (al-Bukhari no. 2493 dari an-Nu‘man bin Basyir). Beliau juga bersabda bahwa siapa yang melihat kemungkaran hendaklah mengubahnya dengan tangannya, jika tidak mampu maka dengan lisannya, dan jika tidak mampu maka dengan hatinya, dan itu selemah-lemah iman (Muslim no. 49 dari Abu Sa‘id al-Khudri). Keempat, orang yang menasihati tidak perlu berhenti hanya karena kaumnya enggan, karena nasihat adalah tanggung jawab yang akan ditanyakan."
+     ]
+    }
+   ],
+   "s": [
+    "QS. al-A‘raf: 163–166; al-Baqarah: 65–66; an-Nisa’: 47, 154; an-Nahl: 124",
+    "HR. Muslim no. 2663 dari ‘Abdullah bin Mas‘ud — kera dan babi bukan keturunan kaum yang diubah",
+    "HR. al-Bukhari no. 2493 dari an-Nu‘man bin Basyir — perumpamaan orang di kapal",
+    "HR. Muslim no. 49 dari Abu Sa‘id al-Khudri — mengubah kemungkaran",
+    "Ibnu Battah, *al-Ibanah* dari Abu Hurairah — larangan menghalalkan yang haram dengan tipu daya; Ibnu Katsir menilai sanadnya baik",
+    "Ath-Thabari, *Jami‘ al-Bayan*; Ibnu Katsir, *Tafsir al-Qur’an al-‘Azhim* — tafsir QS. al-A‘raf: 163–166, termasuk tiga golongan, riwayat Ibnu ‘Abbas, dan pendapat Mujahid",
+    "Al-Qurthubi, *al-Jami‘ li Ahkam al-Qur’an* — tafsir QS. al-Baqarah: 65–66 dan al-A‘raf: 163–166"
+   ]
+  },
+  {
    "id": "qarun",
    "t": "Qarun: Pemilik Harta yang Ditelan Bumi",
    "d": "Kisah orang dari kaum Musa yang diberi harta luar biasa, lalu menyombongkannya dan mengaku memperolehnya karena ilmunya sendiri, beserta nasihat kaumnya dan akhir hidupnya.",
@@ -3171,6 +3365,66 @@
    ]
   },
   {
+   "id": "ashabul-jannah",
+   "t": "Ashabul Jannah: Pemilik Kebun yang Lupa Mengucap Insya Allah",
+   "d": "Pemilik-pemilik kebun yang bersepakat menghalangi orang miskin, kebun yang hangus pada malam hari, dan penyesalan mereka (QS. al-Qalam: 17–33).",
+   "b": [
+    {
+     "h": "Perumpamaan yang Allah berikan",
+     "p": [
+      "Kisah ini disebut dalam surat al-Qalam sebagai ujian dan peringatan. Allah berfirman bahwa Dia menguji mereka sebagaimana Dia menguji **pemilik-pemilik kebun**, ketika mereka bersumpah akan memetik hasilnya di waktu pagi, dan **tidak mengucapkan insya Allah** (ayat 17–18). Sebagian mufassir menjelaskan bahwa ayat ini adalah perumpamaan bagi kaum Quraisy yang menerima nikmat besar berupa diutusnya Rasul, tetapi mengingkarinya."
+     ],
+     "q": [
+      {
+       "a": "إِنَّا بَلَوْنَاهُمْ كَمَا بَلَوْنَا أَصْحَابَ الْجَنَّةِ إِذْ أَقْسَمُوا لَيَصْرِمُنَّهَا مُصْبِحِينَ ۝ وَلَا يَسْتَثْنُونَ",
+       "t": "Sungguh, Kami telah menguji mereka (orang musyrik Mekah) sebagaimana Kami telah menguji pemilik-pemilik kebun, ketika mereka bersumpah pasti akan memetik (hasil)nya pada pagi hari, dan mereka tidak menyisihkan (dengan mengucapkan, “Insya Allah”).",
+       "s": "QS. al-Qalam: 17–18"
+      }
+     ]
+    },
+    {
+     "h": "Siapa mereka?",
+     "p": [
+      "Al-Qur’an tidak menyebut tempat atau nama mereka. Riwayat dari sebagian salaf, yang dinukil Ibnu Katsir, menyebutkan bahwa mereka adalah anak-anak seorang saleh di Yaman yang kebunnya berada tidak jauh dari Shan‘a. Ayah mereka biasa menyisihkan hasil panen bagi orang miskin, sedangkan anak-anaknya tidak ingin meneruskan kebiasaan itu setelah ia wafat. Riwayat ini tidak bersumber dari hadits sahih, sehingga kita ambil sebagai penjelasan tafsir saja dan tidak menjadi dasar akidah."
+     ]
+    },
+    {
+     "h": "Rencana rahasia, dan malam yang mengubah segalanya",
+     "p": [
+      "Mereka bersepakat memetik hasil pada pagi hari sebelum orang miskin datang. Ketika berangkat, mereka berbisik-bisik, **“Pada hari ini jangan sampai ada orang miskin masuk ke kebunmu”** (ayat 24). Mereka berangkat pagi-pagi dengan tekad kuat, merasa mampu menghalangi orang lain.",
+      "Namun pada malam harinya, ketika mereka tidur, kebun itu ditimpa bencana dari Tuhanmu (ayat 19), sehingga menjadi hitam seperti malam yang gelap gulita (ayat 20). Para mufassir menyebut bahwa Allah mengirim api atau bencana yang membakarnya. Ketika mereka tiba dan melihat keadaan kebun, mereka berkata, “Sungguh, kita ini orang-orang yang sesat”, lalu mengoreksi, “bahkan kita dihalangi dari rezeki” (ayat 26–27). Mereka mengira salah jalan, lalu sadar bahwa kebun mereka telah musnah."
+     ]
+    },
+    {
+     "h": "Seruan orang yang paling baik pikirannya",
+     "p": [
+      "Orang yang paling baik pendapatnya di antara mereka berkata, “Bukankah sudah kukatakan kepadamu, mengapa kamu tidak bertasbih (kepada Tuhanmu)?” (ayat 28). Para mufassir menjelaskan bahwa maksud ‘bertasbih’ di sini adalah mengucapkan insya Allah dan mengingat Allah. Mereka lalu berkata, “Mahasuci Tuhan kami, sungguh kami orang-orang yang zalim”, kemudian saling menyalahkan, dan akhirnya mengaku bahwa mereka telah melampaui batas (ayat 29–31).",
+      "Penutup kisahnya terbuka: mereka berharap Allah menggantinya dengan kebun yang lebih baik, “sesungguhnya kami berharap kepada Tuhan kami” (ayat 32). Sebagian ulama salaf memahami bahwa taubat mereka tulus. Namun Al-Qur’an menutup dengan peringatan umum: **“Demikianlah azab (di dunia), dan azab akhirat lebih besar, sekiranya mereka mengetahui”** (ayat 33)."
+     ],
+     "q": [
+      {
+       "a": "كَذَٰلِكَ الْعَذَابُ ۖ وَلَعَذَابُ الْآخِرَةِ أَكْبَرُ ۚ لَوْ كَانُوا يَعْلَمُونَ",
+       "t": "Seperti itulah azab (di dunia). Dan sungguh, azab akhirat lebih besar sekiranya mereka mengetahui.",
+       "s": "QS. al-Qalam: 33"
+      }
+     ]
+    },
+    {
+     "h": "Pelajaran: insya Allah, hak orang miskin, dan menahan rezeki",
+     "p": [
+      "Pertama, mengucapkan *insya Allah* bukan sekadar basa-basi, tetapi pengakuan bahwa segala rencana bergantung pada kehendak Allah. Allah mengajarkan agar tidak mengatakan “Aku pasti melakukan ini besok” kecuali dengan menyebut “insya Allah” (QS. al-Kahfi: 23–24). Para pemilik kebun bersumpah dengan percaya diri, tetapi menafikan kehendak Allah.",
+      "Kedua, dalam hasil bumi ada hak bagi orang lain. Allah memerintahkan menunaikan haknya pada hari memetik hasilnya (QS. al-An‘am: 141). Nabi ﷺ bersabda bahwa setiap pagi dua malaikat turun, yang satu berdoa agar orang yang berinfak diberi ganti, dan yang lain berdoa agar orang yang menahan hartanya ditimpa kerugian (al-Bukhari no. 1442 dan Muslim no. 1010 dari Abu Hurairah). Ketiga, orang yang berencana menghalangi kebaikan bisa kehilangan seluruh nikmatnya dalam semalam. Keempat, penyesalan dan taubat tetap terbuka selama masih ada kesempatan, dan orang yang paling bijak di antara mereka adalah yang mengingatkan kepada Allah."
+     ]
+    }
+   ],
+   "s": [
+    "QS. al-Qalam: 17–33; al-Kahfi: 23–24; al-An‘am: 141",
+    "HR. al-Bukhari no. 1442 dan Muslim no. 1010 dari Abu Hurairah — dua malaikat yang berdoa setiap pagi bagi yang berinfak dan yang menahan",
+    "Ath-Thabari, *Jami‘ al-Bayan*; Ibnu Katsir, *Tafsir al-Qur’an al-‘Azhim* — tafsir QS. al-Qalam: 17–33 dan riwayat tentang pemilik kebun",
+    "Al-Qurthubi, *al-Jami‘ li Ahkam al-Qur’an* — tafsir QS. al-Qalam: 17–33"
+   ]
+  },
+  {
    "id": "ashabul-ukhdud",
    "t": "Ashabul Ukhdud: Parit Api dan Anak yang Beriman",
    "d": "Kisah orang-orang beriman yang dilemparkan ke parit api karena iman mereka, dari QS. al-Buruj dan hadits Shuhaib tentang anak muda, tukang sihir, dan sang raja.",
@@ -3245,6 +3499,87 @@
     "HR. Muslim no. 3005 dari Shuhaib ar-Rumi — kisah raja, tukang sihir, rahib, anak muda, dan Ashabul Ukhdud",
     "HR. al-Bukhari no. 3612 dari Khabbab bin al-Aratt — kesabaran orang beriman sebelum kita atas siksaan",
     "Ibnu Katsir, *Tafsir al-Qur’an al-‘Azhim* (QS. al-Buruj) dan *Al-Bidayah wan Nihayah* — keterangan tentang Najran dan Dzu Nuwas; an-Nawawi, *Syarh Shahih Muslim*; Ibnu Hisham, *as-Sirah an-Nabawiyyah* (riwayat Ibnu Ishaq)"
+   ]
+  },
+  {
+   "id": "ashabul-qaryah-anthakiyah",
+   "t": "Ashabul Qaryah: Negeri Anthakiyah dan Lelaki dari Ujung Kota",
+   "d": "Tiga utusan yang didustakan, tuduhan sial dan ancaman rajam, lelaki yang datang membela dengan bergegas, dan azab satu teriakan (QS. Yasin: 13–32).",
+   "b": [
+    {
+     "h": "Perumpamaan penduduk suatu negeri",
+     "p": [
+      "Dalam surat Yasin, Allah memerintahkan Nabi ﷺ membuat perumpamaan bagi kaum Quraisy tentang **penduduk suatu negeri** ketika para utusan datang kepada mereka. Al-Qur’an tidak menyebut nama negerinya, nama para utusan, maupun waktunya. Dalam penjelasan tafsir, yang paling masyhur dari riwayat Ibnu ‘Abbas رضي الله عنهما, Ka‘b al-Ahbar, dan Wahb bin Munabbih adalah negeri **Anthakiyah** (Antiokhia, wilayah Turki sekarang).",
+      "Namun Ibnu Katsir menilai penafsiran itu sangat jauh kemungkinannya. Alasannya, penduduk Anthakiyah dikenal beriman kepada utusan-utusan Nabi ‘Isa عليه السلام dan tidak dibinasakan, sedangkan kaum dalam surat Yasin dibinasakan. Ayat juga menyebut ‘*Kami mengutus*’, sehingga sebagian ulama memahami mereka diutus langsung oleh Allah, sedangkan yang lain memahami mereka sebagai utusan Nabi ‘Isa yang diutus atas perintah Allah. Karena itu para ulama berbeda pendapat tentang siapa para utusan itu dan di mana negerinya. Yang kita pegang adalah pelajaran dari ayatnya, bukan nama-nama dari riwayat yang tidak sahih."
+     ]
+    },
+    {
+     "h": "Dua utusan, lalu diperkuat dengan yang ketiga",
+     "p": [
+      "Allah mengutus dua orang kepada mereka, namun keduanya didustakan, lalu Allah memperkuatnya dengan utusan ketiga. Ketiganya berkata, “Sesungguhnya kami adalah utusan-utusan kepadamu” (ayat 13–14). Jawaban kaumnya adalah alasan klasik para penolak dakwah: kalian hanyalah manusia seperti kami, ar-Rahman tidak menurunkan sesuatu apa pun, dan kalian hanya berdusta (ayat 15).",
+      "Para utusan menjawab dengan tenang bahwa Tuhan mereka mengetahui bahwa mereka benar-benar utusan, dan tugas mereka hanyalah menyampaikan dengan jelas (ayat 16–17). Ini menunjukkan adab dakwah: tidak memaksa, tidak berdebat dengan emosi, dan menyerahkan hasilnya kepada Allah."
+     ],
+     "q": [
+      {
+       "a": "وَاضْرِبْ لَهُم مَّثَلًا أَصْحَابَ الْقَرْيَةِ إِذْ جَاءَهَا الْمُرْسَلُونَ ۝ إِذْ أَرْسَلْنَا إِلَيْهِمُ اثْنَيْنِ فَكَذَّبُوهُمَا فَعَزَّزْنَا بِثَالِثٍ فَقَالُوا إِنَّا إِلَيْكُم مُّرْسَلُونَ",
+       "t": "Dan buatlah suatu perumpamaan bagi mereka, yaitu penduduk suatu negeri, ketika utusan-utusan datang kepada mereka. (Yaitu) ketika Kami mengutus dua orang utusan kepada mereka, lalu mereka mendustakan keduanya; kemudian Kami kuatkan dengan (utusan) yang ketiga, maka ketiga (utusan itu) berkata, “Sungguh, kami adalah utusan-utusan kepadamu.”",
+       "s": "QS. Yasin: 13–14"
+      }
+     ]
+    },
+    {
+     "h": "Tuduhan sial dan ancaman rajam",
+     "p": [
+      "Kaum itu kemudian berkata bahwa mereka **bernasib sial karena kehadiran** para utusan, dan mengancam akan merajam mereka serta menimpakan azab yang pedih jika tidak berhenti (ayat 18). Para utusan menjawab bahwa kesialan itu ada pada diri mereka sendiri. Apakah karena diberi peringatan mereka menuduh demikian? Sungguh, mereka kaum yang melampaui batas (ayat 19).",
+      "Kebiasaan menganggap sesuatu sebagai pertanda sial (*tathayyur* atau *tiyarah*) dilarang dalam Islam. Nabi ﷺ bersabda bahwa tiyarah adalah syirik, dan bahwa Allah menghilangkan kecemasan itu dengan tawakal (Abu Dawud no. 3910 dan at-Tirmidzi no. 1614 dari Ibnu Mas‘ud, dinilai sahih oleh al-Albani). Keburukan yang menimpa suatu kaum berasal dari dosa dan penolakan mereka sendiri, bukan dari datangnya orang yang menyeru kepada kebaikan."
+     ]
+    },
+    {
+     "h": "Lelaki yang datang dari ujung kota",
+     "p": [
+      "Ketika para utusan terancam, datanglah seorang laki-laki dari **ujung kota** dengan bergegas. Ia berseru, “Wahai kaumku, ikutilah para utusan itu. Ikutilah orang yang tidak meminta imbalan kepadamu, dan mereka adalah orang-orang yang mendapat petunjuk” (ayat 20–21). Para mufassir menukil riwayat bahwa namanya Habib an-Najjar, tetapi tidak ada hadits sahih yang menyebutnya, sehingga Al-Qur’an cukup menyebutnya sebagai seorang laki-laki.",
+      "Alasan yang ia kemukakan sederhana dan kuat: mengapa ia tidak menyembah Dzat yang menciptakannya dan kepada-Nya mereka dikembalikan? Apakah ia akan mengambil tuhan selain Allah yang syafaatnya tidak berguna dan tidak mampu menyelamatkannya jika ar-Rahman menghendaki mudarat? Jika demikian, ia berada dalam kesesatan yang nyata. Lalu ia menyatakan imannya di hadapan mereka dan meminta mereka mendengarkannya (ayat 22–25)."
+     ],
+     "q": [
+      {
+       "a": "وَجَاءَ مِنْ أَقْصَى الْمَدِينَةِ رَجُلٌ يَسْعَىٰ قَالَ يَا قَوْمِ اتَّبِعُوا الْمُرْسَلِينَ ۝ اتَّبِعُوا مَن لَّا يَسْأَلُكُمْ أَجْرًا وَهُم مُّهْتَدُونَ",
+       "t": "Dan datanglah dari ujung kota seorang laki-laki dengan bergegas-gegas, dia berkata, “Wahai kaumku! Ikutilah utusan-utusan itu. Ikutilah orang yang tidak meminta imbalan kepadamu, dan mereka adalah orang-orang yang mendapat petunjuk.”",
+       "s": "QS. Yasin: 20–21"
+      }
+     ]
+    },
+    {
+     "h": "“Masuklah ke surga”",
+     "p": [
+      "Setelah ia menyatakan imannya, Al-Qur’an langsung menyebut bahwa dikatakan kepadanya, **“Masuklah ke surga.”** Ibnu Katsir dan para mufassir memahami bahwa lelaki itu dibunuh oleh kaumnya, lalu Allah memuliakannya dengan surga. Dalam keadaan itulah ia berkata, “Alangkah baiknya sekiranya kaumku mengetahui apa yang menyebabkan Tuhanku mengampuniku dan menjadikan aku termasuk orang-orang yang dimuliakan” (ayat 26–27).",
+      "Sebagian salaf menyebutkan bahwa seorang mukmin sejati selalu berharap kebaikan bagi manusia: lelaki itu masih berharap kaumnya mengetahui kebenaran padahal mereka baru saja membunuhnya."
+     ],
+     "q": [
+      {
+       "a": "قِيلَ ادْخُلِ الْجَنَّةَ ۖ قَالَ يَا لَيْتَ قَوْمِي يَعْلَمُونَ ۝ بِمَا غَفَرَ لِي رَبِّي وَجَعَلَنِي مِنَ الْمُكْرَمِينَ",
+       "t": "Dikatakan (kepadanya), “Masuklah ke surga.” Dia berkata, “Alangkah baiknya sekiranya kaumku mengetahui, apa yang menyebabkan Tuhanku mengampuniku dan menjadikan aku termasuk orang-orang yang dimuliakan.”",
+       "s": "QS. Yasin: 26–27"
+      }
+     ]
+    },
+    {
+     "h": "Satu teriakan, lalu semuanya padam",
+     "p": [
+      "Allah menegaskan bahwa Dia tidak perlu menurunkan pasukan dari langit untuk membinasakan mereka. Azab itu hanyalah **satu teriakan**, maka seketika mereka mati (ayat 28–29). Ayat 30 menutup kisah dengan ungkapan penyesalan terhadap para hamba itu: setiap kali datang seorang rasul kepada mereka, mereka selalu memperolok-olokkannya. Penutup ini mengingatkan bahwa penolakan dan ejekan terhadap kebenaran adalah kebiasaan umat-umat yang binasa."
+     ]
+    },
+    {
+     "h": "Pelajaran dari kisah ini",
+     "p": [
+      "Pertama, kebenaran dakwah tidak diukur dari jumlah pengikut atau dari penolakan kaumnya. Kedua, orang yang paling dahulu membela kebenaran bisa datang dari tempat yang jauh dari pusat kekuasaan dan tidak dikenal, tetapi imannya lebih jujur. Ketiga, ciri pendakwah yang benar disebut dalam ayat 21, yaitu tidak meminta imbalan dan mendapat petunjuk. Keempat, mengaitkan nasib buruk dengan orang baik adalah kebiasaan para penolak kebenaran, sedangkan seorang mukmin menyerahkan urusannya kepada Allah. Kelima, orang yang mati di jalan kebenaran mendapat kemuliaan dari Allah dan tidak membawa dendam, bahkan masih menginginkan kebaikan bagi kaumnya."
+     ]
+    }
+   ],
+   "s": [
+    "QS. Yasin: 13–32",
+    "HR. Abu Dawud no. 3910 dan at-Tirmidzi no. 1614 dari ‘Abdullah bin Mas‘ud — tiyarah adalah syirik; dinilai sahih oleh al-Albani",
+    "Ath-Thabari, *Jami‘ al-Bayan*; al-Qurthubi, *al-Jami‘ li Ahkam al-Qur’an* — tafsir QS. Yasin: 13–32, termasuk riwayat tentang Anthakiyah",
+    "Ibnu Katsir, *Tafsir al-Qur’an al-‘Azhim* — tafsir QS. Yasin: 13–32 dan keberatannya atas penafsiran Anthakiyah; *Qashash al-Anbiya’*"
    ]
   },
   {
