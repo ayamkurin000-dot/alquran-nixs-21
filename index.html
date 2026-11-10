@@ -224,10 +224,29 @@ html:not(#_) #kled .bw .lbell{position:absolute;left:50%;bottom:-2px;top:auto;ri
 #kled .wk .wr{flex:none;width:100%;max-height:2.5em;overflow:hidden;text-align:center;font:800 .8em/1.2 ui-monospace,'SF Mono',Menlo,Consolas,'DejaVu Sans Mono','Liberation Mono',monospace;letter-spacing:.02em;text-transform:uppercase;text-wrap:balance;color:#19e8ff;text-shadow:0 0 2px #19e8ff,0 0 8px rgba(25,232,255,.6);padding:.1em .3em 0}
 #kled .wk .wrb{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;transform-origin:50% 50%;transition:transform .8s cubic-bezier(.5,0,.2,1),opacity .6s ease .2s}
 #kled .wk .wrb div{max-width:100%;font:800 calc(1.35em*var(--f,1))/1.15 ui-monospace,'SF Mono',Menlo,Consolas,'DejaVu Sans Mono','Liberation Mono',monospace;letter-spacing:.02em;white-space:nowrap;text-transform:uppercase;color:#19e8ff;text-shadow:0 0 2px #19e8ff,0 0 8px rgba(25,232,255,.6),0 0 16px rgba(25,232,255,.3)}
-#kled .wk:not(.sm) .wrb{animation:wbin .9s cubic-bezier(.2,1.2,.4,1) both}
+#kled .wk:not(.sm):not(.lf) .wrb{animation:wbin .9s cubic-bezier(.2,1.2,.4,1) both}
 @keyframes wbin{from{opacity:0;transform:scale(.4)}}
 #kled .wk.sm .wrb{transform:translateY(-2.1em) scale(.5);opacity:0}
 #kled .wk .wr{opacity:0;transition:opacity .5s ease .45s}#kled .wk.sm .wr{opacity:1}
+/* ---- halaman awal: wilayah besar -> mengecil & geser ke kiri, di tengah tampil sholat berikutnya + sisa waktu ---- */
+#kled .wk.lf .wrb{transform:translateX(-28%) scale(.5)}
+#kled .wk .wnx{position:absolute;left:42%;right:0;top:0;bottom:0;display:none;flex-direction:column;align-items:center;justify-content:center;text-align:center;font-family:ui-monospace,'SF Mono',Menlo,Consolas,'DejaVu Sans Mono','Liberation Mono',monospace;font-weight:800;text-transform:uppercase;letter-spacing:.04em;white-space:nowrap}
+#kled .wk.lf .wnx{display:flex}#kled .wk .wnx.hid{visibility:hidden}
+#kled .wk .wnx div{max-width:100%}
+#kled .wk .wnx .a1{font-size:1.05em;line-height:1.15;color:#ff9a1f;text-shadow:0 0 2px #ff9a1f,0 0 8px rgba(255,154,31,.6)}
+#kled .wk .wnx .a2{font-size:2em;line-height:1.1;margin-top:.04em;color:#ffe600;text-shadow:0 0 2px #ffe600,0 0 8px rgba(255,230,0,.65),0 0 16px rgba(255,230,0,.35)}
+#kled .wk .wnx .a3{font-size:1.1em;line-height:1.2;margin-top:.06em;color:#2dff6e;text-shadow:0 0 2px #2dff6e,0 0 9px rgba(45,255,110,.75),0 0 18px rgba(45,255,110,.4)}
+#kled .wk .wnx.fx-fade{animation:qfi 1s ease-out both}#kled .wk .wnx.fx-fade.out{animation:qfo .7s ease-in both}
+#kled .wk .wnx.fx-zi{animation:qzi .9s cubic-bezier(.2,1.3,.4,1) both}#kled .wk .wnx.fx-zi.out{animation:qzio .6s ease-in both}
+#kled .wk .wnx.fx-zo{animation:qzo .9s cubic-bezier(.2,.9,.3,1) both}#kled .wk .wnx.fx-zo.out{animation:qzoo .6s ease-in both}
+#kled .wk .wnx.fx-top{animation:qtp .9s cubic-bezier(.2,1.25,.3,1) both}#kled .wk .wnx.fx-top.out{animation:qtpo .6s ease-in both}
+#kled .wk .wnx.fx-bottom{animation:qbt .9s cubic-bezier(.2,1.25,.3,1) both}#kled .wk .wnx.fx-bottom.out{animation:qbto .6s ease-in both}
+#kled .wk .wnx.fx-left{animation:qlf .9s cubic-bezier(.2,1.25,.3,1) both}#kled .wk .wnx.fx-left.out{animation:qlfo .6s ease-in both}
+#kled .wk .wnx.fx-right{animation:qrt .9s cubic-bezier(.2,1.25,.3,1) both}#kled .wk .wnx.fx-right.out{animation:qrto .6s ease-in both}
+#kled .wk .wnx.fx-blur{animation:qbl 1s ease-out both}#kled .wk .wnx.fx-blur.out{animation:qblo .7s ease-in both}
+#kled .wk .wnx.fx-flip{animation:qfl .9s ease-out both}#kled .wk .wnx.fx-flip.out{animation:qflo .6s ease-in both}
+#kled .wk .wnx.fx-wipe{animation:qwp 1s cubic-bezier(.3,.7,.2,1) both}#kled .wk .wnx.fx-wipe.out{animation:qwpo .7s ease-in both}
+@media (prefers-reduced-motion:reduce){#kled .wk .wnx{animation:none!important}}
 #kled .wk .wv.hid{visibility:hidden}
 #kled .wk .wb{flex:1;min-height:0;width:100%;position:relative;overflow:hidden}
 #kled .wk .wv{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;font-family:ui-monospace,'SF Mono',Menlo,Consolas,'DejaVu Sans Mono','Liberation Mono',monospace;font-weight:800;text-transform:uppercase;letter-spacing:.04em;white-space:nowrap}
@@ -2161,7 +2180,7 @@ html:not(#_):not(#_):not(#_):not(#_):not(#_) .hbx.photo{min-height:0}
   '2 Rokaat sebelum shubuh, 4 sebelum Dzuhur, 2 setelahnya, 2 setelah maghrib, 2 setelah Isya’ (12 rokaat), Allah membangunkannya rumah di Surga',
   '“Sholat yang paling utama setelah fardhu adalah sholat malam.” (HR. Muslim : 1163)',
   'Sholat malam memperkuat hubungan batin dengan Allah dan menambah kedekatan saat wafat'];
-  var pn=0, KQ='qk.led.q', qi=0, PL=['wil','next','waktu','mundur','v','run','v','q','jv'], pc=-1, cur=null, DURS={jadwal:12000,jam:13000,run:20000,wil:5000,waktu:25500,next:30000,mundur:30000};
+  var pn=0, KQ='qk.led.q', qi=0, PL=['wil','waktu','mundur','v','run','v','q','jv'], pc=-1, cur=null, DURS={jadwal:12000,jam:13000,run:20000,wil:35400,waktu:25500,next:30000,mundur:30000};
   try{qi=(+localStorage.getItem(KQ)||0)%QT.length}catch(e){}
   function balikQuote(){ /* kalimat mutiara yang sedang tampil lalu terpotong hitung mundur / Masuk Waktu: tampil ulang di giliran berikutnya, tidak ada yang terlewat */
     if(cur&&(cur.t==='q'||cur.t==='v')&&cur.i!==undefined){qi=cur.i; try{localStorage.setItem(KQ,String(qi))}catch(e){}}
@@ -2653,10 +2672,10 @@ html:not(#_):not(#_):not(#_):not(#_):not(#_) .hbx.photo{min-height:0}
   }
   var WBIG=5000, WGO=5800;   /* 5 dtk wilayah besar di tengah, lalu geser ke atas & mengecil, baru waktu sholat bergantian */
   function wilBaris(){var a=[]; if(L.kec)a.push('Kec. '+L.kec); if(L.kota)a.push(L.kota); if(L.kab)a.push('Kab. '+L.kab); if(!a.length)a.push(L.nama||'LOKASI ANDA'); if(L.sumber==='ip')a.push('(perkiraan)'); return a}
-  function halamanWaktu(bx,now,t5){
+  function halamanWaktu(bx,now,t5,nxt){
     var r=el('wr'), rb=el('wrb'), v=el('wv'), wk=bx.querySelector('.wk'); if(!r||!rb||!v||!wk)return;
     var e=now-pgAt+(cur.t==='waktu'?WGO:0);   /* 'wil' = nama wilayah besar 5 dtk saja; 'waktu' = daftar jam sholat (wilayah sudah kecil di atas) */
-    bx.classList.remove('qm','xo'); bx.classList.add('wm'); wk.classList.toggle('sm',cur.t==='waktu'&&e>=WBIG);
+    bx.classList.remove('qm','xo'); bx.classList.add('wm'); wk.classList.toggle('sm',cur.t==='waktu'&&e>=WBIG); wk.classList.toggle('lf',cur.t==='wil'&&e>=WBIG);
     var br=wilBaris(), tx=br.join('|');
     if(wTxt!==tx){
       wTxt=tx; rb.innerHTML=''; br.forEach(function(x){var d=document.createElement('div'); d.textContent=x; rb.appendChild(d)});
@@ -2664,6 +2683,19 @@ html:not(#_):not(#_):not(#_):not(#_):not(#_) .hbx.photo{min-height:0}
       var f=1,k=0; function lebih(){return [].some.call(rb.children,function(d){return d.scrollWidth>d.clientWidth+1})}
       while(k++<8&&lebih()){f*=.92; rb.style.setProperty('--f',f)}
       fitWilayah(r);
+    }
+    if(cur.t==='wil'){   /* wilayah besar 5 dtk -> mengecil & geser kiri; di tengah: SELANJUTNYA <sholat> <n jam n menit> LAGI (30 dtk) */
+      var nx=wk.querySelector('.wnx');
+      if(!nx){nx=document.createElement('div'); nx.className='wnx hid'; nx.innerHTML='<div class="a1">SELANJUTNYA</div><div class="a2"></div><div class="a3"></div>'; wk.appendChild(nx)}
+      wIdx=-1; v.className='wv hid';
+      if(nxt&&e>=WBIG+400){
+        if(!cur.b){cur.b=1; nCy++; cur.t1=cur.t2=''; nx.className='wnx'; void nx.offsetWidth; nx.className='wnx fx-'+NFX[nCy%NFX.length]}
+        var u1=nmz(nxt.n), u2='\u2022 '+durasi(Math.max(1,Math.ceil((nxt.t-now)/MS)))+' LAGI';
+        if(u1!==cur.t1||u2!==cur.t2){cur.t1=u1; cur.t2=u2; nx.children[1].textContent=u1; nx.children[2].textContent=u2;
+          [0,1,2].forEach(function(j){nx.children[j].style.fontSize=''}); fitBaris(nx.children[0],1.05); fitBaris(nx.children[1],2); fitBaris(nx.children[2],1.1)}
+        nx.classList.toggle('out',now-pgAt>=cur.dur-800);
+      }else nx.className='wnx hid';
+      return;
     }
     if(e<WGO){ wIdx=-1; v.className='wv hid'; return }
     var i=Math.min(NAMA.length-1,Math.floor((e-WGO)/WDUR)), ph=e-WGO-i*WDUR;
@@ -2736,7 +2768,7 @@ html:not(#_):not(#_):not(#_):not(#_):not(#_) .hbx.photo{min-height:0}
       if(!cur.xo&&now-pgAt>=cur.dur-EXIT){cur.xo=now; bx.classList.add('xo')}
       if(cur.xo&&now-cur.xo>=EXIT)lanjut(now);
     }
-    if(cur.t==='waktu'||cur.t==='wil'){ halamanWaktu(bx,now,hariIni(now)); return }
+    if(cur.t==='waktu'||cur.t==='wil'){ halamanWaktu(bx,now,hariIni(now),nxt); return }
     if(cur.t==='next'){ if(nxt){halamanNext(bx,now,nxt);return} cur=null; return }
     if(cur.t==='mundur'){ if(nxt){halamanMundur(bx,now,nxt);return} cur=null; return }
     if(cur.t==='n'){ halamanNotif(bx,now); return }
