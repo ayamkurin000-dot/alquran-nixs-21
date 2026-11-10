@@ -1,6 +1,6 @@
 {
  "t": "Ensiklopedia",
- "d": "Kisah awal penciptaan, alam ruh, Nabi Adam عليه السلام, Iblis, malaikat, jin, takdir, ‘Arsy, tujuh langit, alam barzakh, tanda-tanda kiamat, serta hari kebangkitan (Mahsyar, hisab, mizan, dan Shirath), gambaran Surga dan Neraka, serta Dajjal, Dzulqarnain beserta Ya’juj dan Ma’juj, dan Harut–Marut — dituturkan ringan dari Al-Qur’an, hadits, dan penjelasan para ulama.",
+ "d": "Kisah awal penciptaan, alam ruh, Nabi Adam عليه السلام, Iblis, malaikat, jin, takdir, ‘Arsy, tujuh langit, alam barzakh, tanda-tanda kiamat (termasuk sepuluh tanda besar dan tiupan sangkakala), serta hari kebangkitan (Mahsyar, hisab, mizan, dan Shirath), telaga Nabi ﷺ dan syafa‘at, gambaran Surga dan Neraka, serta Dajjal, Imam Mahdi dan turunnya Nabi ‘Isa عليه السلام, Dzulqarnain beserta Ya’juj dan Ma’juj, dan Harut–Marut — dituturkan ringan dari Al-Qur’an, hadits, dan penjelasan para ulama.",
  "k": [
   {
    "id": "awal-penciptaan",
@@ -1098,7 +1098,7 @@
     {
      "h": "Sepuluh tanda besar",
      "p": [
-      "Hadits dari Hudzaifah bin Asid رضي الله عنه (Muslim no. 2901) menyebut bahwa para sahabat sedang membicarakan kiamat, lalu Nabi ﷺ bersabda bahwa kiamat tidak akan terjadi sebelum kalian melihat **sepuluh tanda**: asap (*ad-dukhan*), Dajjal, binatang (*ad-dabbah*), terbitnya matahari dari barat, turunnya ‘Isa putra Maryam, Ya’juj dan Ma’juj, tiga gerhana (di timur, di barat, dan di Jazirah Arab), dan api besar dari Yaman yang menggiring manusia ke tempat berkumpul mereka.",
+      "Hadits dari Hudzaifah bin Asid رضي الله عنه (Muslim no. 2901) menyebut bahwa para sahabat sedang membicarakan kiamat, lalu Nabi ﷺ bersabda bahwa kiamat tidak akan terjadi sebelum kalian melihat **sepuluh tanda**: asap (*ad-dukhan*), Dajjal, binatang (*ad-dabbah*), terbitnya matahari dari barat, turunnya ‘Isa putra Maryam, Ya’juj dan Ma’juj, tiga kali amblesnya bumi (*khusuf*; di timur, di barat, dan di Jazirah Arab), dan api besar dari Yaman yang menggiring manusia ke tempat berkumpul mereka.",
       "Hadits tentang **al-Mahdi** terdapat dalam Abu Dawud dan at-Tirmidzi, tetapi para ulama berbeda dalam menilai sanad dan rinciannya. Ia tidak termasuk dalam sepuluh tanda pada hadits Hudzaifah. Karena itu penjelasannya sebaiknya dibawa dengan kehati-hatian, dan tidak dipakai untuk menunjuk orang tertentu."
      ]
     },
@@ -1170,6 +1170,183 @@
     "HR. al-Bukhari no. 3688 dan Muslim no. 2639 dari Anas bin Malik — “Engkau bersama orang yang engkau cintai”",
     "HR. Ahmad dan al-Bukhari, *al-Adab al-Mufrad*, dari Anas bin Malik — menanam bibit walau kiamat hampir terjadi",
     "Ibnu Katsir, *An-Nihayah fil Fitan wal Malahim* dan *Al-Bidayah wan Nihayah*, juz 1; an-Nawawi, *Syarh Shahih Muslim*; Ibnu Hajar al-‘Asqalani, *Fathul Bari* — Kitab al-Fitan"
+   ]
+  },
+  {
+   "id": "sepuluh-tanda-besar-kiamat",
+   "t": "Sepuluh Tanda Besar Kiamat: Asap, Dabbah, hingga Api Penggiring",
+   "d": "Rincian tanda-tanda besar kiamat dalam hadits Hudzaifah: asap, binatang bumi (Dabbah), matahari terbit dari barat, tiga kali amblesnya bumi, dan api penggiring, beserta perbedaan ulama dan sikap yang diajarkan.",
+   "b": [
+    {
+     "h": "Dasarnya: hadits Hudzaifah bin Asid",
+     "p": [
+      "Sepuluh tanda besar disebut dalam satu hadits dari Hudzaifah bin Asid رضي الله عنه (Muslim no. 2901; juga at-Tirmidzi no. 2183). Para sahabat sedang membicarakan kiamat, lalu Nabi ﷺ keluar menemui mereka dan menyebut **sepuluh tanda** yang akan muncul sebelumnya. Kartu ini membahas lima di antaranya yang belum punya kartu sendiri: asap, Dabbah, matahari dari barat, tiga amblesan bumi, dan api penggiring. Dajjal, turunnya ‘Isa, dan Ya’juj Ma’juj punya kartunya masing-masing.",
+      "Tanda-tanda ini disebut *besar* karena sifatnya di luar kebiasaan alam dan datangnya berdekatan. Urutan penyebutan dalam hadits Hudzaifah bukan urutan terjadinya, dan para ulama memperselisihkan sebagian rincian urutannya. Yang ditegaskan Nabi ﷺ hanyalah dua hal: terbitnya matahari dari barat dan keluarnya Dabbah, dan **mana pun yang lebih dulu, yang lain segera menyusul** (Muslim no. 2941, dari ‘Abdullah bin ‘Amr)."
+     ],
+     "q": [
+      {
+       "a": "إِنَّ أَوَّلَ الْآيَاتِ خُرُوجًا طُلُوعُ الشَّمْسِ مِنْ مَغْرِبِهَا، وَخُرُوجُ الدَّابَّةِ عَلَى النَّاسِ ضُحًى، وَأَيُّهُمَا مَا كَانَتْ قَبْلَ صَاحِبَتِهَا فَالْأُخْرَى عَلَى إِثْرِهَا قَرِيبًا",
+       "t": "Sesungguhnya tanda yang paling awal muncul adalah terbitnya matahari dari barat dan keluarnya Dabbah kepada manusia pada waktu dhuha. Mana pun di antara keduanya yang lebih dulu, yang lain segera menyusul.",
+       "s": "HR. Muslim no. 2941 dari ‘Abdullah bin ‘Amr"
+      }
+     ]
+    },
+    {
+     "h": "Asap (ad-Dukhan)",
+     "p": [
+      "Allah berfirman, “Maka tunggulah hari ketika langit membawa kabut yang nyata, yang meliputi manusia. Inilah azab yang pedih” (QS. ad-Dukhan: 10–11). Ulama berbeda dalam memahami ayat ini. ‘Abdullah bin Mas‘ud رضي الله عنه berpendapat bahwa asap itu sudah terjadi: ketika orang-orang Quraisy menolak dakwah, Nabi ﷺ mendoakan paceklik atas mereka, hingga orang yang kelaparan melihat seperti ada asap antara langit dan bumi (al-Bukhari no. 4693 dan Muslim no. 2798).",
+      "Pendapat lain, dari sebagian sahabat dan tabi‘in yang dikuatkan Ibnu Katsir dalam tafsirnya, memahaminya sebagai tanda kiamat yang belum terjadi, karena Nabi ﷺ memasukkan asap dalam sepuluh tanda dan ayat itu menyebut asap yang *meliputi manusia*. Dua pendapat ini sama-sama punya dalil. Pelajarannya: dalam urusan tanda besar pun ada ruang perbedaan yang sah, sehingga kita tidak perlu memaksakan satu pendapat."
+     ],
+     "q": [
+      {
+       "a": "فَارْتَقِبْ يَوْمَ تَأْتِي السَّمَاءُ بِدُخَانٍ مُّبِينٍ ۝ يَغْشَى النَّاسَ ۖ هَٰذَا عَذَابٌ أَلِيمٌ",
+       "t": "Maka tunggulah hari ketika langit membawa kabut yang nyata, yang meliputi manusia. Inilah azab yang pedih.",
+       "s": "QS. ad-Dukhan: 10–11"
+      }
+     ]
+    },
+    {
+     "h": "Dabbah: binatang yang keluar dari bumi",
+     "p": [
+      "Allah berfirman bahwa apabila ketetapan azab telah jatuh atas manusia, Dia akan mengeluarkan *dabbah* dari bumi yang berbicara kepada mereka bahwa manusia dahulu tidak yakin kepada ayat-ayat-Nya (QS. an-Naml: 82). Kata *dabbah* berarti makhluk yang melata di bumi. Hadits sahih menyebut waktu keluarnya, yaitu pada waktu dhuha, dan bahwa ia datang dalam rangkaian yang sama dengan terbitnya matahari dari barat.",
+      "Bentuk, nama, dan tempat keluarnya tidak dirinci dalam hadits-hadits yang paling kuat. Sebagian riwayat menyebut ia membawa tongkat Musa dan cincin Sulaiman, tetapi derajat riwayat itu diperselisihkan ulama. Karena itu yang kita imani hanya pokoknya: ia keluar, berbicara kepada manusia, dan kemunculannya adalah peristiwa yang tidak bisa dijelaskan dengan kebiasaan alam. Selebihnya kita serahkan kepada Allah."
+     ],
+     "q": [
+      {
+       "a": "وَإِذَا وَقَعَ الْقَوْلُ عَلَيْهِمْ أَخْرَجْنَا لَهُمْ دَابَّةً مِّنَ الْأَرْضِ تُكَلِّمُهُمْ أَنَّ النَّاسَ كَانُوا بِآيَاتِنَا لَا يُوقِنُونَ",
+       "t": "Dan apabila ketetapan telah jatuh atas mereka, Kami keluarkan sejenis binatang melata dari bumi yang akan berbicara kepada mereka, bahwa sesungguhnya manusia dahulu tidak yakin kepada ayat-ayat Kami.",
+       "s": "QS. an-Naml: 82"
+      }
+     ]
+    },
+    {
+     "h": "Matahari terbit dari barat",
+     "p": [
+      "Kartu “Hari Kiamat dan Tanda-Tandanya” sudah menyebut bahwa setelah matahari terbit dari barat, iman tidak lagi bermanfaat bagi yang belum beriman sebelumnya. Satu tambahan dari hadits Abu Dzar رضي الله عنه (al-Bukhari no. 3199 dan Muslim no. 159): Nabi ﷺ menjelaskan bahwa setelah terbenam, matahari pergi hingga bersujud di bawah ‘Arsy dan meminta izin untuk terus berjalan, lalu diizinkan. Kelak tiba saatnya sujudnya tidak diterima dan izinnya tidak diberikan, lalu dikatakan kepadanya, “Kembalilah dari tempat engkau datang.” Maka ia terbit dari tempat terbenamnya.",
+      "Hadits Abu Hurairah رضي الله عنه yang diriwayatkan Muslim menyebut bahwa siapa yang bertaubat sebelum matahari terbit dari barat, Allah menerima taubatnya. Ini batas yang jelas: pintu taubat terbuka sekarang, jadi tidak ada alasan untuk menunda."
+     ]
+    },
+    {
+     "h": "Tiga kali amblesnya bumi",
+     "p": [
+      "Hadits Hudzaifah menyebut tiga *khusuf*: di timur, di barat, dan di Jazirah Arab. Kata *khusuf* dalam bahasa Arab dapat berarti gerhana dan dapat pula berarti tanah yang ditelan bumi. Dalam hadits ini para pensyarah memahaminya sebagai **amblesnya tanah**, sebagaimana Al-Qur’an memakai kata yang sama untuk Qarun yang dibenamkan bersama rumahnya ke dalam bumi (QS. al-Qashash: 81). Karena itu terjemahan “tiga gerhana” yang beredar di sebagian buku kurang sesuai dengan penjelasan para pensyarah.",
+      "Waktu dan lokasi rincinya tidak dijelaskan, sehingga kita tidak menunjuk bencana tertentu di masa kini sebagai *khusuf* yang dimaksud hadits."
+     ]
+    },
+    {
+     "h": "Api yang menggiring manusia",
+     "p": [
+      "Tanda terakhir dalam hadits Hudzaifah adalah api dari Yaman (dalam satu riwayat dari ‘Adn) yang **menggiring manusia ke tempat berkumpul mereka**. Api itu bermalam bersama mereka di tempat mereka bermalam dan beristirahat bersama mereka di tempat mereka beristirahat (Muslim no. 2901). Dalam hadits lain, Nabi ﷺ menyebut bahwa kiamat tidak akan terjadi hingga keluar api dari tanah Hijaz yang menerangi leher-leher unta di Bushra (al-Bukhari no. 7118 dan Muslim no. 2902).",
+      "Sebagian ulama, di antaranya Ibnu Katsir dan Ibnu Hajar, mencatat bahwa api besar di dekat Madinah benar-benar terjadi pada tahun 654 H dan cahayanya terlihat hingga Bushra, sehingga hadits Hijaz dipahami sudah terjadi, sedangkan api penggiring manusia adalah peristiwa terpisah di akhir zaman yang belum terjadi. Dalam hadits dari Ibnu ‘Umar yang diriwayatkan at-Tirmidzi, para sahabat bertanya apa yang beliau perintahkan jika mereka mendapati masa itu, dan Nabi ﷺ menyuruh mereka menuju Syam."
+     ]
+    },
+    {
+     "h": "Sikap kita: beriman, bukan menebak",
+     "p": [
+      "Tanda-tanda besar ini adalah kabar gaib, sehingga kita menerimanya sebagaimana disampaikan: tanpa menambah rincian yang tidak ada dalilnya dan tanpa memaksakan kecocokan dengan kejadian hari ini. Hadits-hadits ini juga membawa pesan praktis: ketika tanda-tanda besar telah tiba, kesempatan beriman dan bertaubat tidak lagi seperti sekarang (QS. al-An‘am: 158).",
+      "Maka waktu terbaik untuk memperbaiki diri adalah hari ini. Sebagaimana pertanyaan tentang kiamat dijawab Nabi ﷺ dengan “Apa yang telah engkau persiapkan untuknya?” (al-Bukhari no. 3688 dan Muslim no. 2639), perhatian kita lebih tepat diarahkan pada bekal daripada pada penentuan waktu."
+     ]
+    }
+   ],
+   "s": [
+    "QS. ad-Dukhan: 10–11; an-Naml: 82; al-An‘am: 158; al-Qashash: 81; Yasin: 38",
+    "HR. Muslim no. 2901 dan at-Tirmidzi no. 2183 dari Hudzaifah bin Asid — sepuluh tanda besar kiamat",
+    "HR. Muslim no. 2941 dari ‘Abdullah bin ‘Amr — terbitnya matahari dari barat dan keluarnya Dabbah di waktu dhuha, saling menyusul",
+    "HR. al-Bukhari no. 4693 dan Muslim no. 2798 dari ‘Abdullah bin Mas‘ud — asap sebagai paceklik kaum Quraisy",
+    "HR. al-Bukhari no. 3199 dan Muslim no. 159 dari Abu Dzar — matahari bersujud di bawah ‘Arsy",
+    "HR. Muslim dari Abu Hurairah — taubat diterima sebelum matahari terbit dari barat",
+    "HR. al-Bukhari no. 7118 dan Muslim no. 2902 dari Abu Hurairah — api dari tanah Hijaz yang menerangi leher unta di Bushra",
+    "HR. at-Tirmidzi dari Ibnu ‘Umar — api yang menggiring manusia dan perintah menuju Syam",
+    "HR. al-Bukhari no. 3688 dan Muslim no. 2639 dari Anas bin Malik — “Apa yang telah engkau persiapkan untuknya?”",
+    "Ibnu Katsir, *Tafsir al-Qur’an al-‘Azhim* (QS. ad-Dukhan: 10–11) dan *An-Nihayah fil Fitan wal Malahim*; an-Nawawi, *Syarh Shahih Muslim*; Ibnu Hajar al-‘Asqalani, *Fathul Bari*, Kitab al-Fitan"
+   ]
+  },
+  {
+   "id": "sangkakala-dua-tiupan-israfil",
+   "t": "Sangkakala dan Dua Tiupan Israfil",
+   "d": "Apa itu sangkakala (ash-shur), keadaan dunia menjelang tiupan, tiupan yang mematikan dan tiupan yang membangkitkan, jedanya, serta perbedaan ulama tentang jumlah tiupan.",
+   "b": [
+    {
+     "h": "Ash-Shur: tanduk yang ditiup",
+     "p": [
+      "Dalam Al-Qur’an sangkakala disebut *ash-shur*. Ketika Nabi ﷺ ditanya apa itu, beliau menjawab bahwa ia adalah **tanduk yang ditiup** (riwayat Abu Dawud dan at-Tirmidzi dari ‘Abdullah bin ‘Amr). Ukuran dan bentuk aslinya tidak dirinci dalam hadits yang kuat, sehingga kita cukup mengimani hakikatnya dan menyerahkan sisanya kepada Allah.",
+      "Yang meniupnya adalah malaikat **Israfil**. Nabi ﷺ bersabda bahwa malaikat peniup sangkakala telah meletakkan sangkakala di mulutnya, menundukkan dahinya, dan memasang pendengarannya menunggu perintah kapan ia harus meniup (at-Tirmidzi no. 2431, dari Abu Sa‘id al-Khudri). Para sahabat merasa berat mendengarnya, maka beliau mengajarkan ucapan *Hasbunallahu wa ni‘mal wakil, ‘alallahi tawakkalna*. At-Tirmidzi menilai hadits ini hasan; sebagian ulama hadits mempermasalahkan salah satu perawinya, sebagian lain menguatkannya karena banyak jalurnya."
+     ],
+     "q": [
+      {
+       "a": "كَيْفَ أَنْعَمُ وَصَاحِبُ الْقَرْنِ قَدِ الْتَقَمَ الْقَرْنَ وَاسْتَمَعَ الْإِذْنَ مَتَى يُؤْمَرُ بِالنَّفْخِ فَيَنْفُخُ",
+       "t": "Bagaimana aku bisa bersenang-senang, sementara malaikat peniup sangkakala telah memasukkan tanduk ke mulutnya dan mendengarkan izin kapan ia diperintah meniup, lalu ia pun meniup.",
+       "s": "HR. at-Tirmidzi no. 2431 dari Abu Sa‘id al-Khudri"
+      }
+     ]
+    },
+    {
+     "h": "Menjelang tiupan: dunia kosong dari kebaikan",
+     "p": [
+      "Hadits ‘Abdullah bin ‘Amr رضي الله عنهما (Muslim no. 2940) menggambarkan bahwa menjelang akhir, Allah mengirim angin sejuk dari arah Syam yang mencabut nyawa setiap orang yang di hatinya ada kebaikan atau iman seberat biji sawi. Tersisalah manusia-manusia terburuk, yang ringan seperti burung dan buas seperti binatang, tidak mengenal yang makruf dan tidak mengingkari yang mungkar. Dalam hadits Anas رضي الله عنه (Muslim no. 148), kiamat tidak terjadi selama di bumi masih ada orang yang mengucapkan “Allah, Allah”.",
+      "Karena itu para ulama memahami bahwa **kiamat menimpa manusia terburuk**, sedangkan orang-orang beriman telah lebih dulu diwafatkan dengan lembut. Hadits ini mengajarkan bahwa tiupan sangkakala bukan peristiwa yang menyapu orang saleh dengan siksa."
+     ]
+    },
+    {
+     "h": "Tiupan pertama: kejut dan kematian",
+     "p": [
+      "Al-Qur’an menyebut bahwa ketika sangkakala ditiup, semua yang di langit dan di bumi terkejut, kecuali yang dikehendaki Allah (QS. an-Naml: 87). Dalam ayat lain, mereka *pingsan dan mati* kecuali yang dikehendaki Allah (QS. az-Zumar: 68). Hadits Muslim no. 2940 menggambarkan bahwa saat sangkakala ditiup, tidak ada seorang pun yang mendengarnya kecuali memiringkan dan mengangkat lehernya. Orang pertama yang mendengarnya adalah seseorang yang sedang memperbaiki kolam minum untanya; ia pingsan, lalu semua orang pun pingsan.",
+      "Siapa yang dikecualikan dalam firman “kecuali yang dikehendaki Allah” diperselisihkan ulama. Sebagian menyebut malaikat tertentu, sebagian menyebut para syuhada, dan riwayat-riwayat yang merinci namanya tidak sampai ke derajat yang kuat. Yang pasti adalah bahwa Allah-lah yang mengetahui."
+     ],
+     "q": [
+      {
+       "a": "وَيَوْمَ يُنفَخُ فِي الصُّورِ فَفَزِعَ مَن فِي السَّمَاوَاتِ وَمَن فِي الْأَرْضِ إِلَّا مَن شَاءَ اللَّهُ ۚ وَكُلٌّ أَتَوْهُ دَاخِرِينَ",
+       "t": "Dan (ingatlah) pada hari ketika sangkakala ditiup, maka terkejutlah semua yang di langit dan semua yang di bumi, kecuali siapa yang dikehendaki Allah. Dan semuanya datang menghadap-Nya dengan merendahkan diri.",
+       "s": "QS. an-Naml: 87"
+      }
+     ]
+    },
+    {
+     "h": "Jeda antara dua tiupan",
+     "p": [
+      "Hadits Abu Hurairah رضي الله عنه (al-Bukhari no. 4814 dan Muslim no. 2955) menyebut bahwa jarak antara dua tiupan adalah **empat puluh**. Ketika Abu Hurairah ditanya apakah empat puluh hari, ia menjawab bahwa ia enggan memastikannya. Ditanya apakah empat puluh bulan atau tahun, ia pun menjawab demikian. Jadi satuannya tidak diketahui, dan kita tidak perlu menambah-nambahkan.",
+      "Setelah itu Allah menurunkan hujan, lalu manusia tumbuh seperti tumbuhnya sayuran. Seluruh tubuh anak Adam hancur kecuali satu tulang kecil, yaitu **tulang ekor**, dan darinya makhluk disusun kembali. Muslim no. 2940 menggambarkan hujan itu seperti gerimis ringan, dan dari hujan itu tumbuhlah tubuh-tubuh manusia."
+     ]
+    },
+    {
+     "h": "Tiupan kedua: kebangkitan",
+     "p": [
+      "Pada tiupan kedua, manusia bangkit dari kubur dan berdiri menunggu putusan Allah (QS. az-Zumar: 68; Yasin: 51). Nabi ﷺ menyebut bahwa beliau adalah **orang pertama yang bumi terbelah darinya**, yakni yang pertama dibangkitkan (Muslim, dari Abu Hurairah). Dalam hadits Abu Sa‘id al-Khudri رضي الله عنه (al-Bukhari dan Muslim), beliau melihat Musa عليه السلام sedang memegang salah satu tiang ‘Arsy, dan beliau tidak tahu apakah Musa lebih dulu sadar daripada beliau atau telah dicukupkan dengan pingsan di gunung Thur.",
+      "Dari sinilah rangkaian peristiwa berikutnya dimulai: berkumpul di Mahsyar, syafaat agung, hisab, timbangan, dan Shirath, yang dibahas pada kartu Hari Kebangkitan."
+     ],
+     "q": [
+      {
+       "a": "وَنُفِخَ فِي الصُّورِ فَإِذَا هُم مِّنَ الْأَجْدَاثِ إِلَىٰ رَبِّهِمْ يَنسِلُونَ",
+       "t": "Dan sangkakala ditiup, maka seketika itu mereka keluar dengan cepat dari kubur-kubur mereka (menuju) kepada Tuhan mereka.",
+       "s": "QS. Yasin: 51"
+      }
+     ]
+    },
+    {
+     "h": "Berapa kali sangkakala ditiup?",
+     "p": [
+      "Ulama berbeda dalam menghitung tiupan. Pendapat pertama menyebut **dua tiupan**: tiupan yang mematikan dan tiupan yang membangkitkan, berdasarkan QS. az-Zumar: 68 dan hadits Muslim no. 2940. Pendapat kedua, yang dipegang antara lain oleh Ibnu Katsir dan Ibnu Taimiyah, menyebut **tiga tiupan**: tiupan ketakutan (*al-faza‘*), tiupan kematian (*ash-sha‘q*), lalu tiupan kebangkitan (*al-ba‘ts*), dengan dalil QS. an-Naml: 87 dan riwayat panjang tentang sangkakala yang sanadnya diperselisihkan.",
+      "Sebagian ulama memadukan keduanya dengan menjelaskan bahwa tiupan ketakutan dan tiupan kematian adalah dua tahap dari tiupan pertama. Yang disepakati: pada awalnya semua makhluk yang dikehendaki mati, dan pada akhirnya semua bangkit menghadap Allah."
+     ]
+    },
+    {
+     "h": "Pelajaran: bekal, bukan sekadar bayangan",
+     "p": [
+      "Gambaran Israfil yang bersiaga menunggu perintah membuat kita sadar bahwa kiamat bisa datang kapan saja Allah mengizinkan, sementara ilmunya hanya di sisi-Nya. Nabi ﷺ tidak mengajarkan kita untuk panik. Beliau mengajarkan untuk bersandar kepada Allah dengan ucapan *Hasbunallahu wa ni‘mal wakil*, sambil terus memperbaiki bekal.",
+      "Semua kengerian itu justru menunjukkan keadilan: yang disiapkan setelahnya adalah putusan yang adil dari Allah, dan pintu rahmat-Nya masih terbuka bagi yang kembali kepada-Nya hari ini."
+     ]
+    }
+   ],
+   "s": [
+    "QS. an-Naml: 87; az-Zumar: 68; Yasin: 51–53; al-Kahf: 99; Thaha: 102; al-Haqqah: 13",
+    "HR. Abu Dawud dan at-Tirmidzi dari ‘Abdullah bin ‘Amr — sangkakala adalah tanduk yang ditiup",
+    "HR. at-Tirmidzi no. 2431 dari Abu Sa‘id al-Khudri — malaikat peniup sangkakala telah bersiaga; dinilai hasan oleh at-Tirmidzi, dan diperselisihkan sebagian ulama hadits",
+    "HR. Muslim no. 2940 dari ‘Abdullah bin ‘Amr — angin sejuk, manusia terburuk, tiupan sangkakala, dan hujan seperti gerimis",
+    "HR. Muslim no. 148 dari Anas bin Malik — kiamat tidak terjadi selama masih ada yang mengucapkan “Allah, Allah”",
+    "HR. al-Bukhari no. 4814 dan Muslim no. 2955 dari Abu Hurairah — jeda empat puluh dan tulang ekor",
+    "HR. Muslim dari Abu Hurairah — Nabi ﷺ orang pertama yang bumi terbelah darinya",
+    "HR. al-Bukhari dan Muslim dari Abu Sa‘id al-Khudri — Musa memegang tiang ‘Arsy",
+    "Ibnu Katsir, *Tafsir al-Qur’an al-‘Azhim* dan *An-Nihayah fil Fitan wal Malahim*; al-Qurthubi, *At-Tadzkirah*; Ibnu Hajar al-‘Asqalani, *Fathul Bari*, Kitab ar-Riqaq"
    ]
   },
   {
@@ -1366,6 +1543,100 @@
     "HR. Ahmad dan al-Hakim dari ‘Aisyah — doa “Allahumma hasibni hisaban yasira”",
     "Ath-Thabari, *Jami‘ al-Bayan* dan Ibnu Katsir, *Tafsir al-Qur’an al-‘Azhim* — tafsir QS. Maryam: 71–72, al-Hadid: 12–13, al-Anbiya’: 47, al-Insyiqaq: 7–9",
     "Ibnu Katsir, *An-Nihayah fil Fitan wal Malahim* dan *Al-Bidayah wan Nihayah*; al-Qurthubi, *At-Tadzkirah bi Ahwal al-Mauta wa Umur al-Akhirah*; Ibnu Hajar al-‘Asqalani, *Fathul Bari*; an-Nawawi, *Syarh Shahih Muslim* — bab kebangkitan, hisab, mizan, telaga, dan Shirath"
+   ]
+  },
+  {
+   "id": "telaga-kautsar-dan-syafaat",
+   "t": "Telaga Al-Kautsar (Haudh) dan Syafa‘at Nabi ﷺ",
+   "d": "Hubungan sungai al-Kautsar dengan telaga Nabi ﷺ, siapa yang diizinkan minum dan siapa yang dihalau, serta hakikat, syarat, dan jenis-jenis syafa‘at pada hari kiamat.",
+   "b": [
+    {
+     "h": "Dua kemurahan Allah di hari yang berat",
+     "p": [
+      "Kartu “Hari Kebangkitan” sudah menyebut singkat bahwa Nabi ﷺ memiliki telaga dan akan memberi syafaat agung. Kartu ini mendalaminya: dari mana telaga itu mendapat air, siapa yang diizinkan minum, apa syarat syafaat, dan siapa yang paling berbahagia dengannya. Keduanya sama-sama bagian dari kasih sayang Allah kepada umat ini."
+     ]
+    },
+    {
+     "h": "Al-Kautsar dan al-Haudh: sungai dan telaga",
+     "p": [
+      "Allah berfirman kepada Nabi ﷺ, “Sungguh, Kami telah memberimu *al-Kautsar*” (QS. al-Kautsar: 1). Para ulama menyebut al-Kautsar sebagai kebaikan yang banyak, dan sebagai **sungai di surga** yang dijanjikan kepada beliau (al-Bukhari no. 6581 dari Anas, dan Muslim no. 400). Dalam hadits Abu Dzar رضي الله عنه (Muslim no. 2300–2301), telaga Nabi ﷺ menerima air dari **dua saluran yang mengalir dari surga**, satu dari emas dan satu dari perak. Airnya lebih putih daripada susu dan lebih manis daripada madu.",
+      "Jadi al-Kautsar adalah sungainya di surga, sedangkan al-Haudh adalah telaga di tempat berkumpul yang airnya berasal dari sungai itu. Ukurannya disebut dalam hadits ‘Abdullah bin ‘Amr رضي الله عنهما (al-Bukhari no. 6579 dan Muslim no. 2292): panjang dan lebarnya sejauh perjalanan sebulan, baunya lebih harum daripada kasturi, dan gelasnya sebanyak bintang di langit."
+     ],
+     "q": [
+      {
+       "a": "حَوْضِي مَسِيرَةُ شَهْرٍ، مَاؤُهُ أَبْيَضُ مِنَ اللَّبَنِ، وَرِيحُهُ أَطْيَبُ مِنَ الْمِسْكِ، وَكِيزَانُهُ كَنُجُومِ السَّمَاءِ، مَنْ شَرِبَ مِنْهَا فَلَا يَظْمَأُ أَبَدًا",
+       "t": "Telagaku sejauh perjalanan sebulan, airnya lebih putih daripada susu, baunya lebih harum daripada kasturi, dan gelasnya sebanyak bintang di langit. Siapa yang minum darinya tidak akan haus selama-lamanya.",
+       "s": "HR. al-Bukhari no. 6579 dan Muslim no. 2292 dari ‘Abdullah bin ‘Amr"
+      }
+     ]
+    },
+    {
+     "h": "Siapa yang minum, siapa yang dihalau",
+     "p": [
+      "Nabi ﷺ bersabda bahwa beliau akan mendahului umatnya ke telaga; siapa yang datang akan minum, dan siapa yang minum tidak akan haus selamanya (al-Bukhari dan Muslim dari Sahl bin Sa‘d). Dalam hadits Abu Hurairah رضي الله عنه (Muslim no. 249), beliau pernah ke pekuburan dan berkata bahwa beliau rindu kepada saudara-saudaranya yang belum datang. Ketika ditanya bagaimana beliau mengenali umatnya, beliau menjawab dengan permisalan seseorang yang kudanya berdahi dan berkaki putih di antara kuda-kuda hitam pekat: umatnya datang dengan **wajah dan anggota wudhu yang bercahaya**, dan beliau mendahului mereka di telaga.",
+      "Dalam hadits yang sama, ada orang-orang yang dihalau dari telaga seperti unta tersesat dihalau. Nabi ﷺ memanggil mereka, lalu dikatakan bahwa mereka telah mengubah sepeninggal beliau, maka beliau berkata, “Menjauhlah, menjauhlah.” Para ulama menjelaskan bahwa mereka adalah orang-orang yang murtad dan mengubah agama sepeninggal beliau. Hadits ini bukan untuk menuduh kelompok tertentu di masa kini, melainkan peringatan agar kita berpegang pada sunnah dan menutup hidup dengan iman. Satu pelajaran lain yang manis: wudhu yang kita jaga hari ini menjadi tanda pengenal di hari itu."
+     ]
+    },
+    {
+     "h": "Apa itu syafaat, dan apa syaratnya",
+     "p": [
+      "*Syafaat* adalah memohonkan kebaikan bagi orang lain kepada Allah. Al-Qur’an menegaskan bahwa **seluruh syafaat adalah milik Allah** (QS. az-Zumar: 44), dan tidak ada yang dapat memberi syafaat di sisi-Nya kecuali dengan izin-Nya (QS. al-Baqarah: 255). Malaikat pun tidak bermanfaat syafaatnya kecuali setelah Allah mengizinkan bagi siapa yang Dia kehendaki dan ridhai (QS. an-Najm: 26), dan mereka tidak memberi syafaat kecuali kepada orang yang diridhai-Nya (QS. al-Anbiya’: 28).",
+      "Karena itu syafaat tidak bermanfaat bagi orang yang mati dalam kekufuran atau kesyirikan (QS. al-Muddatstsir: 48). Hakikatnya: syafaat adalah **rahmat Allah yang disalurkan melalui orang yang Dia pilih**, bukan jalan pintas yang membebaskan dari iman dan amal. Karena seluruhnya milik Allah, yang kita lakukan adalah beramal dan berdoa kepada Allah agar kelak mendapatkannya."
+     ],
+     "q": [
+      {
+       "a": "مَن ذَا الَّذِي يَشْفَعُ عِندَهُ إِلَّا بِإِذْنِهِ",
+       "t": "Siapakah yang dapat memberi syafaat di sisi-Nya tanpa izin-Nya?",
+       "s": "QS. al-Baqarah: 255"
+      }
+     ]
+    },
+    {
+     "h": "Jenis-jenis syafaat Nabi ﷺ",
+     "p": [
+      "Para ulama menyebut beberapa jenis syafaat yang disebut hadits. **Pertama**, syafaat agung agar putusan Allah di Mahsyar dimulai (al-Bukhari no. 4712 dan Muslim no. 194), yang dijelaskan pada kartu Hari Kebangkitan. **Kedua**, syafaat agar pintu surga dibukakan: hadits Muslim no. 195 menyebut bahwa beliau berdiri dan diizinkan, lalu rahmat dan amanat dilepaskan dan umat beliau mulai bergerak menuju Shirath.",
+      "**Ketiga**, syafaat bagi pelaku dosa besar dari umat beliau. Nabi ﷺ bersabda, “Syafaatku untuk para pelaku dosa besar dari umatku” (Abu Dawud no. 4739 dan at-Tirmidzi no. 2435, dari Anas). **Keempat**, syafaat khusus bagi pamannya Abu Thalib: azabnya diringankan, tetapi ia tidak dikeluarkan dari neraka (al-Bukhari no. 3883 dan Muslim no. 209). Selain Nabi ﷺ, ada pula syafaat dari para nabi lain, para malaikat, dan orang-orang beriman, sebagaimana disebut pada kartu Surga dan Neraka, serta syafaat al-Qur’an bagi pembacanya (Muslim no. 804, dari Abu Umamah)."
+     ]
+    },
+    {
+     "h": "Siapa yang paling berbahagia dengan syafaat?",
+     "p": [
+      "Abu Hurairah رضي الله عنه bertanya siapa yang paling berbahagia dengan syafaat beliau. Nabi ﷺ menjawab, “Orang yang mengucapkan *la ilaha illallah* dengan ikhlas dari hatinya” (al-Bukhari no. 99). Maka kuncinya adalah tauhid yang tulus. Beliau juga bersabda bahwa setiap nabi punya doa mustajab, dan beliau menyimpan doa itu untuk syafaat bagi umatnya di akhirat (al-Bukhari no. 6304 dan Muslim no. 198). Ini bukti kasih sayang beliau yang sudah dipersiapkan sejak jauh hari.",
+      "Ada pula amalan sederhana yang disebut hadits: siapa yang membaca doa setelah azan, **halal baginya syafaat** beliau di hari kiamat (al-Bukhari no. 614). Hadits Muslim no. 384 juga menyebut bahwa orang yang bershalawat kepada beliau lalu memohonkan wasilah untuk beliau akan mendapat syafaat itu."
+     ],
+     "q": [
+      {
+       "a": "اللَّهُمَّ رَبَّ هَذِهِ الدَّعْوَةِ التَّامَّةِ، وَالصَّلَاةِ الْقَائِمَةِ، آتِ مُحَمَّدًا الْوَسِيلَةَ وَالْفَضِيلَةَ، وَابْعَثْهُ مَقَامًا مَحْمُودًا الَّذِي وَعَدْتَهُ",
+       "t": "Ya Allah, Rabb pemilik seruan yang sempurna ini dan shalat yang akan ditegakkan, berikanlah kepada Muhammad wasilah dan keutamaan, dan bangkitkanlah ia pada kedudukan terpuji yang telah Engkau janjikan.",
+       "s": "HR. al-Bukhari no. 614 dari Jabir bin ‘Abdillah — doa setelah azan"
+      }
+     ]
+    },
+    {
+     "h": "Jangan bersandar pada syafaat, jangan pula putus asa",
+     "p": [
+      "Syafaat adalah harapan, bukan izin untuk meremehkan dosa. Nabi ﷺ sendiri berkata kepada keluarga dekatnya, bahkan kepada putrinya Fatimah, agar menyelamatkan diri mereka dengan amal, karena beliau tidak dapat mencukupi mereka sedikit pun dari Allah (al-Bukhari dan Muslim dari Abu Hurairah). Maksudnya: tidak ada yang bisa mengandalkan nasab atau kedekatan tanpa iman dan amal.",
+      "Di sisi lain, adanya syafaat dan telaga menunjukkan bahwa Allah menyiapkan banyak jalan kasih sayang bagi umat ini. Maka kita berusaha menjaga tauhid, wudhu, shalat, dan sunnah, lalu menyerahkan hasilnya kepada rahmat Allah."
+     ]
+    }
+   ],
+   "s": [
+    "QS. al-Kautsar: 1; al-Baqarah: 255; an-Najm: 26; al-Anbiya’: 28; az-Zumar: 44; al-Muddatstsir: 48; al-Isra’: 79",
+    "HR. al-Bukhari no. 6579 dan Muslim no. 2292 dari ‘Abdullah bin ‘Amr — ukuran dan sifat telaga Nabi ﷺ",
+    "HR. Muslim no. 2300–2301 dari Abu Dzar — dua saluran dari surga; lebih putih dari susu dan lebih manis dari madu",
+    "HR. al-Bukhari no. 6581 dari Anas dan Muslim no. 400 — al-Kautsar sungai di surga",
+    "HR. al-Bukhari dan Muslim dari Sahl bin Sa‘d — Nabi ﷺ mendahului umatnya ke telaga",
+    "HR. Muslim no. 249 dari Abu Hurairah — wajah dan anggota wudhu bercahaya; orang yang dihalau dari telaga",
+    "HR. al-Bukhari no. 4712 dan Muslim no. 194 dari Abu Hurairah — syafaat agung",
+    "HR. Muslim no. 195 dari Hudzaifah dan Abu Hurairah — syafaat untuk membuka pintu surga",
+    "HR. Abu Dawud no. 4739 dan at-Tirmidzi no. 2435 dari Anas — syafaat bagi pelaku dosa besar dari umat",
+    "HR. al-Bukhari no. 3883 dan Muslim no. 209 — syafaat bagi Abu Thalib berupa keringanan azab",
+    "HR. Muslim no. 804 dari Abu Umamah — al-Qur’an memberi syafaat bagi pembacanya",
+    "HR. al-Bukhari no. 99 dari Abu Hurairah — yang paling berbahagia dengan syafaat Nabi ﷺ",
+    "HR. al-Bukhari no. 6304 dan Muslim no. 198 dari Abu Hurairah — doa mustajab yang disimpan untuk syafaat",
+    "HR. al-Bukhari no. 614 dari Jabir dan Muslim no. 384 — doa setelah azan dan wasilah",
+    "HR. al-Bukhari dan Muslim dari Abu Hurairah — Nabi ﷺ tidak dapat mencukupi keluarganya tanpa iman dan amal",
+    "Ibnu Katsir, *Tafsir al-Qur’an al-‘Azhim*; an-Nawawi, *Syarh Shahih Muslim*; Ibnu Hajar al-‘Asqalani, *Fathul Bari*, Kitab ar-Riqaq"
    ]
   },
   {
@@ -1608,7 +1879,7 @@
      "h": "Akhir riwayatnya di tangan ‘Isa عليه السلام",
      "p": [
       "Pada puncak fitnah itu Allah menurunkan ‘Isa putra Maryam عليه السلام. Hadits an-Nawwas (Muslim no. 2937) menyebut bahwa ia turun di menara putih di sebelah timur Damaskus, mengenakan dua kain yang dicelup wewangian, dan meletakkan kedua telapak tangannya di sayap dua malaikat. Setiap orang kafir yang mencium napasnya akan mati, dan napas itu sampai sejauh pandangannya. ‘Isa mengejar Dajjal lalu membunuhnya di Bab Ludd.",
-      "Setelah itu Allah mewahyukan kepada ‘Isa tentang keluarnya Ya’juj dan Ma’juj. Kisah mereka dibahas pada kartu berikutnya."
+      "Setelah itu Allah mewahyukan kepada ‘Isa tentang keluarnya Ya’juj dan Ma’juj. Kisah ‘Isa dan al-Mahdi dibahas pada kartu berikutnya, lalu kisah Ya’juj dan Ma’juj sesudahnya."
      ]
     },
     {
@@ -1633,6 +1904,98 @@
     "HR. Muslim no. 809 dari Abu Darda’ — sepuluh ayat al-Kahf sebagai perlindungan dari Dajjal",
     "HR. Abu Dawud no. 4319 dari ‘Imran bin Hushain — menjauh dari Dajjal; dinilai sahih oleh al-Albani",
     "Ibnu Katsir, *An-Nihayah fil Fitan wal Malahim* — bab Dajjal; Ibnu Hajar al-‘Asqalani, *Fathul Bari*, Kitab al-Fitan; an-Nawawi, *Syarh Shahih Muslim*"
+   ]
+  },
+  {
+   "id": "imam-mahdi-dan-turunnya-nabi-isa",
+   "t": "Imam Mahdi dan Turunnya Nabi ‘Isa عليه السلام",
+   "d": "Apa yang dikatakan hadits tentang al-Mahdi dan bagaimana ulama menilainya, serta kisah turunnya ‘Isa putra Maryam: tujuan, apa yang ia lakukan, dan akhir hayatnya.",
+   "b": [
+    {
+     "h": "Dua sosok yang sering tercampur",
+     "p": [
+      "Al-Mahdi dan ‘Isa putra Maryam sering disebut berdampingan, tetapi kedudukannya berbeda. ‘Isa adalah nabi yang namanya disebut dalam Al-Qur’an, dan turunnya merupakan salah satu dari sepuluh tanda besar dalam hadits Hudzaifah, dengan hadits-hadits yang para ulama, termasuk Ibnu Katsir, nyatakan mutawatir. Al-Mahdi adalah seorang **manusia biasa dari keluarga Nabi ﷺ**, bukan nabi, dan tidak termasuk sepuluh tanda tersebut.",
+      "Karena itu para ulama membahas keduanya dengan nada yang berbeda: ‘Isa dengan kepastian, al-Mahdi dengan kehati-hatian."
+     ]
+    },
+    {
+     "h": "Al-Mahdi: apa yang disebut hadits",
+     "p": [
+      "Hadits ‘Abdullah bin Mas‘ud رضي الله عنه (Abu Dawud no. 4282 dan at-Tirmidzi no. 2230) menyebut bahwa dunia tidak akan berakhir sampai orang Arab dipimpin seorang laki-laki dari ahli bait Nabi ﷺ yang namanya sama dengan nama beliau. Hadits ‘Ali رضي الله عنه (Abu Dawud no. 4283) menyebut bahwa seandainya dunia hanya tersisa satu hari, Allah akan membangkitkan seorang laki-laki dari ahli baitku yang memenuhi bumi dengan keadilan sebagaimana ia sebelumnya penuh kezaliman.",
+      "Hadits Ummu Salamah رضي الله عنها (Abu Dawud no. 4284) menyebutnya dari keturunan Fatimah, dan riwayat Abu Dawud no. 4285 menggambarkannya berdahi lebar dan berhidung mancung, memerintah selama tujuh tahun. Sebagian riwayat menambahkan bahwa nama ayahnya sama dengan nama ayah Nabi ﷺ, tetapi tambahan itu dipermasalahkan para ulama hadits. Hadits Muslim dari Abu Sa‘id dan Jabir juga menyebut seorang khalifah di akhir zaman yang membagi harta tanpa menghitung, dan sebagian ulama mengaitkannya dengan al-Mahdi, walaupun hadits itu tidak menyebut nama tersebut."
+     ],
+     "q": [
+      {
+       "a": "لَا تَذْهَبُ الدُّنْيَا حَتَّى يَمْلِكَ الْعَرَبَ رَجُلٌ مِنْ أَهْلِ بَيْتِي يُوَاطِئُ اسْمُهُ اسْمِي",
+       "t": "Dunia tidak akan lenyap sampai orang Arab dipimpin oleh seorang laki-laki dari ahli baitku, yang namanya sesuai dengan namaku.",
+       "s": "HR. Abu Dawud no. 4282 dan at-Tirmidzi no. 2230 dari ‘Abdullah bin Mas‘ud — dinilai hasan sahih oleh al-Albani"
+      }
+     ]
+    },
+    {
+     "h": "Bagaimana ulama menilainya",
+     "p": [
+      "Banyak ulama Ahlus Sunnah menetapkan akan munculnya al-Mahdi, di antaranya Ibnu Taimiyah, adz-Dzahabi, Ibnu Hajar, dan asy-Syaukani. Sebagian dari mereka menyebut hadits-hadits tentangnya mutawatir secara makna karena banyaknya jalur. Abu Dawud bahkan menyusun bab khusus tentang al-Mahdi dalam *Sunan*-nya. Namun sebagian ulama, seperti Ibnu Khaldun, menilai lemah seluruh jalurnya. Perlu dicatat pula bahwa al-Bukhari dan Muslim tidak meriwayatkan hadits yang menyebut al-Mahdi secara tegas dengan nama itu.",
+      "Karena itu, di kalangan Ahlus Sunnah, al-Mahdi **bukan bagian dari rukun iman**, dan penjelasannya dibawa dengan hati-hati, sebagaimana juga diingatkan pada kartu Hari Kiamat. Pemahaman ini berbeda dengan keyakinan sebagian kelompok yang menyatakan al-Mahdi sudah lahir dan sedang gaib; dalam pemahaman Ahlus Sunnah, ia adalah manusia biasa yang akan muncul pada waktunya dan wafat sebagaimana manusia lain.",
+      "Sejarah mencatat banyak orang yang mengaku sebagai al-Mahdi, lalu membawa fitnah dan pertumpahan darah. Karena itu para ulama mengingatkan agar kita tidak mengikuti pengakuan siapa pun dan tidak memakai hadits-hadits ini untuk menunjuk tokoh tertentu."
+     ]
+    },
+    {
+     "h": "Nabi ‘Isa: diangkat, bukan dibunuh",
+     "p": [
+      "Al-Qur’an menegaskan bahwa kaumnya tidak membunuh dan tidak menyalib ‘Isa, tetapi **Allah mengangkatnya kepada-Nya** (QS. an-Nisa’: 157–158). Ahlus Sunnah meyakini bahwa ia diangkat hidup dengan jasad dan ruhnya, dan Nabi ﷺ melihatnya di langit kedua saat Isra’ Mi’raj, sebagaimana disinggung pada kartu Sidratul Muntaha dan Tujuh Langit. Kelak ia akan turun kembali sebagai tanda kiamat."
+     ],
+     "q": [
+      {
+       "a": "بَل رَّفَعَهُ اللَّهُ إِلَيْهِ ۚ وَكَانَ اللَّهُ عَزِيزًا حَكِيمًا",
+       "t": "Tetapi (yang sebenarnya), Allah telah mengangkat dia (‘Isa) kepada-Nya. Dan Allah Mahaperkasa, Mahabijaksana.",
+       "s": "QS. an-Nisa’: 158"
+      }
+     ]
+    },
+    {
+     "h": "Turunnya ‘Isa: tempat dan sifatnya",
+     "p": [
+      "Nabi ﷺ bersabda bahwa ‘Isa akan turun sebagai hakim yang adil: ia memecahkan salib, membunuh babi, dan menghapus jizyah (al-Bukhari no. 2222 dan Muslim no. 155). Hadits an-Nawwas bin Sam‘an (Muslim no. 2937) menyebut bahwa ia turun di **menara putih di sebelah timur Damaskus**, mengenakan dua pakaian yang dicelup wewangian, dan meletakkan kedua telapak tangannya di sayap dua malaikat.",
+      "Ia datang bukan membawa syariat baru, karena Muhammad ﷺ adalah nabi penutup. Ia memutuskan perkara dengan syariat Nabi kita. Hadits Jabir رضي الله عنه (Muslim no. 156) menyebut bahwa ketika pemimpin kaum muslimin mempersilakannya mengimami shalat, ‘Isa menolak dan berkata bahwa sebagian mereka adalah pemimpin atas sebagian yang lain, sebagai kemuliaan Allah bagi umat ini. Sebagian ulama memahami pemimpin itu sebagai al-Mahdi, sedangkan hadits itu sendiri tidak menyebut namanya."
+     ],
+     "q": [
+      {
+       "a": "وَالَّذِي نَفْسِي بِيَدِهِ لَيُوشِكَنَّ أَنْ يَنْزِلَ فِيكُمُ ابْنُ مَرْيَمَ حَكَمًا مُقْسِطًا، فَيَكْسِرَ الصَّلِيبَ، وَيَقْتُلَ الْخِنْزِيرَ، وَيَضَعَ الْجِزْيَةَ",
+       "t": "Demi Dzat yang jiwaku berada di tangan-Nya, hampir pasti akan turun di tengah kalian putra Maryam sebagai hakim yang adil; ia memecahkan salib, membunuh babi, dan menghapus jizyah.",
+       "s": "HR. al-Bukhari no. 2222 dan Muslim no. 155 dari Abu Hurairah"
+      }
+     ]
+    },
+    {
+     "h": "Apa yang ia lakukan, dan akhir hayatnya",
+     "p": [
+      "Hadits an-Nawwas (Muslim no. 2937) menyebut bahwa ‘Isa mengejar Dajjal dan membunuhnya di Bab Ludd. Setelah itu Allah mewahyukan kepadanya tentang keluarnya Ya’juj dan Ma’juj, yang dibahas pada kartu berikutnya. Para ulama menjelaskan bahwa memecahkan salib dan membunuh babi berarti ia menghapus keyakinan menyimpang tentang dirinya dan menegaskan syariat tauhid. Harta menjadi melimpah hingga tak ada yang mau menerimanya, dan satu sujud kepada Allah lebih baik daripada dunia dan seisinya (Muslim no. 155).",
+      "Abu Hurairah رضي الله عنه membacakan QS. an-Nisa’: 159 setelah hadits ini: tidak ada seorang pun dari Ahli Kitab kecuali akan beriman kepadanya sebelum kematiannya. Ia juga akan menunaikan haji atau umrah (Muslim no. 1252). Hadits ‘Abdullah bin ‘Amr (Muslim no. 2940) menyebut bahwa manusia hidup tujuh tahun tanpa permusuhan antara dua orang, sedangkan riwayat Abu Dawud no. 4324 dari Abu Hurairah menyebut bahwa ia tinggal empat puluh tahun, lalu wafat dan dishalatkan kaum muslimin. Para ulama menjelaskan perbedaan angka itu dengan cara beragam, sehingga kita menyerahkan angka pastinya kepada Allah."
+     ]
+    },
+    {
+     "h": "Urutan dan pelajaran",
+     "p": [
+      "Umumnya ulama memahami al-Mahdi muncul sebelum turunnya ‘Isa, tetapi hadits sahih tidak memberi rincian urutan dan lamanya secara tegas, sehingga kita tidak memaksakan satu alur cerita yang rinci.",
+      "Pelajaran terbesarnya adalah tauhid: ‘Isa yang diagungkan sebagian manusia sebagai tuhan justru kembali sebagai **hamba dan rasul Allah**, memecahkan salib, dan mengikuti syariat Muhammad ﷺ. Di akhir zaman, yang kita pegang bukan pengakuan seseorang sebagai penyelamat, melainkan iman yang lurus, ilmu, dan kehati-hatian terhadap setiap klaim."
+     ]
+    }
+   ],
+   "s": [
+    "QS. an-Nisa’: 157–159; az-Zukhruf: 61; Ali ‘Imran: 55",
+    "HR. Abu Dawud no. 4282 dan at-Tirmidzi no. 2230 dari ‘Abdullah bin Mas‘ud — al-Mahdi dari ahli bait, namanya sesuai nama Nabi ﷺ",
+    "HR. Abu Dawud no. 4283 dari ‘Ali bin Abi Thalib — seandainya tersisa satu hari, Allah membangkitkan seorang laki-laki dari ahli bait",
+    "HR. Abu Dawud no. 4284 dari Ummu Salamah — al-Mahdi dari keturunan Fatimah",
+    "HR. Abu Dawud no. 4285 — ciri al-Mahdi dan masa pemerintahan tujuh tahun; dinilai hasan",
+    "HR. Muslim dari Abu Sa‘id al-Khudri dan Jabir — khalifah akhir zaman yang membagi harta tanpa menghitung",
+    "HR. al-Bukhari no. 2222 dan Muslim no. 155 dari Abu Hurairah — turunnya ‘Isa putra Maryam",
+    "HR. Muslim no. 156 dari Jabir bin ‘Abdillah — ‘Isa menolak mengimami shalat; al-Bukhari no. 3449 serupa",
+    "HR. Muslim no. 2937 dari an-Nawwas bin Sam‘an — turunnya ‘Isa di menara putih timur Damaskus, Bab Ludd",
+    "HR. Muslim no. 2940 dari ‘Abdullah bin ‘Amr — tujuh tahun tanpa permusuhan",
+    "HR. Muslim no. 1252 dari Abu Hurairah — ‘Isa menunaikan haji atau umrah",
+    "HR. Abu Dawud no. 4324 dari Abu Hurairah — ‘Isa tinggal di bumi, lalu wafat dan dishalatkan kaum muslimin",
+    "Ibnu Katsir, *An-Nihayah fil Fitan wal Malahim* dan *Tafsir al-Qur’an al-‘Azhim* (QS. an-Nisa’: 159, az-Zukhruf: 61); al-Albani, *Silsilah al-Ahadits ash-Shahihah*; an-Nawawi, *Syarh Shahih Muslim*; Ibnu Hajar al-‘Asqalani, *Fathul Bari*, Kitab al-Fitan"
    ]
   },
   {
