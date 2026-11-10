@@ -1766,8 +1766,15 @@ html:not(#_):not(#_):not(#_):not(#_):not(#_) .hbx.photo{min-height:0}
       </div>
       <!-- tengah: foto kecil (logo/foto-keluarga-kecil.jpg); klik = tampil resolusi asli (logo/foto-keluarga.png) -->
       <div class="hbx photo" id="foto" role="button" tabindex="0" aria-haspopup="dialog" aria-label="Perbesar foto">
-        <img src="logo/foto-keluarga-kecil.jpg" alt="Foto keluarga" decoding="async">
+        <img src="logo/foto-keluarga-kecil.jpg" alt="Foto keluarga" decoding="async" fetchpriority="high">
       </div>
+      <script>/* pilih foto acak dari daftar galeri yang sudah tersimpan, SEKARANG (bukan menunggu script besar di bawah) */
+      (function(){try{if(/alquran4all/i.test(location.pathname+location.href))return;var l=JSON.parse(localStorage.getItem('qk.galeri.list')||'[]');if(!l.length)return;
+        var last=parseInt(localStorage.getItem('qk.foto.last'),10),i=0;if(l.length>1){do{i=Math.floor(Math.random()*l.length)}while(i===last)}
+        localStorage.setItem('qk.foto.last',String(i));var it=l[i];if(typeof it==='string')it={k:it,a:null};
+        window.__fotoPre={i:i,n:l.length};var im=document.querySelector('#foto img');
+        im.onerror=function(){im.onerror=null;window.__fotoPre=null;im.src='logo/foto-keluarga-kecil.jpg'};   /* daftar dari repo lain / file hilang -> foto bawaan */
+        im.src=it.k}catch(e){}})();</script>
       <input type="file" id="fotoInput" accept="image/*" hidden>
       <!-- kanan: judul + kredit Mannixs-21 (seluruh kotak diklik = logo NU) -->
       <div class="hbx tx" id="kqr" role="button" tabindex="0" aria-haspopup="dialog" aria-label="Al-Qur’an Al-Karim, Mannixs-21: tampilkan logo NU">
@@ -3049,6 +3056,20 @@ function nTxt(s){return s.toLowerCase().replace(/[^a-z0-9À-ɏ ]+/g,' ').replace
 })();
 var mctx=document.createElement('canvas').getContext('2d');
 var MM={};  /* cache ukuran tinta angka */
+/* Hasil ukur disimpan di localStorage (hanya untuk font yang sudah benar-benar termuat) supaya buka berikutnya tidak memindai piksel lagi.
+   Ganti INK_LS (v1 -> v2) bila berkas font diganti. */
+var INK_LS='qk.ink.v1',INKP={};
+try{INKP=JSON.parse(localStorage.getItem(INK_LS)||'{}')||{}}catch(e){INKP={}}
+function inkSeed(){MM={};for(var k in INKP){var v=INKP[k];if(v&&v.length===4)MM[k]={cx:v[0],cy:v[1],w:v[2],h:v[3]}}}
+function inkSave(){
+  try{
+    var o={},k,n=0,v,fam;
+    for(k in INKP)o[k]=INKP[k];
+    for(k in MM){fam=k.split('|')[0];if(!isLoaded(fam))continue;v=MM[k];o[k]=[+v.cx.toFixed(3),+v.cy.toFixed(3),+v.w.toFixed(3),+v.h.toFixed(3)];n++}
+    if(n){INKP=o;localStorage.setItem(INK_LS,JSON.stringify(o))}
+  }catch(e){}
+}
+inkSeed();
 function fontName(){return FONTS[S.font].f}
 /* Ukur tinta angka SEBENARNYA dengan memindai piksel (actualBoundingBox bawaan canvas ditambah padding ±1,6% em
    sehingga angka terukur lebih besar dari aslinya). Hasil dinormalkan ke font 100px:
@@ -3075,20 +3096,6 @@ var MEDAL={ring:17.4,pad:.9,cap:{1:.66,2:.58,3:.50}};
 /* Ukuran ditentukan dari KOTAK TINTA hasil ukur (bukan font-size): digit LPMQ sangat pendek (±0,29em).
    s = min(batas tinggi per jumlah digit, batas agar sudut kotak tinta tetap di dalam cincin).
    Pusat TINTA angka = pusat medali (24,24). */
-var _mk={};
-function medalK(fn,rf){
-  if(_mk[fn])return _mk[fn];
-  var kmin=Infinity,ok=false;
-  for(var n=1;n<=286;n++){
-    var str=toAr(n),b=inkBox(str,fn);
-    if(!b.w||!b.h)return 0.3;                           // font belum siap: jangan simpan, hitung ulang nanti
-    var cap=MEDAL.cap[Math.min(3,str.length)]*48;
-    var k=Math.min(cap/b.h,2*rf/Math.hypot(b.w,b.h));
-    if(k<kmin)kmin=k;ok=true;
-  }
-  if(ok)_mk[fn]=kmin;
-  return kmin;
-}
 function medalCalc(num){
   var str=toAr(num),b=inkBox(str,fontName()),rf=MEDAL.ring-MEDAL.pad;
   if(!b.w||!b.h){return[24,35.7,80]}                   // font belum siap: perkiraan, dihitung ulang saat siap
@@ -3122,7 +3129,7 @@ function ensureFonts(){
   if(!document.fonts||!document.fonts.load)return Promise.resolve();
   var ps=FONT_ORDER.map(function(id){return document.fonts.load("400 24px '"+FONTS[id].f+"'",'١٢٣ ابت').catch(function(){})});
   ps.push(document.fonts.load("700 24px 'Aref Ruqaa'",'سورة').catch(function(){}));
-  return Promise.all(ps).then(function(){MM={}});   /* metrik lama (font belum siap) dibuang */
+  return Promise.all(ps).then(function(){inkSeed()});   /* metrik sementara (font belum siap) dibuang; yang sudah tersimpan dipakai lagi */
 }
 
 /* =====================================================================
@@ -3949,7 +3956,9 @@ function galeriProbe(){
 }
 function pakaiGaleri(list){
   if(!list.length) return;
-  var i=pickIdx(list.length),it=list[i]; if(typeof it==='string') it={k:it,a:null};
+  var pre=window.__fotoPre,i,it; window.__fotoPre=null;
+  if(pre&&pre.n===list.length&&list[pre.i]){i=pre.i;it=list[i]}else{i=pickIdx(list.length);it=list[i]}   /* pilihan awal dipakai lagi: foto tidak berganti dua kali */
+  if(typeof it==='string') it={k:it,a:null};
   CUR={id:null,n:list.length,i:i}; setFoto(it.k,it.a||it.k);
 }
 function pakaiGaleriRepo(){
@@ -3958,6 +3967,7 @@ function pakaiGaleriRepo(){
   if(had) pakaiGaleri(cached);              /* langsung, tanpa menunggu jaringan */
   var T_LS='qk.galeri.t',now=Date.now(),last=parseInt(lsGet(T_LS),10)||0;
   if(had&&now-last<86400000) return;        /* daftar galeri masih segar (<24 jam): lewati 24 request HEAD */
+  (window.requestIdleCallback?function(f){requestIdleCallback(f,{timeout:4000})}:function(f){setTimeout(f,2500)})(function(){
   galeriProbe().then(function(list){
     if(!list) return;
     lsSet(T_LS,String(now));
@@ -3966,6 +3976,7 @@ function pakaiGaleriRepo(){
     lsSet(GALERI_LS,j);
     if(!had) pakaiGaleri(list);             /* kunjungan pertama */
     setTimeout(function(){ list.forEach(function(it){ fetch(it.k).catch(function(){}); }); },1500);   /* simpan foto kecil ke cache supaya tetap acak saat offline */
+  });
   });
 }
 function pakaiPool4all(arr){
@@ -5314,7 +5325,7 @@ route();
 if(document.fonts&&document.fonts.ready){
   ensureFonts().then(function(){return document.fonts.ready}).then(function(){
     calibrate();
-    applyFontSizes();relayoutMedals();
+    applyFontSizes();relayoutMedals();inkSave();
     /* tata letak bergeser setelah font siap: kembalikan ke ayat tujuan bila pengguna belum menggulir */
     if(rd.open&&rd.target&&!rd.moved)goAyat(rd.target,true);
   });
@@ -5325,7 +5336,7 @@ if(document.fonts&&document.fonts.ready){
   if(!gf||!document.fonts)return;
   function lagi(){
     ensureFonts().then(function(){return document.fonts.ready}).then(function(){
-      calibrate();applyFontSizes();relayoutMedals();
+      calibrate();applyFontSizes();relayoutMedals();inkSave();
       if(rd.open&&rd.target&&!rd.moved)goAyat(rd.target,true);
     });
   }

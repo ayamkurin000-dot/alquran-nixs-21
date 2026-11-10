@@ -4,7 +4,7 @@
                                          versi baru tampil di pembukaan berikutnya. Kunjungan pertama / cache kosong -> jaringan.
    - font & gambar                    -> cache dulu, diperbarui di latar belakang.
    Naikkan VERSI setiap ada perubahan agar cache lama dibuang dan pengguna langsung mendapat versi baru. */
-var VERSI = 'qk-v152';
+var VERSI = 'qk-v153';
 var INTI = ['./', 'index.html', 'doa.json', 'ensiklopedia.json', 'font/LPMQ-Isep-Misbah.ttf',
             'logo/foto-keluarga-kecil.jpg', 'logo/logo-nu.jpg'];
 
@@ -33,7 +33,16 @@ function cacheDuluSegarkan(e, r, c) {
   return c.match(r, { ignoreSearch: true }).then(function (hit) {
     /* selalu minta versi terbaru ke jaringan (lewati cache HTTP) dan simpan untuk pembukaan berikutnya */
     var net = fetch(r, { cache: 'no-cache' }).then(function (res) {
-      if (res && res.ok) c.put(r, res.clone());
+      if (res && res.ok) {
+        /* isi tidak berubah (ETag / Last-Modified sama) -> tidak perlu menulis ulang 3 MB ke cache setiap kali dibuka */
+        var sama = false;
+        if (hit) {
+          var e1 = hit.headers.get('etag'), e2 = res.headers.get('etag'),
+              m1 = hit.headers.get('last-modified'), m2 = res.headers.get('last-modified');
+          sama = !!((e1 && e2 && e1 === e2) || (!e1 && !e2 && m1 && m2 && m1 === m2));
+        }
+        if (!sama) c.put(r, res.clone());
+      }
       return res;
     }).catch(function () { return null; });
     if (hit) {
