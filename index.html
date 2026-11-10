@@ -1492,10 +1492,10 @@ html:not(#_):not(#_) :is(#kdoa,#kmri,#kens).hbx{padding:7px 8px;min-height:47px}
 /* baris 2-4 (Do'a & Bacaan, Mata Rantai Islam, Ensiklopedia) dibuat sama tinggi di semua tema: ikut yang tertinggi */
 html:not(#_):not(#_) .hb{grid-template-rows:auto 1fr 1fr 1fr auto}
 /* teks Ensiklopedia kini memakai gaya .hmri yang sama persis dengan Mata Rantai Islam */
-/* bingkai "القرآن الكريم" dipersempit sedikit */
-html:not(#_):not(#_) #kqr.hbx{min-height:0;padding:7px 8px}
-html:not(#_):not(#_) #kqr #hero-logo{line-height:1.3}
-html:not(#_):not(#_) #kqr #credit{margin-top:2px}
+/* bingkai "القرآن الكريم" dipersempit lagi + teks judul & kredit diperkecil (area daftar surat jadi lebih luas) */
+html:not(#_):not(#_) #kqr.hbx{min-height:0;padding:3px 8px}
+html:not(#_):not(#_) #kqr #hero-logo{line-height:1.2;font-size:clamp(18px,5.4vw,32px)}
+html:not(#_):not(#_) #kqr #credit{margin-top:0;padding:0 7px;font-size:clamp(9px,2.5vw,12px)}
 /* =====================================================================================
    BINGKAI FOTO + PAPAN JADWAL SHOLAT: ikut tema (perak/krom, pita, gulungan, neon, 3D biasa)
    Papan jadwal: pojok hanya sedikit oval (--frl). Foto: lengkung pojok mengikuti gaya tema (--frp).
