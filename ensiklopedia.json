@@ -1,6 +1,6 @@
 {
  "t": "Ensiklopedia",
- "d": "Kisah awal penciptaan, alam ruh, Nabi Adam عليه السلام, Iblis, malaikat, jin, takdir dan Lailatul Qadar beserta turunnya Al-Qur’an, ‘Arsy, tujuh langit, kisah Isra’ Mi‘raj, Malaikat Maut dan sakaratul maut, alam barzakh, tanda-tanda kiamat (termasuk sepuluh tanda besar dan tiupan sangkakala), serta hari kebangkitan (Mahsyar, hisab, mizan, dan Shirath), Ashabul A‘raf, telaga Nabi ﷺ dan syafa‘at, gambaran Surga dan Neraka, serta Dajjal, Imam Mahdi dan turunnya Nabi ‘Isa عليه السلام, perang akhir zaman (Malhamah Kubra, Konstantinopel, dan as-Sufyani), Dzulqarnain beserta Ya’juj dan Ma’juj, dan Harut–Marut — dituturkan ringan dari Al-Qur’an, hadits, dan penjelasan para ulama.",
+ "d": "Kisah awal penciptaan, alam ruh, Nabi Adam عليه السلام, Iblis, malaikat, jin, takdir dan Lailatul Qadar beserta turunnya Al-Qur’an, ‘Arsy, tujuh langit, kisah Isra’ Mi‘raj, Malaikat Maut dan sakaratul maut, alam barzakh, tanda-tanda kiamat (termasuk sepuluh tanda besar dan tiupan sangkakala), serta hari kebangkitan (Mahsyar, hisab, mizan, dan Shirath), Ashabul A‘raf, telaga Nabi ﷺ dan syafa‘at, gambaran Surga dan Neraka, serta Dajjal, Imam Mahdi dan turunnya Nabi ‘Isa عليه السلام, perang akhir zaman (Malhamah Kubra, Konstantinopel, dan as-Sufyani), Ashabul Kahfi, Dzulqarnain beserta Ya’juj dan Ma’juj, Harut–Marut, Qarun, Ashabul Ukhdud, serta Ashabul Fil dan burung Ababil — dituturkan ringan dari Al-Qur’an, hadits, dan penjelasan para ulama.",
  "k": [
   {
    "id": "awal-penciptaan",
@@ -2500,6 +2500,110 @@
    ]
   },
   {
+   "id": "ashabul-kahfi",
+   "t": "Ashabul Kahfi: Pemuda Gua yang Ditidurkan Allah",
+   "d": "Pemuda beriman yang lari dari penguasa zalim, ditidurkan di dalam gua selama tiga ratus sembilan tahun, lalu dibangunkan sebagai tanda bahwa kebangkitan itu pasti — beserta apa yang Al-Qur’an sebut dan tidak sebut tentang mereka.",
+   "b": [
+    {
+     "h": "Mengapa kisah ini diturunkan",
+     "p": [
+      "Kisah ini terdapat dalam surat **al-Kahf**, ayat 9–26. Menurut riwayat yang dinukil dari Ibnu Ishaq dalam *Sirah* Ibnu Hisham, para pemuka Quraisy mengutus orang kepada para pendeta Yahudi di Madinah untuk mencari pertanyaan yang dapat menguji kenabian Muhammad ﷺ. Mereka menyarankan tiga pertanyaan: tentang pemuda-pemuda yang pergi pada zaman dahulu, tentang seorang pengelana yang mencapai timur dan barat, dan tentang ruh.",
+      "Nabi ﷺ berjanji akan menjawab esok hari tanpa mengucapkan *insya Allah*, lalu wahyu tertunda beberapa hari. Setelah itu turunlah jawaban atas pertanyaan-pertanyaan tersebut, disertai teguran agar tidak berkata akan melakukan sesuatu besok kecuali dengan menyebut kehendak Allah (al-Kahf: 23–24). Para ulama mencatat bahwa kisah sebab turun ini bersumber dari sirah, bukan dari hadits yang sahih, tetapi isinya sering dijadikan penjelasan oleh para mufassir."
+     ],
+     "q": [
+      {
+       "a": "أَمْ حَسِبْتَ أَنَّ أَصْحَابَ الْكَهْفِ وَالرَّقِيمِ كَانُوا مِنْ آيَاتِنَا عَجَبًا",
+       "t": "Apakah engkau mengira bahwa orang-orang yang mendiami gua dan (yang punya) raqim itu, termasuk tanda-tanda (kebesaran) Kami yang mengherankan?",
+       "s": "QS. al-Kahf: 9"
+      }
+     ]
+    },
+    {
+     "h": "Pemuda yang beriman, hati yang diteguhkan",
+     "p": [
+      "Al-Qur’an menyebut mereka sebagai **fityah**, para pemuda, yang beriman kepada Tuhan mereka, lalu Allah menambah petunjuk kepada mereka. Mereka hidup di tengah kaum yang menyembah selain Allah. Allah meneguhkan hati mereka ketika mereka berdiri dan menyatakan bahwa Tuhan mereka adalah Tuhan langit dan bumi, dan mereka tidak akan menyeru tuhan selain Dia.",
+      "Mereka lalu saling menasihati untuk meninggalkan kaumnya dan berlindung di dalam gua, dengan keyakinan bahwa Allah akan melimpahkan rahmat-Nya dan menyiapkan kemudahan bagi urusan mereka. Para ulama menjelaskan bahwa ini contoh *hijrah* demi menjaga agama ketika tidak ada lagi jalan untuk menegakkannya secara terang-terangan."
+     ],
+     "q": [
+      {
+       "a": "إِنَّهُمْ فِتْيَةٌ آمَنُوا بِرَبِّهِمْ وَزِدْنَاهُمْ هُدًى ۝ وَرَبَطْنَا عَلَىٰ قُلُوبِهِمْ إِذْ قَامُوا فَقَالُوا رَبُّنَا رَبُّ السَّمَاوَاتِ وَالْأَرْضِ لَن نَّدْعُوَ مِن دُونِهِ إِلَٰهًا",
+       "t": "Sesungguhnya mereka adalah pemuda-pemuda yang beriman kepada Tuhan mereka, dan Kami tambahkan petunjuk kepada mereka. Dan Kami teguhkan hati mereka ketika mereka berdiri lalu berkata, “Tuhan kami adalah Tuhan langit dan bumi. Kami tidak akan menyeru Tuhan selain Dia.”",
+       "s": "QS. al-Kahf: 13–14"
+      },
+      {
+       "a": "إِذْ أَوَى الْفِتْيَةُ إِلَى الْكَهْفِ فَقَالُوا رَبَّنَا آتِنَا مِن لَّدُنكَ رَحْمَةً وَهَيِّئْ لَنَا مِنْ أَمْرِنَا رَشَدًا",
+       "t": "(Ingatlah) ketika pemuda-pemuda itu berlindung ke dalam gua lalu mereka berdoa, “Ya Tuhan kami, berikanlah rahmat kepada kami dari sisi-Mu dan sempurnakanlah petunjuk yang lurus bagi kami dalam urusan kami.”",
+       "s": "QS. al-Kahf: 10"
+      }
+     ]
+    },
+    {
+     "h": "Tertidur 309 tahun",
+     "p": [
+      "Allah menutup telinga mereka di dalam gua selama bertahun-tahun, yakni menidurkan mereka, dan memalingkan mereka ke kanan dan ke kiri selama tidur. Anjing mereka berbaring di ambang gua dengan kedua lengannya terbentang. Jika kamu melihat mereka, kata Al-Qur’an, tentu kamu akan lari dan dipenuhi rasa takut.",
+      "Lamanya tertidur disebutkan dalam ayat 25: **tiga ratus tahun, ditambah sembilan**. Sebagian ulama menjelaskan bahwa tiga ratus adalah hitungan tahun matahari dan tambahan sembilan adalah selisihnya bila dihitung tahun bulan. Namun Al-Qur’an menutup dengan menegaskan bahwa Allah lebih mengetahui berapa lama mereka tinggal."
+     ],
+     "q": [
+      {
+       "a": "وَلَبِثُوا فِي كَهْفِهِمْ ثَلَاثَ مِائَةٍ سِنِينَ وَازْدَادُوا تِسْعًا",
+       "t": "Dan mereka tinggal dalam gua selama tiga ratus tahun dan ditambah sembilan tahun.",
+       "s": "QS. al-Kahf: 25"
+      }
+     ]
+    },
+    {
+     "h": "Terbangun, dan uang perak yang membuka rahasia",
+     "p": [
+      "Ketika dibangunkan, mereka saling bertanya sudah berapa lama tinggal. Mereka menjawab sehari atau setengah hari, lalu menyerahkan jawabannya kepada Allah. Mereka mengutus salah seorang dengan uang perak ke kota untuk membeli makanan yang paling baik, dengan pesan agar berhati-hati dan tidak memberi tahu siapa pun tentang keberadaan mereka.",
+      "Namun kota itu telah berubah, dan uang yang dibawa mengundang kecurigaan. Dengan cara itu, Allah memperlihatkan keadaan mereka kepada manusia. Al-Qur’an menyebut tujuannya: **agar orang-orang tahu bahwa janji Allah itu benar dan bahwa hari kiamat tidak diragukan**. Orang-orang pada waktu itu berselisih tentang kebangkitan, dan kisah ini menjadi tanda yang nyata bahwa Allah mampu menghidupkan kembali yang telah mati."
+     ],
+     "q": [
+      {
+       "a": "وَكَذَٰلِكَ أَعْثَرْنَا عَلَيْهِمْ لِيَعْلَمُوا أَنَّ وَعْدَ اللَّهِ حَقٌّ وَأَنَّ السَّاعَةَ لَا رَيْبَ فِيهَا",
+       "t": "Dan demikianlah Kami perlihatkan (manusia) kepada mereka, agar mereka tahu bahwa janji Allah itu benar, dan bahwa (kedatangan) hari kiamat tidak diragukan.",
+       "s": "QS. al-Kahf: 21"
+      }
+     ]
+    },
+    {
+     "h": "Yang tidak dijelaskan Al-Qur’an",
+     "p": [
+      "Al-Qur’an **tidak menyebut** nama kota, nama raja, nama para pemuda, warna anjing mereka, atau pasti berapa jumlah mereka. Tentang jumlah, ayat 22 menyebut ada yang berkata tiga, ada yang lima, ada yang tujuh, masing-masing dengan anjingnya, lalu menegaskan bahwa Tuhan lebih mengetahui jumlah mereka dan yang mengetahuinya hanya sedikit. Ibnu Katsir menukil riwayat dari Ibnu ‘Abbas bahwa jumlah mereka tujuh, tetapi Allah memerintahkan agar tidak berdebat tentang hal itu.",
+      "Raqim pun diperselisihkan maknanya: papan bertulis yang memuat nama mereka, nama lembah, atau nama tempat. Sebagian mufassir menyebut kota Afsus (Ephesus) di Turki, dan ada beberapa tempat lain yang diklaim sebagai gua itu. Semua itu tidak punya dasar yang pasti, sehingga kita mengambil pelajarannya saja, bukan lokasinya. Nama-nama pemuda dan raja yang beredar dalam kisah populer berasal dari riwayat-riwayat Israiliyyat yang tidak dapat dipastikan kebenarannya."
+     ],
+     "q": [
+      {
+       "a": "فَلَا تُمَارِ فِيهِمْ إِلَّا مِرَاءً ظَاهِرًا وَلَا تَسْتَفْتِ فِيهِم مِّنْهُمْ أَحَدًا",
+       "t": "Karena itu janganlah engkau (Muhammad) berbantah tentang hal mereka, kecuali perbantahan lahir saja dan jangan engkau menanyakan tentang mereka (pemuda-pemuda itu) kepada seorang pun di antara mereka.",
+       "s": "QS. al-Kahf: 22"
+      }
+     ]
+    },
+    {
+     "h": "Masjid di atas gua dan peringatan Nabi ﷺ",
+     "p": [
+      "Ayat 21 menyebut bahwa orang-orang yang berkuasa atas urusan mereka berkata akan mendirikan sebuah **masjid** di sekitar gua itu. Ibnu Katsir dan sebagian ulama lain menegaskan bahwa Al-Qur’an menceritakan ucapan tersebut tanpa memujinya.",
+      "Sejalan dengan itu, hadits dari ‘Aisyah رضي الله عنها (al-Bukhari dan Muslim) menyebut bahwa Nabi ﷺ menjelang wafat bersabda, “Allah melaknat orang Yahudi dan Nasrani, mereka menjadikan kuburan nabi-nabi mereka sebagai masjid.” Beliau memperingatkan umatnya dari perbuatan itu. Karena itu kisah ini tidak boleh dijadikan alasan untuk membangun tempat ibadah di atas makam."
+     ]
+    },
+    {
+     "h": "Pelajaran, dan keutamaan surat al-Kahf",
+     "p": [
+      "Para ulama menyimpulkan beberapa pelajaran. Menjaga iman lebih utama daripada menjaga kenyamanan. Pertolongan Allah datang kepada orang yang berlindung kepada-Nya. Kebangkitan setelah kematian adalah hal yang mudah bagi Allah. Dan jangan berkata akan melakukan sesuatu tanpa mengucapkan *insya Allah*.",
+      "Hadits dari Abu ad-Darda’ رضي الله عنه (Muslim no. 809) menyebut bahwa siapa yang menghafal **sepuluh ayat pertama surat al-Kahf** terlindungi dari Dajjal. Hadits dari Abu Sa‘id al-Khudri (al-Hakim dan al-Baihaqi, dinilai sahih oleh al-Albani) menyebut bahwa siapa yang membaca surat al-Kahf pada hari Jumat, Allah menerangi baginya cahaya di antara dua Jumat. Kaitan surat ini dengan kisah Dajjal dibahas pada kartu Dajjal, dan kisah Dzulqarnain dalam surat yang sama dibahas pada kartunya."
+     ]
+    }
+   ],
+   "s": [
+    "QS. al-Kahf: 9–26",
+    "Ibnu Hisham, *as-Sirah an-Nabawiyyah* (riwayat Ibnu Ishaq) — sebab turun pertanyaan Quraisy tentang Ashabul Kahfi, Dzulqarnain, dan ruh",
+    "HR. al-Bukhari no. 435 dan Muslim no. 531 dari ‘Aisyah — laknat atas orang yang menjadikan kuburan nabi sebagai masjid",
+    "HR. Muslim no. 809 dari Abu ad-Darda’ — sepuluh ayat pertama al-Kahf dan perlindungan dari Dajjal",
+    "al-Hakim, *al-Mustadrak* dan al-Baihaqi dari Abu Sa‘id al-Khudri — membaca al-Kahf pada hari Jumat; dinilai sahih oleh al-Albani",
+    "Ibnu Katsir, *Tafsir al-Qur’an al-‘Azhim* (QS. al-Kahf: 9–26) dan *Al-Bidayah wan Nihayah*; ath-Thabari, *Jami‘ al-Bayan*; al-Qurthubi, *Al-Jami‘ li Ahkam al-Qur’an*"
+   ]
+  },
+  {
    "id": "dzulqarnain-yajuj-majuj",
    "t": "Dzulqarnain, Tembok Besi, serta Ya’juj dan Ma’juj",
    "d": "Kisah Dzulqarnain dalam surat al-Kahf, dinding besi dan tembaga yang menahan Ya’juj dan Ma’juj, serta kemunculan mereka sebagai salah satu tanda besar kiamat.",
@@ -2692,6 +2796,260 @@
     "HR. Ahmad no. 6178 dari Ibnu ‘Umar dan Ibnu Hibban no. 6186 — riwayat Harut, Marut, dan Zuhrah yang diperselisihkan keabsahannya",
     "al-Hakim, *al-Mustadrak* no. 3088–3089 — riwayat sahabat tentang kisah Zuhrah; pentahqiq edisi ar-Risalah mencatatnya sebagai israiliyyat",
     "Ibnu Katsir, *Tafsir al-Qur’an al-‘Azhim* (QS. al-Baqarah: 102) dan *Al-Bidayah wan Nihayah* — riwayat Harut dan Marut bersumber dari Ka‘b al-Ahbar; al-Qurthubi, *Al-Jami‘ li Ahkam al-Qur’an* (QS. al-Baqarah: 102) — penolakan atas kisah Zuhrah; ath-Thabari, *Jami‘ al-Bayan*"
+   ]
+  },
+  {
+   "id": "qarun",
+   "t": "Qarun: Pemilik Harta yang Ditelan Bumi",
+   "d": "Kisah orang dari kaum Musa yang diberi harta luar biasa, lalu menyombongkannya dan mengaku memperolehnya karena ilmunya sendiri, beserta nasihat kaumnya dan akhir hidupnya.",
+   "b": [
+    {
+     "h": "Dari kaum Musa, tetapi berbuat zalim",
+     "p": [
+      "Qarun disebut dalam surat al-Qashash ayat 76–82, dan namanya juga disebut bersama Fir‘aun dan Haman dalam surat al-‘Ankabut: 39 dan Ghafir: 23–24. Al-Qur’an menyebut bahwa ia **berasal dari kaum Musa عليه السلام**, tetapi ia berlaku zalim terhadap mereka.",
+      "Allah memberinya perbendaharaan harta yang **kunci-kuncinya saja terasa berat dipikul sekelompok orang yang kuat**. Gambaran ini menunjukkan betapa banyak hartanya. Sebagian riwayat tafsir menyebut hubungan kekerabatannya dengan Musa, tetapi detail itu berasal dari riwayat-riwayat Israiliyyat yang tidak dapat dipastikan."
+     ],
+     "q": [
+      {
+       "a": "إِنَّ قَارُونَ كَانَ مِن قَوْمِ مُوسَىٰ فَبَغَىٰ عَلَيْهِمْ ۖ وَآتَيْنَاهُ مِنَ الْكُنُوزِ مَا إِنَّ مَفَاتِحَهُ لَتَنُوءُ بِالْعُصْبَةِ أُولِي الْقُوَّةِ",
+       "t": "Sesungguhnya Qarun termasuk kaum Musa, tetapi dia berlaku zalim terhadap mereka. Dan Kami telah menganugerahkan kepadanya perbendaharaan harta yang kunci-kuncinya sungguh berat dipikul oleh sejumlah orang yang kuat-kuat.",
+       "s": "QS. al-Qashash: 76"
+      }
+     ]
+    },
+    {
+     "h": "Nasihat kaumnya: seimbang antara dunia dan akhirat",
+     "p": [
+      "Kaumnya menasihatinya dengan nasihat yang indah. Pertama, jangan **membanggakan diri** dengan kegembiraan yang sombong. Kedua, carilah negeri akhirat dengan harta yang Allah berikan. Ketiga, jangan lupakan bagianmu dari dunia. Keempat, berbuat baiklah sebagaimana Allah berbuat baik kepadamu. Kelima, jangan membuat kerusakan di bumi.",
+      "Nasihat ini menunjukkan bahwa Islam tidak melarang kekayaan. Para ulama menjelaskan bahwa yang tercela adalah sikap sombong dan kikir terhadap hak Allah dan sesama. Dalam hadits dari ‘Amr bin al-‘Ash رضي الله عنه (Ahmad, dinilai sahih oleh al-Albani), Nabi ﷺ bersabda bahwa sebaik-baik harta adalah harta yang dimiliki orang saleh."
+     ],
+     "q": [
+      {
+       "a": "وَابْتَغِ فِيمَا آتَاكَ اللَّهُ الدَّارَ الْآخِرَةَ ۖ وَلَا تَنسَ نَصِيبَكَ مِنَ الدُّنْيَا ۖ وَأَحْسِن كَمَا أَحْسَنَ اللَّهُ إِلَيْكَ ۖ وَلَا تَبْغِ الْفَسَادَ فِي الْأَرْضِ",
+       "t": "Dan carilah (pahala) negeri akhirat dengan apa yang telah dianugerahkan Allah kepadamu, tetapi janganlah kamu lupakan bagianmu di dunia dan berbuat baiklah (kepada orang lain) sebagaimana Allah telah berbuat baik kepadamu, dan janganlah kamu berbuat kerusakan di bumi.",
+       "s": "QS. al-Qashash: 77"
+      }
+     ]
+    },
+    {
+     "h": "“Aku mendapatkannya karena ilmuku”",
+     "p": [
+      "Qarun menjawab bahwa ia mendapatkan harta itu karena **ilmu yang ada padanya**. Dengan ucapan itu ia menisbatkan hartanya kepada kepandaian dirinya, bukan kepada karunia Allah. Para mufassir menjelaskan bahwa ia merasa dirinya pantas mendapatkannya.",
+      "Allah membantahnya: apakah ia tidak tahu bahwa Allah telah membinasakan umat-umat sebelumnya yang lebih kuat dan lebih banyak hartanya? Kekuatan dan harta tidak bisa melindungi seseorang dari ketetapan Allah."
+     ],
+     "q": [
+      {
+       "a": "قَالَ إِنَّمَا أُوتِيتُهُ عَلَىٰ عِلْمٍ عِندِي ۚ أَوَلَمْ يَعْلَمْ أَنَّ اللَّهَ قَدْ أَهْلَكَ مِن قَبْلِهِ مِنَ الْقُرُونِ مَنْ هُوَ أَشَدُّ مِنْهُ قُوَّةً وَأَكْثَرُ جَمْعًا",
+       "t": "Dia (Qarun) berkata, “Sesungguhnya aku diberi (harta itu), semata-mata karena ilmu yang ada padaku.” Tidakkah dia tahu bahwa Allah telah membinasakan umat-umat sebelumnya yang lebih kuat daripadanya, dan lebih banyak mengumpulkan harta?",
+       "s": "QS. al-Qashash: 78"
+      }
+     ]
+    },
+    {
+     "h": "Dua golongan yang melihatnya keluar dengan perhiasan",
+     "p": [
+      "Suatu hari Qarun keluar di hadapan kaumnya dengan kemegahan perhiasannya. Orang-orang yang menginginkan kehidupan dunia berkata, “Seandainya kami mempunyai seperti yang diberikan kepada Qarun. Sungguh, dia benar-benar memiliki keberuntungan yang besar.”",
+      "Sementara itu orang-orang yang diberi ilmu berkata, “Celakalah kamu! Pahala Allah lebih baik bagi orang yang beriman dan beramal saleh.” Dan itu hanya dianugerahkan kepada orang-orang yang sabar. Ayat ini menunjukkan perbedaan antara orang yang silau pada dunia dan orang yang ilmunya menjaga hatinya dari silau itu."
+     ],
+     "q": [
+      {
+       "a": "وَقَالَ الَّذِينَ أُوتُوا الْعِلْمَ وَيْلَكُمْ ثَوَابُ اللَّهِ خَيْرٌ لِّمَنْ آمَنَ وَعَمِلَ صَالِحًا وَلَا يُلَقَّاهَا إِلَّا الصَّابِرُونَ",
+       "t": "Dan orang-orang yang dianugerahi ilmu berkata, “Celakalah kamu! Ketahuilah, pahala Allah lebih baik bagi orang yang beriman dan beramal saleh, dan pahala itu hanya diperoleh oleh orang-orang yang sabar.”",
+       "s": "QS. al-Qashash: 80"
+      }
+     ]
+    },
+    {
+     "h": "Ditelan bumi bersama rumahnya",
+     "p": [
+      "Lalu Allah membenamkan Qarun beserta rumahnya ke dalam bumi. Ia tidak punya golongan yang dapat menolongnya selain Allah, dan ia tidak termasuk orang yang dapat membela diri. Orang-orang yang kemarin mengangankan kedudukannya berkata, “Aduhai, benarlah bahwa Allah melapangkan rezeki bagi siapa yang Dia kehendaki dan membatasinya. Seandainya Allah tidak melimpahkan karunia-Nya kepada kita, tentu Dia telah membenamkan kita pula.”",
+      "Al-Qur’an **tidak menyebut** banyak cerita yang beredar di tengah masyarakat, seperti rincian tuduhan palsu terhadap Musa atau jumlah orang yang memikul kuncinya. Cerita-cerita itu berasal dari Israiliyyat dan tidak perlu dijadikan pegangan."
+     ],
+     "q": [
+      {
+       "a": "فَخَسَفْنَا بِهِ وَبِدَارِهِ الْأَرْضَ فَمَا كَانَ لَهُ مِن فِئَةٍ يَنصُرُونَهُ مِن دُونِ اللَّهِ وَمَا كَانَ مِنَ الْمُنتَصِرِينَ",
+       "t": "Maka Kami benamkan dia bersama rumahnya ke dalam bumi. Maka tidak ada baginya satu golongan pun yang akan menolongnya selain Allah, dan dia tidak termasuk orang-orang yang dapat membela diri.",
+       "s": "QS. al-Qashash: 81"
+      }
+     ]
+    },
+    {
+     "h": "Pelajaran: harta sebagai ujian",
+     "p": [
+      "Nabi ﷺ bersabda dalam hadits dari Ka‘b bin ‘Iyadh رضي الله عنه (at-Tirmidzi, dinilai sahih oleh al-Albani) bahwa setiap umat memiliki fitnah (ujian), dan fitnah umatnya adalah **harta**. Dalam hadits Ibnu Mas‘ud (Muslim no. 91), beliau bersabda bahwa tidak masuk surga orang yang di dalam hatinya ada kesombongan sebesar biji sawi.",
+      "Hadits dari Abu Hurairah (al-Bukhari dan Muslim) menceritakan seorang laki-laki yang berjalan dengan membanggakan pakaiannya, lalu Allah membenamkannya ke bumi dan ia terus tenggelam sampai hari kiamat. Hadits ini bukan penjelasan tentang Qarun, tetapi menunjukkan bahwa kesombongan memiliki akibat yang berat. Pelajaran terbesarnya adalah bersyukur, menunaikan hak harta, dan tidak menisbatkan keberhasilan kepada diri sendiri."
+     ]
+    }
+   ],
+   "s": [
+    "QS. al-Qashash: 76–82; al-‘Ankabut: 39; Ghafir: 23–24",
+    "HR. at-Tirmidzi no. 2336 dari Ka‘b bin ‘Iyadh — fitnah umat ini adalah harta; dinilai sahih oleh al-Albani",
+    "HR. Muslim no. 91 dari ‘Abdullah bin Mas‘ud — kesombongan dan surga",
+    "HR. al-Bukhari no. 5789 dan Muslim no. 2088 dari Abu Hurairah — orang yang sombong dibenamkan ke bumi",
+    "HR. Ahmad dari ‘Amr bin al-‘Ash — sebaik-baik harta bagi orang saleh; dinilai sahih oleh al-Albani",
+    "Ibnu Katsir, *Tafsir al-Qur’an al-‘Azhim* (QS. al-Qashash: 76–82) dan *Qashash al-Anbiya’*; al-Qurthubi, *Al-Jami‘ li Ahkam al-Qur’an*; ath-Thabari, *Jami‘ al-Bayan*"
+   ]
+  },
+  {
+   "id": "ashabul-ukhdud",
+   "t": "Ashabul Ukhdud: Parit Api dan Anak yang Beriman",
+   "d": "Kisah orang-orang beriman yang dilemparkan ke parit api karena iman mereka, dari QS. al-Buruj dan hadits Shuhaib tentang anak muda, tukang sihir, dan sang raja.",
+   "b": [
+    {
+     "h": "Ayat yang menyebut mereka",
+     "p": [
+      "Surat al-Buruj dibuka dengan sumpah demi langit yang mempunyai gugusan bintang, lalu menyebut bahwa **terkutuklah Ashabul Ukhdud**. *Ukhdud* berarti parit atau galian di tanah. Ayat-ayat berikutnya menyebut bahwa parit itu berisi api yang menyala, dan bahwa para pelakunya duduk di tepinya sambil menyaksikan apa yang mereka lakukan kepada orang-orang beriman.",
+      "Al-Qur’an menyebut satu-satunya alasan mereka disiksa: orang-orang itu **beriman kepada Allah Yang Maha Perkasa lagi Maha Terpuji**. Surat ini turun di Makkah ketika kaum muslimin disiksa, sehingga menjadi penghibur dan penguat bagi mereka."
+     ],
+     "q": [
+      {
+       "a": "قُتِلَ أَصْحَابُ الْأُخْدُودِ ۝ النَّارِ ذَاتِ الْوَقُودِ ۝ إِذْ هُمْ عَلَيْهَا قُعُودٌ ۝ وَهُمْ عَلَىٰ مَا يَفْعَلُونَ بِالْمُؤْمِنِينَ شُهُودٌ ۝ وَمَا نَقَمُوا مِنْهُمْ إِلَّا أَن يُؤْمِنُوا بِاللَّهِ الْعَزِيزِ الْحَمِيدِ",
+       "t": "Binasalah orang-orang yang membuat parit (yang berisi api) yang berbahan bakar, ketika mereka duduk di sekitarnya, sedang mereka menyaksikan apa yang mereka perbuat terhadap orang-orang mukmin. Dan mereka menyiksa orang-orang mukmin itu hanya karena (orang-orang mukmin itu) beriman kepada Allah Yang Mahaperkasa, Maha Terpuji.",
+       "s": "QS. al-Buruj: 4–8"
+      }
+     ]
+    },
+    {
+     "h": "Kisah dalam hadits Shuhaib: raja, tukang sihir, dan seorang anak",
+     "p": [
+      "Rincian kisah ini disampaikan Nabi ﷺ dalam hadits panjang dari Shuhaib ar-Rumi رضي الله عنه (Muslim no. 3005). Dahulu ada seorang raja yang memiliki tukang sihir. Ketika sudah tua, tukang sihir itu meminta dikirimkan seorang anak muda agar ia ajari sihir. Dalam perjalanan, anak itu bertemu seorang rahib dan mendengarkan ajarannya. Ia kagum, lalu sering singgah kepada rahib itu hingga terlambat dan dipukul oleh tukang sihir dan keluarganya. Rahib itu menasihatinya agar mencari alasan yang aman.",
+      "Suatu hari seekor binatang besar menghalangi jalan manusia. Anak itu berkata dalam hati, “Hari ini aku akan tahu apakah rahib atau tukang sihir yang lebih benar,” lalu melempar batu seraya berkata, “Ya Allah, jika urusan rahib lebih Engkau cintai daripada urusan tukang sihir, matikanlah binatang ini.” Binatang itu mati, dan orang-orang mengenal anak itu. Rahib berkata kepadanya bahwa kini ia sudah lebih baik dari gurunya, dan ia akan diuji."
+     ]
+    },
+    {
+     "h": "Orang buta yang sembuh, dan raja yang murka",
+     "p": [
+      "Anak itu kemudian menyembuhkan orang buta dan penderita penyakit kulit. Salah seorang teman duduk raja yang buta datang membawa hadiah. Anak itu berkata bahwa ia tidak menyembuhkan siapa pun, melainkan Allah yang menyembuhkan. Jika orang itu beriman, ia akan berdoa. Orang itu beriman, dan Allah menyembuhkannya.",
+      "Ketika raja bertanya siapa yang mengembalikan penglihatannya, ia menjawab, “Tuhanku.” Raja berkata, “Apakah engkau punya Tuhan selain aku?” Ia menjawab, “Tuhanku dan Tuhanmu adalah Allah.” Raja menyiksanya sampai ia menunjuk anak itu, lalu anak itu disiksa sampai menunjuk rahib. Rahib dan teman duduk raja diperintah meninggalkan agama mereka. Keduanya menolak lalu digergaji hingga terbelah."
+     ]
+    },
+    {
+     "h": "Gunung, laut, dan syarat kematian sang anak",
+     "p": [
+      "Raja memerintahkan sekelompok prajurit membawa anak itu ke puncak gunung untuk dilempar bila ia tidak meninggalkan agamanya. Anak itu berdoa, “Ya Allah, cukupkanlah aku dari mereka dengan apa yang Engkau kehendaki.” Gunung berguncang dan para prajurit itu jatuh, sedangkan anak itu berjalan kembali kepada raja. Raja lalu mengirimnya ke tengah laut dengan perahu, dan ia berdoa dengan doa yang sama. Perahu itu terbalik dan mereka tenggelam, sedangkan ia kembali lagi.",
+      "Anak itu berkata kepada raja, “Engkau tidak akan dapat membunuhku sampai engkau melakukan apa yang aku perintahkan.” Ia menyuruh raja mengumpulkan orang di tanah lapang, menyalibnya pada batang pohon, mengambil anak panah dari tempat panahnya, lalu mengucapkan, “**Bismillahi Rabbil ghulam**” (dengan nama Allah, Tuhan anak ini), kemudian memanahnya. Raja melakukannya, dan anak panah mengenai pelipisnya. Anak itu meletakkan tangannya di tempat luka itu lalu wafat."
+     ]
+    },
+    {
+     "h": "“Kami beriman kepada Tuhan anak ini”",
+     "p": [
+      "Orang-orang berseru, “Kami beriman kepada Tuhan anak ini!” Para pembantu raja berkata, “Apa yang engkau takutkan telah terjadi, orang-orang telah beriman.” Raja memerintahkan agar digali parit di mulut jalan-jalan dan dinyalakan api di dalamnya. Barang siapa tidak kembali dari agamanya, dilemparkan ke dalamnya atau dikatakan kepadanya agar masuk sendiri.",
+      "Mereka melakukannya sampai datang seorang perempuan yang membawa bayinya. Ia ragu-ragu untuk masuk, lalu bayinya berkata, **“Wahai ibu, bersabarlah, sesungguhnya engkau di atas kebenaran.”** Demikian akhir kisah dalam riwayat Muslim.",
+      "Para ulama memahami bahwa kisah ini menunjukkan satu orang bisa menjadi sebab beriman satu kaum, dan bahwa kemenangan sejati ada pada iman, bukan pada selamat dari siksa dunia."
+     ]
+    },
+    {
+     "h": "Siapa dan di mana? Perbedaan pandangan para ulama",
+     "p": [
+      "Hadits Shuhaib tidak menyebut nama raja ataupun tempatnya. Sebagian riwayat sejarah, antara lain dari Ibnu Ishaq, mengaitkan peristiwa pembakaran orang beriman dengan kota **Najran** di Yaman pada masa raja Himyar Dzu Nuwas. Ibnu Katsir menyebut adanya beberapa riwayat tentang peristiwa ini, dan para ulama tidak memiliki kesimpulan yang pasti apakah semuanya satu peristiwa atau lebih dari satu.",
+      "Karena itu, yang kita pegang adalah apa yang disebut Al-Qur’an dan hadits sahih: ada orang-orang beriman yang disiksa di parit api karena iman mereka, dan Allah menjanjikan balasan bagi mereka serta azab bagi para pelakunya."
+     ]
+    },
+    {
+     "h": "Janji bagi yang bertaubat dan yang beriman",
+     "p": [
+      "Surat al-Buruj kemudian menyebut bahwa orang-orang yang menyiksa mukminin dan mukminat lalu tidak bertaubat akan mendapat azab Jahanam dan azab yang membakar. Sebaliknya, orang beriman dan beramal saleh mendapat surga yang dialiri sungai, dan itulah kemenangan yang besar.",
+      "Para ulama menjelaskan bahwa kata *lam yatuubuu* (belum bertaubat) menunjukkan pintu taubat tetap terbuka bahkan bagi pelaku kezaliman yang besar, selama mereka belum mati dalam keadaan kafir. Dalam keadaan dipaksa meninggalkan agama, syariat memberi keringanan untuk mengucapkan kata kekufuran dengan hati tetap tenang dalam iman, seperti dalam QS. an-Nahl: 106. Hadits Khabbab (al-Bukhari no. 3612) mengingatkan bahwa orang-orang beriman sebelum kita disiksa dengan sisir besi dan digergaji tetapi tidak berpaling dari agamanya."
+     ],
+     "q": [
+      {
+       "a": "إِنَّ الَّذِينَ آمَنُوا وَعَمِلُوا الصَّالِحَاتِ لَهُمْ جَنَّاتٌ تَجْرِي مِن تَحْتِهَا الْأَنْهَارُ ۚ ذَٰلِكَ الْفَوْزُ الْكَبِيرُ",
+       "t": "Sesungguhnya orang-orang yang beriman dan mengerjakan kebajikan, bagi mereka surga-surga yang di bawahnya mengalir sungai-sungai. Itulah kemenangan yang besar.",
+       "s": "QS. al-Buruj: 11"
+      }
+     ]
+    }
+   ],
+   "s": [
+    "QS. al-Buruj: 1–11; an-Nahl: 106",
+    "HR. Muslim no. 3005 dari Shuhaib ar-Rumi — kisah raja, tukang sihir, rahib, anak muda, dan Ashabul Ukhdud",
+    "HR. al-Bukhari no. 3612 dari Khabbab bin al-Aratt — kesabaran orang beriman sebelum kita atas siksaan",
+    "Ibnu Katsir, *Tafsir al-Qur’an al-‘Azhim* (QS. al-Buruj) dan *Al-Bidayah wan Nihayah* — keterangan tentang Najran dan Dzu Nuwas; an-Nawawi, *Syarh Shahih Muslim*; Ibnu Hisham, *as-Sirah an-Nabawiyyah* (riwayat Ibnu Ishaq)"
+   ]
+  },
+  {
+   "id": "ashabul-fil-ababil",
+   "t": "Ashabul Fil dan Burung Ababil: Pasukan Gajah yang Menyerbu Ka‘bah",
+   "d": "Abrahah, pasukan bergajah, dan burung-burung yang melempar batu dari tanah yang dibakar — peristiwa tahun kelahiran Nabi ﷺ, beserta apa yang sebenarnya dimaksud Al-Qur’an dengan “Ababil”.",
+   "b": [
+    {
+     "h": "Lima ayat yang menggambarkan peristiwa itu",
+     "p": [
+      "Surat al-Fil hanya terdiri dari lima ayat, tetapi menceritakan peristiwa besar yang sangat dikenal bangsa Arab. Allah bertanya kepada Nabi ﷺ, “Tidakkah engkau perhatikan bagaimana Tuhanmu telah bertindak terhadap pasukan bergajah?” Para ulama menjelaskan bahwa maksud *alam tara* di sini adalah *tidakkah engkau tahu*, karena peristiwanya begitu masyhur dan jejaknya masih tampak pada masa itu.",
+      "Allah menggagalkan tipu daya mereka, mengirimkan **burung yang berbondong-bondong** yang melempari mereka dengan batu dari *sijjil*, lalu menjadikan mereka seperti daun-daun yang dimakan (ulat)."
+     ],
+     "q": [
+      {
+       "a": "أَلَمْ تَرَ كَيْفَ فَعَلَ رَبُّكَ بِأَصْحَابِ الْفِيلِ ۝ أَلَمْ يَجْعَلْ كَيْدَهُمْ فِي تَضْلِيلٍ ۝ وَأَرْسَلَ عَلَيْهِمْ طَيْرًا أَبَابِيلَ ۝ تَرْمِيهِم بِحِجَارَةٍ مِّن سِجِّيلٍ ۝ فَجَعَلَهُمْ كَعَصْفٍ مَّأْكُولٍ",
+       "t": "Tidakkah engkau (Muhammad) perhatikan bagaimana Tuhanmu telah bertindak terhadap pasukan bergajah? Bukankah Dia telah menjadikan tipu daya mereka itu sia-sia? Dan Dia mengirimkan kepada mereka burung yang berbondong-bondong, yang melempari mereka dengan batu (berasal) dari tanah yang terbakar, sehingga mereka dijadikan-Nya seperti daun-daun yang dimakan (ulat).",
+       "s": "QS. al-Fil: 1–5"
+      }
+     ]
+    },
+    {
+     "h": "Abrahah dan gereja yang ia bangun",
+     "p": [
+      "Rincian peristiwa ini berasal dari riwayat sirah, terutama dari Ibnu Ishaq dalam *Sirah* Ibnu Hisham, bukan dari hadits yang sahih. Menurut riwayat itu, Abrahah al-Asyram adalah penguasa Yaman dari Habasyah (Ethiopia) yang beragama Nasrani. Ia membangun sebuah gereja besar di San‘a bernama *al-Qullais* dan berharap orang-orang Arab berhaji ke sana, bukan ke Ka‘bah.",
+      "Ketika seorang Arab menodai gereja itu, Abrahah bersumpah menghancurkan Ka‘bah. Ia berangkat dengan pasukan besar yang membawa gajah, dan gajah yang paling terkenal bernama **Mahmud**. Beberapa suku Arab di perjalanan mencoba melawan, tetapi dikalahkan. Yang dicela Al-Qur’an di sini adalah kezaliman dan niat menghancurkan rumah Allah, bukan agama tertentu."
+     ]
+    },
+    {
+     "h": "Abdul Muthalib dan unta-untanya",
+     "p": [
+      "Dalam riwayat sirah, ketika pasukan itu sampai dekat Makkah, mereka merampas unta milik penduduk, termasuk dua ratus ekor unta milik **‘Abdul Muthalib**, kakek Nabi ﷺ dan pemuka Quraisy. Ia menemui Abrahah dan hanya meminta untanya dikembalikan. Abrahah heran, karena ia datang untuk menghancurkan rumah ibadah mereka. ‘Abdul Muthalib menjawab, “Aku pemilik unta-unta itu, dan rumah itu punya Pemilik yang akan menjaganya.”",
+      "Orang-orang Quraisy kemudian keluar dari Makkah dan berlindung di bukit-bukit sekitarnya, sementara ‘Abdul Muthalib berdoa di dekat pintu Ka‘bah. Ini menunjukkan bahwa penduduk Makkah mengakui mereka tidak mampu melawan, dan menyerahkan penjagaan Ka‘bah kepada Allah."
+     ]
+    },
+    {
+     "h": "Gajah yang berlutut, dan burung yang datang",
+     "p": [
+      "Menurut riwayat sirah, ketika pasukan hendak memasuki Makkah, gajah Mahmud berlutut dan tidak mau berdiri ketika diarahkan ke Ka‘bah. Namun ketika dihadapkan ke arah Yaman atau ke arah lain, ia berdiri dan berjalan. Pada saat itulah Allah mengirimkan burung-burung dalam rombongan yang banyak.",
+      "Setiap burung membawa batu, dan batu itu menimpa pasukan dengan akibat yang mematikan. Pasukan itu cerai-berai, dan Abrahah sendiri terkena penyakit yang menggugurkan anggota tubuhnya sedikit demi sedikit hingga wafat di San‘a. Dalam riwayat Ibnu Ishaq dari ‘Aisyah رضي الله عنها disebutkan bahwa ia kemudian melihat penuntun dan penunggang gajah itu buta dan mengemis di Makkah."
+     ]
+    },
+    {
+     "h": "Apa itu “Ababil”?",
+     "p": [
+      "Kata *Ababil* dalam ayat bukan nama jenis burung. Para mufassir, di antaranya Ibnu ‘Abbas sebagaimana dinukil Ibnu Katsir, menjelaskan bahwa maknanya adalah **kelompok-kelompok** atau rombongan yang berdatangan berbondong-bondong. Jadi yang disebut Al-Qur’an adalah *thairan ababil*, yaitu burung-burung yang datang berkelompok. Sebutan “burung Ababil” sebagai nama spesies adalah pemahaman yang populer, tetapi kurang tepat.",
+      "Jenis burungnya, ukurannya, dan batu yang dibawanya juga tidak dijelaskan secara rinci dalam hadits sahih. *Sijjil* dipahami para ulama sebagai tanah yang dibakar hingga mengeras, dan Al-Qur’an menyebut akibat batu itu pada pasukan dengan perumpamaan daun yang dimakan atau hancur. Rincian lain di luar itu termasuk riwayat yang tidak dapat dipastikan."
+     ]
+    },
+    {
+     "h": "Tahun Gajah dan kelahiran Nabi ﷺ",
+     "p": [
+      "Peristiwa ini terjadi pada tahun yang kemudian dikenal sebagai **‘Amul Fil** (Tahun Gajah), sekitar 570–571 M. Mayoritas ulama berpendapat bahwa Nabi ﷺ dilahirkan pada tahun itu. Dalam hadits dari Qais bin Makhramah (at-Tirmidzi dan al-Hakim), ia berkata, “Aku dan Rasulullah ﷺ dilahirkan pada tahun Gajah.”",
+      "Banyak ulama melihat peristiwa ini sebagai pendahuluan bagi diutusnya Nabi ﷺ, karena Allah menjaga Ka‘bah beberapa tahun sebelum Nabi lahir dan sebelum rumah itu dibersihkan dari berhala. Surat Quraisy yang menyusul surat al-Fil juga mengingatkan kaum Quraisy bahwa Allah-lah Pemilik rumah ini yang memberi mereka makan dan rasa aman."
+     ],
+     "q": [
+      {
+       "a": "فَلْيَعْبُدُوا رَبَّ هَٰذَا الْبَيْتِ ۝ الَّذِي أَطْعَمَهُم مِّن جُوعٍ وَآمَنَهُم مِّنْ خَوْفٍ",
+       "t": "Maka hendaklah mereka menyembah Tuhan (pemilik) rumah ini (Ka‘bah), yang telah memberi makanan kepada mereka untuk menghilangkan lapar dan mengamankan mereka dari ketakutan.",
+       "s": "QS. Quraisy: 3–4"
+      }
+     ]
+    },
+    {
+     "h": "Gajah dalam hadits Nabi ﷺ",
+     "p": [
+      "Nabi ﷺ sendiri menyebut peristiwa ini dalam dua hadits sahih. Pada peristiwa Hudaibiyah, unta beliau, al-Qashwa’, berhenti dan tidak mau melanjutkan perjalanan. Para sahabat mengira unta itu mogok, tetapi Nabi ﷺ bersabda, “Al-Qashwa’ tidak mogok dan itu bukan wataknya, tetapi ia ditahan oleh Yang menahan gajah dari Makkah.” (al-Bukhari no. 2731 dan 2732).",
+      "Pada hari Fathu Makkah, beliau bersabda bahwa Allah menahan pasukan gajah dari Makkah dan menguasakan Rasul-Nya dan kaum mukminin atasnya, dan bahwa kehormatan Makkah kembali sebagaimana kehormatannya kemarin (al-Bukhari no. 112 dan Muslim no. 1355). Dari sini para ulama menyimpulkan bahwa kehormatan Makkah dan Ka‘bah ditetapkan oleh Allah, bukan oleh kekuatan manusia."
+     ]
+    },
+    {
+     "h": "Pelajaran dari kisah ini",
+     "p": [
+      "Pelajaran utamanya adalah bahwa kekuatan pasukan, gajah, dan jumlah tidak berarti bila Allah menghendaki lain. Kisah ini juga mengingatkan bahwa kezaliman yang disertai kesombongan akan berujung kehancuran, dan bahwa kaum beriman cukup bertawakal sambil melakukan apa yang mereka mampu, sebagaimana ‘Abdul Muthalib melindungi miliknya dan menyerahkan Ka‘bah kepada Pemiliknya.",
+      "Para ulama juga mengingatkan agar kita tidak berlebihan menambahkan rincian yang tidak jelas sumbernya, dan cukup memegang apa yang Al-Qur’an dan hadits sahih sebut: pasukan bergajah datang, tipu daya mereka digagalkan, dan Allah mengirim burung-burung yang melempari mereka."
+     ]
+    }
+   ],
+   "s": [
+    "QS. al-Fil: 1–5; Quraisy: 1–4",
+    "HR. al-Bukhari no. 2731 dan 2732 dari al-Miswar bin Makhramah dan Marwan — unta Nabi ﷺ ditahan oleh Yang menahan gajah dari Makkah",
+    "HR. al-Bukhari no. 112 dan Muslim no. 1355 dari Abu Hurairah — Allah menahan gajah dari Makkah; khutbah Fathu Makkah",
+    "HR. at-Tirmidzi dan al-Hakim dari Qais bin Makhramah — kelahiran pada tahun Gajah",
+    "Ibnu Hisham, *as-Sirah an-Nabawiyyah* (riwayat Ibnu Ishaq) — Abrahah, gajah Mahmud, ‘Abdul Muthalib, dan kejadian di Mughammis",
+    "Ibnu Katsir, *Tafsir al-Qur’an al-‘Azhim* (QS. al-Fil) dan *Al-Bidayah wan Nihayah*; ath-Thabari, *Jami‘ al-Bayan*; al-Qurthubi, *Al-Jami‘ li Ahkam al-Qur’an*"
    ]
   }
  ]
