@@ -1,6 +1,6 @@
 {
  "t": "Ensiklopedia",
- "d": "Kisah awal penciptaan, alam ruh, dan kehidupan sebelum Nabi Adam ﷺ — dituturkan ringan dari Al-Qur’an, hadits, dan penjelasan para ulama.",
+ "d": "Kisah awal penciptaan, alam ruh, Nabi Adam عليه السلام, Iblis, dan anak-anak Adam — dituturkan ringan dari Al-Qur’an, hadits, dan penjelasan para ulama.",
  "k": [
   {
    "id": "awal-penciptaan",
@@ -191,6 +191,332 @@
     "Al-Qurthubi, *Al-Jami‘ li Ahkam al-Qur’an* — tafsir QS. al-Baqarah: 30 (hukum pengangkatan khalifah)",
     "Al-Baihaqi, *Al-Asma’ wash-Shifat* — atsar Ibnu ‘Abbas tentang tujuh bumi (dinilai sanadnya sahih tetapi syadz)",
     "Ibnu Katsir, *Al-Bidayah wan Nihayah*, juz 1 — kisah penciptaan jin, Iblis, dan Adam"
+   ]
+  },
+  {
+   "id": "penciptaan-adam",
+   "t": "Penciptaan Adam: Dari Tanah hingga Ditiupkan Ruh",
+   "d": "Bagaimana Allah menciptakan manusia pertama, apa yang diajarkan kepadanya, dan mengapa para malaikat diperintah bersujud.",
+   "b": [
+    {
+     "h": "Cahaya, api, dan tanah",
+     "p": [
+      "Dalam hadits dari ‘Aisyah رضي الله عنها, Nabi ﷺ bersabda bahwa **malaikat diciptakan dari cahaya, jin diciptakan dari nyala api, dan Adam diciptakan dari apa yang telah disifatkan kepada kalian**, yaitu dari tanah. Tiga makhluk, tiga bahan asal, dan masing-masing memiliki tugas dan ujiannya sendiri.",
+      "Penting dipahami bahwa asal bahan ini menjelaskan *asal-usul*, bukan *kemuliaan*. Kita akan melihat di kartu berikutnya bahwa Iblis tersandung justru karena menjadikan bahan asalnya sebagai alasan merasa lebih baik."
+     ],
+     "q": [
+      {
+       "a": "وَلَقَدْ خَلَقْنَا الْإِنسَانَ مِن صَلْصَالٍ مِّنْ حَمَإٍ مَّسْنُونٍ",
+       "t": "Dan sungguh, Kami telah menciptakan manusia dari tanah liat kering yang berasal dari lumpur hitam yang diberi bentuk.",
+       "s": "QS. al-Hijr: 26"
+      }
+     ]
+    },
+    {
+     "h": "Tahapan tanah, dan segenggam dari seluruh bumi",
+     "p": [
+      "Al-Qur’an menyebut bahan penciptaan Adam dengan beberapa istilah yang menggambarkan tahapan: **turab** (tanah), **thin** (tanah basah), **hama’ masnun** (lumpur hitam yang berbentuk), dan **shalshal** (tanah liat kering yang berbunyi bila diketuk). Para mufasir seperti ath-Thabari dan Ibnu Katsir memahami ini sebagai tahapan-tahapan dari bahan yang sama, sebelum menjadi jasad yang sempurna.",
+      "Hadits dari Abu Musa al-Asy‘ari رضي الله عنه menyebut bahwa Allah menciptakan Adam dari **segenggam tanah yang diambil dari seluruh bumi**, sehingga anak cucu Adam datang sesuai tanahnya: ada yang merah, putih, dan hitam, ada yang lembut dan ada yang kasar, ada yang baik dan ada yang buruk. Para ulama menjadikannya gambaran bahwa keragaman manusia berasal dari satu bapak yang sama."
+     ],
+     "q": [
+      {
+       "a": "خَلَقَ الْإِنسَانَ مِن صَلْصَالٍ كَالْفَخَّارِ ۝ وَخَلَقَ الْجَانَّ مِن مَّارِجٍ مِّن نَّارٍ",
+       "t": "Dia menciptakan manusia dari tanah kering seperti tembikar, dan Dia menciptakan jin dari nyala api tanpa asap.",
+       "s": "QS. ar-Rahman: 14–15"
+      }
+     ]
+    },
+    {
+     "h": "Ditiupkan ruh dan disempurnakan",
+     "p": [
+      "Setelah jasad Adam disempurnakan bentuknya, Allah **meniupkan ruh-Nya** kepadanya. Ia pun hidup, mendengar, melihat, dan berpikir. Penyandaran ruh kepada Allah (*min ruhi*) dipahami para ulama sebagai penyandaran untuk memuliakan, bukan bahwa ruh adalah bagian dari Dzat Allah. Ruh adalah makhluk yang hakikatnya hanya Allah yang mengetahui (QS. al-Isra’: 85).",
+      "Dalam hadits dari Anas bin Malik رضي الله عنه, Nabi ﷺ menceritakan bahwa Iblis pernah mengitari jasad Adam yang masih berupa bentuk, dan ketika melihat bahwa ia berongga, Iblis tahu bahwa makhluk ini *tidak mampu menahan dirinya*. Para ulama memahaminya sebagai isyarat kelemahan manusia terhadap hawa nafsu, sekaligus peringatan bahwa Iblis sudah mengincar Adam sejak awal."
+     ],
+     "q": [
+      {
+       "a": "ثُمَّ سَوَّاهُ وَنَفَخَ فِيهِ مِن رُّوحِهِ ۖ وَجَعَلَ لَكُمُ السَّمْعَ وَالْأَبْصَارَ وَالْأَفْئِدَةَ",
+       "t": "Kemudian Dia menyempurnakannya dan meniupkan ke dalamnya sebagian dari ruh-Nya, dan Dia menjadikan bagimu pendengaran, penglihatan, dan hati.",
+       "s": "QS. as-Sajdah: 9"
+      }
+     ]
+    },
+    {
+     "h": "Ilmu yang diajarkan kepada Adam",
+     "p": [
+      "Allah kemudian **mengajarkan kepada Adam nama-nama seluruhnya**, lalu memperlihatkannya kepada para malaikat dan meminta mereka menyebutkannya. Para malaikat mengaku tidak tahu kecuali apa yang Allah ajarkan kepada mereka, sedangkan Adam dapat menyebutkannya.",
+      "Ibnu ‘Abbas رضي الله عنهما, sebagaimana dikutip ath-Thabari dan Ibnu Katsir, menafsirkan “nama-nama” itu secara luas, yakni nama segala sesuatu, besar maupun kecil. Inilah jawaban Allah atas keheranan para malaikat di kartu sebelumnya: manusia diberi kelebihan ilmu, dan ilmulah yang membuatnya layak mengemban amanah sebagai khalifah."
+     ],
+     "q": [
+      {
+       "a": "وَعَلَّمَ آدَمَ الْأَسْمَاءَ كُلَّهَا ثُمَّ عَرَضَهُمْ عَلَى الْمَلَائِكَةِ",
+       "t": "Dan Dia mengajarkan kepada Adam nama-nama (benda) seluruhnya, kemudian mengemukakannya kepada para malaikat.",
+       "s": "QS. al-Baqarah: 31"
+      }
+     ]
+    },
+    {
+     "h": "Malaikat bersujud, dan salam yang pertama",
+     "p": [
+      "Allah memerintahkan para malaikat untuk **bersujud kepada Adam**. Para ulama menjelaskan bahwa ini sujud penghormatan dan ketaatan kepada perintah Allah, bukan sujud ibadah kepada Adam. Seluruh malaikat bersujud, kecuali Iblis.",
+      "Hadits dari Abu Hurairah رضي الله عنه menyebut bahwa setelah menciptakan Adam, Allah menyuruhnya memberi salam kepada sekelompok malaikat yang sedang duduk. Adam mengucapkan “*Assalamu ‘alaikum*”, dan mereka menjawab “*Assalamu ‘alaika wa rahmatullah*”. Allah berfirman bahwa itulah salam bagi Adam dan keturunannya. Dalam hadits yang sama disebutkan bahwa Adam diciptakan setinggi enam puluh hasta, dan makhluk terus berkurang tinggi tubuhnya hingga masa kini."
+     ],
+     "q": [
+      {
+       "a": "إِذْ قَالَ رَبُّكَ لِلْمَلَائِكَةِ إِنِّي خَالِقٌ بَشَرًا مِّن طِينٍ ۝ فَإِذَا سَوَّيْتُهُ وَنَفَخْتُ فِيهِ مِن رُّوحِي فَقَعُوا لَهُ سَاجِدِينَ",
+       "t": "(Ingatlah) ketika Tuhanmu berfirman kepada para malaikat: “Sesungguhnya Aku akan menciptakan manusia dari tanah. Maka apabila telah Aku sempurnakan kejadiannya dan Aku tiupkan ruh-Ku kepadanya, hendaklah kamu tersungkur dengan bersujud kepadanya.”",
+       "s": "QS. Shad: 71–72"
+      }
+     ]
+    }
+   ],
+   "s": [
+    "QS. al-Hijr: 26–29; ar-Rahman: 14–15; as-Sajdah: 7–9; Shad: 71–72; al-Baqarah: 30–34; al-Isra’: 85; Ali ‘Imran: 59",
+    "HR. Muslim no. 2996 dari ‘Aisyah — malaikat dari cahaya, jin dari nyala api, Adam dari apa yang telah disifatkan",
+    "HR. Abu Dawud no. 4693 dan at-Tirmidzi no. 2955 dari Abu Musa al-Asy‘ari — Adam diciptakan dari segenggam tanah seluruh bumi",
+    "HR. Muslim no. 2611 dari Anas bin Malik — Iblis mengitari jasad Adam dan mendapatinya berongga",
+    "HR. al-Bukhari no. 3326 dan Muslim no. 2841 dari Abu Hurairah — Adam diciptakan setinggi enam puluh hasta dan salam pertama",
+    "Ath-Thabari, *Jami‘ al-Bayan* dan Ibnu Katsir, *Tafsir al-Qur’an al-‘Azhim* — tafsir QS. al-Baqarah: 30–34 dan al-Hijr: 26–29",
+    "Al-Qurthubi, *Al-Jami‘ li Ahkam al-Qur’an* — tafsir QS. al-Baqarah: 31 dan Shad: 71–72",
+    "Ibnu Katsir, *Al-Bidayah wan Nihayah*, juz 1 — penciptaan Adam"
+   ]
+  },
+  {
+   "id": "iblis-asal-usul",
+   "t": "Iblis: Asal-Usul dan Kesombongannya",
+   "d": "Siapa Iblis sebenarnya, mengapa ia menolak sujud, dan bagaimana sumpahnya untuk menggoda manusia dimulai.",
+   "b": [
+    {
+     "h": "Iblis itu jin, bukan malaikat",
+     "p": [
+      "Al-Qur’an menjelaskan dengan tegas bahwa Iblis **termasuk golongan jin**, lalu ia durhaka terhadap perintah Tuhannya. Para malaikat sendiri digambarkan tidak mendurhakai Allah dan selalu mengerjakan apa yang diperintahkan (QS. at-Tahrim: 6), sehingga kedurhakaan Iblis menunjukkan bahwa ia bukan malaikat.",
+      "Al-Hasan al-Bashri, sebagaimana dikutip Ibnu Katsir, berkata bahwa Iblis tidak pernah menjadi malaikat sedikit pun; ia adalah asal usul jin sebagaimana Adam adalah asal usul manusia. Ada pula riwayat dari Ibnu ‘Abbas رضي الله عنهما bahwa ia semula berasal dari satu kabilah malaikat yang disebut jin. Namun pendapat yang lebih kuat dan lebih sesuai dengan ayat adalah bahwa ia dari kalangan jin, dan ia ikut diperintah bersujud karena berada di tengah para malaikat saat itu."
+     ],
+     "q": [
+      {
+       "a": "إِلَّا إِبْلِيسَ كَانَ مِنَ الْجِنِّ فَفَسَقَ عَنْ أَمْرِ رَبِّهِ",
+       "t": "Kecuali Iblis; dia adalah dari golongan jin, maka ia mendurhakai perintah Tuhannya.",
+       "s": "QS. al-Kahfi: 50"
+      }
+     ]
+    },
+    {
+     "h": "Mengapa Iblis menolak sujud?",
+     "p": [
+      "Ketika ditanya apa yang menghalanginya bersujud, jawaban Iblis menyingkap isi hatinya: ia merasa lebih baik daripada Adam karena ia dari api, sedangkan Adam dari tanah. Ia menyandarkan penilaiannya pada **bahan asal**, dan memakai akalnya untuk menandingi perintah Allah yang jelas.",
+      "Para ulama tafsir menyebut dua dosa sekaligus: **kesombongan** (*kibr*) dan **membantah perintah dengan logika sendiri**. Nabi ﷺ menjelaskan hakikat kesombongan dalam hadits dari Ibnu Mas‘ud رضي الله عنه: **menolak kebenaran dan meremehkan orang lain**. Iblis melakukan keduanya, ia menolak perintah yang benar dan meremehkan Adam."
+     ],
+     "q": [
+      {
+       "a": "قَالَ مَا مَنَعَكَ أَلَّا تَسْجُدَ إِذْ أَمَرْتُكَ ۖ قَالَ أَنَا خَيْرٌ مِّنْهُ خَلَقْتَنِي مِن نَّارٍ وَخَلَقْتَهُ مِن طِينٍ",
+       "t": "(Allah) berfirman: “Apa yang menghalangimu untuk bersujud ketika Aku menyuruhmu?” Ia menjawab: “Aku lebih baik daripada dia. Engkau ciptakan aku dari api, sedangkan dia Engkau ciptakan dari tanah.”",
+       "s": "QS. al-A‘raf: 12"
+      }
+     ]
+    },
+    {
+     "h": "Terusir, dan sumpah untuk menggoda",
+     "p": [
+      "Allah mengeluarkan Iblis dari kedudukannya dan menjadikannya terkutuk. Namun Iblis tidak bertaubat. Ia justru meminta ditangguhkan sampai hari manusia dibangkitkan, dan Allah mengabulkan permintaan itu sebagai bagian dari ujian bagi manusia, bukan karena Iblis mulia.",
+      "Iblis lalu bersumpah akan menghalangi manusia dari jalan lurus, mendatangi mereka dari depan, belakang, kanan, dan kiri, dan akan menyesatkan mereka semuanya, **kecuali hamba-hamba Allah yang ikhlas**. Perhatikan bahwa ia sendiri mengakui adanya golongan yang tidak bisa ia sentuh. Allah pun menegaskan bahwa Iblis tidak punya kekuasaan atas hamba-hamba-Nya, kecuali orang yang mengikutinya."
+     ],
+     "q": [
+      {
+       "a": "قَالَ فَبِعِزَّتِكَ لَأُغْوِيَنَّهُمْ أَجْمَعِينَ ۝ إِلَّا عِبَادَكَ مِنْهُمُ الْمُخْلَصِينَ",
+       "t": "Iblis berkata: “Demi kemuliaan-Mu, aku akan menyesatkan mereka semuanya, kecuali hamba-hamba-Mu yang ikhlas di antara mereka.”",
+       "s": "QS. Shad: 82–83"
+      }
+     ]
+    },
+    {
+     "h": "Musuh yang nyata, dan cara menghadapinya",
+     "p": [
+      "Al-Qur’an memerintahkan manusia untuk **menjadikan setan sebagai musuh**, karena ia mengajak golongannya agar menjadi penghuni neraka. Para ulama sering menyebut bahwa pelajaran terbesar dari Iblis adalah bahaya *kibr*: dosa yang dimulai dari merasa lebih baik daripada orang lain.",
+      "Cara menghadapinya diajarkan secara praktis. Allah memerintahkan berlindung kepada-Nya (*isti‘adzah*) dari godaan setan. Dalam hadits dari Abu Hurairah رضي الله عنه, Nabi ﷺ menyebut bahwa siapa yang membaca *Laa ilaaha illallaahu wahdahu laa syarika lah, lahul mulku wa lahul hamdu wa huwa ‘ala kulli syai’in qadir* seratus kali dalam sehari, ia terlindungi dari setan sepanjang hari itu. Di akhirat, Iblis sendiri akan berkata kepada para pengikutnya agar mereka tidak mencelanya, melainkan mencela diri mereka sendiri."
+     ],
+     "q": [
+      {
+       "a": "إِنَّ الشَّيْطَانَ لَكُمْ عَدُوٌّ فَاتَّخِذُوهُ عَدُوًّا ۚ إِنَّمَا يَدْعُو حِزْبَهُ لِيَكُونُوا مِنْ أَصْحَابِ السَّعِيرِ",
+       "t": "Sesungguhnya setan itu musuh bagimu, maka perlakukanlah ia sebagai musuh. Sesungguhnya setan itu hanya mengajak golongannya agar menjadi penghuni neraka yang menyala-nyala.",
+       "s": "QS. Fathir: 6"
+      }
+     ]
+    }
+   ],
+   "s": [
+    "QS. al-A‘raf: 11–18; al-Hijr: 28–42; al-Isra’: 61–65; al-Kahfi: 50; Shad: 71–85; Fathir: 6; at-Tahrim: 6; Ibrahim: 22",
+    "HR. Muslim no. 91 dari ‘Abdullah bin Mas‘ud — kesombongan adalah menolak kebenaran dan meremehkan manusia",
+    "HR. al-Bukhari no. 3293 dan Muslim no. 2691 dari Abu Hurairah — dzikir seratus kali sebagai perlindungan dari setan",
+    "Ath-Thabari, *Jami‘ al-Bayan* — tafsir QS. al-Baqarah: 34, al-A‘raf: 11–18, dan al-Kahfi: 50",
+    "Ibnu Katsir, *Tafsir al-Qur’an al-‘Azhim* — tafsir QS. al-Kahfi: 50 (riwayat al-Hasan al-Bashri) dan al-A‘raf: 12",
+    "Al-Qurthubi, *Al-Jami‘ li Ahkam al-Qur’an* — tafsir QS. al-Baqarah: 34 (asal-usul Iblis dan hakikat kekafirannya)",
+    "Ibnu Katsir, *Al-Bidayah wan Nihayah*, juz 1 — kisah penciptaan jin, Iblis, dan Adam"
+   ]
+  },
+  {
+   "id": "hawa-surga-turun-ke-bumi",
+   "t": "Hawa, Surga, dan Turunnya ke Bumi",
+   "d": "Penciptaan Hawa, larangan di surga, bisikan Iblis, taubat Adam, dan makna turunnya manusia pertama ke bumi.",
+   "b": [
+    {
+     "h": "Penciptaan Hawa",
+     "p": [
+      "Al-Qur’an menyebut bahwa Allah menciptakan manusia dari **satu jiwa** (*nafs wahidah*) dan menciptakan darinya pasangannya. Nama “Hawa” sendiri tidak disebut dalam Al-Qur’an. Nama itu dikenal dari tradisi riwayat dan tafsir.",
+      "Hadits dari Abu Hurairah رضي الله عنه menyebut bahwa **wanita diciptakan dari tulang rusuk**. Sebagian ulama memahami ini secara harfiah, bahwa Hawa diciptakan dari tulang rusuk Adam. Sebagian yang lain memahaminya sebagai perumpamaan tentang tabiat wanita, yang perlu dihadapi dengan lembut. Maksud utama hadits ini adalah wasiat untuk memperlakukan istri dengan baik, dan kedua pemahaman tersebut sama-sama menjadikannya pegangan bagi para suami."
+     ],
+     "q": [
+      {
+       "a": "يَا أَيُّهَا النَّاسُ اتَّقُوا رَبَّكُمُ الَّذِي خَلَقَكُم مِّن نَّفْسٍ وَاحِدَةٍ وَخَلَقَ مِنْهَا زَوْجَهَا",
+       "t": "Wahai manusia, bertakwalah kepada Tuhanmu yang telah menciptakan kamu dari satu jiwa, dan darinya Dia menciptakan pasangannya.",
+       "s": "QS. an-Nisa’: 1"
+      }
+     ]
+    },
+    {
+     "h": "Tinggal di surga, dengan satu larangan",
+     "p": [
+      "Allah berfirman kepada Adam agar ia dan istrinya **tinggal di surga** dan makan dari mana pun mereka mau, kecuali satu pohon yang tidak boleh didekati. Dalam hadits dari Abu Hurairah رضي الله عنه disebutkan bahwa hari Jumat adalah hari ketika Adam diciptakan, dimasukkan ke surga, dan dikeluarkan darinya.",
+      "Surga yang dimaksud, menurut pendapat yang dipegang banyak ulama ahlus sunnah, adalah surga yang sebenarnya (surga tempat kenikmatan). Ibnu Qayyim membahas panjang pendapat ini dalam *Miftah Dar as-Sa‘adah*. Sebagian ulama lain berpendapat bahwa itu kebun di bumi atau di tempat yang tinggi. Para ulama sepakat bahwa pembahasan ini bukan perkara akidah pokok. Adapun jenis pohonnya, Al-Qur’an tidak menyebutkannya. Ath-Thabari menegaskan bahwa tidak perlu menentukannya karena tidak ada dalil sahih yang pasti."
+     ],
+     "q": [
+      {
+       "a": "وَقُلْنَا يَا آدَمُ اسْكُنْ أَنتَ وَزَوْجُكَ الْجَنَّةَ وَكُلَا مِنْهَا رَغَدًا حَيْثُ شِئْتُمَا وَلَا تَقْرَبَا هَٰذِهِ الشَّجَرَةَ فَتَكُونَا مِنَ الظَّالِمِينَ",
+       "t": "Dan Kami berfirman: “Wahai Adam, tinggallah engkau dan istrimu di surga, dan makanlah dari (buah)nya yang banyak lagi baik di mana saja yang kamu sukai. Tetapi janganlah kamu dekati pohon ini, nanti kamu termasuk orang-orang yang zalim.”",
+       "s": "QS. al-Baqarah: 35"
+      }
+     ]
+    },
+    {
+     "h": "Bisikan Iblis, dan siapa yang disalahkan?",
+     "p": [
+      "Iblis membisikkan kepada keduanya bahwa larangan itu hanyalah agar mereka tidak menjadi **malaikat** atau tidak hidup **kekal**. Ia bahkan bersumpah bahwa ia penasihat yang tulus. Mereka pun tergelincir.",
+      "Satu hal yang patut dicatat: Al-Qur’an **tidak menyalahkan Hawa sendirian**. Ayat-ayatnya menyandarkan ketergelinciran itu kepada *keduanya* (*fa-azallahuma*, QS. al-Baqarah: 36). Bahkan dalam QS. Thaha: 121 yang disebut adalah Adam. Cerita bahwa Hawa menjadi penyebab terusirnya manusia dari surga tidak berasal dari Al-Qur’an. Kisah yang mirip dengan itu banyak beredar dalam tradisi Ahlul Kitab."
+     ],
+     "q": [
+      {
+       "a": "فَوَسْوَسَ لَهُمَا الشَّيْطَانُ لِيُبْدِيَ لَهُمَا مَا وُورِيَ عَنْهُمَا مِن سَوْآتِهِمَا وَقَالَ مَا نَهَاكُمَا رَبُّكُمَا عَنْ هَٰذِهِ الشَّجَرَةِ إِلَّا أَن تَكُونَا مَلَكَيْنِ أَوْ تَكُونَا مِنَ الْخَالِدِينَ",
+       "t": "Maka setan membisikkan pikiran jahat kepada keduanya untuk menampakkan aurat mereka yang selama ini tertutup, dan ia berkata: “Tuhanmu hanya melarangmu dari pohon ini agar kamu berdua tidak menjadi malaikat atau tidak menjadi orang yang kekal (dalam surga).”",
+       "s": "QS. al-A‘raf: 20"
+      }
+     ]
+    },
+    {
+     "h": "Taubat Adam dan Hawa",
+     "p": [
+      "Setelah menyadari kesalahannya, Adam dan Hawa tidak berdalih dan tidak menyalahkan siapa pun. Keduanya mengakui kezaliman terhadap diri sendiri dan memohon ampun. Ibnu ‘Abbas رضي الله عنهما dan para mufasir lain, sebagaimana dikutip ath-Thabari dan Ibnu Katsir, memahami bahwa “beberapa kalimat” yang Adam terima dari Tuhannya (QS. al-Baqarah: 37) adalah doa ini. Allah pun menerima taubat keduanya dan memberi petunjuk.",
+      "Perbedaan dengan Iblis sangat jelas: **Adam bersalah lalu bertaubat, Iblis bersalah lalu membangkang**. Hadits dari Abu Hurairah رضي الله عنه menceritakan perdebatan Adam dan Musa عليهما السلام, ketika Musa menanyakan mengapa Adam mengeluarkan manusia dari surga. Adam menjawab bahwa hal itu sudah tertulis sebagai takdir sebelum ia diciptakan, dan Nabi ﷺ bersabda bahwa Adam *mengalahkan* Musa dalam hujjah. Para ulama menjelaskan bahwa takdir tidak boleh dijadikan alasan untuk membenarkan maksiat yang sedang dilakukan. Adam mengingatkannya setelah ia bertaubat dan dosanya diampuni."
+     ],
+     "q": [
+      {
+       "a": "قَالَا رَبَّنَا ظَلَمْنَا أَنفُسَنَا وَإِن لَّمْ تَغْفِرْ لَنَا وَتَرْحَمْنَا لَنَكُونَنَّ مِنَ الْخَاسِرِينَ",
+       "t": "Keduanya berkata: “Ya Tuhan kami, kami telah menzalimi diri kami sendiri. Jika Engkau tidak mengampuni kami dan tidak merahmati kami, niscaya kami termasuk orang-orang yang merugi.”",
+       "s": "QS. al-A‘raf: 23"
+      }
+     ]
+    },
+    {
+     "h": "Turun ke bumi: hukuman, atau awal tugas?",
+     "p": [
+      "Setelah itu Allah memerintahkan mereka turun ke bumi, dan di sana ada tempat tinggal dan kesenangan sampai batas waktu. Allah juga berjanji bahwa petunjuk akan datang kepada mereka, dan **siapa yang mengikuti petunjuk-Nya tidak akan takut dan tidak akan bersedih**.",
+      "Sebagian ulama melihat bahwa turunnya Adam bukan semata-mata hukuman. Allah telah menyatakan rencana menjadikan khalifah di *bumi* sebelum Adam masuk surga (QS. al-Baqarah: 30), sehingga bumi memang tempat tugas manusia, dan surga adalah tempat singgah awal sekaligus pelajaran. Mengenai tempat turunnya Adam dan Hawa, riwayat yang menyebut lokasi tertentu seperti India atau Jabal Rahmah tidak memiliki dasar sahih, dan Al-Qur’an tidak menyebutkannya."
+     ],
+     "q": [
+      {
+       "a": "قُلْنَا اهْبِطُوا مِنْهَا جَمِيعًا ۖ فَإِمَّا يَأْتِيَنَّكُم مِّنِّي هُدًى فَمَن تَبِعَ هُدَايَ فَلَا خَوْفٌ عَلَيْهِمْ وَلَا هُمْ يَحْزَنُونَ",
+       "t": "Kami berfirman: “Turunlah kamu semuanya dari surga itu! Kemudian jika datang petunjuk-Ku kepadamu, maka barang siapa mengikuti petunjuk-Ku, tidak ada kekhawatiran atas mereka dan tidak (pula) mereka bersedih hati.”",
+       "s": "QS. al-Baqarah: 38"
+      }
+     ]
+    }
+   ],
+   "s": [
+    "QS. al-Baqarah: 30–39; al-A‘raf: 19–27; Thaha: 115–123; an-Nisa’: 1; al-A‘raf: 189",
+    "HR. al-Bukhari no. 3331 dan Muslim no. 1468 dari Abu Hurairah — wanita diciptakan dari tulang rusuk dan wasiat untuk berbuat baik kepada wanita",
+    "HR. Muslim no. 854 dari Abu Hurairah — Adam diciptakan, dimasukkan ke surga, dan dikeluarkan darinya pada hari Jumat",
+    "HR. al-Bukhari no. 3409 dan Muslim no. 2652 dari Abu Hurairah — perdebatan Adam dan Musa عليهما السلام",
+    "Ath-Thabari, *Jami‘ al-Bayan* — tafsir QS. al-Baqarah: 35–38 (jenis pohon, makna “beberapa kalimat”, dan tempat turun)",
+    "Ibnu Katsir, *Tafsir al-Qur’an al-‘Azhim* — tafsir QS. al-Baqarah: 35–38 dan al-A‘raf: 19–25",
+    "Al-Qurthubi, *Al-Jami‘ li Ahkam al-Qur’an* — tafsir QS. al-Baqarah: 35–38 (perbedaan pendapat tentang surga Adam)",
+    "Ibnu Qayyim al-Jauziyyah, *Miftah Dar as-Sa‘adah* — pembahasan surga tempat Adam tinggal",
+    "Ibnu Hajar al-‘Asqalani, *Fathul Bari* — syarah hadits tulang rusuk dan perdebatan Adam dan Musa"
+   ]
+  },
+  {
+   "id": "habil-dan-qabil",
+   "t": "Habil dan Qabil: Pembunuhan Pertama",
+   "d": "Kisah dua putra Adam, kurban yang diterima dan yang ditolak, burung gagak, dan pelajaran yang berlaku sampai hari ini.",
+   "b": [
+    {
+     "h": "Kisah yang dibawakan “dengan benar”",
+     "p": [
+      "Allah memerintahkan Nabi ﷺ untuk membacakan **kisah dua putra Adam dengan benar**. Al-Qur’an menyebutnya hanya dengan “dua anak Adam” (*ibnay Adam*), tanpa nama. Nama **Habil** dan **Qabil** dikenal dari riwayat tafsir dan tradisi Ahlul Kitab, sehingga cukup menjadi nama yang dipakai untuk memudahkan, bukan bagian dari akidah.",
+      "Dari kalimat “dengan benar” itu, para mufasir memahami bahwa kisah ini bukan dongeng: ia adalah peringatan yang dibacakan agar manusia mengambil pelajaran tentang akibat hasad dan kezaliman."
+     ]
+    },
+    {
+     "h": "Kurban yang diterima dan yang ditolak",
+     "p": [
+      "Keduanya **mempersembahkan kurban**, lalu kurban salah seorang diterima dan yang lain tidak. Al-Qur’an tidak merinci bentuk kurbannya. Riwayat tafsir yang masyhur, seperti dikutip ath-Thabari dan Ibnu Katsir, menyebut bahwa Habil mempersembahkan ternak pilihan sedangkan Qabil mempersembahkan hasil bumi yang buruk, dan bahwa penerimaan kurban ditandai dengan turunnya api. Rinciannya berasal dari riwayat tafsir, bukan hadits Nabi ﷺ yang sahih, sehingga hanya diposisikan sebagai gambaran.",
+      "Yang ditegaskan Al-Qur’an adalah penyebabnya: **Allah hanya menerima dari orang-orang yang bertakwa**. Qabil tidak menanyakan apa yang kurang dari amalnya. Ia justru mengancam akan membunuh saudaranya. Para ulama menyebut ini pelajaran besar: amal diterima karena ketakwaan, dan kegagalan seseorang bukan alasan untuk iri kepada orang yang berhasil."
+     ],
+     "q": [
+      {
+       "a": "إِذْ قَرَّبَا قُرْبَانًا فَتُقُبِّلَ مِن أَحَدِهِمَا وَلَمْ يُتَقَبَّلْ مِنَ الْآخَرِ قَالَ لَأَقْتُلَنَّكَ ۖ قَالَ إِنَّمَا يَتَقَبَّلُ اللَّهُ مِنَ الْمُتَّقِينَ",
+       "t": "Ketika keduanya mempersembahkan kurban, lalu diterima dari salah seorang dari mereka (Habil) dan tidak diterima dari yang lain (Qabil). Ia berkata: “Sungguh, aku pasti membunuhmu!” Dia (Habil) berkata: “Sesungguhnya Allah hanya menerima (amal) dari orang-orang yang bertakwa.”",
+       "s": "QS. al-Ma’idah: 27"
+      }
+     ]
+    },
+    {
+     "h": "Sikap Habil: menahan diri karena takut kepada Allah",
+     "p": [
+      "Habil menjawab ancaman itu dengan tenang. Ia berkata bahwa seandainya Qabil menjulurkan tangan untuk membunuhnya, **ia tidak akan membalas**, karena ia takut kepada Allah, Tuhan semesta alam. Sikap ini dipahami para ulama sebagai pilihan Habil untuk tidak memulai pertumpahan darah, dan ia tetap menyebut alasannya: rasa takut kepada Allah.",
+      "Ini tidak berarti bahwa membela diri dilarang dalam syariat Islam. Dalam hadits dari ‘Abdullah bin ‘Amr رضي الله عنهما, Nabi ﷺ bersabda bahwa siapa yang terbunuh karena membela hartanya, ia syahid. Syariat membolehkan membela diri, harta, dan kehormatan. Kisah Habil menunjukkan tingginya sikap kehati-hatian seorang yang beriman dalam urusan darah."
+     ],
+     "q": [
+      {
+       "a": "لَئِن بَسَطتَ إِلَيَّ يَدَكَ لِتَقْتُلَنِي مَا أَنَا بِبَاسِطٍ يَدِيَ إِلَيْكَ لِأَقْتُلَكَ ۖ إِنِّي أَخَافُ اللَّهَ رَبَّ الْعَالَمِينَ",
+       "t": "Sungguh, jika engkau menggerakkan tanganmu kepadaku untuk membunuhku, aku tidak akan menggerakkan tanganku kepadamu untuk membunuhmu. Aku takut kepada Allah, Tuhan seluruh alam.",
+       "s": "QS. al-Ma’idah: 28"
+      }
+     ]
+    },
+    {
+     "h": "Pembunuhan pertama, dan burung gagak",
+     "p": [
+      "Hawa nafsu Qabil akhirnya mendorongnya membunuh saudaranya, dan ia pun menjadi **termasuk orang-orang yang rugi**. Ini pembunuhan pertama dalam sejarah manusia, dan jenazah pertama yang harus diurus.",
+      "Qabil bingung dengan jasad saudaranya. Allah lalu mengutus **seekor burung gagak** yang menggali-gali tanah untuk memperlihatkan bagaimana menutupi jasad. Qabil berseru menyesali dirinya yang tidak secerdas burung itu, lalu ia menjadi termasuk orang-orang yang menyesal. Sebagian mufasir menilai bahwa penyesalan ini lebih karena akibat perbuatannya, bukan serta-merta penyesalan taubat. Kisah ini juga menjadi asal pelajaran tentang tata cara menguburkan jenazah."
+     ],
+     "q": [
+      {
+       "a": "فَبَعَثَ اللَّهُ غُرَابًا يَبْحَثُ فِي الْأَرْضِ لِيُرِيَهُ كَيْفَ يُوَارِي سَوْءَةَ أَخِيهِ",
+       "t": "Kemudian Allah mengutus seekor burung gagak yang menggali-gali di bumi untuk memperlihatkan kepadanya (Qabil) bagaimana cara menguburkan mayat saudaranya.",
+       "s": "QS. al-Ma’idah: 31"
+      }
+     ]
+    },
+    {
+     "h": "Warisan dosa pertama",
+     "p": [
+      "Dalam hadits dari ‘Abdullah bin Mas‘ud رضي الله عنه, Nabi ﷺ bersabda bahwa tidaklah satu jiwa dibunuh secara zalim kecuali **anak Adam yang pertama turut menanggung sebagian dari darahnya**, karena ia orang pertama yang mencontohkan pembunuhan. Siapa yang memulai keburukan, ia ikut menanggung dosa orang-orang yang meniru sesudahnya.",
+      "Karena kisah inilah Allah menetapkan bagi Bani Israil bahwa **membunuh satu jiwa tanpa alasan yang sah seperti membunuh seluruh manusia**, dan menyelamatkan satu jiwa seperti menyelamatkan seluruh manusia (QS. al-Ma’idah: 32). Para ulama juga melihat benang merahnya dengan kisah sebelumnya: kesombongan Iblis berbuah penolakan, sedangkan hasad Qabil berbuah pembunuhan. Dua sifat yang sama itulah yang harus dijaga dari hati manusia."
+     ],
+     "q": [
+      {
+       "a": "مَن قَتَلَ نَفْسًا بِغَيْرِ نَفْسٍ أَوْ فَسَادٍ فِي الْأَرْضِ فَكَأَنَّمَا قَتَلَ النَّاسَ جَمِيعًا",
+       "t": "Barang siapa membunuh seseorang bukan karena orang itu membunuh orang lain, atau bukan karena berbuat kerusakan di bumi, maka seakan-akan dia telah membunuh semua manusia.",
+       "s": "QS. al-Ma’idah: 32"
+      }
+     ]
+    }
+   ],
+   "s": [
+    "QS. al-Ma’idah: 27–32",
+    "HR. al-Bukhari no. 3335 dan Muslim no. 1677 dari ‘Abdullah bin Mas‘ud — anak Adam pertama menanggung bagian dari darah setiap pembunuhan zalim",
+    "HR. al-Bukhari no. 2480 dan Muslim no. 141 dari ‘Abdullah bin ‘Amr — orang yang terbunuh membela hartanya adalah syahid",
+    "Ath-Thabari, *Jami‘ al-Bayan* — tafsir QS. al-Ma’idah: 27–31 (riwayat tentang kurban dan nama kedua putra Adam)",
+    "Ibnu Katsir, *Tafsir al-Qur’an al-‘Azhim* — tafsir QS. al-Ma’idah: 27–32",
+    "Al-Qurthubi, *Al-Jami‘ li Ahkam al-Qur’an* — tafsir QS. al-Ma’idah: 27–32",
+    "Ibnu Katsir, *Al-Bidayah wan Nihayah*, juz 1 — kisah dua putra Adam"
    ]
   }
  ]
