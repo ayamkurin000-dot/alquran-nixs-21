@@ -1,6 +1,6 @@
 {
  "t": "Ensiklopedia",
- "d": "Kisah awal penciptaan, alam ruh, Nabi Adam عليه السلام, Iblis, malaikat, jin, takdir, ‘Arsy, tujuh langit, alam barzakh, tanda-tanda kiamat (termasuk sepuluh tanda besar dan tiupan sangkakala), serta hari kebangkitan (Mahsyar, hisab, mizan, dan Shirath), telaga Nabi ﷺ dan syafa‘at, gambaran Surga dan Neraka, serta Dajjal, Imam Mahdi dan turunnya Nabi ‘Isa عليه السلام, Dzulqarnain beserta Ya’juj dan Ma’juj, dan Harut–Marut — dituturkan ringan dari Al-Qur’an, hadits, dan penjelasan para ulama.",
+ "d": "Kisah awal penciptaan, alam ruh, Nabi Adam عليه السلام, Iblis, malaikat, jin, takdir, ‘Arsy, tujuh langit, kisah Isra’ Mi‘raj, alam barzakh, tanda-tanda kiamat (termasuk sepuluh tanda besar dan tiupan sangkakala), serta hari kebangkitan (Mahsyar, hisab, mizan, dan Shirath), telaga Nabi ﷺ dan syafa‘at, gambaran Surga dan Neraka, serta Dajjal, Imam Mahdi dan turunnya Nabi ‘Isa عليه السلام, Dzulqarnain beserta Ya’juj dan Ma’juj, dan Harut–Marut — dituturkan ringan dari Al-Qur’an, hadits, dan penjelasan para ulama.",
  "k": [
   {
    "id": "awal-penciptaan",
@@ -974,6 +974,118 @@
     "Al-Qurthubi, *Al-Jami‘ li Ahkam al-Qur’an* — tafsir QS. al-Isra’: 1 dan al-Mulk: 3",
     "An-Nawawi, *Syarh Shahih Muslim* dan Ibnu Hajar al-‘Asqalani, *Fathul Bari* — letak Sidratul Muntaha dan pembahasan Isra’ Mi‘raj",
     "Ibnu Katsir, *Al-Bidayah wan Nihayah* — pembahasan Isra’ dan Mi‘raj"
+   ]
+  },
+  {
+   "id": "isra-miraj",
+   "t": "Isra’ dan Mi‘raj: Perjalanan Satu Malam Nabi ﷺ",
+   "d": "Dari tahun duka dan penolakan di Thaif, dibelahnya dada Nabi ﷺ, Buraq dan Baitul Maqdis, naik melewati langit hingga Sidratul Muntaha, sampai hadiah shalat lima waktu dan reaksi kaum Quraisy, beserta perbedaan pendapat para ulama.",
+   "b": [
+    {
+     "h": "Tahun duka dan luka di Thaif",
+     "p": [
+      "Banyak ahli sirah menempatkan Isra’ Mi‘raj setelah masa yang paling berat dalam dakwah di Makkah. Dalam waktu yang berdekatan, Nabi ﷺ kehilangan pamannya **Abu Thalib**, yang selama ini melindungi beliau dari tekanan Quraisy, lalu istrinya **Khadijah** رضي الله عنها, orang yang pertama kali beriman dan menopang beliau dengan harta dan ketenangan. Masa itu dikenal sebagai ‘Amul Huzn, tahun duka.",
+      "Setelah itu beliau berangkat ke Thaif dengan harapan ada yang menerima dakwahnya, tetapi para pemuka kota itu menolak dan menyuruh orang-orang bodoh melempari beliau dengan batu. Dalam hadits ‘Aisyah رضي الله عنها (al-Bukhari dan Muslim), malaikat penjaga gunung datang menawarkan untuk menimpakan dua gunung kepada penduduk Makkah. Nabi ﷺ menolak dan berkata bahwa beliau berharap Allah mengeluarkan dari tulang sulbi mereka orang-orang yang menyembah Allah semata. Banyak ulama memahami bahwa perjalanan agung malam itu adalah penghormatan dan peneguhan bagi beliau setelah semua kesedihan tersebut. Urutan waktu persisnya diperselisihkan oleh para ahli sirah."
+     ]
+    },
+    {
+     "h": "Malam itu: dada dibelah dan dibersihkan",
+     "p": [
+      "Dalam hadits Abu Dzar رضي الله عنه (al-Bukhari), Nabi ﷺ bercerita bahwa atap rumahnya dibuka, lalu **Jibril** عليه السلام turun, membelah dadanya, mencucinya dengan air zamzam, kemudian membawa bejana emas yang penuh hikmah dan iman, menuangkannya ke dalam dada beliau, dan menutupnya kembali. Setelah itu Jibril menggandeng tangan beliau untuk memulai perjalanan.",
+      "Riwayat tentang tempat beliau didatangi Jibril berbeda-beda. Hadits Malik bin Sha‘sha‘ah menyebut beliau berada di dekat Ka‘bah dalam keadaan antara tidur dan terjaga, sedangkan sebagian kitab sirah menyebut rumah Ummu Hani’. Para ulama membahas cara memadukan riwayat-riwayat itu, dan perbedaan ini tidak mengubah pokok kisahnya."
+     ],
+     "q": [
+      {
+       "a": "سُبْحَانَ الَّذِي أَسْرَىٰ بِعَبْدِهِ لَيْلًا مِّنَ الْمَسْجِدِ الْحَرَامِ إِلَى الْمَسْجِدِ الْأَقْصَى الَّذِي بَارَكْنَا حَوْلَهُ لِنُرِيَهُ مِنْ آيَاتِنَا ۚ إِنَّهُ هُوَ السَّمِيعُ الْبَصِيرُ",
+       "t": "Mahasuci (Allah), yang telah memperjalankan hamba-Nya (Muhammad) pada malam hari dari Masjidilharam ke Masjidilaqsa yang telah Kami berkahi sekelilingnya agar Kami perlihatkan kepadanya sebagian dari tanda-tanda (kebesaran) Kami. Sungguh, Dia Maha Mendengar, Maha Melihat.",
+       "s": "QS. al-Isra’: 1"
+      }
+     ]
+    },
+    {
+     "h": "Buraq dan Baitul Maqdis",
+     "p": [
+      "Hadits Anas bin Malik رضي الله عنه (Muslim) menggambarkan **Buraq**, hewan putih yang lebih besar dari keledai dan lebih kecil dari bagal, yang meletakkan telapak kakinya di ujung batas pandangannya. Nabi ﷺ menungganginya hingga sampai di **Baitul Maqdis** di Palestina, lalu mengikatnya pada cincin tempat para nabi biasa mengikat tunggangan. Di masjid itu beliau shalat dua rakaat.",
+      "Dalam hadits Abu Hurairah رضي الله عنه (Muslim), Nabi ﷺ melihat sekelompok nabi, di antaranya **Musa, ‘Isa, dan Ibrahim** عليهم السلام, sedang shalat. Ketika waktu shalat tiba, beliau mengimami mereka. Para ulama berbeda pendapat apakah shalat berjamaah itu terjadi sebelum beliau naik ke langit atau sesudah turun, tetapi mereka sepakat bahwa peristiwa ini menunjukkan kepemimpinan beliau atas para nabi sebelumnya.",
+      "Di sana Jibril menyodorkan dua bejana, satu berisi khamr dan satu berisi susu. Nabi ﷺ memilih **susu**, dan Jibril berkata bahwa beliau telah memilih fitrah. Dalam hadits Abu Hurairah disebutkan bahwa seandainya beliau memilih khamr, umatnya akan tersesat. Sebagian riwayat lain menambahkan bejana ketiga berisi madu."
+     ]
+    },
+    {
+     "h": "Naik melewati langit demi langit",
+     "p": [
+      "Dari Baitul Maqdis, Nabi ﷺ dinaikkan bersama Jibril. Di setiap langit Jibril meminta pintu dibukakan, dan penjaga langit bertanya siapa yang datang dan apakah beliau telah diutus. Setelah dijawab, pintu dibuka dengan sambutan yang baik. Beliau bertemu **Adam** di langit pertama, **Yahya dan ‘Isa** di langit kedua, **Yusuf** di langit ketiga, **Idris** di langit keempat, **Harun** di langit kelima, **Musa** di langit keenam, dan **Ibrahim** di langit ketujuh. Rincian langit-langit ini dibahas di judul tersendiri tentang Sidratul Muntaha dan Tujuh Langit.",
+      "Hadits Malik bin Sha‘sha‘ah (al-Bukhari) menyebut dua kejadian yang sering terlewat. Pertama, Ibrahim bersandar pada **Baitul Ma‘mur**, yang setiap hari dimasuki tujuh puluh ribu malaikat dan mereka tidak kembali lagi ke sana. Kedua, ketika Nabi ﷺ melewati Musa, Musa menangis. Ketika ditanya sebabnya, ia menjawab bahwa ada seorang pemuda yang diutus sesudahnya, yang pengikutnya masuk surga lebih banyak daripada pengikutnya sendiri."
+     ]
+    },
+    {
+     "h": "Sidratul Muntaha dan tanda-tanda terbesar",
+     "p": [
+      "Puncak perjalanan itu ada di **Sidratul Muntaha**. Di sana Nabi ﷺ melihat **Jibril dalam rupa aslinya**, yang memiliki enam ratus sayap (al-Bukhari dan Muslim dari Ibnu Mas‘ud رضي الله عنه). Beliau juga melihat empat sungai: dua sungai batin yang berada di surga, dan dua sungai lahir yaitu Nil dan Efrat (al-Bukhari). Beliau masuk surga dan melihat kubah-kubah dari mutiara dengan tanah yang berupa kasturi (al-Bukhari dari Abu Dzar), serta mendengar suara goresan pena para malaikat.",
+      "Al-Qur’an merangkum semua pengalaman itu dalam satu kalimat yang tegas: beliau telah melihat sebagian tanda-tanda kebesaran Tuhannya yang paling besar. Karena itulah ulama memandang Mi‘raj sebagai tanda kemuliaan, bukan sekadar perjalanan."
+     ],
+     "q": [
+      {
+       "a": "مَا زَاغَ الْبَصَرُ وَمَا طَغَىٰ ۝ لَقَدْ رَأَىٰ مِنْ آيَاتِ رَبِّهِ الْكُبْرَىٰ",
+       "t": "Penglihatannya (Muhammad) tidak menyimpang dari yang dilihatnya dan tidak (pula) melampauinya. Sungguh, dia telah melihat sebagian tanda-tanda (kebesaran) Tuhannya yang paling besar.",
+       "s": "QS. an-Najm: 17–18"
+      }
+     ]
+    },
+    {
+     "h": "Hadiah di hadapan Allah: lima puluh menjadi lima",
+     "p": [
+      "Di sinilah Allah mewajibkan shalat kepada umat Nabi ﷺ, mulanya **lima puluh kali** sehari semalam. Dalam perjalanan turun, Nabi ﷺ melewati Musa عليه السلام. Musa bertanya apa yang diwajibkan, lalu berkata bahwa umat beliau tidak akan sanggup, dan menyebut bahwa ia pernah menguji Bani Israil dengan sangat keras. Ia menyarankan agar beliau kembali memohon keringanan.",
+      "Nabi ﷺ kembali berkali-kali hingga tinggal **lima waktu**. Ketika Musa menyarankan sekali lagi, beliau menjawab bahwa beliau malu kepada Rabbnya. Kemudian terdengar seruan bahwa Allah telah menetapkan kewajiban-Nya dan meringankan bagi hamba-hamba-Nya: shalat itu lima, tetapi pahalanya tetap lima puluh (al-Bukhari dan Muslim). Hadits Ibnu Mas‘ud رضي الله عنه (Muslim) menyebut tiga pemberian untuk beliau: shalat lima waktu, penutup surat al-Baqarah, dan ampunan bagi umatnya yang tidak berbuat syirik. Karena itu shalat sering disebut sebagai ibadah yang diterima langsung di langit, bukan lewat perantara malaikat."
+     ]
+    },
+    {
+     "h": "Pagi di Makkah: dibenarkan Abu Bakar, didustakan Quraisy",
+     "p": [
+      "Menjelang pagi Nabi ﷺ sudah kembali ke Makkah. Ketika beliau menceritakan perjalanan itu, orang-orang Quraisy mendustakan dan menertawakannya. Kitab-kitab sirah juga menyebut bahwa sebagian orang yang telah masuk Islam sempat goyah. Mereka tidak sulit membayangkan perjalanan ke Syam yang memakan waktu berbulan-bulan, tetapi menganggapnya mustahil jika ditempuh dalam satu malam.",
+      "Mereka lalu menguji beliau dengan meminta gambaran Baitul Maqdis, padahal beliau tidak mengingat semua detailnya. Dalam hadits Jabir رضي الله عنه (al-Bukhari) dan Abu Hurairah رضي الله عنه (Muslim), beliau berdiri di Hijr, lalu Allah **memperlihatkan Baitul Maqdis** kepadanya sehingga beliau menyebutkan ciri-cirinya sambil memandangnya.",
+      "Ketika sebagian orang datang kepada **Abu Bakar** رضي الله عنه dan menyampaikan kabar itu, ia menjawab bahwa jika Nabi ﷺ yang mengatakannya maka itu benar. Ia berkata bahwa ia membenarkan beliau untuk hal yang lebih jauh dari itu, yaitu kabar langit yang datang pagi dan petang. Kisah ini diriwayatkan antara lain oleh al-Hakim dan al-Baihaqi, dan para ulama berbeda penilaian tentang derajat sanadnya. Gelar **ash-Shiddiq** untuk Abu Bakar tetap masyhur di kalangan ahli sirah."
+     ]
+    },
+    {
+     "h": "Jasad atau ruh, melihat Allah, dan tanggalnya",
+     "p": [
+      "**Jasad dan ruh.** Jumhur ulama berpendapat bahwa Isra’ dan Mi‘raj terjadi dengan jasad dan ruh sekaligus, dalam keadaan sadar. Dalilnya adalah kata *‘abd* (hamba) dalam QS. al-Isra’: 1, serta penjelasan Ibnu ‘Abbas رضي الله عنهما (al-Bukhari) bahwa yang diperlihatkan kepada beliau itu adalah penglihatan mata. Sebagian riwayat dan pendapat memahaminya sebagai peristiwa ruh atau mimpi, tetapi jumhur menolaknya, dan ayat tentang “ujian bagi manusia” menunjukkan betapa berat kisah ini bagi akal orang yang ingkar.",
+      "**Melihat Allah.** Para sahabat sendiri berbeda pendapat. ‘Aisyah رضي الله عنها menolak bahwa Nabi ﷺ melihat Rabbnya, sedangkan Ibnu ‘Abbas رضي الله عنهما meriwayatkan bahwa beliau melihat-Nya dengan hatinya. Abu Dzar رضي الله عنه meriwayatkan bahwa beliau menjawab, “Cahaya, bagaimana aku dapat melihat-Nya?” (Muslim). Perkara ini sudah menjadi perbedaan sejak masa sahabat, dan yang ditegaskan Al-Qur’an adalah bahwa beliau melihat tanda-tanda kebesaran Tuhannya yang paling besar.",
+      "**Tanggal.** Waktunya diperselisihkan sejak lama. Ada yang menyebut Rabi‘ul Awwal, Rajab, atau Ramadhan, dan Ibnul Qayyim dalam *Zadul Ma‘ad* mencatat bahwa tidak ada dalil pasti untuk bulan dan harinya. Yang disepakati hanya bahwa peristiwa itu terjadi di Makkah sebelum hijrah. Di Indonesia banyak masyarakat memperingatinya pada 27 Rajab sebagai kesempatan mengaji dan mengingat kisahnya. Yang terpenting adalah pelajarannya."
+     ],
+     "q": [
+      {
+       "a": "وَمَا جَعَلْنَا الرُّؤْيَا الَّتِي أَرَيْنَاكَ إِلَّا فِتْنَةً لِّلنَّاسِ",
+       "t": "Dan Kami tidak menjadikan mimpi yang telah Kami perlihatkan kepadamu, melainkan sebagai ujian bagi manusia",
+       "s": "QS. al-Isra’: 60 (bagian awal)"
+      }
+     ]
+    },
+    {
+     "h": "Pelajaran dari malam yang agung",
+     "p": [
+      "Kisah ini dimulai dari hati yang terluka dan diakhiri dengan penghormatan terbesar. Allah tidak membiarkan Nabi ﷺ larut dalam kesedihan, tetapi memperlihatkan kepadanya kekuasaan-Nya dan memberinya shalat sebagai tempat bersandar bagi dirinya dan umatnya. Perjalanan dari Masjidil Haram ke Masjidil Aqsha juga menautkan dua tempat suci itu, dan Nabi ﷺ menjadi imam bagi para nabi sebelumnya, sebagai tanda bahwa risalah beliau menyempurnakan risalah mereka.",
+      "Pelajaran lain tampak pada sikap manusia. Quraisy menimbang peristiwa itu dengan kebiasaan mereka sendiri dan menolaknya, sedangkan Abu Bakar menimbangnya dengan kejujuran orang yang membawa kabar, lalu membenarkannya. Para ulama mengingatkan bahwa kisah ini melampaui kebiasaan akal tetapi tidak bertentangan dengannya, karena yang melakukannya adalah Allah yang kuasa atas segala sesuatu."
+     ]
+    }
+   ],
+   "s": [
+    "QS. al-Isra’: 1 dan 60; an-Najm: 1–18",
+    "HR. al-Bukhari no. 349 dari Abu Dzar — dada dibelah, naik ke langit, Sidratul Muntaha, surga, shalat lima puluh menjadi lima",
+    "HR. al-Bukhari no. 3207 dari Malik bin Sha‘sha‘ah — Baitul Ma‘mur, empat sungai, bejana khamr, susu dan madu, Musa menangis",
+    "HR. Muslim no. 162 dari Anas — Buraq, Baitul Maqdis, dua bejana, dan Mi‘raj",
+    "HR. Muslim no. 168 dari Abu Hurairah — pilihan susu dan fitrah",
+    "HR. Muslim no. 170 dan 172 dari Abu Hurairah — pertanyaan Quraisy dan Nabi ﷺ mengimami para nabi",
+    "HR. al-Bukhari no. 3886 dari Jabir — Baitul Maqdis diperlihatkan kepada Nabi ﷺ",
+    "HR. al-Bukhari no. 3888 dari Ibnu ‘Abbas — tafsir QS. al-Isra’: 60",
+    "HR. al-Bukhari no. 3231 dan Muslim no. 1795 dari ‘Aisyah — peristiwa Thaif",
+    "HR. Muslim no. 173–174 dari Ibnu Mas‘ud — Sidratul Muntaha, tiga pemberian, dan rupa asli Jibril",
+    "HR. Muslim no. 176–178 — perbedaan riwayat Ibnu ‘Abbas, ‘Aisyah, dan Abu Dzar tentang melihat Rabb",
+    "Ibnu Ishaq dan Ibnu Hisyam, *as-Sirah an-Nabawiyyah* — Thaif dan reaksi Quraisy",
+    "Al-Hakim, *al-Mustadrak* dan al-Baihaqi, *Dala’il an-Nubuwwah* — sikap Abu Bakar ash-Shiddiq (derajat sanad dibahas ulama)",
+    "Ibnu Katsir, *Tafsir al-Qur’an al-‘Azhim* dan *al-Bidayah wan Nihayah* — pembahasan Isra’ dan Mi‘raj",
+    "An-Nawawi, *Syarh Shahih Muslim* dan Ibnu Hajar al-‘Asqalani, *Fathul Bari* — syarah hadits Isra’ dan Mi‘raj serta perbedaan ulama",
+    "Ibnul Qayyim, *Zadul Ma‘ad* — perbedaan pendapat tentang waktu terjadinya"
    ]
   },
   {
