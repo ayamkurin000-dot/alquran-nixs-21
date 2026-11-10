@@ -1,6 +1,6 @@
 {
  "t": "Ensiklopedia",
- "d": "Kisah awal penciptaan, alam ruh, Nabi Adam عليه السلام, Iblis, malaikat, jin, takdir, ‘Arsy, tujuh langit, kisah Isra’ Mi‘raj, alam barzakh, tanda-tanda kiamat (termasuk sepuluh tanda besar dan tiupan sangkakala), serta hari kebangkitan (Mahsyar, hisab, mizan, dan Shirath), telaga Nabi ﷺ dan syafa‘at, gambaran Surga dan Neraka, serta Dajjal, Imam Mahdi dan turunnya Nabi ‘Isa عليه السلام, Dzulqarnain beserta Ya’juj dan Ma’juj, dan Harut–Marut — dituturkan ringan dari Al-Qur’an, hadits, dan penjelasan para ulama.",
+ "d": "Kisah awal penciptaan, alam ruh, Nabi Adam عليه السلام, Iblis, malaikat, jin, takdir dan Lailatul Qadar beserta turunnya Al-Qur’an, ‘Arsy, tujuh langit, kisah Isra’ Mi‘raj, Malaikat Maut dan sakaratul maut, alam barzakh, tanda-tanda kiamat (termasuk sepuluh tanda besar dan tiupan sangkakala), serta hari kebangkitan (Mahsyar, hisab, mizan, dan Shirath), Ashabul A‘raf, telaga Nabi ﷺ dan syafa‘at, gambaran Surga dan Neraka, serta Dajjal, Imam Mahdi dan turunnya Nabi ‘Isa عليه السلام, perang akhir zaman (Malhamah Kubra, Konstantinopel, dan as-Sufyani), Dzulqarnain beserta Ya’juj dan Ma’juj, dan Harut–Marut — dituturkan ringan dari Al-Qur’an, hadits, dan penjelasan para ulama.",
  "k": [
   {
    "id": "awal-penciptaan",
@@ -811,6 +811,127 @@
    ]
   },
   {
+   "id": "lailatul-qadar-turunnya-quran",
+   "t": "Lailatul Qadar dan Turunnya Al-Qur’an",
+   "d": "Dari Lauhul Mahfuzh ke Baitul ‘Izzah, lalu ke hati Nabi ﷺ: bagaimana para ulama memahami turunnya Al-Qur’an pada satu malam, serta keutamaan malam yang lebih baik dari seribu bulan.",
+   "b": [
+    {
+     "h": "Satu malam, dua ayat kunci",
+     "p": [
+      "Al-Qur’an sendiri menyebut bahwa kitab ini diturunkan pada **suatu malam**. Dalam surat al-Qadr, Allah menyebut malam itu sebagai *Lailatul Qadar*, sedangkan dalam surat ad-Dukhan disebut sebagai *malam yang diberkahi*. Surat al-Baqarah menambahkan bahwa waktunya ada pada **bulan Ramadhan**.",
+      "Dari tiga ayat itu para ulama menyimpulkan bahwa malam yang dimaksud adalah satu malam, yakni Lailatul Qadar di bulan Ramadhan."
+     ],
+     "q": [
+      {
+       "a": "إِنَّا أَنزَلْنَاهُ فِي لَيْلَةِ الْقَدْرِ",
+       "t": "Sesungguhnya Kami telah menurunkannya (Al-Qur’an) pada malam kemuliaan.",
+       "s": "QS. al-Qadr: 1"
+      },
+      {
+       "a": "شَهْرُ رَمَضَانَ الَّذِي أُنزِلَ فِيهِ الْقُرْآنُ هُدًى لِّلنَّاسِ وَبَيِّنَاتٍ مِّنَ الْهُدَىٰ وَالْفُرْقَانِ",
+       "t": "Bulan Ramadhan adalah (bulan) yang di dalamnya diturunkan Al-Qur’an sebagai petunjuk bagi manusia dan penjelasan-penjelasan mengenai petunjuk itu dan pembeda (antara yang hak dan yang batil).",
+       "s": "QS. al-Baqarah: 185"
+      }
+     ]
+    },
+    {
+     "h": "Tiga tahap: Lauhul Mahfuzh, Baitul ‘Izzah, lalu hati Nabi ﷺ",
+     "p": [
+      "Pendapat yang paling masyhur datang dari Ibnu ‘Abbas رضي الله عنهما, sebagaimana diriwayatkan an-Nasa’i dalam *as-Sunan al-Kubra* dan al-Hakim dalam *al-Mustadrak*. Al-Qur’an dipisahkan dari *adz-Dzikr* (Lauhul Mahfuzh), lalu diletakkan di **Baitul ‘Izzah** di langit dunia, kemudian Jibril عليه السلام menurunkannya kepada Nabi ﷺ sedikit demi sedikit.",
+      "Maka ada tiga tahap. **Tahap pertama**, Al-Qur’an tertulis di Lauhul Mahfuzh (al-Buruj: 21–22). **Tahap kedua**, seluruhnya diturunkan sekaligus ke langit dunia pada malam Lailatul Qadar. **Tahap ketiga**, diturunkan kepada Nabi ﷺ secara berangsur selama sekitar dua puluh tiga tahun, dan Jibril menyampaikannya ke hati beliau.",
+      "Baitul ‘Izzah di langit dunia tidak sama dengan **Baitul Ma‘mur** di langit ketujuh yang dimasuki tujuh puluh ribu malaikat setiap hari, sebagaimana disebut pada kartu Isra’ dan Mi‘raj."
+     ],
+     "q": [
+      {
+       "a": "بَلْ هُوَ قُرْآنٌ مَّجِيدٌ ۝ فِي لَوْحٍ مَّحْفُوظٍ",
+       "t": "Bahkan (yang didustakan itu) ialah Al-Qur’an yang mulia, yang (tersimpan) dalam Lauh Mahfuzh.",
+       "s": "QS. al-Buruj: 21–22"
+      },
+      {
+       "a": "نَزَلَ بِهِ الرُّوحُ الْأَمِينُ ۝ عَلَىٰ قَلْبِكَ لِتَكُونَ مِنَ الْمُنذِرِينَ",
+       "t": "Dibawa turun oleh Ar-Ruh Al-Amin (Jibril), ke dalam hatimu (Muhammad) agar engkau termasuk orang yang memberi peringatan.",
+       "s": "QS. asy-Syu‘ara’: 193–194"
+      }
+     ]
+    },
+    {
+     "h": "Perbedaan pendapat para ulama",
+     "p": [
+      "Para ulama tidak seluruhnya sepakat tentang makna “diturunkan pada malam itu”. Pendapat pertama, yang disebut di atas dari Ibnu ‘Abbas, dipegang oleh banyak mufassir. Pendapat kedua, dari asy-Sya‘bi dan sebagian lainnya, menyatakan bahwa **awal turunnya wahyu** kepada Nabi ﷺ di Gua Hira terjadi pada malam Lailatul Qadar, kemudian wahyu berlanjut berangsur-angsur. Pendapat ketiga memandang bahwa pada tiap Lailatul Qadar, bagian-bagian yang akan diturunkan pada tahun itu diserahkan kepada para malaikat.",
+      "Ketiga pendapat ini sama-sama menegaskan kemuliaan malam itu dan bahwa turunnya Al-Qur’an bermula pada waktu tersebut. Rincian tahapnya termasuk perkara gaib yang kita ambil dari riwayat, sehingga tidak perlu dijadikan bahan perdebatan."
+     ]
+    },
+    {
+     "h": "Gua Hira dan perintah “Iqra’”",
+     "p": [
+      "Hadits ‘Aisyah رضي الله عنها (al-Bukhari no. 3 dan Muslim no. 160) menceritakan bahwa wahyu pertama datang kepada Nabi ﷺ ketika beliau menyendiri di Gua Hira. Jibril datang dan berkata, “*Iqra’* (bacalah)!” Nabi menjawab bahwa beliau tidak bisa membaca. Jibril memeluk beliau sampai terasa berat, lalu mengulanginya sampai tiga kali, kemudian membacakan awal surat al-‘Alaq. Beliau pulang dalam keadaan gemetar dan menemui Khadijah رضي الله عنها, yang menenangkan dan meneguhkan hati beliau."
+     ],
+     "q": [
+      {
+       "a": "اقْرَأْ بِاسْمِ رَبِّكَ الَّذِي خَلَقَ ۝ خَلَقَ الْإِنسَانَ مِنْ عَلَقٍ",
+       "t": "Bacalah dengan (menyebut) nama Tuhanmu yang menciptakan. Dia menciptakan manusia dari segumpal darah.",
+       "s": "QS. al-‘Alaq: 1–2"
+      }
+     ]
+    },
+    {
+     "h": "Mengapa diturunkan bertahap?",
+     "p": [
+      "Orang-orang kafir pernah bertanya mengapa Al-Qur’an tidak diturunkan sekaligus. Allah menjawab bahwa hal itu agar Dia **meneguhkan hati Nabi ﷺ** dan agar Al-Qur’an dibacakan perlahan-lahan. Para ulama menambahkan hikmah lain: memudahkan umat menghafal dan mengamalkan, menjawab peristiwa dan pertanyaan yang terjadi, serta menetapkan hukum secara bertahap.",
+      "Setiap Ramadhan, Jibril menemui Nabi ﷺ dan bertadarus Al-Qur’an bersama beliau (hadits Ibnu ‘Abbas, al-Bukhari no. 6). Karena itu Ramadhan memiliki ikatan khusus dengan Al-Qur’an."
+     ],
+     "q": [
+      {
+       "a": "كَذَٰلِكَ لِنُثَبِّتَ بِهِ فُؤَادَكَ ۖ وَرَتَّلْنَاهُ تَرْتِيلًا",
+       "t": "Demikianlah, agar Kami memperteguh hatimu (Muhammad) dengannya dan Kami membacakannya secara tartil (berangsur-angsur, perlahan, dan benar).",
+       "s": "QS. al-Furqan: 32"
+      }
+     ]
+    },
+    {
+     "h": "Malam yang lebih baik dari seribu bulan",
+     "p": [
+      "Surat al-Qadr menyebut bahwa Lailatul Qadar **lebih baik dari seribu bulan**, yakni sekitar 83 tahun 4 bulan. Para ulama menjelaskan bahwa amal pada malam itu lebih baik daripada amal selama seribu bulan yang di dalamnya tidak ada Lailatul Qadar.",
+      "Pada malam itu para malaikat dan *ar-Ruh* (Jibril menurut mayoritas mufassir) turun dengan izin Tuhan mereka membawa segala urusan, dan malam itu penuh **kedamaian** sampai terbit fajar. Surat ad-Dukhan menyebut bahwa pada malam itu *dijelaskan setiap urusan yang penuh hikmah* (ayat 4). Sebagian mufassir, di antaranya Ibnu ‘Abbas dan Qatadah, memahaminya sebagai perincian ketetapan tahunan yang diserahkan dari catatan takdir kepada para malaikat, sebagaimana dibahas pada kartu Lauhul Mahfuzh dan Takdir."
+     ],
+     "q": [
+      {
+       "a": "لَيْلَةُ الْقَدْرِ خَيْرٌ مِّنْ أَلْفِ شَهْرٍ ۝ تَنَزَّلُ الْمَلَائِكَةُ وَالرُّوحُ فِيهَا بِإِذْنِ رَبِّهِم مِّن كُلِّ أَمْرٍ ۝ سَلَامٌ هِيَ حَتَّىٰ مَطْلَعِ الْفَجْرِ",
+       "t": "Malam kemuliaan itu lebih baik daripada seribu bulan. Pada malam itu turun para malaikat dan Ruh (Jibril) dengan izin Tuhannya untuk mengatur semua urusan. Sejahteralah (malam) itu sampai terbit fajar.",
+       "s": "QS. al-Qadr: 3–5"
+      }
+     ]
+    },
+    {
+     "h": "Kapan mencarinya, dan bagaimana menghidupkannya",
+     "p": [
+      "Nabi ﷺ bersabda dalam hadits dari ‘Aisyah (al-Bukhari no. 2017), **“Carilah Lailatul Qadar pada malam-malam ganjil dari sepuluh malam terakhir Ramadhan.”** Hadits ‘Ubadah bin ash-Shamit (al-Bukhari no. 49) menyebut bahwa Nabi ﷺ pernah keluar hendak memberi tahu kapan waktunya, tetapi dua orang sedang bertengkar sehingga pengetahuan itu diangkat. Beliau bersabda bahwa mungkin itu lebih baik bagi kalian, maka carilah pada malam kesembilan, ketujuh, dan kelima.",
+      "Para ulama melihat hikmah disembunyikannya malam itu: agar orang bersungguh-sungguh beribadah di seluruh malam yang berpotensi. Tanda yang disebut dalam hadits Ubay bin Ka‘b (Muslim no. 762) adalah bahwa matahari terbit pada pagi harinya putih tanpa sinar yang menyilaukan. Tanda ini diketahui setelah malam berlalu, bukan alat untuk memastikan di tengah malam.",
+      "Keutamaannya disebut dalam hadits Abu Hurairah (al-Bukhari no. 2014 dan Muslim no. 760): **siapa yang menghidupkan Lailatul Qadar dengan iman dan mengharap pahala, diampuni dosanya yang telah lalu**. ‘Aisyah bertanya kepada Nabi ﷺ apa yang sebaiknya ia ucapkan bila bertemu malam itu, dan beliau mengajarkan doa berikut."
+     ],
+     "q": [
+      {
+       "a": "اللَّهُمَّ إِنَّكَ عَفُوٌّ تُحِبُّ الْعَفْوَ فَاعْفُ عَنِّي",
+       "t": "Ya Allah, sesungguhnya Engkau Maha Pemaaf dan menyukai maaf, maka maafkanlah aku.",
+       "s": "HR. at-Tirmidzi no. 3513 dan Ibnu Majah no. 3850 dari ‘Aisyah — dinilai sahih"
+      }
+     ]
+    }
+   ],
+   "s": [
+    "QS. al-Qadr: 1–5; ad-Dukhan: 3–4; al-Baqarah: 185; al-Buruj: 21–22; asy-Syu‘ara’: 193–194; al-Furqan: 32; al-‘Alaq: 1–5; al-Isra’: 106",
+    "an-Nasa’i, *as-Sunan al-Kubra* dan al-Hakim, *al-Mustadrak* (Kitab at-Tafsir), dari Ibnu ‘Abbas — Al-Qur’an diletakkan di Baitul ‘Izzah di langit dunia lalu diturunkan bertahap",
+    "HR. al-Bukhari no. 3 dan Muslim no. 160 dari ‘Aisyah — wahyu pertama di Gua Hira",
+    "HR. al-Bukhari no. 6 dari Ibnu ‘Abbas — Jibril bertadarus Al-Qur’an dengan Nabi ﷺ setiap malam Ramadhan",
+    "HR. al-Bukhari no. 2017 dari ‘Aisyah — carilah Lailatul Qadar pada malam ganjil sepuluh malam terakhir",
+    "HR. al-Bukhari no. 49 dari ‘Ubadah bin ash-Shamit — waktunya diangkat karena perselisihan",
+    "HR. Muslim no. 762 dari Ubay bin Ka‘b — tanda pagi harinya",
+    "HR. al-Bukhari no. 2014 dan Muslim no. 760 dari Abu Hurairah — keutamaan menghidupkan Lailatul Qadar",
+    "HR. at-Tirmidzi no. 3513 dan Ibnu Majah no. 3850 dari ‘Aisyah — doa Lailatul Qadar",
+    "as-Suyuthi, *al-Itqan fi ‘Ulum al-Qur’an* (pembahasan awal turunnya Al-Qur’an); Ibnu Katsir, *Tafsir al-Qur’an al-‘Azhim* (QS. al-Qadr, ad-Dukhan, al-Baqarah: 185); Ibnu Hajar al-‘Asqalani, *Fathul Bari*"
+   ]
+  },
+  {
    "id": "arsy-kursi",
    "t": "‘Arsy dan Kursi: Ciptaan Teragung di Atas Langit",
    "d": "Apa yang disebut Al-Qur’an dan hadits tentang ‘Arsy dan Kursi, bagaimana para ulama memahami istiwa’, dan dzikir yang menyebut keduanya.",
@@ -1086,6 +1207,118 @@
     "Ibnu Katsir, *Tafsir al-Qur’an al-‘Azhim* dan *al-Bidayah wan Nihayah* — pembahasan Isra’ dan Mi‘raj",
     "An-Nawawi, *Syarh Shahih Muslim* dan Ibnu Hajar al-‘Asqalani, *Fathul Bari* — syarah hadits Isra’ dan Mi‘raj serta perbedaan ulama",
     "Ibnul Qayyim, *Zadul Ma‘ad* — perbedaan pendapat tentang waktu terjadinya"
+   ]
+  },
+  {
+   "id": "malaikat-maut-sakaratul-maut",
+   "t": "Malaikat Maut dan Sakaratul Maut",
+   "d": "Siapa yang mencabut ruh, bagaimana ruh orang beriman dan orang kafir dicabut, apa itu sakaratul maut, dan sampai kapan taubat masih diterima — jembatan antara kartu Malaikat dan kartu Barzakh.",
+   "b": [
+    {
+     "h": "Malaikat Maut: tugas yang diserahkan kepadanya",
+     "p": [
+      "Al-Qur’an menyebut malaikat yang mencabut nyawa dengan sebutan **Malakul Maut** (Malaikat Maut), yang diserahi tugas itu oleh Allah. Ia tidak bekerja atas kehendaknya sendiri, dan tidak seorang pun bisa menunda atau memajukan saatnya.",
+      "Nama **Izra’il** yang populer di tengah masyarakat tidak disebut dalam Al-Qur’an maupun dalam hadits sahih. Yang pasti adalah sebutan *Malakul Maut* dalam ayat. Karena itu nama tersebut tidak menjadi bagian dari akidah, dan cukuplah kita menyebutnya sebagaimana Al-Qur’an menyebutnya."
+     ],
+     "q": [
+      {
+       "a": "قُلْ يَتَوَفَّاكُم مَّلَكُ الْمَوْتِ الَّذِي وُكِّلَ بِكُمْ ثُمَّ إِلَىٰ رَبِّكُمْ تُرْجَعُونَ",
+       "t": "Katakanlah, “Malaikat Maut yang diserahi untuk (mencabut nyawa)mu akan mematikanmu, kemudian kepada Tuhanmu kamu dikembalikan.”",
+       "s": "QS. as-Sajdah: 11"
+      }
+     ]
+    },
+    {
+     "h": "Allah, Malaikat Maut, dan para utusan: bagaimana mendamaikan ayat-ayatnya",
+     "p": [
+      "Ada tiga bentuk ungkapan dalam Al-Qur’an. Di satu ayat, **Allah** yang mengambil jiwa ketika matinya (az-Zumar: 42). Di ayat lain, **Malaikat Maut** yang mematikan (as-Sajdah: 11). Di ayat yang lain lagi, **para utusan Kami** (para malaikat) yang mencabut nyawa, dan mereka tidak melalaikan tugasnya (al-An‘am: 61).",
+      "Para ulama menjelaskan bahwa ketiganya tidak bertentangan. Allah-lah yang menetapkan kematian dan kuasa atasnya, Malaikat Maut adalah pelaksana utamanya, dan ia dibantu para malaikat lain yang menangani ruh orang beriman dan orang kafir. Semuanya bergerak atas perintah Allah."
+     ],
+     "q": [
+      {
+       "a": "حَتَّىٰ إِذَا جَاءَ أَحَدَكُمُ الْمَوْتُ تَوَفَّتْهُ رُسُلُنَا وَهُمْ لَا يُفَرِّطُونَ",
+       "t": "Sampai ketika kematian datang kepada salah seorang di antara kamu, para utusan Kami mencabut nyawanya, dan mereka tidak melalaikan tugasnya.",
+       "s": "QS. al-An‘am: 61"
+      }
+     ]
+    },
+    {
+     "h": "Ketika Malaikat Maut datang kepada Nabi Musa",
+     "p": [
+      "Dalam hadits dari Abu Hurairah رضي الله عنه (al-Bukhari dan Muslim), Malaikat Maut diutus kepada Musa عليه السلام. Ketika ia datang, Musa menamparnya hingga matanya rusak. Malaikat itu kembali kepada Allah dan berkata bahwa Engkau mengutusku kepada hamba yang tidak ingin mati. Allah mengembalikan matanya dan menyuruhnya kembali kepada Musa dengan pesan bahwa bila Musa menginginkan hidup, ia boleh meletakkan tangannya di punggung seekor sapi, dan setiap helai bulu yang tertutup tangannya akan menjadi satu tahun umur. Musa bertanya, “Lalu apa?” Dijawab, “Kemudian mati.” Musa berkata, “Kalau begitu sekarang saja.” Ia memohon didekatkan ke tanah suci sejauh lemparan batu.",
+      "Para ulama menjelaskan bahwa Musa tidak mengenali malaikat itu pada awalnya, dan ia menolak orang tak dikenal yang masuk tanpa izin, sebagai pembelaan diri. Hadits ini juga menunjukkan bahwa para malaikat dapat tampil dalam rupa manusia, dan bahwa para nabi pun tidak luput dari kematian."
+     ]
+    },
+    {
+     "h": "Sakaratul maut: sakit yang dirasakan bahkan oleh Nabi ﷺ",
+     "p": [
+      "**Sakaratul maut** adalah kepayahan dan rasa sakit ketika ruh hendak meninggalkan jasad. Al-Qur’an menyebutnya sebagai sesuatu yang pasti datang, dan manusia selalu ingin lari darinya.",
+      "Hadits dari ‘Aisyah رضي الله عنها (al-Bukhari) menceritakan bahwa menjelang wafatnya, Nabi ﷺ memasukkan tangannya ke dalam bejana berisi air, lalu mengusapkannya ke wajah beliau sambil berkata, “*La ilaha illallah, sesungguhnya kematian itu memiliki sakaratnya.*” Jika makhluk termulia pun merasakannya, maka rasa sakit saat sakaratul maut bukan tanda kehinaan seseorang di sisi Allah."
+     ],
+     "q": [
+      {
+       "a": "وَجَاءَتْ سَكْرَةُ الْمَوْتِ بِالْحَقِّ ۖ ذَٰلِكَ مَا كُنتَ مِنْهُ تَحِيدُ",
+       "t": "Dan datanglah sakaratul maut dengan sebenar-benarnya. Itulah yang selalu kamu hindari.",
+       "s": "QS. Qaf: 19"
+      }
+     ]
+    },
+    {
+     "h": "Pencabutan ruh orang beriman",
+     "p": [
+      "Hadits panjang dari al-Bara’ bin ‘Azib رضي الله عنه (Ahmad dan Abu Dawud, dinilai sahih oleh al-Albani) menggambarkan keadaan ruh orang beriman. Para malaikat berwajah putih bercahaya turun dengan membawa kain kafan dan wewangian dari surga, lalu duduk sejauh pandangan mata. Malaikat Maut datang, duduk di sisi kepalanya, dan berkata, “Wahai jiwa yang tenang, keluarlah menuju ampunan dan keridhaan Allah.”",
+      "Ruh itu keluar dengan mudah, seperti setetes air mengalir dari mulut kirbat. Para malaikat segera mengambilnya, membungkusnya dalam kafan dari surga, dan harumnya seperti kesturi terbaik di bumi. Para malaikat di langit bertanya, “Ruh siapa yang baik ini?” dan dijawab dengan nama terbaiknya di dunia. Pintu-pintu langit dibukakan baginya, dan namanya dituliskan di *‘Illiyyin*. Kemudian ruhnya dikembalikan ke bumi.",
+      "Al-Qur’an menyebut kabar gembira yang disampaikan malaikat kepada orang-orang beriman, bahwa mereka tidak perlu takut dan tidak perlu bersedih, serta dijanjikan surga."
+     ],
+     "q": [
+      {
+       "a": "إِنَّ الَّذِينَ قَالُوا رَبُّنَا اللَّهُ ثُمَّ اسْتَقَامُوا تَتَنَزَّلُ عَلَيْهِمُ الْمَلَائِكَةُ أَلَّا تَخَافُوا وَلَا تَحْزَنُوا وَأَبْشِرُوا بِالْجَنَّةِ الَّتِي كُنتُمْ تُوعَدُونَ",
+       "t": "Sesungguhnya orang-orang yang berkata, “Tuhan kami adalah Allah,” kemudian mereka tetap istiqamah, malaikat-malaikat akan turun kepada mereka (dengan berkata), “Janganlah kamu merasa takut dan janganlah merasa sedih; dan bergembiralah dengan (memperoleh) surga yang telah dijanjikan kepadamu.”",
+       "s": "QS. Fushshilat: 30"
+      }
+     ]
+    },
+    {
+     "h": "Pencabutan ruh orang kafir",
+     "p": [
+      "Dalam hadits al-Bara’ yang sama, orang kafir yang akan meninggal didatangi malaikat berwajah hitam dengan kain kasar. Malaikat Maut berkata, “Wahai jiwa yang buruk, keluarlah menuju kemurkaan dan kemarahan Allah.” Ruh itu tercerai-berai di dalam tubuhnya, lalu ditarik keluar dengan sangat berat, seperti besi bercabang yang ditarik dari bulu domba basah.",
+      "Ruh itu dibungkus dengan kain kasar, baunya seperti bangkai paling busuk, dan pintu-pintu langit tidak dibukakan untuknya. Ia dilemparkan ke bawah, dan Nabi ﷺ membacakan firman Allah bahwa siapa yang mempersekutukan Allah seakan-akan jatuh dari langit lalu disambar burung atau dihempaskan angin ke tempat yang jauh (al-Hajj: 31).",
+      "Al-Qur’an juga menggambarkan para malaikat yang memukul wajah dan punggung orang-orang kafir ketika mencabut nyawa mereka."
+     ],
+     "q": [
+      {
+       "a": "وَلَوْ تَرَىٰ إِذْ يَتَوَفَّى الَّذِينَ كَفَرُوا ۙ الْمَلَائِكَةُ يَضْرِبُونَ وُجُوهَهُمْ وَأَدْبَارَهُمْ",
+       "t": "Dan sekiranya kamu melihat ketika para malaikat mencabut nyawa orang-orang yang kafir, seraya memukul wajah dan punggung mereka.",
+       "s": "QS. al-Anfal: 50"
+      }
+     ]
+    },
+    {
+     "h": "Taubat masih diterima, sampai kapan?",
+     "p": [
+      "Hadits dari Ibnu ‘Umar رضي الله عنهما (at-Tirmidzi dan Ibnu Majah, dinilai hasan) menyebut bahwa Allah menerima taubat seorang hamba **selama nyawanya belum sampai di kerongkongan** (*ghargharah*). Maknanya, taubat masih terbuka sampai detik-detik terakhir, tetapi tertutup ketika nyawa sudah mulai dicabut dan kematian sudah terlihat nyata.",
+      "Al-Qur’an menegaskan hal yang sama. Taubat tidak berlaku bagi orang yang terus berbuat dosa, lalu ketika kematian datang berkata, “Sekarang aku bertaubat” (an-Nisa’: 18). Contoh yang disebut adalah Fir‘aun, yang baru berkata beriman ketika tenggelam, dan dijawab bahwa sekarang saatnya sudah lewat (Yunus: 90–91)."
+     ]
+    },
+    {
+     "h": "Menuntun orang yang sedang sekarat, dan jembatan menuju Barzakh",
+     "p": [
+      "Nabi ﷺ bersabda dalam hadits dari Abu Sa‘id al-Khudri رضي الله عنه (Muslim no. 916), **“Tuntunlah orang-orang yang hendak wafat di antara kalian dengan *La ilaha illallah*.”** Hadits dari Mu‘adz bin Jabal (Abu Dawud, dinilai hasan) menyebut bahwa siapa yang akhir ucapannya kalimat itu akan masuk surga. Para ulama menjelaskan agar menuntunnya dengan lembut, tidak memaksa dan tidak mengulang-ulang berlebihan agar tidak memberatkan orang yang sakit.",
+      "Hadits ‘Ubadah bin ash-Shamit (al-Bukhari dan Muslim) menyebut bahwa siapa yang suka bertemu Allah, Allah suka bertemu dengannya. ‘Aisyah رضي الله عنها menjelaskan maksudnya bukan membenci kematian, melainkan keadaan ketika ajal datang: orang beriman diberi kabar gembira tentang rahmat dan surga, sehingga ia suka bertemu Allah.",
+      "Setelah ruh dicabut, perjalanan berlanjut ke alam kubur: ruh dikembalikan kepada jasadnya untuk menjawab pertanyaan dua malaikat. Kisahnya dilanjutkan pada kartu **Barzakh dan Alam Kubur**."
+     ]
+    }
+   ],
+   "s": [
+    "QS. as-Sajdah: 11; az-Zumar: 42; al-An‘am: 61; Qaf: 19; al-Anfal: 50; an-Nahl: 32; Fushshilat: 30; an-Nisa’: 18; Yunus: 90–91",
+    "HR. al-Bukhari no. 1339 dan Muslim no. 2372 dari Abu Hurairah — Malaikat Maut dan Nabi Musa عليه السلام",
+    "HR. al-Bukhari no. 4449 dari ‘Aisyah — Nabi ﷺ menjelang wafat: sesungguhnya kematian memiliki sakarat",
+    "HR. Ahmad no. 18534 dan Abu Dawud no. 4753 dari al-Bara’ bin ‘Azib — pencabutan ruh orang beriman dan orang kafir; dinilai sahih oleh al-Albani dalam *Ahkam al-Jana’iz*",
+    "HR. at-Tirmidzi no. 3537 dan Ibnu Majah no. 4253 dari Ibnu ‘Umar — taubat diterima selama belum sampai ghargharah; dinilai hasan",
+    "HR. Muslim no. 916 dari Abu Sa‘id al-Khudri — tuntunlah orang yang hendak wafat dengan La ilaha illallah",
+    "HR. Abu Dawud no. 3116 dari Mu‘adz bin Jabal — akhir ucapannya La ilaha illallah masuk surga; dinilai hasan",
+    "HR. al-Bukhari no. 6507 dan Muslim no. 2683 dari ‘Ubadah bin ash-Shamit — siapa yang suka bertemu Allah, Allah suka bertemu dengannya",
+    "Ibnu Katsir, *Tafsir al-Qur’an al-‘Azhim*; al-Qurthubi, *at-Tadzkirah fi Ahwal al-Mauta wa Umur al-Akhirah*; an-Nawawi, *Syarh Shahih Muslim*; Ibnu Hajar al-‘Asqalani, *Fathul Bari*"
    ]
   },
   {
@@ -1658,6 +1891,81 @@
    ]
   },
   {
+   "id": "ashabul-araf",
+   "t": "Ashabul A‘raf: Orang-orang di Antara Surga dan Neraka",
+   "d": "Siapa mereka, apa yang mereka lihat dan ucapkan, bagaimana para ulama berbeda pendapat tentang jati diri mereka, dan apa yang akhirnya terjadi kepada mereka, menurut QS. al-A‘raf: 44–49.",
+   "b": [
+    {
+     "h": "Percakapan dua penghuni, dan pembatas di antaranya",
+     "p": [
+      "Setelah hisab selesai, penghuni surga menyeru penghuni neraka dan bertanya apakah mereka telah mendapati janji Tuhan itu benar. Penghuni neraka menjawab, “Ya.” Lalu seorang penyeru menyerukan bahwa laknat Allah atas orang-orang zalim (al-A‘raf: 44–45).",
+      "Pada ayat berikutnya, Allah menyebut bahwa **di antara keduanya ada pembatas**, dan di atas *al-A‘raf* ada sekelompok orang. Kata *al-A‘raf* adalah bentuk jamak dari *‘urf*, yang bermakna tempat yang tinggi, sehingga mereka dapat melihat kedua pihak. Itulah **Ashabul A‘raf**."
+     ],
+     "q": [
+      {
+       "a": "وَبَيْنَهُمَا حِجَابٌ ۚ وَعَلَى الْأَعْرَافِ رِجَالٌ يَعْرِفُونَ كُلًّا بِسِيمَاهُمْ ۚ وَنَادَوْا أَصْحَابَ الْجَنَّةِ أَن سَلَامٌ عَلَيْكُمْ ۚ لَمْ يَدْخُلُوهَا وَهُمْ يَطْمَعُونَ",
+       "t": "Dan di antara keduanya (penghuni surga dan neraka) ada batas, dan di atas A‘raf ada orang-orang yang saling mengenal, masing-masing dengan tanda-tandanya. Mereka menyeru penghuni surga, “Salamun ‘alaikum.” Mereka belum masuk, padahal ingin (segera masuk).",
+       "s": "QS. al-A‘raf: 46"
+      }
+     ]
+    },
+    {
+     "h": "Apa yang mereka lihat dan ucapkan",
+     "p": [
+      "Ayat-ayat itu menggambarkan dua arah pandang. Ketika mereka memandang penghuni surga, mereka mengucapkan salam dan **berharap** dapat masuk ke sana. Ketika pandangan mereka dipalingkan ke arah penghuni neraka, mereka memohon agar tidak ditempatkan bersama orang-orang zalim.",
+      "Mereka juga mengenali tokoh-tokoh kafir dari tanda-tandanya dan berkata bahwa harta yang dikumpulkan dan kesombongan mereka tidak berguna sama sekali. Lalu mereka menunjuk penghuni surga yang dulu dihina dan bersumpah bahwa Allah tidak akan memberi mereka rahmat, kemudian dikatakan kepada penghuni surga itu agar masuk surga tanpa rasa takut dan sedih."
+     ],
+     "q": [
+      {
+       "a": "وَإِذَا صُرِفَتْ أَبْصَارُهُمْ تِلْقَاءَ أَصْحَابِ النَّارِ قَالُوا رَبَّنَا لَا تَجْعَلْنَا مَعَ الْقَوْمِ الظَّالِمِينَ",
+       "t": "Dan apabila pandangan mereka dipalingkan ke arah penghuni neraka, mereka berkata, “Ya Tuhan kami, janganlah Engkau tempatkan kami bersama-sama orang-orang zalim itu.”",
+       "s": "QS. al-A‘raf: 47"
+      },
+      {
+       "a": "وَنَادَىٰ أَصْحَابُ الْأَعْرَافِ رِجَالًا يَعْرِفُونَهُم بِسِيمَاهُمْ قَالُوا مَا أَغْنَىٰ عَنكُمْ جَمْعُكُمْ وَمَا كُنتُمْ تَسْتَكْبِرُونَ",
+       "t": "Dan orang-orang di A‘raf menyeru beberapa orang yang mereka kenal dengan tanda-tandanya sambil berkata, “Harta yang kamu kumpulkan dan apa yang selalu kamu sombongkan itu tidak ada manfaatnya bagimu.”",
+       "s": "QS. al-A‘raf: 48"
+      }
+     ]
+    },
+    {
+     "h": "Siapa sebenarnya mereka? Perbedaan pendapat ulama",
+     "p": [
+      "Al-Qur’an hanya menyebut mereka sebagai *rijal* (orang-orang) di atas A‘raf, tanpa merinci siapa mereka. Karena itu para mufassir berbeda pendapat, dan tidak ada hadits sahih yang menentukan jawabannya secara tegas.",
+      "Pendapat yang paling masyhur, dari sejumlah sahabat dan tabi‘in seperti Hudzaifah, Ibnu Mas‘ud, dan Ibnu ‘Abbas, adalah bahwa mereka **orang-orang yang amal baik dan buruknya seimbang**. Kebaikan mereka mencegah masuk neraka, dan keburukan mereka menahan masuk surga, sehingga mereka tertahan di tempat itu. Pendapat ini dipilih oleh banyak mufassir, termasuk ath-Thabari.",
+      "Pendapat lain menyebut mereka orang-orang utama yang saleh dan berilmu, yang ditempatkan di tempat tinggi untuk menyaksikan seluruh manusia (diriwayatkan dari Mujahid). Ada pula pendapat lain yang lebih lemah sandarannya. Jadi, jati diri mereka tidak dapat dipastikan, dan sikap yang aman adalah menyebutkan perbedaan itu tanpa memastikan salah satunya sebagai akidah."
+     ]
+    },
+    {
+     "h": "Apa akhir nasib mereka?",
+     "p": [
+      "Pada ayat 49, kepada penghuni surga yang dulu dihina dikatakan agar mereka masuk surga. Para mufassir menjelaskan bahwa Ashabul A‘raf sendiri **berharap** (*yatma‘un*) masuk surga, dan banyak ulama memahami bahwa harapan itu akhirnya dikabulkan dengan rahmat Allah.",
+      "Ibnu Katsir menukil ucapan al-Hasan al-Bashri bahwa Allah tidak menanamkan harapan itu dalam hati mereka kecuali karena Dia hendak memberi mereka kebaikan. Meski begitu, ulama mencatat bahwa ini adalah penafsiran dari ayat, bukan keterangan yang disebut jelas dalam hadits sahih, sehingga kita hanya berharap kebaikan bagi mereka tanpa memastikan rinciannya."
+     ],
+     "q": [
+      {
+       "a": "أَهَٰؤُلَاءِ الَّذِينَ أَقْسَمْتُمْ لَا يَنَالُهُمُ اللَّهُ بِرَحْمَةٍ ۚ ادْخُلُوا الْجَنَّةَ لَا خَوْفٌ عَلَيْكُمْ وَلَا أَنتُمْ تَحْزَنُونَ",
+       "t": "Itukah orang-orang yang kamu telah bersumpah bahwa Allah tidak akan melimpahkan rahmat kepada mereka? (Kepada mereka dikatakan), “Masuklah ke dalam surga, tidak ada kekhawatiran terhadapmu dan tidak pula kamu bersedih hati.”",
+       "s": "QS. al-A‘raf: 49"
+      }
+     ]
+    },
+    {
+     "h": "Pelajaran dari kisah ini",
+     "p": [
+      "Kisah ini mengajarkan **harapan dan rasa takut sekaligus**. Ashabul A‘raf takut masuk neraka, tetapi tetap berharap rahmat Allah. Seorang mukmin hendaknya demikian: tidak merasa aman dari azab, dan tidak berputus asa dari rahmat.",
+      "Kisah ini juga menunjukkan bahwa penilaian akhir hanya milik Allah. Orang yang dulu dianggap rendah bisa menjadi penghuni surga, sedangkan orang yang dulu sombong dengan harta dan jumlah pengikut tidak mendapat manfaat apa pun darinya. Karena itu kita tidak pantas memastikan nasib orang tertentu di akhirat, dan juga tidak bersandar pada amal sendiri."
+     ]
+    }
+   ],
+   "s": [
+    "QS. al-A‘raf: 44–49",
+    "ath-Thabari, *Jami‘ al-Bayan* (QS. al-A‘raf: 46) — riwayat sahabat dan tabi‘in tentang Ashabul A‘raf serta pendapat yang beliau pilih",
+    "Ibnu Katsir, *Tafsir al-Qur’an al-‘Azhim* (QS. al-A‘raf: 46–49) — ringkasan pendapat ulama dan ucapan al-Hasan al-Bashri",
+    "al-Qurthubi, *Al-Jami‘ li Ahkam al-Qur’an* (QS. al-A‘raf: 46) — daftar pendapat tentang jati diri Ashabul A‘raf"
+   ]
+  },
+  {
    "id": "telaga-kautsar-dan-syafaat",
    "t": "Telaga Al-Kautsar (Haudh) dan Syafa‘at Nabi ﷺ",
    "d": "Hubungan sungai al-Kautsar dengan telaga Nabi ﷺ, siapa yang diizinkan minum dan siapa yang dihalau, serta hakikat, syarat, dan jenis-jenis syafa‘at pada hari kiamat.",
@@ -2108,6 +2416,87 @@
     "HR. Muslim no. 1252 dari Abu Hurairah — ‘Isa menunaikan haji atau umrah",
     "HR. Abu Dawud no. 4324 dari Abu Hurairah — ‘Isa tinggal di bumi, lalu wafat dan dishalatkan kaum muslimin",
     "Ibnu Katsir, *An-Nihayah fil Fitan wal Malahim* dan *Tafsir al-Qur’an al-‘Azhim* (QS. an-Nisa’: 159, az-Zukhruf: 61); al-Albani, *Silsilah al-Ahadits ash-Shahihah*; an-Nawawi, *Syarh Shahih Muslim*; Ibnu Hajar al-‘Asqalani, *Fathul Bari*, Kitab al-Fitan"
+   ]
+  },
+  {
+   "id": "malhamah-kubra-konstantinopel-sufyani",
+   "t": "Perang Akhir Zaman: Malhamah Kubra, Konstantinopel, dan as-Sufyani",
+   "d": "Apa yang disebut hadits sahih tentang pertempuran besar melawan Rum, penaklukan Konstantinopel, dan sosok as-Sufyani, dipisahkan dari riwayat yang lemah dan dari penafsiran yang terlalu jauh.",
+   "b": [
+    {
+     "h": "Malhamah Kubra: arti dan tempatnya dalam urutan tanda kiamat",
+     "p": [
+      "*Malhamah* berarti pertempuran besar. Para ulama menyebut **Al-Malhamah al-Kubra** untuk rangkaian peperangan besar antara kaum muslimin dan bangsa Rum di akhir zaman, sebelum munculnya Dajjal. Kartu Hari Kiamat dan Tanda-Tandanya menyebut bahwa para ulama membagi tanda kiamat menjadi tanda kecil dan tanda besar. Peristiwa ini termasuk rangkaian yang mendahului tanda-tanda besar.",
+      "Hadits dari Mu‘adz bin Jabal رضي الله عنه (Abu Dawud no. 4294, dinilai hasan) menyebut urutan: makmurnya Baitul Maqdis menjadi tanda kehancuran Yatsrib, kehancuran Yatsrib menjadi tanda keluarnya Malhamah, Malhamah menjadi tanda penaklukan Konstantinopel, dan penaklukan Konstantinopel menjadi tanda keluarnya Dajjal."
+     ],
+     "q": [
+      {
+       "a": "فَهَلْ يَنظُرُونَ إِلَّا السَّاعَةَ أَن تَأْتِيَهُم بَغْتَةً ۖ فَقَدْ جَاءَ أَشْرَاطُهَا",
+       "t": "Maka tidak ada yang mereka tunggu-tunggu melainkan kedatangan kiamat kepada mereka secara tiba-tiba, karena sungguh, telah datang tanda-tandanya.",
+       "s": "QS. Muhammad: 18"
+      }
+     ]
+    },
+    {
+     "h": "Gencatan senjata, lalu pengkhianatan",
+     "p": [
+      "Dalam hadits ‘Auf bin Malik رضي الله عنه (al-Bukhari no. 3176), Nabi ﷺ menyebut enam hal sebelum kiamat. Hal keenam adalah **gencatan senjata antara kaum muslimin dan Bani Asfar** (bangsa Rum). Mereka kemudian berkhianat dan mendatangi kaum muslimin dengan delapan puluh panji, dan di bawah setiap panji ada dua belas ribu pasukan.",
+      "Para ulama menjelaskan bahwa gambaran ini menunjukkan besarnya skala peperangan itu. Hadits ini juga menunjukkan bahwa sumber peperangan adalah pengkhianatan perjanjian, bukan permusuhan yang diinginkan kaum muslimin."
+     ]
+    },
+    {
+     "h": "A‘maq atau Dabiq, dan pasukan terbaik dari Madinah",
+     "p": [
+      "Hadits dari Abu Hurairah رضي الله عنه (Muslim no. 2897) menyebut bahwa kiamat tidak terjadi sampai bangsa Rum turun di **A‘maq atau Dabiq**, dua tempat di wilayah Syam. Sebuah pasukan dari Madinah, yang terbaik penduduk bumi pada hari itu, keluar menghadapi mereka. Rum meminta agar kaum muslimin tidak menghalangi antara mereka dan orang-orang yang dulu berasal dari mereka lalu masuk Islam, tetapi kaum muslimin menolak.",
+      "Maka terjadilah perang. **Sepertiga lari**, dan Allah tidak mengampuni mereka. **Sepertiga terbunuh**, dan mereka syuhada terbaik di sisi Allah. **Sepertiga menang**, dan mereka tidak pernah lagi difitnah, lalu mereka menaklukkan Konstantinopel.",
+      "Hadits ‘Abdullah bin Mas‘ud (Muslim no. 2899) menyebut peperangan lain yang sangat berat: satu detasemen kaum muslimin berikrar untuk tidak kembali kecuali menang, mereka bertempur hingga malam dan semuanya gugur, dan hal itu berulang sampai hari keempat ketika Allah memberi kemenangan. Hadits ini juga menyebut bahwa sedikit sekali yang tersisa dari tiap seratus orang, sehingga tidak ada kegembiraan atas harta rampasan.",
+      "Nabi ﷺ juga menyebut tempat berkumpul kaum muslimin pada hari Malhamah, yaitu di **Ghuthah**, dekat kota yang disebut Damaskus (hadits Abu Darda’, Abu Dawud no. 4298, dinilai sahih)."
+     ]
+    },
+    {
+     "h": "Konstantinopel: tiga hal yang perlu dibedakan",
+     "p": [
+      "Pertama, **penyerbuan awal**. Dalam hadits Ummu Haram رضي الله عنها (al-Bukhari no. 2924), Nabi ﷺ bersabda bahwa pasukan pertama dari umatnya yang memerangi *kota Kaisar* diampuni dosa-dosanya. Para ulama, di antaranya Ibnu Hajar, menjelaskan bahwa maknanya adalah pasukan muslimin yang menyerbu Konstantinopel pada masa Mu‘awiyah رضي الله عنه, ketika Abu Ayyub al-Anshari رضي الله عنه wafat dan dimakamkan di dekat tembok kota.",
+      "Kedua, **sabda tentang penaklukannya**. Dalam hadits dari ‘Abdullah bin Bisyr al-Ghanawi (Ahmad no. 18957, dinilai hasan oleh al-Albani dalam *as-Silsilah ash-Shahihah* no. 881), Nabi ﷺ bersabda bahwa Konstantinopel pasti akan ditaklukkan, dan sebaik-baik pemimpinnya adalah pemimpinnya, dan sebaik-baik pasukannya adalah pasukannya. Banyak ulama dan sejarawan memahami bahwa hadits ini terwujud pada penaklukan oleh Sultan Muhammad al-Fatih (Mehmed II) dari Daulah Utsmani pada tahun 1453 M.",
+      "Ketiga, **penaklukan menjelang Dajjal**. Hadits Muslim no. 2897 dan 2920 menyebut penaklukan yang terjadi tepat sebelum munculnya Dajjal, dan hadits no. 2920 menyebut pasukan yang menaklukkan dengan ucapan *La ilaha illallah wallahu akbar*, bukan dengan senjata, hingga tembok-tembok kota runtuh. Karena disebut berdekatan dengan Dajjal, banyak ulama memahami bahwa ini penaklukan yang terjadi di akhir zaman, berbeda dari peristiwa tahun 1453. Sebagian ulama menafsirkan kota dalam hadits no. 2920 sebagai Konstantinopel, sedangkan sebagian lain memahaminya sebagai kota lain, yaitu Roma. Para ulama berbeda pendapat dan tidak ada kesimpulan yang pasti."
+     ]
+    },
+    {
+     "h": "As-Sufyani: apa yang kuat, apa yang lemah",
+     "p": [
+      "**As-Sufyani** adalah sebutan bagi seorang tokoh di akhir zaman yang dinisbatkan kepada keturunan Abu Sufyan. Dalam riwayat-riwayat yang menyebutnya, ia digambarkan muncul di Syam, berbuat zalim, dan memusuhi al-Mahdi serta ahli bait.",
+      "Yang perlu diperhatikan, nama *as-Sufyani* tidak ada dalam *Shahih al-Bukhari* maupun *Shahih Muslim*. Riwayat-riwayat tentangnya banyak terdapat di kitab-kitab fitan, seperti karya Nu‘aim bin Hammad, dan para ahli hadits menilai banyak di antaranya lemah. Karena itu, sosok dan rincian ciri-cirinya tidak termasuk perkara akidah.",
+      "Yang ada dalam sumber yang lebih kuat adalah kisah-kisah serupa tanpa nama itu. Hadits Ummu Salamah (Abu Dawud no. 4286) menyebut seorang laki-laki dari Quraisy yang paman-pamannya dari Kalb mengirim pasukan melawan al-Mahdi, sedangkan hadits ‘Aisyah (Muslim no. 2882) menyebut pasukan yang hendak menyerang Ka‘bah lalu dibenamkan bumi di *Baida’*. Sebagian ulama menghubungkan keduanya dengan sosok as-Sufyani, tetapi hubungan itu adalah ijtihad, bukan keterangan yang tegas dalam hadits."
+     ]
+    },
+    {
+     "h": "Sikap seorang mukmin: jangan menunjuk peristiwa, perbanyak ibadah",
+     "p": [
+      "Para ulama mengingatkan agar hadits-hadits ini tidak ditempelkan begitu saja pada peristiwa yang sedang terjadi. Banyak orang di setiap zaman merasa zamannya adalah zaman Malhamah, padahal ciri-ciri yang disebut hadits, seperti urutan peristiwa dan keterkaitannya dengan Dajjal, al-Mahdi, dan turunnya ‘Isa عليه السلام, belum terpenuhi. Kartu Imam Mahdi dan Turunnya Nabi ‘Isa membahas rangkaian itu, dan kartu Dajjal membahas fitnah terbesarnya.",
+      "Pegangan seorang mukmin ada pada sabda Nabi ﷺ dalam hadits Ma‘qil bin Yasar (Muslim no. 2948): **ibadah pada masa kekacauan seperti berhijrah kepadaku**. Artinya, di masa fitnah, yang diminta adalah menjaga iman, shalat, dan akhlak, serta tidak ikut menumpahkan darah tanpa dasar yang jelas."
+     ],
+     "q": [
+      {
+       "a": "الْعِبَادَةُ فِي الْهَرْجِ كَهِجْرَةٍ إِلَيَّ",
+       "t": "Ibadah pada masa kekacauan (harj) seperti hijrah kepadaku.",
+       "s": "HR. Muslim no. 2948 dari Ma‘qil bin Yasar"
+      }
+     ]
+    }
+   ],
+   "s": [
+    "QS. Muhammad: 18",
+    "HR. al-Bukhari no. 3176 dari ‘Auf bin Malik — enam tanda sebelum kiamat, gencatan senjata dengan Bani Asfar dan delapan puluh panji",
+    "HR. Muslim no. 2897 dari Abu Hurairah — A‘maq atau Dabiq, tiga bagian pasukan, penaklukan Konstantinopel",
+    "HR. Muslim no. 2899 dari ‘Abdullah bin Mas‘ud — peperangan besar dan detasemen yang berikrar",
+    "HR. Muslim no. 2920 dari Abu Hurairah — penaklukan dengan tahlil dan takbir",
+    "HR. Abu Dawud no. 4294 dari Mu‘adz bin Jabal — urutan Baitul Maqdis, Yatsrib, Malhamah, Konstantinopel, Dajjal; dinilai hasan",
+    "HR. Abu Dawud no. 4298 dari Abu Darda’ — perkemahan kaum muslimin di Ghuthah pada hari Malhamah; dinilai sahih",
+    "HR. al-Bukhari no. 2924 dari Ummu Haram — pasukan pertama yang memerangi kota Kaisar diampuni",
+    "HR. Ahmad no. 18957 dari ‘Abdullah bin Bisyr al-Ghanawi — sebaik-baik pemimpin dan pasukan; dinilai hasan oleh al-Albani dalam *as-Silsilah ash-Shahihah* no. 881",
+    "HR. Abu Dawud no. 4286 dari Ummu Salamah dan HR. Muslim no. 2882 dari ‘Aisyah — pasukan yang dibenamkan di Baida’",
+    "HR. Muslim no. 2948 dari Ma‘qil bin Yasar — ibadah pada masa harj",
+    "Ibnu Katsir, *An-Nihayah fil Fitan wal Malahim* dan *Al-Bidayah wan Nihayah*; an-Nawawi, *Syarh Shahih Muslim*; Ibnu Hajar al-‘Asqalani, *Fathul Bari*; al-Albani, *as-Silsilah ash-Shahihah*; Nu‘aim bin Hammad, *Kitab al-Fitan*"
    ]
   },
   {
