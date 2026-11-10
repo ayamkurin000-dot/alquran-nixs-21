@@ -2161,7 +2161,7 @@ html:not(#_):not(#_):not(#_):not(#_):not(#_) .hbx.photo{min-height:0}
   '2 Rokaat sebelum shubuh, 4 sebelum Dzuhur, 2 setelahnya, 2 setelah maghrib, 2 setelah Isya’ (12 rokaat), Allah membangunkannya rumah di Surga',
   '“Sholat yang paling utama setelah fardhu adalah sholat malam.” (HR. Muslim : 1163)',
   'Sholat malam memperkuat hubungan batin dengan Allah dan menambah kedekatan saat wafat'];
-  var pn=0, KQ='qk.led.q', qi=0, PL=['waktu','next','mundur','v','run','v','q','jv'], pc=-1, cur=null, DURS={jadwal:12000,jam:13000,run:20000,waktu:31000,next:30000,mundur:30000};
+  var pn=0, KQ='qk.led.q', qi=0, PL=['wil','next','waktu','mundur','v','run','v','q','jv'], pc=-1, cur=null, DURS={jadwal:12000,jam:13000,run:20000,wil:5000,waktu:25500,next:30000,mundur:30000};
   try{qi=(+localStorage.getItem(KQ)||0)%QT.length}catch(e){}
   function balikQuote(){ /* kalimat mutiara yang sedang tampil lalu terpotong hitung mundur / Masuk Waktu: tampil ulang di giliran berikutnya, tidak ada yang terlewat */
     if(cur&&(cur.t==='q'||cur.t==='v')&&cur.i!==undefined){qi=cur.i; try{localStorage.setItem(KQ,String(qi))}catch(e){}}
@@ -2655,8 +2655,8 @@ html:not(#_):not(#_):not(#_):not(#_):not(#_) .hbx.photo{min-height:0}
   function wilBaris(){var a=[]; if(L.kec)a.push('Kec. '+L.kec); if(L.kota)a.push(L.kota); if(L.kab)a.push('Kab. '+L.kab); if(!a.length)a.push(L.nama||'LOKASI ANDA'); if(L.sumber==='ip')a.push('(perkiraan)'); return a}
   function halamanWaktu(bx,now,t5){
     var r=el('wr'), rb=el('wrb'), v=el('wv'), wk=bx.querySelector('.wk'); if(!r||!rb||!v||!wk)return;
-    var e=now-pgAt;
-    bx.classList.remove('qm','xo'); bx.classList.add('wm'); wk.classList.toggle('sm',e>=WBIG);
+    var e=now-pgAt+(cur.t==='waktu'?WGO:0);   /* 'wil' = nama wilayah besar 5 dtk saja; 'waktu' = daftar jam sholat (wilayah sudah kecil di atas) */
+    bx.classList.remove('qm','xo'); bx.classList.add('wm'); wk.classList.toggle('sm',cur.t==='waktu'&&e>=WBIG);
     var br=wilBaris(), tx=br.join('|');
     if(wTxt!==tx){
       wTxt=tx; rb.innerHTML=''; br.forEach(function(x){var d=document.createElement('div'); d.textContent=x; rb.appendChild(d)});
@@ -2726,7 +2726,7 @@ html:not(#_):not(#_):not(#_):not(#_):not(#_) .hbx.photo{min-height:0}
     if(sm!==sxMode){ sxMode=sm; pc=-1; if(cur&&cur.t!=='n'){balikQuote(); cur=null} }
     var bx=el('kled'), EXIT=700;
     if(!cur)lanjut(now);
-    else if(cur.t==='waktu'){ if(now-pgAt>=cur.dur)lanjut(now) }
+    else if(cur.t==='waktu'||cur.t==='wil'){ if(now-pgAt>=cur.dur)lanjut(now) }
     else if(cur.t==='next'){ if(!nxt||now-pgAt>=cur.dur)lanjut(now) }
     else if(cur.t==='mundur'){ if(!nxt||now-pgAt>=cur.dur)lanjut(now) }
     else if(cur.t==='n'){ if(now-pgAt>=cur.dur)lanjut(now) }
@@ -2736,7 +2736,7 @@ html:not(#_):not(#_):not(#_):not(#_):not(#_) .hbx.photo{min-height:0}
       if(!cur.xo&&now-pgAt>=cur.dur-EXIT){cur.xo=now; bx.classList.add('xo')}
       if(cur.xo&&now-cur.xo>=EXIT)lanjut(now);
     }
-    if(cur.t==='waktu'){ halamanWaktu(bx,now,hariIni(now)); return }
+    if(cur.t==='waktu'||cur.t==='wil'){ halamanWaktu(bx,now,hariIni(now)); return }
     if(cur.t==='next'){ if(nxt){halamanNext(bx,now,nxt);return} cur=null; return }
     if(cur.t==='mundur'){ if(nxt){halamanMundur(bx,now,nxt);return} cur=null; return }
     if(cur.t==='n'){ halamanNotif(bx,now); return }
