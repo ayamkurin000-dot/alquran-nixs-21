@@ -807,6 +807,17 @@ html:not(#_):not(#_):not(#_) .dcat.ecat b{min-height:0;height:auto;font-size:16.
   box-shadow:inset 0 0 26px rgba(var(--kpr),.60),inset 0 0 3px rgba(70,40,8,.7),0 2px 5px rgba(0,0,0,.45);
   animation:dpap .22s ease-out}
 .ditem .dbody .dar{color:var(--kpi);text-shadow:0 0 1px rgba(var(--kpr),.25)}
+/* penulisan berwarna seperti kartu Syekh Jumadil Qubro: label bab berwarna-warni, rujukan hijau, derajat hadits merah/hijau/ungu, kutipan miring */
+.ditem .dbody .dmeta>b{font-weight:800}
+.ditem .dbody .em-gd,.ditem .dbody .dmeta>b.gd{color:#7a4a06;font-weight:800}
+.ditem .dbody .em-gr,.ditem .dbody .dmeta>b.gr{color:#2f5d2a;font-weight:800}
+.ditem .dbody .em-pu,.ditem .dbody .dmeta>b.pu{color:#6a3d8a;font-weight:800}
+.ditem .dbody .em-bl,.ditem .dbody .dmeta>b.bl{color:#0c4a6e;font-weight:800}
+.ditem .dbody .em-hl,.ditem .dbody .dmeta>b.hl{color:#8b1a1a;font-weight:800}
+.ditem .dbody .em-w{color:#8b1a1a;font-weight:800;text-decoration:underline;text-decoration-color:#8b1a1a;text-decoration-thickness:2px;text-underline-offset:2px}
+.ditem .dbody .em-pu.u{text-decoration:underline;text-decoration-color:#6a3d8a;text-decoration-thickness:2px;text-underline-offset:2px}
+.ditem .dbody .em-q{font-style:italic;color:#3f5632}
+.ditem .dbody .dtr{font-style:italic;color:#3f5632;font-size:14px;line-height:1.4}
 .ditem .dbody .dcp:hover{background:rgba(120,80,25,.18)}
 @keyframes dpap{from{opacity:0;transform:translateY(-8px) scale(.97)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){.ditem .dbody{animation:none}.ditem{transition:none}}
@@ -3618,7 +3629,22 @@ function dAr(a){   /* pisahkan teks Arab dari catatan Latin yang kadang menempel
 }
 var DBL=['Jan','Feb','Mar','Apr','Mei','Jun','Jul','Agu','Sep','Okt','Nov','Des'];
 function dChk(v){if(!v||!v.status)return'';var t='';if(v.tgl){var a=v.tgl.split('-');if(a.length===3)t=' '+parseInt(a[2],10)+' '+DBL[parseInt(a[1],10)-1]+' '+a[0]}var full=v.status==='dicek-penuh';return '<p><span class="dchk'+(full?'':' p')+'" title="'+dEsc(v.cat||'')+'">'+(full?'✓ Sudah dicek':'◐ Dicek sebagian')+t+'</span></p>'}
-function dMeta(l,v){return v?'<p class="dmeta"><b>'+l+':</b> '+dEsc(v)+'</p>':''}
+/* penekanan otomatis (tanpa mengubah isi): kutipan = miring; rujukan HR./QS. = hijau tebal; istilah derajat = merah+garis bawah (lemah) / hijau (shahih, hasan) / ungu (diperselisihkan, dll); KAPITAL = emas tebal */
+var DLC={'Dasar tuntunan':'gd','Keutamaan':'gr','Tata cara':'pu','Waktu membaca':'bl','Waktu mustajab':'pu','Tempat mustajab':'pu','Adab':'hl','Sumber':'gd','Waktu':'bl'};
+function dCi(w){return w.replace(/[a-z]/gi,function(c){return '['+c.toLowerCase()+c.toUpperCase()+']'})}
+var DRX=new RegExp('(\u201c[^\u201d]{2,200}\u201d|&quot;[^&]{2,200}&quot;)|((?:HR\\.|QS\\.)\\s?[^;,()\\n]{1,60}?\\d+(?:[\u2013-]\\d+)?)|(\\b[A-Z][A-Z\u2019\']{3,}(?:\\s[A-Z][A-Z\u2019\']{3,})*\\b)|(\\b(?:'+['hasan lighairihi','shahih','hasan','dhaif','dha\u2019if','lemah','palsu','maudhu\u2019','diperselisihkan','mursal','gharib'].map(dCi).join('|')+')\\b)','g');
+function dRich(x){
+  return dEsc(x).replace(DRX,function(m,q,src,cap,gr){
+    if(q)return '<i class="em-q">'+m+'</i>';
+    if(src)return '<b class="em-gr">'+m+'</b>';
+    var w=(cap||gr).toLowerCase();
+    if(/dhaif|dha\u2019if|lemah|palsu|maudhu/.test(w))return '<b class="em-w">'+m+'</b>';
+    if(/shahih|hasan/.test(w))return '<b class="em-gr">'+m+'</b>';
+    if(gr)return '<b class="em-pu u">'+m+'</b>';
+    return '<b class="em-gd">'+m+'</b>'
+  })
+}
+function dMeta(l,v){return v?'<p class="dmeta"><b class="'+(DLC[l]||'gd')+'">'+l+':</b> '+dRich(v)+'</p>':''}
 function doaSubs(it){
   if(!it.sub||!it.sub.length)return'';
   var h=it.sh?'<p class="dlb dsh">'+dEsc(it.sh)+'</p>':'';
