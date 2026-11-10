@@ -201,6 +201,23 @@ html:not(#_) #kled .bw .lbell{position:absolute;left:50%;bottom:-2px;top:auto;ri
 #kled .vs .wd{display:inline-block;white-space:pre}
 #kled .vs .vc{position:absolute;top:-2px;bottom:-2px;width:50.6%;background:#070400;z-index:2;box-shadow:0 0 14px var(--c,#ffe600),inset 0 0 10px #000}
 #kled .vs .vb{position:absolute;width:.2em;border-radius:.1em;background:#fff;z-index:2;box-shadow:0 0 .5em .12em var(--c,#ffe600),0 0 1.1em .3em color-mix(in srgb,var(--c,#ffe600) 55%,transparent)}
+/* ---- mode sunnah (10 menit sebelum Subuh/Dzuhur/Maghrib/Isya): blok hadits Arab + terjemah, hitung mundur kecil ---- */
+#kled .vs .sxa{position:absolute;overflow:hidden}
+#kled .vs .sxb{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
+#kled .vs .sxi{flex:none;width:100%;text-align:center}
+#kled .vs .sxi.m{width:auto;white-space:nowrap}
+#kled .vs .sxi.m .sxp{max-width:none;text-wrap:nowrap}
+#kled .vs .sxp{max-width:100%;margin:0 auto;text-wrap:balance;-webkit-font-smoothing:antialiased}
+#kled .vs .sx-ar{font-family:var(--arfont);font-weight:400;font-size:1em;line-height:1.75;direction:rtl;letter-spacing:0;text-transform:none;-webkit-text-stroke:0;color:#ffe600;text-shadow:0 0 3px #ffe600,0 0 10px rgba(255,230,0,.5)}
+#kled .vs .sx-hd,#kled .vs .sx-id,#kled .vs .sx-sr{font-family:ui-monospace,'SF Mono',Menlo,Consolas,'DejaVu Sans Mono','Liberation Mono',monospace,'LPMQ Isep Misbah','Noto Naskh Arabic';font-weight:800;letter-spacing:.03em;text-transform:uppercase}
+#kled .vs .sx-hd{font-size:.5em;line-height:1.3;margin-bottom:.2em;color:#19e8ff;text-shadow:0 0 2px #19e8ff,0 0 8px rgba(25,232,255,.6)}
+#kled .vs .sx-id{font-size:.5em;line-height:1.3;color:#2dff6e;text-shadow:0 0 2px #2dff6e,0 0 8px rgba(45,255,110,.6)}
+#kled .vs .sx-sr{font-size:.42em;line-height:1.3;margin-top:.35em;color:#19e8ff;text-shadow:0 0 2px #19e8ff,0 0 8px rgba(25,232,255,.6)}
+#kled .vs .ra{font-family:var(--arfont);font-weight:400;letter-spacing:0;text-transform:none;direction:rtl;unicode-bidi:isolate;font-size:1.2em}
+#kled .vs .sxcd{position:absolute;z-index:3;display:flex;align-items:center;justify-content:center;gap:.5em;white-space:nowrap;font:800 .72em/1 ui-monospace,'SF Mono',Menlo,Consolas,'DejaVu Sans Mono','Liberation Mono',monospace;letter-spacing:.04em;text-transform:uppercase;color:#ff2a2a;text-shadow:0 0 2px #ff2a2a,0 0 9px rgba(255,42,42,.75),0 0 18px rgba(255,42,42,.4)}
+#kled .vs .sxcd.p-top{left:0;right:0;top:0}
+#kled .vs .sxcd.p-bottom{left:0;right:0;bottom:0}
+#kled .vs .sxcd.p-left{left:0;top:0;bottom:0;flex-direction:column;gap:.3em;border-right:1px dashed rgba(255,42,42,.45)}
 /* ---- halaman waktu sholat: wilayah tetap di atas tengah, nama sholat + jam bergantian tiap 5 detik ---- */
 #kled .wk{position:absolute;inset:0;display:none;flex-direction:column;align-items:center;z-index:1;pointer-events:none;overflow:hidden}
 #kled.wm .wk{display:flex}#kled.wm .ln{visibility:hidden}
@@ -2170,14 +2187,15 @@ html:not(#_):not(#_):not(#_):not(#_):not(#_) .hbx.photo{min-height:0}
      Kalimat hikmah & jadwal tampil dengan GAYA ACAK (tidak berulang berurutan) supaya tidak membosankan:
      running besar kiri->kanan lalu kanan->kiri, 2-3 baris running berlawanan arah, baris datang dari kiri & kanan lalu tetap,
      dari atas & bawah, rolling huruf (masuk satu arah, keluar arah sebaliknya), swipe, swing, tirai, kata demi kata, dll. */
-  var qFi=0, qFl=-1, vAktif=false, vtm=0, vHist=[], vS=null, c0=0;
+  var qFi=0, qFl=-1, vAktif=false, vtm=0, vHist=[], vS=null, c0=0, vAr=null, sxTm=0, sxCdEl=null;
   function vsEl(){var led=document.querySelector('#kled .led'); if(!led)return null; var s=led.querySelector('.vs'); if(!s){s=document.createElement('div'); s.className='vs'; led.appendChild(s)} return s}
   function vsStop(){
     if(vtm){clearTimeout(vtm); vtm=0}
+    if(sxTm){clearTimeout(sxTm); sxTm=0} vAr=null; sxCdEl=null;
     var s=vsEl(); if(s){try{s.getAnimations({subtree:true}).forEach(function(a){a.cancel()})}catch(e){} s.innerHTML=''}
     var bx=el('kled'); if(bx)bx.classList.remove('vm'); vAktif=false;
   }
-  function vsDim(){var led=document.querySelector('#kled .led'); return {W:led.clientWidth,H:led.clientHeight,fs:parseFloat(getComputedStyle(led).fontSize)||13}}
+  function vsDim(){if(vAr)return {W:vAr.w,H:vAr.h,fs:vAr.fs}; var led=document.querySelector('#kled .led'); return {W:led.clientWidth,H:led.clientHeight,fs:parseFloat(getComputedStyle(led).fontSize)||13}}
   function rnd(a,b){return a+Math.random()*(b-a)}
   function col(j){return PAL[(c0+j*3)%PAL.length]}
   /* K: satu animasi berisi beberapa titik waktu mutlak (ms): pts=[[t,{properti},easing],...] */
@@ -2193,7 +2211,7 @@ html:not(#_):not(#_):not(#_):not(#_):not(#_) .hbx.photo{min-height:0}
   /* susun kalimat pendek -> beberapa baris besar rata tengah; null bila tidak muat dalam satu layar */
   function susun(tx,SCo){
     var SC=SCo||[2.8,2.4,2.0,1.7,1.45,1.25,1.1,.95], mx=Math.max.apply(null,tx.split(' ').map(function(x){return x.length})), i;
-    for(i=0;i<SC.length;i++){var w=Math.floor(COL/SC[i]), rows=Math.floor(5.2/(1.3*SC[i])); if(rows<1||w<8||mx>w)continue; var ch=bungkus(tx,w); if(ch.length<=rows)return {z:SC[i],ch:ch}}
+    for(i=0;i<SC.length;i++){var w=Math.floor((vAr?vAr.col:COL)/SC[i]), rows=Math.floor((vAr?vAr.h/vAr.fs-1:5.2)/(1.3*SC[i])); if(rows<1||w<8||mx>w)continue; var ch=bungkus(tx,w); if(ch.length<=rows)return {z:SC[i],ch:ch}}
     return null;
   }
   function baris(lay){
@@ -2369,7 +2387,7 @@ html:not(#_):not(#_):not(#_):not(#_):not(#_) .hbx.photo{min-height:0}
   function sRecap(tx,T0,lay){
     lay=lay||susun(tx,[1.5,1.25,1.1,.95,.85]); var pages=[], z, t=T0, plan=[];
     if(lay){z=lay.z; pages=[lay.ch]}
-    else{z=1; var ch=bungkus(tx,COL), rows=Math.floor(5.2/1.3), np=Math.ceil(ch.length/rows), per=Math.ceil(ch.length/np), i; for(i=0;i<ch.length;i+=per)pages.push(ch.slice(i,i+per))}
+    else{z=1; var ch=bungkus(tx,vAr?vAr.col:COL), rows=Math.floor((vAr?vAr.h/vAr.fs-1:5.2)/1.3), np=Math.ceil(ch.length/rows), per=Math.ceil(ch.length/np), i; for(i=0;i<ch.length;i+=per)pages.push(ch.slice(i,i+per))}
     pages.forEach(function(pg){var h=1800+pg.join(' ').length*85; plan.push([t,h]); t+=500+h+400});
     var total=t+100;
     pages.forEach(function(pg,k){var R=baris({z:z,ch:pg}), s0=plan[k][0], h=plan[k][1];
@@ -2409,23 +2427,182 @@ html:not(#_):not(#_):not(#_):not(#_):not(#_) .hbx.photo{min-height:0}
     vtm=setTimeout(function(){vtm=0; tick()},total+60);
     return total;
   }
+  /* ================= MODE SUNNAH =================
+     10 menit sebelum SUBUH: hanya halaman SELANJUTNYA, hitung mundur, dan 3 hadits + kalimat Qabliyah (bergantian, gaya tampil acak;
+       kadang disertai hitung mundur kecil di atas / bawah / kiri).
+     10 menit sebelum DZUHUR, MAGHRIB, ISYA: kalimat sunnah rawatib sering tampil dengan gaya berbeda-beda, kalimat hikmah lain dikurangi,
+       hitung mundur kecil selalu ikut tampil (atas / tengah bawah / kiri). Hitung mundur besar (5 mnt Subuh/Maghrib, 3 mnt lainnya) tidak berubah. */
+  var SX_MENIT=10, sxMode=null, sxI={}, sxH=[], sxFx=-1;
+  var AR_A='لَمْ يَكُنِ النَّبِيُّ ﷺ عَلَى شَيْءٍ مِنَ النَّوَافِلِ أَشَدَّ تَعَاهُدًا مِنْهُ عَلَى رَكْعَتَيِ الْفَجْرِ',
+      AR_B='رَكْعَتَا الْفَجْرِ خَيْرٌ مِنَ الدُّنْيَا وَمَا فِيهَا',
+      AR_C='وَمَنْ صَلَّى الْعِشَاءَ وَالْفَجْرَ فِي جَمَاعَةٍ كَانَ كَقِيَامِ لَيْلَةٍ',
+      HD_C={p:[{k:'ar',t:AR_C}]},
+      ID_C={p:[{k:'id',t:'“Barang siapa melaksanakan shalat Isya dan Fajar secara berjamaah, maka ia seperti melakukan qiyamullail satu malam penuh.”'},{k:'sr',t:'HR. Abu Dawud no. 555'}]};
+  var SUN={
+    'SUBUH':[
+      [{p:[{k:'hd',t:'Aisyah رضي الله عنها berkata:'},{k:'ar',t:AR_A}]},{p:[{k:'id',t:'“Nabi ﷺ tidak lebih menjaga suatu shalat sunnah pun dibandingkan dua rakaat sebelum Subuh.”'}]}],
+      [{p:[{k:'ar',t:AR_B}]},{p:[{k:'id',t:'“Dua rakaat Fajar lebih baik daripada dunia dan seluruh isinya.”'},{k:'sr',t:'HR. Muslim; & al-Tirmidzi.'}]}],
+      [{lat:'Qabliyah Subuh : Termasuk 12 rokaat yang dibangunkan rumah di surga'}],
+      [HD_C,ID_C]
+    ],
+    'DZUHUR':[[{lat:'4 rokaat sebelum dhuhur dan 2 rokaat setelah dhuhur : Termasuk 12 rokaat yang dibangunkan rumah di surga'}]],
+    'MAGHRIB':[[{lat:'Ba’diyah Maghrib : Termasuk 12 rokaat yang dibangunkan rumah di surga'}]],
+    'ISYA\u2019':[
+      [{lat:'2 rokaat ba’diyah Isya’ : Termasuk 12 rokaat yang dibangunkan rumah di surga'}],
+      [HD_C,ID_C]
+    ]
+  };
+  /* urutan halaman selama jendela sunnah ('sun' = giliran berikutnya dari SUN[sholat]; 'v' = satu kalimat hikmah saja) */
+  var SXPL={
+    'SUBUH':['next','sun','sun','mundur','sun','sun'],
+    'DZUHUR':['sun','next','sun','sun','mundur','sun','v','sun'],
+    'MAGHRIB':['sun','next','sun','sun','mundur','sun','v','sun'],
+    'ISYA\u2019':['sun','next','sun','sun','mundur','sun','v','sun']
+  };
+  function sxJendela(now,nxt){ if(!nxt||!SUN[nxt.n])return null; var d=nxt.t-now; return (d>0&&d<=SX_MENIT*60000)?nxt.n:null }
+  function sxCD(now){ /* hitung mundur kecil (mm:ss) yang menyertai kalimat */
+    var c=sxCdEl; if(!c||!NXT)return; var sec=Math.max(0,Math.ceil((NXT.t-now)/1000)), a=c.firstChild, t=c.lastChild, T=nmz(NXT.n), V='-'+p2(Math.floor(sec/60))+':'+p2(sec%60);
+    if(a.textContent!==T)a.textContent=T; if(t.textContent!==V)t.textContent=V;
+  }
+  function sxLen(t){return t.replace(/[\u064B-\u065F\u0670\u0640]/g,'').length}
+  function sxSet(d,t){ /* huruf Arab di tengah teks Latin dibungkus agar tersambung benar (tanpa letter-spacing) */
+    var re=/[\u0600-\u06FF\u0750-\u077F\uFDFA]+(?: [\u0600-\u06FF\u0750-\u077F\uFDFA]+)*/g, last=0, m, s;
+    while((m=re.exec(t))){ if(m.index>last)d.appendChild(document.createTextNode(t.slice(last,m.index))); s=document.createElement('span'); s.className='ra'; s.textContent=m[0]; d.appendChild(s); last=re.lastIndex }
+    if(last<t.length)d.appendChild(document.createTextNode(t.slice(last)));
+  }
+  function sxHold(P){var h=0; P.forEach(function(p){var l=sxLen(p.t); h+=p.k==='ar'?1500+l*105:(p.k==='id'?1200+l*78:700+l*55)}); return Math.max(3000,h)}
+  /* kalimat Latin sederhana (Qabliyah / Ba'diyah / dst): memakai semua gaya panggung variasi yang sudah ada */
+  function sxLat(tx){
+    var lay=susun(tx), grp=bungkus(tx,tx.length>100?20:(tx.length>60?16:13)), hold=Math.max(3600,2200+tx.length*80);
+    var nm=vsPilih(tx,lay,grp), total=0, i;
+    for(i=0;i<SC_STAT.length;i++) if(SC_STAT[i][0]===nm) total=SC_STAT[i][1](lay,tx,hold);
+    if(nm==='bigrun'){total=sBigRun(tx); if(!bigInfo(tx).dua)total=sRecap(tx,total+200,null)}
+    else if(nm==='rows')total=sRecap(tx,sRows(tx)+200,null);
+    else if(nm==='words')total=sRecap(tx,sWords(grp)+200,null);
+    return total;
+  }
+  /* blok hadits (Arab / terjemah): 3 cara: utuh (satu layar), dipotong beberapa bagian besar, atau running satu baris; efek masuk-keluar acak */
+  function sxBlok(fr){
+    var D=vsDim(), W=D.W, H=D.H, fs=D.fs, P=fr.p, mi=0, i;
+    for(i=0;i<P.length;i++) if(P[i].k==='ar'||P[i].k==='id'){mi=i;break}
+    var M=P[mi], ar=M.k==='ar', maxB=fs*(ar?3.4:3.6), minOk=fs*(ar?1.5:1.9), minPot=fs*(ar?2.1:2.6), IN=800, OUT=600, total=0;
+    var EFS=[
+      [{transform:'scale(.15)'},{transform:'scale(2.6)'}],
+      [{transform:'translateX('+(-W)+'px)'},{transform:'translateX('+W+'px)'}],
+      [{transform:'translateX('+W+'px)'},{transform:'translateX('+(-W)+'px)'}],
+      [{transform:'translateY('+(-H)+'px)'},{transform:'translateY('+H+'px)'}],
+      [{transform:'translateY('+H+'px)'},{transform:'translateY('+(-H)+'px)'}],
+      [{transform:'perspective(400px) rotateX(90deg)'},{transform:'perspective(400px) rotateX(-90deg)'}],
+      [{transform:'rotate(-200deg) scale(.1)'},{transform:'rotate(200deg) scale(.1)'}],
+      [{transform:'translateX('+(-W)+'px) skewX(40deg)'},{transform:'translateX('+W+'px) skewX(-40deg)'}],
+      [{filter:'blur(14px)',transform:'scale(1.5)'},{filter:'blur(14px)',transform:'scale(.6)'}],
+      [{clipPath:'inset(0% 100% 0% 0%)'},{clipPath:'inset(0% 0% 0% 100%)'}]
+    ];
+    function ST(x){var o={transform:'none',filter:'none',clipPath:'inset(0% 0% 0% 0%)',opacity:1},k; for(k in x)o[k]=x[k]; return o}
+    function pick(){var f; do{f=Math.random()*EFS.length|0}while(f===sxFx); sxFx=f; return EFS[f]}
+    function pts(s,hold,ef){var a=ST(ef[0]),b=ST(),c=ST(ef[1]); a.opacity=0; c.opacity=0;
+      return [[s,a,'cubic-bezier(.15,.9,.25,1.05)'],[s+IN,b],[s+IN+hold,b,'cubic-bezier(.6,0,.9,.4)'],[s+IN+hold+OUT,c]]}
+    function mk(parts,cls){var b=document.createElement('div'), n=document.createElement('div'); b.className='sxb'; n.className='sxi'+(cls?' '+cls:'');
+      parts.forEach(function(p){var d=document.createElement('div'); d.className='sxp sx-'+p.k; if(p.k==='ar')d.textContent=p.t; else sxSet(d,p.t); n.appendChild(d)});
+      b.appendChild(n); vS.appendChild(b); return b}
+    function fit(b,mx){var n=b.firstChild, s=mx, k=0; n.style.fontSize=s+'px';
+      while(k++<40&&s>fs*.6&&(n.offsetHeight>H||[].some.call(n.children,function(p){return p.scrollWidth>p.clientWidth+1}))){s*=.94; n.style.fontSize=s+'px'}
+      return s}
+    var blk=mk(P), sB=fit(blk,maxB), modes=[], pot=null, words=M.t.split(' '), n, ex=0;
+    if(sB>=minOk)modes.push('blok');
+    if(words.length>=4){
+      for(n=2;n<=5&&n<=Math.floor(words.length/2);n++){
+        var cs=bagi(M.t,n), worst=1e9;
+        cs.forEach(function(c){var tb=mk([{k:M.k,t:c}]), s=fit(tb,maxB); worst=Math.min(worst,s); tb.remove()});
+        pot=cs; if(worst>=minPot)break;
+      }
+      if(pot)modes.push('potong');
+    }
+    if(P.length===1&&(ar||sxLen(M.t)<=70))modes.push('marquee');
+    if(!modes.length)modes.push('blok');
+    var pool=modes.filter(function(m){return sxH.indexOf(m)<0}); if(!pool.length)pool=modes;
+    var md=pool[Math.random()*pool.length|0]; sxH.push(md); if(sxH.length>2)sxH.shift();
+    if(md!=='blok')blk.remove();
+    if(md==='blok'){
+      var hold=sxHold(P), nn=blk.firstChild;
+      if(P.length>1&&Math.random()<.5){   /* baris demi baris: tiap bagian masuk bergantian dengan efek berbeda */
+        var kids=[].slice.call(nn.children), st=330; total=(kids.length-1)*st+IN+hold+OUT;
+        kids.forEach(function(d,j){K(d,total,pts(j*st,hold,pick()))});
+      }else{ total=IN+hold+OUT; K(blk,total,pts(0,hold,pick())) }
+      return total;
+    }
+    if(md==='potong'){
+      var t=0, jobs=[]; P.forEach(function(p,x){if(x!==mi)ex+=700+sxLen(p.t)*55});
+      pot.forEach(function(c,j){
+        var parts=[]; if(j===0)P.forEach(function(p,x){if(x<mi)parts.push(p)});
+        parts.push({k:M.k,t:c}); if(j===pot.length-1)P.forEach(function(p,x){if(x>mi)parts.push(p)});
+        var b=mk(parts); fit(b,maxB);
+        var hd=Math.max(1700,(ar?900+sxLen(c)*105:800+sxLen(c)*78)+((j===0||j===pot.length-1)?ex/2:0));
+        jobs.push([b,t,hd]); t+=IN+hd+OUT;
+      });
+      total=t; jobs.forEach(function(a){K(a[0],total,pts(a[1],a[2],pick()))});
+      return total;
+    }
+    /* marquee: satu baris besar berjalan (Arab: kanan -> kiri) */
+    var mb=mk([M],'m'), mn=mb.firstChild, B, mainPx;
+    if(ar){B=Math.min(fs*3.2,H/1.95); mainPx=B} else {mainPx=Math.min(fs*2,H*.4); B=mainPx*2}
+    mn.style.fontSize=B+'px';
+    var tw=mn.offsetWidth, du=(W+tw)/Math.max(60,3.6*mainPx)*1000, dir=ar?1:(Math.random()<.5?1:-1), half=(W+tw)/2;
+    total=du+300;
+    K(mn,total,[[0,{transform:'translateX('+(dir*half)+'px)'}],[du,{transform:'translateX('+(-dir*half)+'px)'}]]);
+    return total;
+  }
+  function sxRun(it,k){
+    var fr=it[k], tot=0;
+    try{ tot=fr.lat?sxLat(fr.lat):sxBlok(fr) }catch(e){ tot=0 }
+    if(!tot){ if(cur)cur.dur=0; return }
+    if(k<it.length-1){
+      sxTm=setTimeout(function(){ sxTm=0; if(!vAktif||!cur||cur.t!=='sun')return;
+        try{vS.getAnimations({subtree:true}).forEach(function(a){a.cancel()})}catch(e){} vS.innerHTML=''; sxRun(it,k+1)},tot);
+    }else{
+      cur.dur=(Date.now()-pgAt)+tot+20;
+      sxTm=setTimeout(function(){sxTm=0; tick()},tot+60);
+    }
+  }
+  function sxPage(now){
+    var m=sxMode, ls=SUN[m]; if(!ls)throw 0;
+    var D0=vsDim(); if(D0.W<60||D0.H<24)throw 0;
+    var it=ls[(sxI[m]|0)%ls.length]; sxI[m]=((sxI[m]|0)+1)%ls.length;
+    vsStop(); var st=vsEl(); if(!st)throw 0;
+    var bx=el('kled'); bx.classList.remove('qm','xo','wm'); bx.classList.add('vm'); vAktif=true;
+    var PS=['top','bottom','left'], pos=(m==='SUBUH'&&Math.random()<.5)?'':PS[Math.random()*PS.length|0];
+    var fs=D0.fs, W=D0.W, H=D0.H, a={x:0,y:0,w:W,h:H}, chh=Math.round(fs*1.25), cww=Math.round(fs*4.8);
+    if(pos){
+      var c=document.createElement('div'); c.className='sxcd p-'+pos; c.innerHTML='<span></span><span></span>'; st.appendChild(c); sxCdEl=c;
+      if(pos==='top'){a.y=chh;a.h=H-chh;c.style.height=chh+'px'}
+      else if(pos==='bottom'){a.h=H-chh;c.style.height=chh+'px'}
+      else{a.x=cww;a.w=W-cww;c.style.width=cww+'px'}
+    }
+    var A=document.createElement('div'); A.className='sxa'; A.style.cssText='left:'+a.x+'px;top:'+a.y+'px;width:'+a.w+'px;height:'+a.h+'px'; st.appendChild(A);
+    vS=A; vAr={w:a.w,h:a.h,fs:fs,col:Math.max(8,Math.min(36,Math.floor(a.w/(fs*.63))))};
+    c0=Math.random()*PAL.length|0; pgAt=now; cur.dur=1e9;
+    sxCD(now); sxRun(it,0);
+  }
   /* halaman hitung mundur (-jam:menit:detik) hanya ikut bergilir bila sholat berikutnya tinggal <= MUNDUR_MENIT menit */
   var MUNDUR_MENIT=15, NXT=null;
   function mundurBoleh(now){return !!(NXT&&NXT.t-now>0&&NXT.t-now<=MUNDUR_MENIT*60000)}
   function lanjut(now){
     if(vAktif)vsStop();
     hitungCol();
-    if(cur&&cur.t!=='n'&&pc===PL.length-1){   /* 1 putaran selesai -> notif "n menit yang lalu" (bila masih dalam 10 menit pertama) */
+    var LST=(sxMode&&SXPL[sxMode])||PL;
+    if(cur&&cur.t!=='n'&&pc===LST.length-1){   /* 1 putaran selesai -> notif "n menit yang lalu" (bila masih dalam 10 menit pertama) */
       var NT=notifKini(now);
       if(NT){pn++; cur={t:'n',dur:NDUR,N:NT}; pgAt=now; wIdx=-1; el('kled').classList.remove('xo'); return}
     }
-    pc=(pc+1)%PL.length; pn++; var t=PL[pc];
-    if(t==='mundur'&&!mundurBoleh(now)){pc=(pc+1)%PL.length; t=PL[pc]}   /* belum <= 15 menit: lewati */
+    pc=(pc+1)%LST.length; pn++; var t=LST[pc];
+    if(t==='mundur'&&!mundurBoleh(now)){pc=(pc+1)%LST.length; t=LST[pc]}   /* belum <= 15 menit: lewati */
     cur={t:t,dur:DURS[t]||0};
-    if(t==='v'||t==='jv'){   /* panggung variasi: gaya tampil acak */
-      try{ if(!(window.Element&&Element.prototype.animate))throw 0; cur.dur=vsMulai(t,now);
-        if(t==='v'){cur.i=qi; qi=(qi+1)%QT.length; try{localStorage.setItem(KQ,String(qi))}catch(e){}} }
-      catch(e){ vsStop(); if(t==='v'){t='q'; cur.t='q'} else{t='run'; cur.t='run'; cur.dur=DURS.run} }
+    if(t==='v'||t==='jv'||t==='sun'){   /* panggung variasi: gaya tampil acak */
+      try{ if(!(window.Element&&Element.prototype.animate))throw 0;
+        if(t==='sun')sxPage(now);
+        else{ cur.dur=vsMulai(t,now);
+          if(t==='v'){cur.i=qi; qi=(qi+1)%QT.length; try{localStorage.setItem(KQ,String(qi))}catch(e){}} } }
+      catch(e){ vsStop(); if(t==='v'){t='q'; cur.t='q'} else if(t==='sun'){t='next'; cur.t='next'; cur.dur=DURS.next} else{t='run'; cur.t='run'; cur.dur=DURS.run} }
     }
     if(t==='q'){ var tx=QT[qi], lay=tataQ(tx); cur.i=qi;
       if(lay){cur.mode='s'; cur.s=lay.s; cur.ch=lay.ch; do{qFi=Math.random()*FX.length|0}while(qFi===qFl&&FX.length>1); qFl=qFi; cur.fx=FX[qFi]; cur.dur=6500+tx.length*90; bangunQ()}   /* muat 1 layar: rata tengah, diam cukup lama */
@@ -2545,13 +2722,15 @@ html:not(#_):not(#_):not(#_):not(#_):not(#_) .hbx.photo{min-height:0}
     var bx0=el('kled'); bx0.classList.remove('wm');
     if(nxt&&nxt.t-now>0&&nxt.t-now<=jendelaCD(nxt.n)*60000){if(vAktif)vsStop();hitungMundurBesar(bx0,nxt,now);return}
     if(cdOn||azOn){cdOn=false; azOn=false; balikQuote(); cur=null; var q0=bx0.querySelector('.qs'); if(q0){q0.innerHTML='';q0.className='qs';q0.removeAttribute('data-az')} bx0.classList.remove('qm','xo')}
+    var sm=sxJendela(now,nxt);   /* masuk / keluar jendela sunnah (10 menit sebelum Subuh, Dzuhur, Maghrib, Isya): siklus halaman dimulai ulang */
+    if(sm!==sxMode){ sxMode=sm; pc=-1; if(cur&&cur.t!=='n'){balikQuote(); cur=null} }
     var bx=el('kled'), EXIT=700;
     if(!cur)lanjut(now);
     else if(cur.t==='waktu'){ if(now-pgAt>=cur.dur)lanjut(now) }
     else if(cur.t==='next'){ if(!nxt||now-pgAt>=cur.dur)lanjut(now) }
     else if(cur.t==='mundur'){ if(!nxt||now-pgAt>=cur.dur)lanjut(now) }
     else if(cur.t==='n'){ if(now-pgAt>=cur.dur)lanjut(now) }
-    else if(cur.t==='v'||cur.t==='jv'){ if(now-pgAt>=cur.dur)lanjut(now) }
+    else if(cur.t==='v'||cur.t==='jv'||cur.t==='sun'){ if(now-pgAt>=cur.dur)lanjut(now) }
     else if(cur.t==='q'&&cur.mode==='s'){ if(now-pgAt>=cur.dur)lanjut(now) }
     else{
       if(!cur.xo&&now-pgAt>=cur.dur-EXIT){cur.xo=now; bx.classList.add('xo')}
@@ -2561,6 +2740,7 @@ html:not(#_):not(#_):not(#_):not(#_):not(#_) .hbx.photo{min-height:0}
     if(cur.t==='next'){ if(nxt){halamanNext(bx,now,nxt);return} cur=null; return }
     if(cur.t==='mundur'){ if(nxt){halamanMundur(bx,now,nxt);return} cur=null; return }
     if(cur.t==='n'){ halamanNotif(bx,now); return }
+    if(cur.t==='sun'){ sxCD(now); return }
     if(cur.t==='v'||cur.t==='jv'){ return }
     var stat=cur.t==='q'&&cur.mode==='s'; bx.classList.toggle('qm',stat);
     if(stat){var qq=bx.querySelector('.qs'); if(qq)qq.classList.toggle('out',now-pgAt>=cur.dur-1000); return}
