@@ -4853,11 +4853,11 @@ iClaim();
 /* ---------- Qari ---------- */
 function qBuild(){
   var m=$('qmenu');m.innerHTML='';
-  QARI.forEach(function(q){
+  QARI.forEach(function(q,qi){
     var b=document.createElement('button');b.type='button';b.setAttribute('role','option');
     b.setAttribute('aria-selected',q===PL.q?'true':'false');
     b.innerHTML='<span></span><small></small>';
-    b.firstChild.textContent=q.n;b.lastChild.textContent=q.sp;
+    b.firstChild.textContent=(qi+1)+'. '+q.n;b.lastChild.textContent=q.sp;
     b.onclick=function(e){e.stopPropagation();setQari(q.id);qClose()};
     m.appendChild(b);
   });
