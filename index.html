@@ -457,7 +457,7 @@ input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;bac
 #bnav #trprev p{font-size:12px;line-height:1.45em;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
 #bnav #spec{display:block;width:100%;height:34px;margin-top:4px}
 #bnav .pl.mini #spec{display:none}
-#bnav #qmenu{position:absolute;left:10px;right:10px;bottom:calc(100% + 6px);z-index:3;padding:6px;border-radius:14px;background:var(--menubg);border:1px solid #000;
+#bnav #qmenu{position:absolute;left:10px;right:10px;bottom:calc(100% + 6px);z-index:3;padding:6px;max-height:min(60vh,420px);overflow-y:auto;overscroll-behavior:contain;border-radius:14px;background:var(--menubg);border:1px solid #000;
   box-shadow:inset 0 1px 0 rgba(255,255,255,.18),0 10px 26px rgba(0,0,0,.55)}
 #bnav #qmenu[hidden]{display:none}
 #bnav #qmenu button{display:flex;align-items:center;gap:8px;width:100%;text-align:left;border:0;background:none;color:var(--mt);padding:9px 10px;border-radius:9px;font-size:14px}
@@ -3006,7 +3006,7 @@ html:not(#_):not(#_):not(#_):not(#_):not(#_) .hbx.photo{min-height:0}
         <button class="chip" id="amin" type="button" aria-label="Ciutkan atau bentangkan spektrum"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button>
         <button class="chip" id="askn" type="button" aria-haspopup="dialog" aria-expanded="false" aria-label="Tampilan pemutar: skin dan opacity"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 1 0 0 18c1.2 0 2-.8 2-1.8 0-.5-.2-.9-.5-1.2-.3-.3-.5-.7-.5-1.2 0-1 .8-1.8 1.8-1.8H17a4 4 0 0 0 4-4c0-4.4-4-8-9-8z"/><circle cx="7.5" cy="11" r="1"/><circle cx="10" cy="7" r="1"/><circle cx="15" cy="7" r="1"/></svg></button>
         <b id="apn">—</b>
-        <button class="chip" id="aqr" type="button" aria-haspopup="listbox" aria-expanded="false" aria-label="Pilih qari">Alafasy</button>
+        <button class="chip" id="aqr" type="button" aria-haspopup="listbox" aria-expanded="false" aria-label="Pilih qari">As-Sudais</button>
         <button class="chip" id="aps" type="button" aria-label="Kecepatan putar">1×</button>
         <button class="chip" id="atr" type="button" aria-pressed="false" aria-label="Jendela terjemah ayat yang sedang diputar"><i class="led" aria-hidden="true"></i>Terjemah</button>
       </div>
@@ -4514,12 +4514,27 @@ initFoto();
    Sumber utama: EveryAyah; cadangan: Islamic Network. Disiarkan (butuh internet), tidak ditanam.
    ===================================================================== */
 var QARI=[
+  {id:'sudais',n:'Abdurrahman As-Sudais',k:'As-Sudais',d:'Abdurrahmaan_As-Sudais_192kbps',i:'ar.abdurrahmaansudais',sp:'Sedang'},
   {id:'alafasy',n:'Mishary Alafasy',k:'Alafasy',d:'Alafasy_128kbps',i:'ar.alafasy',sp:'Sedang'},
   {id:'rifai',n:"Hani Ar-Rifa'i",k:"Rifa'i",d:'Hani_Rifai_192kbps',i:'ar.hanirifai',sp:'Cepat'},
   {id:'shuraym',n:'Saud Asy-Syuraim',k:'Syuraim',d:'Saood_ash-Shuraym_128kbps',i:'ar.saoodshuraym',sp:'Cepat'},
   {id:'ayyoub',n:'Muhammad Ayyub',k:'Ayyub',d:'Muhammad_Ayyoub_128kbps',i:'ar.muhammadayyoub',sp:'Cepat'},
   {id:'shatree',n:'Abu Bakr Asy-Syatri',k:'Asy-Syatri',d:'Abu_Bakr_Ash-Shaatree_128kbps',i:'ar.shaatree',sp:'Cepat'},
-  {id:'jibreel',n:'Muhammad Jibril',k:'Jibril',d:'Muhammad_Jibreel_128kbps',i:'ar.muhammadjibreel',sp:'Cepat'}
+  {id:'jibreel',n:'Muhammad Jibril',k:'Jibril',d:'Muhammad_Jibreel_128kbps',i:'ar.muhammadjibreel',sp:'Cepat'},
+  {id:'basit',n:'Abdul Basit (Murattal)',k:'Abdul Basit',d:'Abdul_Basit_Murattal_192kbps',i:'ar.abdulbasitmurattal',sp:'Sedang'},
+  {id:'basitmuj',n:'Abdul Basit (Mujawwad)',k:'Basit Mujawwad',d:'Abdul_Basit_Mujawwad_128kbps',i:'ar.abdulbasitmujawwad',sp:'Lambat'},
+  {id:'husary',n:'Mahmud Khalil Al-Husari',k:'Al-Husari',d:'Husary_128kbps',i:'ar.husary',sp:'Lambat'},
+  {id:'minshawi',n:'Muhammad Al-Minshawi',k:'Al-Minshawi',d:'Minshawy_Murattal_128kbps',i:'ar.minshawi',sp:'Lambat'},
+  {id:'maher',n:'Maher Al-Muaiqly',k:'Al-Muaiqly',d:'MaherAlMuaiqly128kbps',i:'ar.mahermuaiqly',sp:'Sedang'},
+  {id:'ghamadi',n:'Saad Al-Ghamidi',k:'Al-Ghamidi',d:'Ghamadi_40kbps',i:'ar.saadalghamdi',sp:'Sedang'},
+  {id:'budair',n:'Salah Al-Budair',k:'Al-Budair',d:'Salah_Al_Budair_128kbps',i:'ar.salahalbudair',sp:'Sedang'},
+  {id:'basfar',n:'Abdullah Basfar',k:'Basfar',d:'Abdullah_Basfar_192kbps',i:'ar.abdullahbasfar',sp:'Sedang'},
+  {id:'hudhaify',n:'Ali Al-Hudhaify',k:'Al-Hudhaify',d:'Hudhaify_128kbps',i:'ar.hudhaify',sp:'Sedang'},
+  {id:'ajamy',n:'Ahmad Al-Ajmi',k:'Al-Ajmi',d:'Ahmed_ibn_Ali_al_Ajamy_128kbps_ketaballah.net',i:'ar.ahmedajamy',sp:'Sedang'},
+  {id:'dussary',n:'Yasser Ad-Dausari',k:'Ad-Dausari',d:'Yasser_Ad-Dussary_128kbps',i:'ar.yasserdossari',sp:'Sedang'},
+  {id:'qatami',n:'Nasser Al-Qatami',k:'Al-Qatami',d:'Nasser_Alqatami_128kbps',i:'ar.nasseralqatami',sp:'Sedang'},
+  {id:'bukhatir',n:'Salah Bukhatir',k:'Bukhatir',d:'Salaah_AbdulRahman_Bukhatir_128kbps',i:'ar.salahbukhatir',sp:'Sedang'},
+  {id:'qasim',n:'Muhsin Al-Qasim',k:'Al-Qasim',d:'Muhsin_Al_Qasim_192kbps',i:'ar.muhsinalqasim',sp:'Sedang'}
 ];
 function qariById(id){for(var i=0;i<QARI.length;i++)if(QARI[i].id===id)return QARI[i];return QARI[0]}
 var AU=new Audio(),PRE=new Audio(),
