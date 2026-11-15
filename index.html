@@ -236,13 +236,19 @@ html:not(#_) #kled .bw .lbell{position:absolute;left:50%;bottom:-2px;top:auto;ri
 #kled .wk.sm .wrb{transform:translateY(-2.1em) scale(.5);opacity:0}
 #kled .wk .wr{opacity:0;transition:opacity .5s ease .45s}#kled .wk.sm .wr{opacity:1}
 /* ---- halaman awal: wilayah besar -> mengecil & geser ke kiri, di tengah tampil sholat berikutnya + sisa waktu ---- */
-#kled .wk.lf .wrb{transform:translateX(-28%) scale(.5)}
+#kled .wk.lf .wrb{transform:translateX(-28%) scale(var(--ls,.5))}
+#kled .wk .wrb .wc{display:inline-block}
+#kled .wk.lf .wrb .wc{animation:wlw 1.5s ease-in-out infinite;animation-delay:var(--d,0s)}
+@keyframes wlw{0%,60%,100%{transform:translateY(0);color:#19e8ff;text-shadow:0 0 2px #19e8ff,0 0 8px rgba(25,232,255,.6),0 0 16px rgba(25,232,255,.3)}30%{transform:translateY(-.24em);color:#fff;text-shadow:0 0 3px #fff,0 0 10px #19e8ff,0 0 22px #19e8ff}}
 #kled .wk .wnx{position:absolute;left:42%;right:0;top:0;bottom:0;display:none;flex-direction:column;align-items:center;justify-content:center;text-align:center;font-family:ui-monospace,'SF Mono',Menlo,Consolas,'DejaVu Sans Mono','Liberation Mono',monospace;font-weight:800;text-transform:uppercase;letter-spacing:.04em;white-space:nowrap}
 #kled .wk.lf .wnx{display:flex}#kled .wk .wnx.hid{visibility:hidden}
 #kled .wk .wnx div{max-width:100%}
 #kled .wk .wnx .a1{font-size:1.05em;line-height:1.15;color:#ff9a1f;text-shadow:0 0 2px #ff9a1f,0 0 8px rgba(255,154,31,.6)}
 #kled .wk .wnx .a2{font-size:2em;line-height:1.1;margin-top:.04em;color:#ffe600;text-shadow:0 0 2px #ffe600,0 0 8px rgba(255,230,0,.65),0 0 16px rgba(255,230,0,.35)}
-#kled .wk .wnx .a3{font-size:1.1em;line-height:1.2;margin-top:.06em;color:#2dff6e;text-shadow:0 0 2px #2dff6e,0 0 9px rgba(45,255,110,.75),0 0 18px rgba(45,255,110,.4)}
+#kled .wk .wnx .a3{font-size:1.1em;line-height:1.2;margin-top:.06em;color:#dff6ff;text-shadow:0 0 2px #dff6ff,0 0 8px rgba(223,246,255,.5)}
+#kled .wk .wnx .a3 .jh{color:#2dff6e;font-weight:900;text-shadow:0 0 2px #2dff6e,0 0 9px rgba(45,255,110,.85),0 0 18px rgba(45,255,110,.45)}
+#kled .wk .wnx .a3 .jm{color:#ff2d2d;font-weight:900;text-shadow:0 0 2px #ff2d2d,0 0 9px rgba(255,45,45,.9),0 0 18px rgba(255,45,45,.5);animation:jmk 1s steps(1,end) infinite}
+@keyframes jmk{0%,60%{opacity:1}61%,100%{opacity:.08}}
 #kled .wk .wnx.fx-fade{animation:qfi 1s ease-out both}#kled .wk .wnx.fx-fade.out{animation:qfo .7s ease-in both}
 #kled .wk .wnx.fx-zi{animation:qzi .9s cubic-bezier(.2,1.3,.4,1) both}#kled .wk .wnx.fx-zi.out{animation:qzio .6s ease-in both}
 #kled .wk .wnx.fx-zo{animation:qzo .9s cubic-bezier(.2,.9,.3,1) both}#kled .wk .wnx.fx-zo.out{animation:qzoo .6s ease-in both}
@@ -253,7 +259,7 @@ html:not(#_) #kled .bw .lbell{position:absolute;left:50%;bottom:-2px;top:auto;ri
 #kled .wk .wnx.fx-blur{animation:qbl 1s ease-out both}#kled .wk .wnx.fx-blur.out{animation:qblo .7s ease-in both}
 #kled .wk .wnx.fx-flip{animation:qfl .9s ease-out both}#kled .wk .wnx.fx-flip.out{animation:qflo .6s ease-in both}
 #kled .wk .wnx.fx-wipe{animation:qwp 1s cubic-bezier(.3,.7,.2,1) both}#kled .wk .wnx.fx-wipe.out{animation:qwpo .7s ease-in both}
-@media (prefers-reduced-motion:reduce){#kled .wk .wnx{animation:none!important}}
+@media (prefers-reduced-motion:reduce){#kled .wk .wnx{animation:none!important}#kled .wk .wnx .a3 .jm,#kled .wk.lf .wrb .wc{animation:none!important}}
 #kled .wk .wv.hid{visibility:hidden}
 #kled .wk .wb{flex:1;min-height:0;width:100%;position:relative;overflow:hidden}
 #kled .wk .wv{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;font-family:ui-monospace,'SF Mono',Menlo,Consolas,'DejaVu Sans Mono','Liberation Mono',monospace;font-weight:800;text-transform:uppercase;letter-spacing:.04em;white-space:nowrap}
@@ -2673,7 +2679,29 @@ html:not(#_):not(#_):not(#_):not(#_):not(#_) .hbx.photo{min-height:0}
     if(a.textContent!==T)a.textContent=T; if(m.textContent!==M)m.textContent=M; if(c.textContent!==S)c.textContent=S;
   }
   /* ---- halaman waktu sholat: wilayah tetap di atas tengah; tiap waktu sholat tampil 5 detik (nama besar, jam di bawahnya) ---- */
-  var WDUR=5000, WFX=['zi','left','flip','blur','wipe','top','zo','right','bottom','fade'], wIdx=-1, wCy=0, wTxt='';
+  var WDUR=5000, WFX=['zi','left','flip','blur','wipe','top','zo','right','bottom','fade'], wIdx=-1, wCy=0, wTxt='', lsK='';
+  function sisaWaktu(d,mn){ /* "\u2022 2 jam 5 menit lagi": jam hijau, menit merah berkedip */
+    var h=Math.floor(mn/60), m=mn%60; d.textContent='';
+    function sp(c,t){var x=document.createElement('span'); x.className=c; x.textContent=t; d.appendChild(x)}
+    d.appendChild(document.createTextNode('\u2022 '));
+    if(h>0)sp('jh',h+' jam');
+    if(h>0&&m>0)d.appendChild(document.createTextNode(' '));
+    if(m>0)sp('jm',m+' menit');
+    d.appendChild(document.createTextNode(' lagi'));
+  }
+  function wilHuruf(d,x,j){ /* tiap huruf dibungkus agar bisa bergelombang (menjalar dari kiri ke kanan, antar baris menyusul) */
+    Array.from(x).forEach(function(ch,i){
+      if(ch===' '){d.appendChild(document.createTextNode(' '));return}
+      var s=document.createElement('span'); s.className='wc'; s.textContent=ch; s.style.setProperty('--d',((j*6+i)*.09).toFixed(2)+'s'); d.appendChild(s);
+    });
+  }
+  function wilSkalaKiri(rb){ /* wilayah di kiri dibuat sebesar mungkin: muat di 40% lebar & 86% tinggi papan */
+    var W=rb.clientWidth,H=rb.clientHeight; if(!W||!H)return;
+    var wm=0,hc=0; [].forEach.call(rb.children,function(d){wm=Math.max(wm,d.scrollWidth,d.offsetWidth); hc+=d.offsetHeight});
+    if(!wm||!hc)return;
+    var k=Math.max(.42,Math.min(.92,.40*W/wm,.86*H/hc));
+    rb.style.setProperty('--ls',k.toFixed(3));
+  }
   function fitWilayah(r){ /* kecilkan huruf bila wilayah terlalu panjang agar tetap muat */
     r.style.fontSize=''; var k=0; while(k++<5&&(r.scrollHeight>r.clientHeight+1||r.scrollWidth>r.clientWidth+1)){r.style.fontSize=(parseFloat(getComputedStyle(r).fontSize)*.9)+'px'}
   }
@@ -2685,20 +2713,21 @@ html:not(#_):not(#_):not(#_):not(#_):not(#_) .hbx.photo{min-height:0}
     bx.classList.remove('qm','xo'); bx.classList.add('wm'); wk.classList.toggle('sm',cur.t==='waktu'&&e>=WBIG); wk.classList.toggle('lf',cur.t==='wil'&&e>=WBIG);
     var br=wilBaris(), tx=br.join('|');
     if(wTxt!==tx){
-      wTxt=tx; rb.innerHTML=''; br.forEach(function(x){var d=document.createElement('div'); d.textContent=x; rb.appendChild(d)});
+      wTxt=tx; rb.innerHTML=''; br.forEach(function(x,j){var d=document.createElement('div'); wilHuruf(d,x,j); rb.appendChild(d)});
       r.innerHTML=''; br.forEach(function(x,j){var sp=document.createElement('span'); sp.style.whiteSpace='nowrap'; sp.textContent=x+(j<br.length-1?',':''); r.appendChild(sp); if(j<br.length-1)r.appendChild(document.createTextNode(' '))}); rb.style.setProperty('--f',1);
       var f=1,k=0; function lebih(){return [].some.call(rb.children,function(d){return d.scrollWidth>d.clientWidth+1})}
       while(k++<8&&lebih()){f*=.92; rb.style.setProperty('--f',f)}
       fitWilayah(r);
     }
+    if(cur.t==='wil'){var kk=tx+'|'+rb.clientWidth+'x'+rb.clientHeight; if(kk!==lsK){lsK=kk; wilSkalaKiri(rb)}}
     if(cur.t==='wil'){   /* wilayah besar 5 dtk -> mengecil & geser kiri; di tengah: SELANJUTNYA <sholat> <n jam n menit> LAGI (30 dtk) */
       var nx=wk.querySelector('.wnx');
       if(!nx){nx=document.createElement('div'); nx.className='wnx hid'; nx.innerHTML='<div class="a1">SELANJUTNYA</div><div class="a2"></div><div class="a3"></div>'; wk.appendChild(nx)}
       wIdx=-1; v.className='wv hid';
       if(nxt&&e>=WBIG+400){
         if(!cur.b){cur.b=1; nCy++; cur.t1=cur.t2=''; nx.className='wnx'; void nx.offsetWidth; nx.className='wnx fx-'+NFX[nCy%NFX.length]}
-        var u1=nmz(nxt.n), u2='\u2022 '+durasi(Math.max(1,Math.ceil((nxt.t-now)/MS)))+' LAGI';
-        if(u1!==cur.t1||u2!==cur.t2){cur.t1=u1; cur.t2=u2; nx.children[1].textContent=u1; nx.children[2].textContent=u2;
+        var u1=nmz(nxt.n), u2=Math.max(1,Math.ceil((nxt.t-now)/MS));
+        if(u1!==cur.t1||u2!==cur.t2){cur.t1=u1; cur.t2=u2; nx.children[1].textContent=u1; sisaWaktu(nx.children[2],u2);
           [0,1,2].forEach(function(j){nx.children[j].style.fontSize=''}); fitBaris(nx.children[0],1.05); fitBaris(nx.children[1],2); fitBaris(nx.children[2],1.1)}
         nx.classList.toggle('out',now-pgAt>=cur.dur-800);
       }else nx.className='wnx hid';
