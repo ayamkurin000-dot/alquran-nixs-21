@@ -1822,32 +1822,34 @@ html[data-gulung^="g"]:not(#_):not(#_):not(#_):not(#_):not(#_) :is(#kdoa,#kmri,#
 html[data-gulung^="g"]:not(#_):not(#_):not(#_):not(#_):not(#_) :is(#kdoa,#kmri,#kens) :is(.hdoa,.hmri){font-size:clamp(8px,2.6vw,12px);letter-spacing:.01em}
 /* foto tidak lagi memaksa tinggi 210px; tingginya mengikuti kolom kanan */
 html:not(#_):not(#_):not(#_):not(#_):not(#_) .hbx.photo{min-height:0}
-/* ===== bintang-bintang berjatuhan di belakang nama surat (halaman awal saja) =====
-   Murni CSS, tanpa JS: dua lapis bintang (kecil lambat, besar agak cepat) dari mask SVG pada pseudo-element .mid::before.
-   Warna ikut tema lewat var(--ka). Hanya kartu daftar di #hlist (bukan hasil pencarian / baris penanda). */
-#hlist>button.row:not(.hit) .mid{position:relative}
-#hlist>button.row:not(.hit) .mid>*{position:relative;z-index:1}
-#hlist>button.row:not(.hit) .nm{position:relative;z-index:1}
-#hlist>button.row:not(.hit) .mid::before{
-  content:'';position:absolute;z-index:0;pointer-events:none;
-  top:-20px;bottom:-20px;left:-6px;right:-10px;
-  background:var(--ka,#e8c24a);opacity:.55;
-  -webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='96' viewBox='0 0 64 96'%3E%3Cpath d='M10 8Q10 12 14 12Q10 12 10 16Q10 12 6 12Q10 12 10 8Z M44 26Q44 30 48 30Q44 30 44 34Q44 30 40 30Q44 30 44 26Z M24 53Q24 58 29 58Q24 58 24 63Q24 58 19 58Q24 58 24 53Z M54 77Q54 80 57 80Q54 80 54 83Q54 80 51 80Q54 80 54 77Z' fill='%23000'/%3E%3Ccircle cx='34' cy='8' r='1'/%3E%3Ccircle cx='58' cy='50' r='1'/%3E%3Ccircle cx='6' cy='40' r='1'/%3E%3Ccircle cx='40' cy='90' r='1'/%3E%3C/svg%3E"),url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='72' viewBox='0 0 48 72'%3E%3Cpath d='M12 7.5Q12 10 14.5 10Q12 10 12 12.5Q12 10 9.5 10Q12 10 12 7.5Z M36 32Q36 34 38 34Q36 34 36 36Q36 34 34 34Q36 34 36 32Z M20 53Q20 56 23 56Q20 56 20 59Q20 56 17 56Q20 56 20 53Z' fill='%23000'/%3E%3Ccircle cx='40' cy='12' r='.9'/%3E%3Ccircle cx='6' cy='34' r='.9'/%3E%3Ccircle cx='30' cy='66' r='.9'/%3E%3C/svg%3E");
-          mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='96' viewBox='0 0 64 96'%3E%3Cpath d='M10 8Q10 12 14 12Q10 12 10 16Q10 12 6 12Q10 12 10 8Z M44 26Q44 30 48 30Q44 30 44 34Q44 30 40 30Q44 30 44 26Z M24 53Q24 58 29 58Q24 58 24 63Q24 58 19 58Q24 58 24 53Z M54 77Q54 80 57 80Q54 80 54 83Q54 80 51 80Q54 80 54 77Z' fill='%23000'/%3E%3Ccircle cx='34' cy='8' r='1'/%3E%3Ccircle cx='58' cy='50' r='1'/%3E%3Ccircle cx='6' cy='40' r='1'/%3E%3Ccircle cx='40' cy='90' r='1'/%3E%3C/svg%3E"),url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='72' viewBox='0 0 48 72'%3E%3Cpath d='M12 7.5Q12 10 14.5 10Q12 10 12 12.5Q12 10 9.5 10Q12 10 12 7.5Z M36 32Q36 34 38 34Q36 34 36 36Q36 34 34 34Q36 34 36 32Z M20 53Q20 56 23 56Q20 56 20 59Q20 56 17 56Q20 56 20 53Z' fill='%23000'/%3E%3Ccircle cx='40' cy='12' r='.9'/%3E%3Ccircle cx='6' cy='34' r='.9'/%3E%3Ccircle cx='30' cy='66' r='.9'/%3E%3C/svg%3E");
-  -webkit-mask-size:64px 96px,48px 72px;mask-size:64px 96px,48px 72px;
+/* ===== bintang-bintang berjatuhan di LATAR halaman awal (di belakang semua kartu, tidak di dalam kartu) =====
+   Murni CSS: pseudo-element #home::before di lapisan paling belakang; dua lapis bintang (kecil lambat, besar lebih cepat).
+   Warna mengikuti warna aksen tema (var(--accent)). Tampak di sela & sisi kartu; kartu tetap menutupi bintang di belakangnya. */
+#home{position:relative;isolation:isolate}
+#home::before{
+  content:'';position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:var(--accent,#c9a227);opacity:.5;
+  -webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='96' viewBox='0 0 64 96'%3E%3Cpath d='M10 8Q10 12 14 12Q10 12 10 16Q10 12 6 12Q10 12 10 8Z M44 26Q44 30 48 30Q44 30 44 34Q44 30 40 30Q44 30 44 26Z M24 53Q24 58 29 58Q24 58 24 63Q24 58 19 58Q24 58 24 53Z M54 77Q54 80 57 80Q54 80 54 83Q54 80 51 80Q54 80 54 77Z' fill='%23000'/%3E%3Ccircle cx='34' cy='8' r='1'/%3E%3Ccircle cx='58' cy='50' r='1'/%3E%3Ccircle cx='6' cy='40' r='1'/%3E%3Ccircle cx='40' cy='90' r='1'/%3E%3C/svg%3E"),url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='72' viewBox='0 0 48 72'%3E%3Cpath d='M12 7.5Q12 10 14.5 10Q12 10 12 12.5Q12 10 9.5 10Q12 10 12 7.5Z M36 32Q36 34 38 34Q36 34 36 36Q36 34 34 34Q36 34 36 32Z M20 53Q20 56 23 56Q20 56 20 59Q20 56 17 56Q20 56 20 53Z' fill='%23000'/%3E%3Ccircle cx='40' cy='12' r='.9'/%3E%3Ccircle cx='6' cy='34' r='.9'/%3E%3Ccircle cx='30' cy='66' r='.9'/%3E%3C/svg%3E");mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='96' viewBox='0 0 64 96'%3E%3Cpath d='M10 8Q10 12 14 12Q10 12 10 16Q10 12 6 12Q10 12 10 8Z M44 26Q44 30 48 30Q44 30 44 34Q44 30 40 30Q44 30 44 26Z M24 53Q24 58 29 58Q24 58 24 63Q24 58 19 58Q24 58 24 53Z M54 77Q54 80 57 80Q54 80 54 83Q54 80 51 80Q54 80 54 77Z' fill='%23000'/%3E%3Ccircle cx='34' cy='8' r='1'/%3E%3Ccircle cx='58' cy='50' r='1'/%3E%3Ccircle cx='6' cy='40' r='1'/%3E%3Ccircle cx='40' cy='90' r='1'/%3E%3C/svg%3E"),url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='72' viewBox='0 0 48 72'%3E%3Cpath d='M12 7.5Q12 10 14.5 10Q12 10 12 12.5Q12 10 9.5 10Q12 10 12 7.5Z M36 32Q36 34 38 34Q36 34 36 36Q36 34 34 34Q36 34 36 32Z M20 53Q20 56 23 56Q20 56 20 59Q20 56 17 56Q20 56 20 53Z' fill='%23000'/%3E%3Ccircle cx='40' cy='12' r='.9'/%3E%3Ccircle cx='6' cy='34' r='.9'/%3E%3Ccircle cx='30' cy='66' r='.9'/%3E%3C/svg%3E");
+  -webkit-mask-size:96px 144px,72px 108px;mask-size:96px 144px,72px 108px;
   -webkit-mask-repeat:repeat;mask-repeat:repeat;
-  animation:bintangJatuh 5s linear infinite;
+  animation:bintangJatuh 9s linear infinite;
 }
-/* fase animasi dibedakan antar kartu supaya tidak tampak seragam */
-#hlist>button.row:nth-child(5n+2):not(.hit) .mid::before{animation-delay:-1.1s}
-#hlist>button.row:nth-child(5n+3):not(.hit) .mid::before{animation-delay:-2.3s}
-#hlist>button.row:nth-child(5n+4):not(.hit) .mid::before{animation-delay:-3.4s}
-#hlist>button.row:nth-child(5n+5):not(.hit) .mid::before{animation-delay:-4.5s}
 @keyframes bintangJatuh{
   from{-webkit-mask-position:0 0,0 0;mask-position:0 0,0 0}
-  to{-webkit-mask-position:-64px 96px,-96px 216px;mask-position:-64px 96px,-96px 216px}
+  to{-webkit-mask-position:-96px 144px,-144px 324px;mask-position:-96px 144px,-144px 324px}
 }
-@media (prefers-reduced-motion:reduce){#hlist>button.row .mid::before{animation:none}}
+@media (prefers-reduced-motion:reduce){#home::before{animation:none}}
+/* ===== kilatan cahaya acak dari ujung ke ujung pada kartu daftar yang tampak di layar (dipicu skrip di bawah) ===== */
+#hlist>button.row{position:relative}
+#hlist>button.row>.kilat{position:absolute;inset:0;overflow:hidden;border-radius:inherit;pointer-events:none;z-index:3}
+#hlist>button.row>.kilat::before{
+  content:'';position:absolute;top:0;bottom:0;left:0;width:42%;
+  background:linear-gradient(100deg,rgba(255,255,255,0) 0%,rgba(255,255,255,.28) 35%,rgba(255,255,255,.75) 50%,rgba(255,255,255,.28) 65%,rgba(255,255,255,0) 100%);
+  transform:translateX(-130%) skewX(-18deg);
+  animation:kilatLewat 1.05s cubic-bezier(.45,.05,.4,1) forwards;
+}
+@keyframes kilatLewat{to{transform:translateX(290%) skewX(-18deg)}}
+@media (prefers-reduced-motion:reduce){#hlist>button.row>.kilat{display:none}}
 </style>
 </head>
 <body>
@@ -5840,6 +5842,40 @@ if('serviceWorker' in navigator&&(location.protocol==='https:'||location.hostnam
       setTimeout(function(){tampil(true)},2500);
     }
   });
+})();
+</script>
+<script>
+/* Kilatan cahaya acak pada kartu daftar (Surat / Juz) di halaman awal.
+   Hanya kartu yang benar-benar tampak di layar yang ikut diundi; kartu tersembunyi baru masuk hitungan setelah digulir ke layar. */
+(function(){
+  var home=document.getElementById('home'),sc=document.getElementById('hscroll'),list=document.getElementById('hlist');
+  if(!home||!sc||!list)return;
+  if(window.matchMedia&&matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+  var last=null,timer=0;
+  function visibles(){
+    var box=sc.getBoundingClientRect(),out=[],rows=list.children,i,r,h,vis;
+    for(i=0;i<rows.length;i++){
+      r=rows[i];if(r.tagName!=='BUTTON'||r.classList.contains('hit'))continue;
+      var b=r.getBoundingClientRect();h=b.height;if(!h)continue;
+      vis=Math.min(b.bottom,box.bottom)-Math.max(b.top,box.top);
+      if(vis>=h*.7)out.push(r);            /* minimal 70% kartu terlihat */
+    }
+    return out;
+  }
+  function flash(){
+    if(home.hidden||document.hidden){return next(1500)}
+    var v=visibles();
+    if(v.length>1&&last)v=v.filter(function(x){return x!==last});
+    if(!v.length)return next(1200);
+    var r=v[Math.floor(Math.random()*v.length)],k=document.createElement('i');
+    k.className='kilat';k.setAttribute('aria-hidden','true');
+    k.addEventListener('animationend',function(e){if(e.target!==k&&e.animationName==='kilatLewat'){k.remove()}});
+    r.appendChild(k);last=r;
+    setTimeout(function(){if(k.parentNode)k.remove()},1500);   /* jaga-jaga bila animationend tidak terpicu */
+    next(1100+Math.random()*2200);
+  }
+  function next(ms){clearTimeout(timer);timer=setTimeout(flash,ms)}
+  next(1800);
 })();
 </script>
 </body>
