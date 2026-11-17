@@ -3567,7 +3567,7 @@ function setLast(s,a){LAST={s:s,a:a,t:Date.now()};ls('qk.last',LAST)}
 /* =====================================================================
    PEMBACA
    ===================================================================== */
-var rd={target:0,moved:false,open:false,s:0,n:0,els:[],cur:1,sel:0,rendered:0,io:null,tick:0};
+var rd={juz:null,target:0,moved:false,open:false,s:0,n:0,els:[],cur:1,sel:0,rendered:0,io:null,tick:0};
 var CH=24;
 var AP={s:0,a:0};   /* ayat yang sedang diputar audionya */
 function ayHTML(s,i){
@@ -3712,7 +3712,7 @@ function renderList(){
   if(q){L.innerHTML=searchHTML(q);relayoutMedals(L);return}
   if(tab==='s'){for(var i=0;i<114;i++)h+=rowSurat(i)}
   else if(tab==='j'){
-    JUZ.forEach(function(j,i){var d=Q[j[0]-1];h+='<button class="row" data-s="'+j[0]+'" data-a="'+j[1]+'">'+medalSVG(i+1,'')+'<span class="mid"><b>Juz '+(i+1)+'</b><small>Mulai '+esc(d[1])+' : '+j[1]+'</small></span><span class="nm" lang="ar">'+esc(d[0])+'</span></button>'});
+    JUZ.forEach(function(j,i){var d=Q[j[0]-1];h+='<button class="row" data-s="'+j[0]+'" data-a="'+j[1]+'" data-j="'+(i+1)+'">'+medalSVG(i+1,'')+'<span class="mid"><b>Juz '+(i+1)+'</b><small>Mulai '+esc(d[1])+' : '+j[1]+'</small></span><span class="nm" lang="ar">'+esc(d[0])+'</span></button>'});
   }else{
     if(!BM.length)h='<div class="empty">Belum ada penanda.<br>Ketuk sebuah ayat saat membaca, lalu pilih “Penanda”.</div>';
     BM.forEach(function(b,i){var d=Q[b.s-1];h+='<div class="row" style="padding-right:4px"><button class="row" style="flex:1;margin:0;box-shadow:none;padding:0;background:none" data-s="'+b.s+'" data-a="'+b.a+'">'+medalSVG(b.a,'')+'<span class="mid"><b>'+esc(d[1])+' : '+b.a+'</b><small>'+esc(d[4][b.a-1])+'</small></span></button><button class="xbtn" data-del="'+i+'" aria-label="Hapus penanda">×</button></div>'});
@@ -3752,19 +3752,26 @@ function homeClick(e){
   var x=e.target.closest('[data-del]');
   if(x){BM.splice(+x.dataset.del,1);ls('qk.bm',BM);renderList();return}
   var r=e.target.closest('[data-s]');if(!r)return;
-  var h='#/'+r.dataset.s+(r.dataset.a?'/'+r.dataset.a:'');location.hash=h;
+  var h='#/'+r.dataset.s+(r.dataset.a?'/'+r.dataset.a:'');
+  /* dibuka dari tab Juz: ingat awal juz-nya supaya tombol putar memulai dari ayat pertama juz */
+  pendJuz=r.dataset.j?{j:+r.dataset.j,s:+r.dataset.s,a:+r.dataset.a}:null;
+  location.hash=h;
 }
 $('hlist').addEventListener('click',homeClick);$('resume').addEventListener('click',homeClick);
 
 /* =====================================================================
    ROUTER (hash) — mendukung tombol Back
    ===================================================================== */
-var navCount=0;
+var navCount=0,pendJuz=null;
 function route(){
   navCount++;closeSheet(true);
+  var jn=pendJuz;pendJuz=null;
   var m=location.hash.match(/^#\/(\d+)(?:\/(\d+))?$/);
-  if(m&&+m[1]>=1&&+m[1]<=114){openSurah(+m[1],+m[2]||1,true)}
-  else showHome();
+  if(m&&+m[1]>=1&&+m[1]<=114){
+    var ms=+m[1],ma=+m[2]||1;
+    openSurah(ms,ma,true);
+    rd.juz=(jn&&jn.s===ms&&jn.a===ma)?jn:null;   /* bukan dari tab Juz -> perilaku lama */
+  }else{rd.juz=null;showHome()}
 }
 function showHome(){
   rd.open=false;$('reader').hidden=true;$('home').hidden=false;document.title="Al-Qur'an Digital — Mushaf Standar Indonesia (Kemenag RI)";
@@ -4801,6 +4808,7 @@ function aLoad(s,a,k){
 }
 function aPlay(s,a){
   if(DEAD)return;
+  rd.juz=null;   /* awal juz hanya berlaku untuk pemutaran pertama setelah juz dibuka */
   if(PL.auto){var o=ls('qk.own');if(o&&o.id!==TAB&&o.t>OWN.t){aYield(o.t);return}}else aClaim();
   PL.on=true;PL.s=s;PL.a=a;PL.up=false;PL.rs=0;kaSync(true);
   vzCtx();
@@ -5063,7 +5071,10 @@ $('apt').onclick=function(){
   if(PL.on){vzCtx();if(AU.paused){aClaim();PL.up=false;PL.rs=0;PL.rl=[];AU.play().catch(function(){})}else{PL.up=true;AU.pause()}return}
   if(!rd.open)return;
   /* belum memutar: baca ayat yang dipilih pengguna; bila tidak ada, ayat yang sedang tampil di layar */
-  var a=rd.sel||aVisible();
+  var a;
+  if(rd.sel)a=rd.sel;                                        /* ayat dipilih pengguna: tetap dibaca dari ayat itu */
+  else if(rd.juz&&rd.juz.s===rd.s)a=rd.juz.a;                /* dibuka dari tab Juz: mulai dari ayat pertama juz */
+  else a=aVisible();
   if(rd.sel)selectAyat(0);
   aPlay(rd.s,a);
 };
