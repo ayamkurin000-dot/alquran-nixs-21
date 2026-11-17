@@ -4906,6 +4906,7 @@ function flStep(){
   var rc=el.getClientRects();if(!rc.length)return;
   var r0=rc[0],r1=rc[rc.length-1],h=r1.bottom-r0.top;
   var top=($('topbar').offsetHeight||90)+8,bot=window.innerHeight-$('bnav').offsetHeight-10,avail=bot-top;
+  if(r1.bottom<top||r0.top>bot)return;       /* ayat aktif tidak terlihat (pengguna menggulir ke tempat lain): jangan ditarik kembali */
   if(h<=avail)return;                       /* muat: cukup ditangani aFollow */
   var q=Math.max(0,Math.min(1,(AU.currentTime/AU.duration-.04)/.88));
   var want=top-(h-avail)*q,diff=r0.top-want;
@@ -4930,20 +4931,33 @@ function aLoad(s,a,k){
   AU.defaultPlaybackRate=PL.rate;AU.playbackRate=PL.rate;
   var pr=AU.play();if(pr&&pr.catch)pr.catch(function(){aUI()});
 }
+/* Apakah ayat (s,a) yang sedang/baru saja diputar masih ada di tampilan pengguna?
+   Dipakai agar pindah ayat otomatis TIDAK menarik tampilan bila pengguna sudah melihat surat / juz / halaman lain. */
+function aSeen(s,a){
+  try{
+    if(JM.on)return JM.p===pgOf(gOf(s,a));        /* mode juz: masih di halaman ayat itu */
+    if(!rd.open||rd.s!==s)return false;
+    var el=rd.els[a-1];if(!el)return false;
+    var r=el.getBoundingClientRect();
+    return r.bottom>($('topbar').offsetHeight||90)&&r.top<window.innerHeight-($('bnav').offsetHeight||0);
+  }catch(e){return false}
+}
 function aPlay(s,a){
   if(DEAD)return;
   if(PL.auto){var o=ls('qk.own');if(o&&o.id!==TAB&&o.t>OWN.t){aYield(o.t);return}}else aClaim();
+  /* pindah ayat otomatis: ikuti hanya bila pengguna masih melihat ayat sebelumnya; selain itu biarkan tampilan di tempatnya */
+  var fol=!(PL.auto&&PL.on)||aSeen(PL.s,PL.a);
   PL.on=true;PL.s=s;PL.a=a;PL.up=false;PL.rs=0;kaSync(true);
   vzCtx();
   aLoad(s,a,0);
-  if(JM.on){jmFollow(s,a);aMark()}
-  else if(rd.open&&rd.s===s){renderUpTo(a+CH);aMark();aFollow(a)}else aMark();
+  if(JM.on){if(fol)jmFollow(s,a);aMark()}
+  else if(rd.open&&rd.s===s){renderUpTo(a+CH);aMark();if(fol)aFollow(a)}else aMark();
   aUI();aMeta();
   var n=nextOf(s,a);if(n)PRE.src=aUrl(n[0],n[1],0);   /* muat ayat berikutnya lebih dulu agar tidak terputus */
 }
 /* pindah ke ayat lain; bila pembaca sedang menampilkan surat yang diputar, tampilan ikut pindah surat */
 function aGo(s,a){
-  if(!JM.on&&rd.open&&rd.s===PL.s&&s!==PL.s){
+  if(!JM.on&&rd.open&&rd.s===PL.s&&s!==PL.s&&(!PL.auto||aSeen(PL.s,PL.a))){
     openSurah(s,a);
     try{history.replaceState(null,'','#/'+s+(a>1?'/'+a:''))}catch(e){}
   }
