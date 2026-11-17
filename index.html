@@ -5170,6 +5170,15 @@ if(window.ResizeObserver)new ResizeObserver(vzSize).observe(cv);
    surat & ayat yang sedang dibacakan. Ketukan berikutnya baru menjalankan fungsi tombolnya. */
 function aAway(){
   if(!PL.on||document.visibilityState==='hidden')return false;
+  /* Audio sedang DIJEDA (bukan berjalan) dan pengguna sudah pindah ke surat / juz / halaman lain:
+     sesi lama dibuang, jadi Play berikutnya mulai dari awal tampilan yang sedang dibuka
+     (mis. ayat pertama juz yang baru dipilih), bukan kembali ke surat sebelumnya. */
+  try{
+    if(PL.up&&AU.paused){
+      var same=JM.on?(JM.p===pgOf(gOf(PL.s,PL.a))):(rd.open&&rd.s===PL.s);
+      if(!same){aStop();return false}
+    }
+  }catch(e){}
   try{
     if(JM.on){
       if(JM.p===pgOf(gOf(PL.s,PL.a))){
