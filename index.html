@@ -445,6 +445,8 @@ input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;bac
 #bnav .chip:active{background:var(--chs)}
 #bnav .chip[aria-expanded=true]{border-color:var(--ac);box-shadow:0 0 8px var(--acg)}
 #bnav #aqr .mq{display:inline-block;vertical-align:top}
+#bnav #apn .mq{display:inline-block;vertical-align:top}
+#bnav #apn.run{text-overflow:clip}
 #bnav #aqr.run{text-overflow:clip}
 #bnav #amin{padding:3px 5px}
 #bnav #amin svg{width:12px;height:12px;display:block;transition:transform .2s}
@@ -4756,7 +4758,25 @@ function aMark(){
 function aLbl(){
   var s=PL.on?PL.s:rd.s,a=PL.on?PL.a:rd.cur;
   if(!PL.on&&JM.on&&JM.p){var jx=saOf(PGS[JM.p-1]);s=jx[0];a=jx[1]}
-  $('apn').textContent=(s&&Q[s-1])?Q[s-1][1]+':'+a:'—';
+  apnRun((s&&Q[s-1])?Q[s-1][1]+':'+a:'—');
+}
+/* nama surat di pemutar: bila tidak muat, berjalan (running text) bolak-balik; tidak diulang bila teks & lebar sama */
+function apnRun(txt){
+  var b=$('apn');if(!b)return;
+  var key=txt+'|'+b.clientWidth;
+  if(b._k===key)return;
+  b._k=key;
+  if(b._an){try{b._an.cancel()}catch(e){}b._an=null}
+  var sp=document.createElement('span');
+  sp.className='mq';sp.textContent=txt;
+  b.textContent='';b.appendChild(sp);b.classList.remove('run');b.title=txt;
+  requestAnimationFrame(function(){
+    var room=b.clientWidth,over=sp.offsetWidth-room;
+    if(over>1&&sp.animate){
+      b.classList.add('run');
+      b._an=sp.animate([{transform:'translateX(0)',offset:0},{transform:'translateX(0)',offset:.18},{transform:'translateX('+(-Math.ceil(over)-1)+'px)',offset:.82},{transform:'translateX('+(-Math.ceil(over)-1)+'px)',offset:1}],{duration:(Math.max(2.5,over/18)+1.6)*1000,iterations:Infinity,direction:'alternate',easing:'ease-in-out'});
+    }
+  });
 }
 /* ---------- Jendela terjemah di pemutar (tema mengikuti pemutar) ----------
    Hanya salah satu aktif: tombol "Terjemah" atas (di bawah ayat) ATAU tombol "Terjemah" pemutar (jendela).
