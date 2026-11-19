@@ -622,6 +622,40 @@ input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;bac
 .jm-nav button:disabled{opacity:.35}
 #jmc{font:700 16px var(--ui),system-ui,sans-serif;color:var(--ink2);direction:rtl}
 .jm-nav button svg{display:block;width:22px;height:22px}
+
+/* ===== Bingkai bacaan mepet ke tepi: ruang kosong di kiri-kanan-atas dibuang, area baca selebar mungkin ===== */
+@media (max-width:759px){
+  #reader{padding-left:max(2px,env(safe-area-inset-left));padding-right:max(2px,env(safe-area-inset-right))}
+  .mushaf{padding-left:12px;padding-right:12px}   /* mode surah (tanpa kartu) */
+}
+#reader.jm .mushaf{padding:0;margin-top:3px;background:transparent}
+#reader.jm .mushaf::before,#reader.jm .fx{display:none}
+#reader.jm .jm-card{padding:5px 5px 7px;border-width:1.5px;border-radius:5px;box-shadow:inset 0 0 0 2px var(--paper),inset 0 0 0 3px var(--accent2)}
+#reader.jm .jm-hd{padding:1px 6px 4px;margin-bottom:4px}
+#reader.jm #jmp{padding:0 1px}
+#reader.jm .jm-no{margin-top:5px}
+#reader.jm .jm-nav{margin-top:8px}
+
+/* ===== Latar bacaan (warna teks, warna latar, tekstur, cahaya teks) — sama seperti tab "Teks terjemah" di pemutar ===== */
+.mushaf.rdt{background:var(--rdtex,none),var(--paper)}
+.mushaf.rdt::before{display:none}
+.mushaf.rdt .jm-card{background:var(--rdtex,none),var(--paper)}
+#mushaf #ayl,#mushaf #jmp,#mushaf #bsm .bt{text-shadow:var(--rdgl,none);animation:var(--rdan,none)}
+@keyframes rdpulse{0%,100%{text-shadow:var(--rdgl)}50%{text-shadow:var(--rdgl2)}}
+#rdp .sl{margin:4px 0 0;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink2)}
+#rdprev{position:sticky;top:-6px;z-index:3;margin:2px 0 8px;padding:6px 12px;border-radius:10px;border:1px solid var(--accent2);font-family:var(--arfont);font-size:min(var(--ar),30px);line-height:var(--lh);text-align:center;text-shadow:var(--rdgl,none);animation:var(--rdan,none)}
+#rdp .pal{display:grid;grid-template-columns:repeat(8,1fr);gap:7px;margin:6px 0 12px}
+#rdp .pal button,#rdp .pal .pc{position:relative;display:block;aspect-ratio:1;min-width:0;padding:0;border-radius:50%;border:1px solid rgba(128,128,128,.6);box-shadow:inset 0 1px 0 rgba(255,255,255,.3),0 1px 2px rgba(0,0,0,.4);overflow:hidden}
+#rdp .pal button[aria-pressed=true],#rdp .pal .pc[data-on="1"]{box-shadow:0 0 0 2px var(--paper),0 0 0 4px var(--accent2)}
+#rdp .pal .au{background:linear-gradient(135deg,#3a3f45 50%,#d7dbe0 50%);color:#fff;font:800 11px/1 system-ui;text-shadow:0 0 2px #000}
+#rdp .pal .pc{background:conic-gradient(#f33,#fc3,#3d6,#3cf,#74f,#f3a,#f33)}
+#rdp .pal .pc::after{content:'+';position:absolute;inset:0;display:grid;place-items:center;font:800 15px/1 system-ui;color:#fff;text-shadow:0 0 3px #000;pointer-events:none}
+#rdp .pal .pc[data-on="1"]::after{content:'\270E';font-size:12px}
+#rdp .pal .pc input{position:absolute;inset:0;width:100%;height:100%;margin:0;padding:0;border:0;opacity:0;cursor:pointer}
+#rdp .cg{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:6px 0 12px}
+#rdp .bk{display:flex;flex-direction:column;align-items:stretch;gap:3px;padding:4px;border:0;background:none;border-radius:10px;color:var(--ink2);font-size:10.5px;line-height:1.15;text-align:center}
+#rdp .bk[aria-pressed=true]{box-shadow:0 0 0 2px var(--accent2);background:color-mix(in srgb,var(--accent) 12%,transparent)}
+#rdp .bw{display:grid;place-items:center;height:26px;border-radius:7px;border:1px solid rgba(128,128,128,.55);font:700 13px/1 system-ui;color:#fff}
 #toast{position:fixed;left:50%;bottom:calc(var(--bnh,150px) + 62px);transform:translateX(-50%);z-index:60;background:var(--ink);color:var(--paper);padding:8px 14px;border-radius:99px;font-size:13px;opacity:0;pointer-events:none;transition:opacity .2s}
 #toast.on{opacity:.95}
 #lkm{position:fixed;inset:0;z-index:70;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.5);padding:16px}
@@ -3065,7 +3099,7 @@ html:not(#_):not(#_):not(#_):not(#_):not(#_) .hbx.photo{min-height:0}
       <span class="aa s" aria-hidden="true">A</span>
       <input type="range" id="szr" min="22" max="60" step="1" aria-label="Ukuran huruf Arab">
       <span class="aa b" aria-hidden="true">A</span>
-      <button id="btex" type="button" aria-label="Pilih tekstur kertas" aria-haspopup="dialog"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h8l5 5v13H6z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h6" stroke-dasharray="1 2.4"/></svg></button>
+      <button id="btex" type="button" aria-label="Latar bacaan: warna teks, warna latar, tekstur, cahaya teks" aria-haspopup="dialog"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h8l5 5v13H6z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h6" stroke-dasharray="1 2.4"/></svg></button>
       <button id="btr" aria-pressed="true">Terjemah</button>
     </div>
   </div>
@@ -3531,6 +3565,7 @@ function applyTheme(){
   /* halaman bacaan Al-Qur'an: tekstur sendiri (S.texR), tidak ikut dan tidak mengubah tekstur tema utama */
   var txr=TEXTURES[S.texR]||TEXTURES[DEF.texR],rs=$('reader').style;
   rs.setProperty('--tex',texURI(S.texR,!!T.dark));rs.setProperty('--texop',(T.dark&&txr.opd!=null?txr.opd:txr.op)||0);rs.setProperty('--texsz',txr.grad?'100% 100%':(txr.szs||(txr.sz||300)+'px'));
+  if(typeof RD==='object'&&RD)rdApply();
 }
 function applyFrame(){
   var m=$('mushaf');m.dataset.frame=S.frame;m.querySelector('.fx').innerHTML=frameHTML(S.frame);
@@ -3990,7 +4025,7 @@ function openTexSheet(opener){
   $('sheet').addEventListener('click',sheetClick);
   $('sx').focus();
 }
-$('btex').onclick=function(){openTexSheet($('btex'))};
+$('btex').onclick=function(){openRdSheet($('btex'))};
 document.addEventListener('keydown',function(e){
   if(e.key==='Escape'){if($('nubd')){closeNU();return}if($('sbd')){closeSheet();e.stopImmediatePropagation();return}if(rd.sel){selectAyat(0)}}
   if(e.key==='Tab'&&$('sbd')){var f=$('sheet').querySelectorAll('button,input,[tabindex="0"]');if(!f.length)return;var a=f[0],z=f[f.length-1];
@@ -5840,6 +5875,68 @@ TABS.forEach(function(p){$(p[0]).onclick=function(){
 }});
 
 
+/* ---------- Latar bacaan Al-Qur'an: warna teks, warna latar, tekstur latar, cahaya teks (tersimpan; 'auto' = ikut tema) ---------- */
+var RD={fg:ls('qk.rdfg'),bg:ls('qk.rdbg'),tx:ls('qk.rdtx'),fx:ls('qk.rdfx')},RDP={};
+if(RD.fg!=='auto'&&!isHex(RD.fg))RD.fg='auto';
+if(RD.bg!=='auto'&&!isHex(RD.bg))RD.bg='auto';
+if(RD.tx!=='auto'&&!TTX.some(function(x){return x[0]===RD.tx}))RD.tx='auto';
+if(!TFX.some(function(x){return x[0]===RD.fx}))RD.fx='polos';
+function rdRes(){
+  var T=THEMES[S.theme],fg=RD.fg==='auto'?T.ink:RD.fg,bg=RD.bg==='auto'?T.paper:RD.bg;
+  return {fg:fg,bg:bg,t:RD.tx==='auto'?'':trTex(RD.tx),fx:trFx(RD.fx,fg)};
+}
+function rdApply(){
+  var m=$('mushaf'),st=m.style,r=rdRes();
+  if(RD.fg==='auto'){['--ink','--ink2','--soft'].forEach(function(k){st.removeProperty(k)})}
+  else{st.setProperty('--ink',r.fg);st.setProperty('--ink2',mixHex(r.fg,r.bg,.3));st.setProperty('--soft','color-mix(in srgb,'+r.fg+' 14%,transparent)')}
+  if(RD.bg==='auto')st.removeProperty('--paper');else st.setProperty('--paper',r.bg);
+  m.classList.toggle('rdt',RD.tx!=='auto');
+  st.setProperty('--rdtex',r.t||'none');
+  st.setProperty('--rdgl',r.fx.a);st.setProperty('--rdgl2',r.fx.b||r.fx.a);
+  st.setProperty('--rdan',r.fx.anim?'rdpulse 2.2s ease-in-out infinite':'none');
+  rdPaint();
+}
+function rdPaint(){
+  if(!$('rdp'))return;
+  var r=rdRes(),pv=$('rdprev').style,lay=(r.t?r.t+',':'')+r.bg;
+  pv.color=r.fg;pv.background=lay;pv.setProperty('--rdgl',r.fx.a);pv.setProperty('--rdgl2',r.fx.b||r.fx.a);
+  pv.setProperty('--rdan',r.fx.anim?'rdpulse 2.2s ease-in-out infinite':'none');
+  RDP.fg();RDP.bg();
+  [].forEach.call($('rtx').children,function(e){e.setAttribute('aria-pressed',e.dataset.k===RD.tx?'true':'false')});
+  [].forEach.call($('rfx').children,function(e){
+    var w=e.firstChild;w.style.color=r.fg;w.style.textShadow=trFx(e.dataset.k,r.fg).a;w.style.background=lay;
+    e.setAttribute('aria-pressed',e.dataset.k===RD.fx?'true':'false')});
+}
+function rdSet(k,v){RD[k]=v;ls('qk.rd'+k,v);rdApply()}
+function rdBuild(host,L,key,paint){
+  L.forEach(function(x){
+    var b=document.createElement('button');b.type='button';b.className='bk';b.dataset.k=x[0];
+    b.innerHTML='<span class="bw"></span><span></span>';b.lastChild.textContent=x[1];paint(b.firstChild,x);
+    b.onclick=function(){rdSet(key,x[0])};host.appendChild(b)});
+}
+function openRdSheet(opener){
+  if($('sbd'))return;sheetOpener=opener||document.activeElement;
+  var bd=document.createElement('div');bd.id='sbd';
+  bd.innerHTML='<section id="sheet" role="dialog" aria-modal="true" aria-labelledby="sh2" tabindex="-1"><header><h2 id="sh2">Latar bacaan</h2><button class="xbtn" id="sx" aria-label="Tutup">×</button></header>'
+    +'<div id="sbody"><div id="rdp"><div id="rdprev" lang="ar" dir="rtl" aria-hidden="true"></div>'
+    +'<div class="sl">Warna teks</div><div id="rfg"></div>'
+    +'<div class="sl">Warna latar</div><div id="rbg"></div>'
+    +'<div class="sl">Tekstur latar</div><div class="cg" id="rtx"></div>'
+    +'<div class="sl">Cahaya teks</div><div class="cg" id="rfx"></div>'
+    +'<button class="reset" id="rrs" type="button">Ikut tema (setel ulang)</button></div></div></section>';
+  document.body.appendChild(bd);
+  $('rdprev').textContent='بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ';
+  RDP.fg=palBuild($('rfg'),{list:PAL,auto:1,get:function(){return RD.fg},set:function(v){rdSet('fg',v)}});
+  RDP.bg=palBuild($('rbg'),{list:BGL,auto:1,get:function(){return RD.bg},set:function(v){rdSet('bg',v)}});
+  rdBuild($('rtx'),[['auto','Ikut tema']].concat(TTX),'tx',function(w,x){var t=x[0]==='auto'?'':trTex(x[0]);w.style.cssText='background:'+(t?t+',':'')+'#8a8f94'});
+  rdBuild($('rfx'),TFX,'fx',function(w){w.textContent='Aa'});
+  $('rrs').onclick=function(){RD.fg='auto';RD.bg='auto';RD.tx='auto';RD.fx='polos';['fg','bg','tx','fx'].forEach(function(k){ls('qk.rd'+k,RD[k])});rdApply()};
+  bd.addEventListener('mousedown',function(e){if(e.target===bd)closeSheet()});
+  bd.addEventListener('touchstart',function(e){if(e.target===bd)closeSheet()},{passive:true});
+  $('sx').onclick=function(){closeSheet()};
+  rdPaint();$('sx').focus();
+}
+rdApply();
 $('asr').onclick=function(){
   SK.body='auto';ls('qk.body',SK.body);dvApply();skApply();trApply()};
 $('askn').onclick=function(e){
