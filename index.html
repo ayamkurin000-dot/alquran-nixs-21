@@ -366,20 +366,10 @@ input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;bac
 #topbar input[type=range]::-moz-range-thumb{width:11px;height:11px;background:var(--bari,#fff4d8);border:2px solid var(--barA,#3a2a0c)}
 #shead:empty{display:none}
 
-.mushaf{position:relative;width:100%;max-width:none;margin:0;padding:46px 14px 40px;background:var(--paper);border-radius:0;font-family:var(--arfont)}
-@media (min-width:760px){.mushaf{margin-top:0;padding:54px 28px 48px}}
+.mushaf{position:relative;max-width:720px;margin:12px auto 0;padding:46px 26px 40px;background:var(--paper);border-radius:6px;font-family:var(--arfont)}
+@media (min-width:760px){.mushaf{margin-top:16px;padding:54px 44px 48px}}
 #reader{padding:0 0 calc(var(--bnh,150px) + 80px)}
-@media (max-width:759px){#reader{padding:0 0 calc(var(--bnh,150px) + 80px)}}
-/* Tampilan bacaan Al-Qur'an — dipisahkan dari tema kartu/aplikasi dan mengikuti konsep Teks terjemah pada pemutar */
-.mushaf.qstyle{background:var(--qrbg,var(--paper));background-image:none;overflow:hidden}
-.mushaf.qstyle::before{background-image:var(--qrtex,none);background-size:var(--qrtexsz,auto);opacity:var(--qrtexop,.28);border-radius:0}
-.mushaf.qstyle .ay .ar{color:var(--qrfg,var(--ink));text-shadow:var(--qrgl,none);animation:var(--qran,none)}
-.mushaf.qstyle .ay .tr{color:color-mix(in srgb,var(--qrfg,var(--ink2)) 72%,var(--qrbg,var(--paper)))}
-.mushaf.qstyle .ay.sel{background:color-mix(in srgb,var(--accent) 14%,transparent)}
-.mushaf.qstyle .ay.play{background:color-mix(in srgb,var(--accent) 22%,transparent)}
-.mushaf.qstyle .md text{fill:color-mix(in srgb,var(--qrfg,var(--nink)) 82%,var(--accent2))}
-@keyframes qrtextpulse{0%,100%{text-shadow:var(--qrgl)}50%{text-shadow:var(--qrgl2)}}
-@media (prefers-reduced-motion:reduce){.mushaf.qstyle .ay .ar{animation:none}}
+@media (max-width:759px){#reader{padding:0 8px calc(var(--bnh,150px) + 80px)}}
 
 /* Judul surat — gaya terkunci (Aref Ruqaa tebal), tidak ikut pilihan font */
 .sname{position:relative;margin:0 auto 14px;max-width:460px;text-align:center;padding:12px 22px 10px;border:1.5px solid var(--accent);border-radius:14px;outline:1px solid color-mix(in srgb,var(--accent) 45%,transparent);outline-offset:3px;background:color-mix(in srgb,var(--accent) 7%,transparent)}
@@ -702,19 +692,6 @@ input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;bac
 .row2s{display:flex;align-items:center;gap:10px;margin:6px 0}
 .row2s label{font-size:13px;min-width:92px}
 .reset{margin-top:14px;width:100%;border:1px solid var(--soft);background:none;border-radius:10px;padding:9px;font-size:13px;color:var(--ink2)}
-.qrset{padding:8px 0 2px;border:1px solid var(--soft);border-radius:12px;background:color-mix(in srgb,var(--paper) 86%,#000 14%)}
-.qrsl{margin:9px 10px 5px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink2)}
-.qpal{display:grid;grid-template-columns:repeat(8,1fr);gap:6px;margin:0 10px 9px}
-.qpal button,.qpal .qpc{position:relative;display:block;aspect-ratio:1;min-width:0;padding:0;border-radius:50%;border:1px solid rgba(255,255,255,.3);box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 1px 2px rgba(0,0,0,.55);overflow:hidden}
-.qpal button[aria-pressed=true],.qpal .qpc[data-on="1"]{box-shadow:0 0 0 2px var(--paper),0 0 0 4px var(--accent2)}
-.qpal .qpc{background:conic-gradient(#f33,#fc3,#3d6,#3cf,#74f,#f3a,#f33)}
-.qpal .qpc::after{content:'+';position:absolute;inset:0;display:grid;place-items:center;font:800 15px/1 system-ui;color:#fff;text-shadow:0 0 3px #000;pointer-events:none}
-.qpal .qpc[data-on="1"]::after{content:'✎';font-size:12px}
-.qpal .qpc input{position:absolute;inset:0;width:100%;height:100%;margin:0;padding:0;border:0;opacity:0;cursor:pointer}
-.qcg{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:0 10px 10px}
-.qcg .bk{display:flex;flex-direction:column;align-items:stretch;gap:3px;padding:4px;border:0;background:none;border-radius:10px;color:var(--ink);font-size:10px;text-align:center}
-.qcg .bk[aria-pressed="true"]{box-shadow:0 0 0 2px var(--accent2);background:color-mix(in srgb,var(--accent) 10%,transparent)}
-.qcg .bw{display:grid;place-items:center;height:26px;border-radius:7px;border:1px solid var(--soft);overflow:hidden;font:700 12px/1 system-ui;color:#fff}
 
 /* ===================== Pop-up kredit NU ===================== */
 #nubd{position:fixed;inset:0;z-index:70;background:rgba(0,0,0,.82);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:14px;padding:20px;animation:fade .2s both}
@@ -3554,7 +3531,6 @@ function applyTheme(){
   /* halaman bacaan Al-Qur'an: tekstur sendiri (S.texR), tidak ikut dan tidak mengubah tekstur tema utama */
   var txr=TEXTURES[S.texR]||TEXTURES[DEF.texR],rs=$('reader').style;
   rs.setProperty('--tex',texURI(S.texR,!!T.dark));rs.setProperty('--texop',(T.dark&&txr.opd!=null?txr.opd:txr.op)||0);rs.setProperty('--texsz',txr.grad?'100% 100%':(txr.szs||(txr.sz||300)+'px'));
-  if(typeof qrApply==='function')qrApply();
 }
 function applyFrame(){
   var m=$('mushaf');m.dataset.frame=S.frame;m.querySelector('.fx').innerHTML=frameHTML(S.frame);
@@ -3950,14 +3926,8 @@ function buildSheet(){
   h+='<h3>Efek &mdash; Matte &amp; Kaca</h3><div class="grid" role="radiogroup" aria-label="Efek permukaan">'+FX_ORDER.map(swatchFx).join('')+'</div>';
   h+='<h3>Tekstur kertas</h3><div class="grid" role="radiogroup" aria-label="Tekstur">'+TEX_ORDER.map(swatchTex).join('')+'</div>';
   h+='<h3>Bingkai</h3><div class="grid" role="radiogroup" aria-label="Bingkai">'+FRAME_ORDER.map(swatchFrame).join('')+'</div>';
-  h+='<h3>Tampilan bacaan Al-Qur\'an</h3><div class="qrset">';
-  h+='<div class="qrsl">Warna teks</div><div class="qpal" id="qrf"></div>';
-  h+='<div class="qrsl">Warna latar</div><div class="qpal" id="qrb"></div>';
-  h+='<div class="qrsl">Tekstur latar</div><div class="qcg" id="qrt"></div>';
-  h+='<div class="qrsl">Cahaya teks</div><div class="qcg" id="qrx"></div>';
-  h+='</div>';
   h+='<button class="reset" id="rst">Kembalikan ke bawaan</button>';
-  $('sbody').innerHTML=h;paintTex();paint3D();qBuildControls();
+  $('sbody').innerHTML=h;paintTex();paint3D();
 }
 function openSheet(opener){
   if($('sbd'))return;sheetOpener=opener||document.activeElement;
@@ -3977,13 +3947,13 @@ function closeSheet(quiet){
 }
 function setRadios(k){[].forEach.call(document.querySelectorAll('#sheet [data-k="'+k+'"]'),function(b){b.setAttribute('aria-checked',b.dataset.v===S[k]?'true':'false')})}
 function sheetClick(e){
-  if(e.target.id==='rst'){keepAnchor(function(){S=Object.assign({},DEF);QRS={fg:QRFG_DEF,bg:QRBG_DEF,fx:'polos'};ls('qk.qrfg',QRS.fg);ls('qk.qrbg',QRS.bg);ls('qk.qrfx',QRS.fx);applyAll()});save();ensureFonts().then(function(){calibrate();keepAnchor(applyAll)});buildSheet();return}
+  if(e.target.id==='rst'){keepAnchor(function(){S=Object.assign({},DEF);applyAll()});save();ensureFonts().then(function(){calibrate();keepAnchor(applyAll)});buildSheet();return}
   var b=e.target.closest('[data-k]');if(!b)return;var k=b.dataset.k,v=b.dataset.v;
   if(S[k]===v)return;
   keepAnchor(function(){S[k]=v;
     if(k==='font'){applyFontSizes();relayoutMedals();ensureFonts().then(function(){calibrate();keepAnchor(function(){applyFontSizes();relayoutMedals()})})}
     else if(k==='theme'){if(THEMES[v].tex)S.tex=THEMES[v].tex;applyTheme()}
-    else if(k==='tex'||k==='texR'){applyTheme();qrApply()}
+    else if(k==='tex'||k==='texR'){applyTheme()}
     else if(k==='fx'){applyTheme()}
     else if(k==='frame'){applyFrame()}
   });
@@ -5853,46 +5823,6 @@ function trApply(){
     w.style.color=TR.fg;w.style.textShadow=trFx(e.dataset.k,TR.fg).a;w.style.background=(t?t+',':'')+TR.bg;
     e.setAttribute('aria-pressed',e.dataset.k===TR.fx?'true':'false')});
 }
-/* ---------- Tampilan bacaan Al-Qur'an (mengikuti kontrol Teks terjemah pemutar) ---------- */
-var QRFG_DEF='#eaf0ff',QRBG_DEF='#0e1424';
-var QRS={fg:ls('qk.qrfg')||QRFG_DEF,bg:ls('qk.qrbg')||QRBG_DEF,fx:ls('qk.qrfx')||'polos'};
-if(!isHex(QRS.fg))QRS.fg=QRFG_DEF;if(!isHex(QRS.bg))QRS.bg=QRBG_DEF;if(!TFX.some(function(x){return x[0]===QRS.fx}))QRS.fx='polos';
-var QRP={};
-function qrApply(){
-  var m=$('mushaf');if(!m)return;
-  var fx=trFx(QRS.fx,QRS.fg),t=trTex(S.texR);
-  m.classList.add('qstyle');
-  m.style.setProperty('--qrfg',QRS.fg);m.style.setProperty('--qrbg',QRS.bg);
-  m.style.setProperty('--qrtex',t||'none');m.style.setProperty('--qrtexop',t?'1':'0');
-  m.style.setProperty('--qrtexsz','auto');m.style.setProperty('--qrgl',fx.a||'none');m.style.setProperty('--qrgl2',fx.b||fx.a||'none');
-  m.style.setProperty('--qran',fx.anim?'qrtextpulse 2.2s ease-in-out infinite':'none');
-}
-function qpalBuild(host,list,get,set){
-  host.textContent='';host.classList.add('qpal');
-  list.forEach(function(c){var b=document.createElement('button');b.type='button';b.dataset.c=c;b.style.background=c;b.title=c;b.setAttribute('aria-label',c);b.onclick=function(){set(c);qrApply();qPaint()};host.appendChild(b)});
-  var cus=document.createElement('label');cus.className='qpc';cus.title='Warna kustom';
-  var inp=document.createElement('input');inp.type='color';inp.value=isHex(get())?get():'#ffffff';inp.setAttribute('aria-label','Warna kustom');cus.appendChild(inp);host.appendChild(cus);
-  inp.addEventListener('input',function(){set(inp.value.toLowerCase());qrApply();qPaint()});
-  return function(){var cur=String(get()).toLowerCase();[].forEach.call(host.children,function(b){if(b.dataset&&b.dataset.c)b.setAttribute('aria-pressed',b.dataset.c.toLowerCase()===cur?'true':'false')});cus.setAttribute('data-on',list.indexOf(cur)>=0?'0':'1');if(isHex(cur))inp.value=cur};
-}
-function qBuild(host,L,key,paint){
-  host.textContent='';host.classList.add('qcg');
-  L.forEach(function(x){var b=document.createElement('button');b.type='button';b.className='bk';b.dataset.k=x[0];b.innerHTML='<span class="bw"></span><span></span>';b.lastChild.textContent=x[1];paint(b.firstChild,x);b.onclick=function(){if(key==='tx'){S.texR=x[0];ls('qk.texR',S.texR)}else{QRS.fx=x[0];ls('qk.qrfx',QRS.fx)}qrApply();qPaint()};host.appendChild(b)});
-}
-function qPaint(){
-  if(QRP.fg)QRP.fg();if(QRP.bg)QRP.bg();
-  [].forEach.call($('qrt').children,function(e){var on=e.dataset.k===S.texR;e.setAttribute('aria-pressed',on?'true':'false')});
-  [].forEach.call($('qrx').children,function(e){var on=e.dataset.k===QRS.fx;e.setAttribute('aria-pressed',on?'true':'false');var w=e.firstChild;w.style.color=QRS.fg;w.style.textShadow=trFx(e.dataset.k,QRS.fg).a;w.style.background=(trTex(e.dataset.k)?trTex(e.dataset.k)+',':'')+QRS.bg});
-}
-function qBuildControls(){
-  if(!$('qrf'))return;
-  QRP.fg=qpalBuild($('qrf'),PAL,function(){return QRS.fg},function(v){QRS.fg=v;ls('qk.qrfg',v)});
-  QRP.bg=qpalBuild($('qrb'),BGL,function(){return QRS.bg},function(v){QRS.bg=v;ls('qk.qrbg',v)});
-  qBuild($('qrt'),TTX,'tx',function(w,x){var t=trTex(x[0]);w.style.cssText='background:'+(t?t+',':'')+'#8a8f94'});
-  qBuild($('qrx'),TFX,'fx',function(w){w.textContent='Aa'});
-  qPaint();qrApply();
-}
-
 function trBuild(host,L,key,paint){
   L.forEach(function(x){
     var b=document.createElement('button');b.type='button';b.className='bk';b.dataset.k=x[0];
