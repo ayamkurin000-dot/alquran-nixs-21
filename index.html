@@ -921,6 +921,11 @@ html:not(#_):not(#_):not(#_) .dcat.ecat b{min-height:0;height:auto;font-size:16.
 .ditem .dbody .em-w{color:#8b1a1a;font-weight:800;text-decoration:underline;text-decoration-color:#8b1a1a;text-decoration-thickness:2px;text-underline-offset:2px}
 .ditem .dbody .em-pu.u{text-decoration:underline;text-decoration-color:#6a3d8a;text-decoration-thickness:2px;text-underline-offset:2px}
 .ditem .dbody .em-q{font-style:italic;color:#3f5632}
+/* penekanan manual (data doa.json): ==blok== **tebal** __garis bawah__ *miring* */
+.ditem .dbody mark.mk{background:linear-gradient(transparent 6%,rgba(255,200,0,.58) 6%,rgba(255,200,0,.58) 94%,transparent 94%);color:#3a2800;font-weight:800;padding:0 3px;border-radius:3px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.ditem .dbody b.mb{font-weight:800;color:#5a1010}
+.ditem .dbody u.mu{text-decoration:underline;text-decoration-color:#8b1a1a;text-decoration-thickness:2px;text-underline-offset:3px;font-weight:700}
+.ditem .dbody i.mi{font-style:italic;color:#3f5632}
 .ditem .dbody .dtr{font-style:italic;color:#3f5632;font-size:14px;line-height:1.4}
 .ditem .dbody .dcp:hover{background:rgba(120,80,25,.18)}
 @keyframes dpap{from{opacity:0;transform:translateY(-8px) scale(.97)}to{opacity:1;transform:none}}
@@ -4086,13 +4091,24 @@ function dRich(x){
     return '<b class="em-gd">'+m+'</b>'
   })
 }
-function dMeta(l,v){return v?'<p class="dmeta"><b class="'+(DLC[l]||'gd')+'">'+l+':</b> '+dRich(v)+'</p>':''}
+/* penekanan manual di kartu doa: ==blok warna==  **tebal**  __garis bawah__  *miring*  (penanda dilindungi dulu supaya tidak bentrok dengan penekanan otomatis) */
+function dMk(x,auto){
+  var tok=[];function pt(h){var n=tok.length;tok.push(h);return '\u0001'+String.fromCharCode(97+(n>>5))+String.fromCharCode(97+(n&31))+'\u0002'}
+  var t=String(x==null?'':x)
+    .replace(/==(.+?)==/g,function(m,a){return pt('<mark class="mk">'+dEsc(a)+'</mark>')})
+    .replace(/\*\*(.+?)\*\*/g,function(m,a){return pt('<b class="mb">'+dEsc(a)+'</b>')})
+    .replace(/__(.+?)__/g,function(m,a){return pt('<u class="mu">'+dEsc(a)+'</u>')})
+    .replace(/\*(.+?)\*/g,function(m,a){return pt('<i class="mi">'+dEsc(a)+'</i>')});
+  return (auto?dRich(t):dEsc(t)).replace(/\u0001(..)\u0002/g,function(m,c){return tok[((c.charCodeAt(0)-97)<<5)+(c.charCodeAt(1)-97)]||''})
+}
+function dPlain(x){return String(x==null?'':x).replace(/==|\*\*|__/g,'').replace(/\*(.+?)\*/g,'$1')}
+function dMeta(l,v){return v?'<p class="dmeta"><b class="'+(DLC[l]||'gd')+'">'+l+':</b> '+dMk(v,true)+'</p>':''}
 function doaSubs(it){
   if(!it.sub||!it.sub.length)return'';
   var h=it.sh?'<p class="dlb dsh">'+dEsc(it.sh)+'</p>':'';
   it.sub.forEach(function(s){
     var bg=dBadge(s);
-    h+='<div class="dsub"><div class="dsn"><span>'+dEsc(s.n)+'</span>'+bg+'</div>'+dAr(s.a)+(s.l?'<p class="dla">'+dEsc(s.l)+'</p>':'')+(s.t?'<p class="dtr">'+dEsc(s.t)+'</p>':'')+dMeta('Dasar tuntunan',s.dt)+dMeta('Keutamaan',s.f)+dMeta('Waktu membaca',s.k)+dMeta('Adab',s.d)+dMeta('Sumber',s.s)+dChk(s.v)+'</div>'
+    h+='<div class="dsub"><div class="dsn"><span>'+dEsc(s.n)+'</span>'+bg+'</div>'+dAr(s.a)+(s.l?'<p class="dla">'+dEsc(s.l)+'</p>':'')+(s.t?'<p class="dtr">'+dMk(s.t)+'</p>':'')+dMeta('Dasar tuntunan',s.dt)+dMeta('Keutamaan',s.f)+dMeta('Waktu membaca',s.k)+dMeta('Adab',s.d)+dMeta('Sumber',s.s)+dChk(s.v)+'</div>'
   });
   return h
 }
@@ -4103,7 +4119,7 @@ function doaItem(it,ix,no){
   if(it.m){ if(/[\u0600-\u06FF]/.test(it.m)) h+='<p class="dlb">Lafaz muadzin</p>'+dAr(it.m)+'<p class="dlb">Jawaban</p>'; else h+=dMeta('Waktu',it.m) }
   h+=dAr(it.a);
   if(it.l)h+='<p class="dla">'+dEsc(it.l)+'</p>';
-  if(it.t)h+='<p class="dtr">'+dEsc(it.t)+'</p>';
+  if(it.t)h+='<p class="dtr">'+dMk(it.t)+'</p>';
   h+=dMeta('Dasar tuntunan',it.dt)+dMeta('Keutamaan',it.f)+dMeta('Tata cara',it.tc)+dMeta('Waktu membaca',it.k)+dMeta('Waktu mustajab',it.wm)+dMeta('Tempat mustajab',it.tm)+dMeta('Adab',it.d)+dMeta('Sumber',it.s)+dChk(it.v)+doaSubs(it);
   return h+'<button type="button" class="dcp" data-i="'+ix+'">Salin</button></div></details>'
 }
@@ -4280,8 +4296,8 @@ window.addEventListener('popstate',function(e){
 });
 function doaCopy(ix){
   var it=doaCur[ix];if(!it)return;
-  var t=[it.n,(it.m&&/[\u0600-\u06FF]/.test(it.m)?it.m+'\n':'')+(it.a||''),it.l,it.t].filter(Boolean).join('\n\n');
-  if(it.sub)it.sub.forEach(function(s){t+='\n\n'+[s.n,s.a,s.l,s.t].filter(Boolean).join('\n')});
+  var t=[it.n,(it.m&&/[\u0600-\u06FF]/.test(it.m)?it.m+'\n':'')+(it.a||''),it.l,dPlain(it.t)].filter(Boolean).join('\n\n');
+  if(it.sub)it.sub.forEach(function(s){t+='\n\n'+[s.n,s.a,s.l,dPlain(s.t)].filter(Boolean).join('\n')});
   function ok(){toast('Tersalin')}
   function fb(){try{var ta=document.createElement('textarea');ta.value=t;ta.style.cssText='position:fixed;opacity:0';document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove();ok()}catch(e){toast('Tidak bisa menyalin')}}
   if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(t).then(ok,fb);else fb()
