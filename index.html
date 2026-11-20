@@ -1882,11 +1882,11 @@ html[data-gulung^="g"]:not(#_):not(#_):not(#_):not(#_):not(#_) :is(#kdoa,#kmri,#
 html[data-gulung^="g"]:not(#_):not(#_):not(#_):not(#_):not(#_) :is(#kdoa,#kmri,#kens) :is(.hdoa,.hmri){font-size:clamp(8px,2.6vw,12px);letter-spacing:.01em}
 /* foto tidak lagi memaksa tinggi 210px; tingginya mengikuti kolom kanan */
 html:not(#_):not(#_):not(#_):not(#_):not(#_) .hbx.photo{min-height:0}
-/* ===== bintang-bintang berjatuhan di LATAR halaman awal, Do'a & Bacaan, dan Ensiklopedia (di belakang semua kartu, tidak di dalam kartu) =====
+/* ===== bintang-bintang berjatuhan di LATAR halaman awal (daftar surat) saja (di belakang semua kartu, tidak di dalam kartu) =====
    Murni CSS: pseudo-element ::after (#home / #doa / #ens) di lapisan paling belakang; dua lapis bintang (kecil lambat, besar lebih cepat).
    Warna mengikuti warna aksen tema (var(--accent)). Tampak di sela & sisi kartu; kartu tetap menutupi bintang di belakangnya. */
 #home{position:relative;isolation:isolate}
-:is(#home,#doa,#ens)::after{
+#home::after{
   content:'';position:absolute;inset:0;z-index:-1;pointer-events:none;
   background:var(--accent,#c9a227);opacity:.5;
   -webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='96' viewBox='0 0 64 96'%3E%3Cpath d='M10 8Q10 12 14 12Q10 12 10 16Q10 12 6 12Q10 12 10 8Z M44 26Q44 30 48 30Q44 30 44 34Q44 30 40 30Q44 30 44 26Z M24 53Q24 58 29 58Q24 58 24 63Q24 58 19 58Q24 58 24 53Z M54 77Q54 80 57 80Q54 80 54 83Q54 80 51 80Q54 80 54 77Z' fill='%23000'/%3E%3Ccircle cx='34' cy='8' r='1'/%3E%3Ccircle cx='58' cy='50' r='1'/%3E%3Ccircle cx='6' cy='40' r='1'/%3E%3Ccircle cx='40' cy='90' r='1'/%3E%3C/svg%3E"),url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='72' viewBox='0 0 48 72'%3E%3Cpath d='M12 7.5Q12 10 14.5 10Q12 10 12 12.5Q12 10 9.5 10Q12 10 12 7.5Z M36 32Q36 34 38 34Q36 34 36 36Q36 34 34 34Q36 34 36 32Z M20 53Q20 56 23 56Q20 56 20 59Q20 56 17 56Q20 56 20 53Z' fill='%23000'/%3E%3Ccircle cx='40' cy='12' r='.9'/%3E%3Ccircle cx='6' cy='34' r='.9'/%3E%3Ccircle cx='30' cy='66' r='.9'/%3E%3C/svg%3E");mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='96' viewBox='0 0 64 96'%3E%3Cpath d='M10 8Q10 12 14 12Q10 12 10 16Q10 12 6 12Q10 12 10 8Z M44 26Q44 30 48 30Q44 30 44 34Q44 30 40 30Q44 30 44 26Z M24 53Q24 58 29 58Q24 58 24 63Q24 58 19 58Q24 58 24 53Z M54 77Q54 80 57 80Q54 80 54 83Q54 80 51 80Q54 80 54 77Z' fill='%23000'/%3E%3Ccircle cx='34' cy='8' r='1'/%3E%3Ccircle cx='58' cy='50' r='1'/%3E%3Ccircle cx='6' cy='40' r='1'/%3E%3Ccircle cx='40' cy='90' r='1'/%3E%3C/svg%3E"),url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='72' viewBox='0 0 48 72'%3E%3Cpath d='M12 7.5Q12 10 14.5 10Q12 10 12 12.5Q12 10 9.5 10Q12 10 12 7.5Z M36 32Q36 34 38 34Q36 34 36 36Q36 34 34 34Q36 34 36 32Z M20 53Q20 56 23 56Q20 56 20 59Q20 56 17 56Q20 56 20 53Z' fill='%23000'/%3E%3Ccircle cx='40' cy='12' r='.9'/%3E%3Ccircle cx='6' cy='34' r='.9'/%3E%3Ccircle cx='30' cy='66' r='.9'/%3E%3C/svg%3E");
@@ -1898,7 +1898,10 @@ html:not(#_):not(#_):not(#_):not(#_):not(#_) .hbx.photo{min-height:0}
   from{-webkit-mask-position:0 0,0 0;mask-position:0 0,0 0}
   to{-webkit-mask-position:-96px 144px,-144px 324px;mask-position:-96px 144px,-144px 324px}
 }
-@media (prefers-reduced-motion:reduce){:is(#home,#doa,#ens)::after{animation:none}}
+@media (prefers-reduced-motion:reduce){#home::after{animation:none}}
+/* Do'a & Bacaan serta Ensiklopedia: bintang jatuh DIHILANGKAN (animasi mask-position di layar penuh bikin geser berat).
+   Kartu doa yang tertutup tidak digambar sampai mendekati layar, supaya daftar panjang tetap ringan. */
+.ditem:not([open]){content-visibility:auto;contain-intrinsic-size:auto 56px}
 /* ===== kilatan cahaya acak dari ujung ke ujung pada kartu yang tampak di layar (halaman awal, Do'a & Bacaan, Ensiklopedia) (dipicu skrip di bawah) ===== */
 #hlist>button.row,.ecat{position:relative}
 .kilat{position:absolute;inset:0;overflow:hidden;border-radius:inherit;pointer-events:none;z-index:3}
