@@ -1,6 +1,6 @@
 {
  "t": "Ensiklopedia",
- "d": "Kisah awal penciptaan, alam ruh, Nabi Adam عليه السلام, Iblis, malaikat, jin, takdir dan Lailatul Qadar beserta turunnya Al-Qur’an, ‘Arsy, tujuh langit, kisah Isra’ Mi‘raj, terbelahnya bulan, Malaikat Maut dan sakaratul maut, alam barzakh (termasuk pertanyaan kubur oleh Munkar dan Nakir), tanda-tanda kiamat (termasuk sepuluh tanda besar dan tiupan sangkakala), serta hari kebangkitan (Mahsyar, hisab, mizan, dan Shirath), Ashabul A‘raf, telaga Nabi ﷺ dan syafa‘at, gambaran Surga dan Neraka, serta Dajjal, Imam Mahdi dan turunnya Nabi ‘Isa عليه السلام, perang akhir zaman (Malhamah Kubra, Konstantinopel, dan as-Sufyani), Ashabul Kahfi, Dzulqarnain beserta Ya’juj dan Ma’juj, Harut–Marut, ruqyah dan ‘ain, sapi betina Bani Israil, Samiri dan anak sapi emas, Ashabus Sabt, Qarun, Ashabul Jannah, Ashabul Ukhdud, Ashabul Qaryah (Anthakiyah), Ashabul Fil dan burung Ababil, kaum Saba’ dan bendungan Ma’rib, serta para nabi: Nuh dan tufan, Ibrahim (api yang dingin, pembangunan Ka‘bah, dan kisah penyembelihan), Hud dan kaum ‘Ad (Iram), Shalih dan kaum Tsamud, Luth dan kaumnya, Syu‘aib dan penduduk Madyan, hingga Yusuf, Ayyub, dan Yunus, Musa (bersama Fir‘aun dan bersama Nabi Khidir), Dawud (Thalut dan Jalut, Zabur, besi yang dilunakkan, dan hukum yang adil), Sulaiman (jin, burung Hud-hud, semut, dan Ratu Balqis), Idris, Ilyas, Alyasa‘, dan Dzulkifli, serta Zakariya, Yahya, dan kelahiran Maryam serta ‘Isa, juga Hajar, Isma‘il, dan sumur Zamzam, serta nasihat Luqman kepada anaknya (syukur, tauhid, bakti kepada orang tua, pengawasan Allah, salat, amar makruf, sabar, dan adab), hakikat ruh dan batas pengetahuan manusia tentangnya, serta zaqqum dan para penjaga neraka (Malik dan Zabaniyah) — dituturkan ringan dari Al-Qur’an, hadits, dan penjelasan para ulama.",
+ "d": "Kisah awal penciptaan, alam ruh, Nabi Adam عليه السلام, Iblis, malaikat, jin, qarin (pendamping dari jin dan malaikat), mimpi dan jenisnya, takdir dan Lailatul Qadar beserta turunnya Al-Qur’an, ‘Arsy, tujuh langit, kisah Isra’ Mi‘raj, terbelahnya bulan, Malaikat Maut dan sakaratul maut, alam barzakh (termasuk pertanyaan kubur oleh Munkar dan Nakir), tanda-tanda kiamat (termasuk sepuluh tanda besar dan tiupan sangkakala), serta hari kebangkitan (Mahsyar, hisab, mizan, dan Shirath), Ashabul A‘raf, telaga Nabi ﷺ dan syafa‘at, gambaran Surga dan Neraka, serta Dajjal, Imam Mahdi dan turunnya Nabi ‘Isa عليه السلام, perang akhir zaman (Malhamah Kubra, Konstantinopel, dan as-Sufyani), Ashabul Kahfi, Dzulqarnain beserta Ya’juj dan Ma’juj, Harut–Marut, ruqyah dan ‘ain, sapi betina Bani Israil, Samiri dan anak sapi emas, Ashabus Sabt, Qarun, Ashabul Jannah, Ashabul Ukhdud, Ashabul Qaryah (Anthakiyah), Ashabul Fil dan burung Ababil, kaum Saba’ dan bendungan Ma’rib, serta para nabi: Nuh dan tufan, Ibrahim (api yang dingin, pembangunan Ka‘bah, dan kisah penyembelihan), Hud dan kaum ‘Ad (Iram), Shalih dan kaum Tsamud, Luth dan kaumnya, Syu‘aib dan penduduk Madyan, hingga Yusuf, Ayyub, dan Yunus, Musa (bersama Fir‘aun dan bersama Nabi Khidir), Dawud (Thalut dan Jalut, Zabur, besi yang dilunakkan, dan hukum yang adil), Sulaiman (jin, burung Hud-hud, semut, dan Ratu Balqis), Idris, Ilyas, Alyasa‘, dan Dzulkifli, serta Zakariya, Yahya, dan kelahiran Maryam serta ‘Isa, juga Hajar, Isma‘il, dan sumur Zamzam, serta nasihat Luqman kepada anaknya (syukur, tauhid, bakti kepada orang tua, pengawasan Allah, salat, amar makruf, sabar, dan adab), hakikat ruh dan batas pengetahuan manusia tentangnya, serta zaqqum dan para penjaga neraka (Malik dan Zabaniyah) — dituturkan ringan dari Al-Qur’an, hadits, dan penjelasan para ulama.",
  "k": [
   {
    "id": "awal-penciptaan",
@@ -837,6 +837,309 @@
     "Al-Qurthubi, *Al-Jami‘ li Ahkam al-Qur’an* — tafsir QS. al-Jinn dan Saba’: 12–14",
     "Ibnu Taimiyyah, *Majmu‘ al-Fatawa* — pembahasan jin dan gangguannya terhadap manusia",
     "Ibnu Katsir, *Al-Bidayah wan Nihayah*, juz 1 — kisah penciptaan jin"
+   ]
+  },
+  {
+   "id": "qarin-pendamping-dari-jin-dan-malaikat",
+   "t": "Qarin: Pendamping Setiap Manusia dari Jin dan dari Malaikat",
+   "d": "Siapa qarin yang disebut Al-Qur’an dan hadits, apa kerjanya, mengapa ia tidak bisa memaksa, bagaimana ia berlepas diri di hari kiamat, dan cara berlindung darinya — pelengkap kartu Jin.",
+   "b": [
+    {
+     "h": "Apa itu qarin?",
+     "p": [
+      "Kata **qarin** berasal dari akar kata yang bermakna menyertai atau menyatu. Dalam bahasa Arab, qarin berarti pendamping atau teman karib yang selalu berada di dekat seseorang. Al-Qur’an memakai kata ini untuk makhluk gaib yang menyertai manusia. Kartu tentang *Jin* sudah menyinggungnya sekilas, dan kartu ini membahasnya lebih lengkap.",
+      "Ayat yang paling jelas ada dalam surat az-Zukhruf: siapa yang **berpaling dari pengajaran Allah** (Al-Qur’an), Allah biarkan setan menjadi teman karibnya. Kata *ya‘syu* dalam ayat ini dipahami para mufasir sebagai berpaling dengan sengaja, seperti orang yang pura-pura buta terhadap petunjuk. Setan yang menempel itu lalu menjadi qarin yang menghiasi keburukan baginya."
+     ],
+     "q": [
+      {
+       "a": "وَمَنْ يَّعْشُ عَنْ ذِكْرِ الرَّحْمٰنِ نُقَيِّضْ لَهٗ شَيْطٰنًا فَهُوَ لَهٗ قَرِيْنٌ",
+       "t": "Dan barangsiapa berpaling dari pengajaran Allah Yang Maha Pengasih (Al-Qur’an), Kami biarkan setan (menyesatkannya) dan menjadi teman karibnya.",
+       "s": "QS. az-Zukhruf: 36"
+      }
+     ]
+    },
+    {
+     "h": "Setiap orang punya qarin: dari jin dan dari malaikat",
+     "p": [
+      "Hadits Ibnu Mas‘ud رضي الله عنه dalam Muslim menyebut bahwa **tidak seorang pun di antara kita kecuali telah ditugaskan padanya pendampingnya dari kalangan jin**, dan pendampingnya dari kalangan malaikat. Para sahabat bertanya apakah Nabi ﷺ juga demikian. Beliau menjawab bahwa beliau juga, tetapi Allah menolongnya atas qarin itu sehingga ia tidak menyuruh kecuali kepada kebaikan.",
+      "Imam an-Nawawi dalam *Syarh Shahih Muslim* mencatat bahwa lafaz *fa aslama* dalam hadits ini dibaca dengan dua cara: *fa aslamu* (maka aku selamat dari godaannya) dan *fa aslama* (maka ia masuk Islam). Hasil akhirnya sama, yaitu qarin Nabi ﷺ tidak membisikkan keburukan. Ini keistimewaan beliau karena dijaga Allah, dan tidak berarti qarin orang lain otomatis baik. Para ulama menjelaskan bahwa pendamping dari malaikat adalah yang membimbing kepada kebaikan."
+     ],
+     "q": [
+      {
+       "a": "مَا مِنْكُمْ مِنْ أَحَدٍ إِلَّا وَقَدْ وُكِّلَ بِهِ قَرِينُهُ مِنَ الْجِنِّ وَقَرِينُهُ مِنَ الْمَلَائِكَةِ. قَالُوا: وَإِيَّاكَ يَا رَسُولَ اللَّهِ؟ قَالَ: وَإِيَّايَ، وَلَكِنَّ اللَّهَ أَعَانَنِي عَلَيْهِ فَأَسْلَمَ، فَلَا يَأْمُرُنِي إِلَّا بِخَيْرٍ",
+       "t": "Tidak seorang pun di antara kalian kecuali telah ditugaskan padanya pendampingnya dari kalangan jin dan pendampingnya dari kalangan malaikat. Mereka bertanya: “Engkau juga, wahai Rasulullah?” Beliau menjawab: “Aku juga, tetapi Allah menolongku atasnya sehingga ia masuk Islam, maka ia tidak menyuruhku kecuali kepada kebaikan.”",
+       "s": "HR. Muslim no. 2814 (Ibnu Mas‘ud)"
+      }
+     ]
+    },
+    {
+     "h": "Kerja qarin: membisikkan dan menghiasi, bukan memaksa",
+     "p": [
+      "Al-Qur’an menggambarkan kerja qarin dengan jelas: menghiasi apa yang ada di hadapan dan di belakang manusia (QS. Fushshilat: 25), menghalangi dari jalan yang lurus sambil membuat orang merasa dirinya sudah benar (QS. az-Zukhruf: 37), dan membisikkan keburukan ke dalam dada (QS. an-Nas: 4–6). Karena itu bisikan setan sering datang dalam bentuk yang tampak baik bagi pelakunya.",
+      "Hadits Shafiyyah binti Huyay رضي الله عنها (al-Bukhari dan Muslim) menceritakan ketika dua lelaki Anshar melihat Nabi ﷺ berjalan bersamanya di malam hari. Beliau menjelaskan bahwa ia istrinya, lalu bersabda bahwa **setan berjalan pada anak Adam seperti aliran darah**. Para ulama memahami hadits ini sebagai gambaran dekatnya bisikan setan ke dalam hati manusia. Kemampuan itu pun diberikan oleh Allah, dan tidak berarti setan menguasai seseorang."
+     ],
+     "q": [
+      {
+       "a": "وَقَيَّضْنَا لَهُمْ قُرَنَاۤءَ فَزَيَّنُوْا لَهُمْ مَّا بَيْنَ اَيْدِيْهِمْ وَمَا خَلْفَهُمْ وَحَقَّ عَلَيْهِمُ الْقَوْلُ فِيْٓ اُمَمٍ قَدْ خَلَتْ مِنْ قَبْلِهِمْ مِّنَ الْجِنِّ وَالْاِنْسِۚ اِنَّهُمْ كَانُوْا خٰسِرِيْنَ",
+       "t": "Dan Kami tetapkan bagi mereka teman-teman (setan) yang memuji-muji apa saja yang ada di hadapan dan di belakang mereka dan tetaplah atas mereka putusan azab bersama umat-umat yang terdahulu sebelum mereka dari (golongan) jin dan manusia. Sungguh, mereka adalah orang-orang yang rugi.",
+       "s": "QS. Fushshilat: 25"
+      },
+      {
+       "a": "وَاِنَّهُمْ لَيَصُدُّوْنَهُمْ عَنِ السَّبِيْلِ وَيَحْسَبُوْنَ اَنَّهُمْ مُّهْتَدُوْنَ",
+       "t": "Dan sungguh, mereka (setan-setan itu) benar-benar menghalang-halangi mereka dari jalan yang benar, sedang mereka menyangka bahwa mereka mendapat petunjuk.",
+       "s": "QS. az-Zukhruf: 37"
+      },
+      {
+       "a": "مِنْ شَرِّ الْوَسْوَاسِ ەۙ الْخَنَّاسِۖ الَّذِيْ يُوَسْوِسُ فِيْ صُدُوْرِ النَّاسِۙ مِنَ الْجِنَّةِ وَالنَّاسِ",
+       "t": "dari kejahatan (bisikan) setan yang bersembunyi, yang membisikkan (kejahatan) ke dalam dada manusia, dari (golongan) jin dan manusia.",
+       "s": "QS. an-Nas: 4–6"
+      },
+      {
+       "a": "إِنَّ الشَّيْطَانَ يَجْرِي مِنِ ابْنِ آدَمَ مَبْلَغَ الدَّمِ، وَإِنِّي خَشِيتُ أَنْ يَقْذِفَ فِي قُلُوبِكُمَا شَيْئًا",
+       "t": "Sesungguhnya setan berjalan pada anak Adam sebagaimana aliran darah, dan aku khawatir ia melemparkan sesuatu (prasangka) ke dalam hati kalian berdua.",
+       "s": "HR. al-Bukhari no. 6219 dan Muslim no. 2175 (Shafiyyah binti Huyay)"
+      }
+     ]
+    },
+    {
+     "h": "Di hari kiamat: qarin berlepas diri",
+     "p": [
+      "Al-Qur’an memperlihatkan percakapan yang mengerikan pada hari kiamat. Orang yang dahulu berpaling dari Al-Qur’an datang bersama qarin-nya, lalu berharap jarak antara dia dan qarin itu sejauh **timur dan barat**, dan ia menyebutnya seburuk-buruk teman (QS. az-Zukhruf: 38). Ia baru sadar, ketika sudah terlambat, bahwa teman yang dulu menghiasi dosa baginya tidak membawanya ke mana pun kecuali kepada azab.",
+      "Dalam surat Qaf, qarin dari kalangan setan berkata bahwa ia tidak menyesatkan orang itu, melainkan orang itu sendiri yang sudah berada dalam kesesatan yang jauh (QS. Qaf: 27). Ucapan ini sejalan dengan ucapan Iblis dalam surat Ibrahim: ajakan memang datang dari setan, tetapi yang memenuhi ajakan itu adalah manusia sendiri. Adapun qarin pada ayat 23 surat Qaf, para mufasir umumnya memahaminya sebagai malaikat yang menyertai manusia dan menyerahkan catatan amalnya."
+     ],
+     "q": [
+      {
+       "a": "حَتّٰىٓ اِذَا جَاۤءَنَا قَالَ يٰلَيْتَ بَيْنِيْ وَبَيْنَكَ بُعْدَ الْمَشْرِقَيْنِ فَبِئْسَ الْقَرِيْنُ",
+       "t": "Sehingga apabila orang–orang yang berpaling itu datang kepada Kami (pada hari Kiamat) dia berkata, “Wahai! Sekiranya (jarak) antara aku dan kamu seperti jarak antara timur dan barat! Memang (setan itu) teman yang paling jahat (bagi manusia).”",
+       "s": "QS. az-Zukhruf: 38"
+      },
+      {
+       "a": "وَقَالَ قَرِيْنُهٗ هٰذَا مَا لَدَيَّ عَتِيْدٌۗ",
+       "t": "Dan (malaikat) yang menyertainya berkata, “Inilah (catatan perbuatan) yang ada padaku.”",
+       "s": "QS. Qaf: 23"
+      },
+      {
+       "a": "قَالَ قَرِيْنُهٗ رَبَّنَا مَآ اَطْغَيْتُهٗ وَلٰكِنْ كَانَ فِيْ ضَلٰلٍۢ بَعِيْدٍ",
+       "t": "(Setan) yang menyertainya berkata (pula), “Ya Tuhan kami, aku tidak menyesatkannya tetapi dia sendiri yang berada dalam kesesatan yang jauh.”",
+       "s": "QS. Qaf: 27"
+      },
+      {
+       "a": "وَمَا كَانَ لِيَ عَلَيْكُمْ مِّنْ سُلْطٰنٍ اِلَّآ اَنْ دَعَوْتُكُمْ فَاسْتَجَبْتُمْ لِيْ ۚفَلَا تَلُوْمُوْنِيْ وَلُوْمُوْٓا اَنْفُسَكُمْ",
+       "t": "Tidak ada kekuasaan bagiku terhadapmu, melainkan (sekedar) aku menyeru kamu lalu kamu mematuhi seruanku, oleh sebab itu janganlah kamu mencerca aku, tetapi cercalah dirimu sendiri.",
+       "s": "QS. Ibrahim: 22"
+      }
+     ]
+    },
+    {
+     "h": "Cara berlindung dari qarin yang jahat",
+     "p": [
+      "Perintah Allah sederhana: ketika godaan setan datang, **berlindunglah kepada Allah**, karena Dia Maha Mendengar dan Maha Mengetahui (QS. al-A‘raf: 200). Doa masuk kamar kecil, Ayat Kursi sebelum tidur (al-Bukhari no. 2311), dan membaca surat al-Baqarah di rumah telah dibahas pada kartu *Jin*. Dasar semuanya adalah ucapan Allah bahwa setan tidak berpengaruh terhadap orang yang beriman dan bertawakal.",
+      "Hadits Abu Hurairah رضي الله عنه (al-Bukhari no. 3293 dan Muslim no. 2691) menyebut bahwa siapa yang membaca *La ilaha illallahu wahdahu la syarika lah, lahul mulku wa lahul hamdu wa huwa ‘ala kulli syai’in qadir* seratus kali dalam sehari, maka bacaan itu menjadi **perisai dari setan** sepanjang hari itu sampai sore. Hadits Ibnu Mas‘ud menunjukkan bahwa setiap orang memiliki qarin, sedangkan ayat az-Zukhruf menunjukkan bahwa orang yang berpaling dari Al-Qur’an dibiarkan makin dekat dan makin tunduk kepada setan. Maka mendekat kepada Al-Qur’an dan menjaga zikir adalah cara menjauhkan pengaruhnya."
+     ],
+     "q": [
+      {
+       "a": "وَاِمَّا يَنْزَغَنَّكَ مِنَ الشَّيْطٰنِ نَزْغٌ فَاسْتَعِذْ بِاللّٰهِ ۗاِنَّهٗ سَمِيْعٌ عَلِيْمٌ",
+       "t": "Dan jika setan datang menggodamu, maka berlindunglah kepada Allah. Sungguh, Dia Maha Mendengar, Maha Mengetahui.",
+       "s": "QS. al-A‘raf: 200"
+      },
+      {
+       "a": "اِنَّهٗ لَيْسَ لَهٗ سُلْطٰنٌ عَلَى الَّذِيْنَ اٰمَنُوْا وَعَلٰى رَبِّهِمْ يَتَوَكَّلُوْنَ اِنَّمَا سُلْطٰنُهٗ عَلَى الَّذِيْنَ يَتَوَلَّوْنَهٗ وَالَّذِيْنَ هُمْ بِهٖ مُشْرِكُوْنَ",
+       "t": "Sungguh, setan itu tidak akan berpengaruh terhadap orang yang beriman dan bertawakal kepada Tuhan. Pengaruhnya hanyalah terhadap orang yang menjadikannya pemimpin dan terhadap orang yang mempersekutukannya dengan Allah.",
+       "s": "QS. an-Nahl: 99–100"
+      },
+      {
+       "a": "كَانَتْ لَهُ حِرْزًا مِنَ الشَّيْطَانِ يَوْمَهُ ذَلِكَ حَتَّى يُمْسِيَ",
+       "t": "Maka itu menjadi perlindungan baginya dari setan pada hari itu sampai ia memasuki sore.",
+       "s": "HR. al-Bukhari no. 3293 dan Muslim no. 2691 (Abu Hurairah)"
+      }
+     ]
+    },
+    {
+     "h": "Pelajaran: waspada, tidak takut berlebihan, tidak menyalahkan setan",
+     "p": [
+      "Pertama, kita tidak perlu hidup dalam ketakutan. **Tipu daya setan itu lemah** (QS. an-Nisa’: 76, dibahas pada kartu *Jin*), dan qarin tidak dapat memaksa siapa pun. Allah menegaskan bahwa Iblis tidak kuasa atas hamba-hamba-Nya, kecuali orang yang mengikutinya. Kedua, jangan menjadikan qarin sebagai tempat melempar kesalahan. Setiap keputusan berbuat maksiat tetap menjadi tanggung jawab pelakunya, sebagaimana diakui setan sendiri di akhirat.",
+      "Keyakinan bahwa qarin atau “pendamping gaib” dapat dilihat, dipanggil, atau dimintai bantuan tidak memiliki dasar dalam Al-Qur’an maupun hadits sahih. Wahyu mengajarkan sebaliknya: berlindung kepada Allah dari setan, dan menjauhi permintaan tolong kepada jin (QS. al-Jinn: 6), seperti dibahas pada kartu *Jin* dan *Ruqyah dan ‘Ain*. Pegangan kita adalah iman, zikir, dan Al-Qur’an."
+     ],
+     "q": [
+      {
+       "a": "اِنَّ عِبَادِيْ لَيْسَ لَكَ عَلَيْهِمْ سُلْطٰنٌ اِلَّا مَنِ اتَّبَعَكَ مِنَ الْغٰوِيْنَ",
+       "t": "Sesungguhnya kamu (Iblis) tidak kuasa atas hamba-hamba-Ku, kecuali mereka yang mengikutimu, yaitu orang yang sesat.",
+       "s": "QS. al-Hijr: 42"
+      }
+     ]
+    }
+   ],
+   "s": [
+    "QS. az-Zukhruf: 36–38; Qaf: 23, 27; Fushshilat: 25; an-Nas: 4–6; Ibrahim: 22; al-Hijr: 42; an-Nahl: 99–100; al-A‘raf: 200; an-Nisa’: 76; al-Jinn: 6",
+    "HR. Muslim no. 2814 dari Ibnu Mas‘ud — setiap orang memiliki pendamping dari jin dan dari malaikat; keistimewaan Nabi ﷺ",
+    "HR. al-Bukhari no. 6219 dan Muslim no. 2175 dari Shafiyyah binti Huyay — setan berjalan pada anak Adam seperti aliran darah",
+    "HR. al-Bukhari no. 3293 dan Muslim no. 2691 dari Abu Hurairah — zikir seratus kali sebagai perisai dari setan",
+    "HR. al-Bukhari no. 2311 dari Abu Hurairah — Ayat Kursi dan penjagaan dari setan (lihat kartu Jin)",
+    "Ibnu Katsir, *Tafsir al-Qur’an al-‘Azhim* — tafsir QS. az-Zukhruf: 36–38 dan Qaf: 21–29",
+    "An-Nawawi, *Syarh Shahih Muslim* — dua bacaan lafaz *fa aslama* pada hadits qarin dan penjelasan keistimewaan Nabi ﷺ",
+    "Ibnu Hajar al-‘Asqalani, *Fathul Bari* — syarah hadits Shafiyyah tentang setan yang berjalan seperti aliran darah",
+    "Ibnu Taimiyyah, *Majmu‘ al-Fatawa* — pembahasan jin dan setan serta pengaruhnya terhadap manusia"
+   ]
+  },
+  {
+   "id": "mimpi-ruya-hulm-dan-haditsun-nafs",
+   "t": "Mimpi: Ru’ya, Hulm, dan Bisikan Pikiran",
+   "d": "Tiga jenis mimpi menurut hadits, mimpi baik sebagai bagian kecil dari kenabian, adab ketika mimpi baik dan mimpi buruk, mimpi para nabi, serta alasan mimpi tidak boleh dijadikan dasar akidah dan ibadah.",
+   "b": [
+    {
+     "h": "Tiga jenis mimpi",
+     "p": [
+      "Nabi ﷺ menjelaskan dalam hadits Abu Hurairah رضي الله عنه (Muslim no. 2263) bahwa **mimpi ada tiga**: mimpi baik yang merupakan kabar gembira dari Allah, mimpi yang menyedihkan atau menakutkan dari setan, dan mimpi yang berasal dari bisikan pikiran seseorang sendiri. Jenis ketiga disebut *haditsun nafs*, yaitu apa yang sering dipikirkan, dikhawatirkan, atau dialami seseorang saat terjaga, lalu muncul kembali ketika ia tidur.",
+      "Hadits Abu Qatadah رضي الله عنه (Muslim no. 2261) membedakan dua istilah: **ru’ya** untuk mimpi baik dari Allah dan **hulm** untuk mimpi buruk dari setan. Para ulama, termasuk Ibnu Hajar dalam *Fathul Bari*, menjelaskan bahwa pembedaan ini berdasarkan pemakaian kata, dan dalam sebagian riwayat kedua kata itu dipakai bergantian. Ketika tidur, jiwa seseorang berada dalam genggaman Allah (QS. az-Zumar: 42), sebagaimana dibahas pada kartu tentang ruh, sehingga apa yang dilihat di dalamnya di luar kendali manusia."
+     ],
+     "q": [
+      {
+       "a": "وَالرُّؤْيَا ثَلَاثَةٌ: فَرُؤْيَا الصَّالِحَةِ بُشْرَى مِنَ اللَّهِ، وَرُؤْيَا تَحْزِينٌ مِنَ الشَّيْطَانِ، وَرُؤْيَا مِمَّا يُحَدِّثُ الْمَرْءُ نَفْسَهُ",
+       "t": "Mimpi itu ada tiga: mimpi yang baik adalah kabar gembira dari Allah, mimpi yang menyedihkan berasal dari setan, dan mimpi dari apa yang dibisikkan seseorang kepada dirinya sendiri.",
+       "s": "HR. Muslim no. 2263 (Abu Hurairah)"
+      },
+      {
+       "a": "الرُّؤْيَا مِنَ اللَّهِ وَالْحُلْمُ مِنَ الشَّيْطَانِ",
+       "t": "Mimpi yang baik (ru’ya) berasal dari Allah, dan mimpi yang buruk (hulm) berasal dari setan.",
+       "s": "HR. Muslim no. 2261 (Abu Qatadah)"
+      }
+     ]
+    },
+    {
+     "h": "Ru’ya shalihah: kabar gembira dan bagian kecil dari kenabian",
+     "p": [
+      "Hadits Abu Hurairah menyebut bahwa mimpi seorang muslim adalah **satu bagian dari empat puluh lima bagian kenabian** (Muslim no. 2263), dan dalam riwayat al-Bukhari no. 7017 disebut empat puluh enam bagian. Ada pula riwayat lain dengan bilangan yang berbeda. Para ulama menjelaskan bahwa perbedaan angka ini tidak mengurangi maknanya, karena yang dimaksud adalah kemuliaan kedudukannya. Sebagian ulama menukil penjelasan bahwa wahyu pertama datang kepada Nabi ﷺ dalam bentuk mimpi yang benar selama sekitar enam bulan (hadits ‘Aisyah, al-Bukhari no. 3), dan enam bulan dari dua puluh tiga tahun kenabian kira-kira setara satu dari empat puluh enam bagian. *Wallahu a‘lam*.",
+      "Hadits ini tidak berarti orang yang bermimpi baik menjadi nabi atau menerima wahyu. Kenabian telah ditutup dengan Nabi Muhammad ﷺ. Dalam hadits Abu Hurairah (al-Bukhari no. 6990), beliau bersabda bahwa **tidak tersisa dari kenabian kecuali mubasysyirat**, yaitu mimpi yang baik. Maka ru’ya shalihah hanyalah kabar gembira atau peringatan yang bersifat pribadi, dan tidak membawa syariat baru. Nabi ﷺ juga mengabarkan bahwa orang yang paling benar mimpinya adalah yang paling jujur ucapannya, sebagai isyarat bahwa kejujuran dan kebersihan hati berpengaruh pada kejernihan mimpi."
+     ],
+     "q": [
+      {
+       "a": "وَأَصْدَقُكُمْ رُؤْيَا أَصْدَقُكُمْ حَدِيثًا، وَرُؤْيَا الْمُسْلِمِ جُزْءٌ مِنْ خَمْسٍ وَأَرْبَعِينَ جُزْءًا مِنَ النُّبُوَّةِ",
+       "t": "Orang yang paling benar mimpinya adalah yang paling jujur ucapannya, dan mimpi seorang muslim adalah satu bagian dari empat puluh lima bagian kenabian.",
+       "s": "HR. Muslim no. 2263 (Abu Hurairah)"
+      },
+      {
+       "a": "إِذَا اقْتَرَبَ الزَّمَانُ لَمْ تَكَدْ تَكْذِبُ رُؤْيَا الْمُؤْمِنِ، وَرُؤْيَا الْمُؤْمِنِ جُزْءٌ مِنْ سِتَّةٍ وَأَرْبَعِينَ جُزْءًا مِنَ النُّبُوَّةِ",
+       "t": "Apabila zaman telah mendekat, mimpi seorang mukmin hampir tidak pernah dusta, dan mimpi seorang mukmin adalah satu bagian dari empat puluh enam bagian kenabian.",
+       "s": "HR. al-Bukhari no. 7017 (Abu Hurairah)"
+      },
+      {
+       "a": "لَمْ يَبْقَ مِنَ النُّبُوَّةِ إِلَّا الْمُبَشِّرَاتُ. قَالُوا: وَمَا الْمُبَشِّرَاتُ؟ قَالَ: الرُّؤْيَا الصَّالِحَةُ",
+       "t": "Tidak tersisa dari kenabian kecuali mubasysyirat (kabar-kabar gembira). Mereka bertanya, “Apakah mubasysyirat itu?” Beliau menjawab, “Mimpi yang baik.”",
+       "s": "HR. al-Bukhari no. 6990 (Abu Hurairah)"
+      }
+     ]
+    },
+    {
+     "h": "Adab ketika mendapat mimpi yang baik",
+     "p": [
+      "Hadits Abu Sa‘id al-Khudri رضي الله عنه (al-Bukhari no. 6985) mengajarkan bahwa apabila seseorang melihat mimpi yang ia sukai, itu dari Allah, maka hendaklah ia **memuji Allah** atas mimpi itu dan menceritakannya. Mimpi baik adalah nikmat dan kabar gembira, sehingga yang pertama diucapkan adalah syukur, bukan kebanggaan.",
+      "Meski boleh menceritakannya, para ulama menganjurkan agar mimpi itu hanya diceritakan kepada orang yang tulus, dipercaya, dan berilmu. Dasarnya adalah kisah Nabi Ya‘qub عليه السلام yang melarang Yusuf عليه السلام menceritakan mimpinya kepada saudara-saudaranya karena dikhawatirkan mereka membuat tipu daya (QS. Yusuf: 5), sebagaimana dibahas pada kartu *Nabi Yusuf, Nabi Ayyub, dan Nabi Yunus*. Mimpi baik tidak boleh dijadikan alasan merasa lebih mulia dari orang lain, dan tidak boleh ditambah-tambahi ketika diceritakan."
+     ],
+     "q": [
+      {
+       "a": "إِذَا رَأَى أَحَدُكُمْ رُؤْيَا يُحِبُّهَا فَإِنَّمَا هِيَ مِنَ اللَّهِ، فَلْيَحْمَدِ اللَّهَ عَلَيْهَا وَلْيُحَدِّثْ بِهَا، وَإِذَا رَأَى غَيْرَ ذَلِكَ مِمَّا يَكْرَهُ فَإِنَّمَا هِيَ مِنَ الشَّيْطَانِ، فَلْيَسْتَعِذْ مِنْ شَرِّهَا وَلَا يَذْكُرْهَا لِأَحَدٍ، فَإِنَّهَا لَا تَضُرُّهُ",
+       "t": "Apabila salah seorang dari kalian melihat mimpi yang ia sukai, maka sesungguhnya itu dari Allah, maka hendaklah ia memuji Allah atasnya dan menceritakannya. Apabila ia melihat selain itu, yaitu yang ia benci, maka sesungguhnya itu dari setan, maka hendaklah ia berlindung dari keburukannya dan tidak menyebutkannya kepada siapa pun, karena mimpi itu tidak akan membahayakannya.",
+       "s": "HR. al-Bukhari no. 6985 (Abu Sa‘id al-Khudri)"
+      },
+      {
+       "a": "قَالَ يٰبُنَيَّ لَا تَقْصُصْ رُءْيَاكَ عَلٰٓى اِخْوَتِكَ فَيَكِيْدُوْا لَكَ كَيْدًا ۗاِنَّ الشَّيْطٰنَ لِلْاِنْسَانِ عَدُوٌّ مُّبِيْنٌ",
+       "t": "Dia (ayahnya) berkata, “Wahai anakku! Janganlah engkau ceritakan mimpimu kepada saudara-saudaramu, mereka akan membuat tipu daya (untuk membinasakan)mu. Sungguh, setan itu musuh yang jelas bagi manusia.”",
+       "s": "QS. Yusuf: 5"
+      }
+     ]
+    },
+    {
+     "h": "Adab ketika mendapat mimpi yang buruk",
+     "p": [
+      "Hadits Jabir رضي الله عنه (Muslim no. 2262) mengajarkan langkah yang sederhana. Orang yang melihat mimpi buruk hendaknya **meludah kecil ke arah kirinya tiga kali**, yang dipahami para ulama sebagai tiupan ringan dengan sedikit atau tanpa air liur, lalu berlindung kepada Allah dari setan tiga kali, dan berpindah dari sisi tubuh yang ia pakai saat berbaring. Hadits Abu Hurairah (Muslim no. 2263) menambahkan agar ia bangun lalu shalat, dan tidak menceritakan mimpi itu kepada orang lain.",
+      "Hadits Abu Sa‘id (al-Bukhari no. 6985) menyebut alasannya: **mimpi itu tidak akan membahayakannya**. Jadi tuntunan ini bukan untuk menakut-nakuti, melainkan untuk menenangkan. Mimpi buruk adalah gangguan setan yang tidak dapat mencelakai orang yang berlindung kepada Allah. Karena itu seseorang tidak perlu menafsirkan sendiri mimpi buruknya sebagai pertanda musibah, dan tidak perlu mencari-cari orang yang akan menakut-nakutinya dengan tafsir."
+     ],
+     "q": [
+      {
+       "a": "إِذَا رَأَى أَحَدُكُمُ الرُّؤْيَا يَكْرَهُهَا فَلْيَبْصُقْ عَنْ يَسَارِهِ ثَلَاثًا، وَلْيَسْتَعِذْ بِاللَّهِ مِنَ الشَّيْطَانِ ثَلَاثًا، وَلْيَتَحَوَّلْ عَنْ جَنْبِهِ الَّذِي كَانَ عَلَيْهِ",
+       "t": "Apabila salah seorang dari kalian melihat mimpi yang tidak ia sukai, hendaklah ia meludah (kecil) ke kirinya tiga kali, berlindung kepada Allah dari setan tiga kali, dan berpindah dari sisi tubuh yang ia gunakan untuk berbaring.",
+       "s": "HR. Muslim no. 2262 (Jabir)"
+      },
+      {
+       "a": "فَإِنْ رَأَى أَحَدُكُمْ مَا يَكْرَهُ فَلْيَقُمْ فَلْيُصَلِّ وَلَا يُحَدِّثْ بِهَا النَّاسَ",
+       "t": "Jika salah seorang dari kalian melihat sesuatu yang ia benci, hendaklah ia bangun lalu shalat, dan jangan menceritakannya kepada orang-orang.",
+       "s": "HR. Muslim no. 2263 (Abu Hurairah)"
+      }
+     ]
+    },
+    {
+     "h": "Mimpi para nabi dan mimpi melihat Nabi ﷺ",
+     "p": [
+      "Mimpi para nabi berbeda dari mimpi manusia biasa karena merupakan **wahyu**. Nabi Yusuf عليه السلام melihat sebelas bintang, matahari, dan bulan bersujud kepadanya, dan bertahun-tahun kemudian ia menyebut peristiwa itu sebagai takwil mimpinya yang dijadikan Allah nyata (QS. Yusuf: 4–6 dan 100). Nabi Ibrahim عليه السلام bermimpi menyembelih putranya, lalu menaatinya sebagai perintah Allah (QS. ash-Shaffat: 102). Allah juga membenarkan mimpi Nabi ﷺ tentang memasuki Masjidil Haram (QS. al-Fath: 27). Kisah-kisah ini dibahas pada kartu tentang para nabi.",
+      "Adapun mimpi melihat Nabi ﷺ, hadits Abu Sa‘id (al-Bukhari no. 6997) menyebut bahwa siapa yang melihat beliau dalam mimpi, ia telah melihat yang benar, karena **setan tidak dapat menyerupai** beliau. Sebagian ulama mensyaratkan bahwa yang terlihat harus sesuai dengan ciri-ciri Nabi ﷺ yang diriwayatkan dalam hadits sahih, dan tidak setiap orang yang mengaku melihat beliau benar-benar melihatnya. Meski mimpinya benar, ia tetap tidak boleh dijadikan dasar menetapkan hukum baru atau menyelisihi syariat yang telah sampai kepada kita."
+     ],
+     "q": [
+      {
+       "a": "فَلَمَّا بَلَغَ مَعَهُ السَّعْيَ قَالَ يٰبُنَيَّ اِنِّيْٓ اَرٰى فِى الْمَنَامِ اَنِّيْٓ اَذْبَحُكَ فَانْظُرْ مَاذَا تَرٰىۗ قَالَ يٰٓاَبَتِ افْعَلْ مَا تُؤْمَرُۖ سَتَجِدُنِيْٓ اِنْ شَاۤءَ اللّٰهُ مِنَ الصّٰبِرِيْنَ",
+       "t": "Maka ketika anak itu sampai (pada umur) sanggup berusaha bersamanya, (Ibrahim) berkata, “Wahai anakku! Sesungguhnya aku bermimpi bahwa aku menyembelihmu. Maka pikirkanlah bagaimana pendapatmu!” Dia (Ismail) menjawab, “Wahai ayahku! Lakukanlah apa yang diperintahkan (Allah) kepadamu; insya Allah engkau akan mendapatiku termasuk orang yang sabar.”",
+       "s": "QS. ash-Shaffat: 102"
+      },
+      {
+       "a": "لَقَدْ صَدَقَ اللّٰهُ رَسُوْلَهُ الرُّءْيَا بِالْحَقِّ ۚ لَتَدْخُلُنَّ الْمَسْجِدَ الْحَرَامَ اِنْ شَاۤءَ اللّٰهُ اٰمِنِيْنَۙ مُحَلِّقِيْنَ رُءُوْسَكُمْ وَمُقَصِّرِيْنَۙ لَا تَخَافُوْنَ",
+       "t": "Sungguh, Allah akan membuktikan kepada Rasul-Nya tentang kebenaran mimpinya bahwa kamu pasti akan memasuki Masjidilharam, jika Allah menghendaki dalam keadaan aman, dengan menggundul rambut kepala dan memendekkannya, sedang kamu tidak merasa takut.",
+       "s": "QS. al-Fath: 27"
+      },
+      {
+       "a": "مَنْ رَآنِي فَقَدْ رَأَى الْحَقَّ، فَإِنَّ الشَّيْطَانَ لَا يَتَكَوَّنُنِي",
+       "t": "Siapa yang melihatku (dalam mimpi), sungguh ia telah melihat yang benar, karena setan tidak dapat menyerupai bentukku.",
+       "s": "HR. al-Bukhari no. 6997 (Abu Sa‘id al-Khudri)"
+      }
+     ]
+    },
+    {
+     "h": "Menafsirkan mimpi, dan larangan berdusta tentang mimpi",
+     "p": [
+      "Takwil mimpi adalah ilmu yang Allah berikan kepada siapa yang Dia kehendaki, sebagaimana Yusuf عليه السلام diajarkan *ta’wil al-ahadits* (QS. Yusuf: 6). Para ulama mengingatkan agar mimpi tidak ditafsirkan secara sembarangan, karena menafsirkan tanpa ilmu dapat menimbulkan rasa takut atau harapan palsu, dan tafsir mimpi pada dasarnya bersifat dugaan, bukan kepastian.",
+      "Yang lebih keras adalah mengaku bermimpi padahal tidak bermimpi. Hadits Ibnu ‘Umar رضي الله عنهما (al-Bukhari no. 7043) menyebut bahwa termasuk dusta yang paling besar adalah seseorang mengaku matanya melihat sesuatu yang tidak ia lihat. Hadits Ibnu ‘Abbas رضي الله عنهما (al-Bukhari no. 7042) menyebut bahwa orang yang mengaku bermimpi padahal tidak, akan dibebani mengikat dua biji gandum pada hari kiamat dan ia tidak akan mampu melakukannya. Ancaman ini keras karena ia berdusta tentang sesuatu yang disebut bagian dari kenabian."
+     ],
+     "q": [
+      {
+       "a": "إِنَّ مِنْ أَفْرَى الْفِرَى أَنْ يُرِيَ عَيْنَيْهِ مَا لَمْ تَرَ",
+       "t": "Sesungguhnya di antara dusta yang paling besar adalah seseorang mengaku matanya melihat sesuatu yang tidak dilihatnya.",
+       "s": "HR. al-Bukhari no. 7043 (Ibnu ‘Umar)"
+      }
+     ]
+    },
+    {
+     "h": "Mimpi bukan sumber hukum: pelajaran untuk kita",
+     "p": [
+      "Karena kenabian telah ditutup dan agama telah sempurna (QS. al-Ma’idah: 3), mimpi orang biasa **tidak boleh dijadikan dasar akidah, hukum halal-haram, atau ibadah baru**. Orang yang tidur tidak berada dalam keadaan sadar dan teliti, sehingga apa yang dilihatnya dapat bercampur dengan pikiran, perasaan, atau gangguan setan. Mimpi hanya boleh dipandang sebagai kabar gembira atau peringatan pribadi, dan harus diukur dengan Al-Qur’an dan sunnah. Perintah dalam mimpi untuk meninggalkan shalat, membuat ritual tanpa dalil, atau menyelisihi syariat tidak boleh diikuti.",
+      "Mimpi ‘Abdullah bin Zaid رضي الله عنه tentang lafaz adzan (Abu Dawud no. 499 dan at-Tirmidzi no. 189) sering dijadikan contoh. Adzan disyariatkan bukan karena mimpi itu semata, tetapi karena Nabi ﷺ menyatakannya **mimpi yang benar** lalu menetapkannya, dan ‘Umar رضي الله عنه juga mengabarkan telah melihat hal yang sama. Artinya, mimpi tetap diukur dengan wahyu dan keputusan Nabi ﷺ, bukan sebaliknya. Pelajarannya: syukuri mimpi baik, berlindunglah dari mimpi buruk, jangan menunda kewajiban karena mimpi, dan jangan memaksakan tafsir mimpi kepada orang lain."
+     ],
+     "q": [
+      {
+       "a": "اَلْيَوْمَ اَكْمَلْتُ لَكُمْ دِيْنَكُمْ وَاَتْمَمْتُ عَلَيْكُمْ نِعْمَتِيْ وَرَضِيْتُ لَكُمُ الْاِسْلَامَ دِيْنًا",
+       "t": "Pada hari ini telah Aku sempurnakan agamamu untukmu, dan telah Aku cukupkan nikmat-Ku bagimu, dan telah Aku ridai Islam sebagai agamamu.",
+       "s": "QS. al-Ma’idah: 3"
+      },
+      {
+       "a": "إِنَّهَا لَرُؤْيَا حَقٍّ إِنْ شَاءَ اللَّهُ",
+       "t": "Sesungguhnya itu adalah mimpi yang benar, insya Allah.",
+       "s": "HR. Abu Dawud no. 499 (‘Abdullah bin Zaid)"
+      }
+     ]
+    }
+   ],
+   "s": [
+    "QS. Yusuf: 4–6, 100; ash-Shaffat: 102; al-Fath: 27; al-Ma’idah: 3; az-Zumar: 42",
+    "HR. Muslim no. 2261 dari Abu Qatadah — mimpi baik dari Allah dan hulm dari setan",
+    "HR. Muslim no. 2262 dari Jabir — adab mimpi buruk: meludah kecil ke kiri, berlindung, dan berpindah posisi",
+    "HR. Muslim no. 2263 dari Abu Hurairah — tiga jenis mimpi; mimpi seorang muslim satu dari empat puluh lima bagian kenabian; shalat dan tidak menceritakan mimpi buruk",
+    "HR. al-Bukhari no. 7017 dari Abu Hurairah — mimpi mukmin satu dari empat puluh enam bagian kenabian",
+    "HR. al-Bukhari no. 6990 dari Abu Hurairah — tidak tersisa dari kenabian kecuali mubasysyirat",
+    "HR. al-Bukhari no. 3 dari ‘Aisyah — wahyu pertama datang dalam bentuk mimpi yang benar",
+    "HR. al-Bukhari no. 6985 dari Abu Sa‘id al-Khudri — adab mimpi baik dan mimpi buruk",
+    "HR. al-Bukhari no. 6997 dari Abu Sa‘id al-Khudri dan no. 6995 dari Abu Qatadah — melihat Nabi ﷺ dalam mimpi; setan tidak dapat menyerupai beliau",
+    "HR. al-Bukhari no. 7042 dari Ibnu ‘Abbas dan no. 7043 dari Ibnu ‘Umar — larangan berdusta tentang mimpi",
+    "HR. Abu Dawud no. 499 dan at-Tirmidzi no. 189 dari ‘Abdullah bin Zaid — mimpi adzan; at-Tirmidzi menilainya hasan sahih",
+    "Ibnu Hajar al-‘Asqalani, *Fathul Bari*, Kitab at-Ta‘bir — jenis-jenis mimpi, perbedaan ru’ya dan hulm, serta makna mimpi sebagai bagian dari kenabian",
+    "An-Nawawi, *Syarh Shahih Muslim*, Kitab ar-Ru’ya — penjelasan hadits-hadits mimpi dan adabnya",
+    "Ibnu Katsir, *Tafsir al-Qur’an al-‘Azhim* — tafsir QS. Yusuf: 4–6 dan 100"
    ]
   },
   {
